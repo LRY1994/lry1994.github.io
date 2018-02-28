@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>搭建博客过程 | 圆玉的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="我是一个很喜欢做笔记的人，老是写在word文档不方便。之前用jekyll搭了一个，感觉写得也是乱七八糟，页面也不好看，改的话不如重新重写一个好了 有了上次经验，觉得做一个东西真的要认真规划一下，不然做出来的东西老是迁就的感觉，能用就行。这样是不行的。像做一个产品来做它 问题定义重构博客原因有下：  Jkeyll目录文件关系得按照规定放置，灵活性差（虽然hexo也是这样） 日记页面不美观，想换，干脆">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建博客过程">
+<meta property="og:url" content="http://lry1994.github.io/2018/2018-2-26-rebuild-blog">
+<meta property="og:site_name" content="圆玉的博客">
+<meta property="og:description" content="我是一个很喜欢做笔记的人，老是写在word文档不方便。之前用jekyll搭了一个，感觉写得也是乱七八糟，页面也不好看，改的话不如重新重写一个好了 有了上次经验，觉得做一个东西真的要认真规划一下，不然做出来的东西老是迁就的感觉，能用就行。这样是不行的。像做一个产品来做它 问题定义重构博客原因有下：  Jkeyll目录文件关系得按照规定放置，灵活性差（虽然hexo也是这样） 日记页面不美观，想换，干脆">
+<meta property="og:updated_time" content="2018-02-28T09:54:22.236Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="搭建博客过程">
+<meta name="twitter:description" content="我是一个很喜欢做笔记的人，老是写在word文档不方便。之前用jekyll搭了一个，感觉写得也是乱七八糟，页面也不好看，改的话不如重新重写一个好了 有了上次经验，觉得做一个东西真的要认真规划一下，不然做出来的东西老是迁就的感觉，能用就行。这样是不行的。像做一个产品来做它 问题定义重构博客原因有下：  Jkeyll目录文件关系得按照规定放置，灵活性差（虽然hexo也是这样） 日记页面不美观，想换，干脆">
+  
+    <link rel="alternate" href="/atom.xml" title="圆玉的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">圆玉的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/learn">Learn</a>
+        
+          <a class="main-nav-link" href="/life">Life</a>
+        
+          <a class="main-nav-link" href="/work">Work</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://lry1994.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+          <article id="post-2018/2018-2-26-rebuild-blog" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/2018-2-26-rebuild-blog" class="article-date">
+  <time datetime="2018-02-25T16:00:00.000Z" itemprop="datePublished">2018-02-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/学习-专题笔记/">学习>>专题笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      搭建博客过程
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我是一个很喜欢做笔记的人，老是写在word文档不方便。之前用jekyll搭了一个，感觉写得也是乱七八糟，页面也不好看，改的话不如重新重写一个好了</p>
+<p>有了上次经验，觉得做一个东西真的要认真规划一下，不然做出来的东西老是迁就的感觉，能用就行。这样是不行的。像做一个产品来做它</p>
+<h2 id="问题定义"><a href="#问题定义" class="headerlink" title="问题定义"></a>问题定义</h2><p>重构博客原因有下：</p>
+<ol>
+<li>Jkeyll目录文件关系得按照规定放置，灵活性差（虽然hexo也是这样）</li>
+<li>日记页面不美观，想换，干脆重新规划做一个</li>
+<li>学习一下怎么在github上弄1.0版本，2.0版本</li>
+<li>jekyll显示markdown不好看</li>
+</ol>
+<p>参考<a href="https://www.jianshu.com/p/c4f145fdd637" target="_blank" rel="noopener">博客搭建可行性方案( jekyll , hexo , Wordpress )</a></p>
+<p>较多人采用的博客搭建方案有如下几种：</p>
+<ol>
+<li>Git+Github+Markdown+jekyll （免费）</li>
+<li>Git+Github+Markdown+hexo （免费）</li>
+<li>虚拟主机＋插件＋Wordpress （付费）</li>
+</ol>
+<p>为了省钱，所以选择第二种</p>
+<h2 id="可行性研究"><a href="#可行性研究" class="headerlink" title="可行性研究"></a>可行性研究</h2><p>毋庸置疑，可行</p>
+<h2 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h2><p>分为工作、学习、生活三个模块</p>
+<ul>
+<li>工作<ul>
+<li>简历 (制作简历网页，jekyll那个是直接把简历模板copy过来的)</li>
+</ul>
+</li>
+<li>学习<ul>
+<li>笔记 （可按时间、类别分类）<ul>
+<li>读书笔记（以书籍为单位来）</li>
+<li>随笔笔记（在生活中遇到的问题或者想要摘录的，以月为单位）</li>
+<li>专题笔记（围绕某个东西的笔记，以主题为单位）</li>
+</ul>
+</li>
+<li>项目<ul>
+<li>项目一</li>
+<li>项目二 等</li>
+</ul>
+</li>
+<li>用户体验（把有时候产品用得不愉快的经历记录下来，一篇，不定时更新）</li>
+</ul>
+</li>
+<li>生活<ul>
+<li>减肥 <ul>
+<li>运动日历 （因为办了健身卡 ）</li>
+<li>减脂餐图栏</li>
+</ul>
+</li>
+<li>护肤化妆心得 （我一直都有颗当美妆博主的心）</li>
+<li>旅游攻略 （喜欢旅游，但不可以经常旅游，所以很珍惜每一次，都想把它记录下来）</li>
+</ul>
+</li>
+<li>其他<ul>
+<li>社区账号（比较常用segmentfault/weibo/V2EX）</li>
+</ul>
+</li>
+</ul>
+<h2 id="概要设计"><a href="#概要设计" class="headerlink" title="概要设计"></a>概要设计</h2><p>输出原型图<br>使用mockplus</p>
+<h2 id="详细设计"><a href="#详细设计" class="headerlink" title="详细设计"></a>详细设计</h2><h2 id="编码和单元测试"><a href="#编码和单元测试" class="headerlink" title="编码和单元测试"></a>编码和单元测试</h2><p><a href="https://www.cnblogs.com/xsilence/p/6001938.html" target="_blank" rel="noopener">针对github权限导致hexo部署失败的解决方案</a></p>
+<h2 id="集成测试"><a href="#集成测试" class="headerlink" title="集成测试"></a>集成测试</h2><p>最终部署在github</p>
+<h2 id="软件维护"><a href="#软件维护" class="headerlink" title="软件维护"></a>软件维护</h2><p>管理博客</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://lry1994.github.io/2018/2018-2-26-rebuild-blog" data-id="cje6yin10000ln8vk5qohi4t3" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/2018-2-26-front-end-summary" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          原生DOM兼容特性总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/2018-2-suibi" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">2018-2随笔笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Ruiyu Lin<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/learn" class="mobile-nav-link">Learn</a>
+  
+    <a href="/life" class="mobile-nav-link">Life</a>
+  
+    <a href="/work" class="mobile-nav-link">Work</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

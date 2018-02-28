@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>2018-2随笔笔记 | 圆玉的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Cache-Control  no-cache: 告诉浏览器、缓存服务器，不管本地副本是否过期，使用资源副本前，一定要到源服务器进行副本有效性校验。  must-revalidate：告诉浏览器、缓存服务器，本地副本过期前，可以使用本地副本；本地副本一旦过期，必须去源服务器进行有效性校验。  max-age： 指缓存资源的缓存时间比指定的值小，那么客户端就接受缓存资源，且缓存服务器不对资源有效性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018-2随笔笔记">
+<meta property="og:url" content="http://lry1994.github.io/2018/2018-2-suibi">
+<meta property="og:site_name" content="圆玉的博客">
+<meta property="og:description" content="Cache-Control  no-cache: 告诉浏览器、缓存服务器，不管本地副本是否过期，使用资源副本前，一定要到源服务器进行副本有效性校验。  must-revalidate：告诉浏览器、缓存服务器，本地副本过期前，可以使用本地副本；本地副本一旦过期，必须去源服务器进行有效性校验。  max-age： 指缓存资源的缓存时间比指定的值小，那么客户端就接受缓存资源，且缓存服务器不对资源有效性">
+<meta property="og:updated_time" content="2018-02-28T01:52:39.075Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018-2随笔笔记">
+<meta name="twitter:description" content="Cache-Control  no-cache: 告诉浏览器、缓存服务器，不管本地副本是否过期，使用资源副本前，一定要到源服务器进行副本有效性校验。  must-revalidate：告诉浏览器、缓存服务器，本地副本过期前，可以使用本地副本；本地副本一旦过期，必须去源服务器进行有效性校验。  max-age： 指缓存资源的缓存时间比指定的值小，那么客户端就接受缓存资源，且缓存服务器不对资源有效性">
+  
+    <link rel="alternate" href="/atom.xml" title="圆玉的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">圆玉的博客</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/learn">Learn</a>
+        
+          <a class="main-nav-link" href="/life">Life</a>
+        
+          <a class="main-nav-link" href="/work">Work</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://lry1994.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+          <article id="post-2018/2018-2-suibi" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/2018-2-suibi" class="article-date">
+  <time datetime="2018-01-31T16:00:00.000Z" itemprop="datePublished">2018-02-01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/学习-随笔笔记/">学习>>随笔笔记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      2018-2随笔笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>Cache-Control<br>  no-cache: 告诉浏览器、缓存服务器，不管本地副本是否过期，使用资源副本前，一定要到源服务器进行副本有效性校验。<br>  must-revalidate：告诉浏览器、缓存服务器，本地副本过期前，可以使用本地副本；本地副本一旦过期，必须去源服务器进行有效性校验。<br>  max-age： 指缓存资源的缓存时间比指定的值小，那么客户端就接受缓存资源，且缓存服务器不对资源有效性进行再次确认</p>
+</li>
+<li><p>CSS像素是web编程的概念,是相对的而不是绝对的单位. 用户的缩放比会影响单位CSS像素点对应的实际物理像素的多少</p>
+</li>
+<li><p>使用Flexible实现手淘H5页面的终端适配<br><a href="https://github.com/amfe/article/issues/17" target="_blank" rel="noopener">https://github.com/amfe/article/issues/17</a></p>
+</li>
+</ul>
+<ul>
+<li><p>异步脚本禁止使用document.write()<br>延迟脚本禁止使用document.write()</p>
+</li>
+<li><p>火狐和IE下href=”javascript:void(0) 会弹出空白页</p>
+</li>
+</ul>
+<p>本来javascript:void(0);的用处是不用整体刷新网页且返回一个空值，但这儿由于DOM本身的冒泡事件所以会最后执行HREF属性内的javascript:void(0);导致执行函数返回了一个空值，所以覆盖掉了前面正常执行函数所返回的值引起的错误。</p>
+<p>一般情况下，IE会先运行DOM本身绑定的事件，如ONCLICK;如果没有阻止冒泡，则会顺序执行HREF属性。如果想正确运行，可以在前面用RETURN FALSE终止冒泡，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a target=&quot;_blank&quot; class=&quot;prev&quot; onclick=&quot;return false;&quot;   href=&quot;javascript:void(0);&quot;&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
+<p>或者直接删去也行，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a target=&quot;_blank&quot;  class=&quot;prev&quot; &gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
+<p>但是后者hover的时候没有手势的pointer</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://lry1994.github.io/2018/2018-2-suibi" data-id="cje6yin14000on8vkbf461k5f" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/2018-2-26-rebuild-blog" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          搭建博客过程
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/2018-1-31-full-stack-develop-study" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">《全栈应用开发精益实践》读书笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Ruiyu Lin<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/learn" class="mobile-nav-link">Learn</a>
+  
+    <a href="/life" class="mobile-nav-link">Life</a>
+  
+    <a href="/work" class="mobile-nav-link">Work</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

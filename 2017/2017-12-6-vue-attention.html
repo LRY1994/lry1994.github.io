@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-hk">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="vue," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="技术栈 ES6 Javascript Vue JS 框架和 NPM 生态 Vue Router Vuex .vue files vue-cli Axios Element-ui Webpack ESLint  摘抄不要为了编辑内容而打开另一个页面，应该直接在上下文中实现编辑。能在这个页面解决的问题，就不要去其它页面解决，因为任何页面刷新和跳转都会引起变化盲视（Change Blindness），导">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue 一些需要注意的点">
+<meta property="og:url" content="http://lry1994.github.io/2017/2017-12-6-vue-attention.html">
+<meta property="og:site_name" content="圆玉的博客">
+<meta property="og:description" content="技术栈 ES6 Javascript Vue JS 框架和 NPM 生态 Vue Router Vuex .vue files vue-cli Axios Element-ui Webpack ESLint  摘抄不要为了编辑内容而打开另一个页面，应该直接在上下文中实现编辑。能在这个页面解决的问题，就不要去其它页面解决，因为任何页面刷新和跳转都会引起变化盲视（Change Blindness），导">
+<meta property="og:locale" content="zh-hk">
+<meta property="og:updated_time" content="2018-03-01T05:35:49.868Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue 一些需要注意的点">
+<meta name="twitter:description" content="技术栈 ES6 Javascript Vue JS 框架和 NPM 生态 Vue Router Vuex .vue files vue-cli Axios Element-ui Webpack ESLint  摘抄不要为了编辑内容而打开另一个页面，应该直接在上下文中实现编辑。能在这个页面解决的问题，就不要去其它页面解决，因为任何页面刷新和跳转都会引起变化盲视（Change Blindness），导">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://lry1994.github.io/2017/2017-12-6-vue-attention.html"/>
+
+
+
+
+
+  <title>vue 一些需要注意的点 | 圆玉的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-hk">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">圆玉的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lry1994.github.io/2017/2017-12-6-vue-attention.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ruiyu Lin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="圆玉的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue 一些需要注意的点</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-12-06T00:00:00+08:00">
+                2017-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/专题笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">专题笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><ul>
+<li><a href="http://www.2ality.com/2015/08/getting-started-es6.html" target="_blank" rel="noopener">ES6 Javascript</a></li>
+<li><a href="http://vuejs.org" target="_blank" rel="noopener">Vue JS</a> 框架和 <a href="http://npmjs.org" target="_blank" rel="noopener">NPM</a> 生态</li>
+<li><a href="http://router.vuejs.org/" target="_blank" rel="noopener">Vue Router</a></li>
+<li><a href="https://vuex.vuejs.org/zh-cn/intro.html" target="_blank" rel="noopener">Vuex</a></li>
+<li><a href="https://vue-loader.vuejs.org/zh-cn/" target="_blank" rel="noopener">.vue files</a></li>
+<li><a href="https://github.com/vuejs/vue-cli" target="_blank" rel="noopener">vue-cli</a></li>
+<li><a href="https://github.com/axios/axios" target="_blank" rel="noopener">Axios</a></li>
+<li><a href="http://element.eleme.io/#/zh-CN/component" target="_blank" rel="noopener">Element-ui</a></li>
+<li><a href="https://webpack.js.org/" target="_blank" rel="noopener">Webpack</a></li>
+<li><a href="https://eslint.org/" target="_blank" rel="noopener">ESLint</a></li>
+</ul>
+<h2 id="摘抄"><a href="#摘抄" class="headerlink" title="摘抄"></a>摘抄</h2><p>不要为了编辑内容而打开另一个页面，应该直接在上下文中实现编辑。<br>能在这个页面解决的问题，就不要去其它页面解决，因为任何页面刷新和跳转都会引起变化盲视（Change Blindness），导致用户心流（Flow）被打断</p>
+<p>『格式塔学派』中的连续律（Law of Continuity）所描述的，在知觉过程中人们往往倾向于使知觉对象的直线继续成为直线，使曲线继续成为曲线。在界面设计中，将元素进行对齐，既符合用户的认知特性，也能引导视觉流向，让用户更流畅地接收信息。</p>
+<p>冒号对齐（右对齐）能让内容锁定在一定范围内，让用户眼球顺着冒号的视觉流，就能找到所有填写项，从而提高填写效率。为了快速对比数值大小，建议所有数值取相同有效位数，并且右对齐。</p>
+<p>在一些需要用户慎重决策的场景中，系统应该保持中立，不能替用户或者诱导用户做出判断。</p>
+<p>单字段行内编辑，当『易读性』远比『易编辑性』重要时，可以使用『单击编辑』。</p>
+<p>当『易读性』为主，同时又要突出操作行的『易编辑性』时，可使用『文字链/图标编辑』。</p>
+<p>当需要增强按钮的响应性时，可以通过增加用户点击热区的范围，而不是增大按钮形状，从而增强响应性，又不缺失美感。</p>
+<p>颜需色遵守 WCAG 2.0 的标准，操作类的色彩搭配都应满足颜色对比值 3:1 的最低标准。文本和背景色之间至少保持最小 4.5:1 的对比度（AA 级），正文内容都保持了 7:1 以上的 AAA 级对比度。</p>
+<p>在操作前引导告知用户操作的目的或重要性，能促进用户更愿意去执行。</p>
+<p>当用户填写的内容出错的时候，你的报错信息应当符合用户的认知，用易于理解的方式表述出来。</p>
+<p>直接使用『你』、『我』来和用户对话，与用户建立亲密感。避免使用『您』，让用户感觉太过疏远。</p>
+<p>不要在同一个句式中混用『你』和『我』，交互中指代混乱会让用户相当纠结。</p>
+<h2 id="vue"><a href="#vue" class="headerlink" title="ｖｕｅ"></a>ｖｕｅ</h2><ul>
+<li>不要在选项属性或回调上使用箭头函数</li>
+<li>计算属性是基于它们的依赖进行缓存的。计算属性只有在它的相关依赖发生改变时才会重新求值。</li>
+<li>当 v-bind:style 使用需要添加浏览器引擎前缀的 CSS 属性时，如 transform，Vue.js 会自动侦测并添加相应的前缀。</li>
+<li>表单元素不要复用它们，只需添加一个具有唯一值的 key 属性即可</li>
+<li><p>v-show 不支持 <figure class="highlight plain"><figcaption><span>元素， v-else也不支持</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">* v-for 具有比 v-if 更高的优先级。</span><br><span class="line">它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一 key 属性。</span><br><span class="line"></span><br><span class="line">```html</span><br><span class="line">&lt;div v-for=&quot;item in items&quot; :key=&quot;item.id&quot;&gt;</span><br><span class="line">  &lt;!-- 内容 --&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+</li>
+<li><p>建议尽可能在使用 v-for 时提供 key，除非遍历输出的 DOM 内容非常简单，或者是刻意依赖默认行为以获取性能上的提升。</p>
+<p>2.2.0+ 的版本里，当在组件中使用 v-for 时，key 现在是必须的。</p>
+</li>
+<li><p>vue数组的变异方法，：push()pop()shift()unshift()splice()sort()reverse()<br>非变异 (non-mutating method) 方法，例如：filter(), concat() 和 slice()</p>
+</li>
+<li><p>Vue 不能检测以下变动的数组：</p>
+</li>
+</ul>
+<ol>
+<li><p>当你利用索引直接设置一个项时，例如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">解决方法</span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">// Vue.set</span><br><span class="line">Vue.set(example1.items, indexOfItem, newValue)</span><br><span class="line">或者</span><br><span class="line">// Array.prototype.splice</span><br><span class="line">example1.items.splice(indexOfItem, 1, newValue)</span><br></pre></td></tr></table></figure></p>
+</li>
+<li><p>当你修改数组的长度时，例如：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">解决方法</span><br><span class="line"></span><br><span class="line">``` example1.items.splice(newLength)</span><br></pre></td></tr></table></figure></p>
+</li>
+</ol>
+<ul>
+<li><p>对于已经创建的实例，Vue 不能动态添加根级别的响应式属性。但是，可以使用 </p>
+<figure class="highlight plain"><figcaption><span>key, value) ```方法向嵌套对象添加响应式属性。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">还可以使用``` this.$set ```实例方法，或者</span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line"></span><br><span class="line">this.userProfile = Object.assign(&#123;&#125;, this.userProfile, &#123;</span><br><span class="line">  age: 27,</span><br><span class="line">  favoriteColor: &apos;Vue Green&apos;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>事件修饰符。</p>
+</li>
+</ul>
+<p>.stop .prevent. capture .self .once .native</p>
+<figure class="highlight plain"><figcaption><span>```会阻止所有的点击，而</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">```@click.self.prevent``` 只会阻止对元素自身的点击。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">* 构造 Vue 实例时传入的各种选项大多数都可以在组件里使用。只有一个例外：data 必须是函数。</span><br><span class="line"></span><br><span class="line">* Vue 实例指的是 new Vue</span><br><span class="line"></span><br><span class="line">组件指的是 Vue.component,或者new Vue里面的component</span><br><span class="line"></span><br><span class="line">* 组件实例的作用域是孤立的</span><br><span class="line"></span><br><span class="line">* 当使用的不是字符串模板时，camelCase (驼峰式命名) 的 prop 需要转换为相对应的 kebab-case (短横线分隔式命名)</span><br><span class="line"></span><br><span class="line">* 初学者常犯的一个错误是使用字面量语法传递数值：</span><br><span class="line">```html</span><br><span class="line">&lt;!-- 传递了一个字符串 &quot;1&quot; --&gt;</span><br><span class="line">&lt;comp some-prop=&quot;1&quot;&gt;&lt;/comp&gt;</span><br></pre></td></tr></table></figure>
+<p>因为它是一个字面量 prop，它的值是字符串 “1” 而不是一个数值。</p>
+<blockquote>
+<blockquote>
+<p>如果想传递一个真正的 JavaScript 数值，则需要使用 v-bind，从而让它的值被当作 JavaScript 表达式计算：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 传递真正的数值 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">comp</span> <span class="attr">v-bind:some-prop</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;/<span class="name">comp</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+</blockquote>
+<ul>
+<li><p>每次父组件更新时，子组件的所有 prop 都会更新为最新值。这意味着你不应该在子组件内部改变 prop。注意在 JavaScript 中对象和数组是引用类型，指向同一个内存空间，</p>
+<blockquote>
+<blockquote>
+<p>如果 prop 是一个对象或数组，在子组件内部改变它会影响父组件的状态。</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>.sync 修饰符对一个 prop 进行“双向绑定”.默认Prop是单向绑定的。</p>
+</li>
+</ul>
+<p>从 2.3.0 起我们重新引入了 .sync 修饰符，但是这次它只是作为一个编译时的语法糖存在。它会被扩展为一个自动更新父组件属性的 v-on 监听器。<br>如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;comp :foo.sync=&quot;bar&quot;&gt;&lt;/comp&gt;</span><br></pre></td></tr></table></figure></p>
+<p>会被扩展为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;comp :foo=&quot;bar&quot; @update:foo=&quot;val =&gt; bar = val&quot;&gt;&lt;/comp&gt;</span><br></pre></td></tr></table></figure></p>
+<p>当子组件需要更新 foo 的值时，它需要显式地触发一个更新事件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$emit(&apos;update:foo&apos;, newValue)</span><br></pre></td></tr></table></figure></p>
+<h2 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h2><p> Vuex 的 store 中的状态是响应式的，那么当我们变更状态时，监视状态的 Vue 组件也会自动更新。这也意味着 Vuex 中的 mutation 也需要与使用 Vue 一样遵守一些注意事项：</p>
+<ol>
+<li>最好提前在你的 store 中初始化好所有所需属性。</li>
+<li>当需要在对象上添加新属性时，你应该使用</li>
+</ol>
+<figure class="highlight plain"><figcaption><span>'newProp', 123)```, </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">或者以新对象替换老对象。例如，利用 stage-3 的对象展开运算符我们可以这样写：</span><br><span class="line"></span><br><span class="line">```state.obj = &#123; ...state.obj, newProp: 123 &#125;</span><br></pre></td></tr></table></figure>
+<p> mutation 必须是同步函数</p>
+<p>store.dispatch 可以处理被触发的 action 的处理函数返回的 Promise，并且 store.dispatch 仍旧返回 Promise</p>
+<h2 id="babel"><a href="#babel" class="headerlink" title="ｂａｂｅｌ"></a>ｂａｂｅｌ</h2><p>transform-runtime最大的作用主要有几下几点：</p>
+<ol>
+<li><p>解决编译中产生的重复的工具函数，减小代码体积</p>
+</li>
+<li><p>只支持新的Javascript语法扩展，比如<code>Set</code>，<code>Map</code>…不支持</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这些对于API的扩展，所以需要使用这些新的API功能需要引入```babel-polyfill</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<figure class="highlight plain"><figcaption><span>["env"]``` 表示```babel-preset-env```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">每年每个 preset 只编译当年批准的内容。 而 babel-preset-env 相当于 es2015 ，es2016 ，es2017 及最新版本。</span><br><span class="line"></span><br><span class="line">```Polyfill```的准确意思为：用于实现浏览器并不支持的原生API的代码。</span><br><span class="line">例如，querySelectorAll是很多现代浏览器都支持的原生Web API，但是有些古老的浏览器并不支持，那么假设有人写了库，只要用了这个库， 你就可以在古老的浏览器里面使用```document.querySelectorAll```，使用方法跟现代浏览器原生API无异。那么这个库就可以称为```Polyfill```或者```Polyfiller```。</span><br><span class="line">好，那么问题就来了。jQuery是不是一个Polyfill?答案是No。因为它并不是实现一些标准的原生API，而是封装了自己API。一个Polyfill是抹平新老浏览器 标准原生API 之间的差距的一种封装，而不是实现自己的API。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">在 Vuex 模块化中，state 是唯一会根据组合时模块的别名来添加层级的，后面的 getters、mutations 以及 actions 都是直接合并在 store 下。</span><br><span class="line"></span><br><span class="line">```getter(&#123;state,getters,rootState&#125;)```由于 getters 不区分模块，所以不同模块中的 getters 如果重名，Vuex 会报出``` &apos;duplicate getter key: [重复的getter名]&apos;``` 错误。</span><br><span class="line"></span><br><span class="line">```mutations(state)``` mutation 的回调函数中只接收唯一的参数——当前模块的 state。mutations 与 getters 类似，不同模块的 mutation 均可以通过 ```store.commit``` 直接触发。</span><br><span class="line"></span><br><span class="line">```action(&#123;state,rootState, getters, mutations, actions&#125;)```与 mutations 类似，不同模块的 actions 均可以通过 ```store.dispatch``` 直接触发.</span><br><span class="line"></span><br><span class="line">在 action 中可以通过 context.commit 跨模块调用 mutation，同时一个模块的 action 也可以调用其他模块的 action</span><br><span class="line"></span><br><span class="line">同样的，当不同模块中有同名 action 时，通过 store.dispatch 调用，会依次触发所有同名 actions。</span><br><span class="line"></span><br><span class="line">## ｖｕｅ－ｌｏａｄｅｒ</span><br><span class="line">使用 scoped 后，父组件的样式将不会渗透到子组件中。</span><br><span class="line"></span><br><span class="line">通过 v-html 创建的 DOM 内容不受作用域内的样式影响，但是你仍然可以通过深度作用选择器来为他们设置样式</span><br><span class="line"></span><br><span class="line">```sass-resources-loader```:在每个组件里加载一个设置文件，而无需每次都将其显式导入 </span><br><span class="line"></span><br><span class="line">Vue 组件中的所有 JavaScript 默认使用 ```babel-loader```处理</span><br><span class="line"></span><br><span class="line">```file-loader``` 可以指定要复制和放置资源文件的位置，以及如何使用版本哈希命名以获得更好的缓存此外，这意味着 你可以就近管理图片文件，可以使用相对路径而不用担心布署时URL问题。使用正确的配置，Webpack 将会在打包输出中自动重写文件路径为正确的URL。</span><br><span class="line"></span><br><span class="line">```url-loader``` 允许你有条件将文件转换为内联的 ```base-64 URL``` (当文件小于给定的阈值)，这会减少小文件的 HTTP 请求。如果文件大于该阈值，会自动的交给 file-loader 处理。</span><br><span class="line"></span><br><span class="line">对于 css, 由```vue-style-loader``` 返回的结果通常不太有用。使用 ```postcss ```插件将会是更好的选择。</span><br><span class="line"></span><br><span class="line">```extract-text-webpack-plugin```:Extract text from a bundle, or bundles, into a separate file.</span><br><span class="line"></span><br><span class="line">```javascript</span><br><span class="line">loader: &apos;vue-loader&apos;,</span><br><span class="line">        options: &#123;</span><br><span class="line">          extractCSS: true</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><figcaption><span>使得webpack入口点生成的文件都会在生成的HTML文件中的script标签内。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">```ExtractTextPlugin```提取CSS，然后包含在HTML head中的link标签内。</span><br><span class="line"> </span><br><span class="line">## 完整的导航解析流程 vue-router</span><br><span class="line">1.	导航被触发。</span><br><span class="line">2.	在失活的组件里调用beforeRouteLeave 。</span><br><span class="line">3.	调用全局的 beforeEach 守卫。</span><br><span class="line">4.	在重用的组件里调用 beforeRouteUpdate 守卫 (2.2+)。</span><br><span class="line">5.	在路由配置里调用 beforeEnter。</span><br><span class="line">6.	解析异步路由组件。</span><br><span class="line">7.	在被激活的组件里调用 beforeRouteEnter。</span><br><span class="line">8.	调用全局的 beforeResolve 守卫 (2.5+)。</span><br><span class="line">9.	导航被确认。</span><br><span class="line">10.	调用全局的 afterEach 钩子。</span><br><span class="line">11.	触发 DOM 更新。</span><br><span class="line">12.	用创建好的实例调用 beforeRouteEnter 守卫中传给 next 的回调函数。</span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">## 遇到的问题</span><br><span class="line">1. 详解vue2父组件传递props异步数据到子组件的问题（http://www.jb51.net/article/117447.htm）</span><br><span class="line">解决方法：使用v-if可以解决报错问题，和created为空问题</span><br><span class="line">2. 在没有全部渲染时，不显示任何元素，自带的html文字也不要显示，只显示载入中的动画；等全部渲染完成后，载入中动画消失，完整的页面出现。</span><br><span class="line">解决方法：html标签加上v-cloak，样式里面</span><br></pre></td></tr></table></figure>
+<p>[v-cloak] {<br>    display: none;<br>}<br><code>`</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/2017-12-5-moon-and-six-bians.html" rel="next" title="读《月亮与六便士》">
+                <i class="fa fa-chevron-left"></i> 读《月亮与六便士》
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/2017-12-28-vue-comparison.html" rel="prev" title="vue vs react vs angular1">
+                vue vs react vs angular1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Ruiyu Lin</p>
+              <p class="site-description motion-element" itemprop="description">林瑞玉的博客</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">標籤</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#技术栈"><span class="nav-number">1.</span> <span class="nav-text">技术栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#摘抄"><span class="nav-number">2.</span> <span class="nav-text">摘抄</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vue"><span class="nav-number">3.</span> <span class="nav-text">ｖｕｅ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vuex"><span class="nav-number">4.</span> <span class="nav-text">Vuex</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#babel"><span class="nav-number">5.</span> <span class="nav-text">ｂａｂｅｌ</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ruiyu Lin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

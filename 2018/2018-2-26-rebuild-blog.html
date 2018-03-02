@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="圆玉的博客">
 <meta property="og:description" content="我是一个很喜欢做笔记的人，老是写在word文档不方便。之前用jekyll搭了一个，感觉写得也是乱七八糟，页面也不好看，改的话不如重新重写一个好了 有了上次经验，觉得做一个东西真的要认真规划一下，不然做出来的东西老是迁就的感觉，能用就行。这样是不行的。像做一个产品来做它 问题定义重构博客原因有下：  Jkeyll目录文件关系得按照规定放置，灵活性差（虽然hexo也是这样） 日记页面不美观，想换，干脆">
 <meta property="og:locale" content="zh-hk">
-<meta property="og:updated_time" content="2018-03-01T08:07:31.344Z">
+<meta property="og:updated_time" content="2018-03-02T02:38:46.659Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建博客过程">
 <meta name="twitter:description" content="我是一个很喜欢做笔记的人，老是写在word文档不方便。之前用jekyll搭了一个，感觉写得也是乱七八糟，页面也不好看，改的话不如重新重写一个好了 有了上次经验，觉得做一个东西真的要认真规划一下，不然做出来的东西老是迁就的感觉，能用就行。这样是不行的。像做一个产品来做它 问题定义重构博客原因有下：  Jkeyll目录文件关系得按照规定放置，灵活性差（虽然hexo也是这样） 日记页面不美观，想换，干脆">
@@ -383,36 +383,38 @@
 </li>
 <li>其他<ul>
 <li>社区账号（比较常用segmentfault/weibo/V2EX）</li>
+<li>聊天框</li>
 </ul>
 </li>
 </ul>
 <h2 id="概要设计"><a href="#概要设计" class="headerlink" title="概要设计"></a>概要设计</h2><p>输出原型图<br>使用mockplus</p>
 <h2 id="详细设计"><a href="#详细设计" class="headerlink" title="详细设计"></a>详细设计</h2><h2 id="编码和单元测试"><a href="#编码和单元测试" class="headerlink" title="编码和单元测试"></a>编码和单元测试</h2><h2 id="集成测试"><a href="#集成测试" class="headerlink" title="集成测试"></a>集成测试</h2><p>最终部署在github</p>
 <ol>
-<li><p>Permission denied (publickey)错误<br>解决方法<br><a href="https://www.cnblogs.com/xsilence/p/6001938.html" target="_blank" rel="noopener">针对github权限导致hexo部署失败的解决方案</a></p>
+<li><p>Permission denied (publickey)错误<br> 解决方法<br> <a href="https://www.cnblogs.com/xsilence/p/6001938.html" target="_blank" rel="noopener">针对github权限导致hexo部署失败的解决方案</a></p>
 </li>
-<li><p>和jekyll不同，<code>hexo d</code>会覆盖掉github仓库的代码，试了创建两个分支，比较麻烦，放弃。建立两个仓库，一个放源代码，一个放生成代码。注意，生成代码需要放在master分支上，跟jekyll一样，生成代码的项目名字要取名为<code>username.github.io</code></p>
+<li><p>和jekyll不同，<code>hexo d</code>会覆盖掉github仓库的代码，试了创建两个分支，比较麻烦，放弃。建立两个仓库，一个放源代码，一个放生成代    码。注意，生成代码需要放在master分支上，跟jekyll一样，生成代码的项目名字要取名为<code>username.github.io</code></p>
 </li>
-<li><p>使用next主题的时候需要在_config.yml把<code>permalink: :title</code>中改成<br><code>permalink: :title.html</code><br>不然点击文章的时候会出现下载框</p>
+<li><p>使用next主题的时候需要在_config.yml把<code>permalink: :title</code>中改成<br> <code>permalink: :title.html</code><br> 不然点击文章的时候会出现下载框</p>
 </li>
 <li><p>about页面需要自己创建，并且自己写。</p>
+<p> 大容器页面布局默认_layout布局，在<code>theme/next/layout_layout.swig</code>中定义。</p>
+<p> 全部页面都是默认page布局，在<code>theme/next/layout/page.swig</code>中定义。</p>
+<p> 只有archive,tag,category页面不用创建，直接在<code>theme/next/layout/</code>对应名字文件里面写，即</p>
+<p> <code>theme/next/layout/archive.swig</code></p>
+<p> <code>theme/next/layout/category.swig</code></p>
+<p> <code>theme/next/layout/tag.swig</code></p>
+<p> 但是tag,category页面还需要多做一步：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd your-hexo-site</span><br><span class="line">$ hexo new page tags</span><br></pre></td></tr></table></figure>
+<p> 编辑刚新建的页面，将页面的类型设置为 tags ，主题将自动为这个页面显示标签云。页面内容如下：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: 标签</span><br><span class="line">date: 2014-12-22 12:39:04</span><br><span class="line">type: &quot;tags&quot;</span><br></pre></td></tr></table></figure>
+<p> 在菜单中添加链接。编辑 主题配置文件 ， 添加 tags 到 menu 中，如下:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">home: /</span><br><span class="line">archives: /archives</span><br><span class="line">tags: /tags</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>换了主题重新部署，需要重新打包</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p> 这个需要一段时间githubPage才会更新</p>
 </li>
 </ol>
-<p>大容器页面布局默认_layout布局，在<code>theme/next/layout_layout.swig</code>中定义。</p>
-<p>全部页面都是默认page布局，在<code>theme/next/layout/page.swig</code>中定义。</p>
-<p>只有archive,tag,category页面不用创建，直接在<code>theme/next/layout/</code>对应名字文件里面写，即</p>
-<p><code>theme/next/layout/archive.swig</code></p>
-<p><code>theme/next/layout/category.swig</code></p>
-<p><code>theme/next/layout/tag.swig</code></p>
-<p>但是tag,category页面还需要多做一步：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cd your-hexo-site</span><br><span class="line">$ hexo new page tags</span><br></pre></td></tr></table></figure>
-<p>编辑刚新建的页面，将页面的类型设置为 tags ，主题将自动为这个页面显示标签云。页面内容如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">title: 标签</span><br><span class="line">date: 2014-12-22 12:39:04</span><br><span class="line">type: &quot;tags&quot;</span><br></pre></td></tr></table></figure></p>
-<p>在菜单中添加链接。编辑 主题配置文件 ， 添加 tags 到 menu 中，如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: /</span><br><span class="line">  archives: /archives</span><br><span class="line">  tags: /tags</span><br></pre></td></tr></table></figure></p>
-<ol>
-<li>换了主题重新部署，需要重新打包<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>这个需要一段时间githubPage才会更新</p>
 <h2 id="软件维护"><a href="#软件维护" class="headerlink" title="软件维护"></a>软件维护</h2><p>管理博客</p>
 
       
@@ -556,7 +558,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="圆玉的博客">
 <meta property="og:description" content="Cache-Control  no-cache: 告诉浏览器、缓存服务器，不管本地副本是否过期，使用资源副本前，一定要到源服务器进行副本有效性校验。  must-revalidate：告诉浏览器、缓存服务器，本地副本过期前，可以使用本地副本；本地副本一旦过期，必须去源服务器进行有效性校验。  max-age： 指缓存资源的缓存时间比指定的值小，那么客户端就接受缓存资源，且缓存服务器不对资源有效性">
 <meta property="og:locale" content="zh-hk">
-<meta property="og:updated_time" content="2018-03-02T01:55:16.599Z">
+<meta property="og:updated_time" content="2018-03-02T02:47:04.988Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2018-2随笔笔记">
 <meta name="twitter:description" content="Cache-Control  no-cache: 告诉浏览器、缓存服务器，不管本地副本是否过期，使用资源副本前，一定要到源服务器进行副本有效性校验。  must-revalidate：告诉浏览器、缓存服务器，本地副本过期前，可以使用本地副本；本地副本一旦过期，必须去源服务器进行有效性校验。  max-age： 指缓存资源的缓存时间比指定的值小，那么客户端就接受缓存资源，且缓存服务器不对资源有效性">
@@ -337,23 +337,22 @@
 </li>
 <li><p>CSS像素是web编程的概念,是相对的而不是绝对的单位. 用户的缩放比会影响单位CSS像素点对应的实际物理像素的多少</p>
 </li>
-<li><p>使用Flexible实现手淘H5页面的终端适配<br><a href="https://github.com/amfe/article/issues/17" target="_blank" rel="noopener">https://github.com/amfe/article/issues/17</a></p>
+<li><p>使用Flexible实现手淘H5页面的终端适配<br> <a href="https://github.com/amfe/article/issues/17" target="_blank" rel="noopener">https://github.com/amfe/article/issues/17</a></p>
 </li>
 </ul>
 <ul>
 <li><p>异步脚本禁止使用document.write()<br>延迟脚本禁止使用document.write()</p>
 </li>
 <li><p>火狐和IE下href=”javascript:void(0) 会弹出空白页</p>
+<p>  本来javascript:void(0);的用处是不用整体刷新网页且返回一个空值，但这儿由于DOM本身的冒泡事件所以会最后执行HREF属性内的javascript:void(0);导致执行函数返回了一个空值，所以覆盖掉了前面正常执行函数所返回的值引起的错误。</p>
+<p>  一般情况下，IE会先运行DOM本身绑定的事件，如ONCLICK;如果没有阻止冒泡，则会顺序执行HREF属性。如果想正确运行，可以在前面用RETURN FALSE终止冒泡，例如：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a target=&quot;_blank&quot; class=&quot;prev&quot; onclick=&quot;return false;&quot;   href=&quot;javascript:void(0);&quot;&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<p>  或者直接删去也行，如：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a target=&quot;_blank&quot;  class=&quot;prev&quot; &gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<p>  但是后者hover的时候没有手势的pointer</p>
 </li>
-</ul>
-<p>本来javascript:void(0);的用处是不用整体刷新网页且返回一个空值，但这儿由于DOM本身的冒泡事件所以会最后执行HREF属性内的javascript:void(0);导致执行函数返回了一个空值，所以覆盖掉了前面正常执行函数所返回的值引起的错误。</p>
-<p>一般情况下，IE会先运行DOM本身绑定的事件，如ONCLICK;如果没有阻止冒泡，则会顺序执行HREF属性。如果想正确运行，可以在前面用RETURN FALSE终止冒泡，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a target=&quot;_blank&quot; class=&quot;prev&quot; onclick=&quot;return false;&quot;   href=&quot;javascript:void(0);&quot;&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
-<p>或者直接删去也行，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a target=&quot;_blank&quot;  class=&quot;prev&quot; &gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
-<p>但是后者hover的时候没有手势的pointer</p>
-<ul>
-<li>vue2父组件传递props异步数据到子组件，获取到的是undefined.</li>
-</ul>
-<p>解决方法<a href="http://www.jb51.net/article/117447.htm" target="_blank" rel="noopener">参考链接</a></p>
+<li><p>vue2父组件传递props异步数据到子组件，获取到的是undefined.</p>
+<p>  解决方法<a href="http://www.jb51.net/article/117447.htm" target="_blank" rel="noopener">参考链接</a></p>
 <ol>
 <li>最简单的解决方法：使用v-if</li>
 <li>子组件使用watch来监听父组件改变的prop，使用methods来代替created</li>
@@ -361,18 +360,18 @@
 <li>使用emit，on，bus相结合（使用了bus库）</li>
 <li>vuex结合computed、mapState或者合computed、mapGetters</li>
 </ol>
-<ul>
-<li>对象的属性名称可以是变量吗？</li>
-</ul>
-<p>可以，运用方括号法设置就是。如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a = &quot;name&quot;;</span><br><span class="line">var b = 10;</span><br><span class="line">var obj = &#123;&#125;;</span><br><span class="line">obj[a] = b;</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><p>后台给的服务链接直接插入html中img的src里，修改图片之后，因为src的内容一直都是后台服务链接，是个不变的值，所以不会重新去请求，图片会一直不变。如果刷新页面这个链接返回的图片会改变，为了做到点击图片只重载这个src而整个页面不刷新，采用的方法是在后面加上Math.random()，例如 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`http:$&#123;this.baseURL&#125;gw/app.get.logo?tenantId=$&#123;this.tenantId&#125;&amp;appId=$&#123;this.appId&#125;?`+Math.random();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对象的属性名称可以是变量吗？</p>
+<p>  可以，运用方括号法设置就是。如</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a = &quot;name&quot;;</span><br><span class="line">var b = 10;</span><br><span class="line">var obj = &#123;&#125;;</span><br><span class="line">obj[a] = b;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>后台给的服务链接直接插入html中img的src里，修改图片之后，因为src的内容一直都是后台服务链接，是个不变的值，所以不会重新去请求，图    片会一直不变。如果刷新页面这个链接返回的图片会改变，为了做到点击图片只重载这个src而整个页面不刷新，采用的方法是在后面加上          Math.random()，例如 </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`http:$&#123;this.baseURL&#125;gw/app.get.logo?tenantId=$&#123;this.tenantId&#125;&amp;appId=$&#123;this.appId&#125;?`+Math.random();</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>扩展运算符可以用于数组深拷贝</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr2 = arr;</span><br><span class="line">var arr3 = [...arr];</span><br><span class="line">console.log(arr===arr2); //true, 说明arr和arr2指向同一个数组</span><br><span class="line">console.log(arr===arr3); //false, 说明arr3和arr指向不同数组</span><br></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr2 = arr;</span><br><span class="line">var arr3 = [...arr];</span><br><span class="line">console.log(arr===arr2); //true, 说明arr和arr2指向同一个数组</span><br><span class="line">console.log(arr===arr3); //false, 说明arr3和arr指向不同数组</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>数字类型的验证需要在 v-model 处加上 .number 的修饰符，这是 Vue 自身提供的用于将绑定值转化为 number 类型的修饰符。 v-model.number只会截取数字部分，比如100ttt只会取前面的100。做修改操作的时候这种情况用自定义validator解决</p>
+<li><p>数字类型的验证需要在 v-model 处加上 .number 的修饰符，这是 Vue 自身提供的用于将绑定值转化为 number 类型的修饰符。              v-model.number只会截取数字部分，比如100ttt只会取前面的100。做修改操作的时候这种情况用自定义validator解决</p>
 </li>
 </ul>
 
@@ -508,7 +507,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

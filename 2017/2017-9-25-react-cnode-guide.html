@@ -101,7 +101,6 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/LRY1994/react-cnode-re/master/pictrue_for_readme/12.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/LRY1994/react-cnode-re/master/pictrue_for_readme/13.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/LRY1994/react-cnode-re/master/pictrue_for_readme/14.png">
-<meta property="og:image" content="https://segmentfault.com/n/1330000011305070">
 <meta property="og:image" content="https://raw.githubusercontent.com/LRY1994/react-cnode-re/master/pictrue_for_readme/15.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/LRY1994/react-cnode-re/master/pictrue_for_readme/16.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/LRY1994/react-cnode-re/master/pictrue_for_readme/17.png">
@@ -114,7 +113,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/LRY1994/react-cnode-re/master/pictrue_for_readme/24.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/LRY1994/react-cnode-re/master/pictrue_for_readme/25.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/LRY1994/react-cnode-re/master/pictrue_for_readme/26.png">
-<meta property="og:updated_time" content="2018-03-01T05:34:52.230Z">
+<meta property="og:updated_time" content="2018-03-02T03:03:53.890Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-cnode实践笔记">
 <meta name="twitter:description" content="参照源码 http://react-china.org/t/webpack-react-react-router-redux-less-flex-css-es6-react-cnode/6332 这里面写得有点乱，看不太明白，所以自己学着边学边做,项目地址 https://github.com/LRY1994/react-cnode-re 搭建步骤1.搭建react项目结构，直接用官网的方法 cr">
@@ -560,7 +559,7 @@ connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])(组件
 <p>验证成功，把reducer函数名称改一下</p>
 <p><img src="https://raw.githubusercontent.com/LRY1994/react-cnode-re/master/pictrue_for_readme/13.png" alt="Aaron Swartz"><br><img src="https://raw.githubusercontent.com/LRY1994/react-cnode-re/master/pictrue_for_readme/14.png" alt="Aaron Swartz"></p>
 <p>16.高阶组件是一个函数（而不是组件）,原项目里面的GetNextPage.jx相当于IndexList的高阶组件，用到了get-next-page插件</p>
-<p><img src="https://segmentfault.com/n/1330000011305070" alt="用于下拉自动加载数据get-next-page插件"></p>
+<p><a href="https://segmentfault.com/n/1330000011305070" target="_blank" rel="noopener">用于下拉自动加载数据get-next-page插件</a></p>
 <p>17.组件必须大写字母开头，不然会当做html的标签</p>
 <p>18.<br>this.refs.dataload<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div ref=&quot;dataload&quot;&gt;</span><br></pre></td></tr></table></figure></p>
 <p>19.生命周期知识点</p>
@@ -634,8 +633,7 @@ export default connect(mapStateToProps,mapDispatchToProps)(SignIn); //连接redu
 <p> 原项目是自己写的webpack配置文件。我全是create-react-app自动生成的，不想改,网上查到这段话</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">npm run build fails to minify</span><br><span class="line"></span><br><span class="line">You may occasionally find a package you depend on needs compiled or ships code for a non-browser environment.</span><br><span class="line">This is considered poor practice in the ecosystem and does not have an escape hatch in Create React App.</span><br><span class="line"></span><br><span class="line">To resolve this:</span><br><span class="line"></span><br><span class="line">Open an issue on the dependency&apos;s issue tracker and ask that the package be published pre-compiled (retaining ES6 Modules).</span><br><span class="line">Fork the package and publish a corrected version yourself.</span><br><span class="line">If the dependency is small enough, copy it to your src/ folder and treat it as application code.</span><br><span class="line">Something Missing?</span><br></pre></td></tr></table></figure>
 <p>我这里用第三种方法，把get-netx-page.js放到/src/lib里面，相应的地方再改改，就可以了，npm run build之后就会生成build文件夹</p>
-<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>参考 </p>
-<p><a href="https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#deployment" target="_blank" rel="noopener">部署方法</a></p>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>参考 <a href="https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#deployment" target="_blank" rel="noopener">部署方法</a></p>
 <pre><code>&gt;npm install -g serve
 &gt;serve -s build
 
@@ -785,7 +783,7 @@ export default connect(mapStateToProps,mapDispatchToProps)(SignIn); //连接redu
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

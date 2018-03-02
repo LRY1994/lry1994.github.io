@@ -359,8 +359,8 @@
 </ul>
 </li>
 </ul>
-<h1 id="React与vue比较"><a href="#React与vue比较" class="headerlink" title="React与vue比较"></a>React与vue比较</h1><h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><h4 id="React生命周期"><a href="#React生命周期" class="headerlink" title="React生命周期"></a>React生命周期</h4><p><img src="./react-life.png" alt="react生命周期"></p>
-<h4 id="vue生命周期"><a href="#vue生命周期" class="headerlink" title="vue生命周期"></a>vue生命周期</h4><p><img src="./vue-life.png" alt="vue生命周期"></p>
+<h1 id="React与vue比较"><a href="#React与vue比较" class="headerlink" title="React与vue比较"></a>React与vue比较</h1><h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><h4 id="React生命周期"><a href="#React生命周期" class="headerlink" title="React生命周期"></a>React生命周期</h4><p><img src="/2017/2017-12-28-vue-comparison/react-life.png" alt="react生命周期"></p>
+<h4 id="vue生命周期"><a href="#vue生命周期" class="headerlink" title="vue生命周期"></a>vue生命周期</h4><p><img src="/2017/2017-12-28-vue-comparison/vue-life.png" alt="vue生命周期"></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="React"><a href="#React" class="headerlink" title="React"></a>React</h4><ol>
 <li>子组件直接import后使用</li>
 <li>在render()的return里面进行模板渲染</li>
@@ -395,7 +395,7 @@
 <li>connect(mapStateToProps, mapDispatchToProps)（组件）</li>
 <li>组件里面使用this.props.（action.type）(action.data)</li>
 </ol>
-<p><img src="react-redux-process.png" alt="react-redux使用流程"></p>
+<p><img src="/2017/2017-12-28-vue-comparison/react-redux-process.png" alt="react-redux使用流程"></p>
 <h4 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h4><ol>
 <li>写好store和不同模块的state,mutations,getters,actions </li>
 <li>store = new Vuex.Store( )</li>
@@ -417,8 +417,8 @@
 <h3 id="5-组件连接姿势"><a href="#5-组件连接姿势" class="headerlink" title="5-组件连接姿势"></a>5-组件连接姿势</h3><h4 id="React-redux连接"><a href="#React-redux连接" class="headerlink" title="React-redux连接"></a>React-redux连接</h4><p>用connect方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mapStateToProps = <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      User: state.User</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> mapDispatchToProps = <span class="function">(<span class="params">dispatch</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        signinSuccess: <span class="function">(<span class="params">user</span>) =&gt;</span> &#123;</span><br><span class="line">            dispatch(signinSuccess(user))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(mapStateToProps,mapDispatchToProps)(SignIn);</span><br></pre></td></tr></table></figure></p>
 <h4 id="Vuex连接"><a href="#Vuex连接" class="headerlink" title="Vuex连接"></a>Vuex连接</h4><p>只需要在组件里面映射<br>mapState\<br>mapMutations\<br>mapGetters\<br>mapActions</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  computed: mapGetters(&#123;</span><br><span class="line">    products: <span class="string">'allProducts'</span></span><br><span class="line">  &#125;),</span><br><span class="line">  methods: mapActions([</span><br><span class="line">    <span class="string">'addToCart'</span></span><br><span class="line">  ]),</span><br></pre></td></tr></table></figure>
-<h3 id="6-调用链"><a href="#6-调用链" class="headerlink" title="6-调用链"></a>6-调用链</h3><h4 id="React-redux调用链"><a href="#React-redux调用链" class="headerlink" title="React-redux调用链"></a>React-redux调用链</h4><p><img src="./react-redux-lian.png" alt="React-redux调用链"></p>
-<h4 id="Vuex调用链"><a href="#Vuex调用链" class="headerlink" title="Vuex调用链"></a>Vuex调用链</h4><p><img src="./vuex-lian.png" alt="vuex调用链"></p>
+<h3 id="6-调用链"><a href="#6-调用链" class="headerlink" title="6-调用链"></a>6-调用链</h3><h4 id="React-redux调用链"><a href="#React-redux调用链" class="headerlink" title="React-redux调用链"></a>React-redux调用链</h4><p><img src="/2017/2017-12-28-vue-comparison/react-redux-lian.png" alt="React-redux调用链"></p>
+<h4 id="Vuex调用链"><a href="#Vuex调用链" class="headerlink" title="Vuex调用链"></a>Vuex调用链</h4><p><img src="/2017/2017-12-28-vue-comparison/vuex-lian.png" alt="vuex调用链"></p>
 <h3 id="7-总结"><a href="#7-总结" class="headerlink" title="7-总结"></a>7-总结</h3><h4 id="React-redux-1"><a href="#React-redux-1" class="headerlink" title="React-redux"></a>React-redux</h4><p>action是唯一修改state的方法</p>
 <p>Action用dispatch调用</p>
 <p>reducer， 和vuex的modules相似</p>

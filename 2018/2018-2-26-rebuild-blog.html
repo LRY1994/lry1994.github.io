@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="圆玉的博客">
 <meta property="og:description" content="我是一个很喜欢做笔记的人，老是写在word文档不方便。之前用jekyll搭了一个，感觉写得也是乱七八糟，页面也不好看，改的话不如重新重写一个好了 有了上次经验，觉得做一个东西真的要认真规划一下，不然做出来的东西老是迁就的感觉，能用就行。这样是不行的。像做一个产品来做它 问题定义重构博客原因有下：  Jkeyll目录文件关系得按照规定放置，灵活性差（虽然hexo也是这样） 日记页面不美观，想换，干脆">
 <meta property="og:locale" content="zh-hk">
-<meta property="og:updated_time" content="2018-03-02T06:21:55.080Z">
+<meta property="og:updated_time" content="2018-03-05T01:40:48.955Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建博客过程">
 <meta name="twitter:description" content="我是一个很喜欢做笔记的人，老是写在word文档不方便。之前用jekyll搭了一个，感觉写得也是乱七八糟，页面也不好看，改的话不如重新重写一个好了 有了上次经验，觉得做一个东西真的要认真规划一下，不然做出来的东西老是迁就的感觉，能用就行。这样是不行的。像做一个产品来做它 问题定义重构博客原因有下：  Jkeyll目录文件关系得按照规定放置，灵活性差（虽然hexo也是这样） 日记页面不美观，想换，干脆">
@@ -308,6 +308,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/2018-2-26-rebuild-blog.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/2018-2-26-rebuild-blog.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -414,14 +424,15 @@
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 <p> 这个需要一段时间githubPage才会更新</p>
 </li>
-<li><p>写文章的时候要插入图片 按照<a href="https://hexo.io/zh-cn/docs/asset-folders.html" target="_blank" rel="noopener">官方说法</a>一点卵用都没有</p>
+<li><p>写文章的时候要插入图片 </p>
+<p> (1) 按照<a href="https://hexo.io/zh-cn/docs/asset-folders.html" target="_blank" rel="noopener">官方说法</a></p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">_posts</span><br><span class="line"></span><br><span class="line">    |- post1.md</span><br><span class="line"></span><br><span class="line">    |_ post1</span><br><span class="line"></span><br><span class="line">        |- pic1.png</span><br></pre></td></tr></table></figure>
 <ol>
 <li><p>首先确认_config.yml中有：</p>
 <figure class="highlight plain"><figcaption><span>true``</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2. 安装</span><br><span class="line"></span><br><span class="line">```npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
 <p>这样可以插入文章资源目录下的图片</p>
-<p>我的解决方法：<code>hexo g</code>生成public文件夹之后，把图片复制到改目录下，再<code>hexo d</code></p>
-<p>看到还有一个解决方法，没试过<br><a href="http://etrd.org/2017/01/23/hexo%E4%B8%AD%E5%AE%8C%E7%BE%8E%E6%8F%92%E5%85%A5%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" target="_blank" rel="noopener">http://etrd.org/2017/01/23/hexo%E4%B8%AD%E5%AE%8C%E7%BE%8E%E6%8F%92%E5%85%A5%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/</a></p>
+<p>(2) 还是写正常的markdown,<code>![](./img.png)</code>,<code>hexo g</code>生成public文件夹之后，把图片复制到改目录下，再<code>hexo d</code></p>
+<p>(3) 看到还有一个解决方法，没试过<br><a href="http://etrd.org/2017/01/23/hexo%E4%B8%AD%E5%AE%8C%E7%BE%8E%E6%8F%92%E5%85%A5%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/" target="_blank" rel="noopener">http://etrd.org/2017/01/23/hexo%E4%B8%AD%E5%AE%8C%E7%BE%8E%E6%8F%92%E5%85%A5%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87/</a></p>
 <h2 id="软件维护"><a href="#软件维护" class="headerlink" title="软件维护"></a>软件维护</h2><p>管理博客</p>
 </li>
 </ol>
@@ -508,11 +519,12 @@
   </article>
 
 
-
+     <div id="gitmentContainer"></div>
     <div class="post-spread">
       
     </div>
   </div>
+ 
 
 
           </div>
@@ -520,6 +532,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
 
   
 
@@ -569,7 +588,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -807,7 +826,17 @@
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
+<script>
+var gitment = new Gitment({
+    owner: 'LRY1994',
+    repo: 'lry1994.github.io',
+    oauth: {
+        client_id: "",
+        client_secret: ""
+    },
+});
+gitment.render('gitmentContainer');
+</script>
 
 
   
@@ -843,6 +872,43 @@
 
 
 
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'LRY1994',
+            repo: 'lry1994.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '8176d3f0da4eef250b0b04dbfc1b4eb4e121076e',
+            
+                client_id: 'a3d1ff57a8a937aba151'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
 
 
 

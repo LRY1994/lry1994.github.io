@@ -1930,7 +1930,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #7fcf86;
+  background: #fe7787;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2790,7 +2790,7 @@ embed {
   float: left;
 }
 #brief {
-  width: 50%;
+  width: 40%;
   float: right;
 }
 #brief >p {
@@ -2803,7 +2803,7 @@ embed {
 }
 .box {
   margin: 20px auto;
-  width: 35%;
+  width: 75%;
   min-height: 120px;
   padding: 10px;
   position: relative;

@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="圆玉, 博客" />
+  <meta name="keywords" content="面试," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="林瑞玉的博客">
+<meta name="description" content="vue数据双向绑定的原理主要讲了实现是基于Object.defineProperty另外也大概阐述了发布-订阅者模式，主要是Observer，Dep，Watcher等 JSONP可以用post请求吗？为什么？不支持因为script标签只支持get请求… 描述一下css的盒模型标准盒模型和怪异模式 标准模式：box-sizing:content-box; 怪异模式：box-sizing:border">
+<meta name="keywords" content="面试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《全栈应用开发精益实践》读书笔记">
-<meta property="og:url" content="http://lry1994.github.io/2018/2018-1-31-full-stack-develop-study.html">
+<meta property="og:title" content="2018-12面试题摘录">
+<meta property="og:url" content="http://lry1994.github.io/2018/2018-12-12-interview.html">
 <meta property="og:site_name" content="圆玉的博客">
-<meta property="og:description" content="林瑞玉的博客">
+<meta property="og:description" content="vue数据双向绑定的原理主要讲了实现是基于Object.defineProperty另外也大概阐述了发布-订阅者模式，主要是Observer，Dep，Watcher等 JSONP可以用post请求吗？为什么？不支持因为script标签只支持get请求… 描述一下css的盒模型标准盒模型和怪异模式 标准模式：box-sizing:content-box; 怪异模式：box-sizing:border">
 <meta property="og:locale" content="zh-hk">
-<meta property="og:updated_time" content="2018-03-01T01:32:11.266Z">
+<meta property="og:updated_time" content="2018-03-30T09:37:03.789Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《全栈应用开发精益实践》读书笔记">
-<meta name="twitter:description" content="林瑞玉的博客">
+<meta name="twitter:title" content="2018-12面试题摘录">
+<meta name="twitter:description" content="vue数据双向绑定的原理主要讲了实现是基于Object.defineProperty另外也大概阐述了发布-订阅者模式，主要是Observer，Dep，Watcher等 JSONP可以用post请求吗？为什么？不支持因为script标签只支持get请求… 描述一下css的盒模型标准盒模型和怪异模式 标准模式：box-sizing:content-box; 怪异模式：box-sizing:border">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://lry1994.github.io/2018/2018-1-31-full-stack-develop-study.html"/>
+  <link rel="canonical" href="http://lry1994.github.io/2018/2018-12-12-interview.html"/>
 
 
 
 
 
-  <title>《全栈应用开发精益实践》读书笔记 | 圆玉的博客</title>
+  <title>2018-12面试题摘录 | 圆玉的博客</title>
   
 
 
@@ -242,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lry1994.github.io/2018/2018-1-31-full-stack-develop-study.html">
+    <link itemprop="mainEntityOfPage" href="http://lry1994.github.io/2018/2018-12-12-interview.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ruiyu Lin">
@@ -259,7 +260,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">《全栈应用开发精益实践》读书笔记</h2>
+          <h2 class="post-title" itemprop="name headline">2018-12面试题摘录</h2>
         
 
         <div class="post-meta">
@@ -271,8 +272,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-01-30T13:38:38+08:00">
-                2018-01-30
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-12-12T00:00:00+08:00">
+                2018-12-12
               </time>
             
 
@@ -294,19 +295,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
+                  <a href="/categories/面试/" itemprop="url" rel="index">
+                    <span itemprop="name">面试</span>
                   </a>
                 </span>
 
@@ -323,8 +313,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/2018-1-31-full-stack-develop-study.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/2018-1-31-full-stack-develop-study.html" itemprop="commentsCount"></span>
+                <a href="/2018/2018-12-12-interview.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/2018-12-12-interview.html" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -357,7 +347,35 @@
       
 
       
-        
+        <h3 id="vue数据双向绑定的原理"><a href="#vue数据双向绑定的原理" class="headerlink" title="vue数据双向绑定的原理"></a>vue数据双向绑定的原理</h3><p>主要讲了实现是基于Object.defineProperty<br>另外也大概阐述了<code>发布-订阅者模式</code>，主要是Observer，Dep，Watcher等</p>
+<h3 id="JSONP可以用post请求吗？为什么？"><a href="#JSONP可以用post请求吗？为什么？" class="headerlink" title="JSONP可以用post请求吗？为什么？"></a>JSONP可以用post请求吗？为什么？</h3><p>不支持<br>因为script标签只支持get请求…</p>
+<h3 id="描述一下css的盒模型"><a href="#描述一下css的盒模型" class="headerlink" title="描述一下css的盒模型"></a>描述一下css的盒模型</h3><p>标准盒模型和怪异模式</p>
+<p>标准模式：box-sizing:content-box;</p>
+<p>怪异模式：box-sizing:border-box;</p>
+<h3 id="H5异步上传文件"><a href="#H5异步上传文件" class="headerlink" title="H5异步上传文件"></a>H5异步上传文件</h3><p>关键代码</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"> &lt;input id=<span class="string">"uploadFile"</span> type=<span class="string">"file"</span> name=<span class="string">"myPhoto"</span> /&gt; </span><br><span class="line"> </span><br><span class="line"> <span class="keyword">var</span> fd = <span class="keyword">new</span> FormData();<span class="comment">//新建FormData</span></span><br><span class="line"> fd.append(<span class="string">"myPhoto"</span>, $(<span class="string">"uploadFile"</span>).files[<span class="number">0</span>]);<span class="comment">//塞数据</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest(); <span class="comment">//创建XMLHttpRequest 对象</span></span><br><span class="line"> xhr.open(<span class="string">"post"</span>,<span class="string">"/uploadPhoto.action"</span>, <span class="literal">true</span>);<span class="comment">//打开链接</span></span><br><span class="line"> xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;<span class="comment">//监听</span></span><br><span class="line">    <span class="keyword">if</span> (xhr.readyState == <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> flag = xhr.responseText;</span><br><span class="line">        <span class="keyword">if</span> (flag == <span class="string">"success"</span>) &#123;</span><br><span class="line">            alert(<span class="string">"图片上传成功！"</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            alert(<span class="string">"图片上传成功！"</span>);</span><br><span class="line">        &#125;;                        </span><br><span class="line">        </span><br><span class="line">    &#125;;</span><br><span class="line">&#125;; </span><br><span class="line">xhr.send(fd);<span class="comment">//发送</span></span><br></pre></td></tr></table></figure>
+<h3 id="实现垂直水平居中有哪些方法"><a href="#实现垂直水平居中有哪些方法" class="headerlink" title="实现垂直水平居中有哪些方法"></a>实现垂直水平居中有哪些方法</h3><ol>
+<li><p>flexbox</p>
+</li>
+<li><p>绝对定位+margin负值(子容器宽高固定)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">childElement</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>:absolute;                              </span><br><span class="line">    <span class="attribute">height</span>:<span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">400px</span>;           </span><br><span class="line">    <span class="attribute">top</span>:<span class="number">50%</span>;      </span><br><span class="line">    <span class="attribute">left</span>:<span class="number">50%</span>;                          </span><br><span class="line">    <span class="attribute">margin-top</span>:-<span class="number">100px</span>;<span class="comment">/*高度的一半*/</span></span><br><span class="line">    <span class="attribute">margin-left</span>:-<span class="number">200px</span>;<span class="comment">/*宽度的一半*/</span>                                         </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>绝对定位top left right bottom 0 + margin auto (子容器宽高固定)</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">chilElement</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">margin</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>绝对定位+transfrom负值（子容器宽高不知)</p>
+</li>
+</ol>
+<p>（1） 不知道自己高度和父容器高度的情况下, 利用绝对定位只需要以下三行：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">parentElement</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>:relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">childElement</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-50%);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p> （2）若父容器下只有一个元素，且父元素设置了高度，则只需要使用相对定位即可</p>
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="selector-tag">parentElement</span>&#123;</span><br><span class="line">    <span class="attribute">height</span>:xxx;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">childElement</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-50%);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.tuicool.com/articles/v2aeMbn?utm_medium=hao.caibaojian.com&amp;utm_source=hao.caibaojian.com" target="_blank" rel="noopener">HTML5中37个最重要的技术点</a></p>
+<p><a href="https://www.tuicool.com/articles/bInqieZ?utm_medium=hao.caibaojian.com&amp;utm_source=hao.caibaojian.com" target="_blank" rel="noopener">BAT 要的是什么样的前端实习生？</a></p>
+<p><a href="http://www.codeceo.com/chrome-broswer-layout.html" target="_blank" rel="noopener">从 Chrome 源码看浏览器如何 layout 布局</a></p>
+<p><a href="https://segmentfault.com/a/1190000013894510" target="_blank" rel="noopener">从八道面试题看JavaScript DOM事件机制</a></p>
+<p><a href="https://segmentfault.com/a/1190000013963213" target="_blank" rel="noopener">【前端性能优化】高性能JavaScript整理总结</a></p>
+<p><a href="https://www.tuicool.com/articles/n22MNrA?utm_medium=hao.caibaojian.com&amp;utm_source=hao.caibaojian.com" target="_blank" rel="noopener">三分钟快速理解javascript内存管理</a><br><a href="https://segmentfault.com/a/1190000013972464" target="_blank" rel="noopener">ES6小技巧</a><br><a href="https://www.tuicool.com/articles/zANVnqM" target="_blank" rel="noopener">优雅的 JavaScript 排序算法（ES6）</a></p>
+
       
     </div>
     
@@ -409,6 +427,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/面试/" rel="tag"># 面试</a>
+          
+        </div>
+      
 
       
       
@@ -418,8 +442,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/2018-1-30-web-full-stack-study.html" rel="next" title="《Web 全栈工程师的自我修养》读书笔记">
-                <i class="fa fa-chevron-left"></i> 《Web 全栈工程师的自我修养》读书笔记
+              <a href="/2018/2018-3-16-full-stack-develop-study.html" rel="next" title="《全栈应用开发精益实践》读书笔记">
+                <i class="fa fa-chevron-left"></i> 《全栈应用开发精益实践》读书笔记
               </a>
             
           </div>
@@ -427,10 +451,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/2018-2-suibi.html" rel="prev" title="2018-2随笔笔记">
-                2018-2随笔笔记 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -490,8 +510,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -510,7 +539,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -521,7 +550,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分類</span>
                 
               </div>
@@ -532,7 +561,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">標籤</span>
                 
               </div>
@@ -584,6 +613,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vue数据双向绑定的原理"><span class="nav-number">1.</span> <span class="nav-text">vue数据双向绑定的原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSONP可以用post请求吗？为什么？"><span class="nav-number">2.</span> <span class="nav-text">JSONP可以用post请求吗？为什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#描述一下css的盒模型"><span class="nav-number">3.</span> <span class="nav-text">描述一下css的盒模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#H5异步上传文件"><span class="nav-number">4.</span> <span class="nav-text">H5异步上传文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现垂直水平居中有哪些方法"><span class="nav-number">5.</span> <span class="nav-text">实现垂直水平居中有哪些方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

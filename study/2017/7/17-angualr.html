@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next muse" lang="zh-hk">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="AngularJS1," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="圆玉的博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="组件型指令对于组件型指令来说，标准的用法是E，但是为了兼容IE8，通常也支持一个A，因为IE8 的自定义元素需要先用document.createElement 注册，用A 可以省去注册的麻烦。对于组件型指令，更重要的是内容信息的展示，所以我们一般不涉及指令的link 函数，而应该尽量地将业务逻辑放置在Controller 中。 指令scope由于多个装饰器很可能被用于同一个指令，包括独立作用域">
+<meta name="keywords" content="AngularJS1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读《AngularJS深度剖析与最佳实践》">
+<meta property="og:url" content="http://lry1994.github.io/study/2017/7/17-angualr.html">
+<meta property="og:site_name" content="圆玉的博客">
+<meta property="og:description" content="组件型指令对于组件型指令来说，标准的用法是E，但是为了兼容IE8，通常也支持一个A，因为IE8 的自定义元素需要先用document.createElement 注册，用A 可以省去注册的麻烦。对于组件型指令，更重要的是内容信息的展示，所以我们一般不涉及指令的link 函数，而应该尽量地将业务逻辑放置在Controller 中。 指令scope由于多个装饰器很可能被用于同一个指令，包括独立作用域">
+<meta property="og:locale" content="zh-hk">
+<meta property="og:image" content="http://lry1994.github.io/images/book/angualr-deep-analysics.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2017/7/17-angualr/2.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2017/7/17-angualr/service-kind.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2017/7/17-angualr/mvc.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2017/7/17-angualr/start-process.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2017/7/17-angualr/1.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2017/7/17-angualr/event-loop.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2017/7/17-angualr/directive-life-cycle.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2017/7/17-angualr/3.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2017/7/17-angualr/4.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2017/7/17-angualr/5.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2017/7/17-angualr/7.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2017/7/17-angualr/8.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2017/7/17-angualr/9.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2017/7/17-angualr/10.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2017/7/17-angualr/11.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2017/7/17-angualr/12.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2017/7/17-angualr/avoid-deep-watch.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2017/7/17-angualr/shorten-watch.png">
+<meta property="og:updated_time" content="2018-04-11T05:51:25.005Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读《AngularJS深度剖析与最佳实践》">
+<meta name="twitter:description" content="组件型指令对于组件型指令来说，标准的用法是E，但是为了兼容IE8，通常也支持一个A，因为IE8 的自定义元素需要先用document.createElement 注册，用A 可以省去注册的麻烦。对于组件型指令，更重要的是内容信息的展示，所以我们一般不涉及指令的link 函数，而应该尽量地将业务逻辑放置在Controller 中。 指令scope由于多个装饰器很可能被用于同一个指令，包括独立作用域">
+<meta name="twitter:image" content="http://lry1994.github.io/images/book/angualr-deep-analysics.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://lry1994.github.io/study/2017/7/17-angualr.html"/>
+
+
+
+
+
+  <title>读《AngularJS深度剖析与最佳实践》 | 圆玉的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-hk">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">圆玉的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            關於
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lry1994.github.io/study/2017/7/17-angualr.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ruiyu Lin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="圆玉的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">读《AngularJS深度剖析与最佳实践》</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-07-17T00:00:00+08:00">
+                2017-07-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/读书笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/study/2017/7/17-angualr.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/study/2017/7/17-angualr.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/images/book/angualr-deep-analysics.png" alt="cover"></p>
+<h3 id="组件型指令"><a href="#组件型指令" class="headerlink" title="组件型指令"></a>组件型指令</h3><p>对于组件型指令来说，标准的用法是E，但是为了兼容IE8，通<br>常也支持一个A，因为IE8 的自定义元素需要先用document.createElement 注册，用A 可<br>以省去注册的麻烦。对于组件型指令，更重要的是内容信息的展示，所以我们一般不涉及指令的link 函数，而应该尽量地将业务逻辑放置在Controller 中。</p>
+<h3 id="指令scope"><a href="#指令scope" class="headerlink" title="指令scope"></a>指令scope</h3><p>由于多个装饰器很可能被用于同一个指令，包括独立作用域指令，所以装饰<br>器型指令通常不使用新作用域或独立作用域。如果要访问绑定属性，该怎么做呢？仍然看<br>前面的例子<br><code>&lt;user-details name=&quot;test&quot; details=&quot;details&quot; on-update=&quot;updateIt(times)&quot;&gt;&lt;/userdetails&gt;</code>，<br>假如不使用独立作用域，我们该如何获取这些属性的值呢？<br>●对于 @ 型的绑定，我们可以直接通过 attrs 取到它：attrs.name 等价于 name: ‘@’。<br>● 对于 = 型的绑定，我们可以通过 scope.$eval 取到它：scope.$eval(attrs.details) 等价</p>
+ <img src="/study/2017/7/17-angualr/2.png" title="section">
+<h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><p>过滤器还可以接收第二个参数，乃至第N个参数，如：<code>return function(input, arg1, arg2, arg3){...};</code>,而使用者则通过<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;1|myFilter:2:3:4&#125;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>的形式调用它。这种情况下，arg1 的值为2，arg2的值为3，arg3 的值为4。</p>
+<h3 id="服务"><a href="#服务" class="headerlink" title="服务"></a>服务</h3><p>除了Constant 外，所有这些类型的服务，背后都是通过Provider 实现的，我们可以把它们看做让Provider 更容易写的语法糖。</p>
+<p>Angular 提供了这么多种形式的服务，那么我们在工程实践中该如何选择？我们可以遵<br>循下列决策流程：</p>
+<p>● 需要全局的可配置参数？用 Provider。</p>
+<p>● 是纯数据，没有行为？用 Value。</p>
+<p>● 只 new 一次，不用参数？用 Service。</p>
+<p>● 拿到类，我自己 new 出实例？用 Factory。</p>
+<p>● 拿到函数，我自己调用？用 Factory。</p>
+<p>但是，还有另一种更加敏捷的方式：<br>●是纯数据时，先用 Value ；当发现需要添加行为时，改写为 Service ；或当发现需<br>要通过计算给出结果时，改写为Factory ；当发现需要进行全局配置时，改写为Provider。</p>
+<p>● 最酷的是，这个过程对于使用者是透明的—它不需要因为实现代码的改动而更改<br>原有代码。如上面Value 和Factory 的使用代码，仅仅从使用代码中我们区分不出<br>它是Value 还是Factory。</p>
+<p>接下来，我们来看Constant。与其他Service 不同，Constant 不是Provider 函数的语法<br>糖。更重要的差别是，它的初始化时机非常早，可以在angular.module(‘com.ngnice.app’).<br>config 函数中使用，而其他的服务是不能被注入到config 函数中的。这也意味着，如果你<br>需要在config 中使用一个全局配置项，那么它就只能声明为常量，而不能声明为变量。<br>在官方的开发指南中，给出了一个完整的对比表，见表2-1。</p>
+<img src="/study/2017/7/17-angualr/service-kind.png" title="service-kind">
+<p>由于 Factory 可以根据程序逻辑返回不同的数据类型，所以我们无法推断其结果是什么类型，也就是对类型不够友好。Provider 由于其灵活性比Factory 更高，因此在类型友好性上和<br>Factory 是一样的。</p>
+<p>● 在 config 阶段可用：只有 Constant 和 Provider 类型在 config 阶段可用，其他都是<br>Provider 实例化之后的结果，所以只有config 阶段完成后才可用。由于Service 是new 出来的，所以其结果必然是类实例，<br>也就无法直接返回一个可供调用的函数或数字等原生对象。<br>如果你确实需要对一个没有提供Provider 的第三方服务进行配置，该怎么办呢？<br>Angular 提供了另一种机制：decorator。</p>
+<h3 id="angualr-mvc"><a href="#angualr-mvc" class="headerlink" title="angualr mvc"></a>angualr mvc</h3>  <img src="/study/2017/7/17-angualr/mvc.png" title="mvc">
+<h3 id="angular启动过程"><a href="#angular启动过程" class="headerlink" title="angular启动过程"></a>angular启动过程</h3>  <img src="/study/2017/7/17-angualr/start-process.png" title="start-process">
+<h3 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h3>  <img src="/study/2017/7/17-angualr/1.png" title="section">
+<h3 id="浏览事件循环"><a href="#浏览事件循环" class="headerlink" title="浏览事件循环"></a>浏览事件循环</h3>  <img src="/study/2017/7/17-angualr/event-loop.png" title="loop">
+<h3 id="指令生命周期"><a href="#指令生命周期" class="headerlink" title="指令生命周期"></a>指令生命周期</h3>  <img src="/study/2017/7/17-angualr/directive-life-cycle.png" title="cycle">
+<h3 id="one-time绑定"><a href="#one-time绑定" class="headerlink" title="one-time绑定"></a>one-time绑定</h3>  <img src="/study/2017/7/17-angualr/3.png" title="section">
+  <img src="/study/2017/7/17-angualr/4.png" title="section">
+<h3 id="滚屏加载"><a href="#滚屏加载" class="headerlink" title="滚屏加载"></a>滚屏加载</h3>  <img src="/study/2017/7/17-angualr/5.png" title="section">
+<p><a href="http://sroze.github.io/ngInfiniteScroll/index.html" target="_blank" rel="noopener">http://sroze.github.io/ngInfiniteScroll/index.html</a></p>
+<p>get可以用来取本地文件，其他不可以</p>
+<h3 id="js-object-layout"><a href="#js-object-layout" class="headerlink" title="js object layout"></a>js object layout</h3> 
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3>  <img src="/study/2017/7/17-angualr/7.png" title="section">
+<h3 id="anchorScroll服务"><a href="#anchorScroll服务" class="headerlink" title="$anchorScroll服务"></a>$anchorScroll服务</h3>  <img src="/study/2017/7/17-angualr/8.png" title="section">
+<h3 id="ngRepeat验证失败-，简单的验证显示"><a href="#ngRepeat验证失败-，简单的验证显示" class="headerlink" title="ngRepeat验证失败 ，简单的验证显示"></a>ngRepeat验证失败 ，简单的验证显示</h3>  <img src="/study/2017/7/17-angualr/9.png" title="section">
+<h3 id="复杂的验证显示"><a href="#复杂的验证显示" class="headerlink" title="复杂的验证显示"></a>复杂的验证显示</h3>  <img src="/study/2017/7/17-angualr/10.png" title="section">
+<h3 id="ngRepeat报重复内容错误"><a href="#ngRepeat报重复内容错误" class="headerlink" title="ngRepeat报重复内容错误"></a>ngRepeat报重复内容错误</h3>  <img src="/study/2017/7/17-angualr/11.png" title="section">
+  <img src="/study/2017/7/17-angualr/12.png" title="section">
+<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><ol>
+<li><p>代码里很多和界面无交互的函数和变量都挂在$scope上面</p>
+<p>$scope是数据展示和各种事件的载体。与展示、交互行为无关的数据和方法最好不要挂载到$scope上，保持$scope的纯粹。<br>参考链接<br><a href="https://github.com/atian25/blog/issues/5" target="_blank" rel="noopener">保持$scope的纯粹</a></p>
+</li>
+<li><p>避免深度watch， 即第三个参数为true.<br>参考《mastering web application development with angularjs》 P313</p>
+<img src="/study/2017/7/17-angualr/avoid-deep-watch.png" title="avoid-deep-watch">
+</li>
+</ol>
+<ol>
+<li><p>及时移除不必要的$watch</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> watchFn = $scope.$watch(<span class="string">'cycle'</span>, changeCycle);</span><br><span class="line"></span><br><span class="line">watchFn();<span class="comment">//移除watch</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>减少watch的变量长度，例如对双向绑定的变量用标签例如<span>包起来</span></p>
+<img src="/study/2017/7/17-angualr/shorten-watch.png" title="shorten-watch">
+</li>
+<li><p>ng-repeat使用 track by</p>
+<p>刷新数据时，我们常这么做：$scope.tasks = data || [];，这会导致angular移除掉所有的DOM，重新创建和渲染。</p>
+<p>若优化为ng-repeat=”task in tasks track by task.id后，angular就能复用task对应的原DOM进行更新，减少不必要渲染。</p>
+</li>
+<li><p>列表对象的数据转换，在放入scope之前处理</p>
+<p>如$scope.dataList = convert(dataFromServer)</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Ruiyu Lin wechat" style="width: 200px; max-width: 100%;"/>
+    <div>要放弃的时候想想当初为什么开始</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打賞</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Ruiyu Lin 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Ruiyu Lin 支付寶"/>
+        <p>支付寶</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/AngularJS1/" rel="tag"># AngularJS1</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/study/2017/7/1-start-front-end.html" rel="next" title="前端启航">
+                <i class="fa fa-chevron-left"></i> 前端启航
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/study/2017/9/25-react-cnode-guide.html" rel="prev" title="react-cnode实践笔记">
+                react-cnode实践笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+     <div id="gitmentContainer"></div>
+    <div class="post-spread">
+      
+    </div>
+  </div>
+ 
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Ruiyu Lin" />
+            
+              <p class="site-author-name" itemprop="name">Ruiyu Lin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分類</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">標籤</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LRY1994" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="949892801@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/2140938987" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#组件型指令"><span class="nav-number">1.</span> <span class="nav-text">组件型指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令scope"><span class="nav-number">2.</span> <span class="nav-text">指令scope</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过滤器"><span class="nav-number">3.</span> <span class="nav-text">过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务"><span class="nav-number">4.</span> <span class="nav-text">服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#angualr-mvc"><span class="nav-number">5.</span> <span class="nav-text">angualr mvc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#angular启动过程"><span class="nav-number">6.</span> <span class="nav-text">angular启动过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#依赖注入"><span class="nav-number">7.</span> <span class="nav-text">依赖注入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览事件循环"><span class="nav-number">8.</span> <span class="nav-text">浏览事件循环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指令生命周期"><span class="nav-number">9.</span> <span class="nav-text">指令生命周期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#one-time绑定"><span class="nav-number">10.</span> <span class="nav-text">one-time绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#滚屏加载"><span class="nav-number">11.</span> <span class="nav-text">滚屏加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#js-object-layout"><span class="nav-number">12.</span> <span class="nav-text">js object layout</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">13.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#anchorScroll服务"><span class="nav-number">14.</span> <span class="nav-text">$anchorScroll服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ngRepeat验证失败-，简单的验证显示"><span class="nav-number">15.</span> <span class="nav-text">ngRepeat验证失败 ，简单的验证显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复杂的验证显示"><span class="nav-number">16.</span> <span class="nav-text">复杂的验证显示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ngRepeat报重复内容错误"><span class="nav-number">17.</span> <span class="nav-text">ngRepeat报重复内容错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化"><span class="nav-number">18.</span> <span class="nav-text">优化</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ruiyu Lin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>本站访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+<script>
+var gitment = new Gitment({
+    owner: 'LRY1994',
+    repo: 'lry1994.github.io',
+    oauth: {
+        client_id: "",
+        client_secret: ""
+    },
+});
+gitment.render('gitmentContainer');
+</script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'LRY1994',
+            repo: 'lry1994.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '8176d3f0da4eef250b0b04dbfc1b4eb4e121076e',
+            
+                client_id: 'a3d1ff57a8a937aba151'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -79,20 +79,29 @@
 
 
 
-<meta name="description" content="JS运行机制执行栈,任务队列 process.nextTick方法可以在当前”执行栈”的尾部—-下一次Event Loop（主线程读取”任务队列”）之前—-触发回调函数 setImmediate方法则是在当前”任务队列”的尾部添加事件 process.nextTick指定的回调函数是在本次”事件循环”触发，而setImmediate指定的是在下次”事件循环”触发 setTimeout(fn,0)表">
+<meta name="description" content="44个Javascript变态题解析 JS运行机制执行栈,任务队列 process.nextTick方法可以在当前”执行栈”的尾部—-下一次Event Loop（主线程读取”任务队列”）之前—-触发回调函数 setImmediate方法则是在当前”任务队列”的尾部添加事件 process.nextTick指定的回调函数是在本次”事件循环”触发，而setImmediate指定的是在下次”事件循环”触">
 <meta name="keywords" content="面试,js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js题摘录">
 <meta property="og:url" content="http://lry1994.github.io/study/Comprehensive/js-problem.html">
 <meta property="og:site_name" content="圆玉的博客">
-<meta property="og:description" content="JS运行机制执行栈,任务队列 process.nextTick方法可以在当前”执行栈”的尾部—-下一次Event Loop（主线程读取”任务队列”）之前—-触发回调函数 setImmediate方法则是在当前”任务队列”的尾部添加事件 process.nextTick指定的回调函数是在本次”事件循环”触发，而setImmediate指定的是在下次”事件循环”触发 setTimeout(fn,0)表">
+<meta property="og:description" content="44个Javascript变态题解析 JS运行机制执行栈,任务队列 process.nextTick方法可以在当前”执行栈”的尾部—-下一次Event Loop（主线程读取”任务队列”）之前—-触发回调函数 setImmediate方法则是在当前”任务队列”的尾部添加事件 process.nextTick指定的回调函数是在本次”事件循环”触发，而setImmediate指定的是在下次”事件循环”触">
 <meta property="og:locale" content="zh-hk">
 <meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/js_zhan_duilie.jpg">
+<meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/1.png">
+<meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/2.png">
+<meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/3.png">
+<meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/4.png">
+<meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/5.png">
+<meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/6.png">
 <meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/7.png">
-<meta property="og:updated_time" content="2018-04-12T05:38:55.674Z">
+<meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/8.png">
+<meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/9.png">
+<meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/10.png">
+<meta property="og:updated_time" content="2018-04-23T01:03:36.853Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js题摘录">
-<meta name="twitter:description" content="JS运行机制执行栈,任务队列 process.nextTick方法可以在当前”执行栈”的尾部—-下一次Event Loop（主线程读取”任务队列”）之前—-触发回调函数 setImmediate方法则是在当前”任务队列”的尾部添加事件 process.nextTick指定的回调函数是在本次”事件循环”触发，而setImmediate指定的是在下次”事件循环”触发 setTimeout(fn,0)表">
+<meta name="twitter:description" content="44个Javascript变态题解析 JS运行机制执行栈,任务队列 process.nextTick方法可以在当前”执行栈”的尾部—-下一次Event Loop（主线程读取”任务队列”）之前—-触发回调函数 setImmediate方法则是在当前”任务队列”的尾部添加事件 process.nextTick指定的回调函数是在本次”事件循环”触发，而setImmediate指定的是在下次”事件循环”触">
 <meta name="twitter:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/js_zhan_duilie.jpg">
 
 
@@ -351,7 +360,8 @@
       
 
       
-        <h2 id="JS运行机制"><a href="#JS运行机制" class="headerlink" title="JS运行机制"></a>JS运行机制</h2><p>执行栈,任务队列</p>
+        <p><a href="https://blog.csdn.net/ceshi986745/article/details/51698893" target="_blank" rel="noopener">44个Javascript变态题解析</a></p>
+<h2 id="JS运行机制"><a href="#JS运行机制" class="headerlink" title="JS运行机制"></a>JS运行机制</h2><p>执行栈,任务队列</p>
 <p><code>process.nextTick</code>方法可以在当前”执行栈”的尾部—-下一次Event Loop（主线程读取”任务队列”）之前—-触发回调函数</p>
 <p><code>setImmediate</code>方法则是在当前”任务队列”的尾部添加事件</p>
 <p><code>process.nextTick</code>指定的回调函数是在本次”事件循环”触发，而setImmediate指定的是在下次”事件循环”触发</p>
@@ -366,17 +376,25 @@
 <p>改成<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> b = a.map(<span class="function"><span class="params">n</span> =&gt;</span> &#123;n = n + <span class="number">1</span>;<span class="keyword">return</span> n;&#125;);</span><br></pre></td></tr></table></figure></p>
 <p>原因<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(a,b,c) =&gt; 表达式（单一）相当于</span><br><span class="line">(a,b,c)=&gt;&#123; <span class="keyword">return</span> 表达式&#125;</span><br></pre></td></tr></table></figure></p>
 <ul>
-<li><p>2</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">111111111111111110000</span>;</span><br><span class="line">b=<span class="number">111</span>;</span><br><span class="line"><span class="built_in">console</span>.info(a+b);<span class="comment">//111111111111111110000</span></span><br></pre></td></tr></table></figure>
+<li>2<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">111111111111111110000</span>;</span><br><span class="line">b=<span class="number">111</span>;</span><br><span class="line"><span class="built_in">console</span>.info(a+b);<span class="comment">//111111111111111110000</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>3</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>].reduce(<span class="built_in">Math</span>.pow)<span class="comment">//9</span></span><br></pre></td></tr></table></figure>
+</ul>
+<p>JS的基础类型Number，遵循 IEEE 754 规范，采用双精度存储（double precision），占用 64 bit。<br>1位用来表示符号位，<br>11位用来表示指数，<br>52位表示尾数</p>
+<p>Math.pow(2, 53) == 9007199254740992 是可以表示的最大值. </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>.isSafeInteger(<span class="number">111111111111111110000</span>)<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>3<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>].reduce(<span class="built_in">Math</span>.pow)<span class="comment">//9</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>4</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>];</span><br><span class="line">arr[<span class="number">10</span>]=<span class="number">10</span>;</span><br><span class="line">arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;<span class="keyword">return</span> x==<span class="literal">undefined</span>&#125;);<span class="comment">//[]</span></span><br></pre></td></tr></table></figure>
+</ul>
+<p>表达式等价于 Math.pow(3, 2) =&gt; 9; Math.pow(9, 1) =&gt;9</p>
+<ul>
+<li>4<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>];</span><br><span class="line">arr[<span class="number">10</span>]=<span class="number">10</span>;</span><br><span class="line">arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">x</span>)</span>&#123;<span class="keyword">return</span> x==<span class="literal">undefined</span>&#125;);<span class="comment">//[]</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>5</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    foo:<span class="string">'bar'</span>,</span><br><span class="line">    func:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.foo);</span><br><span class="line">        <span class="built_in">console</span>.log(self.foo);</span><br><span class="line">        (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.foo);</span><br><span class="line">            <span class="built_in">console</span>.log(self.foo);</span><br><span class="line">        &#125;())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.func();</span><br></pre></td></tr></table></figure>
+</ul>
+<p>首先检查了这个索引值是不是数组的一个属性, 那么我们测试一下.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span> <span class="keyword">in</span> ary; =&gt; <span class="literal">true</span></span><br><span class="line"><span class="number">3</span> <span class="keyword">in</span> ary; =&gt; <span class="literal">false</span></span><br><span class="line"><span class="number">10</span> <span class="keyword">in</span> ary; =&gt; <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<p>从 3 - 9 都是没有初始化的’坑’!, 这些索引并不存在与数组中. 在 array 的函数调用的时候是会<code>跳过</code>这些’坑’的,所以它不知道是不是undefined</p>
+<ul>
+<li>5<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    foo:<span class="string">'bar'</span>,</span><br><span class="line">    func:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.foo);</span><br><span class="line">        <span class="built_in">console</span>.log(self.foo);</span><br><span class="line">        (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.foo);</span><br><span class="line">            <span class="built_in">console</span>.log(self.foo);</span><br><span class="line">        &#125;())</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">obj.func();</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bar</span><br><span class="line">bar</span><br><span class="line">undefined</span><br><span class="line">bar</span><br></pre></td></tr></table></figure></p>
@@ -386,12 +404,9 @@
 </ul>
 <p>输出<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Chrome:</span></span><br><span class="line"><span class="keyword">typeof</span> g() <span class="comment">//无输出响应</span></span><br><span class="line"><span class="keyword">typeof</span> g   <span class="comment">//undefined</span></span><br><span class="line"><span class="keyword">typeof</span> f() <span class="comment">//number</span></span><br><span class="line"><span class="keyword">typeof</span> f   <span class="comment">//function</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Firfox</span></span><br><span class="line"><span class="keyword">typeof</span> g() <span class="comment">//无输出响应</span></span><br><span class="line"><span class="keyword">typeof</span> g   <span class="comment">//undefined</span></span><br><span class="line"><span class="keyword">typeof</span> f() <span class="comment">//number</span></span><br><span class="line"><span class="keyword">typeof</span> f   <span class="comment">//function</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//IE8</span></span><br><span class="line"><span class="keyword">typeof</span> g() <span class="comment">//number</span></span><br><span class="line"><span class="keyword">typeof</span> g   <span class="comment">//function</span></span><br><span class="line"><span class="keyword">typeof</span> f() <span class="comment">//number</span></span><br><span class="line"><span class="keyword">typeof</span> f   <span class="comment">//function</span></span><br></pre></td></tr></table></figure></p>
 <ul>
-<li>7<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">add(<span class="number">2</span>, <span class="number">5</span>); <span class="comment">// 7</span></span><br><span class="line">add(<span class="number">2</span>)(<span class="number">5</span>); <span class="comment">// 7</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addto</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> length = <span class="built_in">arguments</span>.length;</span><br><span class="line">    <span class="keyword">var</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">        sum += <span class="built_in">arguments</span>[i]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> value = addto.apply(add,<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">var</span> helper = <span class="function"><span class="keyword">function</span>(<span class="params">next</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">typeof</span> next == <span class="string">"number"</span> ? value+=next:value;</span><br><span class="line">        <span class="keyword">return</span> helper</span><br><span class="line">    &#125;</span><br><span class="line">    helper.valueOf = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> helper;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li><p>7 重点</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">add(<span class="number">2</span>, <span class="number">5</span>); <span class="comment">// 7</span></span><br><span class="line">add(<span class="number">2</span>)(<span class="number">5</span>); <span class="comment">// 7</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">addto</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> length = <span class="built_in">arguments</span>.length;</span><br><span class="line">    <span class="keyword">var</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">        sum += <span class="built_in">arguments</span>[i]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> value = addto.apply(add,<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">var</span> helper = <span class="function"><span class="keyword">function</span>(<span class="params">next</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">typeof</span> next == <span class="string">"number"</span> ? value+=next:value;</span><br><span class="line">        <span class="keyword">return</span> helper</span><br><span class="line">    &#125;</span><br><span class="line">    helper.valueOf = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> helper;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-</ul>
-<p>chrome下输出<br><img src="/study/Comprehensive/js-problem/7.png"></p>
-<p>所以，存在对象声明，结果一样；对象不存在会js异常</p>
-<ul>
 <li><p>8</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="number">0</span><span class="comment">//undefined</span></span><br><span class="line"><span class="keyword">void</span>(<span class="number">0</span>)<span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -418,6 +433,15 @@
 </li>
 </ul>
 <p>原因 ：因为按unicode码顺序排列。如要实现排序，就必须手写排序函数</p>
+<img src="/study/Comprehensive/js-problem/1.png">
+<img src="/study/Comprehensive/js-problem/2.png">
+<img src="/study/Comprehensive/js-problem/3.png">
+<img src="/study/Comprehensive/js-problem/4.png">
+<img src="/study/Comprehensive/js-problem/5.png">
+<img src="/study/Comprehensive/js-problem/6.png">
+<img src="/study/Comprehensive/js-problem/7.png">
+<p>什么是普通对象？？？<br><img src="/study/Comprehensive/js-problem/8.png"><br><img src="/study/Comprehensive/js-problem/9.png"></p>
+<p>为什么result先输出？？？？<br><img src="/study/Comprehensive/js-problem/10.png"></p>
 
       
     </div>
@@ -496,10 +520,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/study/Comprehensive/interview.html" rel="prev" title="面试题摘录">
-                面试题摘录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

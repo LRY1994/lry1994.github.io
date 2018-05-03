@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="圆玉的博客">
 <meta property="og:description" content="给点击路由的时候加上监听事件1&amp;lt;router-link class=&quot;my-link&quot; :to=&quot;&amp;#123;name: &apos;main.provider.index&apos;, params: &amp;#123;providerId: scope.row.providerId&amp;#125;&amp;#125;&quot;&amp;gt;提供者主页&amp;lt;/router-link&amp;gt; 解决方法： &amp;gt; 给组件绑定原生事件">
 <meta property="og:locale" content="zh-hk">
-<meta property="og:updated_time" content="2018-04-12T02:11:03.063Z">
+<meta property="og:updated_time" content="2018-04-27T08:04:20.471Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2018-3随笔笔记">
 <meta name="twitter:description" content="给点击路由的时候加上监听事件1&amp;lt;router-link class=&quot;my-link&quot; :to=&quot;&amp;#123;name: &apos;main.provider.index&apos;, params: &amp;#123;providerId: scope.row.providerId&amp;#125;&amp;#125;&quot;&amp;gt;提供者主页&amp;lt;/router-link&amp;gt; 解决方法： &amp;gt; 给组件绑定原生事件">
@@ -380,9 +380,8 @@
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">child</span> <span class="attr">ref</span>=<span class="string">"refname"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parant</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>调用的时候用<code>this.$ref[&#39;refname&#39;].eventname()</code></p>
 <p>(3)上面有种都麻烦的话，创建实例bus</p>
-<h3 id="js的数组可以是这样的形式"><a href="#js的数组可以是这样的形式" class="headerlink" title="js的数组可以是这样的形式"></a>js的数组可以是这样的形式</h3><p><code>(4) [{…}, {…}, {…}, {…}, total: 4, code: &quot;core.ok&quot;, __ob__: Observer]</code></p>
-<p>他的length是4，不知道是不是ES6的新特性<br>我把下面这句在浏览器下运行是出错的</p>
-<p><code>let arr= [{id:1}, {id:2}, {id:3}, {id:4}, total: 4, code: &quot;core.ok&quot;];</code></p>
+<h3 id="js的数组可以是这样的形式"><a href="#js的数组可以是这样的形式" class="headerlink" title="js的数组可以是这样的形式"></a>js的数组可以是这样的形式</h3><p><code>(4) [{…}, {…}, {…}, {…}, total: 4, code: &quot;core.ok&quot;]</code></p>
+<p>他的length是4</p>
 <h3 id="把字符串转换成数字可以用数字运算符-但是-不行"><a href="#把字符串转换成数字可以用数字运算符-但是-不行" class="headerlink" title="把字符串转换成数字可以用数字运算符,但是 + 不行"></a>把字符串转换成数字可以用数字运算符,但是 + 不行</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"2"</span>&gt;&gt;&gt;<span class="number">0</span>)  <span class="comment">//2 number </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"2"</span>&gt;&gt;<span class="number">0</span>)  <span class="comment">//2 number </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"2"</span>&lt;&lt;<span class="number">0</span>)  <span class="comment">//2 number  没有（&lt;&lt;&lt;）</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"2"</span>- <span class="number">0</span>)    <span class="comment">//2 number</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"2"</span>+<span class="number">0</span>)    <span class="comment">//20 string</span></span><br></pre></td></tr></table></figure>
 <h3 id="reduce函数好好用"><a href="#reduce函数好好用" class="headerlink" title="reduce函数好好用"></a>reduce函数好好用</h3><p>今天写了一个有重大作用的reduce函数，好开心。在此纪念一下</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//str &#123;String&#125;, "app.get.logo.list"</span></span><br><span class="line"><span class="comment">//ctx &#123;Object&#125;,  this._$http</span></span><br><span class="line"><span class="comment">//return &#123;Object&#125;, this._$http.app.get.logo.list</span></span><br><span class="line"> getBackend(str)&#123;</span><br><span class="line">        <span class="keyword">const</span> arr = <span class="keyword">this</span>.loadBackend.split(<span class="string">'.'</span>);</span><br><span class="line">        <span class="keyword">let</span> ctx= <span class="keyword">this</span>._$http;</span><br><span class="line">        <span class="keyword">let</span> a;</span><br><span class="line">        <span class="keyword">let</span> b=arr.reduce(<span class="function">(<span class="params">prev, cur, idx</span>) =&gt;</span> &#123;		        </span><br><span class="line">              a = prev[cur] ;         </span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;,ctx);              </span><br><span class="line">          <span class="keyword">return</span> b;      </span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
@@ -465,8 +464,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/study/2018/2/26-rebuild-blog.html" rel="next" title="搭建博客过程">
-                <i class="fa fa-chevron-left"></i> 搭建博客过程
+              <a href="/study/2018/2/26-dom-compaticity.html" rel="next" title="原生DOM兼容特性总结">
+                <i class="fa fa-chevron-left"></i> 原生DOM兼容特性总结
               </a>
             
           </div>
@@ -566,7 +565,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next muse" lang="zh-hk">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="圆玉, 博客" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="圆玉的博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="await/async最佳实践第一个例子1234567(async ()=&amp;gt;&amp;#123;    const pizzaPromise = selectPizza();//同时执行    const drinkPromise = selectDrink();//同时执行    await pizzaPromise;    await drinkPromise;    orderItems();">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018-6总结">
+<meta property="og:url" content="http://lry1994.github.io/study/2018/6/suibi.html">
+<meta property="og:site_name" content="圆玉的博客">
+<meta property="og:description" content="await/async最佳实践第一个例子1234567(async ()=&amp;gt;&amp;#123;    const pizzaPromise = selectPizza();//同时执行    const drinkPromise = selectDrink();//同时执行    await pizzaPromise;    await drinkPromise;    orderItems();">
+<meta property="og:locale" content="zh-hk">
+<meta property="og:updated_time" content="2018-06-28T05:03:58.095Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018-6总结">
+<meta name="twitter:description" content="await/async最佳实践第一个例子1234567(async ()=&amp;gt;&amp;#123;    const pizzaPromise = selectPizza();//同时执行    const drinkPromise = selectDrink();//同时执行    await pizzaPromise;    await drinkPromise;    orderItems();">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://lry1994.github.io/study/2018/6/suibi.html"/>
+
+
+
+
+
+  <title>2018-6总结 | 圆玉的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-hk">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">圆玉的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            關於
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lry1994.github.io/study/2018/6/suibi.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ruiyu Lin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="圆玉的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">2018-6总结</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-06-01T00:00:00+08:00">
+                2018-06-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/总结/" itemprop="url" rel="index">
+                    <span itemprop="name">总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/study/2018/6/suibi.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/study/2018/6/suibi.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="await-async最佳实践"><a href="#await-async最佳实践" class="headerlink" title="await/async最佳实践"></a>await/async最佳实践</h2><h4 id="第一个例子"><a href="#第一个例子" class="headerlink" title="第一个例子"></a>第一个例子</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">async</span> ()=&gt;&#123;</span><br><span class="line">    <span class="keyword">const</span> pizzaPromise = selectPizza();<span class="comment">//同时执行</span></span><br><span class="line">    <span class="keyword">const</span> drinkPromise = selectDrink();<span class="comment">//同时执行</span></span><br><span class="line">    <span class="keyword">await</span> pizzaPromise;</span><br><span class="line">    <span class="keyword">await</span> drinkPromise;</span><br><span class="line">    orderItems();</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+<p>或者<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">async</span> ()=&gt;&#123;</span><br><span class="line">    <span class="built_in">Promise</span>.all([selectPizza(),selectDrink()]).then()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="第二个例子"><a href="#第二个例子" class="headerlink" title="第二个例子"></a>第二个例子</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">a(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    b();</span><br><span class="line">&#125;));</span><br><span class="line"></span><br><span class="line">c((=&gt;&#123;</span><br><span class="line">    d();</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure>
+<p>改写为<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">async</span> ()=&gt;&#123;</span><br><span class="line">    <span class="keyword">await</span> a();</span><br><span class="line">    b();</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> ()=&gt;&#123;</span><br><span class="line">    <span class="keyword">await</span> c();</span><br><span class="line">    d();</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">ab</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">await</span> a();</span><br><span class="line">    b();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">cd</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">await</span> c();</span><br><span class="line">    d();</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">Promise</span>.all([ab(),cd()]);</span><br></pre></td></tr></table></figure></p>
+<h4 id="使用keep-alive"><a href="#使用keep-alive" class="headerlink" title="使用keep-alive"></a>使用keep-alive</h4><p>在商品列表进入商品详情页之后<br><a href="https://www.cnblogs.com/nokelong/p/8124513.html" target="_blank" rel="noopener">vue中使用keepAlive组件缓存遇到的坑</a></p>
+<h3 id="for循环、while循环、do-while循环比for-in-要快"><a href="#for循环、while循环、do-while循环比for-in-要快" class="headerlink" title="for循环、while循环、do-while循环比for in 要快"></a>for循环、while循环、do-while循环比for in 要快</h3><h3 id="字符串-拼接性能"><a href="#字符串-拼接性能" class="headerlink" title="字符串 拼接性能"></a>字符串 拼接性能</h3><p>比较下四中字符串拼接方法的性能：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A：str = str + &apos;a&apos;+&apos;b&apos;</span><br><span class="line">B:str += &apos;a&apos; + &apos;b&apos;</span><br><span class="line">C: arr.join(&apos;&apos;)</span><br><span class="line">D:str.concat(&apos;b&apos;,&apos;c&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>☆ Chrome65上测试的是A优于B优于C优于D</p>
+<h3 id="总结一些常用的"><a href="#总结一些常用的" class="headerlink" title="总结一些常用的"></a>总结一些常用的</h3><ol>
+<li>内容长短不固定的时候用min-height,而不要用height</li>
+<li><p>显示一行，多余的用省略号表示</p>
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.one-line</span>&#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">    <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br><span class="line">```     </span><br><span class="line">最多显示2行，多余的用省略号表示</span><br><span class="line">```<span class="selector-tag">css</span></span><br><span class="line"><span class="selector-class">.two-line</span>&#123;     </span><br><span class="line">    <span class="attribute">overflow</span>: hidden;     </span><br><span class="line">    <span class="attribute">display</span>: -webkit-box;</span><br><span class="line">    <span class="attribute">-webkit-box-orient</span>: vertical;</span><br><span class="line">    <span class="attribute">-webkit-line-clamp</span>: <span class="number">2</span>;</span><br><span class="line">    <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一般英文或者数字是默认不换行，所以要加上</p>
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">word-break</span>: <span class="selector-tag">break-all</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>placeholder</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:-moz-placeholder</span> &#123; <span class="comment">/* Mozilla Firefox 4 to 18 */</span></span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#C6C6C6</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-pseudo">::-moz-placeholder</span> &#123; <span class="comment">/* Mozilla Firefox 19+ */</span></span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#C6C6C6</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">:-ms-input-placeholder</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#C6C6C6</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">::-webkit-input-placeholder</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#C6C6C6</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="a标签里面不加download属性会下载下来一些莫名其妙的东西"><a href="#a标签里面不加download属性会下载下来一些莫名其妙的东西" class="headerlink" title="a标签里面不加download属性会下载下来一些莫名其妙的东西"></a>a标签里面不加download属性会下载下来一些莫名其妙的东西</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">:href</span>=<span class="string">"file.worksheetFileId|url"</span>  <span class="attr">:download</span>=<span class="string">"file.fileName"</span>&gt;</span>&#123;&#123;file.fileName&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>html5对a标签新增的download属性用于下载文件，简单的理解是a标签如果添加了download属性，那么点击它的时候就不会跳转，而是会触发浏览器下载文件。<br>那么我不加download属性会下载下来的东西是什么？？<br>docx后缀的word文档用解压软件打开就是这个目录结构</p>
+<h3 id="nextTick"><a href="#nextTick" class="headerlink" title="$nextTick"></a>$nextTick</h3><p>Vue 实现响应式并不是数据发生变化之后 DOM 立即变化，而是按一定的策略进行 DOM 的更新。<br>$nextTick 是在下次 DOM 更新循环结束之后执行延迟回调，在修改数据之后使用 。</p>
+<h3 id="router-link存在的问题是，手动输入改变url，下面路由没监听到"><a href="#router-link存在的问题是，手动输入改变url，下面路由没监听到" class="headerlink" title="router-link存在的问题是，手动输入改变url，下面路由没监听到"></a>router-link存在的问题是，手动输入改变url，下面路由没监听到</h3><p> vue-router在IE 11下有bug,a href 里的路径，点击地址栏发生了变化，页面并不跳转<br>vm._route.path并没有发生变化，和地址栏不同步<br>要加上这段代码修正下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fixRouterIE</span>(<span class="params">vm</span>)</span>&#123;</span><br><span class="line">	<span class="comment">//IE 11下</span></span><br><span class="line">	<span class="keyword">if</span> (</span><br><span class="line">	  <span class="string">'-ms-scroll-limit'</span> <span class="keyword">in</span> <span class="built_in">document</span>.documentElement.style &amp;&amp; </span><br><span class="line">	  <span class="string">'-ms-ime-align'</span> <span class="keyword">in</span> <span class="built_in">document</span>.documentElement.style</span><br><span class="line">	) &#123; </span><br><span class="line">	  <span class="built_in">window</span>.addEventListener(<span class="string">"hashchange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">	    <span class="keyword">const</span> currentPath = <span class="built_in">window</span>.location.hash.slice(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	    <span class="keyword">if</span> (vm._route.path !== currentPath) &#123;</span><br><span class="line">	      vm._router.push(currentPath)</span><br><span class="line">	    &#125;</span><br><span class="line">	  &#125;, <span class="literal">false</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Array-prototype-sort-兼容"><a href="#Array-prototype-sort-兼容" class="headerlink" title="Array.prototype.sort 兼容"></a>Array.prototype.sort 兼容</h3><p>IE9– Array.prototype.sort 不能根据 对象属性 做排序的遗憾<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法1冒泡排序</span></span><br><span class="line"><span class="keyword">var</span> mySort = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> fn != <span class="string">'function'</span>)&#123;</span><br><span class="line">        fn = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> a-b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i &lt; <span class="keyword">this</span>.length<span class="number">-1</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=i+<span class="number">1</span>;j&lt;<span class="keyword">this</span>.length;j++)&#123;</span><br><span class="line">            <span class="keyword">var</span> t = <span class="keyword">this</span>[i];</span><br><span class="line">            <span class="keyword">if</span>(fn(<span class="keyword">this</span>[i],<span class="keyword">this</span>[j]) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">this</span>[i] = <span class="keyword">this</span>[j];</span><br><span class="line">                <span class="keyword">this</span>[j] = t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="built_in">Array</span>.prototype.sorts!= <span class="string">'fucntion'</span>)&#123;</span><br><span class="line">    <span class="built_in">Array</span>.prototype.sorts = mySort;</span><br><span class="line">    mySort = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//方法2 插入排序</span></span><br><span class="line"><span class="keyword">var</span> mySort = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> fn != <span class="string">'function'</span>)&#123;</span><br><span class="line">        fn = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> a-b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;<span class="keyword">this</span>.length;i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> t = <span class="keyword">this</span>[i];</span><br><span class="line">        <span class="keyword">var</span> j = i<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(j &gt;= <span class="number">0</span> &amp;&amp; fn(<span class="keyword">this</span>[j],t)&gt; <span class="number">0</span> )&#123;</span><br><span class="line">            <span class="keyword">this</span>[j+<span class="number">1</span>] = <span class="keyword">this</span>[j];</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>[j+<span class="number">1</span>] = t;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="built_in">Array</span>.prototype.sorts!= <span class="string">'fucntion'</span>)&#123;</span><br><span class="line">    <span class="built_in">Array</span>.prototype.sorts = mySort;</span><br><span class="line">    mySort = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>safari 不支持函数参数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params">window</span>)</span>&#123; </span><br><span class="line">    <span class="keyword">var</span> ua = <span class="built_in">window</span>.navigator.userAgent.toLowerCase(), </span><br><span class="line">    reg = <span class="regexp">/msie|applewebkit.+safari/</span>; </span><br><span class="line">    <span class="keyword">if</span>(reg.test(ua))&#123; </span><br><span class="line">        <span class="keyword">var</span> _sort = <span class="built_in">Array</span>.prototype.sort; </span><br><span class="line">        <span class="built_in">Array</span>.prototype.sort = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123; </span><br><span class="line">            <span class="keyword">if</span>(!!fn &amp;&amp; <span class="keyword">typeof</span> fn === <span class="string">'function'</span>)&#123; </span><br><span class="line">                <span class="keyword">if</span>(<span class="keyword">this</span>.length &lt; <span class="number">2</span>) <span class="keyword">return</span> <span class="keyword">this</span>; </span><br><span class="line">                <span class="keyword">var</span> i = <span class="number">0</span>, j = i + <span class="number">1</span>, l = <span class="keyword">this</span>.length, tmp, r = <span class="literal">false</span>, t = <span class="number">0</span>; </span><br><span class="line">                <span class="keyword">for</span>(; i &lt; l; i++)&#123; </span><br><span class="line">                    <span class="keyword">for</span>(j = i + <span class="number">1</span>; j &lt; l; j++)&#123; </span><br><span class="line">                        t = fn.call(<span class="keyword">this</span>, <span class="keyword">this</span>[i], <span class="keyword">this</span>[j]); </span><br><span class="line">                        r = (<span class="keyword">typeof</span> t === <span class="string">'number'</span> ? t : </span><br><span class="line">                        !!t ? <span class="number">1</span> : <span class="number">0</span>) &gt; <span class="number">0</span> </span><br><span class="line">                        ? <span class="literal">true</span> : <span class="literal">false</span>; </span><br><span class="line">                        <span class="keyword">if</span>(r)&#123; </span><br><span class="line">                            tmp = <span class="keyword">this</span>[i]; </span><br><span class="line">                            <span class="keyword">this</span>[i] = <span class="keyword">this</span>[j]; </span><br><span class="line">                            <span class="keyword">this</span>[j] = tmp; </span><br><span class="line">                        &#125; </span><br><span class="line">                    &#125; </span><br><span class="line">                &#125; </span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>; </span><br><span class="line">            &#125;<span class="keyword">else</span>&#123; </span><br><span class="line">                <span class="keyword">return</span> _sort.call(<span class="keyword">this</span>); </span><br><span class="line">            &#125; </span><br><span class="line">        &#125;; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://blog.csdn.net/lt3487928/article/details/53157817" target="_blank" rel="noopener">https://blog.csdn.net/lt3487928/article/details/53157817</a></p>
+<p><a href="https://www.cnblogs.com/Alucelx/archive/2011/07/13/2104381.html" target="_blank" rel="noopener">https://www.cnblogs.com/Alucelx/archive/2011/07/13/2104381.html</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Ruiyu Lin wechat" style="width: 200px; max-width: 100%;"/>
+    <div>要放弃的时候想想当初为什么开始</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打賞</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Ruiyu Lin 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Ruiyu Lin 支付寶"/>
+        <p>支付寶</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/study/2018/5/suibi.html" rel="next" title="2018-5月总结">
+                <i class="fa fa-chevron-left"></i> 2018-5月总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/study/2018/6/webSafety.html" rel="prev" title="读《web前端黑客技术揭秘》">
+                读《web前端黑客技术揭秘》 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+     <div id="gitmentContainer"></div>
+    <div class="post-spread">
+      
+    </div>
+  </div>
+ 
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Ruiyu Lin" />
+            
+              <p class="site-author-name" itemprop="name">Ruiyu Lin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分類</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">標籤</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LRY1994" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="949892801@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/2140938987" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#await-async最佳实践"><span class="nav-number">1.</span> <span class="nav-text">await/async最佳实践</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一个例子"><span class="nav-number">1.0.1.</span> <span class="nav-text">第一个例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二个例子"><span class="nav-number">1.0.2.</span> <span class="nav-text">第二个例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用keep-alive"><span class="nav-number">1.0.3.</span> <span class="nav-text">使用keep-alive</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for循环、while循环、do-while循环比for-in-要快"><span class="nav-number">1.1.</span> <span class="nav-text">for循环、while循环、do-while循环比for in 要快</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串-拼接性能"><span class="nav-number">1.2.</span> <span class="nav-text">字符串 拼接性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结一些常用的"><span class="nav-number">1.3.</span> <span class="nav-text">总结一些常用的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a标签里面不加download属性会下载下来一些莫名其妙的东西"><span class="nav-number">1.4.</span> <span class="nav-text">a标签里面不加download属性会下载下来一些莫名其妙的东西</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nextTick"><span class="nav-number">1.5.</span> <span class="nav-text">$nextTick</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#router-link存在的问题是，手动输入改变url，下面路由没监听到"><span class="nav-number">1.6.</span> <span class="nav-text">router-link存在的问题是，手动输入改变url，下面路由没监听到</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-prototype-sort-兼容"><span class="nav-number">1.7.</span> <span class="nav-text">Array.prototype.sort 兼容</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ruiyu Lin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>本站访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+<script>
+var gitment = new Gitment({
+    owner: 'LRY1994',
+    repo: 'lry1994.github.io',
+    oauth: {
+        client_id: "",
+        client_secret: ""
+    },
+});
+gitment.render('gitmentContainer');
+</script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'LRY1994',
+            repo: 'lry1994.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '8176d3f0da4eef250b0b04dbfc1b4eb4e121076e',
+            
+                client_id: 'a3d1ff57a8a937aba151'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

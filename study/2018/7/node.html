@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+
+
+
+
+<html class="theme-next muse" lang="zh-hk">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="圆玉, 博客" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="圆玉的博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="《深入浅出node.js》适合高并发、IO密集型、事件驱动  服务端 12345678910http.createServer(function(ServerRequest, ServerResponse)&amp;#123;    //监听    ServerRequest.on(&apos;data&apos;,function(chunk)&amp;#123;&amp;#125;)    ServerRequest.on(&apos;end&apos;,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《深入浅出node.js》、慕课网">
+<meta property="og:url" content="http://lry1994.github.io/study/2018/7/node.html">
+<meta property="og:site_name" content="圆玉的博客">
+<meta property="og:description" content="《深入浅出node.js》适合高并发、IO密集型、事件驱动  服务端 12345678910http.createServer(function(ServerRequest, ServerResponse)&amp;#123;    //监听    ServerRequest.on(&apos;data&apos;,function(chunk)&amp;#123;&amp;#125;)    ServerRequest.on(&apos;end&apos;,">
+<meta property="og:locale" content="zh-hk">
+<meta property="og:image" content="http://lry1994.github.io/study/2018/7/node/async-io.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2018/7/node/promise-deferred.png">
+<meta property="og:image" content="http://lry1994.github.io/study/2018/7/node/v8-heap.png">
+<meta property="og:updated_time" content="2018-08-02T07:29:09.423Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《深入浅出node.js》、慕课网">
+<meta name="twitter:description" content="《深入浅出node.js》适合高并发、IO密集型、事件驱动  服务端 12345678910http.createServer(function(ServerRequest, ServerResponse)&amp;#123;    //监听    ServerRequest.on(&apos;data&apos;,function(chunk)&amp;#123;&amp;#125;)    ServerRequest.on(&apos;end&apos;,">
+<meta name="twitter:image" content="http://lry1994.github.io/study/2018/7/node/async-io.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://lry1994.github.io/study/2018/7/node.html"/>
+
+
+
+
+
+  <title>《深入浅出node.js》、慕课网 | 圆玉的博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-hk">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">圆玉的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            關於
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lry1994.github.io/study/2018/7/node.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ruiyu Lin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="圆玉的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">《深入浅出node.js》、慕课网</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-07-05T00:00:00+08:00">
+                2018-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/" itemprop="url" rel="index">
+                    <span itemprop="name">学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/学习/专题/" itemprop="url" rel="index">
+                    <span itemprop="name">专题</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/study/2018/7/node.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/study/2018/7/node.html" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>本文总阅读量
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="《深入浅出node-js》"><a href="#《深入浅出node-js》" class="headerlink" title="《深入浅出node.js》"></a>《深入浅出node.js》</h1><p>适合高并发、IO密集型、事件驱动</p>
+<ul>
+<li><p>服务端</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">ServerRequest, ServerResponse</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//监听</span></span><br><span class="line">    ServerRequest.on(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>)</span>&#123;&#125;)</span><br><span class="line">    ServerRequest.on(<span class="string">'end'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</span><br><span class="line">    ServerRequest.on(<span class="string">'close'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</span><br><span class="line">    <span class="comment">//响应</span></span><br><span class="line">    ServerResponse.writeHead(<span class="number">200</span>,&#123;<span class="string">'Content-Type'</span>:<span class="string">'text/plain'</span>&#125;)</span><br><span class="line">    ServerResponse.write(<span class="string">'hello'</span>)</span><br><span class="line">    ServerResponse.end()</span><br><span class="line">&#125;).listen(<span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>客户端</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">options = &#123;</span><br><span class="line">    host:<span class="string">''</span>,</span><br><span class="line">    hostname</span><br><span class="line">    localAdrress</span><br><span class="line">    socketPath</span><br><span class="line">    auth</span><br><span class="line">    agent</span><br><span class="line">    keepAlive</span><br><span class="line">    keepAliveMsecs</span><br><span class="line">    port:<span class="string">''</span>,</span><br><span class="line">    method:<span class="string">''</span>,</span><br><span class="line">    path:<span class="string">''</span>,</span><br><span class="line">    headers:<span class="string">''</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> clientRequest = http.request(options,<span class="function"><span class="keyword">function</span>(<span class="params">clientResponse</span>)</span>&#123;</span><br><span class="line">    clientResponse.setEncoding()</span><br><span class="line">    clientResponse.pause()</span><br><span class="line">    clientResponse.resume()</span><br><span class="line">    clientResponse.on(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(Buffer.isBuffer(chunk));<span class="comment">//true</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">typeof</span> chunk)<span class="comment">//Object</span></span><br><span class="line">    &#125;)<span class="comment">//不断被触发,流</span></span><br><span class="line">    clientResponse.on(<span class="string">'end'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</span><br><span class="line">    clientResponse.on(<span class="string">'close'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">clientRequest.write(请求体)</span><br><span class="line">clientRequest.end()</span><br><span class="line">clientRequest.on(<span class="string">'error'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;<span class="built_in">console</span>.log(e.message)&#125;)</span><br><span class="line">clientRequest.abort()</span><br><span class="line">clientRequest.setTimeout()</span><br><span class="line">clientRequest.setNoDelay()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="文件加载方式"><a href="#文件加载方式" class="headerlink" title="文件加载方式"></a>文件加载方式</h2><blockquote>
+<p>按路径加载</p>
+</blockquote>
+<pre><code>require以&apos;/&apos;开头的，以绝对路径方式加载
+require以&apos;./&apos;或&apos;../&apos;开头的，以相对路径加载
+</code></pre><blockquote>
+<p>查找node_modules文件夹</p>
+</blockquote>
+<pre><code>在当前目录下的node_modules中查找=&gt;
+父目录node_modules找=&gt;
+上一层目录的node_modules找。。。。。
+一层一层向上
+</code></pre><h2 id="异步I-O原理"><a href="#异步I-O原理" class="headerlink" title="异步I/O原理"></a>异步I/O原理</h2><p>事实上，javascript是单线程的，<strong>Node自身其实是多线程的</strong>，只是I/O线程使用的CPU较少。<br>除了用户代码无法并行执行外，所有的I/O（磁盘I/O和网络I/O等）都是可以并行执行的。</p>
+<img src="/study/2018/7/node/async-io.png">
+<h2 id="非I-O异步的方法"><a href="#非I-O异步的方法" class="headerlink" title="非I/O异步的方法"></a>非I/O异步的方法</h2><p>非I/O异步的方法：<code>setTimeout</code>,<code>setInterval</code>,<code>setImmediate</code>,<code>process.nextTick</code></p>
+<h3 id="setTimeout-setInterval"><a href="#setTimeout-setInterval" class="headerlink" title="setTimeout,setInterval"></a><code>setTimeout</code>,<code>setInterval</code></h3><p>调用<code>setTimeout</code>,<code>setInterval</code>创建的定时器会被插入到定时器观察者内部的一个红黑树里面。每次Tick执行，就从改红合数中迭代去除定时器对象，检查是否超过定时时间。如果超过，就形成一个事件，回调函数立即执行</p>
+
+<h3 id="process-nextTick-VS-setTimeout-function-0"><a href="#process-nextTick-VS-setTimeout-function-0" class="headerlink" title="process.nextTick VS setTimeout(function(){},0)"></a><code>process.nextTick</code> VS <code>setTimeout(function(){},0)</code></h3><p>立即执行一个异步任务可以用<code>process.nextTick</code>。</p>
+<p><code>setTimeout(function(){},0)</code>需要动用到红黑树，创建定时器对象和迭代操作等操作，较浪费性能，复杂度为O(lg(n)。</p>
+<p>nextTick只会将回调函数放入队列中，在下一轮Tick时取出执行，复杂度为O(1)。</p>
+<h3 id="setImmediate-VS-process-nextTick"><a href="#setImmediate-VS-process-nextTick" class="headerlink" title="setImmediate  VS process.nextTick"></a><code>setImmediate</code>  VS <code>process.nextTick</code></h3><p><code>process.nextTick</code>优先级大于 <code>setImmediate</code> 。因为时间循环对观察者的检查是有先后顺序的，<code>process.nextTick</code>属于idle观察者，<code>setImmediate</code>属于check观察者。在每一个时间循环检查中，<strong>观察者检查顺序：idle—I/O—check</strong></p>
+<p><code>process.nextTick</code>的回调保存在一个<strong>数组</strong>中。<br> <code>setImmediate</code>的回调保存在一个<strong>链表</strong>中</p>
+<p> <code>process.nextTick</code>在一个事件循环中会将所有回调函数全部执行完。<code>setImmediate</code>每一个时间循环只会执行一个回调。</p>
+<h3 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h3><p>对异步方法进行try/catch操作只可以捕获<strong>当次</strong>事件循环里面的异常</p>
+<p>solution:Node在处理异常上形成一种约定，将异常作为回调函数的第一个实参传回。</p>
+<p>需要睡眠阻塞代码调用setTimeout更好，不要用下面的代码.这段代码会持续占用CPU，与真正的sleep相去甚远<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s =<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">while</span>(neW <span class="built_in">Date</span>()-s&lt;<span class="number">100</span>)&#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="异步编程解决方案"><a href="#异步编程解决方案" class="headerlink" title="异步编程解决方案"></a>异步编程解决方案</h3><p>EventProxy 是对 events.EventEmitter 的补充，可以自由订阅组合事件</p>
+<ul>
+<li><p>EventProxy:<br>  all,<br>  tail,<br>  after,<br>  fail,<br>  done(传入all)</p>
+</li>
+<li><p>promise/deferred</p>
+</li>
+</ul>
+<img src="/study/2018/7/node/promise-deferred.png">
+<h4 id="流程控制库"><a href="#流程控制库" class="headerlink" title="流程控制库"></a>流程控制库</h4><ul>
+<li><p>async</p>
+<p>  series 只适合无依赖的串行执行，若当前一个的结果是后一个调用的输入的时候，就不能满足需求.</p>
+<p>  parallel 并行</p>
+<p>  waterfall 有依赖的串行执行</p>
+<p>  auto 可以根据依赖关系自动分析，以最佳的顺序执行业务</p>
+<p>  queue 动态添加并行任务</p>
+<p>  parallelLimit 无法动态添加并行任务</p>
+</li>
+<li><p>step</p>
+</li>
+<li><p>wind 做到了不阻塞CPU但阻塞代码的目的</p>
+</li>
+<li><p>bagPipe:对异步API添加过载保护。可以添加任意类型的异步任务，也可以动态添加异步任务，还能够在实时处理场景中加入拒绝模式（若等待的队列也慢了，新来的调用就直接返回一个队列太满的拒绝异常）和超时控制</p>
+</li>
+</ul>
+<h2 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h2><p>V8 的垃圾回收会引起Javascript线程<code>暂停执行</code>，回收的内存越多，时间就会被耽搁得越长。所以造成了V8的内存限制。</p>
+<ul>
+<li><p>通过赋值方式解除引用更好</p>
+<p>  想主动释放变量，可以通过delete或者重新赋值进行删除。但是在V8中delete操作有可能干扰V8的优化，所以通过赋值方式解除引用更好</p>
+  <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> global.foo ;</span><br><span class="line">global.foo = <span class="literal">undefined</span><span class="comment">//or null</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在正常的Javascript中，无法立即回收的有<code>闭包</code>和<code>全局变量引用</code>这两种情况</p>
+</li>
+<li><p>闭包<br>  实现外部作用域访问内部作用域变量</p>
+<p>  它的问题在于，一旦有变量引用了这个中间函数，这个中间函数将不会释放，同事会使原始的作用域也得不到释放，作用域中产生的内存占用也不会得到释放。除非不再有引用，擦会逐步释放</p>
+</li>
+<li><p>内存</p>
+<p>  进程的内存包括rss(常驻内存)、交换区swap中一部分和文件系统中一部分</p>
+  <img src="/study/2018/7/node/v8-heap.png">
+<p>  Node的内存使用并非都是通过V8进行分配的，那些不是通过V8进行分配的内存叫做 <strong>堆外内存</strong>.利用堆外内存可以突破内存限制</p>
+<p> 堆外内存 + v8堆内存(<code>process.memoryUsage()</code>) = rss</p>
+<p> Buffer对象不经过V8的内存分配机制</p>
+<p> 内存泄露的实质只有一个：就是应当回收的对象出现意外而没有被回收，变成了常驻在老生代中的对象。原因有：</p>
+<ol>
+<li>缓存（相当于全局变量保存一些东西）保存太多，没有过期淘汰策略。解决方案：使用进程外的缓存，进程自身不存储。</li>
+<li>队列消费不及时。解决方案：需要有拒绝策略和超时策略</li>
+<li><p>作用域未释放</p>
+<p>stream模块用于处理大文件。如果不需要字符串层面的操作，则不需要借助V8来处理，可以尝试纯粹的Buffer来操作，这就不会受到V8的堆内存限制。但是这个大片使用内存的情况依然要小心，即使V8不限制堆内存的大小，物理内存依然有限制</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>事件驱动的实质：主循环+事件触发</p>
+<p>为了充分利用浏览器缓存，提高页面的加载速度，在生产环境中常常会向静态文件的文件名添加MD5戳，即使用bundle_[hash].js,而不是bundle.js。<br>这里的[hash]会在构建时被盖chunk内容的MD5结果替换，以实现内容不变则文件名不变的效果。</p>
+<p>幂等 ：重复请求多次与请求一次的效果是一样的。</p>
+<p>Node模块分为<strong>核心模块</strong>和<strong>文件模块</strong></p>
+<p>文件模块没有扩展名时，会按照顺序优先加上后缀 <code>.js=&gt;.json=&gt;.ndoe</code></p>
+<ul>
+<li><p>url网址解析</p>
+<p>  <code>url.parse(string,bool,bool)</code> URL字符串=&gt;解析对象</p>
+<p>  <code>url.format(obj)</code> 解析对象=&gt;URL</p>
+<p>  <code>url.resolve(a,b)</code> 连接</p>
+</li>
+</ul>
+<ul>
+<li><p>querystring 参数处理小利器</p>
+<p>  <code>querystring.parse</code> 字符串=&gt;JSON 反序列化</p>
+<p>  <code>querystring.stringify</code> JSON=&gt;字符串 序列化</p>
+<p>  <code>querystring.escape</code> 编码转义</p>
+<p>  <code>querystring.unescape</code></p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">server = <span class="keyword">new</span> HttpServer()</span><br><span class="line"></span><br><span class="line">server.on(<span class="string">'request'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;&#125;)</span><br><span class="line"><span class="comment">//上面一句相当于=&gt;</span></span><br><span class="line">server.listen(<span class="number">3000</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="慕课网"><a href="#慕课网" class="headerlink" title="慕课网"></a>慕课网</h1><ul>
+<li>DNS查找过程</li>
+</ul>
+<ol>
+<li>浏览器搜索自身的DNS缓存</li>
+<li>搜索操作系统自身的DNS缓存</li>
+<li>读取本地的HOST文件</li>
+<li>浏览器发起一个DNS系统调用</li>
+<li>宽带运营商服务器查看本身缓存</li>
+<li>运营商服务器发起迭代DNS解析的请求</li>
+</ol>
+<h3 id="HTTP模块"><a href="#HTTP模块" class="headerlink" title="HTTP模块"></a>HTTP模块</h3><pre><code>什么是回调？
+什么是同步/异步？
+什么是I/O？
+什么是单线程/多线程？
+什么是阻塞/非阻塞？
+什么是事件？
+什么是事件驱动？
+什么是基于事件驱动的回调？
+什么是事件循环？
+</code></pre><h3 id="上下文"><a href="#上下文" class="headerlink" title="上下文"></a>上下文</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pet = &#123;</span><br><span class="line">    speak :<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span> ===pet)<span class="comment">//true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pet</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>===global)<span class="comment">//true</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pet</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.word=<span class="string">"miaomiao';</span></span><br><span class="line"><span class="string">    this.speak = function()&#123;</span></span><br><span class="line"><span class="string">        console.log(this)//cat</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">var cat =new pet();</span></span><br></pre></td></tr></table></figure>
+<p>this通常指向当前函数的拥有者，叫做执行上下文</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Pet</span>(<span class="params">word</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.word = word;</span><br><span class="line">    <span class="keyword">this</span>.speak = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.word);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">word</span>)</span>&#123;</span><br><span class="line">    Pet.call(<span class="keyword">this</span>,word);<span class="comment">//Pet的this指向当前的Dog,相当于继承</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> dog = <span class="keyword">new</span> Dog(<span class="string">'wang'</span>);</span><br><span class="line">dog.speak()</span><br></pre></td></tr></table></figure>
+<h3 id="cheerio"><a href="#cheerio" class="headerlink" title="cheerio"></a>cheerio</h3><p>cheerio可以像jquery一样，解析html代码<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $ = cheerio.load(html);</span><br><span class="line"><span class="keyword">var</span> chapters = $(<span class="string">'.learnchapter'</span>);</span><br><span class="line">chapters.each(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> c =$(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">var</span> chapterTitle = c.find(<span class="string">'strong'</span>).text();</span><br><span class="line">    <span class="keyword">var</span> vedio = c.find(<span class="string">'.vedio'</span>).children(<span class="string">'li'</span>);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<h3 id="events模块"><a href="#events模块" class="headerlink" title="events模块"></a>events模块</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> EventEmitter =<span class="built_in">require</span>(<span class="string">'events'</span>).EventEmitter;</span><br><span class="line"><span class="keyword">var</span> life = <span class="keyword">new</span> EventEmitter();</span><br><span class="line"></span><br><span class="line">life.on(eventname,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="number">1</span>)&#125;);</span><br><span class="line">life.on(eventname,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="number">2</span>)&#125;);</span><br><span class="line">life.on(eventname,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="number">3</span>)&#125;);</span><br><span class="line">life.on(eventname,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="number">4</span>)&#125;);</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> haseventname = life.emit(eventname,args)<span class="comment">//返回有没有监听过</span></span><br><span class="line"></span><br><span class="line">life.removeListener(eventname,functionname)<span class="comment">//移除</span></span><br><span class="line">life.removeAllListener(eventname)<span class="comment">//批量移除</span></span><br><span class="line"></span><br><span class="line">life.listeners(eventname)<span class="comment">//所有监听器</span></span><br><span class="line"></span><br><span class="line">EventEmitter.listenerCount(life,eventname)</span><br></pre></td></tr></table></figure>
+<p>默认一个事件不要超过10个监听器，不然内容泄露.可以进行设置<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">life.setMaxListeners(<span class="number">0</span>)<span class="comment">//去掉限制</span></span><br><span class="line">life.setMaxListeners(<span class="number">11</span>)<span class="comment">//最多11个</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="Buffer暂存"><a href="#Buffer暂存" class="headerlink" title="Buffer暂存"></a>Buffer暂存</h3><p>Buffer 二进制数据。因为JS的字符串是utf-8存储的，处理二进制的能力弱。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> buf = <span class="keyword">new</span> Buffer([<span class="number">1</span>,<span class="number">2.11</span>,<span class="number">3.22</span>,<span class="number">4</span>]);</span><br><span class="line"><span class="built_in">console</span>.log(buf[<span class="number">1</span>])<span class="comment">//2</span></span><br></pre></td></tr></table></figure></p>
+<h5 id="转换图片为base64"><a href="#转换图片为base64" class="headerlink" title="转换图片为base64"></a>转换图片为base64</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line">fs.readFile(<span class="string">'logo.png'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,origin_buff</span>)</span>&#123;</span><br><span class="line">    fs.writeFile(<span class="string">'logo_buffer.png'</span>.origin_buff,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(err) <span class="built_in">console</span>.log(err)</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">var</span> base64Img=origin_buff.toString(<span class="string">'base64'</span>)</span><br><span class="line">    <span class="keyword">var</span> decodedImg = <span class="keyword">new</span> Buffer(base64Img ,<span class="string">'base64'</span>)<span class="comment">//拼装成data:image/png,base64,decodedImg才可使用</span></span><br><span class="line">    <span class="built_in">console</span>.log(Buffer.compare(origin_buff,decodedImg))<span class="comment">//0</span></span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="Stream-边读边写"><a href="#Stream-边读边写" class="headerlink" title="Stream 边读边写"></a>Stream 边读边写</h3><h5 id="转换图片为base64-1"><a href="#转换图片为base64-1" class="headerlink" title="转换图片为base64"></a>转换图片为base64</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//stream_logo.js</span></span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line">fs.writeFileSync(<span class="string">'stream_logo.png'</span>,fs.readFileSync(<span class="string">'logo.png'</span>));<span class="comment">//大文件会爆仓</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">var</span> n = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> readStream = fs.createReadStream(<span class="string">'stream_logo.js'</span>)</span><br><span class="line">readStream</span><br><span class="line">.on(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>)</span>&#123;</span><br><span class="line">    n++</span><br><span class="line">    <span class="built_in">console</span>.log(Buffer.isBuffer(chunk));<span class="comment">//true 一次大概64TB</span></span><br><span class="line">    <span class="built_in">console</span>.log(chunk.toString(<span class="string">'utf8'</span>));<span class="comment">//stream_logo.js内容</span></span><br><span class="line">    readStream.pause();</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        readStream.resume()</span><br><span class="line">    &#125;,<span class="number">3000</span>)</span><br><span class="line">&#125;)</span><br><span class="line">.on(<span class="string">'readable'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</span><br><span class="line">.on(<span class="string">'end'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(n)&#125;)</span><br><span class="line">.on(<span class="string">'close'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</span><br><span class="line">.on(<span class="string">'error'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="复制文件"><a href="#复制文件" class="headerlink" title="复制文件"></a>复制文件</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"><span class="keyword">var</span> readStream = fs.createReadStream(<span class="string">'1.mp4'</span>);</span><br><span class="line"><span class="keyword">var</span> writeStream = fs.createWriteStream(<span class="string">'copy.mp4'</span>);</span><br><span class="line">readStream.on(<span class="string">'data'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(writeStream.write(chunk)===<span class="literal">false</span>)&#123;<span class="comment">//数据还在缓存区，读得快写得慢</span></span><br><span class="line">        readStream.pause();<span class="comment">//先暂停</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">writeStream.on(<span class="string">'drain'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>)</span>&#123;<span class="comment">//已经写完了</span></span><br><span class="line">    readStream.resume();  </span><br><span class="line">&#125;)</span><br><span class="line">readStream.on(<span class="string">'end'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">chunk</span>)</span>&#123;</span><br><span class="line">    writeStream.end()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="强大的Pipe"><a href="#强大的Pipe" class="headerlink" title="强大的Pipe"></a>强大的Pipe</h5><p>Duplex双工<br>Transform双工，但是不存储数据<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// fs.readFile('logo.png',function(err,data)&#123;</span></span><br><span class="line">    <span class="comment">//     if(err)&#123;</span></span><br><span class="line">    <span class="comment">//         res.end('file is not exist!')</span></span><br><span class="line">    <span class="comment">//     &#125;else&#123;</span></span><br><span class="line">    <span class="comment">//         res.writeHead(200);</span></span><br><span class="line">    <span class="comment">//         res.end(data)</span></span><br><span class="line">    <span class="comment">//     &#125;</span></span><br><span class="line">    <span class="comment">// &#125;)</span></span><br><span class="line">    fs.createReadStream(<span class="string">'logo.png'</span>).pipe(res);</span><br><span class="line">    request(<span class="string">'https://imoooc/logo.png'</span>).pipe(res)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>上面的复制文件代码就可以改成<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line">fs.createReadStream(<span class="string">'1.mp4'</span>).pipe(fs.createWriteStream(<span class="string">'copy.mp4'</span>))</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Readable = <span class="built_in">require</span>(<span class="string">'stream'</span>).Readable</span><br><span class="line"><span class="keyword">var</span> Writable = <span class="built_in">require</span>(<span class="string">'stream'</span>).Writable</span><br><span class="line"><span class="keyword">var</span> readStream = <span class="keyword">new</span> Readable()</span><br><span class="line"><span class="keyword">var</span> writeStream = <span class="keyword">new</span> Writable()</span><br><span class="line">readStream.push(<span class="string">'I'</span>)</span><br><span class="line">readStream.push(<span class="string">'Love'</span>)</span><br><span class="line">readStream.push(<span class="string">'You\n'</span>)</span><br><span class="line">readStream.push(<span class="string">'null'</span>)</span><br><span class="line">writeStream._write = <span class="function"><span class="keyword">function</span>(<span class="params">chunk,encode,cb</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(chunk.toString())</span><br><span class="line">    cb()</span><br><span class="line">&#125;</span><br><span class="line">readStream.pipe(writeStream)</span><br></pre></td></tr></table></figure>
+<p>定制流<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">funcion ReadStream()&#123;</span><br><span class="line">    stream.Readable.call(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line">util.inherits(ReadStream,stream.Readable);<span class="comment">//继承原型</span></span><br><span class="line">ReadStream.prototype._read=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.push(<span class="string">'I'</span>)</span><br><span class="line">    <span class="keyword">this</span>.push(<span class="string">'Love'</span>)</span><br><span class="line">    <span class="keyword">this</span>.push(<span class="string">'You\n'</span>)</span><br><span class="line">    <span class="keyword">this</span>.push(<span class="string">'null'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">funcion WritStream()&#123;</span><br><span class="line">    stream.Writable.call(<span class="keyword">this</span>)</span><br><span class="line">    <span class="keyword">this</span>._cached=<span class="keyword">new</span> Buffer(<span class="string">''</span>)</span><br><span class="line">&#125;</span><br><span class="line">util.inherits(WritStream,stream.Writable);</span><br><span class="line">WritStream.prototype._write = <span class="function"><span class="keyword">function</span>(<span class="params">chunk,encode,cb</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(chunk.toString())</span><br><span class="line">    cb()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">TransfromStream</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    stream.Transform.call(<span class="keyword">this</span>)</span><br><span class="line">&#125;</span><br><span class="line">util.inherits(TransfromStream,stream.Transfrom);</span><br><span class="line">TransfromStream.prototype._transform= <span class="function"><span class="keyword">function</span>(<span class="params">chunk,encode,cb</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.push(chunk)</span><br><span class="line">    cb()</span><br><span class="line">&#125;</span><br><span class="line">TransfromStream.prototype.flush= <span class="function"><span class="keyword">function</span>(<span class="params">cb</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.push(<span class="string">'On Yeah!'</span>)</span><br><span class="line">    cb()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> rs= <span class="keyword">new</span> ReadStream()</span><br><span class="line"><span class="keyword">var</span> ws = <span class="keyword">new</span> WritStream();</span><br><span class="line"><span class="keyword">var</span> ts = <span class="keyword">new</span> TransfromStream()</span><br><span class="line"></span><br><span class="line">rs.pipe(ts).pipe(ws)</span><br></pre></td></tr></table></figure></p>
+<p>createReadStream是给你一个ReadableStream，你可以听它的’data’，一点一点儿处理文件，用过的部分会被GC（垃圾回收），所以占内存少。</p>
+<p>readFile是把整个文件全部读到内存里，这种方式是把文件内容全部读入内存，然后再写入文件。对于小型的文本文件，这没有多大问题。但是对于体积较大的二进制文件，比如音频、视频文件，动辄几个GB大小，如果使用这种方法，很容易使内存<code>“爆仓”</code>。理想的方法应该是读一部分，写一部分，不管文件有多大，只要时间允许，总会处理完成，这里就需要用到流的概念</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+      <div>
+        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Ruiyu Lin wechat" style="width: 200px; max-width: 100%;"/>
+    <div>要放弃的时候想想当初为什么开始</div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>Donate comment here</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打賞</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Ruiyu Lin 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="Ruiyu Lin 支付寶"/>
+        <p>支付寶</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/study/2018/7/zongjie.html" rel="next" title="2018-7总结">
+                <i class="fa fa-chevron-left"></i> 2018-7总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/study/Comprehensive/load-process.html" rel="prev" title="页面加载过程解析">
+                页面加载过程解析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+     <div id="gitmentContainer"></div>
+    <div class="post-spread">
+      
+    </div>
+  </div>
+ 
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Ruiyu Lin" />
+            
+              <p class="site-author-name" itemprop="name">Ruiyu Lin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">分類</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">標籤</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LRY1994" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="949892801@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/2140938987" target="_blank" title="微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#《深入浅出node-js》"><span class="nav-number">1.</span> <span class="nav-text">《深入浅出node.js》</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文件加载方式"><span class="nav-number">1.1.</span> <span class="nav-text">文件加载方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步I-O原理"><span class="nav-number">1.2.</span> <span class="nav-text">异步I/O原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非I-O异步的方法"><span class="nav-number">1.3.</span> <span class="nav-text">非I/O异步的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#setTimeout-setInterval"><span class="nav-number">1.3.1.</span> <span class="nav-text">setTimeout,setInterval</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#process-nextTick-VS-setTimeout-function-0"><span class="nav-number">1.3.2.</span> <span class="nav-text">process.nextTick VS setTimeout(function(){},0)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setImmediate-VS-process-nextTick"><span class="nav-number">1.3.3.</span> <span class="nav-text">setImmediate  VS process.nextTick</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常处理"><span class="nav-number">1.3.4.</span> <span class="nav-text">异常处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步编程解决方案"><span class="nav-number">1.3.5.</span> <span class="nav-text">异步编程解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#流程控制库"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">流程控制库</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存"><span class="nav-number">1.4.</span> <span class="nav-text">内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">1.5.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#慕课网"><span class="nav-number">2.</span> <span class="nav-text">慕课网</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP模块"><span class="nav-number">2.0.1.</span> <span class="nav-text">HTTP模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上下文"><span class="nav-number">2.0.2.</span> <span class="nav-text">上下文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cheerio"><span class="nav-number">2.0.3.</span> <span class="nav-text">cheerio</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#events模块"><span class="nav-number">2.0.4.</span> <span class="nav-text">events模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Buffer暂存"><span class="nav-number">2.0.5.</span> <span class="nav-text">Buffer暂存</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#转换图片为base64"><span class="nav-number">2.0.5.0.1.</span> <span class="nav-text">转换图片为base64</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stream-边读边写"><span class="nav-number">2.0.6.</span> <span class="nav-text">Stream 边读边写</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#转换图片为base64-1"><span class="nav-number">2.0.6.0.1.</span> <span class="nav-text">转换图片为base64</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#复制文件"><span class="nav-number">2.0.6.0.2.</span> <span class="nav-text">复制文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#强大的Pipe"><span class="nav-number">2.0.6.0.3.</span> <span class="nav-text">强大的Pipe</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ruiyu Lin</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>本站访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      人次
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>本站总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+<script>
+var gitment = new Gitment({
+    owner: 'LRY1994',
+    repo: 'lry1994.github.io',
+    oauth: {
+        client_id: "",
+        client_secret: ""
+    },
+});
+gitment.render('gitmentContainer');
+</script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'LRY1994',
+            repo: 'lry1994.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '8176d3f0da4eef250b0b04dbfc1b4eb4e121076e',
+            
+                client_id: 'a3d1ff57a8a937aba151'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -79,20 +79,21 @@
 
 
 
-<meta name="description" content="因为公司项目需求，要画出相关业务的流程图，以便客户了解自己身处何处 搜索框输入 “前端流程图插件”，查了很多资料，总结一下有以下几种 flow-chart代码写法繁琐，不是json就可以解决，效果也比较丑,PASS darge-d3github :https://github.com/dagrejs/dagre-d3 效果图 下载里面的demo,改一下json就可以了123456789101112">
+<meta name="description" content="因为公司项目需求，要画出相关业务的流程图，以便客户了解自己身处何处 搜索框输入 “前端流程图插件”，查了很多资料，总结一下有以下几种 Raphaelhttp://dmitrybaranovskiy.github.io/raphael/reference.html这个星星很多，但是我找到的demo都要自己设置x坐标，y坐标，找不到自动布局的demo http://www.weixuehao.com/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue中使用gojs&#x2F;jointjs">
 <meta property="og:url" content="http://lry1994.github.io/study/2018/8/procedure.html">
 <meta property="og:site_name" content="圆玉的博客">
-<meta property="og:description" content="因为公司项目需求，要画出相关业务的流程图，以便客户了解自己身处何处 搜索框输入 “前端流程图插件”，查了很多资料，总结一下有以下几种 flow-chart代码写法繁琐，不是json就可以解决，效果也比较丑,PASS darge-d3github :https://github.com/dagrejs/dagre-d3 效果图 下载里面的demo,改一下json就可以了123456789101112">
+<meta property="og:description" content="因为公司项目需求，要画出相关业务的流程图，以便客户了解自己身处何处 搜索框输入 “前端流程图插件”，查了很多资料，总结一下有以下几种 Raphaelhttp://dmitrybaranovskiy.github.io/raphael/reference.html这个星星很多，但是我找到的demo都要自己设置x坐标，y坐标，找不到自动布局的demo http://www.weixuehao.com/">
 <meta property="og:locale" content="zh-hk">
 <meta property="og:image" content="http://lry1994.github.io/study/2018/8/procedure/darge-d3.png">
 <meta property="og:image" content="http://lry1994.github.io/study/2018/8/procedure/gojs.png">
 <meta property="og:image" content="http://lry1994.github.io/study/2018/8/procedure/jointjs.png">
-<meta property="og:updated_time" content="2018-08-23T04:21:50.948Z">
+<meta property="og:image" content="http://lry1994.github.io/study/2018/8/procedure/joint-error.png">
+<meta property="og:updated_time" content="2018-08-30T02:31:18.232Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue中使用gojs&#x2F;jointjs">
-<meta name="twitter:description" content="因为公司项目需求，要画出相关业务的流程图，以便客户了解自己身处何处 搜索框输入 “前端流程图插件”，查了很多资料，总结一下有以下几种 flow-chart代码写法繁琐，不是json就可以解决，效果也比较丑,PASS darge-d3github :https://github.com/dagrejs/dagre-d3 效果图 下载里面的demo,改一下json就可以了123456789101112">
+<meta name="twitter:description" content="因为公司项目需求，要画出相关业务的流程图，以便客户了解自己身处何处 搜索框输入 “前端流程图插件”，查了很多资料，总结一下有以下几种 Raphaelhttp://dmitrybaranovskiy.github.io/raphael/reference.html这个星星很多，但是我找到的demo都要自己设置x坐标，y坐标，找不到自动布局的demo http://www.weixuehao.com/">
 <meta name="twitter:image" content="http://lry1994.github.io/study/2018/8/procedure/darge-d3.png">
 
 
@@ -353,6 +354,8 @@
       
         <p>因为公司项目需求，要画出相关业务的流程图，以便客户了解自己身处何处</p>
 <p>搜索框输入 “前端流程图插件”，查了很多资料，总结一下有以下几种</p>
+<h3 id="Raphael"><a href="#Raphael" class="headerlink" title="Raphael"></a>Raphael</h3><p><a href="http://dmitrybaranovskiy.github.io/raphael/reference.html" target="_blank" rel="noopener">http://dmitrybaranovskiy.github.io/raphael/reference.html</a><br>这个星星很多，但是我找到的demo都要自己设置x坐标，y坐标，找不到自动布局的demo</p>
+<p><a href="http://www.weixuehao.com/archives/370" target="_blank" rel="noopener">http://www.weixuehao.com/archives/370</a></p>
 <h3 id="flow-chart"><a href="#flow-chart" class="headerlink" title="flow-chart"></a>flow-chart</h3><p>代码写法繁琐，不是json就可以解决，效果也比较丑,PASS</p>
 <h3 id="darge-d3"><a href="#darge-d3" class="headerlink" title="darge-d3"></a>darge-d3</h3><p>github :<a href="https://github.com/dagrejs/dagre-d3" target="_blank" rel="noopener">https://github.com/dagrejs/dagre-d3</a></p>
 <p>效果图<br><img src="/study/2018/8/procedure/darge-d3.png"></p>
@@ -381,6 +384,19 @@
 <p>这个目前看来还算满意</p>
 <h3 id="jsplumb"><a href="#jsplumb" class="headerlink" title="jsplumb"></a>jsplumb</h3><p>这个看了官网，不太友好，而且下载只有一个js文件，没有demo代码，不知如何下手</p>
 <h3 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h3><p><a href="https://gojs.net/latest/samples/pageFlow.html" target="_blank" rel="noopener">https://gojs.net/latest/samples/pageFlow.html</a><br><a href="http://www.daviddurman.com/assets/autolayout.js" target="_blank" rel="noopener">http://www.daviddurman.com/assets/autolayout.js</a><br><a href="http://resources.jointjs.com/demos/layout" target="_blank" rel="noopener">http://resources.jointjs.com/demos/layout</a></p>
+<p>———————————————更新 2018/8/30———————————————————-<br>经过一番实践，我觉得jointjs不好用了。<br>不满意点：</p>
+<ol>
+<li>不能相对容器自动布局，都用的是死的像素，分辨率低的屏幕，部分图有些就看不见<img src="/study/2018/8/procedure/joint-error.png"></li>
+<li>不能滚动鼠标自己缩小放大</li>
+<li>比较丑，也可能是我不会配色</li>
+</ol>
+<p>最终采用gojs,上面提到的问题解决方案是：把去掉水印的gojs放在自己的npm服务器上，这样就可以npm安装了！！！<br>实践过程中遇到个问题<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">process-go</span> <span class="attr">style</span>=<span class="string">"height:250px"</span>  <span class="attr">v-if</span>=<span class="string">"show"</span>  <span class="attr">:model-data</span>=<span class="string">"dataObj.graph"</span> <span class="attr">:category</span>=<span class="string">"category"</span>&gt;</span> <span class="tag">&lt;/<span class="name">process-go</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>像这样，用<code>v-if</code>反复切换，会报错<code>Cannot read property &#39;type&#39; of undefined     at Po (go.js?d976:1044)</code></p>
+<p>换成<code>v-show</code>就不会<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">process-go</span> <span class="attr">style</span>=<span class="string">"height:250px"</span>  <span class="attr">v-show</span>=<span class="string">"show"</span>  <span class="attr">:model-data</span>=<span class="string">"dataObj.graph"</span> <span class="attr">:category</span>=<span class="string">"category"</span>&gt;</span> <span class="tag">&lt;/<span class="name">process-go</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>但是这样的前提是show初始化是true.如果初始化为false,没有报错，但是图呈现不出来。<br>原因我猜测是：show初始化为false,组件高度为0，因为默认画布就是组件容器，所以画布高度变成0，图画不出。</p>
+<p>最后想出个方法。<code>v-if</code>和<code>v-show</code>结合一起使用，加上<code>$once</code>方法，代码：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">process-go</span> <span class="attr">style</span>=<span class="string">"height:250px"</span> <span class="attr">v-if</span>=<span class="string">"firstClick"</span> <span class="attr">v-show</span>=<span class="string">"show"</span>  <span class="attr">:model-data</span>=<span class="string">"dataObj.graph"</span> <span class="attr">:category</span>=<span class="string">"category"</span>&gt;</span> <span class="tag">&lt;/<span class="name">process-go</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">    <span class="keyword">return</span>&#123;        </span><br><span class="line">        show:<span class="literal">false</span>,</span><br><span class="line">        firstClick:<span class="literal">false</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">created()&#123;</span><br><span class="line">    <span class="keyword">this</span>.init();</span><br><span class="line">    <span class="keyword">this</span>.$once(<span class="string">'firstClick'</span>,()=&gt;&#123;</span><br><span class="line">        <span class="keyword">this</span>.firstClick = <span class="literal">true</span></span><br><span class="line">    &#125;)</span><br><span class="line">&#125;,</span><br><span class="line">methods:&#123;</span><br><span class="line">    init()&#123;...&#125;,</span><br><span class="line">    look()&#123;<span class="comment">//用v-if切换会报错，只有第一次点击查看用v-if,其他用v-show</span></span><br><span class="line">        <span class="keyword">this</span>.$emit(<span class="string">'firstClick'</span>);</span><br><span class="line">        <span class="keyword">this</span>.show = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重新封装了一下gojs 地址：<a href="https://github.com/LRY1994/vue-lib/blob/master/src/components/process-go/index.vue" target="_blank" rel="noopener">https://github.com/LRY1994/vue-lib/blob/master/src/components/process-go/index.vue</a></p>
 
       
     </div>
@@ -452,8 +468,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/study/Comprehensive/js-problem.html" rel="prev" title="js题摘录">
-                js题摘录 <i class="fa fa-chevron-right"></i>
+              <a href="/study/Comprehensive/visible-area.html" rel="prev" title="尺寸">
+                尺寸 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -554,7 +570,7 @@
               
               <div class="site-state-item site-state-categories">
                 
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分類</span>
                 
               </div>
@@ -627,7 +643,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#flow-chart"><span class="nav-number">1.</span> <span class="nav-text">flow-chart</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#darge-d3"><span class="nav-number">2.</span> <span class="nav-text">darge-d3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gojs"><span class="nav-number">3.</span> <span class="nav-text">gojs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jointjs"><span class="nav-number">4.</span> <span class="nav-text">jointjs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsplumb"><span class="nav-number">5.</span> <span class="nav-text">jsplumb</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料："><span class="nav-number">6.</span> <span class="nav-text">参考资料：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Raphael"><span class="nav-number">1.</span> <span class="nav-text">Raphael</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#flow-chart"><span class="nav-number">2.</span> <span class="nav-text">flow-chart</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#darge-d3"><span class="nav-number">3.</span> <span class="nav-text">darge-d3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gojs"><span class="nav-number">4.</span> <span class="nav-text">gojs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jointjs"><span class="nav-number">5.</span> <span class="nav-text">jointjs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#jsplumb"><span class="nav-number">6.</span> <span class="nav-text">jsplumb</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料："><span class="nav-number">7.</span> <span class="nav-text">参考资料：</span></a></li></ol></div>
             
 
           </div>

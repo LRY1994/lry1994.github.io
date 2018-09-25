@@ -81,14 +81,14 @@
 
 <meta name="description" content="社交分享接口qzone       : ‘http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&amp;amp;title=&amp;amp;desc=&amp;amp;summary=&amp;amp;site=‘,qq          : ‘http://connect.qq.com/widget/shareqq/index.html?url=&amp;am">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2018-7总结">
+<meta property="og:title" content="2018-7至2018-9总结">
 <meta property="og:url" content="http://lry1994.github.io/study/2018/7/zongjie.html">
 <meta property="og:site_name" content="圆玉的博客">
 <meta property="og:description" content="社交分享接口qzone       : ‘http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&amp;amp;title=&amp;amp;desc=&amp;amp;summary=&amp;amp;site=‘,qq          : ‘http://connect.qq.com/widget/shareqq/index.html?url=&amp;am">
 <meta property="og:locale" content="zh-hk">
-<meta property="og:updated_time" content="2018-08-30T02:32:56.375Z">
+<meta property="og:updated_time" content="2018-09-25T08:50:07.147Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2018-7总结">
+<meta name="twitter:title" content="2018-7至2018-9总结">
 <meta name="twitter:description" content="社交分享接口qzone       : ‘http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&amp;amp;title=&amp;amp;desc=&amp;amp;summary=&amp;amp;site=‘,qq          : ‘http://connect.qq.com/widget/shareqq/index.html?url=&amp;am">
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <title>2018-7总结 | 圆玉的博客</title>
+  <title>2018-7至2018-9总结 | 圆玉的博客</title>
   
 
 
@@ -249,7 +249,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">2018-7总结</h2>
+          <h2 class="post-title" itemprop="name headline">2018-7至2018-9总结</h2>
         
 
         <div class="post-meta">
@@ -362,7 +362,12 @@
 <h5 id="google"><a href="#google" class="headerlink" title="google"></a>google</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://plus.google.com/share?</span><br><span class="line">url=</span><br></pre></td></tr></table></figure>
 <h3 id="vue强制更新"><a href="#vue强制更新" class="headerlink" title="vue强制更新"></a>vue强制更新</h3><p>用vue.$set不行，watch不行，试试$forceUpdate。<br>还有一种办法，再把值重新复制一遍也是可以的<br><code>this.obj = Object.assign({},this.obj)</code></p>
 <h3 id="在Vue中使用sass及sass图片路径问题"><a href="#在Vue中使用sass及sass图片路径问题" class="headerlink" title="在Vue中使用sass及sass图片路径问题"></a>在Vue中使用sass及sass图片路径问题</h3><p><a href="https://www.jianshu.com/p/5e81814f8d8c" target="_blank" rel="noopener">https://www.jianshu.com/p/5e81814f8d8c</a></p>
-<p>CORS跨域请求会先发option请求，如果server返回access-control-allow-origin头为*或者和当前域名一致的话，才会进入第二段的真正请求。</p>
+<h3 id="CORS跨域请求会先发option请求，如果server返回access-control-allow-origin头为-或者和当前域名一致的话，才会进入第二段的真正请求。"><a href="#CORS跨域请求会先发option请求，如果server返回access-control-allow-origin头为-或者和当前域名一致的话，才会进入第二段的真正请求。" class="headerlink" title="CORS跨域请求会先发option请求，如果server返回access-control-allow-origin头为*或者和当前域名一致的话，才会进入第二段的真正请求。"></a>CORS跨域请求会先发option请求，如果server返回access-control-allow-origin头为*或者和当前域名一致的话，才会进入第二段的真正请求。</h3><h3 id="禁止缓存数据deactivated"><a href="#禁止缓存数据deactivated" class="headerlink" title="禁止缓存数据deactivated"></a>禁止缓存数据deactivated</h3><p> 防止下次选择数据不更新<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">deactivated () &#123;</span><br><span class="line">  <span class="keyword">this</span>.$destroy(<span class="literal">true</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h3><p> <code>arr.slice()</code><br> 如果obj所有值都是非引用类型，那么obj.slice(0)与深浅拷贝没有差别；</p>
+<p>如果obj有引用类型的元素的话，obj.slice(0)仅仅是复制了元素的地址，，obj.slice(0)可看作浅拷贝。</p>
+<p>对象深拷贝 <code>Object.assign({},obj)</code>,不要用JSON.parse(JSON.stringify(obj)),太慢</p>
+<h3 id="价格标签"><a href="#价格标签" class="headerlink" title="价格标签"></a>价格标签</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.price-label</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#f15533</span>;</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#f15533</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">12px</span>;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">18px</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">7.5px</span>;</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">2</span>;</span><br><span class="line">    <span class="attribute">vertical-align</span>: super;</span><br><span class="line">    &amp;::before&#123;</span><br><span class="line">            <span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>;</span><br><span class="line">            <span class="selector-tag">z-index</span>: 1;</span><br><span class="line">            <span class="selector-tag">content</span>: "";</span><br><span class="line">            <span class="selector-tag">top</span>: 0;</span><br><span class="line">            <span class="selector-tag">right</span>: 0;</span><br><span class="line">            <span class="selector-tag">bottom</span>: 0;</span><br><span class="line">            <span class="selector-tag">left</span>: 0;</span><br><span class="line">            <span class="selector-tag">border</span>: 1<span class="selector-tag">px</span> <span class="selector-tag">solid</span> <span class="selector-id">#ccc</span>;</span><br><span class="line">            <span class="selector-tag">border-color</span>: <span class="selector-tag">inherit</span>;</span><br><span class="line">            <span class="selector-tag">border-radius</span>: 2<span class="selector-tag">px</span>;</span><br><span class="line">            <span class="selector-tag">transform</span>: <span class="selector-tag">skew</span>(<span class="selector-tag">-11deg</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="事件冒泡到父容器或某个祖先容器停止"><a href="#事件冒泡到父容器或某个祖先容器停止" class="headerlink" title="事件冒泡到父容器或某个祖先容器停止"></a>事件冒泡到父容器或某个祖先容器停止</h3><p>在父容器或某个祖先容器上绑定一个<a href="mailto:``@click.stop" target="_blank" rel="noopener">``@click.stop</a>=”stop”<code></code><br>stop函数为一个空函数即可</p>
 
       
     </div>
@@ -424,8 +429,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/study/2018/6/suibi.html" rel="next" title="2018-6总结">
-                <i class="fa fa-chevron-left"></i> 2018-6总结
+              <a href="/study/2018/6/webSafety.html" rel="next" title="读《web前端黑客技术揭秘》">
+                <i class="fa fa-chevron-left"></i> 读《web前端黑客技术揭秘》
               </a>
             
           </div>
@@ -525,7 +530,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -609,7 +614,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#社交分享接口"><span class="nav-number">1.</span> <span class="nav-text">社交分享接口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#微博"><span class="nav-number">1.0.1.</span> <span class="nav-text">微博</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#发送给QQ好友"><span class="nav-number">1.0.2.</span> <span class="nav-text">发送给QQ好友</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#腾讯微博"><span class="nav-number">1.0.3.</span> <span class="nav-text">腾讯微博</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#豆瓣"><span class="nav-number">1.0.4.</span> <span class="nav-text">豆瓣</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#豆瓣-1"><span class="nav-number">1.0.5.</span> <span class="nav-text">豆瓣</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#QQ空间-这个好像腾讯坏了，都是undefined"><span class="nav-number">1.0.6.</span> <span class="nav-text">QQ空间(这个好像腾讯坏了，都是undefined)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#linkin"><span class="nav-number">1.0.7.</span> <span class="nav-text">linkin</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#点点（不知道是什么东西）"><span class="nav-number">1.0.8.</span> <span class="nav-text">点点（不知道是什么东西）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#facebook"><span class="nav-number">1.0.9.</span> <span class="nav-text">facebook</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#twitter"><span class="nav-number">1.0.10.</span> <span class="nav-text">twitter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#google"><span class="nav-number">1.0.11.</span> <span class="nav-text">google</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue强制更新"><span class="nav-number">2.</span> <span class="nav-text">vue强制更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Vue中使用sass及sass图片路径问题"><span class="nav-number">3.</span> <span class="nav-text">在Vue中使用sass及sass图片路径问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#社交分享接口"><span class="nav-number">1.</span> <span class="nav-text">社交分享接口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#微博"><span class="nav-number">1.0.1.</span> <span class="nav-text">微博</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#发送给QQ好友"><span class="nav-number">1.0.2.</span> <span class="nav-text">发送给QQ好友</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#腾讯微博"><span class="nav-number">1.0.3.</span> <span class="nav-text">腾讯微博</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#豆瓣"><span class="nav-number">1.0.4.</span> <span class="nav-text">豆瓣</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#豆瓣-1"><span class="nav-number">1.0.5.</span> <span class="nav-text">豆瓣</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#QQ空间-这个好像腾讯坏了，都是undefined"><span class="nav-number">1.0.6.</span> <span class="nav-text">QQ空间(这个好像腾讯坏了，都是undefined)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#linkin"><span class="nav-number">1.0.7.</span> <span class="nav-text">linkin</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#点点（不知道是什么东西）"><span class="nav-number">1.0.8.</span> <span class="nav-text">点点（不知道是什么东西）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#facebook"><span class="nav-number">1.0.9.</span> <span class="nav-text">facebook</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#twitter"><span class="nav-number">1.0.10.</span> <span class="nav-text">twitter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#google"><span class="nav-number">1.0.11.</span> <span class="nav-text">google</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue强制更新"><span class="nav-number">2.</span> <span class="nav-text">vue强制更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Vue中使用sass及sass图片路径问题"><span class="nav-number">3.</span> <span class="nav-text">在Vue中使用sass及sass图片路径问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CORS跨域请求会先发option请求，如果server返回access-control-allow-origin头为-或者和当前域名一致的话，才会进入第二段的真正请求。"><span class="nav-number">4.</span> <span class="nav-text">CORS跨域请求会先发option请求，如果server返回access-control-allow-origin头为*或者和当前域名一致的话，才会进入第二段的真正请求。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#禁止缓存数据deactivated"><span class="nav-number">5.</span> <span class="nav-text">禁止缓存数据deactivated</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深拷贝"><span class="nav-number">6.</span> <span class="nav-text">深拷贝</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#价格标签"><span class="nav-number">7.</span> <span class="nav-text">价格标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事件冒泡到父容器或某个祖先容器停止"><span class="nav-number">8.</span> <span class="nav-text">事件冒泡到父容器或某个祖先容器停止</span></a></li></ol></div>
             
 
           </div>

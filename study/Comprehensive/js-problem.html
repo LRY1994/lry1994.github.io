@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="面试,js," />
+  <meta name="keywords" content="面试,柯里化,栈队列," />
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="44个Javascript变态题解析 foreach数组的foreach可以和闭包起一样的作用 闭包中的变量包括参数，在内部函数执行完毕之前不会被释放 JS运行机制执行栈,任务队列 process.nextTick方法可以在当前”执行栈”的尾部—-下一次Event Loop（主线程读取”任务队列”）之前—-触发回调函数 setImmediate方法则是在当前”任务队列”的尾部添加事件 proces">
-<meta name="keywords" content="面试,js">
+<meta name="keywords" content="面试,柯里化,栈队列">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js题摘录">
 <meta property="og:url" content="http://lry1994.github.io/study/Comprehensive/js-problem.html">
@@ -88,6 +88,7 @@
 <meta property="og:description" content="44个Javascript变态题解析 foreach数组的foreach可以和闭包起一样的作用 闭包中的变量包括参数，在内部函数执行完毕之前不会被释放 JS运行机制执行栈,任务队列 process.nextTick方法可以在当前”执行栈”的尾部—-下一次Event Loop（主线程读取”任务队列”）之前—-触发回调函数 setImmediate方法则是在当前”任务队列”的尾部添加事件 proces">
 <meta property="og:locale" content="zh-hk">
 <meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/js_zhan_duilie.jpg">
+<meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/setTimeOut.jpg">
 <meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/1.png">
 <meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/2.png">
 <meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/3.png">
@@ -98,7 +99,7 @@
 <meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/8.png">
 <meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/9.png">
 <meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/10.png">
-<meta property="og:updated_time" content="2018-10-08T01:17:36.100Z">
+<meta property="og:updated_time" content="2018-10-09T09:35:03.304Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js题摘录">
 <meta name="twitter:description" content="44个Javascript变态题解析 foreach数组的foreach可以和闭包起一样的作用 闭包中的变量包括参数，在内部函数执行完毕之前不会被释放 JS运行机制执行栈,任务队列 process.nextTick方法可以在当前”执行栈”的尾部—-下一次Event Loop（主线程读取”任务队列”）之前—-触发回调函数 setImmediate方法则是在当前”任务队列”的尾部添加事件 proces">
@@ -377,6 +378,8 @@
 <p>同时，Javascript引擎在执行 Microtask队列的时候，如果期间又加入了新的 Microtask，则该 Microtask会加入到之前的 Microtask队列的尾部，保证 Microtask先于 Task队列执行。</p>
 <p>Task(MacroTask)队列中： <strong>setImmediate &gt; MessageChannel &gt; setTimeout 0</strong></p>
 <p><a href="https://mp.weixin.qq.com/s/2ilx-5kDvszjF66iAvYQlg?utm_medium=hao.caibaojian.com&amp;utm_source=hao.caibaojian.com" target="_blank" rel="noopener">你真的了解Javascript执行顺序么？</a></p>
+<h3 id="setTimeOut"><a href="#setTimeOut" class="headerlink" title="setTimeOut"></a>setTimeOut</h3><img src="/study/Comprehensive/js-problem/setTimeOut.jpg">
+<p><a href="http://www.cnblogs.com/sprying/archive/2013/05/26/3100639.html" target="_blank" rel="noopener">谈谈JavaScript的异步实现</a></p>
 <ul>
 <li>1<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> b = a.map(<span class="function"><span class="params">n</span>=&gt;</span>&#123;n=n+<span class="number">1</span>&#125;);</span><br><span class="line"><span class="keyword">let</span> c = a.map(<span class="function"><span class="params">n</span>=&gt;</span>n=n+<span class="number">1</span>);</span><br><span class="line">b<span class="comment">// [undefined, undefined, undefined]</span></span><br><span class="line">c<span class="comment">// [2, 3, 4]</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -457,7 +460,7 @@
 <p>minimumSignificantDigits 与 maximumSignificantDigits，用于控制有效数字位数，只要设置了这一组属性，第一组属性全部忽略不算</p>
 <p>注意，maximumFractionDigits 与 maximumSignificantDigits 均是四舍五入，使用时需要注意。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> num = <span class="number">2333333</span>;</span><br><span class="line">num.toLocaleString();   <span class="comment">// 2,333,333</span></span><br><span class="line">num.toLocaleString(<span class="string">'zh'</span>, &#123; <span class="attr">style</span>: <span class="string">'decimal'</span> &#125;);   <span class="comment">//2,333,333</span></span><br><span class="line">num.toLocaleString(<span class="string">'zh'</span>, &#123; <span class="attr">style</span>: <span class="string">'percent'</span> &#125;);   <span class="comment">//233,333,300%</span></span><br><span class="line">num.toLocaleString(<span class="string">'zh'</span>, &#123; <span class="attr">style</span>: <span class="string">'currency'</span>, <span class="attr">currency</span>: <span class="string">'CNY'</span> &#125;);    <span class="comment">//￥2,333,333.00</span></span><br><span class="line">num.toLocaleString(<span class="string">'zh'</span>, &#123; <span class="attr">style</span>: <span class="string">'currency'</span>, <span class="attr">currency</span>: <span class="string">'cny'</span>, <span class="attr">currencyDisplay</span>: <span class="string">'code'</span> &#125;);      <span class="comment">//CNY2,333,333.00</span></span><br><span class="line">num.toLocaleString(<span class="string">'zh'</span>, &#123; <span class="attr">style</span>: <span class="string">'currency'</span>, <span class="attr">currency</span>: <span class="string">'cny'</span>, <span class="attr">currencyDisplay</span>: <span class="string">'name'</span> &#125;);      <span class="comment">//2,333,333.00人民币</span></span><br><span class="line">num.toLocaleString(<span class="string">'zh'</span>, &#123; <span class="attr">minimumIntegerDigits</span>: <span class="number">5</span> &#125;);        <span class="comment">//02,333.3</span></span><br><span class="line"><span class="comment">//如果不想有分隔符，可以指定useGrouping为false</span></span><br><span class="line">num.toLocaleString(<span class="string">'zh'</span>, &#123; <span class="attr">minimumIntegerDigits</span>: <span class="number">5</span>, <span class="attr">useGrouping</span>: <span class="literal">false</span> &#125;);        <span class="comment">//02333.3</span></span><br><span class="line">num.toLocaleString(<span class="string">'zh'</span>, &#123; <span class="attr">minimumFractionDigits</span>: <span class="number">2</span>, <span class="attr">useGrouping</span>: <span class="literal">false</span> &#125;);     <span class="comment">//2333.30</span></span><br><span class="line"></span><br><span class="line">num = <span class="number">666.666</span></span><br><span class="line">num.toLocaleString(<span class="string">'zh'</span>, &#123; <span class="attr">maximumFractionDigits</span>: <span class="number">2</span>, <span class="attr">useGrouping</span>: <span class="literal">false</span> &#125;);     <span class="comment">//666.67</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> num = <span class="number">1234.5</span>;</span><br><span class="line">num.toLocaleString(<span class="string">'zh'</span>, &#123; <span class="attr">minimumSignificantDigits</span>: <span class="number">6</span>, <span class="attr">useGrouping</span>: <span class="literal">false</span> &#125;);      <span class="comment">//1234.50</span></span><br><span class="line">num.toLocaleString(<span class="string">'zh'</span>, &#123; <span class="attr">maximumSignificantDigits</span>: <span class="number">4</span>, <span class="attr">useGrouping</span>: <span class="literal">false</span> &#125;);      <span class="comment">//1235</span></span><br></pre></td></tr></table></figure>
-
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"> [] === []<span class="comment">//false </span></span><br><span class="line"> [] == []<span class="comment">//false</span></span><br><span class="line"> <span class="comment">//因为[]是一个数组，是一个对象。就好比创建了2个对象，然后比较两个对象是否相同</span></span><br><span class="line"></span><br><span class="line">[] == <span class="literal">false</span><span class="comment">//true</span></span><br><span class="line"> <span class="comment">/*他是经历了这个过程最终才为true的。</span></span><br><span class="line"><span class="comment">（[] == false）   ----&gt;  （[] == +0）   ----&gt;  （“”== +0）  ----&gt;  （+0 == +0）  ---&gt;   true*/</span></span><br><span class="line"> </span><br><span class="line"> <span class="built_in">window</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span><span class="comment">//false</span></span><br><span class="line"> <span class="keyword">typeof</span>(<span class="built_in">window</span>) <span class="comment">// object</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span> === <span class="string">'object'</span>;</span><br><span class="line"><span class="literal">null</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span> === <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="literal">null</span> <span class="keyword">instanceof</span> <span class="literal">null</span><span class="comment">//会抛出异常：``Uncaught TypeError: Right-hand side of 'instanceof' is not an object``</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -513,7 +516,9 @@
           
             <a href="/tags/面试/" rel="tag"># 面试</a>
           
-            <a href="/tags/js/" rel="tag"># js</a>
+            <a href="/tags/柯里化/" rel="tag"># 柯里化</a>
+          
+            <a href="/tags/栈队列/" rel="tag"># 栈队列</a>
           
         </div>
       
@@ -526,8 +531,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/study/Comprehensive/8-sort.html" rel="next" title="八大排序算法、KMP">
-                <i class="fa fa-chevron-left"></i> 八大排序算法、KMP
+              <a href="/study/Comprehensive/interview.html" rel="next" title="面试题摘录">
+                <i class="fa fa-chevron-left"></i> 面试题摘录
               </a>
             
           </div>
@@ -536,8 +541,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/study/Comprehensive/interview.html" rel="prev" title="面试题摘录">
-                面试题摘录 <i class="fa fa-chevron-right"></i>
+              <a href="/study/2018/6/suibi.html" rel="prev" title="2018-6总结">
+                2018-6总结 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -627,7 +632,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -649,7 +654,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">標籤</span>
                 
               </div>
@@ -711,7 +716,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#foreach"><span class="nav-number">1.</span> <span class="nav-text">foreach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS运行机制"><span class="nav-number">2.</span> <span class="nav-text">JS运行机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#你知道为什么会有-Generator-吗"><span class="nav-number">3.</span> <span class="nav-text">你知道为什么会有 Generator 吗?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#柯里化–部分求值"><span class="nav-number">4.</span> <span class="nav-text">柯里化–部分求值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反柯里化-函数的借用"><span class="nav-number">5.</span> <span class="nav-text">反柯里化-函数的借用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字类型的-toLocaleString"><span class="nav-number">6.</span> <span class="nav-text">数字类型的 toLocaleString</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#foreach"><span class="nav-number">1.</span> <span class="nav-text">foreach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS运行机制"><span class="nav-number">2.</span> <span class="nav-text">JS运行机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#setTimeOut"><span class="nav-number">2.1.</span> <span class="nav-text">setTimeOut</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#你知道为什么会有-Generator-吗"><span class="nav-number">3.</span> <span class="nav-text">你知道为什么会有 Generator 吗?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#柯里化–部分求值"><span class="nav-number">4.</span> <span class="nav-text">柯里化–部分求值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反柯里化-函数的借用"><span class="nav-number">5.</span> <span class="nav-text">反柯里化-函数的借用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字类型的-toLocaleString"><span class="nav-number">6.</span> <span class="nav-text">数字类型的 toLocaleString</span></a></li></ol></div>
             
 
           </div>

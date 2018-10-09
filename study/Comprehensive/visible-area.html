@@ -79,20 +79,21 @@
 
 
 
-<meta name="description" content="HTML元素精准定位scrollHeight: 对象的滚动高度。  scrollLeft:对象左边界和窗口中目前可见内容的最左端之间的距离 scrollTop:对象最顶端和窗口中可见内容的最顶端之间的距离  scrollWidth:获取对象的滚动宽度 offsetHeight:获取对象相对于版面或由父坐标 offsetParent 属性指定的父坐标的高度  offsetLeft:获取对象相对于版面">
+<meta name="description" content="getBoundingClientRect() 获取它相对于视图窗口的坐标 HTML元素精准定位scrollHeight: 对象的滚动高度。  scrollLeft:对象左边界和窗口中目前可见内容的最左端之间的距离 scrollTop:对象最顶端和窗口中可见内容的最顶端之间的距离  scrollWidth:获取对象的滚动宽度 offsetHeight:获取对象相对于版面或由父坐标 offsetP">
 <meta name="keywords" content="面试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="尺寸">
 <meta property="og:url" content="http://lry1994.github.io/study/Comprehensive/visible-area.html">
 <meta property="og:site_name" content="圆玉的博客">
-<meta property="og:description" content="HTML元素精准定位scrollHeight: 对象的滚动高度。  scrollLeft:对象左边界和窗口中目前可见内容的最左端之间的距离 scrollTop:对象最顶端和窗口中可见内容的最顶端之间的距离  scrollWidth:获取对象的滚动宽度 offsetHeight:获取对象相对于版面或由父坐标 offsetParent 属性指定的父坐标的高度  offsetLeft:获取对象相对于版面">
+<meta property="og:description" content="getBoundingClientRect() 获取它相对于视图窗口的坐标 HTML元素精准定位scrollHeight: 对象的滚动高度。  scrollLeft:对象左边界和窗口中目前可见内容的最左端之间的距离 scrollTop:对象最顶端和窗口中可见内容的最顶端之间的距离  scrollWidth:获取对象的滚动宽度 offsetHeight:获取对象相对于版面或由父坐标 offsetP">
 <meta property="og:locale" content="zh-hk">
 <meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/visible-area/element-position.gif">
+<meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/visible-area/pic2.jpg">
 <meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/visible-area/scroll.png">
-<meta property="og:updated_time" content="2018-10-08T01:18:27.755Z">
+<meta property="og:updated_time" content="2018-10-09T09:43:13.549Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="尺寸">
-<meta name="twitter:description" content="HTML元素精准定位scrollHeight: 对象的滚动高度。  scrollLeft:对象左边界和窗口中目前可见内容的最左端之间的距离 scrollTop:对象最顶端和窗口中可见内容的最顶端之间的距离  scrollWidth:获取对象的滚动宽度 offsetHeight:获取对象相对于版面或由父坐标 offsetParent 属性指定的父坐标的高度  offsetLeft:获取对象相对于版面">
+<meta name="twitter:description" content="getBoundingClientRect() 获取它相对于视图窗口的坐标 HTML元素精准定位scrollHeight: 对象的滚动高度。  scrollLeft:对象左边界和窗口中目前可见内容的最左端之间的距离 scrollTop:对象最顶端和窗口中可见内容的最顶端之间的距离  scrollWidth:获取对象的滚动宽度 offsetHeight:获取对象相对于版面或由父坐标 offsetP">
 <meta name="twitter:image" content="http://lry1994.github.io/study/Comprehensive/visible-area/element-position.gif">
 
 
@@ -351,7 +352,8 @@
       
 
       
-        <h2 id="HTML元素精准定位"><a href="#HTML元素精准定位" class="headerlink" title="HTML元素精准定位"></a>HTML元素精准定位</h2><p><code>scrollHeight</code>: 对象的滚动高度。 </p>
+        <p> getBoundingClientRect() 获取它相对于视图窗口的坐标</p>
+<h2 id="HTML元素精准定位"><a href="#HTML元素精准定位" class="headerlink" title="HTML元素精准定位"></a>HTML元素精准定位</h2><p><code>scrollHeight</code>: 对象的滚动高度。 </p>
 <p><code>scrollLeft</code>:对象左边界和窗口中目前可见内容的最左端之间的距离</p>
 <p><code>scrollTop</code>:对象最顶端和窗口中可见内容的最顶端之间的距离 </p>
 <p><code>scrollWidth</code>:获取对象的滚动宽度</p>
@@ -379,6 +381,11 @@
 <p>屏幕辨别率的宽： <code>window.screen.width</code>;</p>
 <p>屏幕可用工作区高度： <code>window.screen.availHeight</code>;</p>
 <img src="/study/Comprehensive/visible-area/element-position.gif">
+<img src="/study/Comprehensive/visible-area/pic2.jpg">
+<p>clientTop/clientLeft  这个属性就是border宽度。</p>
+<p>offset包括border,client不包括border</p>
+<p>document.documentElement / body要做兼容</p>
+<h2 id="如何获取元素的精确位置"><a href="#如何获取元素的精确位置" class="headerlink" title="如何获取元素的精确位置"></a>如何获取元素的精确位置</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Helper function to get an element's exact position</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPosition</span>(<span class="params">el</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> xPos = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> yPos = <span class="number">0</span>;</span><br><span class="line"> </span><br><span class="line">  <span class="keyword">while</span> (el) &#123;</span><br><span class="line">    <span class="keyword">if</span> (el.tagName == <span class="string">"BODY"</span>) &#123;</span><br><span class="line">      <span class="comment">// deal with browser quirks with body/window/document and page scroll</span></span><br><span class="line">      <span class="keyword">var</span> xScroll = el.scrollLeft || <span class="built_in">document</span>.documentElement.scrollLeft;</span><br><span class="line">      <span class="keyword">var</span> yScroll = el.scrollTop || <span class="built_in">document</span>.documentElement.scrollTop;</span><br><span class="line"> </span><br><span class="line">      xPos += (el.offsetLeft - xScroll + el.clientLeft);</span><br><span class="line">      yPos += (el.offsetTop - yScroll + el.clientTop);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// for all other non-BODY elements</span></span><br><span class="line">      xPos += (el.offsetLeft - el.scrollLeft + el.clientLeft);</span><br><span class="line">      yPos += (el.offsetTop - el.scrollTop + el.clientTop);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    el = el.offsetParent;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    x: xPos,</span><br><span class="line">    y: yPos</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="screen对象"><a href="#screen对象" class="headerlink" title="screen对象"></a>screen对象</h2><p>用于获取用户的屏幕信息。</p>
 <ul>
 <li><p><code>screen.availWidth</code> 属性返回访问者屏幕的宽度，以像素计，减去界面特性，比如任务栏。</p>
@@ -392,20 +399,16 @@
 <li><code>window.innerWidth</code>- 浏览器窗口的内部宽度</li>
 </ul>
 <h4 id="二、对于-Internet-Explorer-8、7、6、5："><a href="#二、对于-Internet-Explorer-8、7、6、5：" class="headerlink" title="二、对于 Internet Explorer 8、7、6、5："></a>二、对于 Internet Explorer 8、7、6、5：</h4><ul>
-<li><p><code>document.documentElement.clientHeight</code>表示HTML文档所在窗口的当前高度。</p>
-</li>
-<li><p><code>document.documentElement.clientWidth</code>表示HTML文档所在窗口的当前宽度。</p>
-</li>
+<li><code>document.documentElement.clientHeight</code>表示HTML文档所在窗口的当前高度。</li>
+<li><code>document.documentElement.clientWidth</code>表示HTML文档所在窗口的当前宽度。</li>
 </ul>
 <p>或者</p>
 <p>Document对象的body属性对应HTML文档的<code>&lt;body&gt;</code>标签</p>
 <ul>
-<li><p><code>document.body.clientHeight</code></p>
-</li>
-<li><p><code>document.body.clientWidth</code></p>
-</li>
+<li><code>document.body.clientHeight</code></li>
+<li><code>document.body.clientWidth</code></li>
 </ul>
-<h4 id="三、浏览器兼容性"><a href="#三、浏览器兼容性" class="headerlink" title="三、浏览器兼容性"></a>三、浏览器兼容性</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> w= <span class="built_in">document</span>.documentElement.clientWidth</span><br><span class="line">      || <span class="built_in">document</span>.body.clientWidth;</span><br><span class="line"><span class="keyword">var</span> h= <span class="built_in">document</span>.documentElement.clientHeight</span><br><span class="line">      || <span class="built_in">document</span>.body.clientHeight;</span><br></pre></td></tr></table></figure>
+<h4 id="三、浏览器兼容性"><a href="#三、浏览器兼容性" class="headerlink" title="三、浏览器兼容性"></a>三、浏览器兼容性</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//屏幕可视窗口大小</span></span><br><span class="line"><span class="keyword">var</span> w= <span class="built_in">window</span>.innerWidth||<span class="built_in">document</span>.documentElement.clientWidth|| <span class="built_in">document</span>.body.clientWidth;</span><br><span class="line"><span class="keyword">var</span> h=<span class="built_in">window</span>.innerHeight|| <span class="built_in">document</span>.documentElement.clientHeight || <span class="built_in">document</span>.body.clientHeight;</span><br><span class="line"></span><br><span class="line"><span class="comment">//滚动条滚动的距离</span></span><br><span class="line"><span class="built_in">window</span>.pagYoffset || <span class="built_in">document</span>.documentElement.scrollTop||<span class="built_in">document</span>.body.scrollTop</span><br></pre></td></tr></table></figure>
 <h2 id="网页尺寸scrollHeight"><a href="#网页尺寸scrollHeight" class="headerlink" title="网页尺寸scrollHeight"></a>网页尺寸scrollHeight</h2><p><code>scrollHeight</code>和<code>scrollWidth</code>，获取网页内容高度和宽度。</p>
 <h4 id="一、针对IE、Opera"><a href="#一、针对IE、Opera" class="headerlink" title="一、针对IE、Opera:"></a>一、针对IE、Opera:</h4><p>scrollHeight 是网页内容实际高度，可以小于 clientHeight。</p>
 <h4 id="二、针对NS、FF"><a href="#二、针对NS、FF" class="headerlink" title="二、针对NS、FF:"></a>二、针对NS、FF:</h4><p>scrollHeight 是网页内容高度，不过最小值是 clientHeight。也就是说网页内容实际高度小于 clientHeight 时，scrollHeight 返回 clientHeight 。</p>
@@ -593,7 +596,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -615,7 +618,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">標籤</span>
                 
               </div>
@@ -677,7 +680,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML元素精准定位"><span class="nav-number">1.</span> <span class="nav-text">HTML元素精准定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#screen对象"><span class="nav-number">2.</span> <span class="nav-text">screen对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器窗口可视区域大小"><span class="nav-number">3.</span> <span class="nav-text">浏览器窗口可视区域大小</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、对于IE9-、Chrome、Firefox、Opera-以及-Safari："><span class="nav-number">3.0.1.</span> <span class="nav-text">一、对于IE9+、Chrome、Firefox、Opera 以及 Safari：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、对于-Internet-Explorer-8、7、6、5："><span class="nav-number">3.0.2.</span> <span class="nav-text">二、对于 Internet Explorer 8、7、6、5：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、浏览器兼容性"><span class="nav-number">3.0.3.</span> <span class="nav-text">三、浏览器兼容性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网页尺寸scrollHeight"><span class="nav-number">4.</span> <span class="nav-text">网页尺寸scrollHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、针对IE、Opera"><span class="nav-number">4.0.1.</span> <span class="nav-text">一、针对IE、Opera:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、针对NS、FF"><span class="nav-number">4.0.2.</span> <span class="nav-text">二、针对NS、FF:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、浏览器兼容性-1"><span class="nav-number">4.0.3.</span> <span class="nav-text">三、浏览器兼容性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网页尺寸offsetHeight"><span class="nav-number">5.</span> <span class="nav-text">网页尺寸offsetHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、值"><span class="nav-number">5.0.1.</span> <span class="nav-text">一、值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网页卷去的距离与偏移量"><span class="nav-number">6.</span> <span class="nav-text">网页卷去的距离与偏移量</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML元素精准定位"><span class="nav-number">1.</span> <span class="nav-text">HTML元素精准定位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何获取元素的精确位置"><span class="nav-number">2.</span> <span class="nav-text">如何获取元素的精确位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#screen对象"><span class="nav-number">3.</span> <span class="nav-text">screen对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#浏览器窗口可视区域大小"><span class="nav-number">4.</span> <span class="nav-text">浏览器窗口可视区域大小</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、对于IE9-、Chrome、Firefox、Opera-以及-Safari："><span class="nav-number">4.0.1.</span> <span class="nav-text">一、对于IE9+、Chrome、Firefox、Opera 以及 Safari：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、对于-Internet-Explorer-8、7、6、5："><span class="nav-number">4.0.2.</span> <span class="nav-text">二、对于 Internet Explorer 8、7、6、5：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、浏览器兼容性"><span class="nav-number">4.0.3.</span> <span class="nav-text">三、浏览器兼容性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网页尺寸scrollHeight"><span class="nav-number">5.</span> <span class="nav-text">网页尺寸scrollHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、针对IE、Opera"><span class="nav-number">5.0.1.</span> <span class="nav-text">一、针对IE、Opera:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、针对NS、FF"><span class="nav-number">5.0.2.</span> <span class="nav-text">二、针对NS、FF:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、浏览器兼容性-1"><span class="nav-number">5.0.3.</span> <span class="nav-text">三、浏览器兼容性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网页尺寸offsetHeight"><span class="nav-number">6.</span> <span class="nav-text">网页尺寸offsetHeight</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、值"><span class="nav-number">6.0.1.</span> <span class="nav-text">一、值</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网页卷去的距离与偏移量"><span class="nav-number">7.</span> <span class="nav-text">网页卷去的距离与偏移量</span></a></li></ol></div>
             
 
           </div>

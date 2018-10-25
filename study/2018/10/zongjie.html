@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="前端优化," />
+  <meta name="keywords" content="圆玉, 博客" />
 
 
 
@@ -79,23 +79,17 @@
 
 
 
-<meta name="description" content="减少同一域名下的HTTP请求数1、把静态资源放在单独的非主域名。这样可以增加浏览器并发连接数，而且减少HTTP请求中携带的不必要的cookie数据（cookie的作用域是整个域名） 2、合并同一域名下的资源。比如，合并CSS文件，将图片组合为CSS贴图（sprite） 3、省掉不必要的HTTP请求，可以 内嵌小型css/js,设置缓存，减少重定向等 减少每一个资源的体积1、    选择合适的图片">
-<meta name="keywords" content="前端优化">
+<meta name="description" content="webpack-dev-server启动并不是访问vue项目内某个文件, src/assets内的文件是不能在index.html直接引用的, 必须经过loader处理路径 plublic里放置的文件是不经过 webpack 处理的。在 index.html 里引用的时候，直接就是 &amp;lt;script src=&amp;quot;/plublic/oidc-client.js&amp;quot;&amp;gt;&amp;lt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《Web 全栈工程师的自我修养》读书笔记">
-<meta property="og:url" content="http://lry1994.github.io/study/2018/1/30-web-full-stack-study.html">
+<meta property="og:title" content="2018.10总结">
+<meta property="og:url" content="http://lry1994.github.io/study/2018/10/zongjie.html">
 <meta property="og:site_name" content="圆玉的博客">
-<meta property="og:description" content="减少同一域名下的HTTP请求数1、把静态资源放在单独的非主域名。这样可以增加浏览器并发连接数，而且减少HTTP请求中携带的不必要的cookie数据（cookie的作用域是整个域名） 2、合并同一域名下的资源。比如，合并CSS文件，将图片组合为CSS贴图（sprite） 3、省掉不必要的HTTP请求，可以 内嵌小型css/js,设置缓存，减少重定向等 减少每一个资源的体积1、    选择合适的图片">
+<meta property="og:description" content="webpack-dev-server启动并不是访问vue项目内某个文件, src/assets内的文件是不能在index.html直接引用的, 必须经过loader处理路径 plublic里放置的文件是不经过 webpack 处理的。在 index.html 里引用的时候，直接就是 &amp;lt;script src=&amp;quot;/plublic/oidc-client.js&amp;quot;&amp;gt;&amp;lt;">
 <meta property="og:locale" content="zh-hk">
-<meta property="og:image" content="http://lry1994.github.io/images/book/web-full-stack-self-cultivation.jpg">
-<meta property="og:image" content="http://lry1994.github.io/study/2018/1/30-web-full-stack-study/performance-optimize.png">
-<meta property="og:image" content="http://lry1994.github.io/study/2018/1/30-web-full-stack-study/pic-adapt.jpg">
-<meta property="og:image" content="http://lry1994.github.io/study/2018/1/30-web-full-stack-study/aria.png">
-<meta property="og:updated_time" content="2018-04-11T05:52:28.967Z">
+<meta property="og:updated_time" content="2018-10-23T05:52:26.183Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="《Web 全栈工程师的自我修养》读书笔记">
-<meta name="twitter:description" content="减少同一域名下的HTTP请求数1、把静态资源放在单独的非主域名。这样可以增加浏览器并发连接数，而且减少HTTP请求中携带的不必要的cookie数据（cookie的作用域是整个域名） 2、合并同一域名下的资源。比如，合并CSS文件，将图片组合为CSS贴图（sprite） 3、省掉不必要的HTTP请求，可以 内嵌小型css/js,设置缓存，减少重定向等 减少每一个资源的体积1、    选择合适的图片">
-<meta name="twitter:image" content="http://lry1994.github.io/images/book/web-full-stack-self-cultivation.jpg">
+<meta name="twitter:title" content="2018.10总结">
+<meta name="twitter:description" content="webpack-dev-server启动并不是访问vue项目内某个文件, src/assets内的文件是不能在index.html直接引用的, 必须经过loader处理路径 plublic里放置的文件是不经过 webpack 处理的。在 index.html 里引用的时候，直接就是 &amp;lt;script src=&amp;quot;/plublic/oidc-client.js&amp;quot;&amp;gt;&amp;lt;">
 
 
 
@@ -125,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://lry1994.github.io/study/2018/1/30-web-full-stack-study.html"/>
+  <link rel="canonical" href="http://lry1994.github.io/study/2018/10/zongjie.html"/>
 
 
 
 
 
-  <title>《Web 全栈工程师的自我修养》读书笔记 | 圆玉的博客</title>
+  <title>2018.10总结 | 圆玉的博客</title>
   
 
 
@@ -238,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lry1994.github.io/study/2018/1/30-web-full-stack-study.html">
+    <link itemprop="mainEntityOfPage" href="http://lry1994.github.io/study/2018/10/zongjie.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ruiyu Lin">
@@ -255,7 +249,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">《Web 全栈工程师的自我修养》读书笔记</h2>
+          <h2 class="post-title" itemprop="name headline">2018.10总结</h2>
         
 
         <div class="post-meta">
@@ -267,8 +261,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-01-30T00:00:00+08:00">
-                2018-01-30
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-10-18T00:00:00+08:00">
+                2018-10-18
               </time>
             
 
@@ -301,8 +295,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
+                  <a href="/categories/学习/每月总结/" itemprop="url" rel="index">
+                    <span itemprop="name">每月总结</span>
                   </a>
                 </span>
 
@@ -319,8 +313,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/study/2018/1/30-web-full-stack-study.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/study/2018/1/30-web-full-stack-study.html" itemprop="commentsCount"></span>
+                <a href="/study/2018/10/zongjie.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/study/2018/10/zongjie.html" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -353,39 +347,9 @@
       
 
       
-        <p><img src="/images/book/web-full-stack-self-cultivation.jpg" alt="cover"></p>
-<h2 id="减少同一域名下的HTTP请求数"><a href="#减少同一域名下的HTTP请求数" class="headerlink" title="减少同一域名下的HTTP请求数"></a>减少同一域名下的HTTP请求数</h2><p>1、把静态资源放在单独的非主域名。这样可以增加浏览器并发连接数，而且减少HTTP请求中携带的不必要的cookie数据（cookie的作用域是整个域名）</p>
-<p>2、合并同一域名下的资源。比如，合并CSS文件，将图片组合为CSS贴图（sprite）</p>
-<p>3、省掉不必要的HTTP请求，可以 内嵌小型css/js,设置缓存，减少重定向等</p>
-<h2 id="减少每一个资源的体积"><a href="#减少每一个资源的体积" class="headerlink" title="减少每一个资源的体积"></a>减少每一个资源的体积</h2><p>1、    选择合适的图片格式，就能用更小的体积，达到更好的显示效果。如果图片颜色数较多就使用JPG格式，较少就使用PNG格式。如果能够通过服务器端判断浏览器支持WebP,那么久使用WebP格式和SVG格式</p>
-<p>2、    对于比较大的文本资源，必须开启服务器端的gzip压缩。因为gzip对于含有重复“单词”的文本文件，压缩率比较高，能够有效提高传输过程。Gzip对文本资源非常有效，对图片资源则没那么大的压缩率</p>
-<p>3、    压缩源码和图片</p>
-<p>Js文件源代码可以采用混淆压缩 的方式</p>
-<p>Css文件源代码进行普通压缩</p>
-<p>JPG图片可以根据具体质量压缩为50%到70%</p>
-<p>PNG可以使用一些开源压缩软件来压缩，比图24色变为8色、去掉一些PNG格式信息</p>
-<h2 id="使用CDN"><a href="#使用CDN" class="headerlink" title="使用CDN"></a>使用CDN</h2><p>可以增加并发下载量，还能与其他网站共享缓存</p>
-<h2 id="推荐的浏览器缓存设置的最佳实践"><a href="#推荐的浏览器缓存设置的最佳实践" class="headerlink" title="推荐的浏览器缓存设置的最佳实践"></a>推荐的浏览器缓存设置的最佳实践</h2><p>1、    对于动态生成的HTML页面使用HTTPS头：Cache-Control：no-cache</p>
-<p>2、    对于静态HTML页面使用HTTPS头：Last-Modified</p>
-<p>3、    其他所有的文件类型都设置Expires头，并且在文件内容有所修改的时候修改query string。</p>
-<p>为了避免出现运营商劫持文件的情况，使用更加强硬的方法：修改文件名，而不是修改query string。用户的宽带运营商为了提高速度，可能会在自己的某个节点服务器上缓存你的文件，但是如果query string更新了，运营商仍然可能那自己节点的缓存发给你。（根据HTTP规范，如果修改了请求资源的Query string,就应该被视为一个新的文件）<br>这些都是服务器对每个资源的响应头里设置的</p>
-<h2 id="版本控制最佳实践"><a href="#版本控制最佳实践" class="headerlink" title="版本控制最佳实践"></a>版本控制最佳实践</h2><p>1、    鼓励频繁提交，不要等到代码没问题了再提交</p>
-<p>2、    确定分支流程。基本上所有的特性和较大的bug都应该使用分支来修改</p>
-<p>3、    定义主干原则，并且坚守它。我们的团队的主干原则是“主干对应的代码必须是可以发布并且不会产生bug的”</p>
-<p>4、    不要把逻辑的修改和代码格式化操作混在一起提交</p>
-<p>5、    不相干的代码分开提交，也就是说不要在一次提交里面修复两个bug</p>
-<p>6、    保持代码库的“干净”</p>
-<h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><p>1、三次法则（rule of three）允许按需直接赋值粘贴代码一次，如果相同的代码重复出现三次及三次以上，将其提取处理做成一个子程序</p>
-<p>2、WET（wwrite everything twice）</p>
-<p>3、DRY（don’t repeat youselft）</p>
-<p>4、惯例优先于设置</p>
-<p>5、KISS原则，keep it simple,stupid</p>
-<p>6、最少知道原则</p>
-<h2 id="在别的地方看到的图"><a href="#在别的地方看到的图" class="headerlink" title="在别的地方看到的图"></a>在别的地方看到的图</h2><p>性能优化</p>
-<img src="/study/2018/1/30-web-full-stack-study/performance-optimize.png" title="性能优化">
-<p>图片适配</p>
-<img src="/study/2018/1/30-web-full-stack-study/pic-adapt.jpg" title="图片适配">
-<p>aria无障碍文本<br><img src="/study/2018/1/30-web-full-stack-study/aria.png" title="aria"></p>
+        <p>webpack-dev-server启动并不是访问vue项目内某个文件, src/assets内的文件是不能在index.html直接引用的, 必须经过loader处理路径</p>
+<p>plublic里放置的文件是不经过 webpack 处理的。在 index.html 里引用的时候，直接就是 <code>&lt;script src=&quot;/plublic/oidc-client.js&quot;&gt;&lt;/script&gt;。</code></p>
+<h3 id="scss-export"><a href="#scss-export" class="headerlink" title="scss export"></a>scss export</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="variable">$title-width</span>: <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">:export &#123;</span><br><span class="line">  titleWidth: <span class="variable">$title-width</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -438,12 +402,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/前端优化/" rel="tag"># 前端优化</a>
-          
-        </div>
-      
 
       
       
@@ -453,8 +411,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/study/2018/1/4-reatnative-android-ios.html" rel="next" title="reat-native在Android和IOS平台的区别">
-                <i class="fa fa-chevron-left"></i> reat-native在Android和IOS平台的区别
+              <a href="/study/2018/9/network.html" rel="next" title="面经收集--网络/浏览器/模块化/diff原理">
+                <i class="fa fa-chevron-left"></i> 面经收集--网络/浏览器/模块化/diff原理
               </a>
             
           </div>
@@ -463,8 +421,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/study/2018/2/suibi.html" rel="prev" title="2018-2总结">
-                2018-2总结 <i class="fa fa-chevron-right"></i>
+              <a href="/study/2018/10/design-pattern.html" rel="prev" title="读《Learning Javascript Design Patterns》 -Addy Osmani">
+                读《Learning Javascript Design Patterns》 -Addy Osmani <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -638,7 +596,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#减少同一域名下的HTTP请求数"><span class="nav-number">1.</span> <span class="nav-text">减少同一域名下的HTTP请求数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#减少每一个资源的体积"><span class="nav-number">2.</span> <span class="nav-text">减少每一个资源的体积</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用CDN"><span class="nav-number">3.</span> <span class="nav-text">使用CDN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推荐的浏览器缓存设置的最佳实践"><span class="nav-number">4.</span> <span class="nav-text">推荐的浏览器缓存设置的最佳实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#版本控制最佳实践"><span class="nav-number">5.</span> <span class="nav-text">版本控制最佳实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计原则"><span class="nav-number">6.</span> <span class="nav-text">设计原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在别的地方看到的图"><span class="nav-number">7.</span> <span class="nav-text">在别的地方看到的图</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#scss-export"><span class="nav-number">1.</span> <span class="nav-text">scss export</span></a></li></ol></div>
             
 
           </div>

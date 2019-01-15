@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="圆玉的博客">
 <meta property="og:description" content="实现QQ弹窗 和QQ号为qqnum聊天123&amp;lt;a target=&quot;_blank&quot; :href=&quot;`http://wpa.qq.com/msgrd?v=3&amp;amp;uin=$&amp;#123;qqnum&amp;#125;&amp;amp;site=qq&amp;amp;menu=yes`&quot;&amp;gt;    &amp;lt;img border=&quot;0&quot; :src=&quot;`http://wpa.qq.com/pa?p=2:14243141">
 <meta property="og:locale" content="zh-hk">
-<meta property="og:updated_time" content="2018-08-30T02:32:56.365Z">
+<meta property="og:updated_time" content="2018-12-10T07:59:59.938Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2018-4总结">
 <meta name="twitter:description" content="实现QQ弹窗 和QQ号为qqnum聊天123&amp;lt;a target=&quot;_blank&quot; :href=&quot;`http://wpa.qq.com/msgrd?v=3&amp;amp;uin=$&amp;#123;qqnum&amp;#125;&amp;amp;site=qq&amp;amp;menu=yes`&quot;&amp;gt;    &amp;lt;img border=&quot;0&quot; :src=&quot;`http://wpa.qq.com/pa?p=2:14243141">
@@ -349,8 +349,8 @@
       
         <h3 id="实现QQ弹窗-和QQ号为qqnum聊天"><a href="#实现QQ弹窗-和QQ号为qqnum聊天" class="headerlink" title="实现QQ弹窗 和QQ号为qqnum聊天"></a>实现QQ弹窗 和QQ号为qqnum聊天</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">:href</span>=<span class="string">"`http://wpa.qq.com/msgrd?v=3&amp;uin=$&#123;qqnum&#125;&amp;site=qq&amp;menu=yes`"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">border</span>=<span class="string">"0"</span> <span class="attr">:src</span>=<span class="string">"`http://wpa.qq.com/pa?p=2:1424314130:51`"</span> <span class="attr">alt</span>=<span class="string">"点击这里给我发消息"</span> <span class="attr">title</span>=<span class="string">"点击这里给我发消息"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="Vue全局过滤器也可以当函数使用"><a href="#Vue全局过滤器也可以当函数使用" class="headerlink" title="Vue全局过滤器也可以当函数使用"></a>Vue全局过滤器也可以当函数使用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$options.filters.dateformat</span><br></pre></td></tr></table></figure>
-<h3 id="字符串转义问题"><a href="#字符串转义问题" class="headerlink" title="字符串转义问题"></a>字符串转义问题</h3><p>本地字符串不会自己转义，所以本地需要写成 “\d”</p>
-<p>后台请求返回的字符串会自动帮你转义，所以在后台数据库只需要写成”\d”</p>
+<h3 id="字符串转义问题"><a href="#字符串转义问题" class="headerlink" title="字符串转义问题"></a>字符串转义问题</h3><p>本地字符串不会自己转义，所以本地需要写成 <code>\\d</code></p>
+<p>后台请求返回的字符串会自动帮你转义，所以在后台数据库只需要写成<code>\d</code></p>
 <h3 id="如何解决vue父组件模板slot到孙子组件中去"><a href="#如何解决vue父组件模板slot到孙子组件中去" class="headerlink" title="如何解决vue父组件模板slot到孙子组件中去"></a>如何解决vue父组件模板slot到孙子组件中去</h3><pre><code>&gt;每一个被继承的组件都需要有slot;
 </code></pre><p><a href="https://segmentfault.com/q/1010000012141592" target="_blank" rel="noopener">参考链接</a></p>
 <h3 id="记录一下第一次使用async-await-解决了困扰我一早上的异步问题-赞！！！"><a href="#记录一下第一次使用async-await-解决了困扰我一早上的异步问题-赞！！！" class="headerlink" title="记录一下第一次使用async ,await ,解决了困扰我一早上的异步问题,赞！！！"></a>记录一下第一次使用async ,await ,解决了困扰我一早上的异步问题,赞！！！</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取文件信息</span></span><br><span class="line"> getFileInfo(item)&#123;</span><br><span class="line">     <span class="keyword">let</span> fileId= item.value;</span><br><span class="line">     <span class="keyword">const</span> downloadLink =<span class="string">`/gw/tenant/worksheet/extend/Download?worksheetInfoId=<span class="subst">$&#123;item.worksheetInfoId&#125;</span>&amp;blobId=offer.info`</span>;</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">         <span class="keyword">if</span>(fileId == <span class="string">'undefined'</span>) resolve(<span class="literal">null</span>);</span><br><span class="line">         <span class="keyword">this</span>._$http.tenant.offerExtendGetFileInfo(&#123;<span class="attr">fileId</span>: fileId&#125;)</span><br><span class="line">         .then(<span class="function"><span class="params">res</span>=&gt;</span>&#123; </span><br><span class="line">             res=&#123;...res,downloadLink&#125;;</span><br><span class="line">             resolve(res)</span><br><span class="line">         &#125;) </span><br><span class="line">     &#125;)           </span><br><span class="line"> &#125;,</span><br><span class="line"> <span class="comment">//获取文件信息</span></span><br><span class="line"> fileGetter: <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;           </span><br><span class="line">     <span class="keyword">const</span> fileInfo = <span class="keyword">await</span> <span class="keyword">this</span>.getFileInfo(item);</span><br><span class="line">     <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(fileInfo);         </span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
@@ -534,7 +534,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -639,7 +639,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
-<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

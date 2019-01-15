@@ -81,14 +81,14 @@
 
 <meta name="description" content="webpack-dev-server启动并不是访问vue项目内某个文件, src/assets内的文件是不能在index.html直接引用的, 必须经过loader处理路径 plublic里放置的文件是不经过 webpack 处理的。在 index.html 里引用的时候，直接就是 &amp;lt;script src=&amp;quot;/plublic/oidc-client.js&amp;quot;&amp;gt;&amp;lt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2018.10总结">
+<meta property="og:title" content="2018.10-2018.11总结">
 <meta property="og:url" content="http://lry1994.github.io/study/2018/10/zongjie.html">
 <meta property="og:site_name" content="圆玉的博客">
 <meta property="og:description" content="webpack-dev-server启动并不是访问vue项目内某个文件, src/assets内的文件是不能在index.html直接引用的, 必须经过loader处理路径 plublic里放置的文件是不经过 webpack 处理的。在 index.html 里引用的时候，直接就是 &amp;lt;script src=&amp;quot;/plublic/oidc-client.js&amp;quot;&amp;gt;&amp;lt;">
 <meta property="og:locale" content="zh-hk">
-<meta property="og:updated_time" content="2018-10-23T05:52:26.183Z">
+<meta property="og:updated_time" content="2018-11-30T06:56:12.921Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2018.10总结">
+<meta name="twitter:title" content="2018.10-2018.11总结">
 <meta name="twitter:description" content="webpack-dev-server启动并不是访问vue项目内某个文件, src/assets内的文件是不能在index.html直接引用的, 必须经过loader处理路径 plublic里放置的文件是不经过 webpack 处理的。在 index.html 里引用的时候，直接就是 &amp;lt;script src=&amp;quot;/plublic/oidc-client.js&amp;quot;&amp;gt;&amp;lt;">
 
 
@@ -125,7 +125,7 @@
 
 
 
-  <title>2018.10总结 | 圆玉的博客</title>
+  <title>2018.10-2018.11总结 | 圆玉的博客</title>
   
 
 
@@ -249,7 +249,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">2018.10总结</h2>
+          <h2 class="post-title" itemprop="name headline">2018.10-2018.11总结</h2>
         
 
         <div class="post-meta">
@@ -350,7 +350,15 @@
         <p>webpack-dev-server启动并不是访问vue项目内某个文件, src/assets内的文件是不能在index.html直接引用的, 必须经过loader处理路径</p>
 <p>plublic里放置的文件是不经过 webpack 处理的。在 index.html 里引用的时候，直接就是 <code>&lt;script src=&quot;/plublic/oidc-client.js&quot;&gt;&lt;/script&gt;。</code></p>
 <h3 id="scss-export"><a href="#scss-export" class="headerlink" title="scss export"></a>scss export</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="variable">$title-width</span>: <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">:export &#123;</span><br><span class="line">  titleWidth: <span class="variable">$title-width</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+<h3 id="ie-margin-top负值无效"><a href="#ie-margin-top负值无效" class="headerlink" title="ie margin-top负值无效"></a>ie margin-top负值无效</h3><p><a href="https://www.cnblogs.com/chaozhang/p/4711282.html" target="_blank" rel="noopener">https://www.cnblogs.com/chaozhang/p/4711282.html</a></p>
+<p>加上display:inline-block</p>
+<h3 id="inline-block的元素设置over-flow-hidden会意外地增加元素总体高度，"><a href="#inline-block的元素设置over-flow-hidden会意外地增加元素总体高度，" class="headerlink" title="inline-block的元素设置over-flow:hidden会意外地增加元素总体高度，"></a>inline-block的元素设置over-flow:hidden会意外地增加元素总体高度，</h3><p>用vertical-align:bottom解决</p>
+<h3 id="ie中img被拉伸"><a href="#ie中img被拉伸" class="headerlink" title="ie中img被拉伸"></a>ie中img被拉伸</h3><p>只要设置img为 height:auto，width:auto，就不会出现这种情况了</p>
+<h3 id="vue-路由query变化监测不到meta的"><a href="#vue-路由query变化监测不到meta的" class="headerlink" title="vue 路由query变化监测不到meta的"></a>vue 路由query变化监测不到meta的</h3><p>这样使用query,路由变化，meta并没有变化<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    name: <span class="string">'order.list.1'</span>,</span><br><span class="line">    path: <span class="string">'/order/list/status=1'</span>,</span><br><span class="line">    component: list,</span><br><span class="line">    meta: &#123;</span><br><span class="line">      domain: <span class="string">'order'</span>,</span><br><span class="line">      key: <span class="string">'order-list-1'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">'order.list.2'</span>,</span><br><span class="line">    path: <span class="string">'/order/list/status=2'</span>,</span><br><span class="line">    component: list,</span><br><span class="line">    meta: &#123;</span><br><span class="line">      domain: <span class="string">'order'</span>,</span><br><span class="line">      key: <span class="string">'order-list-2'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
+<p>使用params是可以的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    name: <span class="string">'order.list.1'</span>,</span><br><span class="line">    path: <span class="string">'/order/list/1'</span>,</span><br><span class="line">    component: list,</span><br><span class="line">    meta: &#123;</span><br><span class="line">      domain: <span class="string">'order'</span>,</span><br><span class="line">      key: <span class="string">'order-list-1'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">'order.list.2'</span>,</span><br><span class="line">    path: <span class="string">'/order/list/2'</span>,</span><br><span class="line">    component: list,</span><br><span class="line">    meta: &#123;</span><br><span class="line">      domain: <span class="string">'order'</span>,</span><br><span class="line">      key: <span class="string">'order-list-2'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
+<p>使用函数模式也可以</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dict = &#123;</span><br><span class="line">  <span class="number">1</span>: <span class="string">'order-list-1'</span>,</span><br><span class="line">  <span class="number">2</span>: <span class="string">'order-list-2'</span>,</span><br><span class="line">  <span class="keyword">default</span>: <span class="string">'order-list'</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">  name: <span class="string">'order'</span>,</span><br><span class="line">  path: <span class="string">'/order'</span>,</span><br><span class="line">  redirect: &#123;</span><br><span class="line">    name: <span class="string">'order.list'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  component: Container,</span><br><span class="line">  children: [&#123;</span><br><span class="line">    name: <span class="string">'order.list'</span>,</span><br><span class="line">    path: <span class="string">'/order/list'</span>,</span><br><span class="line">    component: list,</span><br><span class="line">    meta: &#123;</span><br><span class="line">      domain: <span class="string">'order'</span>,</span><br><span class="line">      key(route) &#123;</span><br><span class="line">        <span class="keyword">return</span> dict[route.query.status || <span class="string">'default'</span>];</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="vue-指令使用模板，不再用template了，用el"><a href="#vue-指令使用模板，不再用template了，用el" class="headerlink" title="vue 指令使用模板，不再用template了，用el"></a>vue 指令使用模板，不再用template了，用el</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Marquee.js</span></span><br><span class="line"><span class="keyword">import</span> Marquee <span class="keyword">from</span> <span class="string">'./Marquee.vue'</span>;</span><br><span class="line"><span class="keyword">const</span> Tpl = Vue.extend(Marquee);<span class="comment">//这个好漂亮</span></span><br><span class="line"><span class="keyword">const</span> Plugin = &#123;</span><br><span class="line">  install(vue, options) &#123;</span><br><span class="line">        Vue.directive(<span class="string">'marquee'</span>, &#123;</span><br><span class="line">           inserted(el, binding, vnode) &#123;</span><br><span class="line">              <span class="keyword">const</span> mask = <span class="keyword">new</span> Tpl(&#123;</span><br><span class="line">                  el: <span class="built_in">document</span>.createElement(<span class="string">'div'</span>),</span><br><span class="line">                  data: &#123; <span class="attr">name</span>: binding.value &#125;</span><br><span class="line">              &#125;);</span><br><span class="line">              el.appendChild(mask.$el);</span><br><span class="line">           &#125;)</span><br><span class="line">     &#125;   </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Plugin;</span><br><span class="line"><span class="comment">//main.js</span></span><br><span class="line"><span class="keyword">import</span> Marquee <span class="keyword">from</span> <span class="string">'./Marquee.js'</span></span><br><span class="line">Vue.use(Marquee)</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -512,7 +520,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -596,7 +604,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#scss-export"><span class="nav-number">1.</span> <span class="nav-text">scss export</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#scss-export"><span class="nav-number">1.</span> <span class="nav-text">scss export</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ie-margin-top负值无效"><span class="nav-number">2.</span> <span class="nav-text">ie margin-top负值无效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#inline-block的元素设置over-flow-hidden会意外地增加元素总体高度，"><span class="nav-number">3.</span> <span class="nav-text">inline-block的元素设置over-flow:hidden会意外地增加元素总体高度，</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ie中img被拉伸"><span class="nav-number">4.</span> <span class="nav-text">ie中img被拉伸</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-路由query变化监测不到meta的"><span class="nav-number">5.</span> <span class="nav-text">vue 路由query变化监测不到meta的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-指令使用模板，不再用template了，用el"><span class="nav-number">6.</span> <span class="nav-text">vue 指令使用模板，不再用template了，用el</span></a></li></ol></div>
             
 
           </div>
@@ -617,7 +625,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         
-<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

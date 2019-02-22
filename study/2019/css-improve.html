@@ -87,7 +87,7 @@
 <meta property="og:description" content="公共代码多次放在scoped内我们很多时候写了一个公共的common.scss,然后在各个vue里面 123&amp;lt;style scoped&amp;gt;import  &apos;@/assets/css/common.scss&apos;&amp;lt;/style&amp;gt; 由于加了scoped，导致common里面的样式都加上了[data-v-aaaa]这样的标识，最后打出来的css重复，这就不是公共css了。 并且在多少个">
 <meta property="og:locale" content="zh-hk">
 <meta property="og:image" content="http://lry1994.github.io/study/2019/css-improve-effect.png">
-<meta property="og:updated_time" content="2019-01-15T08:15:43.559Z">
+<meta property="og:updated_time" content="2019-02-19T09:48:39.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于css打包后过大的问题">
 <meta name="twitter:description" content="公共代码多次放在scoped内我们很多时候写了一个公共的common.scss,然后在各个vue里面 123&amp;lt;style scoped&amp;gt;import  &apos;@/assets/css/common.scss&apos;&amp;lt;/style&amp;gt; 由于加了scoped，导致common里面的样式都加上了[data-v-aaaa]这样的标识，最后打出来的css重复，这就不是公共css了。 并且在多少个">
@@ -374,6 +374,8 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//main.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'@/views/order/style.scss'</span>;</span><br></pre></td></tr></table></figure>
 <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//@/views/order/style.scss</span></span><br><span class="line"><span class="selector-class">.order</span>&#123;</span><br><span class="line">    xxxxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>最后把控制台的代码按照上面的方法整理了一下，结果打包出来的css足足小了127kb<br><img src="/study/2019/css-improve-effect.png"></p>
+<p>————2019/2/19更新——————-</p>
+<p>注意：之前在想，既然<code>&lt;style&gt;&lt;/style&gt;</code>(不用scoped)放在哪里都可以全局生效，那我随便放在一个大组件里也行啊。<br>最近发现在一个组件里面不用scoped地引入css,从这个组件进去另一个组件，另一个组件确实是会受到前者css的影响。<br>但是如果直接打开后者组件的页面，不经过前者，css无效。所以全局css还是放在main里面好。</p>
 
       
     </div>
@@ -444,6 +446,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/study/2019/2.html" rel="prev" title="2019.2总结">
+                2019.2总结 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -532,7 +538,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>

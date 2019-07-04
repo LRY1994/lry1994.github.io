@@ -12,7 +12,7 @@
 
     
     <meta name="description" content="https://segmentfault.com/a/1190000011635556?utm_source=tag-newest 本质上说，XHTML是一个过渡技术，结合了XML(有几分)的强大功能及HTML(大多数)的简单特性。以下是 XHTML 相对 HTML 的几大区别：XHTML 要求正确嵌套、XHTML 所有元素必须关闭、XHTML 区分大小写、XHTML 属性值要用双引号、XHTML">
-<meta name="keywords" content="日常记录,面试">
+<meta name="keywords" content="面经">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面经收集--HTML+CSS+JS">
 <meta property="og:url" content="http://lry1994.github.io/study/2018/9/mianjing.html">
@@ -20,7 +20,7 @@
 <meta property="og:description" content="https://segmentfault.com/a/1190000011635556?utm_source=tag-newest 本质上说，XHTML是一个过渡技术，结合了XML(有几分)的强大功能及HTML(大多数)的简单特性。以下是 XHTML 相对 HTML 的几大区别：XHTML 要求正确嵌套、XHTML 所有元素必须关闭、XHTML 区分大小写、XHTML 属性值要用双引号、XHTML">
 <meta property="og:locale" content="zh-hk">
 <meta property="og:image" content="http://lry1994.github.io/study/2018/9/mianjing/proto_link.png">
-<meta property="og:updated_time" content="2019-07-04T03:11:59.674Z">
+<meta property="og:updated_time" content="2019-07-04T03:27:36.816Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面经收集--HTML+CSS+JS">
 <meta name="twitter:description" content="https://segmentfault.com/a/1190000011635556?utm_source=tag-newest 本质上说，XHTML是一个过渡技术，结合了XML(有几分)的强大功能及HTML(大多数)的简单特性。以下是 XHTML 相对 HTML 的几大区别：XHTML 要求正确嵌套、XHTML 所有元素必须关闭、XHTML 区分大小写、XHTML 属性值要用双引号、XHTML">
@@ -52,7 +52,7 @@
 				<h1 class="site-name"><a href="/" title="圆玉的博客">圆玉的博客</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -66,7 +66,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:lry1994.github.io">
 					</form>
 					
@@ -89,14 +89,14 @@
 		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
 		
   <p class="article-time">
-    <time datetime="2018-10-07T16:00:00.000Z" itemprop="datePublished"> Published 2018-10-08</time>
+    <time datetime="2018-09-07T16:00:00.000Z" itemprop="datePublished"> 发表于 2018-09-08</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#本质上说，XHTML是一个过渡技术，结合了XML-有几分-的强大功能及HTML-大多数-的简单特性。"><span class="toc-number">1.</span> <span class="toc-text">本质上说，XHTML是一个过渡技术，结合了XML(有几分)的强大功能及HTML(大多数)的简单特性。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#table布局应用场景："><span class="toc-number">2.</span> <span class="toc-text">table布局应用场景：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BFC"><span class="toc-number">3.</span> <span class="toc-text">BFC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#你知道attribute和property的区别么"><span class="toc-number">4.</span> <span class="toc-text">你知道attribute和property的区别么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#流式布局如何实现，响应式布局如何实现"><span class="toc-number">5.</span> <span class="toc-text">流式布局如何实现，响应式布局如何实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现两栏布局有哪些方法？"><span class="toc-number">6.</span> <span class="toc-text">实现两栏布局有哪些方法？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现三栏布局（圣杯布局，双飞翼布局，flex布局）"><span class="toc-number">7.</span> <span class="toc-text">实现三栏布局（圣杯布局，双飞翼布局，flex布局）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#padding-top、margin-top…等四个方向的值取决于父元素的宽，和父元素的高没有一点关系"><span class="toc-number">8.</span> <span class="toc-text">padding-top、margin-top…等四个方向的值取决于父元素的宽，和父元素的高没有一点关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bind"><span class="toc-number">9.</span> <span class="toc-text">bind</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#new-一个对象具体做了什么"><span class="toc-number">10.</span> <span class="toc-text">new 一个对象具体做了什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DOM事件的绑定的几种方式"><span class="toc-number">11.</span> <span class="toc-text">DOM事件的绑定的几种方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#显示原型prototye和隐式原型proto，手绘原型链"><span class="toc-number">12.</span> <span class="toc-text">显示原型prototye和隐式原型proto，手绘原型链.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#typeof-和instanceof原理。"><span class="toc-number">13.</span> <span class="toc-text">typeof 和instanceof原理。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#指出JS的宿主对象和原生对象的区别，为什么扩展JS内置对象不是好的做法？有哪些内置对象和内置函数？"><span class="toc-number">14.</span> <span class="toc-text">指出JS的宿主对象和原生对象的区别，为什么扩展JS内置对象不是好的做法？有哪些内置对象和内置函数？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#js动画和css3动画比较-requestAnimationFrame优势"><span class="toc-number">15.</span> <span class="toc-text">js动画和css3动画比较/requestAnimationFrame优势</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用requestAnimationFrame有什么好处？"><span class="toc-number">16.</span> <span class="toc-text">使用requestAnimationFrame有什么好处？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#css3动画，transition和animation的区别，"><span class="toc-number">17.</span> <span class="toc-text">css3动画，transition和animation的区别，</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#animation的属性，加速度，重力的模拟实现"><span class="toc-number">18.</span> <span class="toc-text">animation的属性，加速度，重力的模拟实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是“use-strict”-好处和坏处"><span class="toc-number">19.</span> <span class="toc-text">什么是“use strict”,好处和坏处</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如何实现图片滚动懒加载"><span class="toc-number">20.</span> <span class="toc-text">如何实现图片滚动懒加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ES5与ES6继承的区别"><span class="toc-number">21.</span> <span class="toc-text">ES5与ES6继承的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#module-exports和exports区别"><span class="toc-number">22.</span> <span class="toc-text">module.exports和exports区别</span></a></li></ol>
 		
@@ -217,7 +217,7 @@
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/日常记录/">日常记录</a><a href="/tags/面试/">面试</a>
+  <span></span> <a href="/tags/面经/">面经</a>
   </div>
 
 </div>
@@ -263,22 +263,22 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#本质上说，XHTML是一个过渡技术，结合了XML-有几分-的强大功能及HTML-大多数-的简单特性。"><span class="toc-number">1.</span> <span class="toc-text">本质上说，XHTML是一个过渡技术，结合了XML(有几分)的强大功能及HTML(大多数)的简单特性。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#table布局应用场景："><span class="toc-number">2.</span> <span class="toc-text">table布局应用场景：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BFC"><span class="toc-number">3.</span> <span class="toc-text">BFC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#你知道attribute和property的区别么"><span class="toc-number">4.</span> <span class="toc-text">你知道attribute和property的区别么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#流式布局如何实现，响应式布局如何实现"><span class="toc-number">5.</span> <span class="toc-text">流式布局如何实现，响应式布局如何实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现两栏布局有哪些方法？"><span class="toc-number">6.</span> <span class="toc-text">实现两栏布局有哪些方法？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实现三栏布局（圣杯布局，双飞翼布局，flex布局）"><span class="toc-number">7.</span> <span class="toc-text">实现三栏布局（圣杯布局，双飞翼布局，flex布局）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#padding-top、margin-top…等四个方向的值取决于父元素的宽，和父元素的高没有一点关系"><span class="toc-number">8.</span> <span class="toc-text">padding-top、margin-top…等四个方向的值取决于父元素的宽，和父元素的高没有一点关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#bind"><span class="toc-number">9.</span> <span class="toc-text">bind</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#new-一个对象具体做了什么"><span class="toc-number">10.</span> <span class="toc-text">new 一个对象具体做了什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DOM事件的绑定的几种方式"><span class="toc-number">11.</span> <span class="toc-text">DOM事件的绑定的几种方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#显示原型prototye和隐式原型proto，手绘原型链"><span class="toc-number">12.</span> <span class="toc-text">显示原型prototye和隐式原型proto，手绘原型链.</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#typeof-和instanceof原理。"><span class="toc-number">13.</span> <span class="toc-text">typeof 和instanceof原理。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#指出JS的宿主对象和原生对象的区别，为什么扩展JS内置对象不是好的做法？有哪些内置对象和内置函数？"><span class="toc-number">14.</span> <span class="toc-text">指出JS的宿主对象和原生对象的区别，为什么扩展JS内置对象不是好的做法？有哪些内置对象和内置函数？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#js动画和css3动画比较-requestAnimationFrame优势"><span class="toc-number">15.</span> <span class="toc-text">js动画和css3动画比较/requestAnimationFrame优势</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用requestAnimationFrame有什么好处？"><span class="toc-number">16.</span> <span class="toc-text">使用requestAnimationFrame有什么好处？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#css3动画，transition和animation的区别，"><span class="toc-number">17.</span> <span class="toc-text">css3动画，transition和animation的区别，</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#animation的属性，加速度，重力的模拟实现"><span class="toc-number">18.</span> <span class="toc-text">animation的属性，加速度，重力的模拟实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是“use-strict”-好处和坏处"><span class="toc-number">19.</span> <span class="toc-text">什么是“use strict”,好处和坏处</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如何实现图片滚动懒加载"><span class="toc-number">20.</span> <span class="toc-text">如何实现图片滚动懒加载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ES5与ES6继承的区别"><span class="toc-number">21.</span> <span class="toc-text">ES5与ES6继承的区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#module-exports和exports区别"><span class="toc-number">22.</span> <span class="toc-text">module.exports和exports区别</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
@@ -295,15 +295,15 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/日常记录/" title="日常记录">日常记录<sup>24</sup></a></li>
+				<li><a href="/tags/日常记录/" title="日常记录">日常记录<sup>18</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/专题探究/" title="专题探究">专题探究<sup>12</sup></a></li>
+				<li><a href="/tags/专题探究/" title="专题探究">专题探究<sup>14</sup></a></li>
 			
 		
 			
@@ -311,19 +311,11 @@
 			
 		
 			
-				<li><a href="/tags/面试/" title="面试">面试<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/专题笔记探究/" title="专题笔记探究">专题笔记探究<sup>2</sup></a></li>
+				<li><a href="/tags/面经/" title="面经">面经<sup>6</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/动画/" title="动画">动画<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -333,7 +325,7 @@
   
 
 <div class="doubanshow">
-<p class="asidetitle">Douban Show</p>
+<p class="asidetitle">豆瓣秀</p>
 <div>
 <script type="text/javascript" src="http://www.douban.com/service/badge/167927352/?show=collection&amp;n=12&amp;columns=3&amp;hidelogo=yes&amp;hideself=yes&amp;cat=book|movie" ></script>
 </div>
@@ -341,11 +333,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2140938987&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -580,7 +572,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

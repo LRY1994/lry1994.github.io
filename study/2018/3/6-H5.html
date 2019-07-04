@@ -12,14 +12,14 @@
 
     
     <meta name="description" content="突然看到有H5页面外快做，看到微信朋友圈发的那些H5页面里面都用的了TweenMax，所以来研究一下，结果吓一跳，太太太强大了！！！！ 复习一下CSS31234567891011121314151617181920212223242526272829303132333435363738background-size: width heightbackground-clip:content-box/">
-<meta name="keywords" content="专题探究,动画">
+<meta name="keywords" content="专题探究">
 <meta property="og:type" content="article">
 <meta property="og:title" content="制作H5动画页面">
 <meta property="og:url" content="http://lry1994.github.io/study/2018/3/6-H5.html">
 <meta property="og:site_name" content="圆玉的博客">
 <meta property="og:description" content="突然看到有H5页面外快做，看到微信朋友圈发的那些H5页面里面都用的了TweenMax，所以来研究一下，结果吓一跳，太太太强大了！！！！ 复习一下CSS31234567891011121314151617181920212223242526272829303132333435363738background-size: width heightbackground-clip:content-box/">
 <meta property="og:locale" content="zh-hk">
-<meta property="og:updated_time" content="2019-07-04T03:15:04.442Z">
+<meta property="og:updated_time" content="2019-07-04T03:28:00.466Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="制作H5动画页面">
 <meta name="twitter:description" content="突然看到有H5页面外快做，看到微信朋友圈发的那些H5页面里面都用的了TweenMax，所以来研究一下，结果吓一跳，太太太强大了！！！！ 复习一下CSS31234567891011121314151617181920212223242526272829303132333435363738background-size: width heightbackground-clip:content-box/">
@@ -50,7 +50,7 @@
 				<h1 class="site-name"><a href="/" title="圆玉的博客">圆玉的博客</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -64,7 +64,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:lry1994.github.io">
 					</form>
 					
@@ -87,14 +87,14 @@
 		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
 		
   <p class="article-time">
-    <time datetime="2018-03-05T16:00:00.000Z" itemprop="datePublished"> Published 2018-03-06</time>
+    <time datetime="2018-03-05T16:00:00.000Z" itemprop="datePublished"> 发表于 2018-03-06</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#复习一下CSS3"><span class="toc-number">1.</span> <span class="toc-text">复习一下CSS3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GreenSock"><span class="toc-number">2.</span> <span class="toc-text">GreenSock</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">2.1.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">2.2.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TweenLite-可以解决基础动画"><span class="toc-number">2.3.</span> <span class="toc-text">TweenLite 可以解决基础动画</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#动画曲线"><span class="toc-number">2.3.1.</span> <span class="toc-text">动画曲线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2D转换"><span class="toc-number">2.3.2.</span> <span class="toc-text">2D转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3D转换"><span class="toc-number">2.3.3.</span> <span class="toc-text">3D转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重要属性"><span class="toc-number">2.3.4.</span> <span class="toc-text">重要属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Controlling-tween"><span class="toc-number">2.3.5.</span> <span class="toc-text">Controlling tween</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TimelineLite-让动画有序和组织"><span class="toc-number">2.4.</span> <span class="toc-text">TimelineLite 让动画有序和组织</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TimelineMax和TweenMax-多一些功能"><span class="toc-number">2.5.</span> <span class="toc-text">TimelineMax和TweenMax 多一些功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Overwriting-other-tweens"><span class="toc-number">2.6.</span> <span class="toc-text">Overwriting other tweens</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其它"><span class="toc-number">2.7.</span> <span class="toc-text">其它</span></a></li></ol></li></ol>
 		
@@ -204,7 +204,7 @@ getLabelAfter() and more.
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/专题探究/">专题探究</a><a href="/tags/动画/">动画</a>
+  <span></span> <a href="/tags/专题探究/">专题探究</a>
   </div>
 
 </div>
@@ -250,22 +250,22 @@ getLabelAfter() and more.
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#复习一下CSS3"><span class="toc-number">1.</span> <span class="toc-text">复习一下CSS3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GreenSock"><span class="toc-number">2.</span> <span class="toc-text">GreenSock</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">2.1.</span> <span class="toc-text">参考资料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">2.2.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TweenLite-可以解决基础动画"><span class="toc-number">2.3.</span> <span class="toc-text">TweenLite 可以解决基础动画</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#动画曲线"><span class="toc-number">2.3.1.</span> <span class="toc-text">动画曲线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2D转换"><span class="toc-number">2.3.2.</span> <span class="toc-text">2D转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3D转换"><span class="toc-number">2.3.3.</span> <span class="toc-text">3D转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重要属性"><span class="toc-number">2.3.4.</span> <span class="toc-text">重要属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Controlling-tween"><span class="toc-number">2.3.5.</span> <span class="toc-text">Controlling tween</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TimelineLite-让动画有序和组织"><span class="toc-number">2.4.</span> <span class="toc-text">TimelineLite 让动画有序和组织</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TimelineMax和TweenMax-多一些功能"><span class="toc-number">2.5.</span> <span class="toc-text">TimelineMax和TweenMax 多一些功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Overwriting-other-tweens"><span class="toc-number">2.6.</span> <span class="toc-text">Overwriting other tweens</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其它"><span class="toc-number">2.7.</span> <span class="toc-text">其它</span></a></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
@@ -282,15 +282,15 @@ getLabelAfter() and more.
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/日常记录/" title="日常记录">日常记录<sup>24</sup></a></li>
+				<li><a href="/tags/日常记录/" title="日常记录">日常记录<sup>18</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/专题探究/" title="专题探究">专题探究<sup>12</sup></a></li>
+				<li><a href="/tags/专题探究/" title="专题探究">专题探究<sup>14</sup></a></li>
 			
 		
 			
@@ -298,19 +298,11 @@ getLabelAfter() and more.
 			
 		
 			
-				<li><a href="/tags/面试/" title="面试">面试<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/专题笔记探究/" title="专题笔记探究">专题笔记探究<sup>2</sup></a></li>
+				<li><a href="/tags/面经/" title="面经">面经<sup>6</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/动画/" title="动画">动画<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -320,7 +312,7 @@ getLabelAfter() and more.
   
 
 <div class="doubanshow">
-<p class="asidetitle">Douban Show</p>
+<p class="asidetitle">豆瓣秀</p>
 <div>
 <script type="text/javascript" src="http://www.douban.com/service/badge/167927352/?show=collection&amp;n=12&amp;columns=3&amp;hidelogo=yes&amp;hideself=yes&amp;cat=book|movie" ></script>
 </div>
@@ -328,11 +320,11 @@ getLabelAfter() and more.
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2140938987&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -567,7 +559,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

@@ -50,7 +50,7 @@
 				<h1 class="site-name"><a href="/" title="圆玉的博客">圆玉的博客</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -60,11 +60,13 @@
 					
 						<li><a href="/archives">Archives</a></li>
 					
+						<li><a href="/about">Trip</a></li>
+					
 					<li>
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:lry1994.github.io">
 					</form>
 					
@@ -87,14 +89,14 @@
 		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
 		
   <p class="article-time">
-    <time datetime="2019-02-11T16:00:00.000Z" itemprop="datePublished"> Published 2019-02-12</time>
+    <time datetime="2019-02-11T16:00:00.000Z" itemprop="datePublished"> 發表於 2019-02-12</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目錄</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#IE浏览器url中文乱码"><span class="toc-number">1.</span> <span class="toc-text">IE浏览器url中文乱码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件上有ref的话，这个组件不可以使用懒加载"><span class="toc-number">2.</span> <span class="toc-text">组件上有ref的话，这个组件不可以使用懒加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#click-”func”和-click-”fun-”的区别"><span class="toc-number">3.</span> <span class="toc-text">@click=”func”和@click=”fun()”的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态挂载组件"><span class="toc-number">4.</span> <span class="toc-text">动态挂载组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#body上加上over-flow-hidden获取scrollTop会不准确"><span class="toc-number">5.</span> <span class="toc-text">body上加上over-flow:hidden获取scrollTop会不准确</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fixed定位页面抖动解决方法"><span class="toc-number">6.</span> <span class="toc-text">fixed定位页面抖动解决方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vucli3构建库模式大坑"><span class="toc-number">7.</span> <span class="toc-text">vucli3构建库模式大坑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可以利用src做请求"><span class="toc-number">8.</span> <span class="toc-text">可以利用src做请求</span></a></li></ol>
 		
@@ -109,7 +111,7 @@
 <li>如果func函数没有参数，就没有区别</li>
 <li>如果func函数有参数，例如<code>func(arg){...}</code>，那么<code>@click=&quot;func&quot;</code> 在func(arg)里面输出arg并不是undefined，而是一个事件对象</li>
 </ol>
-<p>#:class可以是一个数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">boxClazz()&#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="string">'box'</span>,  !<span class="keyword">this</span>.canAddHideAnimationLater ? <span class="string">''</span> : <span class="keyword">this</span>.visible ? <span class="string">'show'</span>: <span class="string">'hide'</span>]</span><br><span class="line">&#125;</span><br><span class="line">&lt;nav :<span class="class"><span class="keyword">class</span></span>=<span class="string">"boxClazz"</span> &gt;&lt;/nav&gt;</span><br></pre></td></tr></table></figure></p>
+<p>#:class可以是一个数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">boxClazz()&#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="string">'box'</span>,  !<span class="keyword">this</span>.canAddHideAnimationLater ? <span class="string">''</span> : <span class="keyword">this</span>.visible ? <span class="string">'show'</span>: <span class="string">'hide'</span>]</span><br><span class="line">&#125;</span><br><span class="line">&lt;nav :<span class="class"><span class="keyword">class</span></span>=<span class="string">"boxClazz"</span> &gt;<span class="xml"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
 <h3 id="动态挂载组件"><a href="#动态挂载组件" class="headerlink" title="动态挂载组件"></a>动态挂载组件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> imgPreview <span class="keyword">from</span> <span class="string">'./img-preview.vue'</span>;</span><br><span class="line"><span class="keyword">let</span> instance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> imgPreviewConsturctor = Vue.extend(imgPreview);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> initInstance = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> el = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</span><br><span class="line">  el.id=<span class="string">"__img_preview_box"</span></span><br><span class="line">  <span class="built_in">document</span>.body.appendChild(el);</span><br><span class="line">  instance = <span class="keyword">new</span> imgPreviewConsturctor().$mount(<span class="string">`#<span class="subst">$&#123;el.id&#125;</span>`</span>);</span><br><span class="line">  </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> init = <span class="function">(<span class="params">imgSrc</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">if</span>(!instance)&#123;</span><br><span class="line">		initInstance();</span><br><span class="line">	&#125;</span><br><span class="line">	instance.imgSrc = imgSrc;</span><br><span class="line">	instance.visible = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">	init</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="body上加上over-flow-hidden获取scrollTop会不准确"><a href="#body上加上over-flow-hidden获取scrollTop会不准确" class="headerlink" title="body上加上over-flow:hidden获取scrollTop会不准确"></a>body上加上over-flow:hidden获取scrollTop会不准确</h3><h3 id="fixed定位页面抖动解决方法"><a href="#fixed定位页面抖动解决方法" class="headerlink" title="fixed定位页面抖动解决方法"></a>fixed定位页面抖动解决方法</h3><p>这方法是看微博网站代码看到的，完美！！其他百度上的方法没一个管用</p>
 <p>fixed定位的元素加上<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">nav-tab</span>&#123;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">10</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateZ</span>(0px);</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">transition</span>: top <span class="number">0.3s</span> ease <span class="number">0s</span>;</span><br><span class="line">  <span class="attribute">will-change</span>:top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -184,22 +186,22 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目錄</strong>
  
  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#IE浏览器url中文乱码"><span class="toc-number">1.</span> <span class="toc-text">IE浏览器url中文乱码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件上有ref的话，这个组件不可以使用懒加载"><span class="toc-number">2.</span> <span class="toc-text">组件上有ref的话，这个组件不可以使用懒加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#click-”func”和-click-”fun-”的区别"><span class="toc-number">3.</span> <span class="toc-text">@click=”func”和@click=”fun()”的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态挂载组件"><span class="toc-number">4.</span> <span class="toc-text">动态挂载组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#body上加上over-flow-hidden获取scrollTop会不准确"><span class="toc-number">5.</span> <span class="toc-text">body上加上over-flow:hidden获取scrollTop会不准确</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fixed定位页面抖动解决方法"><span class="toc-number">6.</span> <span class="toc-text">fixed定位页面抖动解决方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vucli3构建库模式大坑"><span class="toc-number">7.</span> <span class="toc-text">vucli3构建库模式大坑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可以利用src做请求"><span class="toc-number">8.</span> <span class="toc-text">可以利用src做请求</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分類</p>
 		<ul>
 		
 		  
@@ -216,11 +218,11 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">標簽</p>
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/日常记录/" title="日常记录">日常记录<sup>17</sup></a></li>
+				<li><a href="/tags/日常记录/" title="日常记录">日常记录<sup>16</sup></a></li>
 			
 		
 			
@@ -228,7 +230,7 @@
 			
 		
 			
-				<li><a href="/tags/读书笔记/" title="读书笔记">读书笔记<sup>9</sup></a></li>
+				<li><a href="/tags/读书笔记/" title="读书笔记">读书笔记<sup>10</sup></a></li>
 			
 		
 			
@@ -242,7 +244,7 @@
   
 
 <div class="doubanshow">
-<p class="asidetitle">Douban Show</p>
+<p class="asidetitle">豆瓣秀</p>
 <div>
 <script type="text/javascript" src="http://www.douban.com/service/badge/167927352/?show=collection&amp;n=12&amp;columns=3&amp;hidelogo=yes&amp;hideself=yes&amp;cat=book|movie" ></script>
 </div>
@@ -250,11 +252,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2140938987&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -489,7 +491,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

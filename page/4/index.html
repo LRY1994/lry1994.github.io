@@ -76,1112 +76,239 @@
     <div id="container">
       <div id="main">
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/study/2018/2/suibi.html" title="2018-2总结" itemprop="url">2018-2总结</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2018-01-31T16:00:00.000Z" itemprop="datePublished"> Published 2018-02-01</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <ul>
-<li><p>Cache-Control<br>  no-cache: 告诉浏览器、缓存服务器，不管本地副本是否过期，使用资源副本前，一定要到源服务器进行副本有效性校验。<br>  must-revalidate：告诉浏览器、缓存服务器，本地副本过期前，可以使用本地副本；本地副本一旦过期，必须去源服务器进行有效性校验。<br>  max-age： 指缓存资源的缓存时间比指定的值小，那么客户端就接受缓存资源，且缓存服务器不对资源有效性进行再次确认</p>
-</li>
-<li><p>CSS像素是web编程的概念,是相对的而不是绝对的单位. 用户的缩放比会影响单位CSS像素点对应的实际物理像素的多少</p>
-</li>
-<li><p>使用Flexible实现手淘H5页面的终端适配<br> <a href="https://github.com/amfe/article/issues/17" target="_blank" rel="noopener">https://github.com/amfe/article/issues/17</a></p>
-</li>
-</ul>
-<ul>
-<li><p>异步脚本禁止使用document.write()<br>延迟脚本禁止使用document.write()</p>
-</li>
-<li><p>火狐和IE下href=”javascript:void(0) 会弹出空白页</p>
-<p>  本来javascript:void(0);的用处是不用整体刷新网页且返回一个空值，但这儿由于DOM本身的冒泡事件所以会最后执行HREF属性内的javascript:void(0);导致执行函数返回了一个空值，所以覆盖掉了前面正常执行函数所返回的值引起的错误。</p>
-<p>  一般情况下，IE会先运行DOM本身绑定的事件，如ONCLICK;如果没有阻止冒泡，则会顺序执行HREF属性。如果想正确运行，可以在前面用RETURN FALSE终止冒泡，例如：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a target=&quot;_blank&quot; class=&quot;prev&quot; onclick=&quot;return false;&quot;   href=&quot;javascript:void(0);&quot;&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<p>  或者直接删去也行，如：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a target=&quot;_blank&quot;  class=&quot;prev&quot; &gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
-<p>  但是后者hover的时候没有手势的pointer</p>
-</li>
-<li><p>vue2父组件传递props异步数据到子组件，获取到的是undefined.</p>
-<p>  解决方法<a href="http://www.jb51.net/article/117447.htm" target="_blank" rel="noopener">参考链接</a></p>
-<ol>
-<li>最简单的解决方法：使用v-if</li>
-<li>子组件使用watch来监听父组件改变的prop，使用methods来代替created</li>
-<li>子组件watch computed data 相结合，有点麻烦</li>
-<li>使用emit，on，bus相结合（使用了bus库）</li>
-<li>vuex结合computed、mapState或者合computed、mapGetters</li>
-</ol>
-</li>
-<li><p>对象的属性名称可以是变量吗？</p>
-<p>  可以，运用方括号法设置就是。如</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a = &quot;name&quot;;</span><br><span class="line">var b = 10;</span><br><span class="line">var obj = &#123;&#125;;</span><br><span class="line">obj[a] = b;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>后台给的服务链接直接插入html中img的src里，修改图片之后，因为src的内容一直都是后台服务链接，是个不变的值，所以不会重新去请求，图    片会一直不变。如果刷新页面这个链接返回的图片会改变，为了做到点击图片只重载这个src而整个页面不刷新，采用的方法是在后面加上          Math.random()，例如 </p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`http:$&#123;this.baseURL&#125;gw/app.get.logo?tenantId=$&#123;this.tenantId&#125;&amp;appId=$&#123;this.appId&#125;?`+Math.random();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>扩展运算符可以用于数组深拷贝</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr2 = arr;</span><br><span class="line">var arr3 = [...arr];</span><br><span class="line">console.log(arr===arr2); //true, 说明arr和arr2指向同一个数组</span><br><span class="line">console.log(arr===arr3); //false, 说明arr3和arr指向不同数组</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>数字类型的验证需要在 v-model 处加上 .number 的修饰符，这是 Vue 自身提供的用于将绑定值转化为 number 类型的修饰符。              v-model.number只会截取数字部分，比如100ttt只会取前面的100。做修改操作的时候这种情况用自定义validator解决</p>
-</li>
-</ul>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/每月总结/">每月总结</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/study/2018/1/30-web-full-stack-study.html" title="《Web 全栈工程师的自我修养》读书笔记" itemprop="url">《Web 全栈工程师的自我修养》读书笔记</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2018-01-29T16:00:00.000Z" itemprop="datePublished"> Published 2018-01-30</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p><img src="/images/book/web-full-stack-self-cultivation.jpg" alt="cover"></p>
-<h2 id="减少同一域名下的HTTP请求数"><a href="#减少同一域名下的HTTP请求数" class="headerlink" title="减少同一域名下的HTTP请求数"></a>减少同一域名下的HTTP请求数</h2><p>1、把静态资源放在单独的非主域名。这样可以增加浏览器并发连接数，而且减少HTTP请求中携带的不必要的cookie数据（cookie的作用域是整个域名）</p>
-<p>2、合并同一域名下的资源。比如，合并CSS文件，将图片组合为CSS贴图（sprite）</p>
-<p>3、省掉不必要的HTTP请求，可以 内嵌小型css/js,设置缓存，减少重定向等</p>
-<h2 id="减少每一个资源的体积"><a href="#减少每一个资源的体积" class="headerlink" title="减少每一个资源的体积"></a>减少每一个资源的体积</h2><p>1、    选择合适的图片格式，就能用更小的体积，达到更好的显示效果。如果图片颜色数较多就使用JPG格式，较少就使用PNG格式。如果能够通过服务器端判断浏览器支持WebP,那么久使用WebP格式和SVG格式</p>
-<p>2、    对于比较大的文本资源，必须开启服务器端的gzip压缩。因为gzip对于含有重复“单词”的文本文件，压缩率比较高，能够有效提高传输过程。Gzip对文本资源非常有效，对图片资源则没那么大的压缩率</p>
-<p>3、    压缩源码和图片</p>
-<p>Js文件源代码可以采用混淆压缩 的方式</p>
-<p>Css文件源代码进行普通压缩</p>
-<p>JPG图片可以根据具体质量压缩为50%到70%</p>
-<p>PNG可以使用一些开源压缩软件来压缩，比图24色变为8色、去掉一些PNG格式信息</p>
-<h2 id="使用CDN"><a href="#使用CDN" class="headerlink" title="使用CDN"></a>使用CDN</h2><p>可以增加并发下载量，还能与其他网站共享缓存</p>
-<h2 id="推荐的浏览器缓存设置的最佳实践"><a href="#推荐的浏览器缓存设置的最佳实践" class="headerlink" title="推荐的浏览器缓存设置的最佳实践"></a>推荐的浏览器缓存设置的最佳实践</h2><p>1、    对于动态生成的HTML页面使用HTTPS头：Cache-Control：no-cache</p>
-<p>2、    对于静态HTML页面使用HTTPS头：Last-Modified</p>
-<p>3、    其他所有的文件类型都设置Expires头，并且在文件内容有所修改的时候修改query string。</p>
-<p>为了避免出现运营商劫持文件的情况，使用更加强硬的方法：修改文件名，而不是修改query string。用户的宽带运营商为了提高速度，可能会在自己的某个节点服务器上缓存你的文件，但是如果query string更新了，运营商仍然可能那自己节点的缓存发给你。（根据HTTP规范，如果修改了请求资源的Query string,就应该被视为一个新的文件）<br>这些都是服务器对每个资源的响应头里设置的</p>
-<h2 id="版本控制最佳实践"><a href="#版本控制最佳实践" class="headerlink" title="版本控制最佳实践"></a>版本控制最佳实践</h2><p>1、    鼓励频繁提交，不要等到代码没问题了再提交</p>
-<p>2、    确定分支流程。基本上所有的特性和较大的bug都应该使用分支来修改</p>
-<p>3、    定义主干原则，并且坚守它。我们的团队的主干原则是“主干对应的代码必须是可以发布并且不会产生bug的”</p>
-<p>4、    不要把逻辑的修改和代码格式化操作混在一起提交</p>
-<p>5、    不相干的代码分开提交，也就是说不要在一次提交里面修复两个bug</p>
-<p>6、    保持代码库的“干净”</p>
-<h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><p>1、三次法则（rule of three）允许按需直接赋值粘贴代码一次，如果相同的代码重复出现三次及三次以上，将其提取处理做成一个子程序</p>
-<p>2、WET（wwrite everything twice）</p>
-<p>3、DRY（don’t repeat youselft）</p>
-<p>4、惯例优先于设置</p>
-<p>5、KISS原则，keep it simple,stupid</p>
-<p>6、最少知道原则</p>
-<h2 id="在别的地方看到的图"><a href="#在别的地方看到的图" class="headerlink" title="在别的地方看到的图"></a>在别的地方看到的图</h2><p>性能优化</p>
-<img src="/study/2018/1/30-web-full-stack-study/performance-optimize.png" title="性能优化">
-<p>图片适配</p>
-<img src="/study/2018/1/30-web-full-stack-study/pic-adapt.jpg" title="图片适配">
-<p>aria无障碍文本<br><img src="/study/2018/1/30-web-full-stack-study/aria.png" title="aria"></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/读书笔记/">读书笔记</a>
-</div>
-
-
-  <div class="article-tags">
   
-  <span></span> <a href="/tags/前端优化/">前端优化</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/study/2018/1/4-reatnative-android-ios.html" title="reat-native在Android和IOS平台的区别" itemprop="url">reat-native在Android和IOS平台的区别</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2018-01-29T16:00:00.000Z" itemprop="datePublished"> Published 2018-01-30</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>读《React-Native跨平台移动应用开发第2版》<br><img src="/images/book/React-Native.jpg" alt="cover"></p>
-<ul>
-<li><p>在Android平台上，TextInput组件可以按照字体大小来自动设置高度<br>IOS上必须要在样式上设置高度，否则不会显示<br>Solution: TextInput组件设置高度</p>
-</li>
-<li><p>Iphone手机没有返回键，需要时iphone应用通常在屏幕左上角放置一个返回按钮</p>
-</li>
-<li><p>在Android上，Alert API实现的弹出选择框最多只能有三个选项。按下返回键会让弹出框消失，并且不会触发Alert API提供的回调函数。<br>IOS上，选项没有个数限制。选项上设置 style:’cancel’只对IOS有效，使选项排列到最下方</p>
-</li>
-<li><p>overflow只对IOS有效<br>默认为hidden</p>
-</li>
-<li><p>elevation:数值 只有android平台特有，产生组件浮现在手机屏幕上的视觉效果</p>
-</li>
-<li><p>renderHarwareTextureAndroid,needsOffscreenAlphaCompositing  android特有，与动画效果有关<br>shouldRasterizeIOS   IOS特有，与动画效果有关</p>
-</li>
-<li><p>accessibilityComponentType,accessibilityLiveRegion,importantForAccessibility为android特有<br>accessibilityTraits,onAccessibilityTap为IOS特有<br>accessible,accessibilityLabel为android和IOS共有</p>
-</li>
-<li><p>IOS支持GIF和WebP格式<br>Android默认不支持这个两种格式，需要在android/app/build.gradle添加设置<br>RN本身还不支持SVG</p>
-</li>
-<li><p>苹果要求苹果移动应用开发者在应用中不能使用HTTP协议，转为使用HTTPS协议，所以在IOS工程中，使用的网络图片等资源必须是https。可以通过设置改变。</p>
-</li>
-<li><p>resizeMode取值为repeat只对IOS有效</p>
-</li>
-<li><p>tintColor 为IOS特有，可以让图片中的非透明像素部分有一种被染色的效果<br>overlayColor为android特有，强行将需要圆角的部分使用指定颜色填充，从而实现圆角效果</p>
-</li>
-<li><p>TouchableNativeFeedback为android专用组件</p>
-</li>
-<li><p>textAlign:justify只在IOS下有效，在Android下等价于left</p>
-</li>
-<li><p>ios独有的样式<br>fontVariant,letterSpacing,writingDirection,textDecorationStyle,textDecorationColor，<br>adjustsFontSizeToFit,allowFontScaling,minimumFontScale,suppressHighlighting<br>android独有<br>includeFontPadding,selectionColor,textAlignVertical,textBreakStrategy<br>ellipizeMode:head/middle/tail只有IOS支持， android所有取值和clip一样。ellipizeMode需要和numberOfLines配合使用</p>
-</li>
-<li><p>TextInput、Text组件设置borderWidth在android无效</p>
-</li>
-<li><p>TextInput组件alignItems:’center’在IOS上无效</p>
-</li>
-<li><p>IOS上TextInput组件没有设置height会不显示</p>
-</li>
-<li><p>Ios支持keyboardWillHide，android不支持</p>
-</li>
-</ul>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/读书笔记/">读书笔记</a>
-</div>
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/tags/reat-native/">reat-native</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
+    <a href="/study/2018/2/suibi.html" title="2018-2总结" itemprop="url">
+  
+    <h1 itemprop="name">2018-2总结</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/study/Comprehensive/popular-resource.html" title="前端库收集" itemprop="url">前端库收集</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2017-12-31T16:00:00.000Z" itemprop="datePublished"> Published 2018-01-01</time>
-    
-  </p>
-</header>
-    <div class="article-content">
+     
+           <p itemprop="description" >Cache-Control  no-cache: 告诉浏览器、缓存服务器，不管本地副本是否过期，使用资源副本前，一定要到源服务器进行副本有效性校验。  must-revalidate：告诉浏览器、缓存服务器，本地副本过期前，可以使用本地副本；本地副本一旦过期，必须去源服务器进行有</p>
         
-        <h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><h3 id="GreenSock"><a href="#GreenSock" class="headerlink" title="GreenSock"></a>GreenSock</h3><pre><code>了解资料
+    
+    <time datetime="2018-01-31T16:00:00.000Z" itemprop="datePublished">2018-02-01</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/study/2018/1/30-web-full-stack-study.html" title="《Web 全栈工程师的自我修养》读书笔记" itemprop="url">
+  
+    <h1 itemprop="name">《Web 全栈工程师的自我修养》读书笔记</h1>
+    
+     
+           <p itemprop="description" >减少同一域名下的HTTP请求数1、把静态资源放在单独的非主域名。这样可以增加浏览器并发连接数，而且减少HTTP请求中携带的不必要的cookie数据（cookie的作用域是整个域名）
+2、合并同一域名下的资源。比如，合并CSS文件，将图片组合为CSS贴图（sprite）
+3、省掉不</p>
+        
+    
+    <time datetime="2018-01-29T16:00:00.000Z" itemprop="datePublished">2018-01-30</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/study/2018/1/4-reatnative-android-ios.html" title="reat-native在Android和IOS平台的区别" itemprop="url">
+  
+    <h1 itemprop="name">reat-native在Android和IOS平台的区别</h1>
+    
+     
+           <p itemprop="description" >读《React-Native跨平台移动应用开发第2版》
+
+在Android平台上，TextInput组件可以按照字体大小来自动设置高度IOS上必须要在样式上设置高度，否则不会显示Solution: TextInput组件设置高度
+
+Iphone手机没有返回键，需要时iphone应</p>
+        
+    
+    <time datetime="2018-01-29T16:00:00.000Z" itemprop="datePublished">2018-01-30</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/life/2018.html" title="2018读书" itemprop="url">
+  
+    <h1 itemprop="name">2018读书</h1>
+    
+     
+           <p itemprop="description" >《人类简史 : 从动物到上帝》https://book.douban.com/review/9724484/
+《为奴十二年》内容对现在有点过时，全文里面讲的是他多惨多惨，当然里面也有同为奴隶的同僚之间的友谊美好，但现在看来对我来说没有多大触动。全篇抓住我的心只有最后瓦德尔如何救所</p>
+        
+    
+    <time datetime="2017-12-31T16:00:00.000Z" itemprop="datePublished">2018-01-01</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/study/Comprehensive/popular-resource.html" title="前端库收集" itemprop="url">
+  
+    <h1 itemprop="name">前端库收集</h1>
+    
+     
+           <p itemprop="description" >动画GreenSock了解资料
 
 [greensock get-started-js](https://greensock.com/get-started-js#intro)
 
-[3D Transforms &amp; More CSS3 Goodies Arrive in GSAP JS](https://greensock.com/css3)
-
-基础实例
-
-[Jump Start: GSAP JS](https://greensock.com/jump-start-js#welcome)
-
-[Timeline Tip: Understanding the Position Parameter](https://greensock.com/position-parameter)
-
-[Basic play / pause toggle button](https://codepen.io/GreenSock/pen/qeHac)
-
-[create a playful Jump Loader animation](https://tympanus.net/codrops/2015/03/25/jump-loader-animation-svg-gsap/)
-
-进阶
-[Writing Smarter Animation Code](https://css-tricks.com/writing-smarter-animation-code/)
-
-[https://greensock.com/examples-showcases](https://greensock.com/examples-showcases)
-
-[https://tympanus.net/codrops/](https://tympanus.net/codrops/)
-隆重介绍这个网站，上面有好多好多好看的动画
-</code></pre><h3 id="Draggable"><a href="#Draggable" class="headerlink" title="Draggable"></a>Draggable</h3><pre><code>Draggable是一个简单易用的模块化拖放库。它通过快速DOM重新排序，干净的API和可访问的标记提供了出色的拖放功能。Draggable附带额外的模块，可以添加更多的功能，如排序，交换和其他实用程序。
-</code></pre><h3 id="Animate-css"><a href="#Animate-css" class="headerlink" title="Animate.css"></a>Animate.css</h3><pre><code>Animate.css是一个跨浏览器的CSS动画库。它非常易于使用，并提供大量不同的动画效果，如反弹，脉冲，摆动，淡入淡出，翻转等等。它可以用于在任何你喜欢的地方添加一些很酷和有趣的动画效果。
-</code></pre><h3 id="Micron"><a href="#Micron" class="headerlink" title="Micron"></a>Micron</h3><pre><code>是一个允许你为DOM元素添加不同的CSS增强动画的库。其中交互可以通过HTML数据属性或通过链接JavaScript方法来设置速度、消除和其他选项来控制。它支持不同的交互，如摇晃、褪色、反弹、摇摆（shake, fade, bounce, swing）等等。
-</code></pre><h2 id="animate-elements-on-scroll"><a href="#animate-elements-on-scroll" class="headerlink" title="animate elements on scroll"></a>animate elements on scroll</h2><h3 id="WOW"><a href="#WOW" class="headerlink" title="WOW"></a>WOW</h3><pre><code>http://mynameismatthieu.com/WOW/docs.html 
-</code></pre><h3 id="AOS"><a href="#AOS" class="headerlink" title="AOS"></a>AOS</h3><pre><code>http://michalsnik.github.io/aos/
-AOS 是一个用于在页面滚动的时候呈现元素动画的工具库，和 WOWJS 类似。但是AOS是 CSS3 动画驱动的库，该库是高度可定制的，非常小，易于使用（通过CDN安装）。在页面往回滚动时，元素会恢复到原来的状态，如此达到循环动画的效果。
-</code></pre><h2 id="存储"><a href="#存储" class="headerlink" title="存储"></a>存储</h2><h3 id="localForage"><a href="#localForage" class="headerlink" title="localForage"></a>localForage</h3><pre><code>用于indexedDB和WebSQL的封装程序，能够让你的Web应用程序存储更多数据，并提升应用程序的离线体验。写入和读取操作与                localStorage类似，支持 BLOB 和任意类型的数据，可以存储图片，文件等等，而不仅仅是字符串。它还提供多种API，使开发               人员可以选择回调的异步API。
-</code></pre><h2 id="邮件"><a href="#邮件" class="headerlink" title="邮件"></a>邮件</h2><h3 id="MJML"><a href="#MJML" class="headerlink" title="MJML"></a>MJML</h3><pre><code>The only framwork that makes responsive email easy
-</code></pre><h2 id="VR"><a href="#VR" class="headerlink" title="VR"></a>VR</h2><h3 id="A-Frame"><a href="#A-Frame" class="headerlink" title="A-Frame"></a>A-Frame</h3><pre><code>是 Mozilla 开源的网页虚拟现实体验（ WebVR ）框架。能够在HTML中创建3D场景的框架，使用Three.js和WebGL来创建VR场景。可用于桌面、iPhone（即将支持安卓）以及 Oculus Rift。
-</code></pre><h3 id="GPU-js"><a href="#GPU-js" class="headerlink" title="GPU.js"></a>GPU.js</h3><pre><code>用于在GPU中运行浏览器JavaScript代码的库。使用GPU.js，您可以通过将专门编写的JS编译成可通过WebGL在GPU上运行的着色器语言来更快速地执行复杂的计算。如果WebGL不可用，则函数将回退到常规JavaScript。
-</code></pre><h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><h3 id="R2"><a href="#R2" class="headerlink" title="R2"></a>R2</h3><pre><code>这是一个更轻量级的 HTTP 客户端解决方案，它建立在浏览器原生的 Fetch API 的基础之上，并为 Node.js 提供优化。压缩后的R2大小只有16K。
-</code></pre><h3 id="Axios"><a href="#Axios" class="headerlink" title="Axios"></a>Axios</h3><pre><code>为处理HTTP请求提供了一个现代化的JavaScript解决方案。它有一个基于Promise的API，在处理async调用时使你的代码更加结构化。该库可以在浏览器中工作，也可以在node.js环境中工作。
-</code></pre><h2 id="桌面通知"><a href="#桌面通知" class="headerlink" title="桌面通知"></a>桌面通知</h2><h3 id="Push"><a href="#Push" class="headerlink" title="Push"></a>Push</h3><pre><code>Push是一款可靠的跨浏览器的JavaScript桌面通知库。它基于强大的Notification API，如果用户的浏览器不支持新API，则会回退到较早的实现。
-</code></pre><h2 id="自适应"><a href="#自适应" class="headerlink" title="自适应"></a>自适应</h2><h3 id="Devices-css"><a href="#Devices-css" class="headerlink" title="Devices.css"></a>Devices.css</h3><pre><code>Devices.css 是一个使用纯 CSS 实现移动设备的库。它包含了一些目前主流的移动设备，如 iPhone X，Google Pixel 2 XL 和三星Galaxy S8。由于其高品质的设计，可用于着陆页面或者网页快照。
-</code></pre><h3 id="Lit"><a href="#Lit" class="headerlink" title="Lit"></a>Lit</h3><pre><code>是一个非常小和响应式CSS框架。它包含12列响应式网格、不同的排印风格、自定义输入、三种按钮类型以及CSS框架应该提供的所有功能。Lit适用于所有现代浏览器，以及IE11等一些较旧的浏览器
-</code></pre><h3 id="Tachyons"><a href="#Tachyons" class="headerlink" title="Tachyons"></a>Tachyons</h3><pre><code>你可以制作漂亮且响应速度快的界面，并且几乎不需要CSS。它很容易使用和定制，移动优先，并能很好地与React、Ember、Angular和其他框架配合使用。更重要的是，它非常轻量级，并且具有非常详细的文档，你可以在其中找到所需的一切。
-</code></pre><h3 id="Rekit"><a href="#Rekit" class="headerlink" title="Rekit"></a>Rekit</h3><pre><code>是一款可帮助你使用React、Redux和React-router创建出色的响应式Web应用程序的工具包。该框架提供了两个用于处理框架的强大工具 — 一个名为Rekit Studio的全功能IDE，以及一个用于在终端上工作的扩展命令行界面。
-</code></pre><h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><h3 id="Nerd-Font"><a href="#Nerd-Font" class="headerlink" title="Nerd Font"></a>Nerd Font</h3><pre><code>这是一个流行字体和图标的集合。它包含39个补充字体系列，以及来自诸如Font Awesome、Devicons、Octicons等流行图标集的1300多个图形和图标。所有字体在Linux、macOS和Windows上兼容。
-</code></pre><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><h3 id="Kutt"><a href="#Kutt" class="headerlink" title="Kutt"></a>Kutt</h3><pre><code>是一个免费的可以用来缩短你的URL、管理链接和设置自定义域的开源库。它有一个易于使用的API，并允许你创建和删除URL，以及使用详细统计信息跟踪它们。
-</code></pre><h2 id="卡片"><a href="#卡片" class="headerlink" title="卡片"></a>卡片</h2><h3 id="Card"><a href="#Card" class="headerlink" title="Card"></a>Card</h3><pre><code>Card是一个小巧的vanilla JS项目（带有jQuery版本），可以让你的信用卡表格变得更加有趣生动。快速安装后，将采取您的表格，并将其转换为一张动画的信用卡。
-</code></pre><h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><h3 id="Direction-Reveal"><a href="#Direction-Reveal" class="headerlink" title="Direction Reveal"></a>Direction Reveal</h3><pre><code>该插件检测光标进入或离开块时的方向，允许你使用各种酷炫特效和过渡。它提供了一些开箱即用的CSS动画，让你可以轻松创建自己的CSS动画。
-</code></pre><h3 id="Carbon"><a href="#Carbon" class="headerlink" title="Carbon"></a>Carbon</h3><pre><code>允许你创建并分享代码组成的美丽图像。你所需要做的就是将你的代码粘贴到编辑器中，或直接自己编写代码。你可以通过更改字体样式、编辑器主题、语法高亮和甚至窗口按钮来自定义图像的外观。
-</code></pre><h2 id="弹出框"><a href="#弹出框" class="headerlink" title="弹出框"></a>弹出框</h2><h3 id="SweetAlert2"><a href="#SweetAlert2" class="headerlink" title="SweetAlert2"></a>SweetAlert2</h3><pre><code>是一个可以创建漂亮和可响应弹出框的库。SweetAlert2是高度可定制的，100%响应式并且在所有屏幕尺寸上都能有很好的显示效果。使用SweetAlert2 你可以创建各种不同的拥有惊艳的风格、显示效果和动画的弹出框。
-</code></pre><h2 id="H5"><a href="#H5" class="headerlink" title="H5"></a>H5</h2><h3 id="Phaser"><a href="#Phaser" class="headerlink" title="Phaser"></a>Phaser</h3><pre><code>是一个快速的开源框架，可以开发为运行在桌面浏览器或手机浏览器的HTML5游戏。你也可以为iOS、Android和其他不同的本地应用程序创建游戏。Phaser有对开发人员非常友好的API，并且Phaser的团队也积极开发和维护。最近，在Phaser 3.0版本中发布了很多新的特性和功能。
-</code></pre><h2 id="CMS"><a href="#CMS" class="headerlink" title="CMS"></a>CMS</h2><h3 id="KeystoneJS"><a href="#KeystoneJS" class="headerlink" title="KeystoneJS"></a>KeystoneJS</h3><pre><code>KeystoneJS是一个功能强大的CMS框架，基于Express和MongoDB构建，它提供了一个漂亮的管理用户界面，实用的API应用程序，会话管理，电子邮件发送，扩展等等。
-</code></pre><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="Puppeteer"><a href="#Puppeteer" class="headerlink" title="Puppeteer"></a>Puppeteer</h3><pre><code>Puppeteer是一个Node.js API，用于控制 headless Chrome。由 Google官方的 Chrome DevTools 团队维护。在headless环境中，开发者可以生成网页截图或者 PDF ，通过Puppeteer的提供的api直接控制Chrome模拟大部分用户操作来进行UI Test或者作为爬虫访问页面来收集数据。
-</code></pre><h3 id="Deeplearn-js"><a href="#Deeplearn-js" class="headerlink" title="Deeplearn.js"></a>Deeplearn.js</h3><pre><code>Deeplearn.js是一个开放源代码库，可将高性能机器学习构建模块带入网络。它提供了两个API，即时执行模型和延期执行模型。它可以完全在浏览器中运行，不需要安装，不需要后端处理。
-</code></pre><h3 id="Popper-js"><a href="#Popper-js" class="headerlink" title="Popper.js"></a>Popper.js</h3><pre><code>Popper是一个JavaScript库，它提供了大量的定制选项，并且完全模块化，每个功能都有独立的插件。不需要依赖 jQuery 库，大小仅为 3.5KB 左右，使用与配置相当简单，Twitter，WebClipper中的Microsoft以及AtlasKit等大企业都在使用
-</code></pre><h3 id="Apollo-Client"><a href="#Apollo-Client" class="headerlink" title="Apollo Client"></a>Apollo Client</h3><pre><code>是一款全功能的GraphQL客户端，用于 React 、Angular 的交互。压缩的大小还不到25K。
-</code></pre><h3 id="Jarvis"><a href="#Jarvis" class="headerlink" title="Jarvis"></a>Jarvis</h3><pre><code>一款基于Webpack仪表板的智能浏览器，它可以给你显示你在webpack构建所需的所有重要信息。它向你展示了你的资源在12种不同的连接类型中的表现如何，你项目中所有包的大小，并拥有一个漂亮的错误输出。它仍处于beta版本，预计会增加许多新功能。
-</code></pre><h3 id="Wiki-js"><a href="#Wiki-js" class="headerlink" title="Wiki.js"></a>Wiki.js</h3><pre><code>是一个强大的Wiki App，基于Node.js、Git和Markdown开发。你可以使用内置编辑器用Markdown格式来写作，并且可以自动同步到你的Git仓库。Wiki.js 有完整的访问控制和配置管理，但只占用很少的CPU资源。
-</code></pre>
+[3D Transforms &amp;amp; More CSS3 Goodies Arrive in GS</p>
         
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/学习/">学习</a>
-</div>
+    
+    <time datetime="2017-12-31T16:00:00.000Z" itemprop="datePublished">2018-01-01</time>
+  </a>
+</section>
 
 
-  <div class="article-tags">
+
+
+
+
   
-  <span></span> <a href="/tags/资料收集/">资料收集</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/life/2018.html" title="2018读书" itemprop="url">2018读书</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2017-12-31T16:00:00.000Z" itemprop="datePublished"> Published 2018-01-01</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="《人类简史-从动物到上帝》"><a href="#《人类简史-从动物到上帝》" class="headerlink" title="《人类简史 : 从动物到上帝》"></a>《人类简史 : 从动物到上帝》</h3><p><a href="https://book.douban.com/review/9724484/" target="_blank" rel="noopener">https://book.douban.com/review/9724484/</a></p>
-<h3 id="《为奴十二年》"><a href="#《为奴十二年》" class="headerlink" title="《为奴十二年》"></a>《为奴十二年》</h3><p>内容对现在有点过时，全文里面讲的是他多惨多惨，当然里面也有同为奴隶的同僚之间的友谊美好，但现在看来对我来说没有多大触动。全篇抓住我的心只有最后<strong>瓦德尔</strong>如何救所罗门的情节</p>
-<h3 id="《一定爱读的极简欧洲史-为什么欧洲对现代文明的影响这么深》"><a href="#《一定爱读的极简欧洲史-为什么欧洲对现代文明的影响这么深》" class="headerlink" title="《一定爱读的极简欧洲史 : 为什么欧洲对现代文明的影响这么深》"></a>《一定爱读的极简欧洲史 : 为什么欧洲对现代文明的影响这么深》</h3><p>比较浅显易懂地描述了欧洲历史<br><a href="https://book.douban.com/review/9727950/" target="_blank" rel="noopener">https://book.douban.com/review/9727950/</a></p>
-<h3 id="《步履不停》"><a href="#《步履不停》" class="headerlink" title="《步履不停》"></a>《步履不停》</h3><p>故事很简单，可以说都是在回忆。但是作者对生活细节的描写虽然平常但是真实得让人泪目，让人有很强的代入感。可惜“父亲”已去世，<br>来不及，早知道，意识到的时候人生已经翻过了几页了，想弥补也做不了什么了。后知后觉，唯有遗憾。只好尽可能地珍惜。“直到我真正搞清楚的时候，我的人生已经往后翻了好几页，再也无法回头挽救什么”</p>
-<h3 id="《我的天才女友-那不勒斯四部曲-01》"><a href="#《我的天才女友-那不勒斯四部曲-01》" class="headerlink" title="《我的天才女友 : 那不勒斯四部曲-01》"></a>《我的天才女友 : 那不勒斯四部曲-01》</h3><p><a href="https://book.douban.com/review/9786970/" target="_blank" rel="noopener">https://book.douban.com/review/9786970/</a></p>
-<h3 id="《新名字的故事-那不勒斯四部曲-02》"><a href="#《新名字的故事-那不勒斯四部曲-02》" class="headerlink" title="《新名字的故事 : 那不勒斯四部曲-02》"></a>《新名字的故事 : 那不勒斯四部曲-02》</h3><p><a href="https://book.douban.com/review/9790860/" target="_blank" rel="noopener">https://book.douban.com/review/9790860/</a></p>
-<h3 id="《离开的，留下的-那不四部曲-03》"><a href="#《离开的，留下的-那不四部曲-03》" class="headerlink" title="《离开的，留下的 : 那不四部曲-03》"></a>《离开的，留下的 : 那不四部曲-03》</h3><p><a href="https://book.douban.com/review/9795883/" target="_blank" rel="noopener">https://book.douban.com/review/9795883/</a></p>
-<h3 id="《失踪的孩子-那不勒斯四部曲-04》"><a href="#《失踪的孩子-那不勒斯四部曲-04》" class="headerlink" title="《失踪的孩子 : 那不勒斯四部曲-04》"></a>《失踪的孩子 : 那不勒斯四部曲-04》</h3><p><a href="https://book.douban.com/review/9805869/" target="_blank" rel="noopener">https://book.douban.com/review/9805869/</a></p>
-<h3 id="《现代艺术150年》"><a href="#《现代艺术150年》" class="headerlink" title="《现代艺术150年》"></a>《现代艺术150年》</h3><p>没读完，看这本书就像在鉴赏名画一样，书上讲述了每幅画的来源、含义。其中有一句话诠释了普通人看不懂的艺术：<br>“一名艺术家的工作不是去给人以美感上的愉悦，设计师可以做这事；艺术家的工作是从尘世中撤出一步，通过展示理念，使世界可以理喻或对世界进行评论”，好有道理。</p>
-<h3 id="《鱼王》"><a href="#《鱼王》" class="headerlink" title="《鱼王》"></a>《鱼王》</h3><p>没读完。这是一本比较适合心静时候看的书，才能体会到西伯利亚那种雄壮的美</p>
-<h3 id="《1984》"><a href="#《1984》" class="headerlink" title="《1984》"></a>《1984》</h3><p>没读完。有点枯燥，到处是夸张的比喻，不想看了。</p>
-<h3 id="《浮生六记》"><a href="#《浮生六记》" class="headerlink" title="《浮生六记》"></a>《浮生六记》</h3><p>之前看汪涵推荐过，沈复先生和妻子的爱情故事。但是看了之后觉得沈复不是一个忠诚的丈夫啊，也会养小三，可能以前的社会男人三妻四妾也是正常的缘故。<br>在书中字里行间，体会不到沈复对陈芸的深情，只是把她当作一个依靠</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/生活/">生活</a>►<a class="article-category-link" href="/categories/生活/阅读笔记/">阅读笔记</a>
-</div>
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/tags/文学/">文学</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/study/2017/12/28-vue-comparison.html" title="vue vs react vs angular1" itemprop="url">vue vs react vs angular1</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2017-12-27T16:00:00.000Z" itemprop="datePublished"> Published 2017-12-28</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="vue-与angualr1-react-不同体验整理"><a href="#vue-与angualr1-react-不同体验整理" class="headerlink" title="vue 与angualr1 ,react 不同体验整理"></a>vue 与angualr1 ,react 不同体验整理</h1><p>之前项目组的前端用的是angualr1.x版本，给我的感觉就是angular啥都有，只要注入依赖就可以用。</p>
-<p>工作闲暇之余会自己学习新知识，react很火，但是公司没有react的项目实操，所以自己找了网上一个比较适合入门的项目来练手，下面是我在边敲边学的过程中体验到的不同点。</p>
-<p>而react和vue就是轻量级的，要什么就去找，找来再用。</p>
-<ul>
-<li><a href="#React与vue比较">React与vue比较</a><ul>
-<li><a href="#生命周期">生命周期</a></li>
-<li><a href="#总结">总结</a></li>
-</ul>
-</li>
-<li><a href="#React-redux与vuex比较">React-redux与vuex比较</a><ul>
-<li><a href="#1-使用流程">1-使用流程</a></li>
-<li><a href="#2-共享数据store">2-共享数据store</a></li>
-<li><a href="#3-模块">3-模块</a></li>
-<li><a href="#4-唯一可以改变state的方式">4-唯一可以改变state的方式</a></li>
-<li><a href="#5-组件连接姿势">5-组件连接姿势</a></li>
-<li><a href="#6-调用链">6-调用链</a></li>
-<li><a href="#7-总结">7-总结</a></li>
-</ul>
-</li>
-</ul>
-<h1 id="React与vue比较"><a href="#React与vue比较" class="headerlink" title="React与vue比较"></a>React与vue比较</h1><h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><h4 id="React生命周期"><a href="#React生命周期" class="headerlink" title="React生命周期"></a>React生命周期</h4><img src="/study/2017/12/28-vue-comparison/react-life.png" title="react生命周期">
-<h4 id="vue生命周期"><a href="#vue生命周期" class="headerlink" title="vue生命周期"></a>vue生命周期</h4><img src="/study/2017/12/28-vue-comparison/vue-life.png" title="vue生命周期">
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="React"><a href="#React" class="headerlink" title="React"></a>React</h4><ol>
-<li>子组件直接import后使用</li>
-<li>在render()的return里面进行模板渲染</li>
-<li>实例的方法在constructor里面定义</li>
-<li>实例的数据在constructor里面定义</li>
-<li>contextTypes验证数据类型</li>
-<li>defaultProps设置默认值</li>
-<li>父组件传给子组件的数据，在子组件内用this.props.xxx获取</li>
-</ol>
-<h4 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h4><ol>
-<li>子组件import后，还需在实例里面的components注册</li>
-<li>直接在实例的template属性或标签渲染模板</li>
-<li>实例的方法写在method里面</li>
-<li>实例的数据写在data,computed里面</li>
-<li>props验证数据类型</li>
-<li>props里面的default设置默认值</li>
-<li>父组件传给子组件的数据在props里面注册，在子组件内用this.xxx获取。这一点有点像angular的隔离scope<br>(react没有的)</li>
-<li>computed可以依赖于data更新而更新</li>
-<li>有watch监听函数</li>
-</ol>
-<h4 id="觉得与angular类似地方"><a href="#觉得与angular类似地方" class="headerlink" title="觉得与angular类似地方"></a>觉得与angular类似地方</h4><ol>
-<li>双向绑定，v-指令和angular的ng-指令类似</li>
-<li>同样有watch监听函数</li>
-<li>vue父组件传给子组件的数据要在props里面注册，在子组件内用this.xxx获取。这一点有点像angular的隔离scope</li>
-</ol>
-<p>觉得vue比起angular更像react。vue和react很像，但是比react细腻。</p>
-<h1 id="React-redux与vuex比较"><a href="#React-redux与vuex比较" class="headerlink" title="React-redux与vuex比较"></a>React-redux与vuex比较</h1><h3 id="1-使用流程"><a href="#1-使用流程" class="headerlink" title="1-使用流程"></a>1-使用流程</h3><h4 id="React-redux"><a href="#React-redux" class="headerlink" title="React-redux"></a>React-redux</h4><ol>
-<li>写reducer（previousState,action）函数 return 更新后的所需要的数据</li>
-<li>Store=createStore(reducer)</li>
-<li><provider store="{store}">{router}&lt; Provider/&gt;</provider></li>
-<li>定义action对象，{事件类型type,事件参数data}</li>
-<li>connect(mapStateToProps, mapDispatchToProps)（组件）</li>
-<li>组件里面使用this.props.（action.type）(action.data)</li>
-</ol>
-<img src="/study/2017/12/28-vue-comparison/react-redux-process.png" title="react-redux使用流程">
-<h4 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h4><ol>
-<li>写好store和不同模块的state,mutations,getters,actions </li>
-<li>store = new Vuex.Store( )</li>
-<li>new Vue({<br>el: ‘#app’,<br>store,<br>render: h =&gt; h(App)<br>})</li>
-<li>组件使用</li>
-</ol>
-<p>mapState</p>
-<p>mapMutations</p>
-<p>mapGetters</p>
-<p>mapActions</p>
-<p>连接</p>
-<h3 id="2-共享数据store"><a href="#2-共享数据store" class="headerlink" title="2-共享数据store"></a>2-共享数据store</h3><h4 id="React-redux的store"><a href="#React-redux的store" class="headerlink" title="React-redux的store"></a>React-redux的store</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> store = createStore(</span><br><span class="line">    combineReducers(reducer),</span><br><span class="line">       </span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">&lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">  &#123;router&#125;</span><br><span class="line">&lt;<span class="regexp">/Provider&gt;,</span></span><br><span class="line"><span class="regexp">document.getElementById('app')</span></span><br><span class="line"><span class="regexp">);</span></span><br></pre></td></tr></table></figure>
-<h4 id="Vuex的store"><a href="#Vuex的store" class="headerlink" title="Vuex的store"></a>Vuex的store</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">store = <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state:</span><br><span class="line">mutations</span><br><span class="line">actions</span><br><span class="line">getters</span><br><span class="line">  modules:&#125;）</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  router,</span><br><span class="line">  store,</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h3 id="3-模块"><a href="#3-模块" class="headerlink" title="3-模块"></a>3-模块</h3><h4 id="React-redux的reducer"><a href="#React-redux的reducer" class="headerlink" title="React-redux的reducer"></a>React-redux的reducer</h4><p>reducer和vuex的modules类似，可以用来划分不同模块</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// reducer</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">User</span> (<span class="params">state = JSON.parse(Tool.localItem(<span class="string">'User'</span></span>)), <span class="title">action</span>) </span>&#123;     </span><br><span class="line">        <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">            <span class="keyword">case</span> SIGNIN_SUCCESS: <span class="comment">//登录成功                               </span></span><br><span class="line">                Tool.localItem(<span class="string">'User'</span>, <span class="built_in">JSON</span>.stringify(action.target));               </span><br><span class="line">                <span class="keyword">return</span> action.target;</span><br><span class="line">         </span><br><span class="line">            <span class="keyword">case</span> SIGNIN: <span class="comment">//退出</span></span><br><span class="line">                Tool.removeLocalItem(<span class="string">'User'</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">default</span>:            </span><br><span class="line">               <span class="keyword">return</span> state;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">/**省略。。。。。。*/</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123; IndexList, Topic, MyMessages, UserView, User &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="vuex的modules"><a href="#vuex的modules" class="headerlink" title="vuex的modules"></a>vuex的modules</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line">    user: <span class="literal">null</span></span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line">    setUser (state, payload) &#123;</span><br><span class="line">      state.user = payload     </span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  actions,</span><br><span class="line">  getters,</span><br><span class="line">  modules: &#123;</span><br><span class="line">    cart,</span><br><span class="line">    products,</span><br><span class="line">    login&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h3 id="4-唯一可以改变state的方式"><a href="#4-唯一可以改变state的方式" class="headerlink" title="4-唯一可以改变state的方式"></a>4-唯一可以改变state的方式</h3><h4 id="React-redux的action"><a href="#React-redux的action" class="headerlink" title="React-redux的action"></a>React-redux的action</h4><p>action就是一个对象,具体处理方法在reducer里面实现<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">signinSuccess</span>(<span class="params">target</span>)</span>&#123;</span><br><span class="line"><span class="keyword">return</span> &#123;</span><br><span class="line">type:<span class="string">'signinSuccess'</span>,</span><br><span class="line">target</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<h4 id="Vuex的mutation"><a href="#Vuex的mutation" class="headerlink" title="Vuex的mutation"></a>Vuex的mutation</h4><p>mutation是方法，由action调用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// mutations</span></span><br><span class="line"><span class="keyword">const</span> mutations = &#123;</span><br><span class="line">  [types.RECEIVE_PRODUCTS] (state, &#123; products &#125;) &#123;</span><br><span class="line">    state.all = products</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  [types.ADD_TO_CART] (state, &#123; id &#125;) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'form product'</span>)</span><br><span class="line">    state.all.find(<span class="function"><span class="params">p</span> =&gt;</span> p.id === id).inventory--</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="5-组件连接姿势"><a href="#5-组件连接姿势" class="headerlink" title="5-组件连接姿势"></a>5-组件连接姿势</h3><h4 id="React-redux连接"><a href="#React-redux连接" class="headerlink" title="React-redux连接"></a>React-redux连接</h4><p>用connect方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mapStateToProps = <span class="function">(<span class="params">state</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      User: state.User</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> mapDispatchToProps = <span class="function">(<span class="params">dispatch</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        signinSuccess: <span class="function">(<span class="params">user</span>) =&gt;</span> &#123;</span><br><span class="line">            dispatch(signinSuccess(user))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(mapStateToProps,mapDispatchToProps)(SignIn);</span><br></pre></td></tr></table></figure></p>
-<h4 id="Vuex连接"><a href="#Vuex连接" class="headerlink" title="Vuex连接"></a>Vuex连接</h4><p>只需要在组件里面映射<br>mapState\<br>mapMutations\<br>mapGetters\<br>mapActions</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  computed: mapGetters(&#123;</span><br><span class="line">    products: <span class="string">'allProducts'</span></span><br><span class="line">  &#125;),</span><br><span class="line">  methods: mapActions([</span><br><span class="line">    <span class="string">'addToCart'</span></span><br><span class="line">  ]),</span><br></pre></td></tr></table></figure>
-<h3 id="6-调用链"><a href="#6-调用链" class="headerlink" title="6-调用链"></a>6-调用链</h3><h4 id="React-redux调用链"><a href="#React-redux调用链" class="headerlink" title="React-redux调用链"></a>React-redux调用链</h4><img src="/study/2017/12/28-vue-comparison/react-redux-lian.png" title="React-redux调用链">
-<h4 id="Vuex调用链"><a href="#Vuex调用链" class="headerlink" title="Vuex调用链"></a>Vuex调用链</h4><img src="/study/2017/12/28-vue-comparison/vuex-lian.png" title="vuex调用链">
-<h3 id="7-总结"><a href="#7-总结" class="headerlink" title="7-总结"></a>7-总结</h3><h4 id="React-redux-1"><a href="#React-redux-1" class="headerlink" title="React-redux"></a>React-redux</h4><p>action是唯一修改state的方法</p>
-<p>Action用dispatch调用</p>
-<p>reducer， 和vuex的modules相似</p>
-<p>组件调用都是dispatch action</p>
-<h4 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h4><p>mutation是唯一修改state的方法，类似React-redux的action</p>
-<p>除了mutation还有action,</p>
-<p>mutation用于同步操作，用commit调用</p>
-<p>action用于异步操作,用dispatch调用</p>
-<p>Modules，和redux的reducer相似</p>
-<p>有getters</p>
-<p>有namespaced</p>
-<p>组件调用都是dispatch action</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/专题笔记/">专题笔记</a>
-</div>
-
-
-  <div class="article-tags">
+    <a href="/study/2017/12/28-vue-comparison.html" title="vue vs react vs angular1" itemprop="url">
   
-  <span></span> <a href="/tags/vue/">vue</a><a href="/tags/react/">react</a><a href="/tags/angular/">angular</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
+    <h1 itemprop="name">vue vs react vs angular1</h1>
     
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
+     
+           <p itemprop="description" >vue 与angualr1 ,react 不同体验整理之前项目组的前端用的是angualr1.x版本，给我的感觉就是angular啥都有，只要注入依赖就可以用。
+工作闲暇之余会自己学习新知识，react很火，但是公司没有react的项目实操，所以自己找了网上一个比较适合入门的项目</p>
+        
     
-      <a href="/study/2017/12/6-vue-attention.html" title="vue 一些需要注意的点" itemprop="url">vue 一些需要注意的点</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2017-12-05T16:00:00.000Z" itemprop="datePublished"> Published 2017-12-06</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><ul>
-<li><a href="http://www.2ality.com/2015/08/getting-started-es6.html" target="_blank" rel="noopener">ES6 Javascript</a></li>
-<li><a href="http://vuejs.org" target="_blank" rel="noopener">Vue JS</a> 框架和 <a href="http://npmjs.org" target="_blank" rel="noopener">NPM</a> 生态</li>
-<li><a href="http://router.vuejs.org/" target="_blank" rel="noopener">Vue Router</a></li>
-<li><a href="https://vuex.vuejs.org/zh-cn/intro.html" target="_blank" rel="noopener">Vuex</a></li>
-<li><a href="https://vue-loader.vuejs.org/zh-cn/" target="_blank" rel="noopener">.vue files</a></li>
-<li><a href="https://github.com/vuejs/vue-cli" target="_blank" rel="noopener">vue-cli</a></li>
-<li><a href="https://github.com/axios/axios" target="_blank" rel="noopener">Axios</a></li>
-<li><a href="http://element.eleme.io/#/zh-CN/component" target="_blank" rel="noopener">Element-ui</a></li>
-<li><a href="https://webpack.js.org/" target="_blank" rel="noopener">Webpack</a></li>
-<li><a href="https://eslint.org/" target="_blank" rel="noopener">ESLint</a></li>
-</ul>
-<h2 id="摘抄"><a href="#摘抄" class="headerlink" title="摘抄"></a>摘抄</h2><p>不要为了编辑内容而打开另一个页面，应该直接在上下文中实现编辑。<br>能在这个页面解决的问题，就不要去其它页面解决，因为任何页面刷新和跳转都会引起变化盲视（Change Blindness），导致用户心流（Flow）被打断</p>
-<p>『格式塔学派』中的连续律（Law of Continuity）所描述的，在知觉过程中人们往往倾向于使知觉对象的直线继续成为直线，使曲线继续成为曲线。在界面设计中，将元素进行对齐，既符合用户的认知特性，也能引导视觉流向，让用户更流畅地接收信息。</p>
-<p>冒号对齐（右对齐）能让内容锁定在一定范围内，让用户眼球顺着冒号的视觉流，就能找到所有填写项，从而提高填写效率。为了快速对比数值大小，建议所有数值取相同有效位数，并且右对齐。</p>
-<p>在一些需要用户慎重决策的场景中，系统应该保持中立，不能替用户或者诱导用户做出判断。</p>
-<p>单字段行内编辑，当『易读性』远比『易编辑性』重要时，可以使用『单击编辑』。</p>
-<p>当『易读性』为主，同时又要突出操作行的『易编辑性』时，可使用『文字链/图标编辑』。</p>
-<p>当需要增强按钮的响应性时，可以通过增加用户点击热区的范围，而不是增大按钮形状，从而增强响应性，又不缺失美感。</p>
-<p>颜需色遵守 WCAG 2.0 的标准，操作类的色彩搭配都应满足颜色对比值 3:1 的最低标准。文本和背景色之间至少保持最小 4.5:1 的对比度（AA 级），正文内容都保持了 7:1 以上的 AAA 级对比度。</p>
-<p>在操作前引导告知用户操作的目的或重要性，能促进用户更愿意去执行。</p>
-<p>当用户填写的内容出错的时候，你的报错信息应当符合用户的认知，用易于理解的方式表述出来。</p>
-<p>直接使用『你』、『我』来和用户对话，与用户建立亲密感。避免使用『您』，让用户感觉太过疏远。</p>
-<p>不要在同一个句式中混用『你』和『我』，交互中指代混乱会让用户相当纠结。</p>
-<h2 id="vue"><a href="#vue" class="headerlink" title="ｖｕｅ"></a>ｖｕｅ</h2><ul>
-<li>不要在选项属性或回调上使用箭头函数</li>
-<li>计算属性是基于它们的依赖进行缓存的。计算属性只有在它的相关依赖发生改变时才会重新求值。</li>
-<li>当 v-bind:style 使用需要添加浏览器引擎前缀的 CSS 属性时，如 transform，Vue.js 会自动侦测并添加相应的前缀。</li>
-<li>表单元素不要复用它们，只需添加一个具有唯一值的 key 属性即可</li>
-<li>v-show 不支持 <code>&lt;template&gt;</code>元素， v-else也不支持</li>
-<li>v-for 具有比 v-if 更高的优先级。<br>它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一 key 属性。</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span> <span class="attr">:key</span>=<span class="string">"item.id"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 内容 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>建议尽可能在使用 v-for 时提供 key，除非遍历输出的 DOM 内容非常简单，或者是刻意依赖默认行为以获取性能上的提升。</p>
-<p>2.2.0+ 的版本里，当在组件中使用 v-for 时，key 现在是必须的。</p>
-</li>
-<li><p>vue数组的变异方法，：push()pop()shift()unshift()splice()sort()reverse()<br>  非变异 (non-mutating method) 方法，例如：filter(), concat() 和 slice()</p>
-</li>
-<li><p>Vue 不能检测以下变动的数组：</p>
-<ol>
-<li><p>当你利用索引直接设置一个项时，例如：<code>vm.items[indexOfItem] = newValue</code><br>解决方法</p>
-<p><code>javascript
-// Vue.set
-Vue.set(example1.items, indexOfItem, newValue)
-或者
-// Array.prototype.splice
-example1.items.splice(indexOfItem, 1, newValue)</code></p>
-</li>
-<li><p>当你修改数组的长度时，例如：<code>vm.items.length = newLength</code><br>解决方法</p>
-<p><code>example1.items.splice(newLength)</code></p>
-</li>
-</ol>
-<ul>
-<li><p>对于已经创建的实例，Vue 不能动态添加根级别的响应式属性。但是，可以使用<br><code>Vue.set(object, key, value)</code>方法向嵌套对象添加响应式属性。<br>还可以使用<code>this.$set</code>实例方法，或者</p>
-<p><code>javascript
-this.userProfile = Object.assign({}, this.userProfile, {
-age: 27,
-favoriteColor: &#39;Vue Green&#39;
-})</code></p>
-</li>
-</ul>
-</li>
-<li><p>事件修饰符。</p>
-<p>.stop .prevent. capture .self .once .native</p>
-<p><a href="mailto:``@click.prevent.self" target="_blank" rel="noopener">``@click.prevent.self</a> <code>会阻止所有的点击，而</code>@click.self.prevent<code></code> 只会阻止对元素自身的点击。</p>
-</li>
-</ul>
-<ul>
-<li><p>构造 Vue 实例时传入的各种选项大多数都可以在组件里使用。只有一个例外：data 必须是函数。</p>
-</li>
-<li><p>Vue 实例指的是 new Vue</p>
-<p>组件指的是 Vue.component,或者new Vue里面的component</p>
-</li>
-<li><p>组件实例的作用域是孤立的</p>
-</li>
-<li><p>当使用的不是字符串模板时，camelCase (驼峰式命名) 的 prop 需要转换为相对应的 kebab-case (短横线分隔式命名)</p>
-</li>
-<li><p>初学者常犯的一个错误是使用字面量语法传递数值：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 传递了一个字符串 "1" --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">comp</span> <span class="attr">some-prop</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;/<span class="name">comp</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>因为它是一个字面量 prop，它的值是字符串 “1” 而不是一个数值。</p>
-<p>如果想传递一个真正的 JavaScript 数值，则需要使用 v-bind，从而让它的值被当作 JavaScript 表达式计算：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 传递真正的数值 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">comp</span> <span class="attr">v-bind:some-prop</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;/<span class="name">comp</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>每次父组件更新时，子组件的所有 prop 都会更新为最新值。这意味着你不应该在子组件内部改变 prop。注意在 JavaScript 中对象和数组是    引用类型，指向同一个内存空间，</p>
-<p>  如果 prop 是一个对象或数组，在子组件内部改变它会影响父组件的状态。</p>
-</li>
-<li><p>.sync 修饰符对一个 prop 进行“双向绑定”.默认Prop是单向绑定的。</p>
-<p>从 2.3.0 起我们重新引入了 .sync 修饰符，但是这次它只是作为一个编译时的语法糖存在。它会被扩展为一个自动更新父组件属性的 v-on 监听器。<br>如下代码<br><code>&lt;comp :foo.sync=&quot;bar&quot;&gt;&lt;/comp&gt;</code><br>会被扩展为：<br><code>&lt;comp :foo=&quot;bar&quot; @update:foo=&quot;val =&gt; bar = val&quot;&gt;&lt;/comp&gt;</code><br>当子组件需要更新 foo 的值时，它需要显式地触发一个更新事件：<br><code>this.$emit(&#39;update:foo&#39;, newValue)</code></p>
-</li>
-</ul>
-<h2 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h2><p>  Vuex 的 store 中的状态是响应式的，那么当我们变更状态时，监视状态的 Vue 组件也会自动更新。这也意味着 Vuex 中的 mutation 也需要与使用 Vue 一样遵守一些注意事项：</p>
-<ol>
-<li>最好提前在你的 store 中初始化好所有所需属性。</li>
-<li><p>当需要在对象上添加新属性时，你应该使用</p>
-<p><code>Vue.set(obj, &#39;newProp&#39;, 123)</code>, </p>
-<p>或者以新对象替换老对象。例如，利用 stage-3 的对象展开运算符我们可以这样写：</p>
-<p><code>state.obj = { ...state.obj, newProp: 123 }</code></p>
-<p>mutation 必须是同步函数</p>
-<p>store.dispatch 可以处理被触发的 action 的处理函数返回的 Promise，并且 store.dispatch 仍旧返回 Promise</p>
-<p>在 Vuex 模块化中，state 是唯一会根据组合时模块的别名来添加层级的，后面的 getters、mutations 以及 actions 都是直接合并在 store 下。</p>
-<p><code>getter({state,getters,rootState})</code>由于 getters 不区分模块，所以不同模块中的 getters 如果重名，Vuex 会报出<code>&#39;duplicate getter key: [重复的getter名]&#39;</code> 错误。</p>
-<p><code>mutations(state)</code> mutation 的回调函数中只接收唯一的参数——当前模块的 state。mutations 与 getters 类似，不同模块的 mutation 均可以通过 <code>store.commit</code> 直接触发。</p>
-<p><code>action({state,rootState, getters, mutations, actions})</code>与 mutations 类似，不同模块的 actions 均可以通过 <code>store.dispatch</code> 直接触发.</p>
-<p>在 action 中可以通过 context.commit 跨模块调用 mutation，同时一个模块的 action 也可以调用其他模块的 action</p>
-<p>同样的，当不同模块中有同名 action 时，通过 store.dispatch 调用，会依次触发所有同名 actions。</p>
-</li>
-</ol>
-<h2 id="babel"><a href="#babel" class="headerlink" title="ｂａｂｅｌ"></a>ｂａｂｅｌ</h2><p>transform-runtime最大的作用主要有几下几点：</p>
-<ol>
-<li><p>解决编译中产生的重复的工具函数，减小代码体积</p>
-</li>
-<li><p>只支持新的Javascript语法扩展，比如<code>Set</code>，<code>Map</code>…不支持<br> <code>Object.assign，&quot;foobar&quot;.includes(&quot;foo&quot;)</code><br> 这些对于API的扩展，所以需要使用这些新的API功能需要引入<code>babel-polyfill</code></p>
-<p> <code>&quot;presets&quot;: [&quot;env&quot;]</code> 表示<code>babel-preset-env</code></p>
-<p> 每年每个 preset 只编译当年批准的内容。 而 babel-preset-env 相当于 es2015 ，es2016 ，es2017 及最新版本。</p>
-</li>
-</ol>
-<h2 id="vue－loader"><a href="#vue－loader" class="headerlink" title="ｖｕｅ－ｌｏａｄｅｒ"></a>ｖｕｅ－ｌｏａｄｅｒ</h2><p>  使用 scoped 后，父组件的样式将不会渗透到子组件中。</p>
-<p>  通过 v-html 创建的 DOM 内容不受作用域内的样式影响，但是你仍然可以通过深度作用选择器来为他们设置样式</p>
-<p>  <code>sass-resources-loader</code>:在每个组件里加载一个设置文件，而无需每次都将其显式导入 </p>
-<p>  Vue 组件中的所有 JavaScript 默认使用 <code>babel-loader</code>处理</p>
-<p>  <code>file-loader</code> 可以指定要复制和放置资源文件的位置，以及如何使用版本哈希命名以获得更好的缓存此外，这意味着 你可以就近管理图片文件，可以使用相对路径而不用担心布署时URL问题。使用正确的配置，Webpack 将会在打包输出中自动重写文件路径为正确的URL。</p>
-<p>  <code>url-loader</code> 允许你有条件将文件转换为内联的 <code>base-64 URL</code> (当文件小于给定的阈值)，这会减少小文件的 HTTP 请求。如果文件大于该阈值，会自动的交给 file-loader 处理。</p>
-<p>  对于 css, 由<code>vue-style-loader</code> 返回的结果通常不太有用。使用 <code>postcss</code>插件将会是更好的选择。</p>
-<p>  <code>extract-text-webpack-plugin</code>:Extract text from a bundle, or bundles, into a separate file.</p>
-<pre><code>``javascript
-loader: &apos;vue-loader&apos;,
-        options: {
-          extractCSS: true
-        }
-``
-</code></pre><p><code>HtmlWebpackPlugin</code>： 使得webpack入口点生成的文件都会在生成的HTML文件中的script标签内。<br><code>ExtractTextPlugin</code>提取CSS，然后包含在HTML head中的link标签内。</p>
-<h2 id="完整的导航解析流程-vue-router"><a href="#完整的导航解析流程-vue-router" class="headerlink" title="完整的导航解析流程 vue-router"></a>完整的导航解析流程 vue-router</h2><ol>
-<li>导航被触发。</li>
-<li>在失活的组件里调用beforeRouteLeave 。</li>
-<li>调用全局的 beforeEach 守卫。</li>
-<li>在重用的组件里调用 beforeRouteUpdate 守卫 (2.2+)。</li>
-<li>在路由配置里调用 beforeEnter。</li>
-<li>解析异步路由组件。</li>
-<li>在被激活的组件里调用 beforeRouteEnter。</li>
-<li>调用全局的 beforeResolve 守卫 (2.5+)。</li>
-<li>导航被确认。</li>
-<li>调用全局的 afterEach 钩子。</li>
-<li>触发 DOM 更新。</li>
-<li>用创建好的实例调用 beforeRouteEnter 守卫中传给 next 的回调函数。</li>
-</ol>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/专题笔记/">专题笔记</a>
-</div>
+    <time datetime="2017-12-27T16:00:00.000Z" itemprop="datePublished">2017-12-28</time>
+  </a>
+</section>
 
 
-  <div class="article-tags">
+
+
+
+
   
-  <span></span> <a href="/tags/vue/">vue</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/study/2017/12/suibi.html" title="2017-12总结" itemprop="url">2017-12总结</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2017-11-30T16:00:00.000Z" itemprop="datePublished"> Published 2017-12-01</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <ul>
-<li><p>昨晚在公司的OA系统提交账务报销的时候，发现保存老是保存不了，看了控制台，console出现了错误，OA是以前的老系统，用原生的js写的。具   体原因是 document.getElementById(xx)取不到值。（我的OA只能用IE打开==）</p>
-<p>  然后去检查元素看了一下，发现并没有id==xx的元素，都是写成name=xx,当时我理所应当地以为是OA有bug,手动在name=xx的后面加上id=xx,再点击保存就OK了。</p>
-<p>  今天查了一下，原来不是有bug。</p>
-<blockquote>
-<p>在 IE6 IE7 IE8(Q) 中，支持以 document.getElementById(elementName) 的方式获取 A APPLET BUTTON FORM IFRAME IMG INPUT MAP OBJECT EMBED SELECT TEXTAREA 元素，而其他浏览器的任何元素均不支持该方式。</p>
-</blockquote>
-</li>
-</ul>
-<pre><code>参考
-
-[SD9001: IE6 IE7 IE8(Q) 中的 getElementById 方法能以 name 属性为参数获取某些元素](http://www.w3help.org/zh-cn/causes/SD9001)
-
-实验了一下，用IE8版本，成功了吼吼吼
-</code></pre><ul>
-<li><code>Polyfill</code>的准确意思为：用于实现浏览器并不支持的原生API的代码。<br>  例如，querySelectorAll是很多现代浏览器都支持的原生Web API，但是有些古老的浏览器并不支持，那么假设有人写了库，只要用了这个库， 你就可以在古老的浏览器里面使用<code>document.querySelectorAll</code>，使用方法跟现代浏览器原生API无异。那么这个库就可以称为<code>Polyfill</code>或者<code>Polyfiller</code>。<br>  好，那么问题就来了。jQuery是不是一个Polyfill?答案是No。因为它并不是实现一些标准的原生API，而是封装了自己API。一个Polyfill是抹平新老浏览器 标准原生API 之间的差距的一种封装，而不是实现自己的API。</li>
-</ul>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/每月总结/">每月总结</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/life/2017.html" title="2017读书" itemprop="url">2017读书</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2017-11-28T16:00:00.000Z" itemprop="datePublished"> Published 2017-11-29</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="《穆斯林的葬礼》"><a href="#《穆斯林的葬礼》" class="headerlink" title="《穆斯林的葬礼》"></a>《穆斯林的葬礼》</h3><p><a href="https://book.douban.com/review/9724464/" target="_blank" rel="noopener">https://book.douban.com/review/9724464/</a></p>
-<h3 id="《月亮与六便士》"><a href="#《月亮与六便士》" class="headerlink" title="《月亮与六便士》"></a>《月亮与六便士》</h3><p><a href="https://book.douban.com/review/9724462/" target="_blank" rel="noopener">https://book.douban.com/review/9724462/</a></p>
-<p>今年开始养阅读的习惯，继续努力。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/生活/">生活</a>►<a class="article-category-link" href="/categories/生活/阅读笔记/">阅读笔记</a>
-</div>
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/tags/文学/">文学</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/study/2017/11/21-f8app-guide.html" title="f8app在window安装教程" itemprop="url">f8app在window安装教程</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2017-11-20T16:00:00.000Z" itemprop="datePublished"> Published 2017-11-21</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>md写图片还要上传图床，太懒了</p>
-<p><a href="http://blog.csdn.net/lry1994/article/details/78589019" target="_blank" rel="noopener">http://blog.csdn.net/lry1994/article/details/78589019</a></p>
-<p>这货，花了我好几天时间<br>IDE：androidStudio,可以按照提示修改错误</p>
-<pre><code>1、建立一个空的文件夹！！！这一步很重要
-2、$ git clone https://github.com/fbsamples/f8app.git
-3、$ cd f8app
-4、$ npm install
-这一步我出现了好多不知所措的错误，然后神奇的是，多装几次就好了！！！
-</code></pre><p>5、运行<code>mongod --dbpath &quot;W://MongoDB//data&quot;</code><br>    <a href="https://github.com/ReactWindows/f8app/blob/data/mongodb/db.zip" target="_blank" rel="noopener">https://github.com/ReactWindows/f8app/blob/data/mongodb/db.zip</a></p>
-<pre><code>把db.zip解压后的文件拷贝到W://MongoDB//data下
-
-mongod --dbpath &quot;W://MongoDB//data&quot;
-打开mongodb确保运行起来:https://www.cnblogs.com/Joans/p/3706406.html
-</code></pre><p>6、启动 Parse/GraphQL servers</p>
-<pre><code>$ npm start
-npm run import-data 这条命令运行会百分百报错SyntaxError:Unexpected token P in JSON at position 0 ，所以不要这个命令了。什么去除https证书验证、代理都没有，因为那个请求链接已经关闭
-</code></pre><p>   参考链接<a href="http://blog.csdn.net/industriously/article/details/73302207" target="_blank" rel="noopener">http://blog.csdn.net/industriously/article/details/73302207</a></p>
-<p>7、确认下面的地址是可以访问的，并且是有数据的。<br><a href="http://localhost:8080/dashboard" target="_blank" rel="noopener">http://localhost:8080/dashboard</a></p>
-<p><a href="http://localhost:8080/graphql" target="_blank" rel="noopener">http://localhost:8080/graphql</a><br>打开<a href="http://localhost:8080/graphql" target="_blank" rel="noopener">http://localhost:8080/graphql</a></p>
-<p>输入</p>
-<pre><code>``
-query{
-
-schedule{
-
-title
-
-speakers{
-
-    name
-
-    title
-
-    }
-
-location{
-
-    name
-
-    }
-
-}
-
-}
-``
-</code></pre><p>运行有结果</p>
-<p>8、react-native start  这句必须有</p>
-<p>9、react-native run-android</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot;java.lang.RuntimeException: Timeout of 120000 reached waiting for exclusiveaccess to file:/Users/weidingqiang/.gradle/wrapper/dists/gradle-2.4-all/3i2gobhdl0fm2tosnn15g540i0/gradle-2.4-all.zip</span><br><span class="line"></span><br><span class="line">at org.gradle.wrapper.ExclusiveFileAccessManager.access(ExclusiveFileAccessManager.java:61)</span><br><span class="line"></span><br><span class="line">at org.gradle.wrapper.Install.createDist(Install.java:47)</span><br><span class="line"></span><br><span class="line">at org.gradle.wrapper.WrapperExecutor.execute(WrapperExecutor.java:129)</span><br><span class="line"></span><br><span class="line">at org.gradle.wrapper.GradleWrapperMain.main(GradleWrapperMain.java:48)</span><br></pre></td></tr></table></figure>
-<p>解决方法</p>
-<p><a href="https://services.gradle.org/distributions/ 下载链接" target="_blank" rel="noopener">下载链接</a></p>
-<p>1.重新下载gradle-3.3-all.zip，进入一堆乱码的文件夹，比如2n0i7hqatcbtk57vvql575dbap</p>
-<p>2.不要删除里面的.lck和.part等文件，直接拷贝下载的gra</p>
-<p>dle-3.3-all.zip文件到该目录</p>
-<p>在androidstudio运行，按照他的suggestion改就OK了</p>
-<p>接下来出现的都是版本问题，我也不知道怎么改了，改了好多次，最后可以了</p>
-<p>最后成功运行！！！！！</p>
-<p>运行方式<br>react-native  init 项目名</p>
-<p>reactNative利用androidStudio运行：</p>
-<p>在androidStudio 打开android文件夹，一定要打开这个，不然不能正常运行</p>
-<p>在项目目录下运行react-native start 启动package server,</p>
-<p>在androidstudio点击run-&gt;app</p>
-<p>adb shell input keyevent 82 打开菜单</p>
-<p>或者</p>
-<p>reactNative真机运行：USB手机连接电脑，</p>
-<p>在项目目录下运行react-native run-android</p>
-<p>摇晃设备或按Menu键可以打开调试菜单，点击Dev Settings，</p>
-<p>选Debug server host for device，</p>
-<p>输入你的正在运行packager的那台电脑的局域网IP加:8081（同时要保证手机和电脑在同一网段，且没有防火墙阻拦），再按back键返回，</p>
-<p>再按Menu键，在调试菜单中选择Reload JS，就应该可以看到运行的结果了。</p>
-<p>adb devices查看连接电脑的手机设备</p>
-<p>creact-react-native-app 项目名这种方法是创建纯粹的react-native，没有和安卓混合开发</p>
-<p>真机运行react-native遇到了的问题</p>
-<p>1、adbserver version (32) doesn’t match this client (36); killing…</p>
-<p>最后原因是因为手机驱动安装失败</p>
-<p>解决方法：豌豆荚</p>
-<p>2、</p>
-<p>解决方法</p>
-<p>3、</p>
-<p>解决方法：修改两个地方</p>
-<p><a href="http://blog.csdn.net/mapboo/article/details/53419838" target="_blank" rel="noopener">http://blog.csdn.net/mapboo/article/details/53419838</a></p>
-<p>其他：</p>
-<p>构建 F8 App / ReactNative 开发指南</p>
-<p><a href="https://f8-app.liaohuqiu.net/" target="_blank" rel="noopener">https://f8-app.liaohuqiu.net/</a></p>
-<p>F8App-ReactNative项目源码分析4-js篇</p>
-<p><a href="http://blog.csdn.net/offbye/article/details/51586227" target="_blank" rel="noopener">http://blog.csdn.net/offbye/article/details/51586227</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/专题笔记/">专题笔记</a>
-</div>
-
-
-  <div class="article-tags">
+    <a href="/study/2017/12/6-vue-attention.html" title="vue 一些需要注意的点" itemprop="url">
   
-  <span></span> <a href="/tags/react-native/">react-native</a>
-  </div>
+    <h1 itemprop="name">vue 一些需要注意的点</h1>
+    
+     
+           <p itemprop="description" >技术栈
+ES6 Javascript
+Vue JS 框架和 NPM 生态
+Vue Router
+Vuex
+.vue files
+vue-cli
+Axios
+Element-ui
+Webpack
+ESLint
 
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
+摘抄不要为了编辑内容而打开另一个页面，应该直接在上下文中实现编辑。能在</p>
+        
+    
+    <time datetime="2017-12-05T16:00:00.000Z" itemprop="datePublished">2017-12-06</time>
+  </a>
+</section>
 
 
 
 
 
 
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/study/2017/12/suibi.html" title="2017-12总结" itemprop="url">
+  
+    <h1 itemprop="name">2017-12总结</h1>
+    
+     
+           <p itemprop="description" >昨晚在公司的OA系统提交账务报销的时候，发现保存老是保存不了，看了控制台，console出现了错误，OA是以前的老系统，用原生的js写的。具   体原因是 document.getElementById(xx)取不到值。（我的OA只能用IE打开==）
+  然后去检查元素看了一下，</p>
+        
+    
+    <time datetime="2017-11-30T16:00:00.000Z" itemprop="datePublished">2017-12-01</time>
+  </a>
+</section>
 
-  <nav id="page-nav" class="clearfix">
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/life/2017.html" title="2017读书" itemprop="url">
+  
+    <h1 itemprop="name">2017读书</h1>
+    
+     
+           <p itemprop="description" >《穆斯林的葬礼》https://book.douban.com/review/9724464/
+《月亮与六便士》https://book.douban.com/review/9724462/
+今年开始养阅读的习惯，继续努力。</p>
+        
+    
+    <time datetime="2017-11-28T16:00:00.000Z" itemprop="datePublished">2017-11-29</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/study/2017/11/21-f8app-guide.html" title="f8app在window安装教程" itemprop="url">
+  
+    <h1 itemprop="name">f8app在window安装教程</h1>
+    
+     
+           <p itemprop="description" >md写图片还要上传图床，太懒了
+http://blog.csdn.net/lry1994/article/details/78589019
+这货，花了我好几天时间IDE：androidStudio,可以按照提示修改错误
+1、建立一个空的文件夹！！！这一步很重要
+2、$ git c</p>
+        
+    
+    <time datetime="2017-11-20T16:00:00.000Z" itemprop="datePublished">2017-11-21</time>
+  </a>
+</section>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix unexpand">
     <a class="extend prev" rel="prev" href="/page/3/"><span></span>Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next<span></span></a>
   </nav>
 
@@ -1193,6 +320,12 @@ location{
 <aside class="clearfix">
 
   
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="LRY1994" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+
 
 
   
@@ -1201,11 +334,11 @@ location{
 		<ul>
 		
 		  
-			<li><a href="/categories/学习/专题笔记/" title="专题笔记">专题笔记<sup>23</sup></a></li>
+			<li><a href="/categories/学习/专题笔记/" title="专题笔记">专题笔记<sup>24</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/学习/" title="学习">学习<sup>41</sup></a></li>
+			<li><a href="/categories/学习/" title="学习">学习<sup>42</sup></a></li>
 		  
 		
 		  
@@ -1254,11 +387,11 @@ location{
 			
 		
 			
-				<li><a href="/tags/reat-native/" title="reat-native">reat-native<sup>1</sup></a></li>
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>1</sup></a></li>
+				<li><a href="/tags/reat-native/" title="reat-native">reat-native<sup>1</sup></a></li>
 			
 		
 			
@@ -1278,15 +411,15 @@ location{
 			
 		
 			
+				<li><a href="/tags/AngularJS1/" title="AngularJS1">AngularJS1<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/栈队列/" title="栈队列">栈队列<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/angular/" title="angular">angular<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/AngularJS1/" title="AngularJS1">AngularJS1<sup>1</sup></a></li>
 			
 		
 			
@@ -1313,22 +446,17 @@ location{
   <p class="asidetitle">Links</p>
     <ul>
         
-          <li>
-            
-            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
-            
-          </li>
-        
     </ul>
 </div>
 
   
+
+<div class="doubanshow">
+<p class="asidetitle">Douban Show</p>
+<div>
+<script type="text/javascript" src="http://www.douban.com/service/badge/167927352/?show=collection&amp;n=12&amp;columns=3&amp;hidelogo=yes&amp;hideself=yes&amp;cat=book|movie" ></script>
+</div>
+</div>
 
 
   <div class="rsspart">
@@ -1337,7 +465,7 @@ location{
 
   <div class="weiboshow">
   <p class="asidetitle">Weibo</p>
-    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2140938987&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
 
@@ -1353,22 +481,28 @@ location{
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> Hello ,I&#39;m 圆玉 in China. <br/>
+			This is my blog,for recording.</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">
 		
-		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		<a href="http://weibo.com/2140938987" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/LRY1994" target="_blank" class="icon-github" title="github"></a>
 		
 		
 		
 		
 		
 		
+		<a href="https://www.douban.com/people/167927352" target="_blank" class="icon-douban" title="豆瓣"></a>
 		
 		
 		
+		
+		<a href="mailto:linry@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
 		
 	</div>
 			

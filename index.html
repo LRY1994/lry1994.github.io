@@ -76,726 +76,218 @@
     <div id="container">
       <div id="main">
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/study/2019/6.html" title="" itemprop="url"></a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2019-06-14T07:43:48.269Z" itemprop="datePublished"> Published 2019-06-14</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>overflow-y: visible不起作用<br>在container上添加以下样式</p>
-<p>padding-top: 20px;<br>margin-top: -20px;</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/study/2019/IE-hack.html" title="IE hack" itemprop="url">IE hack</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2019-04-15T16:00:00.000Z" itemprop="datePublished"> Published 2019-04-16</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="document-getElementById（name不是id-取节点"><a href="#document-getElementById（name不是id-取节点" class="headerlink" title="document.getElementById（name不是id)取节点"></a>document.getElementById（name不是id)取节点</h3><p>在 IE6 IE7 IE8(Q) 中，支持以 document.getElementById(elementName) 的方式获取 A APPLET BUTTON FORM IFRAME IMG INPUT MAP OBJECT EMBED SELECT TEXTAREA 元素，而其他浏览器的任何元素均不支持该方式。</p>
-<p>参考</p>
-<p><a href="http://www.w3help.org/zh-cn/causes/SD9001" target="_blank" rel="noopener">SD9001: IE6 IE7 IE8(Q) 中的 getElementById 方法能以 name 属性为参数获取某些元素</a></p>
-<h3 id="ie-margin-top负值无效"><a href="#ie-margin-top负值无效" class="headerlink" title="ie margin-top负值无效"></a>ie margin-top负值无效</h3><p><a href="https://www.cnblogs.com/chaozhang/p/4711282.html" target="_blank" rel="noopener">https://www.cnblogs.com/chaozhang/p/4711282.html</a></p>
-<p>加上display:inline-block</p>
-<h3 id="ie中img被拉伸"><a href="#ie中img被拉伸" class="headerlink" title="ie中img被拉伸"></a>ie中img被拉伸</h3><p>只要设置img为 height:auto，width:auto，就不会出现这种情况了</p>
-<h3 id="火狐和IE下href-”javascript-void-0-会弹出空白页"><a href="#火狐和IE下href-”javascript-void-0-会弹出空白页" class="headerlink" title="火狐和IE下href=”javascript:void(0) 会弹出空白页"></a>火狐和IE下href=”javascript:void(0) 会弹出空白页</h3><p>本来javascript:void(0);的用处是不用整体刷新网页且返回一个空值，但这儿由于DOM本身的冒泡事件所以会最后执行HREF属性内的javascript:void(0);导致执行函数返回了一个空值，所以覆盖掉了前面正常执行函数所返回的值引起的错误。</p>
-<p>一般情况下，IE会先运行DOM本身绑定的事件，如ONCLICK;如果没有阻止冒泡，则会顺序执行HREF属性。如果想正确运行，可以在前面用RETURN FALSE终止冒泡，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a target=&quot;_blank&quot; class=&quot;prev&quot; onclick=&quot;return false;&quot;   href=&quot;javascript:void(0);&quot;&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
-<p>或者直接删去也行，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a target=&quot;_blank&quot;  class=&quot;prev&quot; &gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure></p>
-<p>但是后者hover的时候没有手势的pointer</p>
-<h3 id="Array-prototype-sort-兼容"><a href="#Array-prototype-sort-兼容" class="headerlink" title="Array.prototype.sort 兼容"></a>Array.prototype.sort 兼容</h3><p>IE9– Array.prototype.sort 不能根据 对象属性 做排序<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法1冒泡排序</span></span><br><span class="line"><span class="keyword">var</span> mySort = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> fn != <span class="string">'function'</span>)&#123;</span><br><span class="line">        fn = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> a-b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i &lt; <span class="keyword">this</span>.length<span class="number">-1</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=i+<span class="number">1</span>;j&lt;<span class="keyword">this</span>.length;j++)&#123;</span><br><span class="line">            <span class="keyword">var</span> t = <span class="keyword">this</span>[i];</span><br><span class="line">            <span class="keyword">if</span>(fn(<span class="keyword">this</span>[i],<span class="keyword">this</span>[j]) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">this</span>[i] = <span class="keyword">this</span>[j];</span><br><span class="line">                <span class="keyword">this</span>[j] = t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="built_in">Array</span>.prototype.sorts!= <span class="string">'fucntion'</span>)&#123;</span><br><span class="line">    <span class="built_in">Array</span>.prototype.sorts = mySort;</span><br><span class="line">    mySort = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//方法2 插入排序</span></span><br><span class="line"><span class="keyword">var</span> mySort = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> fn != <span class="string">'function'</span>)&#123;</span><br><span class="line">        fn = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> a-b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;<span class="keyword">this</span>.length;i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> t = <span class="keyword">this</span>[i];</span><br><span class="line">        <span class="keyword">var</span> j = i<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(j &gt;= <span class="number">0</span> &amp;&amp; fn(<span class="keyword">this</span>[j],t)&gt; <span class="number">0</span> )&#123;</span><br><span class="line">            <span class="keyword">this</span>[j+<span class="number">1</span>] = <span class="keyword">this</span>[j];</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>[j+<span class="number">1</span>] = t;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="built_in">Array</span>.prototype.sorts!= <span class="string">'fucntion'</span>)&#123;</span><br><span class="line">    <span class="built_in">Array</span>.prototype.sorts = mySort;</span><br><span class="line">    mySort = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>safari 不支持函数参数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params">window</span>)</span>&#123; </span><br><span class="line">    <span class="keyword">var</span> ua = <span class="built_in">window</span>.navigator.userAgent.toLowerCase(), </span><br><span class="line">    reg = <span class="regexp">/msie|applewebkit.+safari/</span>; </span><br><span class="line">    <span class="keyword">if</span>(reg.test(ua))&#123; </span><br><span class="line">        <span class="keyword">var</span> _sort = <span class="built_in">Array</span>.prototype.sort; </span><br><span class="line">        <span class="built_in">Array</span>.prototype.sort = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123; </span><br><span class="line">            <span class="keyword">if</span>(!!fn &amp;&amp; <span class="keyword">typeof</span> fn === <span class="string">'function'</span>)&#123; </span><br><span class="line">                <span class="keyword">if</span>(<span class="keyword">this</span>.length &lt; <span class="number">2</span>) <span class="keyword">return</span> <span class="keyword">this</span>; </span><br><span class="line">                <span class="keyword">var</span> i = <span class="number">0</span>, j = i + <span class="number">1</span>, l = <span class="keyword">this</span>.length, tmp, r = <span class="literal">false</span>, t = <span class="number">0</span>; </span><br><span class="line">                <span class="keyword">for</span>(; i &lt; l; i++)&#123; </span><br><span class="line">                    <span class="keyword">for</span>(j = i + <span class="number">1</span>; j &lt; l; j++)&#123; </span><br><span class="line">                        t = fn.call(<span class="keyword">this</span>, <span class="keyword">this</span>[i], <span class="keyword">this</span>[j]); </span><br><span class="line">                        r = (<span class="keyword">typeof</span> t === <span class="string">'number'</span> ? t : </span><br><span class="line">                        !!t ? <span class="number">1</span> : <span class="number">0</span>) &gt; <span class="number">0</span> </span><br><span class="line">                        ? <span class="literal">true</span> : <span class="literal">false</span>; </span><br><span class="line">                        <span class="keyword">if</span>(r)&#123; </span><br><span class="line">                            tmp = <span class="keyword">this</span>[i]; </span><br><span class="line">                            <span class="keyword">this</span>[i] = <span class="keyword">this</span>[j]; </span><br><span class="line">                            <span class="keyword">this</span>[j] = tmp; </span><br><span class="line">                        &#125; </span><br><span class="line">                    &#125; </span><br><span class="line">                &#125; </span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>; </span><br><span class="line">            &#125;<span class="keyword">else</span>&#123; </span><br><span class="line">                <span class="keyword">return</span> _sort.call(<span class="keyword">this</span>); </span><br><span class="line">            &#125; </span><br><span class="line">        &#125;; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure></p>
-<h3 id="IE下-new-Date-“2016-07-01-08-00-00”-NaN"><a href="#IE下-new-Date-“2016-07-01-08-00-00”-NaN" class="headerlink" title="IE下 new Date(“2016-07-01 08:00:00”) == NaN"></a>IE下 new Date(“2016-07-01 08:00:00”) == NaN</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"2016-07-01 08:00:00"</span>);<span class="comment">//IE下NaN</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"2016/07/01 08:00:00"</span>)<span class="comment">//IE下OK</span></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">"2016/07/01 08:00:00。0"</span>)<span class="comment">//IE下NaN</span></span><br></pre></td></tr></table></figure>
-<p><code>new Date(&quot;2016-07-01 08:00:00&quot;);</code>这种格式在ff,chrome,opera,safari等浏览器中没有问题的，而在IE内核浏览器（猎豹，360兼容模式）等会出现无效NaN的问题，</p>
-<p><code>new Date(&quot;2016-07-01 08:10:00&quot;).replace(/-/g,&quot;/&quot;);</code>这样确保了任何一个浏览器都没有问题。</p>
-<h3 id="IE-hash有变化，但是页面无刷新"><a href="#IE-hash有变化，但是页面无刷新" class="headerlink" title="IE hash有变化，但是页面无刷新"></a>IE hash有变化，但是页面无刷新</h3><p>在页面框架内，使用location.href = href进行路由跳转时，IE9+环境会有问题，即hash有变化，但是页面无刷新。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fixRouterIE</span>(<span class="params">vm</span>)</span>&#123;</span><br><span class="line">	<span class="comment">//IE 11下</span></span><br><span class="line">	<span class="keyword">if</span> (</span><br><span class="line">	  <span class="string">'-ms-scroll-limit'</span> <span class="keyword">in</span> <span class="built_in">document</span>.documentElement.style &amp;&amp; </span><br><span class="line">	  <span class="string">'-ms-ime-align'</span> <span class="keyword">in</span> <span class="built_in">document</span>.documentElement.style</span><br><span class="line">	) &#123; </span><br><span class="line">	  <span class="built_in">window</span>.addEventListener(<span class="string">"hashchange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">	    <span class="keyword">const</span> currentPath = <span class="built_in">window</span>.location.hash.slice(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	    <span class="keyword">if</span> (vm._route.path !== currentPath) &#123;</span><br><span class="line">	      vm._router.push(currentPath)</span><br><span class="line">	    &#125;</span><br><span class="line">	  &#125;, <span class="literal">false</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/专题笔记/">专题笔记</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/study/2019/2/scss.html" title="scss笔记" itemprop="url">scss笔记</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2019-02-27T16:00:00.000Z" itemprop="datePublished"> Published 2019-02-28</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="嵌套CSS-规则"><a href="#嵌套CSS-规则" class="headerlink" title="嵌套CSS 规则"></a>嵌套CSS 规则</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span> &#123;</span><br><span class="line">  left: <span class="number">0px</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0px</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>css只有执行到@import时，浏览器才会去下载其他css文件，这导致页面加载起来特别慢。sass的@import规则在生成css文件时就把相关文件导入进来。这意味着所有相关的样式被归纳到了同一个css文件中，而无需发起额外的下载请求</p>
-<p>sass局部文件的文件名以下划线开头。这样，sass就不会在编译时单独编译这个文件输出css，而只把这个文件用作导入。</p>
-<h3 id="变量默认值"><a href="#变量默认值" class="headerlink" title="变量默认值"></a>变量默认值</h3><p><code>$fancybox-width: 400px !default;</code><br>在上例中，如果用户在导入你的sass局部文件之前声明了一个$fancybox-width变量，那么你的局部文件中对$fancybox-width赋值400px的操作就无效。</p>
-<h3 id="css-中导入scss"><a href="#css-中导入scss" class="headerlink" title="css 中导入scss"></a>css 中导入scss</h3><p>sass导入到一个CSS规则内，如下所示：<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.blue-theme</span> &#123;@<span class="keyword">import</span> <span class="string">"_blue-theme.scss"</span>&#125;</span><br><span class="line"></span><br><span class="line">//生成的结果跟你直接在.blue-theme选择器内写_blue-theme.scss文件的内容完全一样。</span><br><span class="line"></span><br><span class="line">.blue-theme &#123;</span><br><span class="line">  <span class="selector-tag">aside</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: blue;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="与css-import区别"><a href="#与css-import区别" class="headerlink" title="与css @import区别"></a>与css @import区别</h3><p>尽管通常在sass中使用@import时，sass会尝试找到对应的sass文件并导入进来，但在下列三种情况下会生成原生的CSS@import，尽管这会造成浏览器解析css时的额外下载：</p>
-<ol>
-<li>被导入文件的名字以.css结尾；</li>
-<li>被导入文件的名字是一个URL地址（比如<a href="http://www.sass.hk/css/css.css），由此可用谷歌字体API提供的相应服务；" target="_blank" rel="noopener">http://www.sass.hk/css/css.css），由此可用谷歌字体API提供的相应服务；</a></li>
-<li>被导入文件的名字是CSS的url()值。</li>
-</ol>
-<h3 id="静默注释"><a href="#静默注释" class="headerlink" title="静默注释"></a>静默注释</h3><p>在原生的css中，注释对于其他人是直接可见的,scss中<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#333</span>; <span class="comment">// 这种注释内容不会出现在生成的css文件中</span></span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>; <span class="comment">/* 这种注释内容会出现在生成的css文件中 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="mixin"><a href="#mixin" class="headerlink" title="mixin"></a>mixin</h3><p>判断一组属性是否应该组合成一个混合器，一条经验法则就是你能否为这个混合器想出一个好的名字。如果你能找到一个很好的短名字来描述这些属性修饰的样式，比如rounded-cornersfancy-font或者no-bullets，那么往往能够构造一个合适的混合器。如果你找不到，这时候构造一个混合器可能并不合适。</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">mixin</span> link-colors(<span class="variable">$normal</span>, <span class="variable">$hover</span>, <span class="variable">$visited</span>) &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">$normal</span>;</span><br><span class="line">  &amp;:hover &#123; <span class="attribute">color</span>: <span class="variable">$hover</span>; &#125;</span><br><span class="line">  &amp;:visited &#123; <span class="attribute">color</span>: <span class="variable">$visited</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line">  @<span class="keyword">include</span> link-colors(blue, red, green);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line">    @<span class="keyword">include</span> link-colors(</span><br><span class="line">      <span class="variable">$normal</span>: blue,</span><br><span class="line">      <span class="variable">$visited</span>: green,</span><br><span class="line">      <span class="variable">$hover</span>: red</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>设置默认值<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">mixin</span> set-position(<span class="variable">$position</span>: relative, <span class="variable">$left</span>: -1, <span class="variable">$right</span>: -1, <span class="variable">$top</span>: -1, <span class="variable">$bottom</span>: -1 )&#123;</span><br><span class="line">	<span class="attribute">position</span>: <span class="variable">$position</span>;</span><br><span class="line">	@<span class="keyword">if</span> <span class="variable">$left</span> != -1 &#123; <span class="attribute">left</span>: <span class="variable">$left</span>; &#125;</span><br><span class="line">	@<span class="keyword">if</span> <span class="variable">$right</span> != -1 &#123; <span class="attribute">right</span>: <span class="variable">$right</span>; &#125;</span><br><span class="line">	@<span class="keyword">if</span> <span class="variable">$top</span> != -1 &#123; <span class="attribute">top</span>: <span class="variable">$top</span>; &#125;</span><br><span class="line">	@<span class="keyword">if</span> <span class="variable">$bottom</span> != -1 &#123; <span class="attribute">bottom</span>: <span class="variable">$bottom</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">include</span> set-position(<span class="variable">$position</span>: absolute, <span class="variable">$top</span>: 50%);</span><br></pre></td></tr></table></figure></p>
-<h3 id="选择器继承-extend"><a href="#选择器继承-extend" class="headerlink" title="选择器继承 @extend"></a>选择器继承 @extend</h3><p>.seriousError不仅会继承.error自身的所有样式，任何跟.error有关的组合选择器样式也会被.seriousError以组合选择器的形式继承，如下代码:<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过选择器继承继承样式</span></span><br><span class="line"><span class="selector-class">.seriousError</span> &#123;</span><br><span class="line">  @<span class="keyword">extend</span> .error;</span><br><span class="line">  <span class="attribute">border-width</span>: <span class="number">3px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//.seriousError从.error继承样式</span></span><br><span class="line"><span class="selector-class">.error</span> <span class="selector-tag">a</span>&#123;  <span class="comment">//应用到.seriousError a</span></span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h1</span><span class="selector-class">.error</span> &#123; <span class="comment">//应用到hl.seriousError</span></span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1.2rem</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>继承一个html元素的样式,你对html元素添加的所有样式都会被继承。</p>
-<p>不要在css规则中使用后代选择器（比如.foo .bar）去继承css规则。如果你这么做，同时被继承的css规则有通过后代选择器修饰的样式，生成css中的选择器的数量很快就会失控</p>
-<h1 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h1><h3 id="父选择器-amp"><a href="#父选择器-amp" class="headerlink" title="父选择器 &amp;"></a>父选择器 &amp;</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#main</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: black;</span><br><span class="line">  &amp;-sidebar &#123; <span class="attribute">border</span>: <span class="number">1px</span> solid; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译为</span></span><br><span class="line"></span><br><span class="line"><span class="selector-id">#main</span> &#123; <span class="attribute">color</span>: black; &#125;</span><br><span class="line"><span class="selector-id">#main-sidebar</span> &#123;<span class="attribute">border</span>: <span class="number">1px</span> solid; &#125;</span><br></pre></td></tr></table></figure>
-<p>当父选择器含有不合适的后缀时，Sass 将会报错。</p>
-<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>将 ! 作为多行注释的第一个字符表示在压缩输出模式下保留这条注释并输出到 CSS 文件中，通常用于添加版权信息。<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$version</span>: <span class="string">"1.2.3"</span>;</span><br><span class="line"><span class="comment">/* This CSS is generated by My Snazzy Framework version #&#123;$version&#125;. */</span></span><br><span class="line"><span class="comment">//编译为</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* This CSS is generated by My Snazzy Framework version 1.2.3. */</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="global"><a href="#global" class="headerlink" title="!global"></a>!global</h3><p>将局部变量转换为全局变量可以添加 !global 声明：<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#main</span> &#123;</span><br><span class="line">  <span class="variable">$width</span>: <span class="number">5em</span> !global;</span><br><span class="line">  <span class="attribute">width</span>: <span class="variable">$width</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="颜色值运算"><a href="#颜色值运算" class="headerlink" title="颜色值运算"></a>颜色值运算</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$translucent-red</span>: rgba(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.5</span>);</span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: opacify(<span class="variable">$translucent-red</span>, <span class="number">0.3</span>);</span><br><span class="line">  <span class="attribute">background-color</span>: transparentize(<span class="variable">$translucent-red</span>, <span class="number">0.25</span>);</span><br><span class="line">&#125;</span><br><span class="line">编译为</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: rgba(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.8</span>);</span><br><span class="line">  <span class="attribute">background-color</span>: rgba(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.25</span>); &#125;</span><br></pre></td></tr></table></figure>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/专题笔记/">专题笔记</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/study/2019/2/2.html" title="2019.2-3总结" itemprop="url">2019.2-3总结</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2019-02-11T16:00:00.000Z" itemprop="datePublished"> Published 2019-02-12</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="IE浏览器url中文乱码"><a href="#IE浏览器url中文乱码" class="headerlink" title="IE浏览器url中文乱码"></a>IE浏览器url中文乱码</h3><p>IE浏览器直接拼接url,中文会乱码，需要像下面这样进行转码<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a :href=&quot;`/ctyun/clientcase?tag=$&#123;encodeURI(data[current].tag)&#125;`&quot; &gt;</span><br></pre></td></tr></table></figure></p>
-<p> 用router-link的就不用转码：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> &lt;router-link :to=&quot;&#123;name:&apos;clientcase&apos;,query:&#123;tag:item.tag&#125;&#125;&quot; &gt;</span><br><span class="line"> 或者</span><br><span class="line">&lt;router-link v-if=&quot;item.id&quot; :to=&quot;&#123;path:`/clientcase?tag=$&#123;item.tag&#125;&amp;id=$&#123;item.id&#125;`&#125;&quot; &gt;</span><br></pre></td></tr></table></figure></p>
-<h3 id="组件上有ref的话，这个组件不可以使用懒加载"><a href="#组件上有ref的话，这个组件不可以使用懒加载" class="headerlink" title="组件上有ref的话，这个组件不可以使用懒加载"></a>组件上有ref的话，这个组件不可以使用懒加载</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  &lt;template v-for=&quot;item in partnerList&quot;&gt;</span><br><span class="line">    &lt;case-item :data=&quot;item&quot; :key=&quot;item.index&quot; :ref=&quot;`case$&#123;item.id&#125;`&quot;&gt;&lt;/case-item&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    components: &#123; CaseItem &#125;,<span class="comment">//正确的做法</span></span><br><span class="line">    components: &#123; <span class="attr">CaseItem</span>:<span class="function"><span class="params">()</span>=&gt;</span><span class="keyword">import</span>(<span class="string">'....'</span>) &#125;,<span class="comment">//懒加载的做法  </span></span><br><span class="line"> getData(type, offset, limit) &#123;</span><br><span class="line">    xxxxx.then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.partnerList.push(...res.item);</span><br><span class="line">    <span class="keyword">this</span>.scrollTo(<span class="keyword">this</span>.selectedId);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;,</span><br><span class="line">scrollTo(id) &#123;</span><br><span class="line">    <span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> target = <span class="keyword">this</span>.$refs[<span class="string">`case<span class="subst">$&#123;id&#125;</span>`</span>];</span><br><span class="line">        xxxxx</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
-<p>如果<code>&lt;case-item&gt;</code>是懒加载的话，第一次进入这个页面<code>target = this.$refs[`case${id}`];</code>是undefined</p>
-<h3 id="click-”func”和-click-”fun-”的区别"><a href="#click-”func”和-click-”fun-”的区别" class="headerlink" title="@click=”func”和@click=”fun()”的区别"></a>@click=”func”和@click=”fun()”的区别</h3><ol>
-<li>如果func函数没有参数，就没有区别</li>
-<li>如果func函数有参数，例如<code>func(arg){...}</code>，那么<code>@click=&quot;func&quot;</code> 在func(arg)里面输出arg并不是undefined，而是一个事件对象</li>
-</ol>
-<p>#:class可以是一个数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">boxClazz()&#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="string">'box'</span>,  !<span class="keyword">this</span>.canAddHideAnimationLater ? <span class="string">''</span> : <span class="keyword">this</span>.visible ? <span class="string">'show'</span>: <span class="string">'hide'</span>]</span><br><span class="line">&#125;</span><br><span class="line">&lt;nav :<span class="class"><span class="keyword">class</span></span>=<span class="string">"boxClazz"</span> &gt;<span class="xml"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
-<h3 id="动态挂载组件"><a href="#动态挂载组件" class="headerlink" title="动态挂载组件"></a>动态挂载组件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> imgPreview <span class="keyword">from</span> <span class="string">'./img-preview.vue'</span>;</span><br><span class="line"><span class="keyword">let</span> instance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> imgPreviewConsturctor = Vue.extend(imgPreview);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> initInstance = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> el = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</span><br><span class="line">  el.id=<span class="string">"__img_preview_box"</span></span><br><span class="line">  <span class="built_in">document</span>.body.appendChild(el);</span><br><span class="line">  instance = <span class="keyword">new</span> imgPreviewConsturctor().$mount(<span class="string">`#<span class="subst">$&#123;el.id&#125;</span>`</span>);</span><br><span class="line">  </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> init = <span class="function">(<span class="params">imgSrc</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">if</span>(!instance)&#123;</span><br><span class="line">		initInstance();</span><br><span class="line">	&#125;</span><br><span class="line">	instance.imgSrc = imgSrc;</span><br><span class="line">	instance.visible = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">	init</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="body上加上over-flow-hidden获取scrollTop会不准确"><a href="#body上加上over-flow-hidden获取scrollTop会不准确" class="headerlink" title="body上加上over-flow:hidden获取scrollTop会不准确"></a>body上加上over-flow:hidden获取scrollTop会不准确</h3><h3 id="fixed定位页面抖动解决方法"><a href="#fixed定位页面抖动解决方法" class="headerlink" title="fixed定位页面抖动解决方法"></a>fixed定位页面抖动解决方法</h3><p>这方法是看微博网站代码看到的，完美！！其他百度上的方法没一个管用</p>
-<p>fixed定位的元素加上<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">nav-tab</span>&#123;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">10</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateZ</span>(0px);</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">transition</span>: top <span class="number">0.3s</span> ease <span class="number">0s</span>;</span><br><span class="line">  <span class="attribute">will-change</span>:top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>页面上加多一个同等高度的容器<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--关键--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">:style</span>=<span class="string">"&#123;height:fixNav?`$&#123;nav-height&#125;px`:0&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--fixed定位的元素--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">nav-tab</span>  <span class="attr">:class</span>=<span class="string">"&#123;'fix-nav':fixNav&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">nav-tab</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="vucli3构建库模式大坑"><a href="#vucli3构建库模式大坑" class="headerlink" title="vucli3构建库模式大坑"></a>vucli3构建库模式大坑</h3><ol>
-<li>代码里不能有懒加载，不然打出来的文件不止1个，引入的时候路径不对</li>
-<li>图片不能<code>&lt;img src&gt;</code>渲染，会找不到路径。可以用background-image解决</li>
-<li><code>new consturctor().$mount();</code>的时候，生命周期钩子mouted在<code>$mount()</code>过程中就会执行.</li>
-<li><p><code>import Vue from &#39;vue&#39;</code> 得到的也不是主项目的vue</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方案：把vue实例当做props传进去</span></span><br><span class="line">instance = <span class="keyword">new</span> feedbackConsturctor(&#123;</span><br><span class="line">     <span class="comment">//！！！依赖库手动挂载的节点的__proto__跟主项目的__proto__不是同一个，会导致断链</span></span><br><span class="line">     propsData:&#123;</span><br><span class="line">         http$ : _VUE_.prototype.http$</span><br><span class="line">     &#125;&#125;).$mount();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>vue父子组件之间是没有原型链的，手动$mount()的组件$root是自己。所以子组件如果要使用主项目的数据，可以</p>
- <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">http$</span>:<span class="keyword">this</span>.$root.http$ &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="可以利用src做请求"><a href="#可以利用src做请求" class="headerlink" title="可以利用src做请求"></a>可以利用src做请求</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">send(url, params)&#123;</span><br><span class="line"></span><br><span class="line">		const img = new Image;</span><br><span class="line">		img.src = `$&#123;url&#125;?$&#123;this.serializeParams(params, true)&#125;`;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/每月总结/">每月总结</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/study/2019/1/css-improve.html" title="关于css打包后过大的问题" itemprop="url">关于css打包后过大的问题</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2019-01-14T16:00:00.000Z" itemprop="datePublished"> Published 2019-01-15</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="公共代码多次放在scoped内"><a href="#公共代码多次放在scoped内" class="headerlink" title="公共代码多次放在scoped内"></a>公共代码多次放在scoped内</h3><p>我们很多时候写了一个公共的common.scss,然后在各个vue里面</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">style</span> scoped&gt;</span><br><span class="line">import  '@/assets/css/common.scss'</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<p>由于加了scoped，导致common里面的样式都加上了<code>[data-v-aaaa]</code>这样的标识，最后打出来的css重复，这就不是公共css了。</p>
-<p>并且在多少个vue里面import就会打包多少次common.scss进去，最后导致css打出来很大。</p>
-<h3 id="公共代码多次放在scoped外"><a href="#公共代码多次放在scoped外" class="headerlink" title="公共代码多次放在scoped外"></a>公共代码多次放在scoped外</h3><p>下面的代码打包出来只会有一份global.scss，也就是不会重复打包。所以为了方便，直接在main.js引入一次就够了<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a.vue</span></span><br><span class="line">&lt;<span class="selector-tag">style</span> &gt;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">'@/assets/css/global.scss'</span></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//b.vue</span></span><br><span class="line">&lt;<span class="selector-tag">style</span> &gt;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">'@/assets/css/global.scss'</span></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="公共代码放scoped外，自定义代码放scoped内"><a href="#公共代码放scoped外，自定义代码放scoped内" class="headerlink" title="公共代码放scoped外，自定义代码放scoped内"></a>公共代码放scoped外，自定义代码放scoped内</h3><p> 为了不重复打包，那我把公共的css代码拿出来不放在scoped里面不就好了。</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//global.scss</span></span><br><span class="line"><span class="selector-class">.white</span>&#123; <span class="attribute">color</span>:<span class="number">#fff</span>&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a.vue</span></span><br><span class="line">&lt;<span class="selector-tag">style</span> &gt;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">'@/assets/css/global.scss'</span></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-<p>但是下面这个情况不行，运行会报错：<code>$white is not defined</code><br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// variable.scss</span></span><br><span class="line"><span class="variable">$white</span>:<span class="number">#fff</span>;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a.vue</span></span><br><span class="line">&lt;<span class="selector-tag">style</span> &gt;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">'@/assets/css/variable.scss'</span></span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.white&#123;</span><br><span class="line">    <span class="attribute">color</span>:<span class="variable">$white</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;style/&gt;</span><br></pre></td></tr></table></figure>
-<p>然后试了一下<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">style</span> scoped&gt;</span><br><span class="line">@<span class="keyword">import</span> <span class="string">'@/assets/css/variable.scss'</span></span><br><span class="line">.white&#123;</span><br><span class="line">    <span class="attribute">color</span>:<span class="variable">$white</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
-<p>发现打出来的css里面变量$white直接编译成#fff了，打包后的css里面找不到$white,所以就不用担心会重复打包这些变量了。</p>
-<h3 id="webpack打包后体积依然过大的css文件"><a href="#webpack打包后体积依然过大的css文件" class="headerlink" title="webpack打包后体积依然过大的css文件"></a>webpack打包后体积依然过大的css文件</h3><p> 之前控制台中心在IE9浏览器下样式混乱。说是IE浏览器对css有些约束</p>
-<p><a href="https://blogs.msdn.microsoft.com/ieinternals/2011/05/14/stylesheet-limits-in-internet-explorer/" target="_blank" rel="noopener">Stylesheet Limits in Internet Explorer</a></p>
-<p><a href="https://blog.csdn.net/napoleonxxx/article/details/80292006" target="_blank" rel="noopener">参考博客</a></p>
-<p>然后用了下面两个插件解决。好像也可以设置splitChunk解决，不过试了效果不太满意，后面再继续探究。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">optimization: &#123;</span><br><span class="line">    minimizer: [</span><br><span class="line">    <span class="keyword">new</span> CSSSplitWebpackPlugin(&#123;</span><br><span class="line">        size: <span class="number">4000</span>,</span><br><span class="line">        filename: path.posix.join(assetsDir,<span class="string">'css/[name]-[part].[ext]'</span>),</span><br><span class="line">        &#125;),  </span><br><span class="line">    <span class="keyword">new</span> OptimizeCSSAssetsPlugin(&#123;</span><br><span class="line">        assetNameRegExp: <span class="regexp">/\.css$/g</span>,</span><br><span class="line">        cssProcessor: <span class="built_in">require</span>(<span class="string">'cssnano'</span>),</span><br><span class="line">        cssProcessorOptions: &#123; <span class="attr">discardComments</span>: &#123;<span class="attr">removeAll</span>: <span class="literal">true</span> &#125;,<span class="attr">reduceIdents</span>:<span class="literal">false</span> &#125;,</span><br><span class="line">        canPrint: <span class="literal">true</span></span><br><span class="line">    &#125;),             </span><br><span class="line">    ]</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
-<p><a href="https://blog.csdn.net/napoleonxxx/article/details/80292006" target="_blank" rel="noopener">IE9引发的血案-如何处理webpack打包后体积依然过大的css文件</a></p>
-<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ol>
-<li>把css变量单独拎出来做一个文件variable.scss，在vue的<code>&lt;style scoped&gt;</code>里@import使用</li>
-<li>公共css文件在main.js里面直接import一次就好，不要再在其他vue里面import</li>
-<li>多人协作防止冲突，各组件的公共css文件我觉得可以在外面用一个自己的class包裹起来。例如</li>
-</ol>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//main.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'@/views/order/style.scss'</span>;</span><br></pre></td></tr></table></figure>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//@/views/order/style.scss</span></span><br><span class="line"><span class="selector-class">.order</span>&#123;</span><br><span class="line">    xxxxx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>最后把控制台的代码按照上面的方法整理了一下，结果打包出来的css足足小了127kb<br><img src="/study/2019/1/css-improve-effect.png"></p>
-<p>——————2019/2/19更新——————</p>
-<p>注意：之前在想，既然<code>&lt;style&gt;&lt;/style&gt;</code>(不用scoped)放在哪里都可以全局生效，那我随便放在一个大组件里也行啊。<br>最近发现在一个组件里面不用scoped地引入css,从这个组件进去另一个组件，另一个组件确实是会受到前者css的影响。<br>但是如果直接打开后者组件的页面，不经过前者，css无效。所以全局css还是放在main里面好。</p>
-<p>——————2019/2/27更新——————</p>
-<p>关于上面 <strong>webpack打包后体积依然过大的css文件</strong>的问题我发现还有一种解决方法：<strong>使用懒加载</strong>，使用方法如下：<br><a href="https://alexjover.com/blog/lazy-load-in-vue-using-webpack-s-code-splitting/" target="_blank" rel="noopener">Lazy Loading in Vue using Webpack’s Code Splitting</a></p>
-<p>懒加载会把每个vue组件变成一个chunk,自然对应css也会变成一个chunk。<span color="red">感觉这个方法比较不错</span><br>有一个地方比较特殊：组件上要用ref引用的话，这个组件不可以使用懒加载<a href="https://lry1994.github.io/study/2019/2.html">https://lry1994.github.io/study/2019/2.html</a>。</p>
-<p>对于其他库文件的话，可以设置maxSize进行切割<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">optimization: &#123;</span><br><span class="line">    splitChunks: &#123;</span><br><span class="line">    chunks: <span class="string">'all'</span>,</span><br><span class="line">    maxInitialRequests: <span class="number">5</span>,</span><br><span class="line">    maxSize: <span class="number">244</span> * <span class="number">1024</span>,</span><br><span class="line">    cacheGroups: &#123;</span><br><span class="line">        <span class="keyword">default</span>: <span class="literal">false</span>,</span><br><span class="line">        vendors: &#123;</span><br><span class="line">        test: <span class="regexp">/[\\/]node_modules[\\/]/</span>,</span><br><span class="line">        name: <span class="string">'vendors'</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/专题笔记/">专题笔记</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/life/2019.html" title="2019读书" itemprop="url">2019读书</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2018-12-31T16:00:00.000Z" itemprop="datePublished"> Published 2019-01-01</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="《房思琪的初恋乐园》"><a href="#《房思琪的初恋乐园》" class="headerlink" title="《房思琪的初恋乐园》"></a>《房思琪的初恋乐园》</h3><p>为作者的遭遇感到愤怒、惋惜。一共有两条线：诱奸、家暴，反映出了社会很多问题1、侵害者或权或钱而脱干关系，被害者被误解甚至二次伤害2、家庭暴力3、家庭性教育等等。书中很多有趣的譬喻：</p>
-<blockquote>
-<p>怡婷听说了，心里直发寒。像是一只手伸进她的肚子，擦亮一支火柴，肚子内壁寥寥刻了几句诗。她不知道慈善是什么意思。查了辞典“慈善”：“仁慈善良，富同情心。梁简文帝，吴郡石像碑文：‘道由慈善，应起灵觉。’”怎么看，都跟妈妈们说的不一样</p>
-</blockquote>
-<blockquote>
-<p>功课只有她教别人，笔记给人抄，帮写毛笔字、做劳作，也不用别人跑合作社来换。她在这方面总是很达观。不是施舍的优越感，作业簿被传来传去，被不同的手复写，有的字迹圆滑如泡泡吹出来，有的疙瘩如吃到未熟的面条，作业簿转回自己手上，她总是幻想着作业簿生了许多面貌迥异的小孩。有人要房思琪的作业抄，思琪总是郑重推荐怡婷：“她的作业风流。”两人相视而笑，也不需要他人懂。</p>
-</blockquote>
-<blockquote>
-<p>我没有资格去譬喻别人的人生是什么形状</p>
-</blockquote>
-<blockquote>
-<p>心里的笑想滚水，不小心在脸上蒸发了</p>
-</blockquote>
-<blockquote>
-<p>两个人笑到泼出来，倾倒在对方身上。</p>
-</blockquote>
-<blockquote>
-<p>柏拉图说人求索他缺失的另一半，那就是说两个人合在一起才是完整，可是合起来就变成一个了，你们懂吗？像你们这样，无论缺少或多出什么都无所谓，因为有一个人与你镜像对称，只有永远合不起来，才可以永远做伴。</p>
-</blockquote>
-<h3 id="《南方高速-科塔萨尔短篇小说全集2》"><a href="#《南方高速-科塔萨尔短篇小说全集2》" class="headerlink" title="《南方高速 : 科塔萨尔短篇小说全集2》"></a>《南方高速 : 科塔萨尔短篇小说全集2》</h3><p>最喜欢《秘密武器》<br><a href="https://book.douban.com/people/167927352/annotation/27079479/" target="_blank" rel="noopener">https://book.douban.com/people/167927352/annotation/27079479/</a></p>
-<h3 id="《许三观卖血记》"><a href="#《许三观卖血记》" class="headerlink" title="《许三观卖血记》"></a>《许三观卖血记》</h3><p>大力推荐这本书！！这本小说太诙谐幽默了，没有一句废话。<a href="https://book.douban.com/review/9982247/" target="_blank" rel="noopener">https://book.douban.com/review/9982247/</a></p>
-<h3 id="《倾城之恋》"><a href="#《倾城之恋》" class="headerlink" title="《倾城之恋》"></a>《倾城之恋》</h3><p>张爱玲的文章好像都是写爱情的，文字有点凄凉、有点无奈，富有香港被殖民的那种半中国半西式的腔调。<a href="https://book.douban.com/people/167927352/annotation/10757940/" target="_blank" rel="noopener">https://book.douban.com/people/167927352/annotation/10757940/</a></p>
-<h3 id="《巴黎圣母院》"><a href="#《巴黎圣母院》" class="headerlink" title="《巴黎圣母院》"></a>《巴黎圣母院》</h3><p>这本书不只是一个故事，里面有大量的篇幅描写了巴黎建筑、各种市井。里面有完整的一卷全部在叙述巴黎圣母院，可见作者对于建筑艺术的热爱，也对建筑篡改的惋惜和愤怒，这可能才是这本书成为名著的关键。<br>故事中最讨厌埃及女郎爱斯美拉达，我最看不惯这种为男人堕落的愚蠢女人，本来可以逃脱了又被抓回去。卡魔西多虽说是个粗鲁的人，却是用情最深的人，被抱走的女儿和被抱回的丑孩子，最终一起长眠。<br><a href="https://book.douban.com/people/167927352/annotation/2253413/" target="_blank" rel="noopener">https://book.douban.com/people/167927352/annotation/2253413/</a></p>
-<h3 id="《活着》"><a href="#《活着》" class="headerlink" title="《活着》"></a>《活着》</h3><p><a href="https://book.douban.com/review/10067251/" target="_blank" rel="noopener">https://book.douban.com/review/10067251/</a><br>原来徐华的书是如此的好读，诙谐得很恰当，以乐衬悲</p>
-<h3 id="《精灵宝钻》"><a href="#《精灵宝钻》" class="headerlink" title="《精灵宝钻》"></a>《精灵宝钻》</h3><p>语句平淡如水，好像另一个版本的圣经</p>
-<h3 id="《鱼王》"><a href="#《鱼王》" class="headerlink" title="《鱼王》"></a>《鱼王》</h3><p>看得出作者是一个环保爱护环境的人，里面多处表现出动土里人们打猎动物致使数量大减，环境遭受破坏的无奈和惋惜。作者也是个念旧的人，经常回去，做着小时候做过的事。</p>
-<h3 id="《人间失格》"><a href="#《人间失格》" class="headerlink" title="《人间失格》"></a>《人间失格》</h3><p><a href="https://book.douban.com/people/167927352/annotation/24744505/" target="_blank" rel="noopener">https://book.douban.com/people/167927352/annotation/24744505/</a></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/生活/">生活</a>►<a class="article-category-link" href="/categories/生活/阅读笔记/">阅读笔记</a>
-</div>
-
-
-  <div class="article-tags">
   
-  <span></span> <a href="/tags/文学/">文学</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/study/2018/12/zongjie.html" title="2018.12-2019.1总结" itemprop="url">2018.12-2019.1总结</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2018-12-16T16:00:00.000Z" itemprop="datePublished"> Published 2018-12-17</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h3 id="for-for-in-for-each-for-of"><a href="#for-for-in-for-each-for-of" class="headerlink" title="for\for-in\for-each\for-of"></a>for\for-in\for-each\for-of</h3><p>for-in不仅可以遍历数组还可以遍历对象<br>for-in 遍历属性的顺序并不确定，即输出的结果顺序与属性在对象中的顺序无关，也与属性的字母顺序无关，与其他任何顺序也无关。<br>使用for-in在遍历的时候，它不仅遍历了对象上的属性，而且还遍历了对象父类原型上的属性。<br>所以for-in并不适合遍历Array中的元素，更适合遍历对象中的属性<br>for-in只会遍历存在的实体,以及对应的原型链上的属性.因此其速度相比较其他for循环，要慢一些。<br>所以除非明确要迭代一个属性数量未知的对象，否则应该避免使用for-in。<br>for-in遍历数组的缺点：数组的下标index值是数字，for-in遍历的index值”0”,”1”,”2”等是字符串</p>
-<p>在不同浏览器下测试的结果都是 forEach 的速度不如 for。<br>forEach主要应用在遍历数组，但是它的性能并不如for，因此可以使用for就尽量不要使用forEach。<br><strong>forEach 不能break 或者return</strong></p>
-<p><strong>for-of不支持普通对象遍历，只返回具有数字索引的属性</strong>.</p>
-<p>遍历数组：for-of &gt; for &gt; for-each<br>遍历对象：for-in(要用hasOwnProperty)<br>await/async 要用for-of</p>
-<h3 id="完美解决本地和服务器上资源url解析的问题"><a href="#完美解决本地和服务器上资源url解析的问题" class="headerlink" title="完美解决本地和服务器上资源url解析的问题"></a>完美解决本地和服务器上资源url解析的问题</h3><p>在 config/index.js 中修改 assetsPublicPath 为 ./<br>在 build/utils.js 中的 ExtractTextPlugin.extract 传入参数 publicPath: ‘../../‘</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/每月总结/">每月总结</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/study/2018/11/canvas.html" title="canvas" itemprop="url">canvas</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2018-11-17T16:00:00.000Z" itemprop="datePublished"> Published 2018-11-18</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>canvas默认是宽300px,高150px,即<code>&lt;canvas width=&quot;300&quot; height=&quot;150&quot;&gt;</code><br>当像这样设置的时候<code>&lt;canvas width=&quot;300&quot; height=&quot;150&quot;&gt;</code>，会同时修改 <strong>元素本身大小</strong>和 <strong>元素绘图表面大小</strong><br>通过css设置的时候，只会改变 <strong>元素本身大小</strong></p>
-<p>如果基于canvas的应用程序要支持IE6,IE7,IE8,游两个选择：explorecanvas\Google Chrome Frame</p>
-<p>希望执行几行特定的代码时才开始分析，在执行完之后就停止性能分析，可用console.profile()和console.profileEnd()</p>
-<p>把窗口坐标转换成相对于canvas的位置<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">windowToCanvas</span>(<span class="params">canvas,clientX,clientY</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> bbox = canvas.getBoundingClientRect();</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        x:(clientX-bbox.width)*(canvas.width/bbox.width)</span><br><span class="line">        y:(clientY-bbox.height)*(canvas.height/bbox.height)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>canvas是一个不可获取焦点的元素，所以不能直接在元素上绑定键盘事件，应该在docunmet或window上绑定键盘事件</p>
-<p>浏览器只会在产生可打印字符的时候才触发keypress事件。用<code>var key =String.fromCharCode(event.which)</code></p>
-<p>打印canvas内容：<code>toDataURL()</code>  <code>toBlob()</code></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/专题笔记/">专题笔记</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/study/2018/10/zongjie.html" title="2018.10-2018.11总结" itemprop="url">2018.10-2018.11总结</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2018-10-17T16:00:00.000Z" itemprop="datePublished"> Published 2018-10-18</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <p>webpack-dev-server启动并不是访问vue项目内某个文件, src/assets内的文件是不能在index.html直接引用的, 必须经过loader处理路径</p>
-<p>plublic里放置的文件是不经过 webpack 处理的。在 index.html 里引用的时候，直接就是 <code>&lt;script src=&quot;/plublic/oidc-client.js&quot;&gt;&lt;/script&gt;。</code></p>
-<h3 id="scss-export"><a href="#scss-export" class="headerlink" title="scss export"></a>scss export</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="variable">$title-width</span>: <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">:export &#123;</span><br><span class="line">  titleWidth: <span class="variable">$title-width</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="ie-margin-top负值无效"><a href="#ie-margin-top负值无效" class="headerlink" title="ie margin-top负值无效"></a>ie margin-top负值无效</h3><p><a href="https://www.cnblogs.com/chaozhang/p/4711282.html" target="_blank" rel="noopener">https://www.cnblogs.com/chaozhang/p/4711282.html</a></p>
-<p>加上display:inline-block</p>
-<h3 id="inline-block的元素设置over-flow-hidden会意外地增加元素总体高度，"><a href="#inline-block的元素设置over-flow-hidden会意外地增加元素总体高度，" class="headerlink" title="inline-block的元素设置over-flow:hidden会意外地增加元素总体高度，"></a>inline-block的元素设置over-flow:hidden会意外地增加元素总体高度，</h3><p>用vertical-align:bottom解决</p>
-<h3 id="ie中img被拉伸"><a href="#ie中img被拉伸" class="headerlink" title="ie中img被拉伸"></a>ie中img被拉伸</h3><p>只要设置img为 height:auto，width:auto，就不会出现这种情况了</p>
-<h3 id="vue-路由query变化监测不到meta的"><a href="#vue-路由query变化监测不到meta的" class="headerlink" title="vue 路由query变化监测不到meta的"></a>vue 路由query变化监测不到meta的</h3><p>这样使用query,路由变化，meta并没有变化<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    name: <span class="string">'order.list.1'</span>,</span><br><span class="line">    path: <span class="string">'/order/list/status=1'</span>,</span><br><span class="line">    component: list,</span><br><span class="line">    meta: &#123;</span><br><span class="line">      domain: <span class="string">'order'</span>,</span><br><span class="line">      key: <span class="string">'order-list-1'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">'order.list.2'</span>,</span><br><span class="line">    path: <span class="string">'/order/list/status=2'</span>,</span><br><span class="line">    component: list,</span><br><span class="line">    meta: &#123;</span><br><span class="line">      domain: <span class="string">'order'</span>,</span><br><span class="line">      key: <span class="string">'order-list-2'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
-<p>使用params是可以的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    name: <span class="string">'order.list.1'</span>,</span><br><span class="line">    path: <span class="string">'/order/list/1'</span>,</span><br><span class="line">    component: list,</span><br><span class="line">    meta: &#123;</span><br><span class="line">      domain: <span class="string">'order'</span>,</span><br><span class="line">      key: <span class="string">'order-list-1'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">'order.list.2'</span>,</span><br><span class="line">    path: <span class="string">'/order/list/2'</span>,</span><br><span class="line">    component: list,</span><br><span class="line">    meta: &#123;</span><br><span class="line">      domain: <span class="string">'order'</span>,</span><br><span class="line">      key: <span class="string">'order-list-2'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
-<p>使用函数模式也可以</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dict = &#123;</span><br><span class="line">  <span class="number">1</span>: <span class="string">'order-list-1'</span>,</span><br><span class="line">  <span class="number">2</span>: <span class="string">'order-list-2'</span>,</span><br><span class="line">  <span class="keyword">default</span>: <span class="string">'order-list'</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">  name: <span class="string">'order'</span>,</span><br><span class="line">  path: <span class="string">'/order'</span>,</span><br><span class="line">  redirect: &#123;</span><br><span class="line">    name: <span class="string">'order.list'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  component: Container,</span><br><span class="line">  children: [&#123;</span><br><span class="line">    name: <span class="string">'order.list'</span>,</span><br><span class="line">    path: <span class="string">'/order/list'</span>,</span><br><span class="line">    component: list,</span><br><span class="line">    meta: &#123;</span><br><span class="line">      domain: <span class="string">'order'</span>,</span><br><span class="line">      key(route) &#123;</span><br><span class="line">        <span class="keyword">return</span> dict[route.query.status || <span class="string">'default'</span>];</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-<h3 id="vue-指令使用模板，不再用template了，用el"><a href="#vue-指令使用模板，不再用template了，用el" class="headerlink" title="vue 指令使用模板，不再用template了，用el"></a>vue 指令使用模板，不再用template了，用el</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Marquee.js</span></span><br><span class="line"><span class="keyword">import</span> Marquee <span class="keyword">from</span> <span class="string">'./Marquee.vue'</span>;</span><br><span class="line"><span class="keyword">const</span> Tpl = Vue.extend(Marquee);<span class="comment">//这个好漂亮</span></span><br><span class="line"><span class="keyword">const</span> Plugin = &#123;</span><br><span class="line">  install(vue, options) &#123;</span><br><span class="line">        Vue.directive(<span class="string">'marquee'</span>, &#123;</span><br><span class="line">           inserted(el, binding, vnode) &#123;</span><br><span class="line">              <span class="keyword">const</span> mask = <span class="keyword">new</span> Tpl(&#123;</span><br><span class="line">                  el: <span class="built_in">document</span>.createElement(<span class="string">'div'</span>),</span><br><span class="line">                  data: &#123; <span class="attr">name</span>: binding.value &#125;</span><br><span class="line">              &#125;);</span><br><span class="line">              el.appendChild(mask.$el);</span><br><span class="line">           &#125;)</span><br><span class="line">     &#125;   </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Plugin;</span><br><span class="line"><span class="comment">//main.js</span></span><br><span class="line"><span class="keyword">import</span> Marquee <span class="keyword">from</span> <span class="string">'./Marquee.js'</span></span><br><span class="line">Vue.use(Marquee)</span><br></pre></td></tr></table></figure>
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/每月总结/">每月总结</a>
-</div>
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/study/2018/10/design-pattern.html" title="读《Learning Javascript Design Patterns》 -Addy Osmani" itemprop="url">读《Learning Javascript Design Patterns》 -Addy Osmani</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
-		
-  <p class="article-time">
-    <time datetime="2018-10-17T16:00:00.000Z" itemprop="datePublished"> Published 2018-10-18</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="《Learning-Javascript-Design-Patterns》-Addy-Osmani-人民邮电出版社"><a href="#《Learning-Javascript-Design-Patterns》-Addy-Osmani-人民邮电出版社" class="headerlink" title="《Learning Javascript Design Patterns》 -Addy Osmani 人民邮电出版社"></a>《Learning Javascript Design Patterns》 -Addy Osmani 人民邮电出版社</h1><h2 id="创建对象的三种方法"><a href="#创建对象的三种方法" class="headerlink" title="创建对象的三种方法"></a>创建对象的三种方法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">obj=&#123;&#125;;</span><br><span class="line">obj=new Object();</span><br><span class="line">obj=Object.create(null)</span><br></pre></td></tr></table></figure>
-<h2 id="设计模式类别"><a href="#设计模式类别" class="headerlink" title="设计模式类别"></a>设计模式类别</h2><h3 id="创建型"><a href="#创建型" class="headerlink" title="创建型"></a>创建型</h3><ul>
-<li>Constructor</li>
-<li><a href="#Prototype.js">Prototype</a></li>
-<li><a href="#Singleton.js">Singleton</a></li>
-<li><a href="#Factory.js">Factory</a></li>
-<li><a href="#Abstract-Factory.js">Abstarct</a></li>
-<li>Builder<h3 id="机构型"><a href="#机构型" class="headerlink" title="机构型"></a>机构型</h3></li>
-<li>Decorator</li>
-<li>Facade : 和<a href="#Module.js">Module</a>类似</li>
-<li>Flyweight</li>
-<li>Adapter</li>
-<li>Proxy<h3 id="行为型"><a href="#行为型" class="headerlink" title="行为型"></a>行为型</h3></li>
-<li>Iterator</li>
-<li><a href="https://github.com/LRY1994/nice-code/blob/master/designPattern/Mediator.js" target="_blank" rel="noopener">Mediator</a></li>
-<li><a href="#Observer.js">Observer</a></li>
-<li><a href="#Publich-Subscribe.js">Publich-Subscribe</a></li>
-<li>Visitor</li>
-</ul>
-<p>Observer和Publich-Subscribe的区别<br><img src="/study/2018/10/design-pattern/observer.png"><br><img src="/study/2018/10/design-pattern/publish-suscriber.png"></p>
-<h1 id="Prototype-js"><a href="#Prototype-js" class="headerlink" title="Prototype.js"></a>Prototype.js</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Object.create</span></span><br><span class="line"><span class="keyword">var</span> vehicle = &#123;</span><br><span class="line">    getModel:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.model);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> car = <span class="built_in">Object</span>.create(vehicle,&#123;</span><br><span class="line">    <span class="string">"id"</span>:&#123;</span><br><span class="line">        value:<span class="number">1</span>,</span><br><span class="line">        enumerable:<span class="literal">true</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"model"</span>:&#123;</span><br><span class="line">        value:<span class="string">"Ford"</span>,</span><br><span class="line">        enumerable:<span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//function F()&#123;&#125;</span></span><br><span class="line"><span class="keyword">var</span> beget = (<span class="function"><span class="keyword">function</span>(<span class="params">&#123;</span></span></span><br><span class="line"><span class="function"><span class="params">    function F(</span>)</span>&#123;&#125;;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">_proto_</span>)</span>&#123;</span><br><span class="line">        F.prototype=_proto_;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;))();</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> car =beget(vehicle);</span><br></pre></td></tr></table></figure>
-<h1 id="Singleton-js"><a href="#Singleton-js" class="headerlink" title="Singleton.js"></a>Singleton.js</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Singleton单例模式</span></span><br><span class="line"><span class="keyword">var</span> singleTon = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> instance;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> <span class="title">privateMethod</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">        <span class="keyword">var</span> privateVar = <span class="string">'privateVar'</span>;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            publicMethod :<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,</span><br><span class="line">            publicVar : <span class="string">'publicVar'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        getInstance:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(!instance)&#123; instance = init(); &#125;</span><br><span class="line">            <span class="keyword">return</span> instance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> singleTon2 = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> instance;</span><br><span class="line">    <span class="keyword">var</span> _static =&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">singleTon</span>(<span class="params">opt</span>)</span>&#123;<span class="comment">//构造函数</span></span><br><span class="line">        options = opt ||&#123;&#125;;</span><br><span class="line">        <span class="keyword">this</span>.point = opt.point;</span><br><span class="line">        <span class="keyword">this</span>.privateMethod = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> _satic = &#123;</span><br><span class="line">        name :<span class="string">'singleTon'</span>,</span><br><span class="line">        getInstance:<span class="function"><span class="keyword">function</span>(<span class="params">opt</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(!instance)&#123; instance = <span class="keyword">new</span> singleTon(opt); &#125;</span><br><span class="line">            <span class="keyword">return</span> instance;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">return</span> _static;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">singleTonTest = singleTon2.getInstance(&#123;<span class="attr">point</span>:<span class="number">5</span>&#125;)</span><br></pre></td></tr></table></figure>
-<h1 id="Factory-js"><a href="#Factory-js" class="headerlink" title="Factory.js"></a>Factory.js</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Factory.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Car</span>(<span class="params">options</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.doors = options.doors ||<span class="number">4</span>;</span><br><span class="line">    <span class="keyword">this</span>,color = options.color||<span class="string">'silver'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Trunk</span>(<span class="params">options</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.weelSize=options.weelSize||<span class="string">'large'</span>;</span><br><span class="line">    <span class="keyword">this</span>.color =options.color||<span class="string">'blue'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">VehicleFactory</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">VehicleFactory.prototype.vehicleClass = Car;</span><br><span class="line">VehicleFactory.prototype.createVehicle = <span class="function"><span class="keyword">function</span>(<span class="params">options</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(options.vehicleTtype == <span class="string">'car'</span>)&#123;</span><br><span class="line">        <span class="keyword">this</span>.vehicleClass=Car;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.vehicleClass = Truck;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">this</span>.vehicleClass(options);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//use</span></span><br><span class="line"><span class="keyword">var</span> carFactory=<span class="keyword">new</span> VehicleFactory();</span><br><span class="line"><span class="keyword">var</span> car=carFactory.createVehicle(&#123;</span><br><span class="line">    vehicleTtype:<span class="string">'car'</span>,</span><br><span class="line">    doors:<span class="number">6</span>,</span><br><span class="line">    color:<span class="string">'yellow'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="keyword">var</span> trunk = carFactory.createVehicle(&#123;</span><br><span class="line">    vehicleTtype:<span class="string">'trunk'</span>,</span><br><span class="line">    color:<span class="string">'red'</span>,</span><br><span class="line">    weelSize:<span class="string">'small'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h1 id="Abstract-Factory-js"><a href="#Abstract-Factory-js" class="headerlink" title="Abstract-Factory.js"></a>Abstract-Factory.js</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Factory.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Car</span>(<span class="params">options</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.doors = options.doors ||<span class="number">4</span>;</span><br><span class="line">    <span class="keyword">this</span>.color = options.color||<span class="string">'silver'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Trunk</span>(<span class="params">options</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.weelSize=options.weelSize||<span class="string">'large'</span>;</span><br><span class="line">    <span class="keyword">this</span>.color =options.color||<span class="string">'blue'</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> AbstractFactory=(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> types=&#123;&#125;;</span><br><span class="line">    <span class="keyword">return</span>&#123;</span><br><span class="line">        getVehicle:<span class="function"><span class="keyword">function</span>(<span class="params">type,options</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> Vehicle = types[type];</span><br><span class="line">            <span class="keyword">return</span> Vehicle? <span class="keyword">new</span> Vehicle(options):<span class="literal">null</span></span><br><span class="line">        &#125;,</span><br><span class="line">        registerVehicle:<span class="function"><span class="keyword">function</span>(<span class="params">ty,vehicle</span>)</span>&#123;<span class="comment">//这个必须有</span></span><br><span class="line">            <span class="keyword">var</span> proto = vehicle.prototype;</span><br><span class="line">            <span class="keyword">if</span>(proto.drive&amp;&amp;proto.breakDown)&#123;</span><br><span class="line">                types[type]=vehicle</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> AbstractFactory;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line"></span><br><span class="line"><span class="comment">//use</span></span><br><span class="line">AbstractFactory.registerVehicle(<span class="string">"car"</span>,Car);</span><br><span class="line">AbstractFactory.registerVehicle(<span class="string">"truck"</span>,Trunk);</span><br><span class="line"><span class="keyword">var</span> car = AbstractFactory.getVehicle(<span class="string">"car"</span>,&#123;</span><br><span class="line">    door:<span class="number">6</span>,</span><br><span class="line">    color:<span class="string">'red'</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> trunk = AbstractFactory.getVehicle(<span class="string">"trunk"</span>,&#123;</span><br><span class="line">    weelSize:<span class="string">'small'</span>,</span><br><span class="line">    color:<span class="string">'red'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h1 id="Observer-js"><a href="#Observer-js" class="headerlink" title="Observer.js"></a>Observer.js</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Observer </span></span><br><span class="line">&#123;<span class="comment">//观察者</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Observer</span>(<span class="params"></span>)</span></span><br><span class="line">    this.observerList = [];</span><br><span class="line">&#125;</span><br><span class="line">Observer.prototype.get = <span class="function"><span class="keyword">function</span>(<span class="params">index</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.observerList[index]</span><br><span class="line">&#125;</span><br><span class="line">Observer.prototype.add = <span class="function"><span class="keyword">function</span>(<span class="params">ConcreteOberver</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.observerList.push(ConcreteOberver)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//目标</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Subject</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.observers=<span class="keyword">new</span> Observer();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//具体观察者注册到目标</span></span><br><span class="line">Subject.prototype.add = <span class="function"><span class="keyword">function</span>(<span class="params">ConcreteOberver</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.observers.add(ConcreteOberver)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//目标发生变化，调度观察者</span></span><br><span class="line">Subject.prototype.notify = <span class="function"><span class="keyword">function</span>(<span class="params">context</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;<span class="keyword">this</span>.observers.count();i++)&#123;</span><br><span class="line">        <span class="keyword">this</span>.observers.get(i).update(context)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//具体观察者</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ConcreteOberver</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.update = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="Publich-Subscribe-js"><a href="#Publich-Subscribe-js" class="headerlink" title="Publich-Subscribe.js"></a>Publich-Subscribe.js</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Publish/Subscribe</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> pubsub=&#123;&#125;;<span class="comment">//调度中心</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">q</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> topics=&#123;&#125;,subUid = <span class="number">-1</span>;</span><br><span class="line">    q.publish = <span class="function"><span class="keyword">function</span>(<span class="params">topic,args</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!topics[topic]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">var</span> subscribers = topics [ topic];</span><br><span class="line">        <span class="keyword">var</span> len = subscribers? subscribers.length:<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(len -- )&#123;</span><br><span class="line">            subscribers[len].func(topic,args)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    q.subscribe = <span class="function"><span class="keyword">function</span>(<span class="params">topic,func</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!topics[topic]) topics[topic]=[];</span><br><span class="line">        <span class="keyword">var</span> token = (++subUid).toString();</span><br><span class="line">        topics[topic].push(&#123;<span class="attr">token</span> :token,<span class="attr">func</span>:func&#125;);</span><br><span class="line">        <span class="keyword">return</span> token;</span><br><span class="line">    &#125;;</span><br><span class="line">    q.unsunscribe = <span class="function"><span class="keyword">function</span>(<span class="params">token</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> m <span class="keyword">in</span> topics)&#123;</span><br><span class="line">            <span class="keyword">if</span>(topics[m])&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>,j=topics[m].length;i&lt;j;i++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(topics[m][i].token ==token)&#123;</span><br><span class="line">                        topics[m].splice(i,<span class="number">1</span>);</span><br><span class="line">                        <span class="keyword">return</span> token;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(pubsub)</span><br></pre></td></tr></table></figure>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/专题笔记/">专题笔记</a>
-</div>
-
-
-  <div class="article-tags">
+<section class="post" itemscope itemprop="blogitem">
   
-  <span></span> <a href="/tags/设计模式/">设计模式</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
+    <a href="/study/2019/6.html" title="每月总结" itemprop="url">
+  
+    <h1 itemprop="name">每月总结</h1>
+    
+     
+           <p itemprop="description" >overflow-y: visible不起作用在container上添加以下样式
+padding-top: 20px;margin-top: -20px;</p>
+        
+    
+    <time datetime="2019-05-31T16:00:00.000Z" itemprop="datePublished">2019-06-01</time>
+  </a>
+</section>
 
 
 
 
 
 
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/study/2019/IE-hack.html" title="IE hack" itemprop="url">
+  
+    <h1 itemprop="name">IE hack</h1>
+    
+     
+           <p itemprop="description" >document.getElementById（name不是id)取节点在 IE6 IE7 IE8(Q) 中，支持以 document.getElementById(elementName) 的方式获取 A APPLET BUTTON FORM IFRAME IMG INPUT </p>
+        
+    
+    <time datetime="2019-04-15T16:00:00.000Z" itemprop="datePublished">2019-04-16</time>
+  </a>
+</section>
 
-  <nav id="page-nav" class="clearfix">
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/study/2019/2/scss.html" title="scss笔记" itemprop="url">
+  
+    <h1 itemprop="name">scss笔记</h1>
+    
+     
+           <p itemprop="description" >嵌套CSS 规则1234border: 1px solid #ccc &amp;#123;  left: 0px;  right: 0px;  &amp;#125;
+css只有执行到@import时，浏览器才会去下载其他css文件，这导致页面加载起来特别慢。sass的@import规则在生成cs</p>
+        
+    
+    <time datetime="2019-02-27T16:00:00.000Z" itemprop="datePublished">2019-02-28</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/study/2019/2/2.html" title="2019.2-3总结" itemprop="url">
+  
+    <h1 itemprop="name">2019.2-3总结</h1>
+    
+     
+           <p itemprop="description" >IE浏览器url中文乱码IE浏览器直接拼接url,中文会乱码，需要像下面这样进行转码 1&amp;lt;a :href=&amp;quot;`/ctyun/clientcase?tag=$&amp;#123;encodeURI(data[current].tag)&amp;#125;`&amp;quot; &amp;gt;
+ </p>
+        
+    
+    <time datetime="2019-02-11T16:00:00.000Z" itemprop="datePublished">2019-02-12</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/study/2019/1/css-improve.html" title="关于css打包后过大的问题" itemprop="url">
+  
+    <h1 itemprop="name">关于css打包后过大的问题</h1>
+    
+     
+           <p itemprop="description" >公共代码多次放在scoped内我们很多时候写了一个公共的common.scss,然后在各个vue里面
+123&amp;lt;style scoped&amp;gt;import  &#39;@/assets/css/common.scss&#39;&amp;lt;/style&amp;gt;
+由于加了scoped，导致comm</p>
+        
+    
+    <time datetime="2019-01-14T16:00:00.000Z" itemprop="datePublished">2019-01-15</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/life/2019.html" title="2019读书" itemprop="url">
+  
+    <h1 itemprop="name">2019读书</h1>
+    
+     
+           <p itemprop="description" >《房思琪的初恋乐园》为作者的遭遇感到愤怒、惋惜。一共有两条线：诱奸、家暴，反映出了社会很多问题1、侵害者或权或钱而脱干关系，被害者被误解甚至二次伤害2、家庭暴力3、家庭性教育等等。书中很多有趣的譬喻：
+
+怡婷听说了，心里直发寒。像是一只手伸进她的肚子，擦亮一支火柴，肚子内壁寥寥刻</p>
+        
+    
+    <time datetime="2018-12-31T16:00:00.000Z" itemprop="datePublished">2019-01-01</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/study/2018/12/zongjie.html" title="2018.12-2019.1总结" itemprop="url">
+  
+    <h1 itemprop="name">2018.12-2019.1总结</h1>
+    
+     
+           <p itemprop="description" >for\for-in\for-each\for-offor-in不仅可以遍历数组还可以遍历对象for-in 遍历属性的顺序并不确定，即输出的结果顺序与属性在对象中的顺序无关，也与属性的字母顺序无关，与其他任何顺序也无关。使用for-in在遍历的时候，它不仅遍历了对象上的属性，而且</p>
+        
+    
+    <time datetime="2018-12-16T16:00:00.000Z" itemprop="datePublished">2018-12-17</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/study/2018/11/canvas.html" title="canvas" itemprop="url">
+  
+    <h1 itemprop="name">canvas</h1>
+    
+     
+           <p itemprop="description" >canvas默认是宽300px,高150px,即&amp;lt;canvas width=&amp;quot;300&amp;quot; height=&amp;quot;150&amp;quot;&amp;gt;当像这样设置的时候&amp;lt;canvas width=&amp;quot;300&amp;quot; height=&amp;quot;15</p>
+        
+    
+    <time datetime="2018-11-17T16:00:00.000Z" itemprop="datePublished">2018-11-18</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/study/2018/10/design-pattern.html" title="读《Learning Javascript Design Patterns》 -Addy Osmani" itemprop="url">
+  
+    <h1 itemprop="name">读《Learning Javascript Design Patterns》 -Addy Osmani</h1>
+    
+     
+           <p itemprop="description" >《Learning Javascript Design Patterns》 -Addy Osmani 人民邮电出版社创建对象的三种方法123obj=&amp;#123;&amp;#125;;obj=new Object();obj=Object.create(null)
+设计模式类别创建型
+Co</p>
+        
+    
+    <time datetime="2018-10-17T16:00:00.000Z" itemprop="datePublished">2018-10-18</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/study/2018/10/zongjie.html" title="2018.10-2018.11总结" itemprop="url">
+  
+    <h1 itemprop="name">2018.10-2018.11总结</h1>
+    
+     
+           <p itemprop="description" >webpack-dev-server启动并不是访问vue项目内某个文件, src/assets内的文件是不能在index.html直接引用的, 必须经过loader处理路径
+plublic里放置的文件是不经过 webpack 处理的。在 index.html 里引用的时候，直接就</p>
+        
+    
+    <time datetime="2018-10-17T16:00:00.000Z" itemprop="datePublished">2018-10-18</time>
+  </a>
+</section>
+
+
+
+
+
+
+
+  <nav id="page-nav" class="clearfix unexpand">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
   </nav>
 
@@ -807,6 +299,12 @@
 <aside class="clearfix">
 
   
+<div class="github-card">
+<p class="asidetitle">Github Card</p>
+<div class="github-card" data-github="LRY1994" data-theme="medium"></div>
+<script type="text/javascript" src="//cdn.jsdelivr.net/github-cards/latest/widget.js" ></script>
+</div>
+
 
 
   
@@ -815,11 +313,11 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/学习/专题笔记/" title="专题笔记">专题笔记<sup>23</sup></a></li>
+			<li><a href="/categories/学习/专题笔记/" title="专题笔记">专题笔记<sup>24</sup></a></li>
 		  
 		
 		  
-			<li><a href="/categories/学习/" title="学习">学习<sup>41</sup></a></li>
+			<li><a href="/categories/学习/" title="学习">学习<sup>42</sup></a></li>
 		  
 		
 		  
@@ -868,11 +366,11 @@
 			
 		
 			
-				<li><a href="/tags/reat-native/" title="reat-native">reat-native<sup>1</sup></a></li>
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>1</sup></a></li>
+				<li><a href="/tags/reat-native/" title="reat-native">reat-native<sup>1</sup></a></li>
 			
 		
 			
@@ -892,15 +390,15 @@
 			
 		
 			
+				<li><a href="/tags/AngularJS1/" title="AngularJS1">AngularJS1<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/栈队列/" title="栈队列">栈队列<sup>1</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/angular/" title="angular">angular<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/AngularJS1/" title="AngularJS1">AngularJS1<sup>1</sup></a></li>
 			
 		
 			
@@ -927,22 +425,17 @@
   <p class="asidetitle">Links</p>
     <ul>
         
-          <li>
-            
-            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
-            
-          </li>
-        
     </ul>
 </div>
 
   
+
+<div class="doubanshow">
+<p class="asidetitle">Douban Show</p>
+<div>
+<script type="text/javascript" src="http://www.douban.com/service/badge/167927352/?show=collection&amp;n=12&amp;columns=3&amp;hidelogo=yes&amp;hideself=yes&amp;cat=book|movie" ></script>
+</div>
+</div>
 
 
   <div class="rsspart">
@@ -951,7 +444,7 @@
 
   <div class="weiboshow">
   <p class="asidetitle">Weibo</p>
-    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2140938987&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
 
@@ -967,22 +460,28 @@
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> Hello ,I&#39;m 圆玉 in China. <br/>
+			This is my blog,for recording.</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">
 		
-		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		<a href="http://weibo.com/2140938987" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/LRY1994" target="_blank" class="icon-github" title="github"></a>
 		
 		
 		
 		
 		
 		
+		<a href="https://www.douban.com/people/167927352" target="_blank" class="icon-douban" title="豆瓣"></a>
 		
 		
 		
+		
+		<a href="mailto:linry@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
 		
 	</div>
 			

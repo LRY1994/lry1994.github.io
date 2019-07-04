@@ -12,7 +12,7 @@
 
     
     <meta name="description" content="页面加载页面加载就是从你输入网址+enter开始，发生的一些列过程，最终到页面显示。 从微观上分的话，页面加载有两部分 一个是以DOMContentLoaded触发为标志的DOM树的渲染完成 一个是以辅助资源img,font加载完成为触发标志的onload事件 他们两个的具体区别就是&amp;quot;资源的加载&amp;quot;这个关键点. 在获得数据响应后,页面开始解析,发生的过程为:  解析HTML结构。">
-<meta name="keywords" content="面试">
+<meta name="keywords" content="日常记录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="页面加载过程解析">
 <meta property="og:url" content="http://lry1994.github.io/study/Comprehensive/load-process.html">
@@ -21,7 +21,7 @@
 <meta property="og:locale" content="zh-hk">
 <meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/load-process/timing.png">
 <meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/load-process/2.png">
-<meta property="og:updated_time" content="2018-10-08T01:17:53.475Z">
+<meta property="og:updated_time" content="2019-07-04T03:22:17.792Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="页面加载过程解析">
 <meta name="twitter:description" content="页面加载页面加载就是从你输入网址+enter开始，发生的一些列过程，最终到页面显示。 从微观上分的话，页面加载有两部分 一个是以DOMContentLoaded触发为标志的DOM树的渲染完成 一个是以辅助资源img,font加载完成为触发标志的onload事件 他们两个的具体区别就是&amp;quot;资源的加载&amp;quot;这个关键点. 在获得数据响应后,页面开始解析,发生的过程为:  解析HTML结构。">
@@ -53,7 +53,7 @@
 				<h1 class="site-name"><a href="/" title="圆玉的博客">圆玉的博客</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -67,7 +67,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:lry1994.github.io">
 					</form>
 					
@@ -90,14 +90,14 @@
 		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
 		
   <p class="article-time">
-    <time datetime="2017-10-11T16:00:00.000Z" itemprop="datePublished"> 发表于 2017-10-12</time>
+    <time datetime="2017-10-11T16:00:00.000Z" itemprop="datePublished"> Published 2017-10-12</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#页面加载"><span class="toc-number">1.</span> <span class="toc-text">页面加载</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#宏观页面加载"><span class="toc-number">1.1.</span> <span class="toc-text">宏观页面加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redirect"><span class="toc-number">1.2.</span> <span class="toc-text">redirect</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cache-DNS-TCP-Request-Response"><span class="toc-number">1.3.</span> <span class="toc-text">cache,DNS,TCP,Request,Response</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#process-onload"><span class="toc-number">1.4.</span> <span class="toc-text">process,onload</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#jquery-ready事件浅析"><span class="toc-number">2.</span> <span class="toc-text">jquery ready事件浅析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#readyStateChange"><span class="toc-number">2.1.</span> <span class="toc-text">readyStateChange</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#doScroll"><span class="toc-number">2.2.</span> <span class="toc-text">doScroll</span></a></li></ol></li></ol>
 		
@@ -179,13 +179,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/专题笔记/">专题笔记</a>
+  <a class="article-category-link" href="/categories/学习/">学习</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/面试/">面试</a>
+  <span></span> <a href="/tags/日常记录/">日常记录</a>
   </div>
 
 </div>
@@ -231,27 +231,23 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#页面加载"><span class="toc-number">1.</span> <span class="toc-text">页面加载</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#宏观页面加载"><span class="toc-number">1.1.</span> <span class="toc-text">宏观页面加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redirect"><span class="toc-number">1.2.</span> <span class="toc-text">redirect</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cache-DNS-TCP-Request-Response"><span class="toc-number">1.3.</span> <span class="toc-text">cache,DNS,TCP,Request,Response</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#process-onload"><span class="toc-number">1.4.</span> <span class="toc-text">process,onload</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#jquery-ready事件浅析"><span class="toc-number">2.</span> <span class="toc-text">jquery ready事件浅析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#readyStateChange"><span class="toc-number">2.1.</span> <span class="toc-text">readyStateChange</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#doScroll"><span class="toc-number">2.2.</span> <span class="toc-text">doScroll</span></a></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分类</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
-		
-		  
-			<li><a href="/categories/学习/专题笔记/" title="专题笔记">专题笔记<sup>4</sup></a></li>
-		  
 		
 		  
 			<li><a href="/categories/学习/" title="学习">学习<sup>43</sup></a></li>
@@ -267,11 +263,11 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/日常记录/" title="日常记录">日常记录<sup>18</sup></a></li>
+				<li><a href="/tags/日常记录/" title="日常记录">日常记录<sup>24</sup></a></li>
 			
 		
 			
@@ -283,23 +279,11 @@
 			
 		
 			
-				<li><a href="/tags/面试/" title="面试">面试<sup>7</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/资料收集/" title="资料收集">资料收集<sup>2</sup></a></li>
+				<li><a href="/tags/面试/" title="面试">面试<sup>3</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/专题笔记探究/" title="专题笔记探究">专题笔记探究<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/柯里化/" title="柯里化">柯里化<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/栈队列/" title="栈队列">栈队列<sup>1</sup></a></li>
 			
 		
 			
@@ -317,7 +301,7 @@
   
 
 <div class="doubanshow">
-<p class="asidetitle">豆瓣秀</p>
+<p class="asidetitle">Douban Show</p>
 <div>
 <script type="text/javascript" src="http://www.douban.com/service/badge/167927352/?show=collection&amp;n=12&amp;columns=3&amp;hidelogo=yes&amp;hideself=yes&amp;cat=book|movie" ></script>
 </div>
@@ -325,11 +309,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2140938987&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -564,7 +548,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

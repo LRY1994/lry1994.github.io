@@ -1,0 +1,586 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-hk">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>2019.2-3总结 | 圆玉的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Ruiyu Lin">
+    
+
+    
+    <meta name="description" content="IE浏览器url中文乱码IE浏览器直接拼接url,中文会乱码，需要像下面这样进行转码 1&amp;lt;a :href=&amp;quot;`/ctyun/clientcase?tag=$&amp;#123;encodeURI(data[current].tag)&amp;#125;`&amp;quot; &amp;gt;  用router-link的就不用转码： 123 &amp;lt;router-link :to=&amp;quot;&amp;#123;name">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019.2-3总结">
+<meta property="og:url" content="http://lry1994.github.io/study/2019/2/2.html">
+<meta property="og:site_name" content="圆玉的博客">
+<meta property="og:description" content="IE浏览器url中文乱码IE浏览器直接拼接url,中文会乱码，需要像下面这样进行转码 1&amp;lt;a :href=&amp;quot;`/ctyun/clientcase?tag=$&amp;#123;encodeURI(data[current].tag)&amp;#125;`&amp;quot; &amp;gt;  用router-link的就不用转码： 123 &amp;lt;router-link :to=&amp;quot;&amp;#123;name">
+<meta property="og:locale" content="zh-hk">
+<meta property="og:updated_time" content="2019-04-11T02:08:36.113Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2019.2-3总结">
+<meta name="twitter:description" content="IE浏览器url中文乱码IE浏览器直接拼接url,中文会乱码，需要像下面这样进行转码 1&amp;lt;a :href=&amp;quot;`/ctyun/clientcase?tag=$&amp;#123;encodeURI(data[current].tag)&amp;#125;`&amp;quot; &amp;gt;  用router-link的就不用转码： 123 &amp;lt;router-link :to=&amp;quot;&amp;#123;name">
+
+    
+    <link rel="alternative" href="/atom.xml" title="圆玉的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="圆玉的博客" title="圆玉的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="圆玉的博客">圆玉的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:lry1994.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/study/2019/2/2.html" title="2019.2-3总结" itemprop="url">2019.2-3总结</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
+		
+  <p class="article-time">
+    <time datetime="2019-02-11T16:00:00.000Z" itemprop="datePublished"> Published 2019-02-12</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#IE浏览器url中文乱码"><span class="toc-number">1.</span> <span class="toc-text">IE浏览器url中文乱码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件上有ref的话，这个组件不可以使用懒加载"><span class="toc-number">2.</span> <span class="toc-text">组件上有ref的话，这个组件不可以使用懒加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#click-”func”和-click-”fun-”的区别"><span class="toc-number">3.</span> <span class="toc-text">@click=”func”和@click=”fun()”的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态挂载组件"><span class="toc-number">4.</span> <span class="toc-text">动态挂载组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#body上加上over-flow-hidden获取scrollTop会不准确"><span class="toc-number">5.</span> <span class="toc-text">body上加上over-flow:hidden获取scrollTop会不准确</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fixed定位页面抖动解决方法"><span class="toc-number">6.</span> <span class="toc-text">fixed定位页面抖动解决方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vucli3构建库模式大坑"><span class="toc-number">7.</span> <span class="toc-text">vucli3构建库模式大坑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可以利用src做请求"><span class="toc-number">8.</span> <span class="toc-text">可以利用src做请求</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="IE浏览器url中文乱码"><a href="#IE浏览器url中文乱码" class="headerlink" title="IE浏览器url中文乱码"></a>IE浏览器url中文乱码</h3><p>IE浏览器直接拼接url,中文会乱码，需要像下面这样进行转码<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a :href=&quot;`/ctyun/clientcase?tag=$&#123;encodeURI(data[current].tag)&#125;`&quot; &gt;</span><br></pre></td></tr></table></figure></p>
+<p> 用router-link的就不用转码：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> &lt;router-link :to=&quot;&#123;name:&apos;clientcase&apos;,query:&#123;tag:item.tag&#125;&#125;&quot; &gt;</span><br><span class="line"> 或者</span><br><span class="line">&lt;router-link v-if=&quot;item.id&quot; :to=&quot;&#123;path:`/clientcase?tag=$&#123;item.tag&#125;&amp;id=$&#123;item.id&#125;`&#125;&quot; &gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="组件上有ref的话，这个组件不可以使用懒加载"><a href="#组件上有ref的话，这个组件不可以使用懒加载" class="headerlink" title="组件上有ref的话，这个组件不可以使用懒加载"></a>组件上有ref的话，这个组件不可以使用懒加载</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  &lt;template v-for=&quot;item in partnerList&quot;&gt;</span><br><span class="line">    &lt;case-item :data=&quot;item&quot; :key=&quot;item.index&quot; :ref=&quot;`case$&#123;item.id&#125;`&quot;&gt;&lt;/case-item&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">    components: &#123; CaseItem &#125;,<span class="comment">//正确的做法</span></span><br><span class="line">    components: &#123; <span class="attr">CaseItem</span>:<span class="function"><span class="params">()</span>=&gt;</span><span class="keyword">import</span>(<span class="string">'....'</span>) &#125;,<span class="comment">//懒加载的做法  </span></span><br><span class="line"> getData(type, offset, limit) &#123;</span><br><span class="line">    xxxxx.then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.partnerList.push(...res.item);</span><br><span class="line">    <span class="keyword">this</span>.scrollTo(<span class="keyword">this</span>.selectedId);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;,</span><br><span class="line">scrollTo(id) &#123;</span><br><span class="line">    <span class="keyword">this</span>.$nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> target = <span class="keyword">this</span>.$refs[<span class="string">`case<span class="subst">$&#123;id&#125;</span>`</span>];</span><br><span class="line">        xxxxx</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>如果<code>&lt;case-item&gt;</code>是懒加载的话，第一次进入这个页面<code>target = this.$refs[`case${id}`];</code>是undefined</p>
+<h3 id="click-”func”和-click-”fun-”的区别"><a href="#click-”func”和-click-”fun-”的区别" class="headerlink" title="@click=”func”和@click=”fun()”的区别"></a>@click=”func”和@click=”fun()”的区别</h3><ol>
+<li>如果func函数没有参数，就没有区别</li>
+<li>如果func函数有参数，例如<code>func(arg){...}</code>，那么<code>@click=&quot;func&quot;</code> 在func(arg)里面输出arg并不是undefined，而是一个事件对象</li>
+</ol>
+<p>#:class可以是一个数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">boxClazz()&#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="string">'box'</span>,  !<span class="keyword">this</span>.canAddHideAnimationLater ? <span class="string">''</span> : <span class="keyword">this</span>.visible ? <span class="string">'show'</span>: <span class="string">'hide'</span>]</span><br><span class="line">&#125;</span><br><span class="line">&lt;nav :<span class="class"><span class="keyword">class</span></span>=<span class="string">"boxClazz"</span> &gt;<span class="xml"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></span></span><br></pre></td></tr></table></figure></p>
+<h3 id="动态挂载组件"><a href="#动态挂载组件" class="headerlink" title="动态挂载组件"></a>动态挂载组件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> imgPreview <span class="keyword">from</span> <span class="string">'./img-preview.vue'</span>;</span><br><span class="line"><span class="keyword">let</span> instance;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> imgPreviewConsturctor = Vue.extend(imgPreview);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> initInstance = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> el = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</span><br><span class="line">  el.id=<span class="string">"__img_preview_box"</span></span><br><span class="line">  <span class="built_in">document</span>.body.appendChild(el);</span><br><span class="line">  instance = <span class="keyword">new</span> imgPreviewConsturctor().$mount(<span class="string">`#<span class="subst">$&#123;el.id&#125;</span>`</span>);</span><br><span class="line">  </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> init = <span class="function">(<span class="params">imgSrc</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">if</span>(!instance)&#123;</span><br><span class="line">		initInstance();</span><br><span class="line">	&#125;</span><br><span class="line">	instance.imgSrc = imgSrc;</span><br><span class="line">	instance.visible = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">	init</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="body上加上over-flow-hidden获取scrollTop会不准确"><a href="#body上加上over-flow-hidden获取scrollTop会不准确" class="headerlink" title="body上加上over-flow:hidden获取scrollTop会不准确"></a>body上加上over-flow:hidden获取scrollTop会不准确</h3><h3 id="fixed定位页面抖动解决方法"><a href="#fixed定位页面抖动解决方法" class="headerlink" title="fixed定位页面抖动解决方法"></a>fixed定位页面抖动解决方法</h3><p>这方法是看微博网站代码看到的，完美！！其他百度上的方法没一个管用</p>
+<p>fixed定位的元素加上<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">nav-tab</span>&#123;</span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">10</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateZ</span>(0px);</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">transition</span>: top <span class="number">0.3s</span> ease <span class="number">0s</span>;</span><br><span class="line">  <span class="attribute">will-change</span>:top;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>页面上加多一个同等高度的容器<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--关键--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">:style</span>=<span class="string">"&#123;height:fixNav?`$&#123;nav-height&#125;px`:0&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--fixed定位的元素--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">nav-tab</span>  <span class="attr">:class</span>=<span class="string">"&#123;'fix-nav':fixNav&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">nav-tab</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="vucli3构建库模式大坑"><a href="#vucli3构建库模式大坑" class="headerlink" title="vucli3构建库模式大坑"></a>vucli3构建库模式大坑</h3><ol>
+<li>代码里不能有懒加载，不然打出来的文件不止1个，引入的时候路径不对</li>
+<li>图片不能<code>&lt;img src&gt;</code>渲染，会找不到路径。可以用background-image解决</li>
+<li><code>new consturctor().$mount();</code>的时候，生命周期钩子mouted在<code>$mount()</code>过程中就会执行.</li>
+<li><p><code>import Vue from &#39;vue&#39;</code> 得到的也不是主项目的vue</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方案：把vue实例当做props传进去</span></span><br><span class="line">instance = <span class="keyword">new</span> feedbackConsturctor(&#123;</span><br><span class="line">     <span class="comment">//！！！依赖库手动挂载的节点的__proto__跟主项目的__proto__不是同一个，会导致断链</span></span><br><span class="line">     propsData:&#123;</span><br><span class="line">         http$ : _VUE_.prototype.http$</span><br><span class="line">     &#125;&#125;).$mount();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>vue父子组件之间是没有原型链的，手动$mount()的组件$root是自己。所以子组件如果要使用主项目的数据，可以</p>
+ <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123; <span class="attr">http$</span>:<span class="keyword">this</span>.$root.http$ &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="可以利用src做请求"><a href="#可以利用src做请求" class="headerlink" title="可以利用src做请求"></a>可以利用src做请求</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">send(url, params)&#123;</span><br><span class="line"></span><br><span class="line">		const img = new Image;</span><br><span class="line">		img.src = `$&#123;url&#125;?$&#123;this.serializeParams(params, true)&#125;`;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/每月总结/">每月总结</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://lry1994.github.io/study/2019/2/2.html" data-title="2019.2-3总结 | 圆玉的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/study/2019/2/scss.html" title="scss笔记">
+  <strong>上一篇：</strong><br/>
+  <span>
+  scss笔记</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/study/2019/1/css-improve.html"  title="关于css打包后过大的问题">
+ <strong>下一篇：</strong><br/> 
+ <span>关于css打包后过大的问题
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#IE浏览器url中文乱码"><span class="toc-number">1.</span> <span class="toc-text">IE浏览器url中文乱码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#组件上有ref的话，这个组件不可以使用懒加载"><span class="toc-number">2.</span> <span class="toc-text">组件上有ref的话，这个组件不可以使用懒加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#click-”func”和-click-”fun-”的区别"><span class="toc-number">3.</span> <span class="toc-text">@click=”func”和@click=”fun()”的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态挂载组件"><span class="toc-number">4.</span> <span class="toc-text">动态挂载组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#body上加上over-flow-hidden获取scrollTop会不准确"><span class="toc-number">5.</span> <span class="toc-text">body上加上over-flow:hidden获取scrollTop会不准确</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fixed定位页面抖动解决方法"><span class="toc-number">6.</span> <span class="toc-text">fixed定位页面抖动解决方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vucli3构建库模式大坑"><span class="toc-number">7.</span> <span class="toc-text">vucli3构建库模式大坑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可以利用src做请求"><span class="toc-number">8.</span> <span class="toc-text">可以利用src做请求</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/学习/专题笔记/" title="专题笔记">专题笔记<sup>23</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/学习/" title="学习">学习<sup>41</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/学习/每月总结/" title="每月总结">每月总结<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活/" title="生活">生活<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/学习/读书笔记/" title="读书笔记">读书笔记<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活/阅读笔记/" title="阅读笔记">阅读笔记<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/面试/" title="面试">面试<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/文学/" title="文学">文学<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/vue/" title="vue">vue<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/资料收集/" title="资料收集">资料收集<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/react/" title="react">react<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/reat-native/" title="reat-native">reat-native<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/前端优化/" title="前端优化">前端优化<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM/" title="DOM">DOM<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/柯里化/" title="柯里化">柯里化<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/react-native/" title="react-native">react-native<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/栈队列/" title="栈队列">栈队列<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/angular/" title="angular">angular<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/AngularJS1/" title="AngularJS1">AngularJS1<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/H5/" title="H5">H5<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/GreenSock/" title="GreenSock">GreenSock<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/前端启航/" title="前端启航">前端启航<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		
+		<a href="/about" target="_blank" title="Ruiyu Lin">Ruiyu Lin</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

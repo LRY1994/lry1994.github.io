@@ -1,85 +1,17 @@
-<!DOCTYPE html>
 
-
-
-
-<html class="theme-next muse" lang="zh-hk">
+ <!DOCTYPE HTML>
+<html lang="zh-hk">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <meta charset="UTF-8">
   
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <title>原生DOM兼容特性总结 | 圆玉的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Ruiyu Lin">
+    
 
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="DOM," />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="圆玉的博客" type="application/atom+xml" />
-
-
-
-
-
-
-<meta name="description" content="浏览器主要也就是IE有点独特，所以把IE重点区分开    名称 主流 IE     内文本 innerText textContent   请求对象 XMLHttpRequest ActiveXObject[“MSXML2.XMLHttp.6.0”,”MSXML2.XMLHttp.3.0”,”MSXML2.XMLHttp”]   监听事件添加 addEventListener(DOM2), [\’">
+    
+    <meta name="description" content="浏览器主要也就是IE有点独特，所以把IE重点区分开    名称 主流 IE     内文本 innerText textContent   请求对象 XMLHttpRequest ActiveXObject[“MSXML2.XMLHttp.6.0”,”MSXML2.XMLHttp.3.0”,”MSXML2.XMLHttp”]   监听事件添加 addEventListener(DOM2), [\’">
 <meta name="keywords" content="DOM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="原生DOM兼容特性总结">
@@ -92,263 +24,85 @@
 <meta name="twitter:title" content="原生DOM兼容特性总结">
 <meta name="twitter:description" content="浏览器主要也就是IE有点独特，所以把IE重点区分开    名称 主流 IE     内文本 innerText textContent   请求对象 XMLHttpRequest ActiveXObject[“MSXML2.XMLHttp.6.0”,”MSXML2.XMLHttp.3.0”,”MSXML2.XMLHttp”]   监听事件添加 addEventListener(DOM2), [\’">
 
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://lry1994.github.io/study/2018/2/26-dom-compaticity.html"/>
-
-
-
-
-
-  <title>原生DOM兼容特性总结 | 圆玉的博客</title>
-  
-
-
-
-
-
-
-
-
+    
+    <link rel="alternative" href="/atom.xml" title="圆玉的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-hk">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">圆玉的博客</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
+  <body>
+    <header>
       
-        <h1 class="site-subtitle" itemprop="description"></h1>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="圆玉的博客" title="圆玉的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="圆玉的博客">圆玉的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:lry1994.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
 </div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首頁
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            關於
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
-
- </div>
     </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
     
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lry1994.github.io/study/2018/2/26-dom-compaticity.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ruiyu Lin">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="圆玉的博客">
-    </span>
-
+      <a href="/study/2018/2/26-dom-compaticity.html" title="原生DOM兼容特性总结" itemprop="url">原生DOM兼容特性总结</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
+		
+  <p class="article-time">
+    <time datetime="2018-02-25T16:00:00.000Z" itemprop="datePublished"> Published 2018-02-26</time>
     
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">原生DOM兼容特性总结</h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-02-26T00:00:00+08:00">
-                2018-02-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分類於</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/" itemprop="url" rel="index">
-                    <span itemprop="name">学习</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/学习/专题笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">专题笔记</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/study/2018/2/26-dom-compaticity.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count gitment-comments-count" data-xid="/study/2018/2/26-dom-compaticity.html" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i>本文总阅读量
-            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
-            </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>浏览器主要也就是IE有点独特，所以把IE重点区分开</p>
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加多个onload事件"><span class="toc-number">1.</span> <span class="toc-text">添加多个onload事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#处理ActiveXObject-XMLHttpRequest问题"><span class="toc-number">2.</span> <span class="toc-text">处理ActiveXObject/XMLHttpRequest问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#请求对象的属性和方法设置"><span class="toc-number">3.</span> <span class="toc-text">请求对象的属性和方法设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发送表单数据"><span class="toc-number">4.</span> <span class="toc-text">发送表单数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#跨浏览器的CORS"><span class="toc-number">5.</span> <span class="toc-text">跨浏览器的CORS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#跨浏览器事件处理程序"><span class="toc-number">6.</span> <span class="toc-text">跨浏览器事件处理程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#处理target-srcelemnt问题，代替this"><span class="toc-number">7.</span> <span class="toc-text">处理target/srcelemnt问题，代替this</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现insertAfter"><span class="toc-number">8.</span> <span class="toc-text">实现insertAfter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#给element加上类名"><span class="toc-number">9.</span> <span class="toc-text">给element加上类名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#判断是不是数组"><span class="toc-number">10.</span> <span class="toc-text">判断是不是数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IE10之前不支持docunment-getElementByClassName"><span class="toc-number">11.</span> <span class="toc-text">IE10之前不支持docunment.getElementByClassName</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取css样式"><span class="toc-number">12.</span> <span class="toc-text">获取css样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#手写动画"><span class="toc-number">13.</span> <span class="toc-text">手写动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#取得窗口左边和上边的位置"><span class="toc-number">14.</span> <span class="toc-text">取得窗口左边和上边的位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#取得页面视口大小"><span class="toc-number">15.</span> <span class="toc-text">取得页面视口大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#检测插件方法"><span class="toc-number">16.</span> <span class="toc-text">检测插件方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取元素"><span class="toc-number">17.</span> <span class="toc-text">获取元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#检查对象的某个特性是否存在"><span class="toc-number">18.</span> <span class="toc-text">检查对象的某个特性是否存在</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象转换成数组"><span class="toc-number">19.</span> <span class="toc-text">对象转换成数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#返回指定的属性"><span class="toc-number">20.</span> <span class="toc-text">返回指定的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ele是否存在指定属性"><span class="toc-number">21.</span> <span class="toc-text">ele是否存在指定属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ele是否符合选择器selector"><span class="toc-number">22.</span> <span class="toc-text">ele是否符合选择器selector</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取内文本"><span class="toc-number">23.</span> <span class="toc-text">获取内文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取鼠标事件的父元素"><span class="toc-number">24.</span> <span class="toc-text">获取鼠标事件的父元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#探测按的是鼠标的哪个键"><span class="toc-number">25.</span> <span class="toc-text">探测按的是鼠标的哪个键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#鼠标滚动事件"><span class="toc-number">26.</span> <span class="toc-text">鼠标滚动事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提取选中的文本"><span class="toc-number">27.</span> <span class="toc-text">提取选中的文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置文本选中"><span class="toc-number">28.</span> <span class="toc-text">设置文本选中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bind方法对老版本的浏览器不起作用"><span class="toc-number">29.</span> <span class="toc-text">bind方法对老版本的浏览器不起作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#包装cookie"><span class="toc-number">30.</span> <span class="toc-text">包装cookie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#包装子cookie"><span class="toc-number">31.</span> <span class="toc-text">包装子cookie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#indexedDB"><span class="toc-number">32.</span> <span class="toc-text">indexedDB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Object-create"><span class="toc-number">32.1.</span> <span class="toc-text">Object.create</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#手写typeof"><span class="toc-number">33.</span> <span class="toc-text">手写typeof</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用userAgent判断使用的是什么浏览器"><span class="toc-number">34.</span> <span class="toc-text">使用userAgent判断使用的是什么浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深度克隆"><span class="toc-number">35.</span> <span class="toc-text">深度克隆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#组合使用构造函数模式和原型模式创建对象"><span class="toc-number">36.</span> <span class="toc-text">组合使用构造函数模式和原型模式创建对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#组合继承"><span class="toc-number">37.</span> <span class="toc-text">组合继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#观察者模式"><span class="toc-number">38.</span> <span class="toc-text">观察者模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分享一个题目"><span class="toc-number">39.</span> <span class="toc-text">分享一个题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IE的userData"><span class="toc-number">39.1.</span> <span class="toc-text">IE的userData</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<p>浏览器主要也就是IE有点独特，所以把IE重点区分开</p>
 <table>
 <thead>
 <tr>
@@ -545,505 +299,396 @@
 <h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//观察者模式</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">EventTarget</span>(<span class="params"></span>)</span>&#123;     </span><br><span class="line">    <span class="keyword">this</span>.handlers = &#123;&#125;; </span><br><span class="line">&#125; </span><br><span class="line">EventTarget.prototype = &#123;     </span><br><span class="line">    <span class="keyword">constructor</span>: EventTarget,</span><br><span class="line">    addHandler: function(type, handler)&#123;</span><br><span class="line">         <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="keyword">this</span>.handlers[type] == <span class="string">"undefined"</span>)&#123;</span><br><span class="line">              <span class="keyword">this</span>.handlers[type] = [];</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">this</span>.handlers[type].push(handler);</span><br><span class="line">     &#125;, </span><br><span class="line">    fire: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;<span class="comment">//执行</span></span><br><span class="line">         <span class="keyword">if</span> (!event.target)&#123;</span><br><span class="line">             event.target = <span class="keyword">this</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         <span class="keyword">if</span> (<span class="keyword">this</span>.handlers[event.type] <span class="keyword">instanceof</span> <span class="built_in">Array</span>)&#123;</span><br><span class="line">             <span class="keyword">var</span> handlers = <span class="keyword">this</span>.handlers[event.type];</span><br><span class="line">             <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len=handlers.length; i &lt; len; i++)&#123;</span><br><span class="line">                 handlers[i](event); </span><br><span class="line">            &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;,</span><br><span class="line">     removeHandler: <span class="function"><span class="keyword">function</span>(<span class="params">type, handler</span>)</span>&#123; </span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.handlers[type] <span class="keyword">instanceof</span> <span class="built_in">Array</span>)&#123; </span><br><span class="line">            <span class="keyword">var</span> handlers = <span class="keyword">this</span>.handlers[type]; </span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">0</span>, len=handlers.length; i &lt; len; i++)&#123; </span><br><span class="line">                <span class="keyword">if</span> (handlers[i] === handler)&#123; </span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                 &#125;</span><br><span class="line">             &#125;</span><br><span class="line">             handlers.splice(i, <span class="number">1</span>); </span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h2 id="分享一个题目"><a href="#分享一个题目" class="headerlink" title="分享一个题目"></a>分享一个题目</h2> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//[附加题] 请实现下面的自定义事件 Event 对象的接口，功能见注释(测试1)</span></span><br><span class="line"><span class="comment">//该 Event 对象的接口需要能被其他对象拓展复用(测试2)</span></span><br><span class="line"><span class="comment">//测试1</span></span><br><span class="line">Event.on(<span class="string">'test'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">result</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(result);</span><br><span class="line">&#125;);</span><br><span class="line">Event.on(<span class="string">'test'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'test'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">Event.emit(<span class="string">'test'</span>, <span class="string">'hello world'</span>); <span class="comment">// 输出 'hello world' 和 'test'</span></span><br><span class="line"><span class="comment">// 测试2</span></span><br><span class="line"><span class="keyword">var</span> person1 = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> person2 = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.assign(person1, Event);</span><br><span class="line"><span class="built_in">Object</span>.assign(person2, Event);</span><br><span class="line">person1.on(<span class="string">'call1'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'person1'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">person2.on(<span class="string">'call2'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'person2'</span>);</span><br><span class="line">&#125;);</span><br><span class="line">person1.emit(<span class="string">'call1'</span>); <span class="comment">//输出 'person1'</span></span><br><span class="line">person1.emit(<span class="string">'call2'</span>); <span class="comment">// 没有输出</span></span><br><span class="line">person2.emit(<span class="string">'call1'</span>); <span class="comment">// 没有输出</span></span><br><span class="line">person2.emit(<span class="string">'call2'</span>); <span class="comment">// 输出 'person2'</span></span><br><span class="line"><span class="keyword">var</span> Event = &#123;</span><br><span class="line">    <span class="comment">// 通过on接口监听事件eventName</span></span><br><span class="line">    <span class="comment">// 如果事件eventName被触发，则执行callback回调函数</span></span><br><span class="line">    on: <span class="function"><span class="keyword">function</span> (<span class="params">eventName, callback</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//你的代码</span></span><br><span class="line">        <span class="keyword">if</span>(!<span class="keyword">this</span>.handles)&#123;</span><br><span class="line">        	<span class="comment">//Object.assign(target, source);</span></span><br><span class="line"><span class="comment">//这个是ES6的新对象方法，用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target）。</span></span><br><span class="line">            <span class="built_in">Object</span>.defineProperty(<span class="keyword">this</span>, <span class="string">"handles"</span>, &#123;</span><br><span class="line">                value: &#123;&#125;,</span><br><span class="line">                enumerable: <span class="literal">false</span>,<span class="comment">//关键！</span></span><br><span class="line">                configurable: <span class="literal">true</span>,</span><br><span class="line">                writable: <span class="literal">true</span></span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">       </span><br><span class="line">       <span class="keyword">if</span>(!<span class="keyword">this</span>.handles[eventName])&#123;</span><br><span class="line">            <span class="keyword">this</span>.handles[eventName]=[];</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">this</span>.handles[eventName].push(callback);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 触发事件 eventName</span></span><br><span class="line">    emit: <span class="function"><span class="keyword">function</span> (<span class="params">eventName</span>) </span>&#123;</span><br><span class="line">        <span class="comment">//你的代码</span></span><br><span class="line">       <span class="keyword">if</span>(<span class="keyword">this</span>.handles[<span class="built_in">arguments</span>[<span class="number">0</span>]])&#123;</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="keyword">this</span>.handles[<span class="built_in">arguments</span>[<span class="number">0</span>]].length;i++)&#123;</span><br><span class="line">               <span class="keyword">this</span>.handles[<span class="built_in">arguments</span>[<span class="number">0</span>]][i](<span class="built_in">arguments</span>[<span class="number">1</span>]);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//输出所有页面宽度和高度大于50像素的节点。</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">traverse</span>(<span class="params">oNode</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> aResult = [];</span><br><span class="line">    oNode = oNode || <span class="built_in">document</span>.body;</span><br><span class="line">    <span class="keyword">if</span> (oNode.style) &#123;</span><br><span class="line">        <span class="keyword">var</span> nWidth = <span class="built_in">window</span>.parseInt(oNode.style.width, <span class="number">10</span>) || <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">var</span> nHeight = <span class="built_in">window</span>.parseInt(oNode.style.height, <span class="number">10</span>) || <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (nWidth &gt; <span class="number">50</span> &amp;&amp; nHeight &gt; <span class="number">50</span>) &#123;</span><br><span class="line">            aResult.push(oNode);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> aChildNodes = oNode.childNodes;</span><br><span class="line">    <span class="keyword">if</span> (aChildNodes.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, l = aChildNodes.length; i &lt; l; i++) &#123;</span><br><span class="line">            <span class="keyword">var</span> oTmp = aChildNodes[i];</span><br><span class="line">            aResult = aResult.concat(traverse(oTmp));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> aResult;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="IE的userData"><a href="#IE的userData" class="headerlink" title="IE的userData"></a>IE的userData</h3> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">set_ud</span>(<span class="params">key,value</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">document</span>.getElementById(<span class="string">'x'</span>); <span class="comment">// x 为任意div 的id 值</span></span><br><span class="line">    a.addBehavior(<span class="string">"#default#userdata"</span>);</span><br><span class="line">    a.setAttribute(key,value);</span><br><span class="line">    a.save(<span class="string">"db"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get_ud</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">document</span>.getElementById(<span class="string">'x'</span>);</span><br><span class="line">    a.addBehavior(<span class="string">"#default#userdata"</span>);</span><br><span class="line">    a.load(<span class="string">"db"</span>);</span><br><span class="line">    alert(a.getAttribute(key));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">del_ud</span>(<span class="params">key</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="built_in">document</span>.getElementById(<span class="string">'x'</span>);</span><br><span class="line">    a.addBehavior(<span class="string">"#default#userdata"</span>);</span><br><span class="line">    a.setAttribute(key, <span class="string">""</span>); <span class="comment">// 设置为空值即可</span></span><br><span class="line">    a.save(<span class="string">"db"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    set_ud(<span class="string">'a'</span>,<span class="string">'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'</span>); <span class="comment">// 设置</span></span><br><span class="line">    get_ud(<span class="string">'a'</span>); <span class="comment">// 获取a 的值</span></span><br><span class="line">    del_ud(<span class="string">'a'</span>); <span class="comment">// 删除a 的值</span></span><br><span class="line">    get_ud(<span class="string">'a'</span>); <span class="comment">// 获取a 的值</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
 
-      
-    </div>
-    
-    
-    
-
-    
-      <div>
-        <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="/images/wechat-qcode.jpg" alt="Ruiyu Lin wechat" style="width: 200px; max-width: 100%;"/>
-    <div>要放弃的时候想想当初为什么开始</div>
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/专题笔记/">专题笔记</a>
 </div>
 
-      </div>
-    
 
-    
-      <div>
-        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>Donate comment here</div>
-  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>打賞</span>
-  </button>
-  <div id="QR" style="display: none;">
-
-    
-      <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="Ruiyu Lin 微信支付"/>
-        <p>微信支付</p>
-      </div>
-    
-
-    
-      <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipay.jpg" alt="Ruiyu Lin 支付寶"/>
-        <p>支付寶</p>
-      </div>
-    
-
-    
-
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/DOM/">DOM</a>
   </div>
+
 </div>
 
-      </div>
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/DOM/" rel="tag"># DOM</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/study/2018/2/suibi.html" rel="next" title="2018-2总结">
-                <i class="fa fa-chevron-left"></i> 2018-2总结
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/study/2018/2/26-rebuild-blog.html" rel="prev" title="搭建博客过程">
-                搭建博客过程 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
 
 
-     <div id="gitmentContainer"></div>
-    <div class="post-spread">
-      
-    </div>
-  </div>
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://lry1994.github.io/study/2018/2/26-dom-compaticity.html" data-title="原生DOM兼容特性总结 | 圆玉的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
  
-
-
-          </div>
-          
-
-
-          
-
-  
-    <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
-    </div>
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目錄
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            本站概覽
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.jpg"
-                alt="Ruiyu Lin" />
-            
-              <p class="site-author-name" itemprop="name">Ruiyu Lin</p>
-              <p class="site-description motion-element" itemprop="description"></p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives">
-              
-                  <span class="site-state-item-count">41</span>
-                  <span class="site-state-item-name">文章</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                
-                  <span class="site-state-item-count">6</span>
-                  <span class="site-state-item-name">分類</span>
-                
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                
-                  <span class="site-state-item-count">18</span>
-                  <span class="site-state-item-name">標籤</span>
-                
-              </div>
-            
-
-          </nav>
-
-          
-            <div class="feed-link motion-element">
-              <a href="/atom.xml" rel="alternate">
-                <i class="fa fa-rss"></i>
-                RSS
-              </a>
-            </div>
-          
-
-          
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/LRY1994" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="lry0930@qq.com" target="_blank" title="E-Mail">
-                      
-                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="https://weibo.com/2140938987" target="_blank" title="微博">
-                      
-                        <i class="fa fa-fw fa-globe"></i>微博</a>
-                  </span>
-                
-            </div>
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加多个onload事件"><span class="nav-number">1.</span> <span class="nav-text">添加多个onload事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理ActiveXObject-XMLHttpRequest问题"><span class="nav-number">2.</span> <span class="nav-text">处理ActiveXObject/XMLHttpRequest问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#请求对象的属性和方法设置"><span class="nav-number">3.</span> <span class="nav-text">请求对象的属性和方法设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#发送表单数据"><span class="nav-number">4.</span> <span class="nav-text">发送表单数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨浏览器的CORS"><span class="nav-number">5.</span> <span class="nav-text">跨浏览器的CORS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#跨浏览器事件处理程序"><span class="nav-number">6.</span> <span class="nav-text">跨浏览器事件处理程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理target-srcelemnt问题，代替this"><span class="nav-number">7.</span> <span class="nav-text">处理target/srcelemnt问题，代替this</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现insertAfter"><span class="nav-number">8.</span> <span class="nav-text">实现insertAfter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给element加上类名"><span class="nav-number">9.</span> <span class="nav-text">给element加上类名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#判断是不是数组"><span class="nav-number">10.</span> <span class="nav-text">判断是不是数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IE10之前不支持docunment-getElementByClassName"><span class="nav-number">11.</span> <span class="nav-text">IE10之前不支持docunment.getElementByClassName</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取css样式"><span class="nav-number">12.</span> <span class="nav-text">获取css样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#手写动画"><span class="nav-number">13.</span> <span class="nav-text">手写动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#取得窗口左边和上边的位置"><span class="nav-number">14.</span> <span class="nav-text">取得窗口左边和上边的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#取得页面视口大小"><span class="nav-number">15.</span> <span class="nav-text">取得页面视口大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检测插件方法"><span class="nav-number">16.</span> <span class="nav-text">检测插件方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取元素"><span class="nav-number">17.</span> <span class="nav-text">获取元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检查对象的某个特性是否存在"><span class="nav-number">18.</span> <span class="nav-text">检查对象的某个特性是否存在</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象转换成数组"><span class="nav-number">19.</span> <span class="nav-text">对象转换成数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#返回指定的属性"><span class="nav-number">20.</span> <span class="nav-text">返回指定的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ele是否存在指定属性"><span class="nav-number">21.</span> <span class="nav-text">ele是否存在指定属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ele是否符合选择器selector"><span class="nav-number">22.</span> <span class="nav-text">ele是否符合选择器selector</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取内文本"><span class="nav-number">23.</span> <span class="nav-text">获取内文本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取鼠标事件的父元素"><span class="nav-number">24.</span> <span class="nav-text">获取鼠标事件的父元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#探测按的是鼠标的哪个键"><span class="nav-number">25.</span> <span class="nav-text">探测按的是鼠标的哪个键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#鼠标滚动事件"><span class="nav-number">26.</span> <span class="nav-text">鼠标滚动事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提取选中的文本"><span class="nav-number">27.</span> <span class="nav-text">提取选中的文本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置文本选中"><span class="nav-number">28.</span> <span class="nav-text">设置文本选中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bind方法对老版本的浏览器不起作用"><span class="nav-number">29.</span> <span class="nav-text">bind方法对老版本的浏览器不起作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包装cookie"><span class="nav-number">30.</span> <span class="nav-text">包装cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包装子cookie"><span class="nav-number">31.</span> <span class="nav-text">包装子cookie</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#indexedDB"><span class="nav-number">32.</span> <span class="nav-text">indexedDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Object-create"><span class="nav-number">32.1.</span> <span class="nav-text">Object.create</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#手写typeof"><span class="nav-number">33.</span> <span class="nav-text">手写typeof</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用userAgent判断使用的是什么浏览器"><span class="nav-number">34.</span> <span class="nav-text">使用userAgent判断使用的是什么浏览器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深度克隆"><span class="nav-number">35.</span> <span class="nav-text">深度克隆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合使用构造函数模式和原型模式创建对象"><span class="nav-number">36.</span> <span class="nav-text">组合使用构造函数模式和原型模式创建对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合继承"><span class="nav-number">37.</span> <span class="nav-text">组合继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#观察者模式"><span class="nav-number">38.</span> <span class="nav-text">观察者模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分享一个题目"><span class="nav-number">39.</span> <span class="nav-text">分享一个题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IE的userData"><span class="nav-number">39.1.</span> <span class="nav-text">IE的userData</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        
-<div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Ruiyu Lin</span>
-
-  
+ <div class="prev" >
+ <a href="/study/2018/3/suibi.html" title="2018-3总结">
+  <strong>上一篇：</strong><br/>
+  <span>
+  2018-3总结</span>
+</a>
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 強力驅動</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
-
-
-
-
-
-
-        
-<div class="busuanzi-count">
-  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-  
-    <span class="site-uv">
-      <i class="fa fa-user"></i>本站访问人数
-      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
-      人次
-    </span>
-  
-
-  
-    <span class="site-pv">
-      <i class="fa fa-eye"></i>本站总访问量
-      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
-      次
-    </span>
-  
+<div class="next">
+<a href="/study/2018/2/26-rebuild-blog.html"  title="搭建博客过程">
+ <strong>下一篇：</strong><br/> 
+ <span>搭建博客过程
+</span>
+</a>
 </div>
 
-
-
-
-
-
-
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-<script>
-var gitment = new Gitment({
-    owner: 'LRY1994',
-    repo: 'lry1994.github.io',
-    oauth: {
-        client_id: "",
-        client_secret: ""
-    },
-});
-gitment.render('gitmentContainer');
-</script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
+</nav>
 
 	
 
 
 
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#添加多个onload事件"><span class="toc-number">1.</span> <span class="toc-text">添加多个onload事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#处理ActiveXObject-XMLHttpRequest问题"><span class="toc-number">2.</span> <span class="toc-text">处理ActiveXObject/XMLHttpRequest问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#请求对象的属性和方法设置"><span class="toc-number">3.</span> <span class="toc-text">请求对象的属性和方法设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发送表单数据"><span class="toc-number">4.</span> <span class="toc-text">发送表单数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#跨浏览器的CORS"><span class="toc-number">5.</span> <span class="toc-text">跨浏览器的CORS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#跨浏览器事件处理程序"><span class="toc-number">6.</span> <span class="toc-text">跨浏览器事件处理程序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#处理target-srcelemnt问题，代替this"><span class="toc-number">7.</span> <span class="toc-text">处理target/srcelemnt问题，代替this</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现insertAfter"><span class="toc-number">8.</span> <span class="toc-text">实现insertAfter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#给element加上类名"><span class="toc-number">9.</span> <span class="toc-text">给element加上类名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#判断是不是数组"><span class="toc-number">10.</span> <span class="toc-text">判断是不是数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IE10之前不支持docunment-getElementByClassName"><span class="toc-number">11.</span> <span class="toc-text">IE10之前不支持docunment.getElementByClassName</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取css样式"><span class="toc-number">12.</span> <span class="toc-text">获取css样式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#手写动画"><span class="toc-number">13.</span> <span class="toc-text">手写动画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#取得窗口左边和上边的位置"><span class="toc-number">14.</span> <span class="toc-text">取得窗口左边和上边的位置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#取得页面视口大小"><span class="toc-number">15.</span> <span class="toc-text">取得页面视口大小</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#检测插件方法"><span class="toc-number">16.</span> <span class="toc-text">检测插件方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取元素"><span class="toc-number">17.</span> <span class="toc-text">获取元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#检查对象的某个特性是否存在"><span class="toc-number">18.</span> <span class="toc-text">检查对象的某个特性是否存在</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象转换成数组"><span class="toc-number">19.</span> <span class="toc-text">对象转换成数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#返回指定的属性"><span class="toc-number">20.</span> <span class="toc-text">返回指定的属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ele是否存在指定属性"><span class="toc-number">21.</span> <span class="toc-text">ele是否存在指定属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ele是否符合选择器selector"><span class="toc-number">22.</span> <span class="toc-text">ele是否符合选择器selector</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取内文本"><span class="toc-number">23.</span> <span class="toc-text">获取内文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取鼠标事件的父元素"><span class="toc-number">24.</span> <span class="toc-text">获取鼠标事件的父元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#探测按的是鼠标的哪个键"><span class="toc-number">25.</span> <span class="toc-text">探测按的是鼠标的哪个键</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#鼠标滚动事件"><span class="toc-number">26.</span> <span class="toc-text">鼠标滚动事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提取选中的文本"><span class="toc-number">27.</span> <span class="toc-text">提取选中的文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#设置文本选中"><span class="toc-number">28.</span> <span class="toc-text">设置文本选中</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bind方法对老版本的浏览器不起作用"><span class="toc-number">29.</span> <span class="toc-text">bind方法对老版本的浏览器不起作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#包装cookie"><span class="toc-number">30.</span> <span class="toc-text">包装cookie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#包装子cookie"><span class="toc-number">31.</span> <span class="toc-text">包装子cookie</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#indexedDB"><span class="toc-number">32.</span> <span class="toc-text">indexedDB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Object-create"><span class="toc-number">32.1.</span> <span class="toc-text">Object.create</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#手写typeof"><span class="toc-number">33.</span> <span class="toc-text">手写typeof</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用userAgent判断使用的是什么浏览器"><span class="toc-number">34.</span> <span class="toc-text">使用userAgent判断使用的是什么浏览器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深度克隆"><span class="toc-number">35.</span> <span class="toc-text">深度克隆</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#组合使用构造函数模式和原型模式创建对象"><span class="toc-number">36.</span> <span class="toc-text">组合使用构造函数模式和原型模式创建对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#组合继承"><span class="toc-number">37.</span> <span class="toc-text">组合继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#观察者模式"><span class="toc-number">38.</span> <span class="toc-text">观察者模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分享一个题目"><span class="toc-number">39.</span> <span class="toc-text">分享一个题目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IE的userData"><span class="toc-number">39.1.</span> <span class="toc-text">IE的userData</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
 
   
 
 
-
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/学习/专题笔记/" title="专题笔记">专题笔记<sup>23</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/学习/" title="学习">学习<sup>41</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/学习/每月总结/" title="每月总结">每月总结<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活/" title="生活">生活<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/学习/读书笔记/" title="读书笔记">读书笔记<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活/阅读笔记/" title="阅读笔记">阅读笔记<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
 
 
   
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/面试/" title="面试">面试<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/文学/" title="文学">文学<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/vue/" title="vue">vue<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/资料收集/" title="资料收集">资料收集<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/react/" title="react">react<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/reat-native/" title="reat-native">reat-native<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/前端优化/" title="前端优化">前端优化<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM/" title="DOM">DOM<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/柯里化/" title="柯里化">柯里化<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/react-native/" title="react-native">react-native<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/栈队列/" title="栈队列">栈队列<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/angular/" title="angular">angular<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/AngularJS1/" title="AngularJS1">AngularJS1<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/H5/" title="H5">H5<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/GreenSock/" title="GreenSock">GreenSock<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/前端启航/" title="前端启航">前端启航<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
 
 
-
-
-
-
-
-<!-- LOCAL: You can save these files to your site and update links -->
-    
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
         
-        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
-        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
-    
-<!-- END LOCAL -->
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
 
-    
+  
 
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitmint({
-            id: window.location.pathname, 
-            owner: 'LRY1994',
-            repo: 'lry1994.github.io',
-            
-            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
-            oauth: {
-            
-            
-                client_secret: '8176d3f0da4eef250b0b04dbfc1b4eb4e121076e',
-            
-                client_id: 'a3d1ff57a8a937aba151'
-            }});
-        gitment.render('gitment-container');
-      }
 
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		
+		<a href="/about" target="_blank" title="Ruiyu Lin">Ruiyu Lin</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
       
-      renderGitment();
-      
-      </script>
-    
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
 
 
 
@@ -1051,26 +696,69 @@ gitment.render('gitmentContainer');
 
 
 
-  
 
 
 
 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
 
-  
 
-  
 
-  
+<!-- Analytics Begin -->
 
-  
-  
 
-  
 
-  
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 
-  
 
-</body>
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
 </html>

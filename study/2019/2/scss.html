@@ -1,0 +1,583 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-hk">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>scss笔记 | 圆玉的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Ruiyu Lin">
+    
+
+    
+    <meta name="description" content="嵌套CSS 规则1234border: 1px solid #ccc &amp;#123;  left: 0px;  right: 0px;  &amp;#125; css只有执行到@import时，浏览器才会去下载其他css文件，这导致页面加载起来特别慢。sass的@import规则在生成css文件时就把相关文件导入进来。这意味着所有相关的样式被归纳到了同一个css文件中，而无需发起额外的下载请求 sass局部">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scss笔记">
+<meta property="og:url" content="http://lry1994.github.io/study/2019/2/scss.html">
+<meta property="og:site_name" content="圆玉的博客">
+<meta property="og:description" content="嵌套CSS 规则1234border: 1px solid #ccc &amp;#123;  left: 0px;  right: 0px;  &amp;#125; css只有执行到@import时，浏览器才会去下载其他css文件，这导致页面加载起来特别慢。sass的@import规则在生成css文件时就把相关文件导入进来。这意味着所有相关的样式被归纳到了同一个css文件中，而无需发起额外的下载请求 sass局部">
+<meta property="og:locale" content="zh-hk">
+<meta property="og:updated_time" content="2019-02-28T03:15:35.184Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="scss笔记">
+<meta name="twitter:description" content="嵌套CSS 规则1234border: 1px solid #ccc &amp;#123;  left: 0px;  right: 0px;  &amp;#125; css只有执行到@import时，浏览器才会去下载其他css文件，这导致页面加载起来特别慢。sass的@import规则在生成css文件时就把相关文件导入进来。这意味着所有相关的样式被归纳到了同一个css文件中，而无需发起额外的下载请求 sass局部">
+
+    
+    <link rel="alternative" href="/atom.xml" title="圆玉的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="圆玉的博客" title="圆玉的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="圆玉的博客">圆玉的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:lry1994.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/study/2019/2/scss.html" title="scss笔记" itemprop="url">scss笔记</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
+		
+  <p class="article-time">
+    <time datetime="2019-02-27T16:00:00.000Z" itemprop="datePublished"> Published 2019-02-28</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#嵌套CSS-规则"><span class="toc-number">1.</span> <span class="toc-text">嵌套CSS 规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量默认值"><span class="toc-number">2.</span> <span class="toc-text">变量默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css-中导入scss"><span class="toc-number">3.</span> <span class="toc-text">css 中导入scss</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#与css-import区别"><span class="toc-number">4.</span> <span class="toc-text">与css @import区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#静默注释"><span class="toc-number">5.</span> <span class="toc-text">静默注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mixin"><span class="toc-number">6.</span> <span class="toc-text">mixin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择器继承-extend"><span class="toc-number">7.</span> <span class="toc-text">选择器继承 @extend</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文档"><span class="toc-number"></span> <span class="toc-text">文档</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#父选择器-amp"><span class="toc-number">1.</span> <span class="toc-text">父选择器 &amp;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注释"><span class="toc-number">2.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#global"><span class="toc-number">3.</span> <span class="toc-text">!global</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#颜色值运算"><span class="toc-number">4.</span> <span class="toc-text">颜色值运算</span></a></li></ol>
+		
+		</div>
+		
+		<h3 id="嵌套CSS-规则"><a href="#嵌套CSS-规则" class="headerlink" title="嵌套CSS 规则"></a>嵌套CSS 规则</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#ccc</span> &#123;</span><br><span class="line">  left: <span class="number">0px</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0px</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>css只有执行到@import时，浏览器才会去下载其他css文件，这导致页面加载起来特别慢。sass的@import规则在生成css文件时就把相关文件导入进来。这意味着所有相关的样式被归纳到了同一个css文件中，而无需发起额外的下载请求</p>
+<p>sass局部文件的文件名以下划线开头。这样，sass就不会在编译时单独编译这个文件输出css，而只把这个文件用作导入。</p>
+<h3 id="变量默认值"><a href="#变量默认值" class="headerlink" title="变量默认值"></a>变量默认值</h3><p><code>$fancybox-width: 400px !default;</code><br>在上例中，如果用户在导入你的sass局部文件之前声明了一个$fancybox-width变量，那么你的局部文件中对$fancybox-width赋值400px的操作就无效。</p>
+<h3 id="css-中导入scss"><a href="#css-中导入scss" class="headerlink" title="css 中导入scss"></a>css 中导入scss</h3><p>sass导入到一个CSS规则内，如下所示：<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.blue-theme</span> &#123;@<span class="keyword">import</span> <span class="string">"_blue-theme.scss"</span>&#125;</span><br><span class="line"></span><br><span class="line">//生成的结果跟你直接在.blue-theme选择器内写_blue-theme.scss文件的内容完全一样。</span><br><span class="line"></span><br><span class="line">.blue-theme &#123;</span><br><span class="line">  <span class="selector-tag">aside</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: blue;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="与css-import区别"><a href="#与css-import区别" class="headerlink" title="与css @import区别"></a>与css @import区别</h3><p>尽管通常在sass中使用@import时，sass会尝试找到对应的sass文件并导入进来，但在下列三种情况下会生成原生的CSS@import，尽管这会造成浏览器解析css时的额外下载：</p>
+<ol>
+<li>被导入文件的名字以.css结尾；</li>
+<li>被导入文件的名字是一个URL地址（比如<a href="http://www.sass.hk/css/css.css），由此可用谷歌字体API提供的相应服务；" target="_blank" rel="noopener">http://www.sass.hk/css/css.css），由此可用谷歌字体API提供的相应服务；</a></li>
+<li>被导入文件的名字是CSS的url()值。</li>
+</ol>
+<h3 id="静默注释"><a href="#静默注释" class="headerlink" title="静默注释"></a>静默注释</h3><p>在原生的css中，注释对于其他人是直接可见的,scss中<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#333</span>; <span class="comment">// 这种注释内容不会出现在生成的css文件中</span></span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>; <span class="comment">/* 这种注释内容会出现在生成的css文件中 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="mixin"><a href="#mixin" class="headerlink" title="mixin"></a>mixin</h3><p>判断一组属性是否应该组合成一个混合器，一条经验法则就是你能否为这个混合器想出一个好的名字。如果你能找到一个很好的短名字来描述这些属性修饰的样式，比如rounded-cornersfancy-font或者no-bullets，那么往往能够构造一个合适的混合器。如果你找不到，这时候构造一个混合器可能并不合适。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">mixin</span> link-colors(<span class="variable">$normal</span>, <span class="variable">$hover</span>, <span class="variable">$visited</span>) &#123;</span><br><span class="line">  <span class="attribute">color</span>: <span class="variable">$normal</span>;</span><br><span class="line">  &amp;:hover &#123; <span class="attribute">color</span>: <span class="variable">$hover</span>; &#125;</span><br><span class="line">  &amp;:visited &#123; <span class="attribute">color</span>: <span class="variable">$visited</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line">  @<span class="keyword">include</span> link-colors(blue, red, green);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line">    @<span class="keyword">include</span> link-colors(</span><br><span class="line">      <span class="variable">$normal</span>: blue,</span><br><span class="line">      <span class="variable">$visited</span>: green,</span><br><span class="line">      <span class="variable">$hover</span>: red</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>设置默认值<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">mixin</span> set-position(<span class="variable">$position</span>: relative, <span class="variable">$left</span>: -1, <span class="variable">$right</span>: -1, <span class="variable">$top</span>: -1, <span class="variable">$bottom</span>: -1 )&#123;</span><br><span class="line">	<span class="attribute">position</span>: <span class="variable">$position</span>;</span><br><span class="line">	@<span class="keyword">if</span> <span class="variable">$left</span> != -1 &#123; <span class="attribute">left</span>: <span class="variable">$left</span>; &#125;</span><br><span class="line">	@<span class="keyword">if</span> <span class="variable">$right</span> != -1 &#123; <span class="attribute">right</span>: <span class="variable">$right</span>; &#125;</span><br><span class="line">	@<span class="keyword">if</span> <span class="variable">$top</span> != -1 &#123; <span class="attribute">top</span>: <span class="variable">$top</span>; &#125;</span><br><span class="line">	@<span class="keyword">if</span> <span class="variable">$bottom</span> != -1 &#123; <span class="attribute">bottom</span>: <span class="variable">$bottom</span>; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">include</span> set-position(<span class="variable">$position</span>: absolute, <span class="variable">$top</span>: 50%);</span><br></pre></td></tr></table></figure></p>
+<h3 id="选择器继承-extend"><a href="#选择器继承-extend" class="headerlink" title="选择器继承 @extend"></a>选择器继承 @extend</h3><p>.seriousError不仅会继承.error自身的所有样式，任何跟.error有关的组合选择器样式也会被.seriousError以组合选择器的形式继承，如下代码:<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过选择器继承继承样式</span></span><br><span class="line"><span class="selector-class">.seriousError</span> &#123;</span><br><span class="line">  @<span class="keyword">extend</span> .error;</span><br><span class="line">  <span class="attribute">border-width</span>: <span class="number">3px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//.seriousError从.error继承样式</span></span><br><span class="line"><span class="selector-class">.error</span> <span class="selector-tag">a</span>&#123;  <span class="comment">//应用到.seriousError a</span></span><br><span class="line">  <span class="attribute">color</span>: red;</span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="number">100</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h1</span><span class="selector-class">.error</span> &#123; <span class="comment">//应用到hl.seriousError</span></span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1.2rem</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>继承一个html元素的样式,你对html元素添加的所有样式都会被继承。</p>
+<p>不要在css规则中使用后代选择器（比如.foo .bar）去继承css规则。如果你这么做，同时被继承的css规则有通过后代选择器修饰的样式，生成css中的选择器的数量很快就会失控</p>
+<h1 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h1><h3 id="父选择器-amp"><a href="#父选择器-amp" class="headerlink" title="父选择器 &amp;"></a>父选择器 &amp;</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#main</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: black;</span><br><span class="line">  &amp;-sidebar &#123; <span class="attribute">border</span>: <span class="number">1px</span> solid; &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译为</span></span><br><span class="line"></span><br><span class="line"><span class="selector-id">#main</span> &#123; <span class="attribute">color</span>: black; &#125;</span><br><span class="line"><span class="selector-id">#main-sidebar</span> &#123;<span class="attribute">border</span>: <span class="number">1px</span> solid; &#125;</span><br></pre></td></tr></table></figure>
+<p>当父选择器含有不合适的后缀时，Sass 将会报错。</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>将 ! 作为多行注释的第一个字符表示在压缩输出模式下保留这条注释并输出到 CSS 文件中，通常用于添加版权信息。<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$version</span>: <span class="string">"1.2.3"</span>;</span><br><span class="line"><span class="comment">/* This CSS is generated by My Snazzy Framework version #&#123;$version&#125;. */</span></span><br><span class="line"><span class="comment">//编译为</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* This CSS is generated by My Snazzy Framework version 1.2.3. */</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="global"><a href="#global" class="headerlink" title="!global"></a>!global</h3><p>将局部变量转换为全局变量可以添加 !global 声明：<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#main</span> &#123;</span><br><span class="line">  <span class="variable">$width</span>: <span class="number">5em</span> !global;</span><br><span class="line">  <span class="attribute">width</span>: <span class="variable">$width</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="颜色值运算"><a href="#颜色值运算" class="headerlink" title="颜色值运算"></a>颜色值运算</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$translucent-red</span>: rgba(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.5</span>);</span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: opacify(<span class="variable">$translucent-red</span>, <span class="number">0.3</span>);</span><br><span class="line">  <span class="attribute">background-color</span>: transparentize(<span class="variable">$translucent-red</span>, <span class="number">0.25</span>);</span><br><span class="line">&#125;</span><br><span class="line">编译为</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: rgba(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.8</span>);</span><br><span class="line">  <span class="attribute">background-color</span>: rgba(<span class="number">255</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.25</span>); &#125;</span><br></pre></td></tr></table></figure>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/学习/">学习</a>►<a class="article-category-link" href="/categories/学习/专题笔记/">专题笔记</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://lry1994.github.io/study/2019/2/scss.html" data-title="scss笔记 | 圆玉的博客" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/study/2019/IE-hack.html" title="IE hack">
+  <strong>上一篇：</strong><br/>
+  <span>
+  IE hack</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/study/2019/2/2.html"  title="2019.2-3总结">
+ <strong>下一篇：</strong><br/> 
+ <span>2019.2-3总结
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#嵌套CSS-规则"><span class="toc-number">1.</span> <span class="toc-text">嵌套CSS 规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量默认值"><span class="toc-number">2.</span> <span class="toc-text">变量默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#css-中导入scss"><span class="toc-number">3.</span> <span class="toc-text">css 中导入scss</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#与css-import区别"><span class="toc-number">4.</span> <span class="toc-text">与css @import区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#静默注释"><span class="toc-number">5.</span> <span class="toc-text">静默注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mixin"><span class="toc-number">6.</span> <span class="toc-text">mixin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择器继承-extend"><span class="toc-number">7.</span> <span class="toc-text">选择器继承 @extend</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文档"><span class="toc-number"></span> <span class="toc-text">文档</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#父选择器-amp"><span class="toc-number">1.</span> <span class="toc-text">父选择器 &amp;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注释"><span class="toc-number">2.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#global"><span class="toc-number">3.</span> <span class="toc-text">!global</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#颜色值运算"><span class="toc-number">4.</span> <span class="toc-text">颜色值运算</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/学习/专题笔记/" title="专题笔记">专题笔记<sup>23</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/学习/" title="学习">学习<sup>41</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/学习/每月总结/" title="每月总结">每月总结<sup>10</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活/" title="生活">生活<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/学习/读书笔记/" title="读书笔记">读书笔记<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活/阅读笔记/" title="阅读笔记">阅读笔记<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/面试/" title="面试">面试<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/文学/" title="文学">文学<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/vue/" title="vue">vue<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/资料收集/" title="资料收集">资料收集<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/react/" title="react">react<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/reat-native/" title="reat-native">reat-native<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/设计模式/" title="设计模式">设计模式<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/前端优化/" title="前端优化">前端优化<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DOM/" title="DOM">DOM<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/柯里化/" title="柯里化">柯里化<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/react-native/" title="react-native">react-native<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/栈队列/" title="栈队列">栈队列<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/angular/" title="angular">angular<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/AngularJS1/" title="AngularJS1">AngularJS1<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/H5/" title="H5">H5<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/GreenSock/" title="GreenSock">GreenSock<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/前端启航/" title="前端启航">前端启航<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		
+		<a href="/about" target="_blank" title="Ruiyu Lin">Ruiyu Lin</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

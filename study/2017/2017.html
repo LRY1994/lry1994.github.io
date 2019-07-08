@@ -4,25 +4,25 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>2017-12总结 | 圆玉的博客</title>
+    <title>2017遇到的问题 | 圆玉的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Ruiyu Lin">
     
 
     
-    <meta name="description" content="昨晚在公司的OA系统提交账务报销的时候，发现保存老是保存不了，看了控制台，console出现了错误，OA是以前的老系统，用原生的js写的。具   体原因是 document.getElementById(xx)取不到值。（我的OA只能用IE打开==）   然后去检查元素看了一下，发现并没有id==xx的元素，都是写成name=xx,当时我理所应当地以为是OA有bug,手动在name=xx的后面加">
+    <meta name="description" content="document.getElementById(elementName) 昨晚在公司的OA系统提交账务报销的时候，发现保存老是保存不了，看了控制台，console出现了错误，OA是以前的老系统，用原生的js写的。具体原因是 document.getElementById(xx)取不到值。（我的OA只能用IE打开==） 然后去检查元素看了一下，发现并没有id==xx的元素，都是写成name=xx,当">
 <meta name="keywords" content="日常记录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2017-12总结">
-<meta property="og:url" content="http://lry1994.github.io/study/2017/12/suibi.html">
+<meta property="og:title" content="2017遇到的问题">
+<meta property="og:url" content="http://lry1994.github.io/study/2017/2017.html">
 <meta property="og:site_name" content="圆玉的博客">
-<meta property="og:description" content="昨晚在公司的OA系统提交账务报销的时候，发现保存老是保存不了，看了控制台，console出现了错误，OA是以前的老系统，用原生的js写的。具   体原因是 document.getElementById(xx)取不到值。（我的OA只能用IE打开==）   然后去检查元素看了一下，发现并没有id==xx的元素，都是写成name=xx,当时我理所应当地以为是OA有bug,手动在name=xx的后面加">
+<meta property="og:description" content="document.getElementById(elementName) 昨晚在公司的OA系统提交账务报销的时候，发现保存老是保存不了，看了控制台，console出现了错误，OA是以前的老系统，用原生的js写的。具体原因是 document.getElementById(xx)取不到值。（我的OA只能用IE打开==） 然后去检查元素看了一下，发现并没有id==xx的元素，都是写成name=xx,当">
 <meta property="og:locale" content="zh-hk">
-<meta property="og:updated_time" content="2019-07-04T03:18:43.179Z">
+<meta property="og:updated_time" content="2019-07-08T08:31:15.961Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2017-12总结">
-<meta name="twitter:description" content="昨晚在公司的OA系统提交账务报销的时候，发现保存老是保存不了，看了控制台，console出现了错误，OA是以前的老系统，用原生的js写的。具   体原因是 document.getElementById(xx)取不到值。（我的OA只能用IE打开==）   然后去检查元素看了一下，发现并没有id==xx的元素，都是写成name=xx,当时我理所应当地以为是OA有bug,手动在name=xx的后面加">
+<meta name="twitter:title" content="2017遇到的问题">
+<meta name="twitter:description" content="document.getElementById(elementName) 昨晚在公司的OA系统提交账务报销的时候，发现保存老是保存不了，看了控制台，console出现了错误，OA是以前的老系统，用原生的js写的。具体原因是 document.getElementById(xx)取不到值。（我的OA只能用IE打开==） 然后去检查元素看了一下，发现并没有id==xx的元素，都是写成name=xx,当">
 
     
     <link rel="alternative" href="/atom.xml" title="圆玉的博客" type="application/atom+xml">
@@ -82,7 +82,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/study/2017/12/suibi.html" title="2017-12总结" itemprop="url">2017-12总结</a>
+      <a href="/study/2017/2017.html" title="2017遇到的问题" itemprop="url">2017遇到的问题</a>
   </h1>
   <p class="article-author">By
        
@@ -98,27 +98,24 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#document-getElementById-elementName"><span class="toc-number">1.</span> <span class="toc-text">document.getElementById(elementName)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Polyfill"><span class="toc-number">2.</span> <span class="toc-text">Polyfill</span></a></li></ol>
 		
 		</div>
 		
-		<ul>
-<li><p>昨晚在公司的OA系统提交账务报销的时候，发现保存老是保存不了，看了控制台，console出现了错误，OA是以前的老系统，用原生的js写的。具   体原因是 document.getElementById(xx)取不到值。（我的OA只能用IE打开==）</p>
-<p>  然后去检查元素看了一下，发现并没有id==xx的元素，都是写成name=xx,当时我理所应当地以为是OA有bug,手动在name=xx的后面加上id=xx,再点击保存就OK了。</p>
-<p>  今天查了一下，原来不是有bug。</p>
-<blockquote>
-<p>在 IE6 IE7 IE8(Q) 中，支持以 document.getElementById(elementName) 的方式获取 A APPLET BUTTON FORM IFRAME IMG INPUT MAP OBJECT EMBED SELECT TEXTAREA 元素，而其他浏览器的任何元素均不支持该方式。</p>
-</blockquote>
-</li>
-</ul>
-<pre><code>参考
+		<h3 id="document-getElementById-elementName"><a href="#document-getElementById-elementName" class="headerlink" title="document.getElementById(elementName)"></a>document.getElementById(elementName)</h3><p> 昨晚在公司的OA系统提交账务报销的时候，发现保存老是保存不了，看了控制台，console出现了错误，OA是以前的老系统，用原生的js写的。具体原因是 document.getElementById(xx)取不到值。（我的OA只能用IE打开==）</p>
+<pre><code>然后去检查元素看了一下，发现并没有id==xx的元素，都是写成name=xx,当时我理所应当地以为是OA有bug,手动在name=xx的后面加上id=xx,再点击保存就OK了。
+
+今天查了一下，原来不是有bug。
+
+&gt;在 IE6 IE7 IE8(Q) 中，支持以 document.getElementById(elementName) 的方式获取 A APPLET BUTTON FORM IFRAME IMG INPUT MAP OBJECT EMBED SELECT TEXTAREA 元素，而其他浏览器的任何元素均不支持该方式。
+
+
+参考
 
 [SD9001: IE6 IE7 IE8(Q) 中的 getElementById 方法能以 name 属性为参数获取某些元素](http://www.w3help.org/zh-cn/causes/SD9001)
 
 实验了一下，用IE8版本，成功了吼吼吼
-</code></pre><ul>
-<li><code>Polyfill</code>的准确意思为：用于实现浏览器并不支持的原生API的代码。<br>  例如，querySelectorAll是很多现代浏览器都支持的原生Web API，但是有些古老的浏览器并不支持，那么假设有人写了库，只要用了这个库， 你就可以在古老的浏览器里面使用<code>document.querySelectorAll</code>，使用方法跟现代浏览器原生API无异。那么这个库就可以称为<code>Polyfill</code>或者<code>Polyfiller</code>。<br>  好，那么问题就来了。jQuery是不是一个Polyfill?答案是No。因为它并不是实现一些标准的原生API，而是封装了自己API。一个Polyfill是抹平新老浏览器 标准原生API 之间的差距的一种封装，而不是实现自己的API。</li>
-</ul>
+</code></pre><h3 id="Polyfill"><a href="#Polyfill" class="headerlink" title="Polyfill"></a>Polyfill</h3><p> <code>Polyfill</code>的准确意思为：用于实现浏览器并不支持的原生API的代码。<br>    例如，querySelectorAll是很多现代浏览器都支持的原生Web API，但是有些古老的浏览器并不支持，那么假设有人写了库，只要用了这个库， 你就可以在古老的浏览器里面使用<code>document.querySelectorAll</code>，使用方法跟现代浏览器原生API无异。那么这个库就可以称为<code>Polyfill</code>或者<code>Polyfiller</code>。<br>    好，那么问题就来了。jQuery是不是一个Polyfill?答案是No。因为它并不是实现一些标准的原生API，而是封装了自己API。一个Polyfill是抹平新老浏览器 标准原生API 之间的差距的一种封装，而不是实现自己的API。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -141,7 +138,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://lry1994.github.io/study/2017/12/suibi.html" data-title="2017-12总结 | 圆玉的博客" data-tsina="2140938987" class="share clearfix">
+	  <div data-url="http://lry1994.github.io/study/2017/2017.html" data-title="2017遇到的问题 | 圆玉的博客" data-tsina="2140938987" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -183,7 +180,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#document-getElementById-elementName"><span class="toc-number">1.</span> <span class="toc-text">document.getElementById(elementName)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Polyfill"><span class="toc-number">2.</span> <span class="toc-text">Polyfill</span></a></li></ol>
  
   </div>
 
@@ -197,7 +194,7 @@
 		<ul>
 		
 		  
-			<li><a href="/categories/学习/" title="学习">学习<sup>43</sup></a></li>
+			<li><a href="/categories/学习/" title="学习">学习<sup>37</sup></a></li>
 		  
 		
 		  
@@ -214,15 +211,15 @@
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/日常记录/" title="日常记录">日常记录<sup>16</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/专题探究/" title="专题探究">专题探究<sup>14</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/读书笔记/" title="读书笔记">读书笔记<sup>10</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/日常记录/" title="日常记录">日常记录<sup>10</sup></a></li>
 			
 		
 			

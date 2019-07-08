@@ -79,16 +79,21 @@
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/study/2019/6.html" title="每月总结" itemprop="url">
+    <a href="/study/2019/preload.html" title="图片预加载探究" itemprop="url">
   
-    <h1 itemprop="name">每月总结</h1>
+    <h1 itemprop="name">图片预加载探究</h1>
     
      
-           <p itemprop="description" >overflow-y: visible不起作用在container上添加以下样式
-padding-top: 20px;margin-top: -20px;</p>
+           <p itemprop="description" >/**
+ * 预加载
+ * @param {Array} dataList  预加载数据
+ * @param {Array} attrArray 预加载属性，可选
+ */
+export function  preLoad(dataList,attrList){
+  //若有指定对</p>
         
     
-    <time datetime="2019-05-31T16:00:00.000Z" itemprop="datePublished">2019-06-01</time>
+    <time datetime="2019-04-15T16:00:00.000Z" itemprop="datePublished">2019-04-16</time>
   </a>
 </section>
 
@@ -120,33 +125,7 @@ padding-top: 20px;margin-top: -20px;</p>
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/study/2019/preload.html" title="图片预加载探究" itemprop="url">
-  
-    <h1 itemprop="name">图片预加载探究</h1>
-    
-     
-           <p itemprop="description" >/**
- * 预加载
- * @param {Array} dataList  预加载数据
- * @param {Array} attrArray 预加载属性，可选
- */
-export function  preLoad(dataList,attrList){
-  //若有指定对</p>
-        
-    
-    <time datetime="2019-04-15T16:00:00.000Z" itemprop="datePublished">2019-04-16</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/study/2019/2/scss.html" title="scss笔记" itemprop="url">
+    <a href="/study/2019/scss.html" title="scss笔记" itemprop="url">
   
     <h1 itemprop="name">scss笔记</h1>
     
@@ -167,16 +146,15 @@ css只有执行到@import时，浏览器才会去下载其他css文件，这导�
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/study/2019/2/2.html" title="2019.2-3总结" itemprop="url">
+    <a href="/study/2019/2019.html" title="2019遇到的问题" itemprop="url">
   
-    <h1 itemprop="name">2019.2-3总结</h1>
+    <h1 itemprop="name">2019遇到的问题</h1>
     
      
-           <p itemprop="description" >IE浏览器url中文乱码IE浏览器直接拼接url,中文会乱码，需要像下面这样进行转码 1&amp;lt;a :href=&amp;quot;`/ctyun/clientcase?tag=$&amp;#123;encodeURI(data[current].tag)&amp;#125;`&amp;quot; &amp;gt;
- </p>
+           <p itemprop="description" >2019/2IE浏览器url中文乱码IE浏览器直接拼接url,中文会乱码，需要像下面这样进行转码 1&amp;lt;a :href=&amp;quot;`/ctyun/clientcase?tag=$&amp;#123;encodeURI(data[current].tag)&amp;#125;`&amp;quot; </p>
         
     
-    <time datetime="2019-02-11T16:00:00.000Z" itemprop="datePublished">2019-02-12</time>
+    <time datetime="2019-01-31T16:00:00.000Z" itemprop="datePublished">2019-02-01</time>
   </a>
 </section>
 
@@ -188,7 +166,7 @@ css只有执行到@import时，浏览器才会去下载其他css文件，这导�
   
 <section class="post" itemscope itemprop="blogitem">
   
-    <a href="/study/2019/1/css-improve.html" title="关于css打包后过大的问题" itemprop="url">
+    <a href="/study/2019/css-improve.html" title="关于css打包后过大的问题" itemprop="url">
   
     <h1 itemprop="name">关于css打包后过大的问题</h1>
     
@@ -221,26 +199,6 @@ css只有执行到@import时，浏览器才会去下载其他css文件，这导�
         
     
     <time datetime="2018-12-31T16:00:00.000Z" itemprop="datePublished">2019-01-01</time>
-  </a>
-</section>
-
-
-
-
-
-
-  
-<section class="post" itemscope itemprop="blogitem">
-  
-    <a href="/study/2018/12/zongjie.html" title="2018.12-2019.1总结" itemprop="url">
-  
-    <h1 itemprop="name">2018.12-2019.1总结</h1>
-    
-     
-           <p itemprop="description" >for\for-in\for-each\for-offor-in不仅可以遍历数组还可以遍历对象for-in 遍历属性的顺序并不确定，即输出的结果顺序与属性在对象中的顺序无关，也与属性的字母顺序无关，与其他任何顺序也无关。使用for-in在遍历的时候，它不仅遍历了对象上的属性，而且</p>
-        
-    
-    <time datetime="2018-12-16T16:00:00.000Z" itemprop="datePublished">2018-12-17</time>
   </a>
 </section>
 
@@ -291,9 +249,51 @@ Co</p>
 
 
 
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/study/2018/9/network.html" title="面经收集--网络/浏览器/模块化/diff原理" itemprop="url">
+  
+    <h1 itemprop="name">面经收集--网络/浏览器/模块化/diff原理</h1>
+    
+     
+           <p itemprop="description" >https://segmentfault.com/a/1190000011635556?utm_source=tag-newest
+https（对是https）有1次握手可以把https拆成tcp/tls/http这三层来看，tcp handshake &amp;gt;&amp;gt; TLS(</p>
+        
+    
+    <time datetime="2018-09-09T16:00:00.000Z" itemprop="datePublished">2018-09-10</time>
+  </a>
+</section>
+
+
+
+
+
+
+  
+<section class="post" itemscope itemprop="blogitem">
+  
+    <a href="/study/2018/9/mianjing.html" title="面经收集--HTML+CSS+JS" itemprop="url">
+  
+    <h1 itemprop="name">面经收集--HTML+CSS+JS</h1>
+    
+     
+           <p itemprop="description" >https://segmentfault.com/a/1190000011635556?utm_source=tag-newest
+本质上说，XHTML是一个过渡技术，结合了XML(有几分)的强大功能及HTML(大多数)的简单特性。以下是 XHTML 相对 HTML 的几大区别：</p>
+        
+    
+    <time datetime="2018-09-07T16:00:00.000Z" itemprop="datePublished">2018-09-08</time>
+  </a>
+</section>
+
+
+
+
+
+
 
   <nav id="page-nav" class="clearfix unexpand">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
   </nav>
 
 </div>
@@ -309,7 +309,7 @@ Co</p>
 		<ul>
 		
 		  
-			<li><a href="/categories/学习/" title="学习">学习<sup>43</sup></a></li>
+			<li><a href="/categories/学习/" title="学习">学习<sup>37</sup></a></li>
 		  
 		
 		  
@@ -326,15 +326,15 @@ Co</p>
 		<ul class="clearfix">
 		
 			
-				<li><a href="/tags/日常记录/" title="日常记录">日常记录<sup>16</sup></a></li>
-			
-		
-			
 				<li><a href="/tags/专题探究/" title="专题探究">专题探究<sup>14</sup></a></li>
 			
 		
 			
 				<li><a href="/tags/读书笔记/" title="读书笔记">读书笔记<sup>10</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/日常记录/" title="日常记录">日常记录<sup>10</sup></a></li>
 			
 		
 			

@@ -1,0 +1,633 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-hk">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>2018遇到的问题 | 圆玉的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Ruiyu Lin">
+    
+
+    
+    <meta name="description" content="2018/2火狐和IE下href=”javascript:void(0) 会弹出空白页本来javascript:void(0);的用处是不用整体刷新网页且返回一个空值，但这儿由于DOM本身的冒泡事件所以会最后执行HREF属性内的javascript:void(0);导致执行函数返回了一个空值，所以覆盖掉了前面正常执行函数所返回的值引起的错误。  一般情况下，IE会先运行DOM本身绑定的事件，如ON">
+<meta name="keywords" content="日常记录">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018遇到的问题">
+<meta property="og:url" content="http://lry1994.github.io/study/2018/2018.html">
+<meta property="og:site_name" content="圆玉的博客">
+<meta property="og:description" content="2018/2火狐和IE下href=”javascript:void(0) 会弹出空白页本来javascript:void(0);的用处是不用整体刷新网页且返回一个空值，但这儿由于DOM本身的冒泡事件所以会最后执行HREF属性内的javascript:void(0);导致执行函数返回了一个空值，所以覆盖掉了前面正常执行函数所返回的值引起的错误。  一般情况下，IE会先运行DOM本身绑定的事件，如ON">
+<meta property="og:locale" content="zh-hk">
+<meta property="og:updated_time" content="2019-07-08T08:31:25.496Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018遇到的问题">
+<meta name="twitter:description" content="2018/2火狐和IE下href=”javascript:void(0) 会弹出空白页本来javascript:void(0);的用处是不用整体刷新网页且返回一个空值，但这儿由于DOM本身的冒泡事件所以会最后执行HREF属性内的javascript:void(0);导致执行函数返回了一个空值，所以覆盖掉了前面正常执行函数所返回的值引起的错误。  一般情况下，IE会先运行DOM本身绑定的事件，如ON">
+
+    
+    <link rel="alternative" href="/atom.xml" title="圆玉的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="圆玉的博客" title="圆玉的博客"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="圆玉的博客">圆玉的博客</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:lry1994.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/study/2018/2018.html" title="2018遇到的问题" itemprop="url">2018遇到的问题</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Ruiyu Lin" target="_blank" itemprop="author">Ruiyu Lin</a>
+		
+  <p class="article-time">
+    <time datetime="2018-01-31T16:00:00.000Z" itemprop="datePublished"> Published 2018-02-01</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2018-2"><span class="toc-number">1.</span> <span class="toc-text">2018/2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#火狐和IE下href-”javascript-void-0-会弹出空白页"><span class="toc-number">1.1.</span> <span class="toc-text">火狐和IE下href=”javascript:void(0) 会弹出空白页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue2父组件传递props异步数据到子组件，获取到的是undefined"><span class="toc-number">1.2.</span> <span class="toc-text">vue2父组件传递props异步数据到子组件，获取到的是undefined.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的属性名称可以是变量吗？"><span class="toc-number">1.3.</span> <span class="toc-text">对象的属性名称可以是变量吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后台给的服务链接直接插入html中img的src里"><span class="toc-number">1.4.</span> <span class="toc-text">后台给的服务链接直接插入html中img的src里</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扩展运算符可以用于数组深拷贝"><span class="toc-number">1.5.</span> <span class="toc-text">扩展运算符可以用于数组深拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#number-的修饰符"><span class="toc-number">1.6.</span> <span class="toc-text">.number 的修饰符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2018-3"><span class="toc-number">2.</span> <span class="toc-text">2018/3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#给点击路由的时候加上监听事件"><span class="toc-number">2.1.</span> <span class="toc-text">给点击路由的时候加上监听事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#块内元素文字上下居中"><span class="toc-number">2.2.</span> <span class="toc-text">块内元素文字上下居中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用refs来组件通信"><span class="toc-number">2.3.</span> <span class="toc-text">用refs来组件通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于第4点，今天工作用了this-refs来传播事件，类似于-brocast-但是VUE2把-brocast废除了。"><span class="toc-number">2.4.</span> <span class="toc-text">关于第4点，今天工作用了this.$refs来传播事件，类似于$brocast,但是VUE2把$brocast废除了。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js的数组可以是这样的形式"><span class="toc-number">2.5.</span> <span class="toc-text">js的数组可以是这样的形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#把字符串转换成数字可以用数字运算符-但是-不行"><span class="toc-number">2.6.</span> <span class="toc-text">把字符串转换成数字可以用数字运算符,但是 + 不行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reduce函数好好用"><span class="toc-number">2.7.</span> <span class="toc-text">reduce函数好好用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue项目中全局引入scss文件的方法"><span class="toc-number">2.8.</span> <span class="toc-text">vue项目中全局引入scss文件的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elementUI的layout问题"><span class="toc-number">2.9.</span> <span class="toc-text">elementUI的layout问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue路由刷新问题，两个路由对应一个组件，如何能让路由重载"><span class="toc-number">2.10.</span> <span class="toc-text">vue路由刷新问题，两个路由对应一个组件，如何能让路由重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单行文本超出隐藏并显示省略号"><span class="toc-number">2.11.</span> <span class="toc-text">单行文本超出隐藏并显示省略号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多行文字隐藏加省略号"><span class="toc-number">2.12.</span> <span class="toc-text">多行文字隐藏加省略号</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2018-4"><span class="toc-number">3.</span> <span class="toc-text">2018/4</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现QQ弹窗-和QQ号为qqnum聊天"><span class="toc-number">3.1.</span> <span class="toc-text">实现QQ弹窗 和QQ号为qqnum聊天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue全局过滤器也可以当函数使用"><span class="toc-number">3.2.</span> <span class="toc-text">Vue全局过滤器也可以当函数使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串转义问题"><span class="toc-number">3.3.</span> <span class="toc-text">字符串转义问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何解决vue父组件模板slot到孙子组件中去"><span class="toc-number">3.4.</span> <span class="toc-text">如何解决vue父组件模板slot到孙子组件中去</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#记录一下第一次使用async-await-解决了困扰我一早上的异步问题-赞！！！"><span class="toc-number">3.5.</span> <span class="toc-text">记录一下第一次使用async ,await ,解决了困扰我一早上的异步问题,赞！！！</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义指令—解决跟dom有关的问题"><span class="toc-number">3.6.</span> <span class="toc-text">自定义指令—解决跟dom有关的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#父组件给子组件传值，这个值还要从子组件传给它的子组件【inheritAttrs】和【attrs】"><span class="toc-number">3.7.</span> <span class="toc-text">父组件给子组件传值，这个值还要从子组件传给它的子组件【inheritAttrs】和【attrs】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#provide-inject-更适合用来做父组件给后代组件传值，"><span class="toc-number">3.8.</span> <span class="toc-text">provide / inject -更适合用来做父组件给后代组件传值，</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发现三个很厉害的库"><span class="toc-number">3.9.</span> <span class="toc-text">发现三个很厉害的库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue的router的push传递参数有没有不把参数展示在url中的传递方式？"><span class="toc-number">3.10.</span> <span class="toc-text">Vue的router的push传递参数有没有不把参数展示在url中的传递方式？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2018-6"><span class="toc-number">4.</span> <span class="toc-text">2018/6</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用keep-alive"><span class="toc-number">4.1.</span> <span class="toc-text">使用keep-alive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a标签里面不加download属性会下载下来一些莫名其妙的东西"><span class="toc-number">4.2.</span> <span class="toc-text">a标签里面不加download属性会下载下来一些莫名其妙的东西</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nextTick"><span class="toc-number">4.3.</span> <span class="toc-text">$nextTick</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#router-link存在的问题是，手动输入改变url，下面路由没监听到"><span class="toc-number">4.4.</span> <span class="toc-text">router-link存在的问题是，手动输入改变url，下面路由没监听到</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#height设为100-要求父容器高度确定，否则无效。"><span class="toc-number">4.5.</span> <span class="toc-text">height设为100%要求父容器高度确定，否则无效。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#el-scrollbar滚动到容器底部"><span class="toc-number">4.6.</span> <span class="toc-text">el-scrollbar滚动到容器底部</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#怎么应用vertical-align，才能生效？"><span class="toc-number">4.7.</span> <span class="toc-text">怎么应用vertical-align，才能生效？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-prototype-sort-兼容"><span class="toc-number">4.8.</span> <span class="toc-text">Array.prototype.sort 兼容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2018-7"><span class="toc-number">5.</span> <span class="toc-text">2018/7</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue强制更新"><span class="toc-number">5.1.</span> <span class="toc-text">vue强制更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在Vue中使用sass及sass图片路径问题"><span class="toc-number">5.2.</span> <span class="toc-text">在Vue中使用sass及sass图片路径问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CORS跨域请求会先发option请求，如果server返回access-control-allow-origin头为-或者和当前域名一致的话，才会进入第二段的真正请求。"><span class="toc-number">5.3.</span> <span class="toc-text">CORS跨域请求会先发option请求，如果server返回access-control-allow-origin头为*或者和当前域名一致的话，才会进入第二段的真正请求。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#禁止缓存数据deactivated"><span class="toc-number">5.4.</span> <span class="toc-text">禁止缓存数据deactivated</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#深拷贝"><span class="toc-number">5.5.</span> <span class="toc-text">深拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事件冒泡到父容器或某个祖先容器停止"><span class="toc-number">5.6.</span> <span class="toc-text">事件冒泡到父容器或某个祖先容器停止</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2018-10"><span class="toc-number">6.</span> <span class="toc-text">2018/10</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack-dev-server启动"><span class="toc-number">6.1.</span> <span class="toc-text">webpack-dev-server启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scss-export"><span class="toc-number">6.2.</span> <span class="toc-text">scss export</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ie-margin-top负值无效"><span class="toc-number">6.3.</span> <span class="toc-text">ie margin-top负值无效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inline-block的元素设置over-flow-hidden会意外地增加元素总体高度，"><span class="toc-number">6.4.</span> <span class="toc-text">inline-block的元素设置over-flow:hidden会意外地增加元素总体高度，</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ie中img被拉伸"><span class="toc-number">6.5.</span> <span class="toc-text">ie中img被拉伸</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-路由query变化监测不到meta的"><span class="toc-number">6.6.</span> <span class="toc-text">vue 路由query变化监测不到meta的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-指令使用模板，不再用template了，用el"><span class="toc-number">6.7.</span> <span class="toc-text">vue 指令使用模板，不再用template了，用el</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2018-12"><span class="toc-number">7.</span> <span class="toc-text">2018/12</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#完美解决本地和服务器上资源url解析的问题"><span class="toc-number">7.1.</span> <span class="toc-text">完美解决本地和服务器上资源url解析的问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识记录"><span class="toc-number">8.</span> <span class="toc-text">知识记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#for-for-in-for-each-for-of"><span class="toc-number">8.1.</span> <span class="toc-text">for\for-in\for-each\for-of</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串-拼接性能"><span class="toc-number">8.2.</span> <span class="toc-text">字符串 拼接性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结一些常用的"><span class="toc-number">8.3.</span> <span class="toc-text">总结一些常用的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue源码研读"><span class="toc-number">8.4.</span> <span class="toc-text">vue源码研读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cache-Control"><span class="toc-number">8.5.</span> <span class="toc-text">Cache-Control</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS像素"><span class="toc-number">8.6.</span> <span class="toc-text">CSS像素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Flexible实现手淘H5页面的终端适配"><span class="toc-number">8.7.</span> <span class="toc-text">使用Flexible实现手淘H5页面的终端适配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#禁止使用document-write"><span class="toc-number">8.8.</span> <span class="toc-text">禁止使用document.write()</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="2018-2"><a href="#2018-2" class="headerlink" title="2018/2"></a>2018/2</h2><h3 id="火狐和IE下href-”javascript-void-0-会弹出空白页"><a href="#火狐和IE下href-”javascript-void-0-会弹出空白页" class="headerlink" title="火狐和IE下href=”javascript:void(0) 会弹出空白页"></a>火狐和IE下href=”javascript:void(0) 会弹出空白页</h3><pre><code>本来javascript:void(0);的用处是不用整体刷新网页且返回一个空值，但这儿由于DOM本身的冒泡事件所以会最后执行HREF属性内的javascript:void(0);导致执行函数返回了一个空值，所以覆盖掉了前面正常执行函数所返回的值引起的错误。
+
+一般情况下，IE会先运行DOM本身绑定的事件，如ONCLICK;如果没有阻止冒泡，则会顺序执行HREF属性。如果想正确运行，可以在前面用RETURN FALSE终止冒泡，例如：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a target=&quot;_blank&quot; class=&quot;prev&quot; onclick=&quot;return false;&quot;   href=&quot;javascript:void(0);&quot;&gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+或者直接删去也行，如：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a target=&quot;_blank&quot;  class=&quot;prev&quot; &gt;&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+但是后者hover的时候没有手势的pointer
+</code></pre><h3 id="vue2父组件传递props异步数据到子组件，获取到的是undefined"><a href="#vue2父组件传递props异步数据到子组件，获取到的是undefined" class="headerlink" title="vue2父组件传递props异步数据到子组件，获取到的是undefined."></a>vue2父组件传递props异步数据到子组件，获取到的是undefined.</h3><pre><code>解决方法[参考链接](http://www.jb51.net/article/117447.htm)
+
+1. 最简单的解决方法：使用v-if
+2. 子组件使用watch来监听父组件改变的prop，使用methods来代替created
+3. 子组件watch computed data 相结合，有点麻烦
+4. 使用emit，on，bus相结合（使用了bus库）
+5. vuex结合computed、mapState或者合computed、mapGetters
+</code></pre><h3 id="对象的属性名称可以是变量吗？"><a href="#对象的属性名称可以是变量吗？" class="headerlink" title="对象的属性名称可以是变量吗？"></a>对象的属性名称可以是变量吗？</h3><pre><code>可以，运用方括号法设置就是。如
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a = &quot;name&quot;;</span><br><span class="line">var b = 10;</span><br><span class="line">var obj = &#123;&#125;;</span><br><span class="line">obj[a] = b;</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="后台给的服务链接直接插入html中img的src里"><a href="#后台给的服务链接直接插入html中img的src里" class="headerlink" title="后台给的服务链接直接插入html中img的src里"></a>后台给的服务链接直接插入html中img的src里</h3><p>修改图片之后，因为src的内容一直都是后台服务链接，是个不变的值，所以不会重新去请求，图    片会一直不变。如果刷新页面这个链接返回的图片会改变，为了做到点击图片只重载这个src而整个页面不刷新，采用的方法是在后面加上          Math.random()，例如<br>    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`http:$&#123;this.baseURL&#125;gw/app.get.logo?tenantId=$&#123;this.tenantId&#125;&amp;appId=$&#123;this.appId&#125;?`+Math.random();</span><br></pre></td></tr></table></figure></p>
+<h3 id="扩展运算符可以用于数组深拷贝"><a href="#扩展运算符可以用于数组深拷贝" class="headerlink" title="扩展运算符可以用于数组深拷贝"></a>扩展运算符可以用于数组深拷贝</h3><pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr2 = arr;</span><br><span class="line">var arr3 = [...arr];</span><br><span class="line">console.log(arr===arr2); //true, 说明arr和arr2指向同一个数组</span><br><span class="line">console.log(arr===arr3); //false, 说明arr3和arr指向不同数组</span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="number-的修饰符"><a href="#number-的修饰符" class="headerlink" title=".number 的修饰符"></a>.number 的修饰符</h3><p> 数字类型的验证需要在 v-model 处加上 .number 的修饰符，这是 Vue 自身提供的用于将绑定值转化为 number 类型的修饰符。              v-model.number只会截取数字部分，比如100ttt只会取前面的100。做修改操作的时候这种情况用自定义validator解决</p>
+<h2 id="2018-3"><a href="#2018-3" class="headerlink" title="2018/3"></a>2018/3</h2><h3 id="给点击路由的时候加上监听事件"><a href="#给点击路由的时候加上监听事件" class="headerlink" title="给点击路由的时候加上监听事件"></a>给点击路由的时候加上监听事件</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">router-link</span> <span class="attr">class</span>=<span class="string">"my-link"</span> <span class="attr">:to</span>=<span class="string">"&#123;name: 'main.provider.index', params: &#123;providerId: scope.row.providerId&#125;&#125;"</span>&gt;</span>提供者主页<span class="tag">&lt;/<span class="name">router-link</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>解决方法：</p>
+<blockquote>
+<p>给组件绑定原生事件<br>    有时候，你可能想在某个组件的根元素上监听一个原生事件。可以使用 v-on 的修饰符 .native。例如：</p>
+</blockquote>
+<pre><code>&lt;my-component v-on:click.native=&quot;doTheThing&quot;&gt;&lt;/my-component&gt;
+</code></pre><p>参考连接<br><a href="https://segmentfault.com/q/1010000007896386" target="_blank" rel="noopener">给组件绑定原生事件</a></p>
+<h3 id="块内元素文字上下居中"><a href="#块内元素文字上下居中" class="headerlink" title="块内元素文字上下居中"></a>块内元素文字上下居中</h3><p>line-height设置为height的值</p>
+<h3 id="用refs来组件通信"><a href="#用refs来组件通信" class="headerlink" title="用refs来组件通信"></a>用refs来组件通信</h3><p>在讨论非父子通信的时候，并在没有用Vuex的情况下，我是用官网那种创建Vue实例的方法，但是同事提到了另一种方法<br>用refs来引用，不禁一想这好像也是一种解决方案，就是觉得怪怪的。在这里记录一下</p>
+<h3 id="关于第4点，今天工作用了this-refs来传播事件，类似于-brocast-但是VUE2把-brocast废除了。"><a href="#关于第4点，今天工作用了this-refs来传播事件，类似于-brocast-但是VUE2把-brocast废除了。" class="headerlink" title="关于第4点，今天工作用了this.$refs来传播事件，类似于$brocast,但是VUE2把$brocast废除了。"></a>关于第4点，今天工作用了this.$refs来传播事件，类似于$brocast,但是VUE2把$brocast废除了。</h3><p>总结一下vue传播事件</p>
+<p>(1) 子组件传播事件给父组件，用<code>$on,$emit</code>.</p>
+<p>虽然说是这样说，但是不是直接在父组件里面写$on的,应该是这样</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">child</span> @<span class="attr">eventname</span>=<span class="string">"event"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后在parent组件里面写 event函数.event(){}</p>
+<p>子组件调用的时候用<code>this.$emit(&#39;eventname&#39;,payload)</code></p>
+<p>(2)父组件传播事件给子组件，用 <code>$refs</code></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">child</span> <span class="attr">ref</span>=<span class="string">"refname"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parant</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>调用的时候用<code>this.$ref[&#39;refname&#39;].eventname()</code></p>
+<p>(3)上面有种都麻烦的话，创建实例bus</p>
+<h3 id="js的数组可以是这样的形式"><a href="#js的数组可以是这样的形式" class="headerlink" title="js的数组可以是这样的形式"></a>js的数组可以是这样的形式</h3><p><code>(4) [{…}, {…}, {…}, {…}, total: 4, code: &quot;core.ok&quot;]</code></p>
+<p>他的length是4</p>
+<h3 id="把字符串转换成数字可以用数字运算符-但是-不行"><a href="#把字符串转换成数字可以用数字运算符-但是-不行" class="headerlink" title="把字符串转换成数字可以用数字运算符,但是 + 不行"></a>把字符串转换成数字可以用数字运算符,但是 + 不行</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"2"</span>&gt;&gt;&gt;<span class="number">0</span>)  <span class="comment">//2 number </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"2"</span>&gt;&gt;<span class="number">0</span>)  <span class="comment">//2 number </span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"2"</span>&lt;&lt;<span class="number">0</span>)  <span class="comment">//2 number  没有（&lt;&lt;&lt;）</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"2"</span>- <span class="number">0</span>)    <span class="comment">//2 number</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"2"</span>+<span class="number">0</span>)    <span class="comment">//20 string</span></span><br></pre></td></tr></table></figure>
+<h3 id="reduce函数好好用"><a href="#reduce函数好好用" class="headerlink" title="reduce函数好好用"></a>reduce函数好好用</h3><p>今天写了一个有重大作用的reduce函数，好开心。在此纪念一下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//str &#123;String&#125;, "app.get.logo.list"</span></span><br><span class="line"><span class="comment">//ctx &#123;Object&#125;,  this._$http</span></span><br><span class="line"><span class="comment">//return &#123;Object&#125;, this._$http.app.get.logo.list</span></span><br><span class="line"> getBackend(str)&#123;</span><br><span class="line">        <span class="keyword">const</span> arr = <span class="keyword">this</span>.loadBackend.split(<span class="string">'.'</span>);</span><br><span class="line">        <span class="keyword">let</span> ctx= <span class="keyword">this</span>._$http;</span><br><span class="line">        <span class="keyword">let</span> a;</span><br><span class="line">        <span class="keyword">let</span> b=arr.reduce(<span class="function">(<span class="params">prev, cur, idx</span>) =&gt;</span> &#123;		        </span><br><span class="line">              a = prev[cur] ;         </span><br><span class="line">            <span class="keyword">return</span> a;</span><br><span class="line">        &#125;,ctx);              </span><br><span class="line">          <span class="keyword">return</span> b;      </span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="vue项目中全局引入scss文件的方法"><a href="#vue项目中全局引入scss文件的方法" class="headerlink" title="vue项目中全局引入scss文件的方法"></a>vue项目中全局引入scss文件的方法</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install node-sass --save-dev</span><br><span class="line">npm install sass-loader --save-dev</span><br><span class="line">npm install sass-resources-loader --save-dev</span><br></pre></td></tr></table></figure>
+<p>修改build/utils.js<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">scss: generateLoaders(<span class="string">'sass'</span>).concat(</span><br><span class="line">      &#123;</span><br><span class="line">        loader: <span class="string">'sass-resources-loader'</span>,</span><br><span class="line">        options: &#123;</span><br><span class="line">          resources: path.resolve(__dirname, <span class="string">'../src/assets/your.scss'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    )</span><br></pre></td></tr></table></figure></p>
+<h3 id="elementUI的layout问题"><a href="#elementUI的layout问题" class="headerlink" title="elementUI的layout问题"></a>elementUI的layout问题</h3><p>el-footer会直接fixed在窗口底部，不好看，</p>
+<p>解决方法：el-footer放到el-main里面<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-container</span> <span class="attr">style</span>=<span class="string">"height:100%;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-header</span> <span class="attr">class</span>=<span class="string">"header"</span> <span class="attr">style</span>=<span class="string">"height:100px"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">cty-navbar</span> <span class="attr">:navs</span>=<span class="string">"navs"</span>&gt;</span><span class="tag">&lt;/<span class="name">cty-navbar</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-header</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-main</span>&gt;</span>      </span><br><span class="line">        <span class="tag">&lt;<span class="name">el-scrollbar</span> <span class="attr">wrap-style</span>=<span class="string">"overflow-x:hidden;"</span> <span class="attr">style</span>=<span class="string">"min-height: 800px"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">router-view</span>&gt;</span><span class="tag">&lt;/<span class="name">router-view</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span>           </span><br><span class="line">        <span class="tag">&lt;/<span class="name">el-scrollbar</span>&gt;</span></span><br><span class="line">                        </span><br><span class="line">        <span class="tag">&lt;<span class="name">el-footer</span> <span class="attr">class</span>=<span class="string">"footer"</span> <span class="attr">style</span>=<span class="string">"height:70px"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">cty-footer</span>&gt;</span><span class="tag">&lt;/<span class="name">cty-footer</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">el-footer</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">el-main</span>&gt;</span></span><br><span class="line">        </span><br><span class="line"><span class="tag">&lt;/<span class="name">el-container</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="vue路由刷新问题，两个路由对应一个组件，如何能让路由重载"><a href="#vue路由刷新问题，两个路由对应一个组件，如何能让路由重载" class="headerlink" title="vue路由刷新问题，两个路由对应一个组件，如何能让路由重载"></a>vue路由刷新问题，两个路由对应一个组件，如何能让路由重载</h3><p><a href="https://segmentfault.com/q/1010000010844655" target="_blank" rel="noopener">https://segmentfault.com/q/1010000010844655</a></p>
+<p>写在共用组件文件里</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line">mounted()&#123;...&#125;,</span><br><span class="line"> watch: &#123;          </span><br><span class="line">            $route: &#123;</span><br><span class="line">                handler: <span class="function"><span class="keyword">function</span> (<span class="params">val, oldVal</span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">this</span>.worksheet_type = <span class="keyword">this</span>.$route.params.type;                     </span><br><span class="line">                &#125;,</span><br><span class="line">                deep: <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br></pre></td></tr></table></figure>
+<p>在共用组件上加上key<br><code>&lt;div :key=&quot;$route.path&quot;&gt;</code></p>
+<h3 id="单行文本超出隐藏并显示省略号"><a href="#单行文本超出隐藏并显示省略号" class="headerlink" title="单行文本超出隐藏并显示省略号"></a>单行文本超出隐藏并显示省略号</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.element</span>&#123;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">20em</span>;<span class="comment">/*不允许出现半汉字截断*/</span></span><br><span class="line"><span class="attribute">overflow</span>: hidden; <span class="comment">/*自动隐藏文字*/</span></span><br><span class="line"><span class="attribute">text-overflow</span>: ellipsis;<span class="comment">/*文字隐藏后添加省略号*/</span></span><br><span class="line"><span class="attribute">white-space</span>: nowrap;<span class="comment">/*强制不换行*/</span></span><br></pre></td></tr></table></figure>
+<h3 id="多行文字隐藏加省略号"><a href="#多行文字隐藏加省略号" class="headerlink" title="多行文字隐藏加省略号"></a>多行文字隐藏加省略号</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.element</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">20em</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">3em</span>;<span class="comment">/*注意高度和宽度，不允许出现半汉字截断*/</span></span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">1.5em</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">display</span>: -webkit-box;</span><br><span class="line">    <span class="attribute">-webkit-line-clamp</span>: <span class="number">3</span>;</span><br><span class="line">    <span class="attribute">-webkit-box-orient</span>: vertical;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2018-4"><a href="#2018-4" class="headerlink" title="2018/4"></a>2018/4</h2><h3 id="实现QQ弹窗-和QQ号为qqnum聊天"><a href="#实现QQ弹窗-和QQ号为qqnum聊天" class="headerlink" title="实现QQ弹窗 和QQ号为qqnum聊天"></a>实现QQ弹窗 和QQ号为qqnum聊天</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">:href</span>=<span class="string">"`http://wpa.qq.com/msgrd?v=3&amp;uin=$&#123;qqnum&#125;&amp;site=qq&amp;menu=yes`"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">border</span>=<span class="string">"0"</span> <span class="attr">:src</span>=<span class="string">"`http://wpa.qq.com/pa?p=2:1424314130:51`"</span> <span class="attr">alt</span>=<span class="string">"点击这里给我发消息"</span> <span class="attr">title</span>=<span class="string">"点击这里给我发消息"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="Vue全局过滤器也可以当函数使用"><a href="#Vue全局过滤器也可以当函数使用" class="headerlink" title="Vue全局过滤器也可以当函数使用"></a>Vue全局过滤器也可以当函数使用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.$options.filters.dateformat</span><br></pre></td></tr></table></figure>
+<h3 id="字符串转义问题"><a href="#字符串转义问题" class="headerlink" title="字符串转义问题"></a>字符串转义问题</h3><p>本地字符串不会自己转义，所以本地需要写成 <code>\\d</code></p>
+<p>后台请求返回的字符串会自动帮你转义，所以在后台数据库只需要写成<code>\d</code></p>
+<h3 id="如何解决vue父组件模板slot到孙子组件中去"><a href="#如何解决vue父组件模板slot到孙子组件中去" class="headerlink" title="如何解决vue父组件模板slot到孙子组件中去"></a>如何解决vue父组件模板slot到孙子组件中去</h3><pre><code>&gt;每一个被继承的组件都需要有slot;
+</code></pre><p><a href="https://segmentfault.com/q/1010000012141592" target="_blank" rel="noopener">参考链接</a></p>
+<h3 id="记录一下第一次使用async-await-解决了困扰我一早上的异步问题-赞！！！"><a href="#记录一下第一次使用async-await-解决了困扰我一早上的异步问题-赞！！！" class="headerlink" title="记录一下第一次使用async ,await ,解决了困扰我一早上的异步问题,赞！！！"></a>记录一下第一次使用async ,await ,解决了困扰我一早上的异步问题,赞！！！</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取文件信息</span></span><br><span class="line"> getFileInfo(item)&#123;</span><br><span class="line">     <span class="keyword">let</span> fileId= item.value;</span><br><span class="line">     <span class="keyword">const</span> downloadLink =<span class="string">`/gw/tenant/worksheet/extend/Download?worksheetInfoId=<span class="subst">$&#123;item.worksheetInfoId&#125;</span>&amp;blobId=offer.info`</span>;</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">         <span class="keyword">if</span>(fileId == <span class="string">'undefined'</span>) resolve(<span class="literal">null</span>);</span><br><span class="line">         <span class="keyword">this</span>._$http.tenant.offerExtendGetFileInfo(&#123;<span class="attr">fileId</span>: fileId&#125;)</span><br><span class="line">         .then(<span class="function"><span class="params">res</span>=&gt;</span>&#123; </span><br><span class="line">             res=&#123;...res,downloadLink&#125;;</span><br><span class="line">             resolve(res)</span><br><span class="line">         &#125;) </span><br><span class="line">     &#125;)           </span><br><span class="line"> &#125;,</span><br><span class="line"> <span class="comment">//获取文件信息</span></span><br><span class="line"> fileGetter: <span class="keyword">async</span> <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;           </span><br><span class="line">     <span class="keyword">const</span> fileInfo = <span class="keyword">await</span> <span class="keyword">this</span>.getFileInfo(item);</span><br><span class="line">     <span class="keyword">return</span> <span class="built_in">Promise</span>.resolve(fileInfo);         </span><br><span class="line"> &#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="自定义指令—解决跟dom有关的问题"><a href="#自定义指令—解决跟dom有关的问题" class="headerlink" title="自定义指令—解决跟dom有关的问题"></a>自定义指令—解决跟dom有关的问题</h3><p>最大的用处就是可以引用一些第三方的代码插入到Vue项目中，比如有一个操作dom的函数：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//当然，真实情况第三方的代码要复杂的多</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeColor</span>(<span class="params">dom</span>)</span>&#123;</span><br><span class="line">    dom.style.backgroundColor = <span class="string">"red"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们可以注册一个全局的指令来为需要执行changeColor方法的dom提供指令：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Vue.directives(<span class="string">'color'</span>,&#123;</span><br><span class="line">    bind:<span class="function"><span class="keyword">function</span>(<span class="params">el</span>)</span>&#123;</span><br><span class="line">        changeColor(el)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>这样，如果需要这个dom改变颜色的话，只需要这样即可：<br><code>&lt;div v-color&gt;改变颜色&lt;/div&gt;</code></p>
+<p>当日常开发遇到跟dom有关的问题却一筹莫展时，可以想想自定义指令是否有功能可以解决为题</p>
+<h3 id="父组件给子组件传值，这个值还要从子组件传给它的子组件【inheritAttrs】和【attrs】"><a href="#父组件给子组件传值，这个值还要从子组件传给它的子组件【inheritAttrs】和【attrs】" class="headerlink" title="父组件给子组件传值，这个值还要从子组件传给它的子组件【inheritAttrs】和【attrs】"></a>父组件给子组件传值，这个值还要从子组件传给它的子组件【inheritAttrs】和【attrs】</h3><p>直接一层一层传prop非常麻烦.<br>Vue提供了【inheritAttrs】和【attrs】两个功能来解决这样的问题<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//父组件</span><br><span class="line">&lt;template&gt;</span><br><span class="line">   &lt;div&gt;</span><br><span class="line">     &lt;child :text=&quot;text&quot;  :count=&quot;count&quot;&gt;&lt;/child&gt;</span><br><span class="line">   &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default&#123;</span><br><span class="line">        data()&#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                text:&quot;父组件的值&quot;，</span><br><span class="line">                count:123456，</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//子组件</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div&gt;&#123;&#123;text&#125;&#125;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default&#123;</span><br><span class="line">        props:[&quot;text&quot;]</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>这里父组件的count属性仅仅挂在子组件上，并没有使用。此时我们打开浏览器，可以看到子组件的dom上显示的展示了<code>&lt;div class=&#39;child&#39; count=&quot;123456&quot;&gt;&lt;/div&gt;</code>。</p>
+<p>此时，我们可以通过设置inheritAttrs: false来取消这种默认行为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">  <span class="keyword">return</span>&#123;</span><br><span class="line">    ......   </span><br><span class="line">  &#125;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">inheritAttrs: <span class="literal">false</span>,</span><br><span class="line">mounted()&#123;</span><br><span class="line">　　<span class="built_in">console</span>.log(<span class="keyword">this</span>.$attrs); <span class="comment">//&#123;count:123456&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这时再看dom上就没有count属性了。然后，我还打印了this.$attrs的值，值为一个包含着count键值对的Object。<br>也就是说，<code>父组件没有props的属性值会被保存在一个名为$attrs中供子组件使用</code>，然而这并没有解决开头子组件的子组件获取值的问题。<br>别急，我们只需要在子组件上加个东西就可以了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;child&quot;&gt;</span><br><span class="line">        &lt;my-child v-bind=&quot;$attrs&quot;&gt;&lt;/my-child&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这样，子组件的子组件也可以获取这个值了。</p>
+<h3 id="provide-inject-更适合用来做父组件给后代组件传值，"><a href="#provide-inject-更适合用来做父组件给后代组件传值，" class="headerlink" title="provide / inject -更适合用来做父组件给后代组件传值，"></a>provide / inject -更适合用来做父组件给后代组件传值，</h3><p>provide/inject方法要比inheritAttrs/attrs更适合用来做父组件给子组件或孙组件传值，<br><a href="https://cn.vuejs.org/v2/api/#provide-inject" target="_blank" rel="noopener">文档的链接</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//父组件使用provide</span><br><span class="line">&lt;template&gt;  </span><br><span class="line">    &lt;div class=&quot;parent&quot;&gt;     </span><br><span class="line">         &lt;child-component&gt;&lt;/child-component&gt;   </span><br><span class="line">    &lt;/div&gt;  </span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;  </span><br><span class="line">    ......  </span><br><span class="line">    provide: &#123; parent: &quot;父组件的值&quot;&#125;,  </span><br><span class="line">    components:&#123;    child-component,  &#125;, </span><br><span class="line">     ......</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//此时可以在子组件通过这种方式获取父组件中“parent”的值：</span><br><span class="line">//子组件中</span><br><span class="line">export default &#123;  </span><br><span class="line">    mounted()&#123;      </span><br><span class="line">        console.log(this.parent); //&quot;父组件的值&quot;  </span><br><span class="line">    &#125;,  </span><br><span class="line">    inject: [&apos;parent&apos;],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2018/5</p>
+<h3 id="发现三个很厉害的库"><a href="#发现三个很厉害的库" class="headerlink" title="发现三个很厉害的库"></a>发现三个很厉害的库</h3><p><code>htmlDocx</code> (将html代码导出为doc文件)’<a href="http://evidenceprime.github.io/html-docx-js/build/html-docx.js&#39;" target="_blank" rel="noopener">http://evidenceprime.github.io/html-docx-js/build/html-docx.js&#39;</a><br><code>saveAs`(将浏览器内存中的doc文件保存至硬盘)&#39;http://evidenceprime.github.io/html-docx-js/test/vendor/FileSaver.js&#39;</code>domtoimage<code></code>(将dom节点转化成为图片)’<a href="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js&#39;" target="_blank" rel="noopener">https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js&#39;</a></p>
+<p>domtoimage.toPng(dom); //转出来是base64<br>saveAs(htmlDocx.asBlob(html), filename); </p>
+<p>主要这三个库方法<br>domtoimage.toPng<br>saveAs<br>htmlDocx.asBlob  </p>
+<h3 id="Vue的router的push传递参数有没有不把参数展示在url中的传递方式？"><a href="#Vue的router的push传递参数有没有不把参数展示在url中的传递方式？" class="headerlink" title="Vue的router的push传递参数有没有不把参数展示在url中的传递方式？"></a>Vue的router的push传递参数有没有不把参数展示在url中的传递方式？</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const userId = 123</span><br><span class="line">router.push(&#123; name: &apos;user&apos;, params: &#123; userId &#125;&#125;)</span><br><span class="line">// 路由设置 path 为：&apos;/user/:userId&apos;</span><br><span class="line">// 跳转路径：&apos;/user/123&apos;</span><br><span class="line"></span><br><span class="line">// 路由设置 path 为：&apos;/user&apos;</span><br><span class="line">// 跳转路径：&apos;/user&apos;</span><br><span class="line">// this.$route.params.userId 获取userId</span><br></pre></td></tr></table></figure>
+<h2 id="2018-6"><a href="#2018-6" class="headerlink" title="2018/6"></a>2018/6</h2><h3 id="使用keep-alive"><a href="#使用keep-alive" class="headerlink" title="使用keep-alive"></a>使用keep-alive</h3><p>在商品列表进入商品详情页之后<br><a href="https://www.cnblogs.com/nokelong/p/8124513.html" target="_blank" rel="noopener">vue中使用keepAlive组件缓存遇到的坑</a></p>
+<h3 id="a标签里面不加download属性会下载下来一些莫名其妙的东西"><a href="#a标签里面不加download属性会下载下来一些莫名其妙的东西" class="headerlink" title="a标签里面不加download属性会下载下来一些莫名其妙的东西"></a>a标签里面不加download属性会下载下来一些莫名其妙的东西</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">:href</span>=<span class="string">"file.worksheetFileId|url"</span>  <span class="attr">:download</span>=<span class="string">"file.fileName"</span>&gt;</span>&#123;&#123;file.fileName&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>html5对a标签新增的download属性用于下载文件，简单的理解是a标签如果添加了download属性，那么点击它的时候就不会跳转，而是会触发浏览器下载文件。<br>那么我不加download属性会下载下来的东西是什么？？</p>
+<p>答案：docx后缀的word文档用解压软件打开就是这个目录结构</p>
+<h3 id="nextTick"><a href="#nextTick" class="headerlink" title="$nextTick"></a>$nextTick</h3><p>Vue 实现响应式并不是数据发生变化之后 DOM 立即变化，而是按一定的策略进行 DOM 的更新。<br>$nextTick 是在下次 DOM 更新循环结束之后执行延迟回调，在修改数据之后使用 。</p>
+<h3 id="router-link存在的问题是，手动输入改变url，下面路由没监听到"><a href="#router-link存在的问题是，手动输入改变url，下面路由没监听到" class="headerlink" title="router-link存在的问题是，手动输入改变url，下面路由没监听到"></a>router-link存在的问题是，手动输入改变url，下面路由没监听到</h3><p> vue-router在IE 11下有bug,a href 里的路径，点击地址栏发生了变化，页面并不跳转<br>vm._route.path并没有发生变化，和地址栏不同步<br>要加上这段代码修正下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fixRouterIE</span>(<span class="params">vm</span>)</span>&#123;</span><br><span class="line">	<span class="comment">//IE 11下</span></span><br><span class="line">	<span class="keyword">if</span> (</span><br><span class="line">	  <span class="string">'-ms-scroll-limit'</span> <span class="keyword">in</span> <span class="built_in">document</span>.documentElement.style &amp;&amp; </span><br><span class="line">	  <span class="string">'-ms-ime-align'</span> <span class="keyword">in</span> <span class="built_in">document</span>.documentElement.style</span><br><span class="line">	) &#123; </span><br><span class="line">	  <span class="built_in">window</span>.addEventListener(<span class="string">"hashchange"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">	    <span class="keyword">const</span> currentPath = <span class="built_in">window</span>.location.hash.slice(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">	    <span class="keyword">if</span> (vm._route.path !== currentPath) &#123;</span><br><span class="line">	      vm._router.push(currentPath)</span><br><span class="line">	    &#125;</span><br><span class="line">	  &#125;, <span class="literal">false</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="height设为100-要求父容器高度确定，否则无效。"><a href="#height设为100-要求父容器高度确定，否则无效。" class="headerlink" title="height设为100%要求父容器高度确定，否则无效。"></a>height设为100%要求父容器高度确定，否则无效。</h3><h3 id="el-scrollbar滚动到容器底部"><a href="#el-scrollbar滚动到容器底部" class="headerlink" title="el-scrollbar滚动到容器底部"></a>el-scrollbar滚动到容器底部</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-scrollbar style=&quot;height:100%&quot; ref=&quot;elscrollbar&quot;&gt;</span><br><span class="line">var div = this.$refs[&apos;elscrollbar&apos;].$refs[&apos;wrap&apos;];</span><br><span class="line">this.$nextTick(() =&gt; &#123;</span><br><span class="line">    div.scrollTop = div.scrollHeight</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="怎么应用vertical-align，才能生效？"><a href="#怎么应用vertical-align，才能生效？" class="headerlink" title="怎么应用vertical-align，才能生效？"></a>怎么应用vertical-align，才能生效？</h3><p><a href="https://blog.csdn.net/diudiu5201/article/details/54666809" target="_blank" rel="noopener">怎么应用vertical-align，才能生效</a></p>
+<ol>
+<li><p>父元素（inline-block\block）必须含有line-height（inline元素有无皆可），子元素（inline-block/inline元素）中的vertical-align才能起作用。<br>vertical-align不可继承，必须对子元素单独设置。</p>
+</li>
+<li><p>当父元素没有设置line-height时，vertical-align只对行内元素的兄弟元素对齐有用，无法子元素居中对齐父元素。<br>设置了vertical-align:middle的子元素的中线与兄弟元素的基线对齐。若兄弟元素都设置该项，则居中对齐。</p>
+</li>
+</ol>
+<h3 id="Array-prototype-sort-兼容"><a href="#Array-prototype-sort-兼容" class="headerlink" title="Array.prototype.sort 兼容"></a>Array.prototype.sort 兼容</h3><p>IE9– Array.prototype.sort 不能根据 对象属性 做排序的遗憾<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方法1冒泡排序</span></span><br><span class="line"><span class="keyword">var</span> mySort = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> fn != <span class="string">'function'</span>)&#123;</span><br><span class="line">        fn = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> a-b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i &lt; <span class="keyword">this</span>.length<span class="number">-1</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> j=i+<span class="number">1</span>;j&lt;<span class="keyword">this</span>.length;j++)&#123;</span><br><span class="line">            <span class="keyword">var</span> t = <span class="keyword">this</span>[i];</span><br><span class="line">            <span class="keyword">if</span>(fn(<span class="keyword">this</span>[i],<span class="keyword">this</span>[j]) &gt; <span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">this</span>[i] = <span class="keyword">this</span>[j];</span><br><span class="line">                <span class="keyword">this</span>[j] = t;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="built_in">Array</span>.prototype.sorts!= <span class="string">'fucntion'</span>)&#123;</span><br><span class="line">    <span class="built_in">Array</span>.prototype.sorts = mySort;</span><br><span class="line">    mySort = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//方法2 插入排序</span></span><br><span class="line"><span class="keyword">var</span> mySort = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> fn != <span class="string">'function'</span>)&#123;</span><br><span class="line">        fn = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> a-b;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;<span class="keyword">this</span>.length;i++)&#123;</span><br><span class="line">        <span class="keyword">var</span> t = <span class="keyword">this</span>[i];</span><br><span class="line">        <span class="keyword">var</span> j = i<span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span>(j &gt;= <span class="number">0</span> &amp;&amp; fn(<span class="keyword">this</span>[j],t)&gt; <span class="number">0</span> )&#123;</span><br><span class="line">            <span class="keyword">this</span>[j+<span class="number">1</span>] = <span class="keyword">this</span>[j];</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>[j+<span class="number">1</span>] = t;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="built_in">Array</span>.prototype.sorts!= <span class="string">'fucntion'</span>)&#123;</span><br><span class="line">    <span class="built_in">Array</span>.prototype.sorts = mySort;</span><br><span class="line">    mySort = <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>safari 不支持函数参数<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params">window</span>)</span>&#123; </span><br><span class="line">    <span class="keyword">var</span> ua = <span class="built_in">window</span>.navigator.userAgent.toLowerCase(), </span><br><span class="line">    reg = <span class="regexp">/msie|applewebkit.+safari/</span>; </span><br><span class="line">    <span class="keyword">if</span>(reg.test(ua))&#123; </span><br><span class="line">        <span class="keyword">var</span> _sort = <span class="built_in">Array</span>.prototype.sort; </span><br><span class="line">        <span class="built_in">Array</span>.prototype.sort = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>)</span>&#123; </span><br><span class="line">            <span class="keyword">if</span>(!!fn &amp;&amp; <span class="keyword">typeof</span> fn === <span class="string">'function'</span>)&#123; </span><br><span class="line">                <span class="keyword">if</span>(<span class="keyword">this</span>.length &lt; <span class="number">2</span>) <span class="keyword">return</span> <span class="keyword">this</span>; </span><br><span class="line">                <span class="keyword">var</span> i = <span class="number">0</span>, j = i + <span class="number">1</span>, l = <span class="keyword">this</span>.length, tmp, r = <span class="literal">false</span>, t = <span class="number">0</span>; </span><br><span class="line">                <span class="keyword">for</span>(; i &lt; l; i++)&#123; </span><br><span class="line">                    <span class="keyword">for</span>(j = i + <span class="number">1</span>; j &lt; l; j++)&#123; </span><br><span class="line">                        t = fn.call(<span class="keyword">this</span>, <span class="keyword">this</span>[i], <span class="keyword">this</span>[j]); </span><br><span class="line">                        r = (<span class="keyword">typeof</span> t === <span class="string">'number'</span> ? t : </span><br><span class="line">                        !!t ? <span class="number">1</span> : <span class="number">0</span>) &gt; <span class="number">0</span> </span><br><span class="line">                        ? <span class="literal">true</span> : <span class="literal">false</span>; </span><br><span class="line">                        <span class="keyword">if</span>(r)&#123; </span><br><span class="line">                            tmp = <span class="keyword">this</span>[i]; </span><br><span class="line">                            <span class="keyword">this</span>[i] = <span class="keyword">this</span>[j]; </span><br><span class="line">                            <span class="keyword">this</span>[j] = tmp; </span><br><span class="line">                        &#125; </span><br><span class="line">                    &#125; </span><br><span class="line">                &#125; </span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">this</span>; </span><br><span class="line">            &#125;<span class="keyword">else</span>&#123; </span><br><span class="line">                <span class="keyword">return</span> _sort.call(<span class="keyword">this</span>); </span><br><span class="line">            &#125; </span><br><span class="line">        &#125;; </span><br><span class="line">    &#125; </span><br><span class="line">&#125;(<span class="built_in">window</span>);</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://blog.csdn.net/lt3487928/article/details/53157817" target="_blank" rel="noopener">https://blog.csdn.net/lt3487928/article/details/53157817</a></p>
+<p><a href="https://www.cnblogs.com/Alucelx/archive/2011/07/13/2104381.html" target="_blank" rel="noopener">https://www.cnblogs.com/Alucelx/archive/2011/07/13/2104381.html</a></p>
+<h2 id="2018-7"><a href="#2018-7" class="headerlink" title="2018/7"></a>2018/7</h2><h3 id="vue强制更新"><a href="#vue强制更新" class="headerlink" title="vue强制更新"></a>vue强制更新</h3><p>用vue.$set不行，watch不行，试试$forceUpdate。<br>还有一种办法，再把值重新复制一遍也是可以的<br><code>this.obj = Object.assign({},this.obj)</code></p>
+<h3 id="在Vue中使用sass及sass图片路径问题"><a href="#在Vue中使用sass及sass图片路径问题" class="headerlink" title="在Vue中使用sass及sass图片路径问题"></a>在Vue中使用sass及sass图片路径问题</h3><p><a href="https://www.jianshu.com/p/5e81814f8d8c" target="_blank" rel="noopener">https://www.jianshu.com/p/5e81814f8d8c</a></p>
+<h3 id="CORS跨域请求会先发option请求，如果server返回access-control-allow-origin头为-或者和当前域名一致的话，才会进入第二段的真正请求。"><a href="#CORS跨域请求会先发option请求，如果server返回access-control-allow-origin头为-或者和当前域名一致的话，才会进入第二段的真正请求。" class="headerlink" title="CORS跨域请求会先发option请求，如果server返回access-control-allow-origin头为*或者和当前域名一致的话，才会进入第二段的真正请求。"></a>CORS跨域请求会先发option请求，如果server返回access-control-allow-origin头为*或者和当前域名一致的话，才会进入第二段的真正请求。</h3><h3 id="禁止缓存数据deactivated"><a href="#禁止缓存数据deactivated" class="headerlink" title="禁止缓存数据deactivated"></a>禁止缓存数据deactivated</h3><p> 防止下次选择数据不更新<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">deactivated () &#123;</span><br><span class="line">  <span class="keyword">this</span>.$destroy(<span class="literal">true</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h3><p> <code>arr.slice()</code><br> 如果obj所有值都是非引用类型，那么obj.slice(0)与深浅拷贝没有差别；</p>
+<p>如果obj有引用类型的元素的话，obj.slice(0)仅仅是复制了元素的地址，，obj.slice(0)可看作浅拷贝。</p>
+<p>对象深拷贝 <code>Object.assign({},obj)</code>,不要用JSON.parse(JSON.stringify(obj)),太慢</p>
+<h3 id="事件冒泡到父容器或某个祖先容器停止"><a href="#事件冒泡到父容器或某个祖先容器停止" class="headerlink" title="事件冒泡到父容器或某个祖先容器停止"></a>事件冒泡到父容器或某个祖先容器停止</h3><p>在父容器或某个祖先容器上绑定一个<a href="mailto:``@click.stop" target="_blank" rel="noopener">``@click.stop</a>=”stop”<code></code><br>stop函数为一个空函数即可</p>
+<h2 id="2018-10"><a href="#2018-10" class="headerlink" title="2018/10"></a>2018/10</h2><h3 id="webpack-dev-server启动"><a href="#webpack-dev-server启动" class="headerlink" title="webpack-dev-server启动"></a>webpack-dev-server启动</h3><p>并不是访问vue项目内某个文件, src/assets内的文件是不能在index.html直接引用的, 必须经过loader处理路径</p>
+<p>plublic里放置的文件是不经过 webpack 处理的。在 index.html 里引用的时候，直接就是 <code>&lt;script src=&quot;/plublic/oidc-client.js&quot;&gt;&lt;/script&gt;。</code></p>
+<h3 id="scss-export"><a href="#scss-export" class="headerlink" title="scss export"></a>scss export</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="variable">$title-width</span>: <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">:export &#123;</span><br><span class="line">  titleWidth: <span class="variable">$title-width</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="ie-margin-top负值无效"><a href="#ie-margin-top负值无效" class="headerlink" title="ie margin-top负值无效"></a>ie margin-top负值无效</h3><p><a href="https://www.cnblogs.com/chaozhang/p/4711282.html" target="_blank" rel="noopener">https://www.cnblogs.com/chaozhang/p/4711282.html</a></p>
+<p>加上display:inline-block</p>
+<h3 id="inline-block的元素设置over-flow-hidden会意外地增加元素总体高度，"><a href="#inline-block的元素设置over-flow-hidden会意外地增加元素总体高度，" class="headerlink" title="inline-block的元素设置over-flow:hidden会意外地增加元素总体高度，"></a>inline-block的元素设置over-flow:hidden会意外地增加元素总体高度，</h3><p>用vertical-align:bottom解决</p>
+<h3 id="ie中img被拉伸"><a href="#ie中img被拉伸" class="headerlink" title="ie中img被拉伸"></a>ie中img被拉伸</h3><p>只要设置img为 height:auto，width:auto，就不会出现这种情况了</p>
+<h3 id="vue-路由query变化监测不到meta的"><a href="#vue-路由query变化监测不到meta的" class="headerlink" title="vue 路由query变化监测不到meta的"></a>vue 路由query变化监测不到meta的</h3><p>这样使用query,路由变化，meta并没有变化<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    name: <span class="string">'order.list.1'</span>,</span><br><span class="line">    path: <span class="string">'/order/list/status=1'</span>,</span><br><span class="line">    component: list,</span><br><span class="line">    meta: &#123;</span><br><span class="line">      domain: <span class="string">'order'</span>,</span><br><span class="line">      key: <span class="string">'order-list-1'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">'order.list.2'</span>,</span><br><span class="line">    path: <span class="string">'/order/list/status=2'</span>,</span><br><span class="line">    component: list,</span><br><span class="line">    meta: &#123;</span><br><span class="line">      domain: <span class="string">'order'</span>,</span><br><span class="line">      key: <span class="string">'order-list-2'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
+<p>使用params是可以的<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    name: <span class="string">'order.list.1'</span>,</span><br><span class="line">    path: <span class="string">'/order/list/1'</span>,</span><br><span class="line">    component: list,</span><br><span class="line">    meta: &#123;</span><br><span class="line">      domain: <span class="string">'order'</span>,</span><br><span class="line">      key: <span class="string">'order-list-1'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  &#123;</span><br><span class="line">    name: <span class="string">'order.list.2'</span>,</span><br><span class="line">    path: <span class="string">'/order/list/2'</span>,</span><br><span class="line">    component: list,</span><br><span class="line">    meta: &#123;</span><br><span class="line">      domain: <span class="string">'order'</span>,</span><br><span class="line">      key: <span class="string">'order-list-2'</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
+<p>使用函数模式也可以</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> dict = &#123;</span><br><span class="line">  <span class="number">1</span>: <span class="string">'order-list-1'</span>,</span><br><span class="line">  <span class="number">2</span>: <span class="string">'order-list-2'</span>,</span><br><span class="line">  <span class="keyword">default</span>: <span class="string">'order-list'</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">  name: <span class="string">'order'</span>,</span><br><span class="line">  path: <span class="string">'/order'</span>,</span><br><span class="line">  redirect: &#123;</span><br><span class="line">    name: <span class="string">'order.list'</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  component: Container,</span><br><span class="line">  children: [&#123;</span><br><span class="line">    name: <span class="string">'order.list'</span>,</span><br><span class="line">    path: <span class="string">'/order/list'</span>,</span><br><span class="line">    component: list,</span><br><span class="line">    meta: &#123;</span><br><span class="line">      domain: <span class="string">'order'</span>,</span><br><span class="line">      key(route) &#123;</span><br><span class="line">        <span class="keyword">return</span> dict[route.query.status || <span class="string">'default'</span>];</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<h3 id="vue-指令使用模板，不再用template了，用el"><a href="#vue-指令使用模板，不再用template了，用el" class="headerlink" title="vue 指令使用模板，不再用template了，用el"></a>vue 指令使用模板，不再用template了，用el</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Marquee.js</span></span><br><span class="line"><span class="keyword">import</span> Marquee <span class="keyword">from</span> <span class="string">'./Marquee.vue'</span>;</span><br><span class="line"><span class="keyword">const</span> Tpl = Vue.extend(Marquee);<span class="comment">//这个好漂亮</span></span><br><span class="line"><span class="keyword">const</span> Plugin = &#123;</span><br><span class="line">  install(vue, options) &#123;</span><br><span class="line">        Vue.directive(<span class="string">'marquee'</span>, &#123;</span><br><span class="line">           inserted(el, binding, vnode) &#123;</span><br><span class="line">              <span class="keyword">const</span> mask = <span class="keyword">new</span> Tpl(&#123;</span><br><span class="line">                  el: <span class="built_in">document</span>.createElement(<span class="string">'div'</span>),</span><br><span class="line">                  data: &#123; <span class="attr">name</span>: binding.value &#125;</span><br><span class="line">              &#125;);</span><br><span class="line">              el.appendChild(mask.$el);</span><br><span class="line">           &#125;)</span><br><span class="line">     &#125;   </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Plugin;</span><br><span class="line"><span class="comment">//main.js</span></span><br><span class="line"><span class="keyword">import</span> Marquee <span class="keyword">from</span> <span class="string">'./Marquee.js'</span></span><br><span class="line">Vue.use(Marquee)</span><br></pre></td></tr></table></figure>
+<h2 id="2018-12"><a href="#2018-12" class="headerlink" title="2018/12"></a>2018/12</h2><h3 id="完美解决本地和服务器上资源url解析的问题"><a href="#完美解决本地和服务器上资源url解析的问题" class="headerlink" title="完美解决本地和服务器上资源url解析的问题"></a>完美解决本地和服务器上资源url解析的问题</h3><p>在 config/index.js 中修改 assetsPublicPath 为 ./<br>在 build/utils.js 中的 ExtractTextPlugin.extract 传入参数 publicPath: ‘../../‘</p>
+<h2 id="知识记录"><a href="#知识记录" class="headerlink" title="知识记录"></a>知识记录</h2><h3 id="for-for-in-for-each-for-of"><a href="#for-for-in-for-each-for-of" class="headerlink" title="for\for-in\for-each\for-of"></a>for\for-in\for-each\for-of</h3><p>for-in不仅可以遍历数组还可以遍历对象<br>for-in 遍历属性的顺序并不确定，即输出的结果顺序与属性在对象中的顺序无关，也与属性的字母顺序无关，与其他任何顺序也无关。<br>使用for-in在遍历的时候，它不仅遍历了对象上的属性，而且还遍历了对象父类原型上的属性。<br>所以for-in并不适合遍历Array中的元素，更适合遍历对象中的属性<br>for-in只会遍历存在的实体,以及对应的原型链上的属性.因此其速度相比较其他for循环，要慢一些。<br>所以除非明确要迭代一个属性数量未知的对象，否则应该避免使用for-in。<br>for-in遍历数组的缺点：数组的下标index值是数字，for-in遍历的index值”0”,”1”,”2”等是字符串</p>
+<p>在不同浏览器下测试的结果都是 forEach 的速度不如 for。<br>forEach主要应用在遍历数组，但是它的性能并不如for，因此可以使用for就尽量不要使用forEach。<br><strong>forEach 不能break 或者return</strong></p>
+<p><strong>for-of不支持普通对象遍历，只返回具有数字索引的属性</strong>.</p>
+<p>遍历数组：for-of &gt; for &gt; for-each<br>遍历对象：for-in(要用hasOwnProperty)<br>await/async 要用for-of<br>for循环、while循环、do-while循环比for in 要快</p>
+<h3 id="字符串-拼接性能"><a href="#字符串-拼接性能" class="headerlink" title="字符串 拼接性能"></a>字符串 拼接性能</h3><p>比较下四中字符串拼接方法的性能：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">A：str = str + &apos;a&apos;+&apos;b&apos;</span><br><span class="line">B:str += &apos;a&apos; + &apos;b&apos;</span><br><span class="line">C: arr.join(&apos;&apos;)</span><br><span class="line">D:str.concat(&apos;b&apos;,&apos;c&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>☆ Chrome65上测试的是A优于B优于C优于D</p>
+<h3 id="总结一些常用的"><a href="#总结一些常用的" class="headerlink" title="总结一些常用的"></a>总结一些常用的</h3><ol>
+<li>内容长短不固定的时候用min-height,而不要用height</li>
+<li><p>显示一行，多余的用省略号表示</p>
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.one-line</span>&#123;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">    <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br><span class="line">```     </span><br><span class="line">最多显示2行，多余的用省略号表示</span><br><span class="line">```<span class="selector-tag">css</span></span><br><span class="line"><span class="selector-class">.two-line</span>&#123;     </span><br><span class="line">    <span class="attribute">overflow</span>: hidden;     </span><br><span class="line">    <span class="attribute">display</span>: -webkit-box;</span><br><span class="line">    <span class="attribute">-webkit-box-orient</span>: vertical;</span><br><span class="line">    <span class="attribute">-webkit-line-clamp</span>: <span class="number">2</span>;</span><br><span class="line">    <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一般英文或者数字是默认不换行，所以要加上</p>
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">word-break</span>: <span class="selector-tag">break-all</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>placeholder</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-pseudo">:-moz-placeholder</span> &#123; <span class="comment">/* Mozilla Firefox 4 to 18 */</span></span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#C6C6C6</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-pseudo">::-moz-placeholder</span> &#123; <span class="comment">/* Mozilla Firefox 19+ */</span></span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#C6C6C6</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">:-ms-input-placeholder</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#C6C6C6</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">::-webkit-input-placeholder</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#C6C6C6</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="vue源码研读"><a href="#vue源码研读" class="headerlink" title="vue源码研读"></a>vue源码研读</h3><p><a href="https://juejin.im/post/5adff30f518825672d33d596" target="_blank" rel="noopener">手拉手带你过一遍vue部分源码</a></p>
+<p><a href="https://juejin.im/post/5adf0085518825673123da9a" target="_blank" rel="noopener">当面试官问你Vue响应式原理，你可以这么回答他</a></p>
+<p><a href="https://juejin.im/post/5ad10800f265da23826e681e" target="_blank" rel="noopener">如何解释vue的生命周期才能令面试官满意？</a></p>
+<p>在使用.vue文件开发的过程当中，我们在里面写了template模板，在经过了vue-loader的处理之后，就变成了render function，最终放到了vue-loader解析过的文件里面。这样做有什么好处呢？原因是由于在解析template变成render function的过程，是一个非常耗时的过程，vue-loader帮我们处理了这些内容之后，当我们在页面上执行vue代码的时候，效率会变得更高。</p>
+<p>Vue为我们提供了renderError方法，这个方法只有在开发的时候它才会被调用，在正式打包上线的过程当中，它是不会被调用的。它主要是帮助我们调试render里面的一些错误。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">renderError (h, err) &#123;</span><br><span class="line">  <span class="keyword">return</span> h(<span class="string">'div'</span>, &#123;&#125;, err.stack)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>有且只有当render方法里面报错了，才会执行renderError方法。<br>所以我们主动让render函数报个错：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">render (h) &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">TypeError</span>(<span class="string">'render error'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>还有一点，renderError只有在<code>本组件</code>的render方法报错的情况下它才会被调用。</p>
+<h3 id="Cache-Control"><a href="#Cache-Control" class="headerlink" title="Cache-Control"></a>Cache-Control</h3><pre><code>no-cache: 告诉浏览器、缓存服务器，不管本地副本是否过期，使用资源副本前，一定要到源服务器进行副本有效性校验。
+must-revalidate：告诉浏览器、缓存服务器，本地副本过期前，可以使用本地副本；本地副本一旦过期，必须去源服务器进行有效性校验。
+max-age： 指缓存资源的缓存时间比指定的值小，那么客户端就接受缓存资源，且缓存服务器不对资源有效性进行再次确认
+</code></pre><h3 id="CSS像素"><a href="#CSS像素" class="headerlink" title="CSS像素"></a>CSS像素</h3><p>是web编程的概念,是相对的而不是绝对的单位. 用户的缩放比会影响单位CSS像素点对应的实际物理像素的多少</p>
+<h3 id="使用Flexible实现手淘H5页面的终端适配"><a href="#使用Flexible实现手淘H5页面的终端适配" class="headerlink" title="使用Flexible实现手淘H5页面的终端适配"></a>使用Flexible实现手淘H5页面的终端适配</h3><p>   <a href="https://github.com/amfe/article/issues/17" target="_blank" rel="noopener">https://github.com/amfe/article/issues/17</a></p>
+<h3 id="禁止使用document-write"><a href="#禁止使用document-write" class="headerlink" title="禁止使用document.write()"></a>禁止使用document.write()</h3><p>异步脚本禁止使用document.write()<br>延迟脚本禁止使用document.write()</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/学习/">学习</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/日常记录/">日常记录</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://lry1994.github.io/study/2018/2018.html" data-title="2018遇到的问题 | 圆玉的博客" data-tsina="2140938987" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/study/2018/2/26-dom-compaticity.html" title="原生DOM兼容特性总结">
+  <strong>上一篇：</strong><br/>
+  <span>
+  原生DOM兼容特性总结</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/study/2018/1/30-web-full-stack-study.html"  title="《Web 全栈工程师的自我修养》读书笔记">
+ <strong>下一篇：</strong><br/> 
+ <span>《Web 全栈工程师的自我修养》读书笔记
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2018-2"><span class="toc-number">1.</span> <span class="toc-text">2018/2</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#火狐和IE下href-”javascript-void-0-会弹出空白页"><span class="toc-number">1.1.</span> <span class="toc-text">火狐和IE下href=”javascript:void(0) 会弹出空白页</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue2父组件传递props异步数据到子组件，获取到的是undefined"><span class="toc-number">1.2.</span> <span class="toc-text">vue2父组件传递props异步数据到子组件，获取到的是undefined.</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象的属性名称可以是变量吗？"><span class="toc-number">1.3.</span> <span class="toc-text">对象的属性名称可以是变量吗？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后台给的服务链接直接插入html中img的src里"><span class="toc-number">1.4.</span> <span class="toc-text">后台给的服务链接直接插入html中img的src里</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扩展运算符可以用于数组深拷贝"><span class="toc-number">1.5.</span> <span class="toc-text">扩展运算符可以用于数组深拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#number-的修饰符"><span class="toc-number">1.6.</span> <span class="toc-text">.number 的修饰符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2018-3"><span class="toc-number">2.</span> <span class="toc-text">2018/3</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#给点击路由的时候加上监听事件"><span class="toc-number">2.1.</span> <span class="toc-text">给点击路由的时候加上监听事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#块内元素文字上下居中"><span class="toc-number">2.2.</span> <span class="toc-text">块内元素文字上下居中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用refs来组件通信"><span class="toc-number">2.3.</span> <span class="toc-text">用refs来组件通信</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关于第4点，今天工作用了this-refs来传播事件，类似于-brocast-但是VUE2把-brocast废除了。"><span class="toc-number">2.4.</span> <span class="toc-text">关于第4点，今天工作用了this.$refs来传播事件，类似于$brocast,但是VUE2把$brocast废除了。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#js的数组可以是这样的形式"><span class="toc-number">2.5.</span> <span class="toc-text">js的数组可以是这样的形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#把字符串转换成数字可以用数字运算符-但是-不行"><span class="toc-number">2.6.</span> <span class="toc-text">把字符串转换成数字可以用数字运算符,但是 + 不行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reduce函数好好用"><span class="toc-number">2.7.</span> <span class="toc-text">reduce函数好好用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue项目中全局引入scss文件的方法"><span class="toc-number">2.8.</span> <span class="toc-text">vue项目中全局引入scss文件的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#elementUI的layout问题"><span class="toc-number">2.9.</span> <span class="toc-text">elementUI的layout问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue路由刷新问题，两个路由对应一个组件，如何能让路由重载"><span class="toc-number">2.10.</span> <span class="toc-text">vue路由刷新问题，两个路由对应一个组件，如何能让路由重载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#单行文本超出隐藏并显示省略号"><span class="toc-number">2.11.</span> <span class="toc-text">单行文本超出隐藏并显示省略号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多行文字隐藏加省略号"><span class="toc-number">2.12.</span> <span class="toc-text">多行文字隐藏加省略号</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2018-4"><span class="toc-number">3.</span> <span class="toc-text">2018/4</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现QQ弹窗-和QQ号为qqnum聊天"><span class="toc-number">3.1.</span> <span class="toc-text">实现QQ弹窗 和QQ号为qqnum聊天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue全局过滤器也可以当函数使用"><span class="toc-number">3.2.</span> <span class="toc-text">Vue全局过滤器也可以当函数使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串转义问题"><span class="toc-number">3.3.</span> <span class="toc-text">字符串转义问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何解决vue父组件模板slot到孙子组件中去"><span class="toc-number">3.4.</span> <span class="toc-text">如何解决vue父组件模板slot到孙子组件中去</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#记录一下第一次使用async-await-解决了困扰我一早上的异步问题-赞！！！"><span class="toc-number">3.5.</span> <span class="toc-text">记录一下第一次使用async ,await ,解决了困扰我一早上的异步问题,赞！！！</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义指令—解决跟dom有关的问题"><span class="toc-number">3.6.</span> <span class="toc-text">自定义指令—解决跟dom有关的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#父组件给子组件传值，这个值还要从子组件传给它的子组件【inheritAttrs】和【attrs】"><span class="toc-number">3.7.</span> <span class="toc-text">父组件给子组件传值，这个值还要从子组件传给它的子组件【inheritAttrs】和【attrs】</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#provide-inject-更适合用来做父组件给后代组件传值，"><span class="toc-number">3.8.</span> <span class="toc-text">provide / inject -更适合用来做父组件给后代组件传值，</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发现三个很厉害的库"><span class="toc-number">3.9.</span> <span class="toc-text">发现三个很厉害的库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue的router的push传递参数有没有不把参数展示在url中的传递方式？"><span class="toc-number">3.10.</span> <span class="toc-text">Vue的router的push传递参数有没有不把参数展示在url中的传递方式？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2018-6"><span class="toc-number">4.</span> <span class="toc-text">2018/6</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用keep-alive"><span class="toc-number">4.1.</span> <span class="toc-text">使用keep-alive</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#a标签里面不加download属性会下载下来一些莫名其妙的东西"><span class="toc-number">4.2.</span> <span class="toc-text">a标签里面不加download属性会下载下来一些莫名其妙的东西</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nextTick"><span class="toc-number">4.3.</span> <span class="toc-text">$nextTick</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#router-link存在的问题是，手动输入改变url，下面路由没监听到"><span class="toc-number">4.4.</span> <span class="toc-text">router-link存在的问题是，手动输入改变url，下面路由没监听到</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#height设为100-要求父容器高度确定，否则无效。"><span class="toc-number">4.5.</span> <span class="toc-text">height设为100%要求父容器高度确定，否则无效。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#el-scrollbar滚动到容器底部"><span class="toc-number">4.6.</span> <span class="toc-text">el-scrollbar滚动到容器底部</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#怎么应用vertical-align，才能生效？"><span class="toc-number">4.7.</span> <span class="toc-text">怎么应用vertical-align，才能生效？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-prototype-sort-兼容"><span class="toc-number">4.8.</span> <span class="toc-text">Array.prototype.sort 兼容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2018-7"><span class="toc-number">5.</span> <span class="toc-text">2018/7</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vue强制更新"><span class="toc-number">5.1.</span> <span class="toc-text">vue强制更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在Vue中使用sass及sass图片路径问题"><span class="toc-number">5.2.</span> <span class="toc-text">在Vue中使用sass及sass图片路径问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CORS跨域请求会先发option请求，如果server返回access-control-allow-origin头为-或者和当前域名一致的话，才会进入第二段的真正请求。"><span class="toc-number">5.3.</span> <span class="toc-text">CORS跨域请求会先发option请求，如果server返回access-control-allow-origin头为*或者和当前域名一致的话，才会进入第二段的真正请求。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#禁止缓存数据deactivated"><span class="toc-number">5.4.</span> <span class="toc-text">禁止缓存数据deactivated</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#深拷贝"><span class="toc-number">5.5.</span> <span class="toc-text">深拷贝</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事件冒泡到父容器或某个祖先容器停止"><span class="toc-number">5.6.</span> <span class="toc-text">事件冒泡到父容器或某个祖先容器停止</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2018-10"><span class="toc-number">6.</span> <span class="toc-text">2018/10</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack-dev-server启动"><span class="toc-number">6.1.</span> <span class="toc-text">webpack-dev-server启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scss-export"><span class="toc-number">6.2.</span> <span class="toc-text">scss export</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ie-margin-top负值无效"><span class="toc-number">6.3.</span> <span class="toc-text">ie margin-top负值无效</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inline-block的元素设置over-flow-hidden会意外地增加元素总体高度，"><span class="toc-number">6.4.</span> <span class="toc-text">inline-block的元素设置over-flow:hidden会意外地增加元素总体高度，</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ie中img被拉伸"><span class="toc-number">6.5.</span> <span class="toc-text">ie中img被拉伸</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-路由query变化监测不到meta的"><span class="toc-number">6.6.</span> <span class="toc-text">vue 路由query变化监测不到meta的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue-指令使用模板，不再用template了，用el"><span class="toc-number">6.7.</span> <span class="toc-text">vue 指令使用模板，不再用template了，用el</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2018-12"><span class="toc-number">7.</span> <span class="toc-text">2018/12</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#完美解决本地和服务器上资源url解析的问题"><span class="toc-number">7.1.</span> <span class="toc-text">完美解决本地和服务器上资源url解析的问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#知识记录"><span class="toc-number">8.</span> <span class="toc-text">知识记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#for-for-in-for-each-for-of"><span class="toc-number">8.1.</span> <span class="toc-text">for\for-in\for-each\for-of</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串-拼接性能"><span class="toc-number">8.2.</span> <span class="toc-text">字符串 拼接性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结一些常用的"><span class="toc-number">8.3.</span> <span class="toc-text">总结一些常用的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue源码研读"><span class="toc-number">8.4.</span> <span class="toc-text">vue源码研读</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cache-Control"><span class="toc-number">8.5.</span> <span class="toc-text">Cache-Control</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS像素"><span class="toc-number">8.6.</span> <span class="toc-text">CSS像素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用Flexible实现手淘H5页面的终端适配"><span class="toc-number">8.7.</span> <span class="toc-text">使用Flexible实现手淘H5页面的终端适配</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#禁止使用document-write"><span class="toc-number">8.8.</span> <span class="toc-text">禁止使用document.write()</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/学习/" title="学习">学习<sup>37</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活/" title="生活">生活<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/专题探究/" title="专题探究">专题探究<sup>14</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/读书笔记/" title="读书笔记">读书笔记<sup>10</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/日常记录/" title="日常记录">日常记录<sup>10</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/面经/" title="面经">面经<sup>6</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  
+
+<div class="doubanshow">
+<p class="asidetitle">Douban Show</p>
+<div>
+<script type="text/javascript" src="http://www.douban.com/service/badge/167927352/?show=collection&amp;n=12&amp;columns=3&amp;hidelogo=yes&amp;hideself=yes&amp;cat=book|movie" ></script>
+</div>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=2140938987&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m 圆玉 in China. <br/>
+			This is my blog,for recording.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2140938987" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/LRY1994" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		<a href="https://www.douban.com/people/167927352" target="_blank" class="icon-douban" title="豆瓣"></a>
+		
+		
+		
+		
+		<a href="mailto:lry0930@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2019 
+		
+		<a href="/about" target="_blank" title="Ruiyu Lin">Ruiyu Lin</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

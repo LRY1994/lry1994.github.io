@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="圆玉的博客">
 <meta property="og:description" content="2018/2火狐和IE下 javascript:void(0) 会弹出空白页本来javascript:void(0);的用处是不用整体刷新网页且返回一个空值，但这儿由于DOM本身的冒泡事件所以会最后执行HREF属性内的javascript:void(0);导致执行函数返回了一个空值，所以覆盖掉了前面正常执行函数所返回的值引起的错误。 一般情况下，IE会先运行DOM本身绑定的事件，如ONCLICK;">
 <meta property="og:locale" content="zh-hk">
-<meta property="og:updated_time" content="2019-07-08T08:40:53.558Z">
+<meta property="og:updated_time" content="2019-07-08T08:44:48.574Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2018遇到的问题">
 <meta name="twitter:description" content="2018/2火狐和IE下 javascript:void(0) 会弹出空白页本来javascript:void(0);的用处是不用整体刷新网页且返回一个空值，但这儿由于DOM本身的冒泡事件所以会最后执行HREF属性内的javascript:void(0);导致执行函数返回了一个空值，所以覆盖掉了前面正常执行函数所返回的值引起的错误。 一般情况下，IE会先运行DOM本身绑定的事件，如ONCLICK;">
@@ -196,7 +196,7 @@
 <h3 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h3><p> <code>arr.slice()</code><br> 如果obj所有值都是非引用类型，那么obj.slice(0)与深浅拷贝没有差别；</p>
 <p>如果obj有引用类型的元素的话，obj.slice(0)仅仅是复制了元素的地址，，obj.slice(0)可看作浅拷贝。</p>
 <p>对象深拷贝 <code>Object.assign({},obj)</code>,不要用JSON.parse(JSON.stringify(obj)),太慢</p>
-<h3 id="事件冒泡到父容器或某个祖先容器停止"><a href="#事件冒泡到父容器或某个祖先容器停止" class="headerlink" title="事件冒泡到父容器或某个祖先容器停止"></a>事件冒泡到父容器或某个祖先容器停止</h3><p>在父容器或某个祖先容器上绑定一个<a href="mailto:``@click.stop" target="_blank" rel="noopener">``@click.stop</a>=”stop”<code></code><br>stop函数为一个空函数即可</p>
+<h3 id="事件冒泡到父容器或某个祖先容器停止"><a href="#事件冒泡到父容器或某个祖先容器停止" class="headerlink" title="事件冒泡到父容器或某个祖先容器停止"></a>事件冒泡到父容器或某个祖先容器停止</h3><p>在父容器或某个祖先容器上绑定一个<a href="mailto:``@click.stop" target="_blank" rel="noopener">``@click.stop</a>=’stop’<code></code><br>stop函数为一个空函数即可</p>
 <h2 id="2018-10"><a href="#2018-10" class="headerlink" title="2018/10"></a>2018/10</h2><h3 id="webpack-dev-server启动"><a href="#webpack-dev-server启动" class="headerlink" title="webpack-dev-server启动"></a>webpack-dev-server启动</h3><p>并不是访问vue项目内某个文件, src/assets内的文件是不能在index.html直接引用的, 必须经过loader处理路径</p>
 <p>plublic里放置的文件是不经过 webpack 处理的。在 index.html 里引用的时候，直接就是 <code>&lt;script src=&quot;/plublic/oidc-client.js&quot;&gt;&lt;/script&gt;。</code></p>
 <h3 id="scss-export"><a href="#scss-export" class="headerlink" title="scss export"></a>scss export</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="variable">$title-width</span>: <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">:export &#123;</span><br><span class="line">  titleWidth: <span class="variable">$title-width</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -300,9 +300,9 @@ max-age： 指缓存资源的缓存时间比指定的值小，那么客户端就
 
 
 <div class="next">
-<a href="/study/2018/1/30-web-full-stack-study.html"  title="《Web 全栈工程师的自我修养》读书笔记">
+<a href="/study/2018/1/30-web-full-stack-study.html"  title="读《Web 全栈工程师的自我修养》">
  <strong>下一篇：</strong><br/> 
- <span>《Web 全栈工程师的自我修养》读书笔记
+ <span>读《Web 全栈工程师的自我修养》
 </span>
 </a>
 </div>

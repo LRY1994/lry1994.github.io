@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="/static/css/all.css" />
+    <title>大脸圆玉的博客</title>
+</head>
+<body>
+    <div class="l-nav">
+        <div class="nav-img">
+    <img src="/static/img/avatar.png"/>
+</div>
+
+
+<ul>
+    
+        
+            <li class="li-active"> <a href="/categories/Experience.html">Experience</a></li>
+        
+        
+            <li > <a href="/categories/Reading.html">Reading</a></li>
+        
+    
+        
+            <li > <a href="/categories/Collection.html">Collection</a></li>
+        
+    
+        
+            <li > <a href="/categories/Collection.html">My Photo</a></li>
+        
+    
+</ul>
+    </div>
+    <div class="r-box">
+        <div class="article">
+            <h1 class="title">IE hack</h1>            
+            <p>I belong to : Experience</p>
+            <hr/>
+            <h3 id="documentgetelementbyid（name不是id取节点">document.getElementById（name不是id)取节点</h3>
+<p>在 IE6 IE7 IE8(Q) 中，支持以 document.getElementById(elementName) 的方式获取 A APPLET BUTTON FORM IFRAME IMG INPUT MAP OBJECT EMBED SELECT TEXTAREA 元素，而其他浏览器的任何元素均不支持该方式。</p>
+<p>参考</p>
+<p><a href="http://www.w3help.org/zh-cn/causes/SD9001">SD9001: IE6 IE7 IE8(Q) 中的 getElementById 方法能以 name 属性为参数获取某些元素</a></p>
+<h3 id="ie-margin-top负值无效">ie margin-top负值无效</h3>
+<p><a href="https://www.cnblogs.com/chaozhang/p/4711282.html">https://www.cnblogs.com/chaozhang/p/4711282.html</a></p>
+<p>加上display:inline-block</p>
+<h3 id="ie中img被拉伸">ie中img被拉伸</h3>
+<p>只要设置img为 height:auto，width:auto，就不会出现这种情况了</p>
+<h3 id="火狐和ie下hrefjavascriptvoid0-会弹出空白页">火狐和IE下href=&quot;javascript:void(0) 会弹出空白页</h3>
+<p>本来javascript:void(0);的用处是不用整体刷新网页且返回一个空值，但这儿由于DOM本身的冒泡事件所以会最后执行HREF属性内的javascript:void(0);导致执行函数返回了一个空值，所以覆盖掉了前面正常执行函数所返回的值引起的错误。</p>
+<p>一般情况下，IE会先运行DOM本身绑定的事件，如ONCLICK;如果没有阻止冒泡，则会顺序执行HREF属性。如果想正确运行，可以在前面用RETURN FALSE终止冒泡，例如：</p>
+<pre><code>&lt;a target=&quot;_blank&quot; class=&quot;prev&quot; onclick=&quot;return false;&quot;   href=&quot;javascript:void(0);&quot;&gt;&lt;/a&gt;</code></pre><p>或者直接删去也行，如：</p>
+<pre><code>&lt;a target=&quot;_blank&quot;  class=&quot;prev&quot; &gt;&lt;/a&gt;</code></pre><p>但是后者hover的时候没有手势的pointer</p>
+<h3 id="arrayprototypesort-兼容">Array.prototype.sort 兼容</h3>
+<p>IE9-- Array.prototype.sort 不能根据 对象属性 做排序</p>
+<pre><code class="language-javascript">//方法1冒泡排序
+var mySort = function(fn){
+    if(typeof fn != &#39;function&#39;){
+        fn = function(a,b){
+            return a-b;
+        }
+    }
+
+    for(var i=0; i &lt; this.length-1;i++){
+        for(var j=i+1;j&lt;this.length;j++){
+            var t = this[i];
+            if(fn(this[i],this[j]) &gt; 0){
+                this[i] = this[j];
+                this[j] = t;
+            }
+        }
+    }
+    return this;
+}
+
+if(typeof Array.prototype.sorts!= &#39;fucntion&#39;){
+    Array.prototype.sorts = mySort;
+    mySort = null;
+}
+
+
+//方法2 插入排序
+var mySort = function(fn){
+    if(typeof fn != &#39;function&#39;){
+        fn = function(a,b){
+            return a-b;
+        }
+    }
+    for(var i=1;i&lt;this.length;i++){
+        var t = this[i];
+        var j = i-1;
+        while(j &gt;= 0 &amp;&amp; fn(this[j],t)&gt; 0 ){
+            this[j+1] = this[j];
+            j--;
+        }
+        this[j+1] = t;
+
+    }
+    return this;
+
+}
+if(typeof Array.prototype.sorts!= &#39;fucntion&#39;){
+    Array.prototype.sorts = mySort;
+    mySort = null;
+}</code></pre>
+<p>safari 不支持函数参数 </p>
+<pre><code class="language-javascript">!function(window){ 
+    var ua = window.navigator.userAgent.toLowerCase(), 
+    reg = /msie|applewebkit.+safari/; 
+    if(reg.test(ua)){ 
+        var _sort = Array.prototype.sort; 
+        Array.prototype.sort = function(fn){ 
+            if(!!fn &amp;&amp; typeof fn === &#39;function&#39;){ 
+                if(this.length &lt; 2) return this; 
+                var i = 0, j = i + 1, l = this.length, tmp, r = false, t = 0; 
+                for(; i &lt; l; i++){ 
+                    for(j = i + 1; j &lt; l; j++){ 
+                        t = fn.call(this, this[i], this[j]); 
+                        r = (typeof t === &#39;number&#39; ? t : 
+                        !!t ? 1 : 0) &gt; 0 
+                        ? true : false; 
+                        if(r){ 
+                            tmp = this[i]; 
+                            this[i] = this[j]; 
+                            this[j] = tmp; 
+                        } 
+                    } 
+                } 
+                return this; 
+            }else{ 
+                return _sort.call(this); 
+            } 
+        }; 
+    } 
+}(window); </code></pre>
+<h3 id="ie下-new-date2016-07-01-080000--nan">IE下 new Date(&quot;2016-07-01 08:00:00&quot;) == NaN</h3>
+<pre><code class="language-js">new Date(&quot;2016-07-01 08:00:00&quot;);//IE下NaN
+new Date(&quot;2016/07/01 08:00:00&quot;)//IE下OK
+new Date(&quot;2016/07/01 08:00:00。0&quot;)//IE下NaN
+</code></pre>
+<p><code>new Date(&quot;2016-07-01 08:00:00&quot;);</code>这种格式在ff,chrome,opera,safari等浏览器中没有问题的，而在IE内核浏览器（猎豹，360兼容模式）等会出现无效NaN的问题，</p>
+<p><code>new Date(&quot;2016-07-01 08:10:00&quot;).replace(/-/g,&quot;/&quot;);</code>这样确保了任何一个浏览器都没有问题。</p>
+<h3 id="ie-hash有变化，但是页面无刷新">IE hash有变化，但是页面无刷新</h3>
+<p>在页面框架内，使用location.href = href进行路由跳转时，IE9+环境会有问题，即hash有变化，但是页面无刷新。</p>
+<pre><code class="language-javascript">function fixRouterIE(vm){
+    //IE 11下
+    if (
+      &#39;-ms-scroll-limit&#39; in document.documentElement.style &amp;&amp; 
+      &#39;-ms-ime-align&#39; in document.documentElement.style
+    ) { 
+      window.addEventListener(&quot;hashchange&quot;, function(event) {
+        const currentPath = window.location.hash.slice(1);
+
+        if (vm._route.path !== currentPath) {
+          vm._router.push(currentPath)
+        }
+      }, false)
+    }
+}</code></pre>
+
+        </div>
+    </div>
+    
+</body>
+</html>

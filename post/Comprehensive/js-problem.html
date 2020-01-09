@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="/static/css/all.css" />
+    <title>大脸圆玉的博客</title>
+</head>
+<body>
+    <div class="l-nav">
+        <div class="nav-img">
+    <img src="/static/img/avatar.png"/>
+</div>
+
+
+<ul>
+    
+        
+            <li > <a href="/categories/Experience.html">Experience</a></li>
+        
+    
+        
+            <li > <a href="/categories/Reading.html">Reading</a></li>
+        
+    
+        
+            <li class="li-active"> <a href="/categories/Collection.html">Collection</a></li>
+        
+        
+            <li > <a href="/categories/Collection.html">My Photo</a></li>
+        
+    
+</ul>
+    </div>
+    <div class="r-box">
+        <div class="article">
+            <h1 class="title">js题摘录（柯里化、栈队列）</h1>            
+            <p>I belong to : Collection</p>
+            <hr/>
+            <p><a href="https://blog.csdn.net/ceshi986745/article/details/51698893">44个Javascript变态题解析</a></p>
+<h2 id="foreach">foreach</h2>
+<p>数组的foreach可以和闭包起一样的作用</p>
+<p>闭包中的变量包括参数，在内部函数执行完毕之前不会被释放</p>
+<h2 id="js运行机制">JS运行机制</h2>
+<p>执行栈,任务队列</p>
+<p><code>process.nextTick</code>方法可以在当前&quot;执行栈&quot;的尾部----下一次Event Loop（主线程读取&quot;任务队列&quot;）之前----触发回调函数</p>
+<p><code>setImmediate</code>方法则是在当前&quot;任务队列&quot;的尾部添加事件</p>
+<p><code>process.nextTick</code>指定的回调函数是在本次&quot;事件循环&quot;触发，而setImmediate指定的是在下次&quot;事件循环&quot;触发</p>
+<p><code>setTimeout(fn,0)</code>表示当前代码执行完（执行栈清空）以后，立即执行（0毫秒间隔）指定的回调函数。</p>
+<p><code>Promise</code>，里面的函数是直接执行的.</p>
+<p><code>Promise</code> 的 then 应当会放到当前 &quot;执行栈&quot;的尾部</p>
+<p>{% asset_img js_zhan_duilie.jpg js堆栈 %}</p>
+<p>在Javascript引擎里面，队列还分为 Task队列（也有人叫做 MacroTask）和 MicroTask队列， MicroTask会优先于 Task执行。</p>
+<p>比如常见的点击事件、 setImmediate、 setTimeout、 MessageChannel等会放入 Task队列，</p>
+<p>但是 Promise以及 MutationObserver会放到 Microtask队列。</p>
+<p>同时，Javascript引擎在执行 Microtask队列的时候，如果期间又加入了新的 Microtask，则该 Microtask会加入到之前的 Microtask队列的尾部，保证 Microtask先于 Task队列执行。</p>
+<p>Task(MacroTask)队列中： <strong>setImmediate &gt; MessageChannel &gt; setTimeout 0</strong></p>
+<p><a href="https://mp.weixin.qq.com/s/2ilx-5kDvszjF66iAvYQlg?utm_medium=hao.caibaojian.com&amp;utm_source=hao.caibaojian.com">你真的了解Javascript执行顺序么？</a></p>
+<h3 id="settimeout">setTimeOut</h3>
+<p>{%asset_img setTimeOut.jpg%}</p>
+<p><a href="http://www.cnblogs.com/sprying/archive/2013/05/26/3100639.html">谈谈JavaScript的异步实现</a></p>
+<ul>
+<li><p>1</p>
+<pre><code class="language-javascript">let a=[1,2,3];
+let b = a.map(n=&gt;{n=n+1});
+let c = a.map(n=&gt;n=n+1);
+b// [undefined, undefined, undefined]
+c// [2, 3, 4]</code></pre>
+<p>改成</p>
+<pre><code class="language-javascript">let b = a.map(n =&gt; {n = n + 1;return n;});</code></pre>
+<p>原因</p>
+<pre><code class="language-javascript">(a,b,c) =&gt; 表达式（单一）相当于
+(a,b,c)=&gt;{ return 表达式}</code></pre>
+</li>
+<li><p>2</p>
+<pre><code class="language-javascript">var a = 111111111111111110000;
+b=111;
+console.info(a+b);//111111111111111110000</code></pre>
+</li>
+</ul>
+<p>JS的基础类型Number，遵循 IEEE 754 规范，采用双精度存储（double precision），占用 64 bit。
+1位用来表示符号位，
+11位用来表示指数，
+52位表示尾数</p>
+<p>Math.pow(2, 53) == 9007199254740992 是可以表示的最大值. </p>
+<pre><code class="language-javascript">Number.isSafeInteger(111111111111111110000)//false</code></pre>
+<ul>
+<li><p>3</p>
+<pre><code class="language-javascript">[3,2,1].reduce(Math.pow)//9</code></pre>
+<p>表达式等价于 Math.pow(3, 2) =&gt; 9; Math.pow(9, 1) =&gt;9</p>
+</li>
+<li><p>4</p>
+<pre><code class="language-javascript">var arr = [0,1,2];
+arr[10]=10;
+arr.filter(function(x){return x==undefined});//[]</code></pre>
+<p>首先检查了这个索引值是不是数组的一个属性, 那么我们测试一下.</p>
+<pre><code class="language-javascript">0 in ary; =&gt; true
+3 in ary; =&gt; false
+10 in ary; =&gt; true</code></pre>
+<p>从 3 - 9 都是没有初始化的&#39;坑&#39;!, 这些索引并不存在与数组中. 在 array 的函数调用的时候是会<code>跳过</code>这些&#39;坑&#39;的,所以它不知道是不是undefined</p>
+</li>
+<li><p>5</p>
+<pre><code class="language-javascript">var obj = {
+  foo:&#39;bar&#39;,
+  func:function(){
+      var self = this;
+      console.log(this.foo);
+      console.log(self.foo);
+      (function(){
+          console.log(this.foo);
+          console.log(self.foo);
+      }())
+  }
+}
+obj.func();</code></pre>
+<p>输出</p>
+<pre><code>bar
+bar
+undefined
+bar</code></pre></li>
+<li><p>6</p>
+<pre><code class="language-javascript">var f = function g(){return 23;}
+typeof g();</code></pre>
+<p>输出</p>
+<pre><code class="language-javascript">//Chrome:
+typeof g() //无输出响应
+typeof g   //undefined
+typeof f() //number
+typeof f   //function
+</code></pre>
+</li>
+</ul>
+<p>//Firfox
+typeof g() //无输出响应
+typeof g   //undefined
+typeof f() //number
+typeof f   //function</p>
+<p>//IE8
+typeof g() //number
+typeof g   //function
+typeof f() //number
+typeof f   //function</p>
+<pre><code>
+* 7 重点
+```javascript
+add(2, 5); // 7
+add(2)(5); // 7
+function addto(){
+    var length = arguments.length;
+    var sum = 0;
+    for(var i = 0;i&lt;length;i++){
+        sum += arguments[i]
+    }
+    return sum;
+}
+
+function add(){
+    var value = addto.apply(add,arguments);
+    var helper = function(next){
+        typeof next == &quot;number&quot; ? value+=next:value;
+        return helper
+    }
+    helper.valueOf = function(){
+        return value;
+    }
+    return helper;
+}
+</code></pre><ul>
+<li><p>8</p>
+<pre><code class="language-javascript">void 0//undefined
+void(0)//undefined</code></pre>
+</li>
+<li><p>9</p>
+<pre><code class="language-javascript">this;//window
+var obj = {
+  func : function(){return this;}
+};
+obj.func();//obj</code></pre>
+</li>
+<li><p>抛出的异常找最近的catch</p>
+<pre><code class="language-javascript">try{
+  try{
+      throw new Error(&#39;oops&#39;);
+  }
+  finally{
+      console.log(&#39;finally&#39;);
+  }catch(ex){
+      console.error(&#39;outer&#39;,ex.message);
+  }
+}</code></pre>
+<p>输出 finally outer oops</p>
+</li>
+<li><p>抛出的异常只需处理一次</p>
+<pre><code class="language-javascript">try{
+  try{
+      throw new Error(&#39;oops&#39;)
+  }
+  catch(ex){
+      console.error(&#39;inner&#39;,ex.message);
+  }finally{
+      console.log(&#39;finally&#39;)
+  }
+}catch(ex){
+  console.error(&#39;outer&#39;,ex.message)
+}
+}</code></pre>
+<p>输出 inner oops finally</p>
+</li>
+<li><p>12</p>
+<pre><code class="language-javascript">fd();//true
+function fd(){
+  //do sth
+  return true;
+}</code></pre>
+<pre><code class="language-javascript">fe();//TypeError
+var fe = function(){
+  //do sth
+}</code></pre>
+</li>
+<li><p>13</p>
+<pre><code class="language-javascript">var myarr2 = new 
+Array(&quot;80&quot;,&quot;16&quot;,&quot;50&quot;,&quot;6&quot;,&quot;100&quot;,&quot;1&quot;);
+document.write(myarr2.sort());//1,100,16,50,6,80</code></pre>
+<p>原因 ：因为按unicode码顺序排列。如要实现排序，就必须手写排序函数</p>
+</li>
+</ul>
+<p>{% asset_img 1.png %}
+{% asset_img 2.png %}
+{% asset_img 3.png %}
+{% asset_img 4.png %}
+{% asset_img 5.png %}
+{% asset_img 6.png %}
+{% asset_img 7.png %}</p>
+<p>什么是普通对象？？？
+{% asset_img 8.png %}
+{% asset_img 9.png %}</p>
+<p>为什么result先输出？？？？
+{% asset_img 10.png %}</p>
+<h2 id="你知道为什么会有-generator-吗">你知道为什么会有 Generator 吗?</h2>
+<p><a href="https://juejin.im/post/5adae8246fb9a07aa541e150">你知道为什么会有 Generator 吗</a></p>
+<h2 id="柯里化--部分求值">柯里化--部分求值</h2>
+<p>柯里化又称部分求值，柯里化函数会接收一些参数，然后不会立即求值，而是继续返回一个新函数，将传入的参数通过闭包的形式保存，等到被真正求值的时候，再一次性把所有传入的参数进行求值</p>
+<pre><code class="language-javascript">//通用的柯里化函数
+function curry(fn) {
+    let slice = Array.prototype.slice,  // 将slice缓存起来
+        args = slice.call(arguments, 1);   // 这里将arguments转成数组并保存
+
+    return function() {
+        // 将新旧的参数拼接起来
+        let newArgs = args.concat(slice.call(arguments));    
+        return fn.apply(null, newArgs); // 返回执行的fn并传递最新的参数
+    }
+}
+// ES6版的柯里化函数
+function curry(fn) {
+    const g = (...allArgs) =&gt; allArgs.length &gt;= fn.length ?
+        fn(...allArgs) : 
+        (...args) =&gt; g(...allArgs, ...args)
+
+    return g;
+}
+
+// 测试用例
+const foo = curry((a, b, c, d) =&gt; {
+    console.log(a, b, c, d);
+});
+foo(1)(2)(3)(4);    // 1 2 3 4
+const f = foo(1)(2)(3);
+f(5);               // 1 2 3 5
+</code></pre>
+<h2 id="反柯里化-函数的借用">反柯里化-函数的借用</h2>
+<p>简而言之就是函数的借用，天下函数(方法)大家用</p>
+<pre><code class="language-javascript">//写法一
+Function.prototype.uncurrying = function() {
+    let self = this;    
+    return function() {
+        let obj = Array.prototype.shift.call(arguments);//删除并返回
+        return self.apply(obj, arguments); 
+    }
+};
+//写法二
+Function.prototype.uncurrying = function() {
+    let self = this;
+    return function() {
+        return Function.prototype.call.apply(self, arguments);
+        /*相当于Function.prototype.call.apply(Array.prototype.slice, arguments);
+        也就是相当于Array.prototype.slice.call(arguments)*/
+    }
+};
+
+//测试一
+let slice = Array.prototype.slice.uncurrying();
+
+(function() {
+    let result = slice(arguments);  
+    console.log(result);    // [1, 2, 3]
+})(1,2,3);
+
+//测试二
+let slice = Array.prototype.push.uncurrying();
+let obj = {
+    &#39;length&#39;: 1,
+    &#39;0&#39;: 1
+};
+push(obj, 110);
+console.log(obj);   // { &#39;0&#39;: 1, &#39;1&#39;: 110, length: 2 }</code></pre>
+<h2 id="数字类型的-tolocalestring">数字类型的 toLocaleString</h2>
+<p>minimumIntegerDigits、 minimumFractionDigits 与 maximumFractionDigits，用于指定整数最少位数与小数的最少和最多位数，不够则用0去凑。简单说，自动补0！</p>
+<p>minimumSignificantDigits 与 maximumSignificantDigits，用于控制有效数字位数，只要设置了这一组属性，第一组属性全部忽略不算</p>
+<p>注意，maximumFractionDigits 与 maximumSignificantDigits 均是四舍五入，使用时需要注意。</p>
+<pre><code class="language-javascript">const num = 2333333;
+num.toLocaleString();   // 2,333,333
+num.toLocaleString(&#39;zh&#39;, { style: &#39;decimal&#39; });   //2,333,333
+num.toLocaleString(&#39;zh&#39;, { style: &#39;percent&#39; });   //233,333,300%
+num.toLocaleString(&#39;zh&#39;, { style: &#39;currency&#39;, currency: &#39;CNY&#39; });    //￥2,333,333.00
+num.toLocaleString(&#39;zh&#39;, { style: &#39;currency&#39;, currency: &#39;cny&#39;, currencyDisplay: &#39;code&#39; });      //CNY2,333,333.00
+num.toLocaleString(&#39;zh&#39;, { style: &#39;currency&#39;, currency: &#39;cny&#39;, currencyDisplay: &#39;name&#39; });      //2,333,333.00人民币
+num.toLocaleString(&#39;zh&#39;, { minimumIntegerDigits: 5 });        //02,333.3
+//如果不想有分隔符，可以指定useGrouping为false
+num.toLocaleString(&#39;zh&#39;, { minimumIntegerDigits: 5, useGrouping: false });        //02333.3
+num.toLocaleString(&#39;zh&#39;, { minimumFractionDigits: 2, useGrouping: false });     //2333.30
+
+num = 666.666
+num.toLocaleString(&#39;zh&#39;, { maximumFractionDigits: 2, useGrouping: false });     //666.67
+
+const num = 1234.5;
+num.toLocaleString(&#39;zh&#39;, { minimumSignificantDigits: 6, useGrouping: false });      //1234.50
+num.toLocaleString(&#39;zh&#39;, { maximumSignificantDigits: 4, useGrouping: false });      //1235
+</code></pre>
+<pre><code class="language-js"> [] === []//false 
+ [] == []//false
+ //因为[]是一个数组，是一个对象。就好比创建了2个对象，然后比较两个对象是否相同
+
+[] == false//true
+ /*他是经历了这个过程最终才为true的。
+（[] == false）   ----&gt;  （[] == +0）   ----&gt;  （“”== +0）  ----&gt;  （+0 == +0）  ---&gt;   true*/
+
+ window instanceof Object//false
+ typeof(window) // object
+
+typeof null === &#39;object&#39;;
+null instanceof Object === false
+
+null instanceof null//会抛出异常：``Uncaught TypeError: Right-hand side of &#39;instanceof&#39; is not an object``</code></pre>
+
+        </div>
+    </div>
+    
+</body>
+</html>

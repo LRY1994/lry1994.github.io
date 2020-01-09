@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="/static/css/all.css" />
+    <title>大脸圆玉的博客</title>
+</head>
+<body>
+    <div class="l-nav">
+        <div class="nav-img">
+    <img src="/static/img/avatar.png"/>
+</div>
+
+
+<ul>
+    
+        
+            <li class="li-active"> <a href="/categories/Experience.html">Experience</a></li>
+        
+        
+            <li > <a href="/categories/Reading.html">Reading</a></li>
+        
+    
+        
+            <li > <a href="/categories/Collection.html">Collection</a></li>
+        
+    
+        
+            <li > <a href="/categories/Collection.html">My Photo</a></li>
+        
+    
+</ul>
+    </div>
+    <div class="r-box">
+        <div class="article">
+            <h1 class="title">2019遇到的问题</h1>            
+            <p>I belong to : Experience</p>
+            <hr/>
+            <h2 id="20192">2019/2</h2>
+<h3 id="ie浏览器url中文乱码">IE浏览器url中文乱码</h3>
+<p>IE浏览器直接拼接url,中文会乱码，需要像下面这样进行转码</p>
+<pre><code> &lt;a :href=&quot;`/ctyun/clientcase?tag=${encodeURI(data[current].tag)}`&quot; &gt;</code></pre><p> 用router-link的就不用转码：</p>
+<pre><code> &lt;router-link :to=&quot;{name:&#39;clientcase&#39;,query:{tag:item.tag}}&quot; &gt;
+ 或者
+&lt;router-link v-if=&quot;item.id&quot; :to=&quot;{path:`/clientcase?tag=${item.tag}&amp;id=${item.id}`}&quot; &gt;</code></pre><h3 id="组件上有ref的话，这个组件不可以使用懒加载">组件上有ref的话，这个组件不可以使用懒加载</h3>
+<pre><code>  &lt;template v-for=&quot;item in partnerList&quot;&gt;
+    &lt;case-item :data=&quot;item&quot; :key=&quot;item.index&quot; :ref=&quot;`case${item.id}`&quot;&gt;&lt;/case-item&gt;
+&lt;/template&gt;</code></pre><pre><code class="language-js">    components: { CaseItem },//正确的做法
+    components: { CaseItem:()=&gt;import(&#39;....&#39;) },//懒加载的做法  
+ getData(type, offset, limit) {
+    xxxxx.then((res) =&gt; {
+    this.partnerList.push(...res.item);
+    this.scrollTo(this.selectedId);
+    });
+},
+scrollTo(id) {
+    this.$nextTick(() =&gt; {
+        const target = this.$refs[`case${id}`];
+        xxxxx
+    });
+},</code></pre>
+<p>如果<code>&lt;case-item&gt;</code>是懒加载的话，第一次进入这个页面<code>target = this.$refs[`case${id}`];</code>是undefined</p>
+<h3 id="clickfunc和clickfun的区别">@click=&quot;func&quot;和@click=&quot;fun()&quot;的区别</h3>
+<ol>
+<li>如果func函数没有参数，就没有区别</li>
+<li>如果func函数有参数，例如<code>func(arg){...}</code>，那么<code>@click=&quot;func&quot;</code> 在func(arg)里面输出arg并不是undefined，而是一个事件对象</li>
+</ol>
+<p>#:class可以是一个数组</p>
+<pre><code class="language-js">boxClazz(){
+    return [&#39;box&#39;,  !this.canAddHideAnimationLater ? &#39;&#39; : this.visible ? &#39;show&#39;: &#39;hide&#39;]
+}
+&lt;nav :class=&quot;boxClazz&quot; &gt;&lt;/nav&gt;</code></pre>
+<h3 id="动态挂载组件">动态挂载组件</h3>
+<pre><code class="language-js">import Vue from &#39;vue&#39;;
+import imgPreview from &#39;./img-preview.vue&#39;;
+let instance;
+
+let imgPreviewConsturctor = Vue.extend(imgPreview);
+
+
+const initInstance = () =&gt; {
+  const el = document.createElement(&#39;div&#39;)
+  el.id=&quot;__img_preview_box&quot;
+  document.body.appendChild(el);
+  instance = new imgPreviewConsturctor().$mount(`#${el.id}`);
+
+};
+
+const init = (imgSrc) =&gt; {
+    if(!instance){
+        initInstance();
+    }
+    instance.imgSrc = imgSrc;
+    instance.visible = true;
+}
+export default {
+    init
+}</code></pre>
+<h3 id="body上加上over-flowhidden获取scrolltop会不准确">body上加上over-flow:hidden获取scrollTop会不准确</h3>
+<h3 id="fixed定位页面抖动解决方法">fixed定位页面抖动解决方法</h3>
+<p>这方法是看微博网站代码看到的，完美！！其他百度上的方法没一个管用</p>
+<p>fixed定位的元素加上</p>
+<pre><code class="language-css">nav-tab{
+  z-index: 10;
+  transform: translateZ(0px);
+  position: relative;
+  transition: top 0.3s ease 0s;
+  will-change:top;
+}  </code></pre>
+<p>页面上加多一个同等高度的容器</p>
+<pre><code class="language-html">&lt;!--关键--&gt;
+&lt;div :style=&quot;{height:fixNav?`${nav-height}px`:0}&quot;&gt;&lt;/div&gt;
+&lt;!--fixed定位的元素--&gt;
+&lt;nav-tab  :class=&quot;{&#39;fix-nav&#39;:fixNav}&quot;&gt;&lt;/nav-tab&gt;</code></pre>
+<h3 id="vucli3构建库模式大坑">vucli3构建库模式大坑</h3>
+<ol>
+<li>代码里不能有懒加载，不然打出来的文件不止1个，引入的时候路径不对</li>
+<li>图片不能<code>&lt;img src&gt;</code>渲染，会找不到路径。可以用background-image解决</li>
+<li><code>new consturctor().$mount();</code>的时候，生命周期钩子mouted在<code>$mount()</code>过程中就会执行.</li>
+<li><code>import Vue from &#39;vue&#39;</code> 得到的也不是主项目的vue<pre><code class="language-js"> //方案：把vue实例当做props传进去
+ instance = new feedbackConsturctor({
+      //！！！依赖库手动挂载的节点的__proto__跟主项目的__proto__不是同一个，会导致断链
+      propsData:{
+          http$ : _VUE_.prototype.http$
+      }}).$mount();</code></pre>
+</li>
+<li>vue父子组件之间是没有原型链的，手动$mount()的组件$root是自己。所以子组件如果要使用主项目的数据，可以<pre><code class="language-js"> data(){
+     return { http$:this.$root.http$ }
+ }</code></pre>
+</li>
+</ol>
+<h3 id="可以利用src做请求">可以利用src做请求</h3>
+<pre><code>send(url, params){
+
+        const img = new Image;
+        img.src = `${url}?${this.serializeParams(params, true)}`;
+    }</code></pre><h2 id="20196">2019/6</h2>
+<h3 id="overflow-y-visible不起作用">overflow-y: visible不起作用</h3>
+<p>在container上添加以下样式</p>
+<pre><code>padding-top: 20px;
+margin-top: -20px;</code></pre><h3 id="ie在本地运行出错">IE在本地运行出错</h3>
+<p>但是部署到测试环境是正常的，吓死个人了</p>
+<p>函数节流不管事件触发有多频繁，都会保证在规定时间内一定会执行一次真正的事件处理函数，
+而函数防抖只是在最后一次事件后才触发一次函数。 比如在页面的无限加载场景下，我们需要用户在滚动页面时，每隔一段时间发一次 Ajax 请求，而不是在用户停下滚动页面操作时才去请求数据。这样的场景，就适合用节流技术来实现</p>
+<h2 id="201910">2019/10</h2>
+<h3 id="ie-el-button嵌套a不能跳转">IE el-button嵌套<a>不能跳转</h3>
+<h3 id="ie-下修改windowlocationhref不能跳转">IE 下修改window.location.href不能跳转</h3>
+<h3 id="弹出新标签页">弹出新标签页</h3>
+<p>chrome都可以</p>
+<pre><code>window.open(nextUrl);// firefox\IE\chrome都可以
+
+let a = document.createElement(&#39;a&#39;);
+a.click();// firfox不行
+
+//firefox提示弹窗允许
+const evt = document.createEvent(&#39;MouseEvents&#39;);
+    evt.initEvent(&#39;click&#39;, true, true);
+    a.dispatchEvent(evt);</code></pre>
+        </div>
+    </div>
+    
+</body>
+</html>

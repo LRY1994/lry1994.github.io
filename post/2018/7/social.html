@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="/static/css/all.css" />
+    <title>大脸圆玉的博客</title>
+</head>
+<body>
+    <div class="l-nav">
+        <div class="nav-img">
+    <img src="/static/img/avatar.png"/>
+</div>
+
+
+<ul>
+    
+        
+            <li class="li-active"> <a href="/categories/Experience.html">Experience</a></li>
+        
+        
+            <li > <a href="/categories/Reading.html">Reading</a></li>
+        
+    
+        
+            <li > <a href="/categories/Collection.html">Collection</a></li>
+        
+    
+        
+            <li > <a href="/categories/Collection.html">My Photo</a></li>
+        
+    
+</ul>
+    </div>
+    <div class="r-box">
+        <div class="article">
+            <h1 class="title">社交分享接口</h1>            
+            <p>I belong to : Experience</p>
+            <hr/>
+            <h3 id="社交分享接口">社交分享接口</h3>
+<p>qzone       : &#39;<a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=%7B%7BURL%7D%7D&amp;title=%7B%7BTITLE%7D%7D&amp;desc=%7B%7BDESCRIPTION%7D%7D&amp;summary=%7B%7BSUMMARY%7D%7D&amp;site=%7B%7BSOURCE%7D%7D&#39;">http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url={{URL}}&amp;title={{TITLE}}&amp;desc={{DESCRIPTION}}&amp;summary={{SUMMARY}}&amp;site={{SOURCE}}&#39;</a>,
+qq          : &#39;<a href="http://connect.qq.com/widget/shareqq/index.html?url=%7B%7BURL%7D%7D&amp;title=%7B%7BTITLE%7D%7D&amp;source=%7B%7BSOURCE%7D%7D&amp;desc=%7B%7BDESCRIPTION%7D%7D&amp;pics=%7B%7BIMAGE%7D%7D&#39;">http://connect.qq.com/widget/shareqq/index.html?url={{URL}}&amp;title={{TITLE}}&amp;source={{SOURCE}}&amp;desc={{DESCRIPTION}}&amp;pics={{IMAGE}}&#39;</a>,
+tencent     : &#39;<a href="http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;title=%7B%7BTITLE%7D%7D&amp;url=%7B%7BURL%7D%7D&amp;pic=%7B%7BIMAGE%7D%7D&#39;">http://share.v.t.qq.com/index.php?c=share&amp;a=index&amp;title={{TITLE}}&amp;url={{URL}}&amp;pic={{IMAGE}}&#39;</a>,
+weibo       : &#39;<a href="https://service.weibo.com/share/share.php?url=%7B%7BURL%7D%7D&amp;title=%7B%7BTITLE%7D%7D&amp;pic=%7B%7BIMAGE%7D%7D&amp;appkey=%7B%7BWEIBOKEY%7D%7D&#39;">https://service.weibo.com/share/share.php?url={{URL}}&amp;title={{TITLE}}&amp;pic={{IMAGE}}&amp;appkey={{WEIBOKEY}}&#39;</a>,</p>
+<p>douban      : &#39;<a href="http://shuo.douban.com/!service/share?href=%7B%7BURL%7D%7D&amp;name=%7B%7BTITLE%7D%7D&amp;text=%7B%7BDESCRIPTION%7D%7D&amp;image=%7B%7BIMAGE%7D%7D&amp;starid=0&amp;aid=0&amp;style=11&#39;">http://shuo.douban.com/!service/share?href={{URL}}&amp;name={{TITLE}}&amp;text={{DESCRIPTION}}&amp;image={{IMAGE}}&amp;starid=0&amp;aid=0&amp;style=11&#39;</a>,
+diandian    : &#39;<a href="http://www.diandian.com/share?lo=%7B%7BURL%7D%7D&amp;ti=%7B%7BTITLE%7D%7D&amp;type=link&#39;">http://www.diandian.com/share?lo={{URL}}&amp;ti={{TITLE}}&amp;type=link&#39;</a>,
+linkedin    : &#39;<a href="http://www.linkedin.com/shareArticle?mini=true&amp;ro=true&amp;title=%7B%7BTITLE%7D%7D&amp;url=%7B%7BURL%7D%7D&amp;summary=%7B%7BSUMMARY%7D%7D&amp;source=%7B%7BSOURCE%7D%7D&amp;armin=armin&#39;">http://www.linkedin.com/shareArticle?mini=true&amp;ro=true&amp;title={{TITLE}}&amp;url={{URL}}&amp;summary={{SUMMARY}}&amp;source={{SOURCE}}&amp;armin=armin&#39;</a>,
+facebook    : &#39;<a href="https://www.facebook.com/sharer/sharer.php?u=%7B%7BURL%7D%7D&amp;title=%7B%7BTITLE%7D%7D&amp;description=%7B%7BDESCRIPTION%7D%7D&amp;caption=%7B%7BSUBHEAD%7D%7D&amp;link=%7B%7BURL%7D%7D&amp;picture=%7B%7BIMAGE%7D%7D&#39;">https://www.facebook.com/sharer/sharer.php?u={{URL}}&amp;title={{TITLE}}&amp;description={{DESCRIPTION}}&amp;caption={{SUBHEAD}}&amp;link={{URL}}&amp;picture={{IMAGE}}&#39;</a>,
+twitter     : &#39;<a href="https://twitter.com/intent/tweet?text=%7B%7BTITLE%7D%7D&amp;url=%7B%7BURL%7D%7D&amp;via=%7B%7BSITE_URL%7D%7D&#39;">https://twitter.com/intent/tweet?text={{TITLE}}&amp;url={{URL}}&amp;via={{SITE_URL}}&#39;</a>,
+google      : &#39;<a href="https://plus.google.com/share?url=%7B%7BURL%7D%7D&#39;">https://plus.google.com/share?url={{URL}}&#39;</a></p>
+<h5 id="微博">微博</h5>
+<p><a href="http://service.weibo.com/share/share.php">http://service.weibo.com/share/share.php</a>?</p>
+<pre><code>url=
+&amp;title=
+&amp;pic=可为空
+&amp;appkey=可为空</code></pre><h5 id="发送给qq好友">发送给QQ好友</h5>
+<p><a href="http://connect.qq.com/widget/shareqq/index.html">http://connect.qq.com/widget/shareqq/index.html</a>?</p>
+<pre><code>url=
+title=
+source= 默认读取head标签的site：&lt;meta name=&quot;site&quot; content=&quot;http://overtrue&quot; /&gt;
+desc=默认读取head标签的description：&lt;meta name=&quot;description&quot; content=&quot;http://overtrue&quot; /&gt;
+pics=</code></pre><h5 id="腾讯微博">腾讯微博</h5>
+<p><a href="http://share.v.t.qq.com/index.php">http://share.v.t.qq.com/index.php</a>?</p>
+<pre><code>c=share
+a=index
+title=
+url=
+pic=</code></pre><h5 id="豆瓣">豆瓣</h5>
+<p><a href="https://www.douban.com/share/service">https://www.douban.com/share/service</a>?</p>
+<pre><code>href=
+&amp;name=
+&amp;text=</code></pre><h5 id="豆瓣-1">豆瓣</h5>
+<p><a href="http://shuo.douban.com/!service/share">http://shuo.douban.com/!service/share</a>?</p>
+<pre><code>href=
+name=
+text=
+image=
+starid=0
+aid=0
+style=11</code></pre><h5 id="qq空间这个好像腾讯坏了，都是undefined">QQ空间(这个好像腾讯坏了，都是undefined)</h5>
+<p><a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey">http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey</a>?</p>
+<pre><code>url=
+desc=
+summary=
+site=</code></pre><h5 id="linkin">linkin</h5>
+<p><a href="http://www.linkedin.com/shareArticle">http://www.linkedin.com/shareArticle</a>?</p>
+<pre><code>mini=true
+ro=true
+title=
+url=
+summary=
+source=
+armin=armin</code></pre><h5 id="点点（不知道是什么东西）">点点（不知道是什么东西）</h5>
+<p><a href="http://www.diandian.com/share">http://www.diandian.com/share</a>?</p>
+<pre><code>lo= 文章链接
+ti= 文章标题
+type=link</code></pre><h5 id="facebook">facebook</h5>
+<p><a href="https://www.facebook.com/sharer/sharer.php">https://www.facebook.com/sharer/sharer.php</a>?</p>
+<pre><code>u= 文章链接</code></pre><h5 id="twitter">twitter</h5>
+<pre><code>https://twitter.com/intent/tweet?
+text= 文章标题
+url=
+via= 好像是域名</code></pre><h5 id="google">google</h5>
+<pre><code>https://plus.google.com/share?
+url=</code></pre>
+        </div>
+    </div>
+    
+</body>
+</html>

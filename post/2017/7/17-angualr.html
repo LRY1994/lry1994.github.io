@@ -5,6 +5,10 @@
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
     <title>大脸圆玉的博客</title>
+    <script>
+        var alist = document.getElementsByTagName("a");
+        for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    </script>
 </head>
 <body>
     <div class="l-nav">
@@ -99,7 +103,7 @@ Angular 提供了另一种机制：decorator。</p>
    <img src='./17-angualr/4.png'/>
 
 <h3 id="滚屏加载">滚屏加载</h3>
-<pre><code>&lt;img src=&#39;./17-angualr/4.png&#39;/&gt;</code></pre><p><a href="http://sroze.github.io/ngInfiniteScroll/index.html">http://sroze.github.io/ngInfiniteScroll/index.html</a></p>
+<pre><code>&lt;img src=&#39;./17-angualr/4.png&#39;/&gt;</code></pre><p><a href="http://sroze.github.io/ngInfiniteScroll/index.html" target="_blank">http://sroze.github.io/ngInfiniteScroll/index.html</a></p>
 <p>get可以用来取本地文件，其他不可以</p>
 <h3 id="js-object-layout">js object layout</h3>
  <img src='./17-angualr/js-obj-layout.png'/>
@@ -115,7 +119,7 @@ Angular 提供了另一种机制：decorator。</p>
   <img src='./17-angualr/9.png'/>
 
 <h3 id="复杂的验证显示">复杂的验证显示</h3>
-  <img src='./17-angualr/10png'/>
+  <img src='./17-angualr/10.png'/>
 
 <h3 id="ngrepeat报重复内容错误">ngRepeat报重复内容错误</h3>
   <img src='./17-angualr/11.png'/>
@@ -126,15 +130,13 @@ Angular 提供了另一种机制：decorator。</p>
 <ol>
 <li><p>代码里很多和界面无交互的函数和变量都挂在$scope上面</p>
 <p>$scope是数据展示和各种事件的载体。与展示、交互行为无关的数据和方法最好不要挂载到$scope上，保持$scope的纯粹。
-参考链接
-<a href="https://github.com/atian25/blog/issues/5">保持$scope的纯粹</a></p>
+参考链接</p>
+<a href="https://github.com/atian25/blog/issues/5" target="_blank">
 </li>
 <li><p>避免深度watch， 即第三个参数为true.
 参考《mastering web application development with angularjs》 P313</p>
-<p>{% asset_img avoid-deep-watch.png avoid-deep-watch %}</p>
+<img src="./17-angualr/avoid-deep-watch.png">
 </li>
-</ol>
-<ol start="3">
 <li><p>及时移除不必要的$watch</p>
 <pre><code class="language-javascript">var watchFn = $scope.$watch(&#39;cycle&#39;, changeCycle);
 

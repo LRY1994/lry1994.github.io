@@ -33,8 +33,7 @@
             <h1 class="title">读《AngularJS深度剖析与最佳实践》</h1>            
             <p>I belong to : Reading</p>
             <hr/>
-            <p><img src="/images/book/angualr-deep-analysics.png" alt="cover"></p>
-<h3 id="组件型指令">组件型指令</h3>
+            <h3 id="组件型指令">组件型指令</h3>
 <p>对于组件型指令来说，标准的用法是E，但是为了兼容IE8，通
 常也支持一个A，因为IE8 的自定义元素需要先用document.createElement 注册，用A 可
 以省去注册的麻烦。对于组件型指令，更重要的是内容信息的展示，所以我们一般不涉及指令的link 函数，而应该尽量地将业务逻辑放置在Controller 中。</p>
@@ -44,9 +43,10 @@
 前面的例子
 <code>&lt;user-details name=&quot;test&quot; details=&quot;details&quot; on-update=&quot;updateIt(times)&quot;&gt;&lt;/userdetails&gt;</code>，
 假如不使用独立作用域，我们该如何获取这些属性的值呢？
-●对于 @ 型的绑定，我们可以直接通过 attrs 取到它：attrs.name 等价于 name: &#39;@&#39;。
-● 对于 = 型的绑定，我们可以通过 scope.$eval 取到它：scope.$eval(attrs.details) 等价</p>
-<p> {%  asset_img 2.png section %}</p>
+1 、对于 @ 型的绑定，我们可以直接通过 attrs 取到它：attrs.name 等价于 name: &#39;@&#39;。
+2、 对于 = 型的绑定，我们可以通过 scope.$eval 取到它：scope.$eval(attrs.details) 等价</p>
+ <img src='./17-angular/2.png'/>
+
 <h3 id="过滤器">过滤器</h3>
 <p>过滤器还可以接收第二个参数，乃至第N个参数，如：<code>return function(input, arg1, arg2, arg3){...};</code>,而使用者则通过</p>
 <pre><code>{{1|myFilter:2:3:4}}</code></pre><p>的形式调用它。这种情况下，arg1 的值为2，arg2的值为3，arg3 的值为4。</p>
@@ -70,7 +70,8 @@
 config 函数中使用，而其他的服务是不能被注入到config 函数中的。这也意味着，如果你
 需要在config 中使用一个全局配置项，那么它就只能声明为常量，而不能声明为变量。
 在官方的开发指南中，给出了一个完整的对比表，见表2-1。</p>
-<p>{% asset_img service-kind.png service-kind  %}</p>
+ <img src='./17-angular/service-kind.png'/>
+
 <p>由于 Factory 可以根据程序逻辑返回不同的数据类型，所以我们无法推断其结果是什么类型，也就是对类型不够友好。Provider 由于其灵活性比Factory 更高，因此在类型友好性上和
 Factory 是一样的。</p>
 <p>● 在 config 阶段可用：只有 Constant 和 Provider 类型在 config 阶段可用，其他都是
@@ -79,35 +80,48 @@ Provider 实例化之后的结果，所以只有config 阶段完成后才可用�
 如果你确实需要对一个没有提供Provider 的第三方服务进行配置，该怎么办呢？
 Angular 提供了另一种机制：decorator。</p>
 <h3 id="angualr-mvc">angualr mvc</h3>
-<p>  {% asset_img mvc.png mvc  %}</p>
+   <img src='./17-angular/mvc.png'/>
+
 <h3 id="angular启动过程">angular启动过程</h3>
-<p>  {% asset_img start-process.png start-process  %}</p>
+   <img src='./17-angular/start-process.png'/>
+
 <h3 id="依赖注入">依赖注入</h3>
-<p>  {% asset_img 1.png section  %}</p>
+   <img src='./17-angular/1.png'/>
+
 <h3 id="浏览事件循环">浏览事件循环</h3>
-<p>  {% asset_img event-loop.png loop  %}</p>
+   <img src='./17-angular/event-loop.png'/>
+
 <h3 id="指令生命周期">指令生命周期</h3>
-<p>  {% asset_img directive-life-cycle.png cycle  %}</p>
+   <img src='./17-angular/directive-life-cycle.png'/>
+
 <h3 id="one-time绑定">one-time绑定</h3>
-<p>  {% asset_img 3.png section  %}
-  {% asset_img 4.png section  %}</p>
+   <img src='./17-angular/3.png'/>
+   <img src='./17-angular/4.png'/>
+
 <h3 id="滚屏加载">滚屏加载</h3>
-<p>  {% asset_img 5.png section  %}</p>
-<p><a href="http://sroze.github.io/ngInfiniteScroll/index.html">http://sroze.github.io/ngInfiniteScroll/index.html</a></p>
+<pre><code>&lt;img src=&#39;./17-angular/4.png&#39;/&gt;</code></pre><p><a href="http://sroze.github.io/ngInfiniteScroll/index.html">http://sroze.github.io/ngInfiniteScroll/index.html</a></p>
 <p>get可以用来取本地文件，其他不可以</p>
 <h3 id="js-object-layout">js object layout</h3>
-<p> {% asset_img js-obj-layout.png.png js-obj-layout  %}</p>
+ <img src='./17-angular/js-obj-layout.png'/>
+
 <h3 id="其他">其他</h3>
-<p>  {% asset_img 7.png section  %}</p>
+   <img src='./17-angular/7.png'/>
+
+
 <h3 id="anchorscroll服务">$anchorScroll服务</h3>
-<p>  {% asset_img 8.png section  %}</p>
+   <img src='./17-angular/8.png'/>
+
 <h3 id="ngrepeat验证失败-，简单的验证显示">ngRepeat验证失败 ，简单的验证显示</h3>
-<p>  {% asset_img 9.png section  %}</p>
+  <img src='./17-angular/9.png'/>
+
 <h3 id="复杂的验证显示">复杂的验证显示</h3>
-<p>  {% asset_img 10.png section  %}</p>
+  <img src='./17-angular/10png'/>
+
 <h3 id="ngrepeat报重复内容错误">ngRepeat报重复内容错误</h3>
-<p>  {% asset_img 11.png section  %}
-  {% asset_img 12.png section  %}</p>
+  <img src='./17-angular/11.png'/>
+   <img src='./17-angular/12.png'/>
+
+
 <h3 id="优化">优化</h3>
 <ol>
 <li><p>代码里很多和界面无交互的函数和变量都挂在$scope上面</p>
@@ -126,8 +140,8 @@ Angular 提供了另一种机制：decorator。</p>
 
 watchFn();//移除watch</code></pre>
 </li>
-<li><p>减少watch的变量长度，例如对双向绑定的变量用标签例如<span>包起来</p>
-<p>{% asset_img shorten-watch.png shorten-watch %}</p>
+<li><p>减少watch的变量长度，例如对双向绑定的变量用标签例如<code>&lt;span&gt;</code>包起来</p>
+<img src='./17-angular/shorten-watch.png'/>
 </li>
 <li><p>ng-repeat使用 track by</p>
 <p>刷新数据时，我们常这么做：$scope.tasks = data || [];，这会导致angular移除掉所有的DOM，重新创建和渲染。</p>

@@ -42,8 +42,11 @@
 <p><code>event.offsetY</code> 相对容器的垂直坐标 </p>
 <p>网页正文项目组上： <code>window.screenTop</code>;</p>
 <p>网页正文项目组左： <code>window.screenLeft</code>;</p>
-<p>{% asset_img element-position.gif %}
-{% asset_img pic2.jpg %}</p>
+<img src="./load-process/visible-area.gif" >
+
+<img src="./load-process/pic2.jpg" >
+
+
 <p>clientTop/clientLeft  这个属性就是border宽度。</p>
 <p>offset包括border,client不包括border</p>
 <p>document.documentElement / body要做兼容</p>
@@ -162,7 +165,9 @@ var h=document.documentElement.scrollHeight|| document.body.scrollHeight;</code>
 var h= document.documentElement.offsetHeight|| document.body.offsetHeight;</code></pre>
 <h2 id="网页卷去的距离与偏移量">网页卷去的距离与偏移量</h2>
 <p>我们先来看看下面的图：</p>
-<p>{% asset_img scroll.png %}</p>
+<img src="./load-process/scroll.png" >
+
+
 <p><code>scrollLeft</code>:设置或获取位于给定对象左边界与窗口中目前可见内容的最左端之间的距离 ，即左边灰色的内容。</p>
 <p><code>scrollTop</code>:设置或获取位于对象最顶端与窗口中可见内容的最顶端之间的距离,即网页被卷去的高，即上边灰色的内容。向上滚动的距离</p>
 <p><code>offsetLeft</code>:获取指定对象相对于版面或由 offsetParent 属性指定的父坐标的计算左侧位置 。</p>
@@ -178,7 +183,8 @@ var h= document.documentElement.offsetHeight|| document.body.offsetHeight;</code
     
 </body>
 <script type="text/javascript">
-    var alist = document.getElementsByTagName("a");
+    //文章里面的外链都打开新窗口    
+    var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
 </script>
 </html>

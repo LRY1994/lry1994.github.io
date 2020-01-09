@@ -289,13 +289,29 @@
 
                 </li>
             
+                <li>
+                
+
+                    
+                        
+                            <img src='/static/img/blue-flower.png'/>
+                            
+                        <a href="/post/2020/1-manual-blog.html?index=31" class="title">不借助博客框架建博客</a>
+                        <div>
+                            <span>2017/12/28</span>
+                            <span>Experience</span>
+                        </div>
+
+                </li>
+            
         </ul>
      </div>
     </div>
    
 </body>
 <script type="text/javascript">
-    var alist = document.getElementsByTagName("a");
+    //文章里面的外链都打开新窗口    
+    var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
 </script>
 </html>

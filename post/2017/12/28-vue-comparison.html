@@ -39,12 +39,12 @@
 <p>工作闲暇之余会自己学习新知识，react很火，但是公司没有react的项目实操，所以自己找了网上一个比较适合入门的项目来练手，下面是我在边敲边学的过程中体验到的不同点。</p>
 <p>而react和vue就是轻量级的，要什么就去找，找来再用。</p>
 <ul>
-<li><a href="#React%E4%B8%8Evue%E6%AF%94%E8%BE%83">React与vue比较</a><ul>
+<li><a href="#react%E4%B8%8Evue%E6%AF%94%E8%BE%83">React与vue比较</a><ul>
 <li><a href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">生命周期</a></li>
 <li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
 </ul>
 </li>
-<li><a href="#React-redux%E4%B8%8Evuex%E6%AF%94%E8%BE%83">React-redux与vuex比较</a><ul>
+<li><a href="#react-redux%E4%B8%8Evuex%E6%AF%94%E8%BE%83">React-redux与vuex比较</a><ul>
 <li><a href="#1-%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B">1-使用流程</a></li>
 <li><a href="#2-%E5%85%B1%E4%BA%AB%E6%95%B0%E6%8D%AEstore">2-共享数据store</a></li>
 <li><a href="#3-%E6%A8%A1%E5%9D%97">3-模块</a></li>
@@ -58,9 +58,12 @@
 <h1 id="react与vue比较">React与vue比较</h1>
 <h3 id="生命周期">生命周期</h3>
 <h4 id="react生命周期">React生命周期</h4>
-<p>{% asset_img react-life.png react生命周期 %}</p>
+<img src="./28-vue-comparison/react-life.png">
+
 <h4 id="vue生命周期">vue生命周期</h4>
-<p>{% asset_img vue-life.png vue生命周期 %}</p>
+<img src="./28-vue-comparison/vue-life.png">
+
+
 <h3 id="总结">总结</h3>
 <h4 id="react">React</h4>
 <ol>
@@ -103,7 +106,8 @@
 <li>connect(mapStateToProps, mapDispatchToProps)（组件）</li>
 <li>组件里面使用this.props.（action.type）(action.data)</li>
 </ol>
-<p>{% asset_img react-redux-process.png react-redux使用流程 %}</p>
+<img src="./28-vue-comparison/react-redux-process.png">
+
 <h4 id="vuex">vuex</h4>
 <ol>
 <li>写好store和不同模块的state,mutations,getters,actions </li>
@@ -239,9 +243,11 @@ mapState<br>mapMutations<br>mapGetters<br>mapActions</p>
   ]),</code></pre>
 <h3 id="6-调用链">6-调用链</h3>
 <h4 id="react-redux调用链">React-redux调用链</h4>
-<p>{% asset_img react-redux-lian.png React-redux调用链 %}</p>
+<img src="./28-vue-comparison/react-redux-lian.png">
+
 <h4 id="vuex调用链">Vuex调用链</h4>
-<p>{% asset_img vuex-lian.png vuex调用链 %}</p>
+<img src="./28-vue-comparison/vuex-lian.png">
+
 <h3 id="7-总结">7-总结</h3>
 <h4 id="react-redux-1">React-redux</h4>
 <p>action是唯一修改state的方法</p>
@@ -263,7 +269,8 @@ mapState<br>mapMutations<br>mapGetters<br>mapActions</p>
     
 </body>
 <script type="text/javascript">
-    var alist = document.getElementsByTagName("a");
+    //文章里面的外链都打开新窗口    
+    var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
 </script>
 </html>

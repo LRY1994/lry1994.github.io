@@ -346,12 +346,15 @@ Base.call(obj); </code></pre>
   2. 如果某些文件会被定期生成，当有时内容并没有任何变化，但Last-Modified却改变了，导致文件没法使用缓存
   3. 有可能存在服务器没有准确获取文件修改时间，或者与代理服务器时间不一致等情形</code></pre></li>
 </ul>
-<p>{% asset_img cache.png 浏览器缓存机制 %}
-{% asset_img cache2.png 浏览器缓存机制 %}</p>
-<p>{% asset_img cache-control.png %}</p>
-<p>{% asset_img user_cache.png 用户行为影响浏览器缓存 %}</p>
+<img src="./interview/cache.png">
+<img src="./interview/cache2.png">
+<img src="./interview/cache-control.png">
+<img src="./interview/user_cache.png">
+
 <p>浏览器的缓存来源是怎么设置的？</p>
-<p>{% asset_img cache_from.png 浏览器缓存来源 %}</p>
+<img src="./interview/cache_from.png">
+
+
 <p>看到知乎有人讨论 <a href="https://www.zhihu.com/question/64201378">https://www.zhihu.com/question/64201378</a></p>
 <h3 id="写出几种ie6-bug的解决方法">写出几种IE6 BUG的解决方法</h3>
 <ol>
@@ -465,7 +468,8 @@ fetch(url, {
     
 </body>
 <script type="text/javascript">
-    var alist = document.getElementsByTagName("a");
+    //文章里面的外链都打开新窗口    
+    var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
 </script>
 </html>

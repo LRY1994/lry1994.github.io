@@ -63,7 +63,7 @@ Date.now();</code></pre>
 <p>上面说的两种方法， 获取的精度都是<code>毫秒级(10^-6)</code></p>
 <p>ES5提出的<code>performance</code>可以获取到，<code>微秒级别(10^-9)</code></p>
 <p><code>performance.timing</code>对象
-{% asset_img timing.png %}</p>
+<img src="./load-process/timing.png" ></p>
 <p> <a href="https://www.cnblogs.com/libin-1/p/6501951.html">https://www.cnblogs.com/libin-1/p/6501951.html</a></p>
 <p>比如，我们获得重定向时间用:</p>
 <pre><code class="language-javascript">var time = performance.timing;
@@ -183,8 +183,10 @@ performance.timing.domContentLoadedEventStart - performance.timing.domLoading; /
 <h2 id="redirect">redirect</h2>
 <p>这是页面加载的第一步(也有可能没有). 比如，当一个页面已经迁移，但是你输入原来的网站地址的时候就会发生。 </p>
 <p>或者， 比如<code>example.com</code> -&gt;<code>m.example.com/home</code>。</p>
-<p>这里就会经过两次DNS解析，TCP连接，以及请求的发送,耗费的时间成本是双倍的。所以，<code>在后台设置好正确的网址是很重要的。</code>
- {% asset_img 2.png %}</p>
+<p>这里就会经过两次DNS解析，TCP连接，以及请求的发送,耗费的时间成本是双倍的。所以，<code>在后台设置好正确的网址是很重要的。</code></p>
+<img src="./load-process/2.png" >
+
+
 <p>这里，我们可以使用<code>performance</code>的属性,计算出<code>重定向时间</code></p>
 <pre><code class="language-javascript">redirectTime = redirectEnd - redirectStart</code></pre>
 <h2 id="cachednstcprequestresponse">cache,DNS,TCP,Request,Response</h2>
@@ -342,7 +344,8 @@ ready:function(wait) {
     
 </body>
 <script type="text/javascript">
-    var alist = document.getElementsByTagName("a");
+    //文章里面的外链都打开新窗口    
+    var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
 </script>
 </html>

@@ -61,9 +61,10 @@ obj=Object.create(null)</code></pre>
 <li><a href="#Publich-Subscribe.js">Publich-Subscribe</a></li>
 <li>Visitor</li>
 </ul>
-<p>Observer和Publich-Subscribe的区别
-{%asset_img observer.png%}
-{%asset_img publish-suscriber.png%}</p>
+<p>Observer和Publich-Subscribe的区别</p>
+<img src="./design-pattern/observer.png">
+<img src="./design-pattern/publish-suscriber.png">
+
 <h1 id="prototypejs">Prototype.js</h1>
 <pre><code class="language-js">//Object.create
 var vehicle = {
@@ -272,7 +273,8 @@ var pubsub={};//调度中心
     
 </body>
 <script type="text/javascript">
-    var alist = document.getElementsByTagName("a");
+    //文章里面的外链都打开新窗口    
+    var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
 </script>
 </html>

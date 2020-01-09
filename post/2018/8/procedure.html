@@ -45,7 +45,7 @@
 <h3 id="darge-d3">darge-d3</h3>
 <p>github :<a href="https://github.com/dagrejs/dagre-d3">https://github.com/dagrejs/dagre-d3</a></p>
 <p>效果图
-{% asset_img darge-d3.png %}</p>
+<img src="./procedure/darge-d3.png"></p>
 <p>下载里面的demo,改一下json就可以了</p>
 <pre><code class="language-json">// States 
 var states = [ &quot;NEW&quot;, &quot;SUBMITTED&quot;,&quot;FINISHED&quot; ,&quot;FAILED&quot;,&quot;DELIVER&quot;, 
@@ -78,7 +78,7 @@ g.setEdge(&quot;FAILED&quot;,   &quot;CANCELED&quot;,     { label: &quot;用户�
 <p>github :<a href="https://github.com/NorthwoodsSoftware/GoJS">https://github.com/NorthwoodsSoftware/GoJS</a></p>
 <p>可以通过<code>npm install gojs -save</code>安装</p>
 <p>效果图
-{% asset_img gojs.png %}</p>
+<img src="./procedure/gojs.png"></p>
 <p>看里面的demo我自己包装了一下</p>
 <pre><code class="language-html">&lt;template&gt;
 &lt;div&gt;
@@ -257,7 +257,7 @@ npm run dev 的时候停在这里停了好久。有时候还爆出“......maxim
 <h3 id="jointjs">jointjs</h3>
 <p>github : <a href="https://github.com/clientIO/joint">https://github.com/clientIO/joint</a> 
 效果图
-{% asset_img jointjs.png %}</p>
+<img src="./procedure/jointjs.png"></p>
 <p>可以通过<code>npm install jointjs -save</code>安装</p>
 <p>参照了很多demo和文档，用的是矩形，但是可以设置圆角的度数变成椭圆形，其他形状我就无力了。</p>
 <p>可以自定义矩形的样式和矩形框里面的文字样式</p>
@@ -602,10 +602,13 @@ export default {
 经过一番实践，我觉得jointjs不好用了。
 不满意点：</p>
 <ol>
-<li>不能相对容器自动布局，都用的是死的像素，分辨率低的屏幕，部分图有些就看不见
-{% asset_img joint-error.png %}</li>
-<li>不能滚动鼠标自己缩小放大</li>
-<li>比较丑，也可能是我不会配色</li>
+<li><p>不能相对容器自动布局，都用的是死的像素，分辨率低的屏幕，部分图有些就看不见</p>
+<img src="./procedure/joint-error.png">
+</li>
+<li><p>不能滚动鼠标自己缩小放大</p>
+</li>
+<li><p>比较丑，也可能是我不会配色</p>
+</li>
 </ol>
 <p>最终采用gojs,上面提到的问题解决方案是：把去掉水印的gojs放在自己的npm服务器上，这样就可以npm安装了！！！
 实践过程中遇到个问题</p>
@@ -643,7 +646,8 @@ methods:{
     
 </body>
 <script type="text/javascript">
-    var alist = document.getElementsByTagName("a");
+    //文章里面的外链都打开新窗口    
+    var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
 </script>
 </html>

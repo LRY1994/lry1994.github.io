@@ -170,7 +170,7 @@ const oldObj = {
 </code></pre>
 <h2 id="tostring和typeof区别">toString和typeof区别</h2>
 <p>之前一直不知道这两个有什么区别，所以这次好好研究一下，探索出来这样的关系
- {% asset_img toString_typeof.png %}</p>
+<img src="./deepClone/toString_typeof.png"></p>
 <p>下面是一些测试例子</p>
 <pre><code class="language-javascript">var toString = Object.prototype.toString;
 
@@ -236,7 +236,8 @@ console.log(toString.call(a));//[object Symbol]
     
 </body>
 <script type="text/javascript">
-    var alist = document.getElementsByTagName("a");
+    //文章里面的外链都打开新窗口    
+    var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
 </script>
 </html>

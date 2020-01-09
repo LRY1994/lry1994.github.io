@@ -70,18 +70,24 @@
 <p>6、最少知道原则</p>
 <h2 id="在别的地方看到的图">在别的地方看到的图</h2>
 <p>性能优化</p>
-<p>{% asset_img performance-optimize.png 性能优化 %}</p>
+<img src="./30-web-full-stack-study/performance-optimize.png">
+
 <p>图片适配</p>
-<p>{% asset_img pic-adapt.jpg 图片适配 %}</p>
-<p>aria无障碍文本
-{% asset_img aria.png aria %}</p>
+<img src="./30-web-full-stack-study/pic-adapt.jpg">
+
+<p>aria无障碍文本</p>
+<img src="./30-web-full-stack-study/aria.png">
+
+
+
 
         </div>
     </div>
     
 </body>
 <script type="text/javascript">
-    var alist = document.getElementsByTagName("a");
+    //文章里面的外链都打开新窗口    
+    var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
 </script>
 </html>

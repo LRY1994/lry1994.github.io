@@ -46,7 +46,8 @@
 <p><code>setTimeout(fn,0)</code>表示当前代码执行完（执行栈清空）以后，立即执行（0毫秒间隔）指定的回调函数。</p>
 <p><code>Promise</code>，里面的函数是直接执行的.</p>
 <p><code>Promise</code> 的 then 应当会放到当前 &quot;执行栈&quot;的尾部</p>
-<p>{% asset_img js_zhan_duilie.jpg js堆栈 %}</p>
+<img src="./js-problem/js_zhan_duilie.jpg" title="js堆栈">
+
 <p>在Javascript引擎里面，队列还分为 Task队列（也有人叫做 MacroTask）和 MicroTask队列， MicroTask会优先于 Task执行。</p>
 <p>比如常见的点击事件、 setImmediate、 setTimeout、 MessageChannel等会放入 Task队列，</p>
 <p>但是 Promise以及 MutationObserver会放到 Microtask队列。</p>
@@ -54,7 +55,8 @@
 <p>Task(MacroTask)队列中： <strong>setImmediate &gt; MessageChannel &gt; setTimeout 0</strong></p>
 <p><a href="https://mp.weixin.qq.com/s/2ilx-5kDvszjF66iAvYQlg?utm_medium=hao.caibaojian.com&amp;utm_source=hao.caibaojian.com">你真的了解Javascript执行顺序么？</a></p>
 <h3 id="settimeout">setTimeOut</h3>
-<p>{%asset_img setTimeOut.jpg%}</p>
+<img src="./js-problem/setTimeOut.jpg" title="js堆栈">
+
 <p><a href="http://www.cnblogs.com/sprying/archive/2013/05/26/3100639.html">谈谈JavaScript的异步实现</a></p>
 <ul>
 <li><p>1</p>
@@ -221,18 +223,20 @@ document.write(myarr2.sort());//1,100,16,50,6,80</code></pre>
 <p>原因 ：因为按unicode码顺序排列。如要实现排序，就必须手写排序函数</p>
 </li>
 </ul>
-<p>{% asset_img 1.png %}
-{% asset_img 2.png %}
-{% asset_img 3.png %}
-{% asset_img 4.png %}
-{% asset_img 5.png %}
-{% asset_img 6.png %}
-{% asset_img 7.png %}</p>
+<img src="./js-problem/1.png" >
+<img src="./js-problem/2.png" >
+<img src="./js-problem/3.png" >
+<img src="./js-problem/4.png" >
+<img src="./js-problem/5.png" >
+<img src="./js-problem/6.png" >
+<img src="./js-problem/7.png" >
+
+
 <p>什么是普通对象？？？
-{% asset_img 8.png %}
-{% asset_img 9.png %}</p>
+<img src="./js-problem/8.png" >
+<img src="./js-problem/9.png" ></p>
 <p>为什么result先输出？？？？
-{% asset_img 10.png %}</p>
+<img src="./js-problem/10.png" ></p>
 <h2 id="你知道为什么会有-generator-吗">你知道为什么会有 Generator 吗?</h2>
 <p><a href="https://juejin.im/post/5adae8246fb9a07aa541e150">你知道为什么会有 Generator 吗</a></p>
 <h2 id="柯里化--部分求值">柯里化--部分求值</h2>
@@ -345,7 +349,8 @@ null instanceof null//会抛出异常：``Uncaught TypeError: Right-hand side of
     
 </body>
 <script type="text/javascript">
-    var alist = document.getElementsByTagName("a");
+    //文章里面的外链都打开新窗口    
+    var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
 </script>
 </html>

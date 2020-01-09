@@ -104,7 +104,7 @@ clientRequest.setNoDelay()</p>
 事实上，javascript是单线程的，**Node自身其实是多线程的**，只是I/O线程使用的CPU较少。
 除了用户代码无法并行执行外，所有的I/O（磁盘I/O和网络I/O等）都是可以并行执行的。
 
-{% asset_img async-io.png %}
+&lt;img src=&quot;./node/async-io.png&quot;&gt;
 
 ## 非I/O异步的方法
 非I/O异步的方法：``setTimeout``,``setInterval``,``setImmediate``,``process.nextTick``
@@ -112,7 +112,8 @@ clientRequest.setNoDelay()</p>
 ### ``setTimeout``,``setInterval``
 调用``setTimeout``,``setInterval``创建的定时器会被插入到定时器观察者内部的一个红黑树里面。每次Tick执行，就从改红合数中迭代去除定时器对象，检查是否超过定时时间。如果超过，就形成一个事件，回调函数立即执行
 
-{% asset_img setTimeout.png %}
+&lt;img src=&quot;./node/setTimeout.png&quot;&gt;
+
 
 ### ``process.nextTick`` VS ``setTimeout(function(){},0)``
 立即执行一个异步任务可以用``process.nextTick``。
@@ -151,7 +152,8 @@ while(neW Date()-s&lt;100){}</code></pre><h3 id="异步编程解决方案">异�
 <li><p>promise/deferred</p>
 </li>
 </ul>
-<p>{% asset_img promise-deferred.png %}</p>
+<img src="./node/promise-deferred.png">
+
 <h4 id="流程控制库">流程控制库</h4>
 <ul>
 <li><p>async</p>
@@ -185,7 +187,8 @@ while(neW Date()-s&lt;100){}</code></pre><h3 id="异步编程解决方案">异�
 </li>
 <li><p>内存</p>
 <p>  进程的内存包括rss(常驻内存)、交换区swap中一部分和文件系统中一部分</p>
-<p>  {% asset_img v8-heap.png %}</p>
+  <img src="./node/v8-heap.png">
+
 <p>  Node的内存使用并非都是通过V8进行分配的，那些不是通过V8进行分配的内存叫做 <strong>堆外内存</strong>.利用堆外内存可以突破内存限制</p>
 <p> 堆外内存 + v8堆内存(<code>process.memoryUsage()</code>) = rss</p>
 <p> Buffer对象不经过V8的内存分配机制</p>
@@ -465,7 +468,8 @@ rs.pipe(ts).pipe(ws)</code></pre>
     
 </body>
 <script type="text/javascript">
-    var alist = document.getElementsByTagName("a");
+    //文章里面的外链都打开新窗口    
+    var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
 </script>
 </html>

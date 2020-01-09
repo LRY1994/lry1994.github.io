@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -71,9 +75,9 @@
 <li>v-for 具有比 v-if 更高的优先级。
 它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一 key 属性。</li>
 </ul>
-<pre><code class="language-html">&lt;div v-for=&quot;item in items&quot; :key=&quot;item.id&quot;&gt;
-  &lt;!-- 内容 --&gt;
-&lt;/div&gt;</code></pre>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"item in items"</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"item.id"</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- 内容 --&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
 <ul>
 <li><p>建议尽可能在使用 v-for 时提供 key，除非遍历输出的 DOM 内容非常简单，或者是刻意依赖默认行为以获取性能上的提升。</p>
 <p>2.2.0+ 的版本里，当在组件中使用 v-for 时，key 现在是必须的。</p>
@@ -126,12 +130,12 @@ favoriteColor: &#39;Vue Green&#39;
 <li><p>当使用的不是字符串模板时，camelCase (驼峰式命名) 的 prop 需要转换为相对应的 kebab-case (短横线分隔式命名)</p>
 </li>
 <li><p>初学者常犯的一个错误是使用字面量语法传递数值：</p>
-<pre><code class="language-html">&lt;!-- 传递了一个字符串 &quot;1&quot; --&gt;
-&lt;comp some-prop=&quot;1&quot;&gt;&lt;/comp&gt;</code></pre>
+<pre><code class="language-html"><span class="hljs-comment">&lt;!-- 传递了一个字符串 "1" --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">comp</span> <span class="hljs-attr">some-prop</span>=<span class="hljs-string">"1"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">comp</span>&gt;</span></code></pre>
 <p>因为它是一个字面量 prop，它的值是字符串 &quot;1&quot; 而不是一个数值。</p>
 <p>如果想传递一个真正的 JavaScript 数值，则需要使用 v-bind，从而让它的值被当作 JavaScript 表达式计算：</p>
-<pre><code class="language-html">&lt;!-- 传递真正的数值 --&gt;
-&lt;comp v-bind:some-prop=&quot;1&quot;&gt;&lt;/comp&gt;</code></pre>
+<pre><code class="language-html"><span class="hljs-comment">&lt;!-- 传递真正的数值 --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">comp</span> <span class="hljs-attr">v-bind:some-prop</span>=<span class="hljs-string">"1"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">comp</span>&gt;</span></code></pre>
 </li>
 <li><p>每次父组件更新时，子组件的所有 prop 都会更新为最新值。这意味着你不应该在子组件内部改变 prop。注意在 JavaScript 中对象和数组是    引用类型，指向同一个内存空间，</p>
 <p>  如果 prop 是一个对象或数组，在子组件内部改变它会影响父组件的状态。</p>
@@ -186,12 +190,12 @@ favoriteColor: &#39;Vue Green&#39;
 <p>  <code>url-loader</code> 允许你有条件将文件转换为内联的 <code>base-64 URL</code> (当文件小于给定的阈值)，这会减少小文件的 HTTP 请求。如果文件大于该阈值，会自动的交给 file-loader 处理。</p>
 <p>  对于 css, 由<code>vue-style-loader</code> 返回的结果通常不太有用。使用 <code>postcss</code>插件将会是更好的选择。</p>
 <p>  <code>extract-text-webpack-plugin</code>:Extract text from a bundle, or bundles, into a separate file.</p>
-<pre><code>  ``javascript
-  loader: &#39;vue-loader&#39;,
-          options: {
-            extractCSS: true
-          }
-  ``</code></pre><p><code>HtmlWebpackPlugin</code>： 使得webpack入口点生成的文件都会在生成的HTML文件中的script标签内。
+<pre><code>  <span class="hljs-string">``javascript</span>
+  <span class="hljs-attr">loader:</span> <span class="hljs-string">'vue-loader'</span><span class="hljs-string">,</span>
+          <span class="hljs-attr">options:</span> <span class="hljs-string">{</span>
+            <span class="hljs-attr">extractCSS:</span> <span class="hljs-literal">true</span>
+          <span class="hljs-string">}</span>
+  <span class="hljs-string">``</span></code></pre><p><code>HtmlWebpackPlugin</code>： 使得webpack入口点生成的文件都会在生成的HTML文件中的script标签内。
 <code>ExtractTextPlugin</code>提取CSS，然后包含在HTML head中的link标签内。</p>
 <h2 id="完整的导航解析流程-vue-router">完整的导航解析流程 vue-router</h2>
 <ol>
@@ -217,5 +221,8 @@ favoriteColor: &#39;Vue Green&#39;
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

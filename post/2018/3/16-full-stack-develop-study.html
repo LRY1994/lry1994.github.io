@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -164,34 +168,34 @@ GoAcess/Hadoop/Spark.Logstash/ElasticSearch/Kibana</li>
 <p>在<code>project-name/project-name</code>目录下</p>
 <p><code>django-admin startapp homepage</code></p>
 <p>文件目录</p>
-<pre><code>    - project-name          
-        - project-name
-            - __init__.py //指明这是一个Python模块
-            - settings.py //包含数据库环境、启用插件等的配置
-            - urls.py  //指明了某个URL应该指向某个函数来处理
-            - wsgi.py  //用于部署
-            - requirements
-                - dev.txt
-                - prod.txt
+<pre><code>    -<span class="ruby"> project-name          
+</span>        -<span class="ruby"> project-name
+</span>            -<span class="ruby"> __init_<span class="hljs-number">_</span>.py /<span class="hljs-regexp">/指明这是一个Python模块
+</span></span>            -<span class="ruby"><span class="hljs-regexp"> settings.py /</span><span class="hljs-regexp">/包含数据库环境、启用插件等的配置
+</span></span>            -<span class="ruby"><span class="hljs-regexp"> urls.py  /</span><span class="hljs-regexp">/指明了某个URL应该指向某个函数来处理
+</span></span>            -<span class="ruby"><span class="hljs-regexp"> wsgi.py  /</span><span class="hljs-regexp">/用于部署
+</span></span>            -<span class="ruby"><span class="hljs-regexp"> requirements
+</span></span>                -<span class="ruby"><span class="hljs-regexp"> dev.txt
+</span></span>                -<span class="ruby"><span class="hljs-regexp"> prod.txt
+</span></span>
+        -<span class="ruby"><span class="hljs-regexp"> homepage 
+</span></span>            -<span class="ruby"><span class="hljs-regexp"> __init__.py
+</span></span>            -<span class="ruby"><span class="hljs-regexp"> admin.py
+</span></span>            -<span class="ruby"><span class="hljs-regexp"> apps.py
+</span></span>            -<span class="ruby"><span class="hljs-regexp"> models.py /</span><span class="hljs-regexp">/ 模型
+</span></span>            -<span class="ruby"><span class="hljs-regexp"> tests.py
+</span></span>            -<span class="ruby"><span class="hljs-regexp"> views.py /</span><span class="hljs-regexp">/业务逻辑
+</span></span>            -<span class="ruby"><span class="hljs-regexp"> migratios
+</span></span>                -<span class="ruby"><span class="hljs-regexp"> __init__.py
+</span></span>
 
-        - homepage 
-            - __init__.py
-            - admin.py
-            - apps.py
-            - models.py // 模型
-            - tests.py
-            - views.py //业务逻辑
-            - migratios
-                - __init__.py
-
-
-        - templates
-        - static
-
-        - manage.py // 可以和django-admin做类似的事情
-        - fabfile.py // fab命令寻找的文件
-        - db.sqlite3
-</code></pre>
+        -<span class="ruby"><span class="hljs-regexp"> templates
+</span></span>        -<span class="ruby"><span class="hljs-regexp"> static
+</span></span>
+        -<span class="ruby"><span class="hljs-regexp"> manage.py /</span><span class="hljs-regexp">/ 可以和django-admin做类似的事情
+</span></span>        -<span class="ruby"><span class="hljs-regexp"> fabfile.py /</span><span class="hljs-regexp">/ fab命令寻找的文件
+</span></span>        -<span class="ruby"><span class="hljs-regexp"> db.sqlite3
+</span></span></code></pre>
         </div>
     </div>
     
@@ -200,5 +204,8 @@ GoAcess/Hadoop/Spark.Logstash/ElasticSearch/Kibana</li>
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -71,8 +75,8 @@ attribute和property之间的数据绑定是单向的，attribute-&gt;property�
 <h4 id="padding-top、margin-top等四个方向的值取决于父元素的宽，和父元素的高没有一点关系">padding-top、margin-top…等四个方向的值取决于父元素的<strong>宽</strong>，和父元素的高没有一点关系</h4>
 <h4 id="bind">bind</h4>
 <p>至于bind方法，他是直接改变这个函数的this指向并且返回一个新的函数，之后再次调用这个函数的时候this都是指向bind绑定的第一个参数。</p>
-<pre><code class="language-js">const test2 = dog.eatBone.bind(cat, &#39;喵喵喵&#39;, &#39;bind&#39;)
-test2()</code></pre>
+<pre><code class="language-js">const test2 = dog<span class="hljs-selector-class">.eatBone</span>.bind(cat, <span class="hljs-string">'喵喵喵'</span>, <span class="hljs-string">'bind'</span>)
+<span class="hljs-function"><span class="hljs-title">test2</span><span class="hljs-params">()</span></span></code></pre>
 <h4 id="new-一个对象具体做了什么">new 一个对象具体做了什么</h4>
 <p>(1) 创建一个新对象；
 (2)新对象的_proto_属性指向构造函数的原型对象。
@@ -90,21 +94,21 @@ Note: Object.prototype 这个对象是个例外，它的<strong>proto</strong>�
 <p>隐式原型指向这个对象的构造函数(constructor)的prototype</p>
 </blockquote>
 <p>隐式原型的作用：<strong>构成原型链</strong>。举个例子，当我们访问obj这个对象中的x属性时，如果在obj中找不到，那么就会沿着<strong>proto</strong>依次查找。</p>
-<pre><code class="language-js">function Person(name, age){
-    this.name = name;
-    this.age = age;
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name, age</span>)</span>{
+    <span class="hljs-keyword">this</span>.name = name;
+    <span class="hljs-keyword">this</span>.age = age;
 }
 
-function Student(score){
-    this.score = score;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Student</span>(<span class="hljs-params">score</span>)</span>{
+    <span class="hljs-keyword">this</span>.score = score;
 }
 
-Student.prototype = new Person(&#39;李明&#39;,22);
-var s = new Student(99);
+Student.prototype = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">'李明'</span>,<span class="hljs-number">22</span>);
+<span class="hljs-keyword">var</span> s = <span class="hljs-keyword">new</span> Student(<span class="hljs-number">99</span>);
 
-console.log(s instanceof Student);  //true
-console.log(s instanceof Person);  //true
-console.log(s instanceof Object);  //true
+<span class="hljs-built_in">console</span>.log(s <span class="hljs-keyword">instanceof</span> Student);  <span class="hljs-comment">//true</span>
+<span class="hljs-built_in">console</span>.log(s <span class="hljs-keyword">instanceof</span> Person);  <span class="hljs-comment">//true</span>
+<span class="hljs-built_in">console</span>.log(s <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Object</span>);  <span class="hljs-comment">//true</span>
 </code></pre>
 <p>&lt;img src=&quot;./mianjing/proto_link.png&gt;</p>
 <p>手绘原型链：
@@ -115,10 +119,10 @@ console.log(s instanceof Object);  //true
 继续和共享</p>
 <h4 id="typeof-和instanceof原理。">typeof 和instanceof原理。</h4>
 <ol>
-<li>instanceof原理：<pre><code class="language-js">//设 L instanceof R 
-//通过判断
-L.__proto__.__proto__ ..... === R.prototype ？
-//最终返回true or false</code></pre>
+<li>instanceof原理：<pre><code class="language-js"><span class="hljs-comment">//设 L instanceof R </span>
+<span class="hljs-comment">//通过判断</span>
+<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">L</span>.</span><span class="hljs-module"><span class="hljs-identifier">__proto__</span>.</span><span class="hljs-module"><span class="hljs-identifier">__proto__</span> </span><span class="hljs-operator">...</span></span>..<span class="hljs-operator"> === </span><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">R</span>.</span></span>prototype ？
+<span class="hljs-comment">//最终返回true or false</span></code></pre>
 </li>
 </ol>
 <ol start="2">
@@ -132,11 +136,11 @@ L.__proto__.__proto__ ..... === R.prototype ？
  有 2 个值比较特殊：
  undefined：用 - （−2^30）表示。
  null：对应机器码的 NULL 指针，一般是全零。</p>
-<pre><code class="language-js">typeof null === &#39;object&#39;;
-/*这样一来，null 就出了一个 bug。根据 type tags 信息，低位是 000，因此 null 被判断成了一个对象。这就是为什么 typeof null 的返回值是 object。*/
-null instanceof Object === false</code></pre>
+<pre><code class="language-js"><span class="hljs-string">typeof</span> <span class="hljs-literal">null</span> <span class="hljs-string">===</span> <span class="hljs-string">'object'</span><span class="hljs-string">;</span>
+<span class="hljs-string">/*这样一来，null</span> <span class="hljs-string">就出了一个</span> <span class="hljs-string">bug。根据</span> <span class="hljs-string">type</span> <span class="hljs-string">tags</span> <span class="hljs-string">信息，低位是</span> <span class="hljs-number">000</span><span class="hljs-string">，因此</span> <span class="hljs-literal">null</span> <span class="hljs-string">被判断成了一个对象。这就是为什么</span> <span class="hljs-string">typeof</span> <span class="hljs-literal">null</span> <span class="hljs-string">的返回值是</span> <span class="hljs-string">object。*/</span>
+<span class="hljs-literal">null</span> <span class="hljs-string">instanceof</span> <span class="hljs-string">Object</span> <span class="hljs-string">===</span> <span class="hljs-literal">false</span></code></pre>
 <p>而</p>
-<pre><code class="language-js">null instanceof null</code></pre>
+<pre><code class="language-js"><span class="hljs-literal">null</span> <span class="hljs-string">instanceof</span> <span class="hljs-literal">null</span></code></pre>
 <p>会抛出异常：<code>Uncaught TypeError: Right-hand side of &#39;instanceof&#39; is not an object</code></p>
 </li>
 </ol>
@@ -161,26 +165,26 @@ null instanceof Object === false</code></pre>
 <p> 　  2、  代码冗长。想用 CSS 实现稍微复杂一点动画,最后CSS代码都会变得非常笨重。</p>
 <h4 id="使用requestanimationframe有什么好处？">使用<code>requestAnimationFrame</code>有什么好处？</h4>
 <p>浏览器可以优化并行的动画动作，更合理的重新排列动作序列，并把能够合并的动作放在一个渲染周期内完成，从而呈现出更流畅的动画效果。比如，通过requestAnimationFrame()，JS动画能够和CSS动画/变换或SVG SMIL动画同步发生。另外，如果在一个浏览器标签页里运行一个动画，当这个标签页不可见时，浏览器会暂停它，这会减少CPU，内存的压力，节省电池电量。</p>
-<pre><code class="language-js">// shim layer with setTimeout fallback
-window.requestAnimFrame = (function(){
-  return  window.requestAnimationFrame       ||
-          window.webkitRequestAnimationFrame ||
-          window.mozRequestAnimationFrame    ||
-          function( callback ){
-            window.setTimeout(callback, 1000 / 60);
+<pre><code class="language-js"><span class="hljs-comment">// shim layer with setTimeout fallback</span>
+<span class="hljs-built_in">window</span>.requestAnimFrame = (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+  <span class="hljs-keyword">return</span>  <span class="hljs-built_in">window</span>.requestAnimationFrame       ||
+          <span class="hljs-built_in">window</span>.webkitRequestAnimationFrame ||
+          <span class="hljs-built_in">window</span>.mozRequestAnimationFrame    ||
+          <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"> callback </span>)</span>{
+            <span class="hljs-built_in">window</span>.setTimeout(callback, <span class="hljs-number">1000</span> / <span class="hljs-number">60</span>);
           };
 })();
 
 
-// usage:
-// instead of setInterval(render, 16) ....
+<span class="hljs-comment">// usage:</span>
+<span class="hljs-comment">// instead of setInterval(render, 16) ....</span>
 
-(function animloop(){
+(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">animloop</span>(<span class="hljs-params"></span>)</span>{
   requestAnimFrame(animloop);
   render();
 })();
-// place the rAF *before* the render() to assure as close to
-// 60fps with the setTimeout fallback.</code></pre>
+<span class="hljs-comment">// place the rAF *before* the render() to assure as close to</span>
+<span class="hljs-comment">// 60fps with the setTimeout fallback.</span></code></pre>
 <h4 id="css3动画，transition和animation的区别，">css3动画，transition和animation的区别，</h4>
 <ol>
 <li><p> 触发条件不同。transition通常和hover等事件配合使用，由事件触发。animation则和gif动态图差不多，立即播放。</p>
@@ -217,13 +221,13 @@ You do not have to specify every property that you care about when using a trans
 <a href="https://www.cnblogs.com/flyromance/p/5042187.html">https://www.cnblogs.com/flyromance/p/5042187.html</a></p>
 <h4 id="es5与es6继承的区别">ES5与ES6继承的区别</h4>
 <ol>
-<li>ES5先创建子类的实例对象，再实例化父类并添加到子类this中（Parent.apply(this)）<pre><code class="language-js">//在es5中的继承：
-function parent(a,b){
-this a = a;
-this b = b;
+<li>ES5先创建子类的实例对象，再实例化父类并添加到子类this中（Parent.apply(this)）<pre><code class="language-js"><span class="hljs-comment">//在es5中的继承：</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parent</span><span class="hljs-params">(a,b)</span></span>{
+<span class="hljs-keyword">this</span> a = a;
+<span class="hljs-keyword">this</span> b = b;
 }
-function child(c){
-this c = c
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">child</span><span class="hljs-params">(c)</span></span>{
+<span class="hljs-keyword">this</span> c = c
 };
 </code></pre>
 </li>
@@ -231,27 +235,27 @@ this c = c
 <p>parent.call(child,1,2)//通过子集去继承父级：
 //而去看call的底层方法可知，继承的过程是通过prototype属性,相当于
 child.prototype = new parent(1,2);</p>
-<pre><code>2. ES6是先创建父类的实例对象，在实例化子类中通过调用super方法访问父级后，再用子类的构造函数修改this。
+<pre><code><span class="hljs-number">2</span>. ES6是先创建父类的实例对象，在实例化子类中通过调用<span class="hljs-keyword">super</span>方法访问父级后，再用子类的构造函数修改<span class="hljs-keyword">this</span>。
 ```js
-class parent{
-　　constructor(a,b){
-　　　　this.a = a;
-　　　　this.b = b;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">parent</span></span>{
+　　<span class="hljs-keyword">constructor</span>(a,b){
+　　　　<span class="hljs-keyword">this</span>.a = a;
+　　　　<span class="hljs-keyword">this</span>.b = b;
 　　}
 　　parentMethods(){
-　　　　return this.a + this.b
+　　　　<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.a + <span class="hljs-keyword">this</span>.b
 　　}
 }
-class child extends parent{
-　　constructor(a,b,c){
-　　　　super(a,b);
-　　　　this.c = c;
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">child</span> <span class="hljs-title">extends</span> <span class="hljs-title">parent</span></span>{
+　　<span class="hljs-keyword">constructor</span>(a,b,c){
+　　　　<span class="hljs-keyword">super</span>(a,b);
+　　　　<span class="hljs-keyword">this</span>.c = c;
 　　}
 　　childMethods(){
-　　　　return this.c + &#39;,&#39; + super.parentMethods()
+　　　　<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.c + <span class="hljs-string">','</span> + <span class="hljs-keyword">super</span>.parentMethods()
 　　}
 }
-const point = new child(1,2,3);
+<span class="hljs-keyword">const</span> point = new child(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
 alert(point.childMethods());</code></pre><p>子类必须在constructor方法中调用super方法，否则新建实例报错。因为子类没有自己的this对象，而是继承了父类的this对象，然后对其进行加工。如果不调用super方法，子类得不到this对象。</p>
 <h4 id="moduleexports和exports区别">module.exports和exports区别</h4>
 <ol>
@@ -285,5 +289,8 @@ JS的API有哪些应用到了函数柯里化的实现？(bind函数和数组的r
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

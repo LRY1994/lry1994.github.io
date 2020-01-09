@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -48,31 +52,31 @@
 <img src="./procedure/darge-d3.png"></p>
 <p>下载里面的demo,改一下json就可以了</p>
 <pre><code class="language-json">// States 
-var states = [ &quot;NEW&quot;, &quot;SUBMITTED&quot;,&quot;FINISHED&quot; ,&quot;FAILED&quot;,&quot;DELIVER&quot;, 
-               &quot;CANCELED&quot;, &quot;ABOLISHED&quot; , &quot;DELETED&quot;,&quot;REFUNDING&quot;,&quot;REFUNDED&quot;];
-var map = [&#39;新创建&#39;,&#39;已提交&#39;,&#39;已完成&#39;,&#39;提交失败&#39;,&quot;交付中&quot;,
-              &#39;已取消&#39;,&#39;废除&#39;,&#39;已删除&#39;,&#39;退款中&#39;,&quot;已退款&quot;]
-// Automatically label each of the nodes
-states.forEach(function(state,index) { g.setNode(state, { label: `${map[index]}(${state})`})});
+var states = [ <span class="hljs-string">"NEW"</span>, <span class="hljs-string">"SUBMITTED"</span>,<span class="hljs-string">"FINISHED"</span> ,<span class="hljs-string">"FAILED"</span>,<span class="hljs-string">"DELIVER"</span>, 
+               <span class="hljs-string">"CANCELED"</span>, <span class="hljs-string">"ABOLISHED"</span> , <span class="hljs-string">"DELETED"</span>,<span class="hljs-string">"REFUNDING"</span>,<span class="hljs-string">"REFUNDED"</span>];
+var map = ['新创建','已提交','已完成','提交失败',<span class="hljs-string">"交付中"</span>,
+              '已取消','废除','已删除','退款中',<span class="hljs-string">"已退款"</span>]
+// Automatically <span class="hljs-keyword">label</span> each of the nodes
+states.<span class="hljs-keyword">for</span>Each(function(<span class="hljs-keyword">state</span>,index) { g.<span class="hljs-built_in">set</span>Node(<span class="hljs-keyword">state</span>, { <span class="hljs-keyword">label</span>: `${map[index]}(${<span class="hljs-keyword">state</span>})`})});
 
 // Set up the edges
-g.setEdge(&quot;NEW&quot;, &quot;FAILED&quot;,     { label: &quot;后台接口自动&quot;});
-g.setEdge(&quot;NEW&quot;, &quot;SUBMITTED&quot;,   { label: &quot;后台接口自动&quot; });
-g.setEdge(&quot;NEW&quot;, &quot;CANCELED&quot;,   { label: &quot;用户取消订单&quot; });
-g.setEdge(&quot;SUBMITTED&quot;,&quot;CANCELED&quot;,     { label: &quot;用户取消订单&quot; });
-g.setEdge(&quot;SUBMITTED&quot;, &quot;ABOLISHED&quot;,  { label: &quot;用户超过48小时未支付，\n系统自动取消&quot;});
-g.setEdge(&quot;ABOLISHED&quot;,&quot;DELETED&quot;,      { label: &quot;已删除&quot; });
-g.setEdge(&quot;CANCELED&quot;, &quot;DELETED&quot;,   { label: &quot;已删除&quot;});
-g.setEdge(&quot;FAILED&quot;,   &quot;SUBMITTED&quot;,      { label: &quot;后台接口自动&quot; });
+g.<span class="hljs-built_in">set</span>Edge(<span class="hljs-string">"NEW"</span>, <span class="hljs-string">"FAILED"</span>,     { <span class="hljs-keyword">label</span>: <span class="hljs-string">"后台接口自动"</span>});
+g.<span class="hljs-built_in">set</span>Edge(<span class="hljs-string">"NEW"</span>, <span class="hljs-string">"SUBMITTED"</span>,   { <span class="hljs-keyword">label</span>: <span class="hljs-string">"后台接口自动"</span> });
+g.<span class="hljs-built_in">set</span>Edge(<span class="hljs-string">"NEW"</span>, <span class="hljs-string">"CANCELED"</span>,   { <span class="hljs-keyword">label</span>: <span class="hljs-string">"用户取消订单"</span> });
+g.<span class="hljs-built_in">set</span>Edge(<span class="hljs-string">"SUBMITTED"</span>,<span class="hljs-string">"CANCELED"</span>,     { <span class="hljs-keyword">label</span>: <span class="hljs-string">"用户取消订单"</span> });
+g.<span class="hljs-built_in">set</span>Edge(<span class="hljs-string">"SUBMITTED"</span>, <span class="hljs-string">"ABOLISHED"</span>,  { <span class="hljs-keyword">label</span>: <span class="hljs-string">"用户超过48小时未支付，\n系统自动取消"</span>});
+g.<span class="hljs-built_in">set</span>Edge(<span class="hljs-string">"ABOLISHED"</span>,<span class="hljs-string">"DELETED"</span>,      { <span class="hljs-keyword">label</span>: <span class="hljs-string">"已删除"</span> });
+g.<span class="hljs-built_in">set</span>Edge(<span class="hljs-string">"CANCELED"</span>, <span class="hljs-string">"DELETED"</span>,   { <span class="hljs-keyword">label</span>: <span class="hljs-string">"已删除"</span>});
+g.<span class="hljs-built_in">set</span>Edge(<span class="hljs-string">"FAILED"</span>,   <span class="hljs-string">"SUBMITTED"</span>,      { <span class="hljs-keyword">label</span>: <span class="hljs-string">"后台接口自动"</span> });
 
-g.setEdge(&quot;SUBMITTED&quot;,   &quot;DELIVER&quot;,     { label: &quot;用户支付&quot; });
-g.setEdge(&quot;FINISHED&quot;,   &quot;REFUNDING&quot;,     { label: &quot;用户退款&quot; });
+g.<span class="hljs-built_in">set</span>Edge(<span class="hljs-string">"SUBMITTED"</span>,   <span class="hljs-string">"DELIVER"</span>,     { <span class="hljs-keyword">label</span>: <span class="hljs-string">"用户支付"</span> });
+g.<span class="hljs-built_in">set</span>Edge(<span class="hljs-string">"FINISHED"</span>,   <span class="hljs-string">"REFUNDING"</span>,     { <span class="hljs-keyword">label</span>: <span class="hljs-string">"用户退款"</span> });
 
-g.setEdge(&quot;DELIVER&quot;,   &quot;FINISHED&quot;,     { label: &quot;交付完成&quot; });
-g.setEdge(&quot;REFUNDING&quot;,   &quot;REFUNDED&quot;,     { label: &quot;已退款&quot; });
-g.setEdge(&quot;REFUNDED&quot;,   &quot;DELETED&quot;,     { label: &quot;已删除&quot; });
-g.setEdge(&quot;DELIVER&quot;,   &quot;REFUNDING&quot;,     { label: &quot;用户退款&quot; });
-g.setEdge(&quot;FAILED&quot;,   &quot;CANCELED&quot;,     { label: &quot;用户取消订单&quot; });</code></pre>
+g.<span class="hljs-built_in">set</span>Edge(<span class="hljs-string">"DELIVER"</span>,   <span class="hljs-string">"FINISHED"</span>,     { <span class="hljs-keyword">label</span>: <span class="hljs-string">"交付完成"</span> });
+g.<span class="hljs-built_in">set</span>Edge(<span class="hljs-string">"REFUNDING"</span>,   <span class="hljs-string">"REFUNDED"</span>,     { <span class="hljs-keyword">label</span>: <span class="hljs-string">"已退款"</span> });
+g.<span class="hljs-built_in">set</span>Edge(<span class="hljs-string">"REFUNDED"</span>,   <span class="hljs-string">"DELETED"</span>,     { <span class="hljs-keyword">label</span>: <span class="hljs-string">"已删除"</span> });
+g.<span class="hljs-built_in">set</span>Edge(<span class="hljs-string">"DELIVER"</span>,   <span class="hljs-string">"REFUNDING"</span>,     { <span class="hljs-keyword">label</span>: <span class="hljs-string">"用户退款"</span> });
+g.<span class="hljs-built_in">set</span>Edge(<span class="hljs-string">"FAILED"</span>,   <span class="hljs-string">"CANCELED"</span>,     { <span class="hljs-keyword">label</span>: <span class="hljs-string">"用户取消订单"</span> });</code></pre>
 <p><strong>不满意的地方</strong>：画出来的图是垂直方向的，我要的是水平方向,PASS</p>
 <h3 id="gojs">gojs</h3>
 <p>github :<a href="https://github.com/NorthwoodsSoftware/GoJS">https://github.com/NorthwoodsSoftware/GoJS</a></p>
@@ -80,161 +84,161 @@ g.setEdge(&quot;FAILED&quot;,   &quot;CANCELED&quot;,     { label: &quot;用户�
 <p>效果图
 <img src="./procedure/gojs.png"></p>
 <p>看里面的demo我自己包装了一下</p>
-<pre><code class="language-html">&lt;template&gt;
-&lt;div&gt;
-  &lt;p style=&quot;background-color:#d5d5d5;margin:0;padding:5px;&quot;&gt;
-    您当前处于 &lt;span class=&quot;tip&quot;&gt;用户提交资料&lt;/span&gt; 步骤 
-    下一步等待&lt;span class=&quot;tip&quot;&gt;供应商接单&lt;/span&gt;
-    &lt;el-button type=&quot;text&quot; v-if=&quot;show===false&quot; @click=&quot;show=true&quot;&gt;展开&lt;/el-button&gt;
-    &lt;el-button type=&quot;text&quot; v-else @click=&quot;show=false&quot;&gt;收起&lt;/el-button&gt;
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color:#d5d5d5;margin:0;padding:5px;"</span>&gt;</span>
+    您当前处于 <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"tip"</span>&gt;</span>用户提交资料<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> 步骤 
+    下一步等待<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"tip"</span>&gt;</span>供应商接单<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">el-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">"show===false"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"show=true"</span>&gt;</span>展开<span class="hljs-tag">&lt;/<span class="hljs-name">el-button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">el-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">v-else</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"show=false"</span>&gt;</span>收起<span class="hljs-tag">&lt;/<span class="hljs-name">el-button</span>&gt;</span>
 
-  &lt;/p&gt;
-  &lt;div id=&quot;myDiagramDiv&quot; v-show=&quot;show&quot;  &gt;&lt;/div&gt;
-  &lt;/div&gt; 
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myDiagramDiv"</span> <span class="hljs-attr">v-show</span>=<span class="hljs-string">"show"</span>  &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span> 
 
-&lt;/template&gt;
-&lt;style scoped&gt;
-.tip{
-  color:red;
-  font-size:0.8em;
-  font-weight:bold;
-  padding:5px;
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="css">
+<span class="hljs-selector-class">.tip</span>{
+  <span class="hljs-attribute">color</span>:red;
+  <span class="hljs-attribute">font-size</span>:<span class="hljs-number">0.8em</span>;
+  <span class="hljs-attribute">font-weight</span>:bold;
+  <span class="hljs-attribute">padding</span>:<span class="hljs-number">5px</span>;
 }
-#myDiagramDiv{
-  height: 200px; 
-  border: solid 1px #d3d3d3;
+<span class="hljs-selector-id">#myDiagramDiv</span>{
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">200px</span>; 
+  <span class="hljs-attribute">border</span>: solid <span class="hljs-number">1px</span> <span class="hljs-number">#d3d3d3</span>;
 }
 
-&lt;/style&gt;</code></pre>
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></code></pre>
 <pre><code class="language-javascript">&lt;script&gt;
-window.go =require(&#39;./go.js&#39;) 
-var $ = go.GraphObject.make;
+<span class="hljs-built_in">window</span>.go =require(<span class="hljs-string">'./go.js'</span>) 
+<span class="hljs-keyword">var</span> $ = go.GraphObject.make;
 
-import datam from &#39;./data&#39;;
-export default{
+<span class="hljs-keyword">import</span> datam from <span class="hljs-string">'./data'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span>{
   mixins:[datam],
   data(){
-    return{
-      myDiagram:null,
-      show:true
+    <span class="hljs-keyword">return</span>{
+      myDiagram:<span class="hljs-keyword">null</span>,
+      <span class="hljs-keyword">show</span>:<span class="hljs-keyword">true</span>
     }
   },
   mounted(){
-    this.load();
+    <span class="hljs-keyword">this</span>.load();
   },
   methods:{
     load(){
-      this.init();
-      this.addNodeTemplate(this.User);
-      this.addNodeTemplate(this.Supplier);
-      this.layout();
+      <span class="hljs-keyword">this</span>.init();
+      <span class="hljs-keyword">this</span>.addNodeTemplate(<span class="hljs-keyword">this</span>.User);
+      <span class="hljs-keyword">this</span>.addNodeTemplate(<span class="hljs-keyword">this</span>.Supplier);
+      <span class="hljs-keyword">this</span>.layout();
     },
     layout() {
-      this.myDiagram.model = go.Model.fromJson(this.myjson);
-      this.myDiagram.layoutDiagram(true);
+      <span class="hljs-keyword">this</span>.myDiagram.model = go.Model.fromJson(<span class="hljs-keyword">this</span>.myjson);
+      <span class="hljs-keyword">this</span>.myDiagram.layoutDiagram(<span class="hljs-keyword">true</span>);
     },
 
     getOption(){
-      // for conciseness in defining templates
+      <span class="hljs-comment">// for conciseness in defining templates</span>
 
       let options={
-        yellowgrad : $(go.Brush, &quot;Linear&quot;, { 0: &quot;rgb(254, 201, 0)&quot;, 1: &quot;rgb(254, 162, 0)&quot; }),
-        greengrad : $(go.Brush, &quot;Linear&quot;, { 0: &quot;#98FB98&quot;, 1: &quot;#9ACD32&quot; }),
-        bluegrad : $(go.Brush, &quot;Linear&quot;, { 0: &quot;#B0E0E6&quot;, 1: &quot;#87CEEB&quot; }),
-        redgrad : $(go.Brush, &quot;Linear&quot;, { 0: &quot;#C45245&quot;, 1: &quot;#871E1B&quot; }),
-        whitegrad : $(go.Brush, &quot;Linear&quot;, { 0: &quot;#F0F8FF&quot;, 1: &quot;#E6E6FA&quot; }),
-        bigfont : &quot;bold 8pt Helvetica, Arial, sans-serif&quot;,
-        smallfont : &quot;bold 6pt Helvetica, Arial, sans-serif&quot;,
+        yellowgrad : $(go.Brush, <span class="hljs-string">"Linear"</span>, { <span class="hljs-number">0</span>: <span class="hljs-string">"rgb(254, 201, 0)"</span>, <span class="hljs-number">1</span>: <span class="hljs-string">"rgb(254, 162, 0)"</span> }),
+        greengrad : $(go.Brush, <span class="hljs-string">"Linear"</span>, { <span class="hljs-number">0</span>: <span class="hljs-string">"#98FB98"</span>, <span class="hljs-number">1</span>: <span class="hljs-string">"#9ACD32"</span> }),
+        bluegrad : $(go.Brush, <span class="hljs-string">"Linear"</span>, { <span class="hljs-number">0</span>: <span class="hljs-string">"#B0E0E6"</span>, <span class="hljs-number">1</span>: <span class="hljs-string">"#87CEEB"</span> }),
+        redgrad : $(go.Brush, <span class="hljs-string">"Linear"</span>, { <span class="hljs-number">0</span>: <span class="hljs-string">"#C45245"</span>, <span class="hljs-number">1</span>: <span class="hljs-string">"#871E1B"</span> }),
+        whitegrad : $(go.Brush, <span class="hljs-string">"Linear"</span>, { <span class="hljs-number">0</span>: <span class="hljs-string">"#F0F8FF"</span>, <span class="hljs-number">1</span>: <span class="hljs-string">"#E6E6FA"</span> }),
+        bigfont : <span class="hljs-string">"bold 8pt Helvetica, Arial, sans-serif"</span>,
+        smallfont : <span class="hljs-string">"bold 6pt Helvetica, Arial, sans-serif"</span>,
 
       }
 
-      return options;
+      <span class="hljs-keyword">return</span> options;
     },
 
      textStyle(){
-        return {
-          margin: 6,
+        <span class="hljs-keyword">return</span> {
+          margin: <span class="hljs-number">6</span>,
           wrap: go.TextBlock.WrapFit,
-          textAlign: &quot;center&quot;,
-          editable: true,
-          font: this.getOption()[&#39;bigfont&#39;]
+          textAlign: <span class="hljs-string">"center"</span>,
+          editable: <span class="hljs-keyword">true</span>,
+          font: <span class="hljs-keyword">this</span>.getOption()[<span class="hljs-string">'bigfont'</span>]
         }
       },
       init(){
-        this.myDiagram =
-            $(go.Diagram, &quot;myDiagramDiv&quot;,
+        <span class="hljs-keyword">this</span>.myDiagram =
+            $(go.Diagram, <span class="hljs-string">"myDiagramDiv"</span>,
               {
-                isReadOnly: true,
-                // have mouse wheel events zoom in and out instead of scroll up and down
-                &quot;toolManager.mouseWheelBehavior&quot;: go.ToolManager.WheelNone,
+                isReadOnly: <span class="hljs-keyword">true</span>,
+                <span class="hljs-comment">// have mouse wheel events zoom in and out instead of scroll up and down</span>
+                <span class="hljs-string">"toolManager.mouseWheelBehavior"</span>: go.ToolManager.WheelNone,
                 initialAutoScale: go.Diagram.Uniform,
-                &quot;linkingTool.direction&quot;: go.LinkingTool.ForwardsOnly,
+                <span class="hljs-string">"linkingTool.direction"</span>: go.LinkingTool.ForwardsOnly,
                 initialContentAlignment: go.Spot.Center,
-                layout: $(go.LayeredDigraphLayout, { isInitial: false, isOngoing: false, layerSpacing: 50 }),
-                &quot;undoManager.isEnabled&quot;: true
+                layout: $(go.LayeredDigraphLayout, { isInitial: <span class="hljs-keyword">false</span>, isOngoing: <span class="hljs-keyword">false</span>, layerSpacing: <span class="hljs-number">50</span> }),
+                <span class="hljs-string">"undoManager.isEnabled"</span>: <span class="hljs-keyword">true</span>
               });
-              //默认节点模板
-        this.myDiagram.nodeTemplate =
-            $(go.Node, &quot;Auto&quot;,
-              new go.Binding(&quot;location&quot;, &quot;loc&quot;, go.Point.parse).makeTwoWay(go.Point.stringify),
-              // define the node&#39;s outer shape, which will surround the TextBlock
-              $(go.Shape, &quot;Rectangle&quot;,
-                { fill: this.getOption()[&#39;yellowgrad&#39;], stroke: &quot;black&quot;,
-                  portId: &quot;&quot;, fromLinkable: true, toLinkable: true, cursor: &quot;pointer&quot;,
-                  toEndSegmentLength: 50, fromEndSegmentLength: 40 }),
-              $(go.TextBlock, &quot;Page&quot;,
-                { margin: 6,
-                  font: this.getOption()[&#39;bigfont&#39;],
-                  editable: true },
-                new go.Binding(&quot;text&quot;, &quot;text&quot;).makeTwoWay()));
-            // replace the default Link template in the linkTemplateMap
-          this.myDiagram.linkTemplate =
-                $(go.Link,  // the whole link panel
-                  new go.Binding(&quot;points&quot;).makeTwoWay(),
-                  { curve: go.Link.Bezier, toShortLength: 15 },
-                  new go.Binding(&quot;curviness&quot;, &quot;curviness&quot;),
-                  $(go.Shape,  // the link shape
-                    { stroke: &quot;#2F4F4F&quot;, strokeWidth: 2.5 }),
-                  $(go.Shape,  // the arrowhead
-                    { toArrow: &quot;kite&quot;, fill: &quot;#2F4F4F&quot;, stroke: null, scale: 2 })
+              <span class="hljs-comment">//默认节点模板</span>
+        <span class="hljs-keyword">this</span>.myDiagram.nodeTemplate =
+            $(go.Node, <span class="hljs-string">"Auto"</span>,
+              <span class="hljs-keyword">new</span> go.Binding(<span class="hljs-string">"location"</span>, <span class="hljs-string">"loc"</span>, go.Point.parse).makeTwoWay(go.Point.stringify),
+              <span class="hljs-comment">// define the node's outer shape, which will surround the TextBlock</span>
+              $(go.Shape, <span class="hljs-string">"Rectangle"</span>,
+                { fill: <span class="hljs-keyword">this</span>.getOption()[<span class="hljs-string">'yellowgrad'</span>], stroke: <span class="hljs-string">"black"</span>,
+                  portId: <span class="hljs-string">""</span>, fromLinkable: <span class="hljs-keyword">true</span>, toLinkable: <span class="hljs-keyword">true</span>, cursor: <span class="hljs-string">"pointer"</span>,
+                  toEndSegmentLength: <span class="hljs-number">50</span>, fromEndSegmentLength: <span class="hljs-number">40</span> }),
+              $(go.TextBlock, <span class="hljs-string">"Page"</span>,
+                { margin: <span class="hljs-number">6</span>,
+                  font: <span class="hljs-keyword">this</span>.getOption()[<span class="hljs-string">'bigfont'</span>],
+                  editable: <span class="hljs-keyword">true</span> },
+                <span class="hljs-keyword">new</span> go.Binding(<span class="hljs-string">"text"</span>, <span class="hljs-string">"text"</span>).makeTwoWay()));
+            <span class="hljs-comment">// replace the default Link template in the linkTemplateMap</span>
+          <span class="hljs-keyword">this</span>.myDiagram.linkTemplate =
+                $(go.Link,  <span class="hljs-comment">// the whole link panel</span>
+                  <span class="hljs-keyword">new</span> go.Binding(<span class="hljs-string">"points"</span>).makeTwoWay(),
+                  { curve: go.Link.Bezier, toShortLength: <span class="hljs-number">15</span> },
+                  <span class="hljs-keyword">new</span> go.Binding(<span class="hljs-string">"curviness"</span>, <span class="hljs-string">"curviness"</span>),
+                  $(go.Shape,  <span class="hljs-comment">// the link shape</span>
+                    { stroke: <span class="hljs-string">"#2F4F4F"</span>, strokeWidth: <span class="hljs-number">2.5</span> }),
+                  $(go.Shape,  <span class="hljs-comment">// the arrowhead</span>
+                    { toArrow: <span class="hljs-string">"kite"</span>, fill: <span class="hljs-string">"#2F4F4F"</span>, stroke: <span class="hljs-keyword">null</span>, scale: <span class="hljs-number">2</span> })
                   );
       },
-      /**
-       * options:{
-       *  category
-       *  shape:RoundedRectangle/Rectangle
-       *  shapeOptions:{
-       *   fill:bluegrad/greengrad/yellowgrad/null/redgrad/whitegrad  自定义的
-       *   stroke: &quot;black&quot;,
-       *   portId:&quot;&quot;
-       *   fromLinkable:true
-       *   toLinkable:
-       *   cursor:&quot;pointer&quot;
-       *   fromEndSegmentLength:40
-       *    toEndSegmentLength
-       *    strokeWidth
-       *  
-       *   }
-       *    textStyle:{
-       *        margin: 9,
-       *        maxSize: new go.Size(200, NaN),
-       *        wrap: go.TextBlock.WrapFit,
-        *       editable: true,
-        *       textAlign: &quot;center&quot;,
-        *       font: smallfont 
-        * },
-       *    
-       * }
-       */
+      <span class="hljs-comment"><span class="markdown">/**
+<span class="hljs-bullet">       * </span>options:{
+<span class="hljs-bullet">       *  </span>category
+<span class="hljs-bullet">       *  </span>shape:RoundedRectangle/Rectangle
+<span class="hljs-bullet">       *  </span>shapeOptions:{
+<span class="hljs-bullet">       *   </span>fill:bluegrad/greengrad/yellowgrad/null/redgrad/whitegrad  自定义的
+<span class="hljs-bullet">       *   </span>stroke: "black",
+<span class="hljs-bullet">       *   </span>portId:""
+<span class="hljs-bullet">       *   </span>fromLinkable:true
+<span class="hljs-bullet">       *   </span>toLinkable:
+<span class="hljs-bullet">       *   </span>cursor:"pointer"
+<span class="hljs-bullet">       *   </span>fromEndSegmentLength:40
+<span class="hljs-bullet">       *    </span>toEndSegmentLength
+<span class="hljs-bullet">       *    </span>strokeWidth
+<span class="hljs-bullet">       *  
+       </span>*   }
+<span class="hljs-bullet">       *    </span>textStyle:{
+<span class="hljs-bullet">       *        </span>margin: 9,
+<span class="hljs-bullet">       *        </span>maxSize: new go.Size(200, NaN),
+<span class="hljs-bullet">       *        </span>wrap: go.TextBlock.WrapFit,
+<span class="hljs-bullet">        *       </span>editable: true,
+<span class="hljs-bullet">        *       </span>textAlign: "center",
+<span class="hljs-bullet">        *       </span>font: smallfont 
+<span class="hljs-bullet">        * </span>},
+<span class="hljs-bullet">       *    
+       </span>* }
+<span class="hljs-code">       */</span></span></span>
       addNodeTemplate(options){
-        let fill = this.getOption()[options.shapeOptions.fill];
+        let fill = <span class="hljs-keyword">this</span>.getOption()[options.shapeOptions.fill];
         options.shapeOptions.fill = fill;
-        this.myDiagram.nodeTemplateMap.add(options.category,
-          $(go.Node, &quot;Auto&quot;,
-            new go.Binding(&quot;location&quot;, &quot;loc&quot;, go.Point.parse).makeTwoWay(go.Point.stringify),
+        <span class="hljs-keyword">this</span>.myDiagram.nodeTemplateMap.add(options.category,
+          $(go.Node, <span class="hljs-string">"Auto"</span>,
+            <span class="hljs-keyword">new</span> go.Binding(<span class="hljs-string">"location"</span>, <span class="hljs-string">"loc"</span>, go.Point.parse).makeTwoWay(go.Point.stringify),
             $(go.Shape, options.shape,options.shapeOptions),
-            $(go.TextBlock,  this.textStyle(),
-              new go.Binding(&quot;text&quot;, &quot;text&quot;).makeTwoWay())
+            $(go.TextBlock,  <span class="hljs-keyword">this</span>.textStyle(),
+              <span class="hljs-keyword">new</span> go.Binding(<span class="hljs-string">"text"</span>, <span class="hljs-string">"text"</span>).makeTwoWay())
             ));
       },
 
@@ -261,66 +265,66 @@ npm run dev 的时候停在这里停了好久。有时候还爆出“......maxim
 <p>可以通过<code>npm install jointjs -save</code>安装</p>
 <p>参照了很多demo和文档，用的是矩形，但是可以设置圆角的度数变成椭圆形，其他形状我就无力了。</p>
 <p>可以自定义矩形的样式和矩形框里面的文字样式</p>
-<pre><code class="language-javascript">//data.vue
+<pre><code class="language-javascript"><span class="hljs-comment">//data.vue</span>
 &lt;script&gt;
-export default {
+export <span class="hljs-keyword">default</span> {
     data(){
-        var userClass = {//这个要参照SVG属性
-            /**shapeStyle
+        var userClass = {<span class="hljs-comment">//这个要参照SVG属性</span>
+            <span class="hljs-comment">/**shapeStyle
              * fill:填充的背景颜色
                 stroke: 边框颜色
                 strokeWidth: 边框宽度
                 rx: 圆角
                 ry: 
-             */
-            shapeStyle:{//矩形样式
-                fill:{
-                    type: &#39;linearGradient&#39;,
+             */</span>
+            shapeStyle:{<span class="hljs-comment">//矩形样式</span>
+                <span class="hljs-built_in">fill</span>:{
+                    type: <span class="hljs-string">'linearGradient'</span>,
                     stops: [
-                        {offset: &#39;0%&#39;, color: &#39;#98FB98&#39;},
-                        {offset: &#39;100%&#39;, color: &#39;#9ACD32&#39;}
+                        {offset: <span class="hljs-string">'0%'</span>, <span class="hljs-built_in">color</span>: <span class="hljs-string">'#98FB98'</span>},
+                        {offset: <span class="hljs-string">'100%'</span>, <span class="hljs-built_in">color</span>: <span class="hljs-string">'#9ACD32'</span>}
                     ],
                 },
-                rx:150,
-                ry:15
+                rx:<span class="hljs-number">150</span>,
+                ry:<span class="hljs-number">15</span>
             },
-            /**
+            <span class="hljs-comment">/**
              * textStyle
              *  fontWeight
              *  fontSize
              * 
-             */
-            textStyle:{//文本样式
-                fontWeight:&#39;bold&#39;
+             */</span>
+            textStyle:{<span class="hljs-comment">//文本样式</span>
+                fontWeight:<span class="hljs-string">'bold'</span>
             }    
         };
-        return{
+        <span class="hljs-keyword">return</span>{
             graphData :{
                 node:{
-                    &#39;100&#39;:{text:&#39;用户提交资料&#39;,category:userClass},
-                    &#39;101&#39;:{text:&#39;用户完善资料&#39;,category:userClass},
-                    &#39;102&#39;:{text:&#39;用户确认完成&#39;,category:userClass},
-                    &#39;103&#39;:{text:&#39;用户撤销&#39;,category:userClass},
+                    <span class="hljs-string">'100'</span>:{<span class="hljs-built_in">text</span>:<span class="hljs-string">'用户提交资料'</span>,category:userClass},
+                    <span class="hljs-string">'101'</span>:{<span class="hljs-built_in">text</span>:<span class="hljs-string">'用户完善资料'</span>,category:userClass},
+                    <span class="hljs-string">'102'</span>:{<span class="hljs-built_in">text</span>:<span class="hljs-string">'用户确认完成'</span>,category:userClass},
+                    <span class="hljs-string">'103'</span>:{<span class="hljs-built_in">text</span>:<span class="hljs-string">'用户撤销'</span>,category:userClass},
 
-                    &#39;200&#39;:{text:&#39;供应商驳回&#39;},
-                    &#39;201&#39;:{text:&#39;供应商接单&#39;},
-                    &#39;202&#39;:{text:&#39;供应商完工&#39;},
-                    &#39;203&#39;:{text:&#39;等待供应商处理&#39;},
+                    <span class="hljs-string">'200'</span>:{<span class="hljs-built_in">text</span>:<span class="hljs-string">'供应商驳回'</span>},
+                    <span class="hljs-string">'201'</span>:{<span class="hljs-built_in">text</span>:<span class="hljs-string">'供应商接单'</span>},
+                    <span class="hljs-string">'202'</span>:{<span class="hljs-built_in">text</span>:<span class="hljs-string">'供应商完工'</span>},
+                    <span class="hljs-string">'203'</span>:{<span class="hljs-built_in">text</span>:<span class="hljs-string">'等待供应商处理'</span>},
 
-                    &#39;300&#39;:{text:&#39;系统交付出错&#39;}               
+                    <span class="hljs-string">'300'</span>:{<span class="hljs-built_in">text</span>:<span class="hljs-string">'系统交付出错'</span>}               
                 },
-                edge :{//每个点都要写
-                    &#39;100&#39;: [&#39;200&#39;,&#39;201&#39;,&#39;103&#39;], 
-                    &#39;101&#39;: [&#39;201&#39;],
-                    &#39;102&#39;:[],
-                    &#39;103&#39;: [&#39;100&#39;],
+                edge :{<span class="hljs-comment">//每个点都要写</span>
+                    <span class="hljs-string">'100'</span>: [<span class="hljs-string">'200'</span>,<span class="hljs-string">'201'</span>,<span class="hljs-string">'103'</span>], 
+                    <span class="hljs-string">'101'</span>: [<span class="hljs-string">'201'</span>],
+                    <span class="hljs-string">'102'</span>:[],
+                    <span class="hljs-string">'103'</span>: [<span class="hljs-string">'100'</span>],
 
-                    &#39;200&#39;: [&#39;101&#39;],              
-                    &#39;201&#39;: [&#39;202&#39;,&#39;300&#39;],
-                    &#39;202&#39;: [&#39;102&#39;],               
-                    &#39;203&#39;: [&#39;102&#39;], 
+                    <span class="hljs-string">'200'</span>: [<span class="hljs-string">'101'</span>],              
+                    <span class="hljs-string">'201'</span>: [<span class="hljs-string">'202'</span>,<span class="hljs-string">'300'</span>],
+                    <span class="hljs-string">'202'</span>: [<span class="hljs-string">'102'</span>],               
+                    <span class="hljs-string">'203'</span>: [<span class="hljs-string">'102'</span>], 
 
-                    &#39;300&#39;: [&#39;203&#39;],
+                    <span class="hljs-string">'300'</span>: [<span class="hljs-string">'203'</span>],
 
                 },
             }
@@ -329,266 +333,266 @@ export default {
 }
 &lt;/script&gt;
 </code></pre>
-<pre><code class="language-html">&lt;template&gt;
-&lt;div id=&quot;container&quot;&gt;
-  &lt;p style=&quot;background-color:#EEEEEE;margin:0;padding:5px;font-size:0.9em&quot;&gt;
-    您当前处于 &lt;span class=&quot;tip&quot;&gt;用户提交资料&lt;/span&gt; 步骤 
-    下一步等待&lt;span class=&quot;tip&quot;&gt;供应商接单&lt;/span&gt;
-    &lt;el-button type=&quot;text&quot; v-if=&quot;show===false&quot; @click=&quot;show=true&quot;&gt;展开&lt;/el-button&gt;
-    &lt;el-button type=&quot;text&quot; v-else @click=&quot;show=false&quot;&gt;收起&lt;/el-button&gt;
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"container"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color:#EEEEEE;margin:0;padding:5px;font-size:0.9em"</span>&gt;</span>
+    您当前处于 <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"tip"</span>&gt;</span>用户提交资料<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> 步骤 
+    下一步等待<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"tip"</span>&gt;</span>供应商接单<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">el-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">"show===false"</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"show=true"</span>&gt;</span>展开<span class="hljs-tag">&lt;/<span class="hljs-name">el-button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">el-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">v-else</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">"show=false"</span>&gt;</span>收起<span class="hljs-tag">&lt;/<span class="hljs-name">el-button</span>&gt;</span>
 
-  &lt;/p&gt;
-    &lt;div id=&quot;myholder&quot; v-show=&quot;show&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/template&gt;</code></pre>
-<pre><code class="language-javascript">&lt;script&gt;
-window.joint=require(&#39;jointjs&#39;);
-var Shape = joint.dia.Element.define(&#39;default.Rectangle&#39;, {      
-        attrs: {  
-            rect: {
-                refWidth: &#39;100%&#39;,
-                refHeight: &#39;100%&#39;,
-                //下面这些可以自己设置
-                fill:{
-                    type: &#39;linearGradient&#39;,
-                    stops: [
-                        {offset: &#39;0%&#39;, color: &#39;#B0E0E6&#39;},//渐变开始
-                        {offset: &#39;100%&#39;, color: &#39;#F0F8FF&#39;}//渐变结束
+  <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"myholder"</span> <span class="hljs-attr">v-show</span>=<span class="hljs-string">"show"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></code></pre>
+<pre><code class="language-javascript"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+<span class="hljs-built_in">window</span>.joint=<span class="hljs-built_in">require</span>(<span class="hljs-string">'jointjs'</span>);
+<span class="hljs-keyword">var</span> Shape = joint.dia.Element.define(<span class="hljs-string">'default.Rectangle'</span>, {      
+        <span class="hljs-attr">attrs</span>: {  
+            <span class="hljs-attr">rect</span>: {
+                <span class="hljs-attr">refWidth</span>: <span class="hljs-string">'100%'</span>,
+                <span class="hljs-attr">refHeight</span>: <span class="hljs-string">'100%'</span>,
+                <span class="hljs-comment">//下面这些可以自己设置</span>
+                <span class="hljs-attr">fill</span>:{
+                    <span class="hljs-attr">type</span>: <span class="hljs-string">'linearGradient'</span>,
+                    <span class="hljs-attr">stops</span>: [
+                        {<span class="hljs-attr">offset</span>: <span class="hljs-string">'0%'</span>, <span class="hljs-attr">color</span>: <span class="hljs-string">'#B0E0E6'</span>},<span class="hljs-comment">//渐变开始</span>
+                        {<span class="hljs-attr">offset</span>: <span class="hljs-string">'100%'</span>, <span class="hljs-attr">color</span>: <span class="hljs-string">'#F0F8FF'</span>}<span class="hljs-comment">//渐变结束</span>
                     ]
                 },
-                stroke: &#39;#B0E0E6&#39;,
-                strokeWidth: 1,
-                rx: 5,//圆角
-                ry: 5
+                <span class="hljs-attr">stroke</span>: <span class="hljs-string">'#B0E0E6'</span>,
+                <span class="hljs-attr">strokeWidth</span>: <span class="hljs-number">1</span>,
+                <span class="hljs-attr">rx</span>: <span class="hljs-number">5</span>,<span class="hljs-comment">//圆角</span>
+                <span class="hljs-attr">ry</span>: <span class="hljs-number">5</span>
             },
-            text: {
-                refX: &#39;50%&#39;,
-                refY: &#39;50%&#39;,                               
-                textVerticalAnchor: &#39;middle&#39;,
-                textAnchor: &#39;middle&#39;,
-                fontSize: 10           
+            <span class="hljs-attr">text</span>: {
+                <span class="hljs-attr">refX</span>: <span class="hljs-string">'50%'</span>,
+                <span class="hljs-attr">refY</span>: <span class="hljs-string">'50%'</span>,                               
+                <span class="hljs-attr">textVerticalAnchor</span>: <span class="hljs-string">'middle'</span>,
+                <span class="hljs-attr">textAnchor</span>: <span class="hljs-string">'middle'</span>,
+                <span class="hljs-attr">fontSize</span>: <span class="hljs-number">10</span>           
             }
          }                    
     }, 
     {
-         markup: &#39;&lt;rect/&gt;&lt;text/&gt;&#39;,
-         setText: function(text) {                    
-            return this.attr(&#39;text/text&#39;, text || &#39;&#39;);
+         <span class="hljs-attr">markup</span>: <span class="hljs-string">'&lt;rect/&gt;&lt;text/&gt;'</span>,
+         <span class="hljs-attr">setText</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">text</span>) </span>{                    
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.attr(<span class="hljs-string">'text/text'</span>, text || <span class="hljs-string">''</span>);
         },
-        setShapeStyle:function(shapeStyle){
-            let newstyle = Object.assign({},this.attr(&#39;rect&#39;),shapeStyle);
-            return this.attr(&#39;rect&#39;,newstyle)
+        <span class="hljs-attr">setShapeStyle</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">shapeStyle</span>)</span>{
+            <span class="hljs-keyword">let</span> newstyle = <span class="hljs-built_in">Object</span>.assign({},<span class="hljs-keyword">this</span>.attr(<span class="hljs-string">'rect'</span>),shapeStyle);
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.attr(<span class="hljs-string">'rect'</span>,newstyle)
         },
 
-        setTextStyle:function(textStyle){
-            let newstyle = Object.assign({},this.attr(&#39;text&#39;),textStyle);
-            return this.attr(&#39;text&#39;,newstyle)
+        <span class="hljs-attr">setTextStyle</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">textStyle</span>)</span>{
+            <span class="hljs-keyword">let</span> newstyle = <span class="hljs-built_in">Object</span>.assign({},<span class="hljs-keyword">this</span>.attr(<span class="hljs-string">'text'</span>),textStyle);
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.attr(<span class="hljs-string">'text'</span>,newstyle)
         }
     }
 );
 
-var Link = joint.dia.Link.define(&#39;default.Link&#39;, {
-        attrs: {
-            &#39;.connection&#39;: {
-                stroke: &#39;#2F4F4F&#39;,//线
-                strokeWidth: 1,
-                pointerEvents: &#39;none&#39;,
-                targetMarker: {//箭头
-                    type: &#39;path&#39;,
-                    fill: &#39;#2F4F4F&#39;,//填充颜色
-                    stroke: &#39;#2F4F4F&#39;,//边框颜色
-                    strokeWidth:&#39;1&#39;,
-                    d: &#39;M 2 -2 0 0 2 2 z&#39;//形状
+<span class="hljs-keyword">var</span> Link = joint.dia.Link.define(<span class="hljs-string">'default.Link'</span>, {
+        <span class="hljs-attr">attrs</span>: {
+            <span class="hljs-string">'.connection'</span>: {
+                <span class="hljs-attr">stroke</span>: <span class="hljs-string">'#2F4F4F'</span>,<span class="hljs-comment">//线</span>
+                <span class="hljs-attr">strokeWidth</span>: <span class="hljs-number">1</span>,
+                <span class="hljs-attr">pointerEvents</span>: <span class="hljs-string">'none'</span>,
+                <span class="hljs-attr">targetMarker</span>: {<span class="hljs-comment">//箭头</span>
+                    <span class="hljs-attr">type</span>: <span class="hljs-string">'path'</span>,
+                    <span class="hljs-attr">fill</span>: <span class="hljs-string">'#2F4F4F'</span>,<span class="hljs-comment">//填充颜色</span>
+                    <span class="hljs-attr">stroke</span>: <span class="hljs-string">'#2F4F4F'</span>,<span class="hljs-comment">//边框颜色</span>
+                    <span class="hljs-attr">strokeWidth</span>:<span class="hljs-string">'1'</span>,
+                    <span class="hljs-attr">d</span>: <span class="hljs-string">'M 2 -2 0 0 2 2 z'</span><span class="hljs-comment">//形状</span>
                 }
             }
         },
-        connector: {
-            name: &#39;rounded&#39;
+        <span class="hljs-attr">connector</span>: {
+            <span class="hljs-attr">name</span>: <span class="hljs-string">'rounded'</span>
         },
-        z: -1,
-        weight: 1,
-        minLen: 1,
-        labelPosition: &#39;c&#39;,
-        labelOffset: 10,
-        labelSize: {
-            width: 50,
-            height: 30
+        <span class="hljs-attr">z</span>: <span class="hljs-number">-1</span>,
+        <span class="hljs-attr">weight</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">minLen</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-attr">labelPosition</span>: <span class="hljs-string">'c'</span>,
+        <span class="hljs-attr">labelOffset</span>: <span class="hljs-number">10</span>,
+        <span class="hljs-attr">labelSize</span>: {
+            <span class="hljs-attr">width</span>: <span class="hljs-number">50</span>,
+            <span class="hljs-attr">height</span>: <span class="hljs-number">30</span>
         },
-        labels: [{
-            markup: &#39;&lt;rect/&gt;&lt;text/&gt;&#39;,
-            attrs: {
-                text: {
-                    fill: &#39;gray&#39;,
-                    textAnchor: &#39;middle&#39;,
-                    refY: 5,
-                    refY2: &#39;-50%&#39;,
-                    fontSize: 10,
-                    cursor: &#39;pointer&#39;
+        <span class="hljs-attr">labels</span>: [{
+            <span class="hljs-attr">markup</span>: <span class="hljs-string">'&lt;rect/&gt;&lt;text/&gt;'</span>,
+            <span class="hljs-attr">attrs</span>: {
+                <span class="hljs-attr">text</span>: {
+                    <span class="hljs-attr">fill</span>: <span class="hljs-string">'gray'</span>,
+                    <span class="hljs-attr">textAnchor</span>: <span class="hljs-string">'middle'</span>,
+                    <span class="hljs-attr">refY</span>: <span class="hljs-number">5</span>,
+                    <span class="hljs-attr">refY2</span>: <span class="hljs-string">'-50%'</span>,
+                    <span class="hljs-attr">fontSize</span>: <span class="hljs-number">10</span>,
+                    <span class="hljs-attr">cursor</span>: <span class="hljs-string">'pointer'</span>
                 },
-                // rect: {
-                //     fill: &#39;lightgray&#39;,
-                //     stroke: &#39;gray&#39;,
-                //     strokeWidth: 2,
-                //     refWidth: &#39;100%&#39;,
-                //     refHeight: &#39;100%&#39;,
-                //     refX: &#39;-50%&#39;,
-                //     refY: &#39;-50%&#39;,
-                //     rx: 5,
-                //     ry: 5
-                // }
+                <span class="hljs-comment">// rect: {</span>
+                <span class="hljs-comment">//     fill: 'lightgray',</span>
+                <span class="hljs-comment">//     stroke: 'gray',</span>
+                <span class="hljs-comment">//     strokeWidth: 2,</span>
+                <span class="hljs-comment">//     refWidth: '100%',</span>
+                <span class="hljs-comment">//     refHeight: '100%',</span>
+                <span class="hljs-comment">//     refX: '-50%',</span>
+                <span class="hljs-comment">//     refY: '-50%',</span>
+                <span class="hljs-comment">//     rx: 5,</span>
+                <span class="hljs-comment">//     ry: 5</span>
+                <span class="hljs-comment">// }</span>
             },
-            size: {
-                width: 50, height: 10
+            <span class="hljs-attr">size</span>: {
+                <span class="hljs-attr">width</span>: <span class="hljs-number">50</span>, <span class="hljs-attr">height</span>: <span class="hljs-number">10</span>
             }
         }]
 
     }, {
-        markup: &#39;&lt;path class=&quot;connection&quot;/&gt;&lt;g class=&quot;labels&quot;/&gt;&#39;,
+        <span class="hljs-attr">markup</span>: <span class="hljs-string">'&lt;path class="connection"/&gt;&lt;g class="labels"/&gt;'</span>,
 
-        connect: function(sourceId, targetId) {
-            return this.set({
-                source: { id: sourceId },
-                target: { id: targetId }
+        <span class="hljs-attr">connect</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">sourceId, targetId</span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.set({
+                <span class="hljs-attr">source</span>: { <span class="hljs-attr">id</span>: sourceId },
+                <span class="hljs-attr">target</span>: { <span class="hljs-attr">id</span>: targetId }
             });
         },
 
-        setLabelText: function(text) {
-            return this.prop(&#39;labels/0/attrs/text/text&#39;, text || &#39;&#39;);
+        <span class="hljs-attr">setLabelText</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">text</span>) </span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.prop(<span class="hljs-string">'labels/0/attrs/text/text'</span>, text || <span class="hljs-string">''</span>);
         }
     });
 
 
 
-var ElementView = joint.dia.ElementView.extend({
-        pointerdown: function () {
+<span class="hljs-keyword">var</span> ElementView = joint.dia.ElementView.extend({
+        <span class="hljs-attr">pointerdown</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
 
-            // this._click = true;
-            // joint.dia.ElementView.prototype.pointerdown.apply(this, arguments);
+            <span class="hljs-comment">// this._click = true;</span>
+            <span class="hljs-comment">// joint.dia.ElementView.prototype.pointerdown.apply(this, arguments);</span>
         },
-        pointermove: function(evt, x, y) {
-            // this._click = false;
-            // joint.dia.ElementView.prototype.pointermove.apply(this, arguments);
+        <span class="hljs-attr">pointermove</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">evt, x, y</span>) </span>{
+            <span class="hljs-comment">// this._click = false;</span>
+            <span class="hljs-comment">// joint.dia.ElementView.prototype.pointermove.apply(this, arguments);</span>
         },
-        pointerup: function (evt, x, y) {
-            // if (this._click) {
-            //     // triggers an event on the paper and the element itself
-            //     this.notify(&#39;cell:click&#39;, evt, x, y); 
-            // } else {
-            //     joint.dia.ElementView.prototype.pointerup.apply(this, arguments);
-            // }
+        <span class="hljs-attr">pointerup</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">evt, x, y</span>) </span>{
+            <span class="hljs-comment">// if (this._click) {</span>
+            <span class="hljs-comment">//     // triggers an event on the paper and the element itself</span>
+            <span class="hljs-comment">//     this.notify('cell:click', evt, x, y); </span>
+            <span class="hljs-comment">// } else {</span>
+            <span class="hljs-comment">//     joint.dia.ElementView.prototype.pointerup.apply(this, arguments);</span>
+            <span class="hljs-comment">// }</span>
         }
     });
-var LinkView = joint.dia.LinkView.extend({
-    addVertex: function(evt, x, y) {},
-    removeVertex: function(endType) {},
-    pointerdown:function(evt, x, y) {}
+<span class="hljs-keyword">var</span> LinkView = joint.dia.LinkView.extend({
+    <span class="hljs-attr">addVertex</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">evt, x, y</span>) </span>{},
+    <span class="hljs-attr">removeVertex</span>: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">endType</span>) </span>{},
+    <span class="hljs-attr">pointerdown</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">evt, x, y</span>) </span>{}
 });
 
 
-export default {   
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {   
     data(){
-        return{
-            graph:null,
-            paper:null,
-            show:true
+        <span class="hljs-keyword">return</span>{
+            <span class="hljs-attr">graph</span>:<span class="hljs-literal">null</span>,
+            <span class="hljs-attr">paper</span>:<span class="hljs-literal">null</span>,
+            <span class="hljs-attr">show</span>:<span class="hljs-literal">true</span>
         }       
     },
-    props:{
-        graphData:{
-            type:Object,
-            required:true
+    <span class="hljs-attr">props</span>:{
+        <span class="hljs-attr">graphData</span>:{
+            <span class="hljs-attr">type</span>:<span class="hljs-built_in">Object</span>,
+            <span class="hljs-attr">required</span>:<span class="hljs-literal">true</span>
         }
     },
     mounted(){
-        let w = document.getElementById(&#39;container&#39;).width ; 
-        this.graph = new joint.dia.Graph;
-        this.paper = new joint.dia.Paper({
-            el: document.getElementById(&#39;myholder&#39;),
-            width: w,
-            height: 250,         
-            model: this.graph,
-            elementView: ElementView,//禁止拖拽
-            linkView:LinkView//禁止拖拽
+        <span class="hljs-keyword">let</span> w = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'container'</span>).width ; 
+        <span class="hljs-keyword">this</span>.graph = <span class="hljs-keyword">new</span> joint.dia.Graph;
+        <span class="hljs-keyword">this</span>.paper = <span class="hljs-keyword">new</span> joint.dia.Paper({
+            <span class="hljs-attr">el</span>: <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'myholder'</span>),
+            <span class="hljs-attr">width</span>: w,
+            <span class="hljs-attr">height</span>: <span class="hljs-number">250</span>,         
+            <span class="hljs-attr">model</span>: <span class="hljs-keyword">this</span>.graph,
+            <span class="hljs-attr">elementView</span>: ElementView,<span class="hljs-comment">//禁止拖拽</span>
+            <span class="hljs-attr">linkView</span>:LinkView<span class="hljs-comment">//禁止拖拽</span>
         });
-        this.layout();
+        <span class="hljs-keyword">this</span>.layout();
     },
-    methods:{
+    <span class="hljs-attr">methods</span>:{
         getWidthandHeight(label){
-            let maxLineLength = _.max(label.split(&#39;\n&#39;), function(l) { return l.length; }).length,
+            <span class="hljs-keyword">let</span> maxLineLength = _.max(label.split(<span class="hljs-string">'\n'</span>), <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">l</span>) </span>{ <span class="hljs-keyword">return</span> l.length; }).length,
 
-            // Compute width/height of the rectangle based on the number
-            // of lines in the label and the letter size. 0.6 * letterSize is
-            // an approximation of the monospace font letter width.
-             letterSize = 8,
-             width = 2 * (letterSize * (0.6 * maxLineLength + 1)),
-             height = 2 * ((label.split(&#39;\n&#39;).length + 1) * letterSize);
-            return {width,height}
+            <span class="hljs-comment">// Compute width/height of the rectangle based on the number</span>
+            <span class="hljs-comment">// of lines in the label and the letter size. 0.6 * letterSize is</span>
+            <span class="hljs-comment">// an approximation of the monospace font letter width.</span>
+             letterSize = <span class="hljs-number">8</span>,
+             width = <span class="hljs-number">2</span> * (letterSize * (<span class="hljs-number">0.6</span> * maxLineLength + <span class="hljs-number">1</span>)),
+             height = <span class="hljs-number">2</span> * ((label.split(<span class="hljs-string">'\n'</span>).length + <span class="hljs-number">1</span>) * letterSize);
+            <span class="hljs-keyword">return</span> {width,height}
         },
         getLayoutOptions() {
-            return {
-                // setVertices: false,
-                // setLabels: false,
-                // ranker:&#39;longer-path&#39;,//&#39;tight-tree&#39;/&#39;network-simplex&#39;,
-                rankDir: &#39;LR&#39;,
-                align: &#39;UR&#39;,
-                rankSep:0,
-                edgeSep:0,
-                nodeSep:0,
+            <span class="hljs-keyword">return</span> {
+                <span class="hljs-comment">// setVertices: false,</span>
+                <span class="hljs-comment">// setLabels: false,</span>
+                <span class="hljs-comment">// ranker:'longer-path',//'tight-tree'/'network-simplex',</span>
+                <span class="hljs-attr">rankDir</span>: <span class="hljs-string">'LR'</span>,
+                <span class="hljs-attr">align</span>: <span class="hljs-string">'UR'</span>,
+                <span class="hljs-attr">rankSep</span>:<span class="hljs-number">0</span>,
+                <span class="hljs-attr">edgeSep</span>:<span class="hljs-number">0</span>,
+                <span class="hljs-attr">nodeSep</span>:<span class="hljs-number">0</span>,
             };
         },
         buildGraphFromAdjacencyList(adjacencyList) {
-            let elements = [],links = [],obj,size,node;
-            const _this=this;
-            const map=this.graphData.node;
+            <span class="hljs-keyword">let</span> elements = [],links = [],obj,size,node;
+            <span class="hljs-keyword">const</span> _this=<span class="hljs-keyword">this</span>;
+            <span class="hljs-keyword">const</span> map=<span class="hljs-keyword">this</span>.graphData.node;
 
-            Object.keys(adjacencyList).forEach(function(parentId) {
-                // Add element
+            <span class="hljs-built_in">Object</span>.keys(adjacencyList).forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">parentId</span>) </span>{
+                <span class="hljs-comment">// Add element</span>
 
                 obj =map[parentId];
                 size = _this.getWidthandHeight(obj.text);
-                node =new Shape({id:parentId,size:size}).setText(obj.text);
+                node =<span class="hljs-keyword">new</span> Shape({<span class="hljs-attr">id</span>:parentId,<span class="hljs-attr">size</span>:size}).setText(obj.text);
 
-                if(obj.category&amp;&amp;obj.category.shapeStyle){
+                <span class="hljs-keyword">if</span>(obj.category&amp;&amp;obj.category.shapeStyle){
                     node = node.setShapeStyle(obj.category.shapeStyle);
                 }
-                if(obj.category&amp;&amp;obj.category.textStyle){
+                <span class="hljs-keyword">if</span>(obj.category&amp;&amp;obj.category.textStyle){
                     node = node.setTextStyle(obj.category.textStyle);
                 }
 
                 elements.push(node);
 
-                // Add links
-                adjacencyList[parentId].forEach(function(childId) {
+                <span class="hljs-comment">// Add links</span>
+                adjacencyList[parentId].forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">childId</span>) </span>{
                     links.push(
-                        new Link().connect(parentId, childId)// .setLabelText(parentLabel + &#39;-&#39; + childLabel)                                         
+                        <span class="hljs-keyword">new</span> Link().connect(parentId, childId)<span class="hljs-comment">// .setLabelText(parentLabel + '-' + childLabel)                                         </span>
                     );
                 });
             });
 
-            return elements.concat(links);
+            <span class="hljs-keyword">return</span> elements.concat(links);
         },
         layout() {            
-            let cells = this.buildGraphFromAdjacencyList(this.graphData.edge);    
-            this.graph.resetCells(cells);
-            joint.layout.DirectedGraph.layout(this.graph, this.getLayoutOptions());
+            <span class="hljs-keyword">let</span> cells = <span class="hljs-keyword">this</span>.buildGraphFromAdjacencyList(<span class="hljs-keyword">this</span>.graphData.edge);    
+            <span class="hljs-keyword">this</span>.graph.resetCells(cells);
+            joint.layout.DirectedGraph.layout(<span class="hljs-keyword">this</span>.graph, <span class="hljs-keyword">this</span>.getLayoutOptions());
         },
     }
 }
-&lt;/script&gt;
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
-&lt;style&gt;
-#myholder {
-    border: 1px solid lightgray;
-    margin-bottom:20px;
-    padding-left:20px
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+<span class="hljs-selector-id">#myholder</span> {
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid lightgray;
+    <span class="hljs-attribute">margin-bottom</span>:<span class="hljs-number">20px</span>;
+    <span class="hljs-attribute">padding-left</span>:<span class="hljs-number">20px</span>
 }
-.tip{
-  color:#9ACD32;
-  font-size:0.9em;
-  font-weight:bold;
-  padding:5px;
+<span class="hljs-selector-class">.tip</span>{
+  <span class="hljs-attribute">color</span>:<span class="hljs-number">#9ACD32</span>;
+  <span class="hljs-attribute">font-size</span>:<span class="hljs-number">0.9em</span>;
+  <span class="hljs-attribute">font-weight</span>:bold;
+  <span class="hljs-attribute">padding</span>:<span class="hljs-number">5px</span>;
 }
-&lt;/style&gt;
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
 </code></pre>
 <p>这是我自己包装的代码地址：<a href="https://github.com/LRY1994/vue-lib/tree/master/src/components/process-joint">https://github.com/LRY1994/vue-lib/tree/master/src/components/process-joint</a></p>
 <p>这个目前看来还算满意</p>
@@ -612,31 +616,31 @@ export default {
 </ol>
 <p>最终采用gojs,上面提到的问题解决方案是：把去掉水印的gojs放在自己的npm服务器上，这样就可以npm安装了！！！
 实践过程中遇到个问题</p>
-<pre><code class="language-html">&lt;process-go style=&quot;height:250px&quot;  v-if=&quot;show&quot;  :model-data=&quot;dataObj.graph&quot; :category=&quot;category&quot;&gt; &lt;/process-go&gt;</code></pre>
+<pre><code class="language-html">&lt;process-go style=<span class="hljs-string">"height:250px"</span>  v-if=<span class="hljs-string">"show"</span>  <span class="hljs-symbol">:model-data=<span class="hljs-string">"dataObj.graph"</span></span> <span class="hljs-symbol">:category=<span class="hljs-string">"category"</span>&gt;</span> &lt;<span class="hljs-regexp">/process-go&gt;</span></code></pre>
 <p>像这样，用<code>v-if</code>反复切换，会报错<code>Cannot read property &#39;type&#39; of undefined     at Po (go.js?d976:1044)</code></p>
 <p>换成<code>v-show</code>就不会</p>
-<pre><code class="language-html">&lt;process-go style=&quot;height:250px&quot;  v-show=&quot;show&quot;  :model-data=&quot;dataObj.graph&quot; :category=&quot;category&quot;&gt; &lt;/process-go&gt;</code></pre>
+<pre><code class="language-html">&lt;process-go style=<span class="hljs-string">"height:250px"</span>  v-show=<span class="hljs-string">"show"</span>  <span class="hljs-symbol">:model-data=<span class="hljs-string">"dataObj.graph"</span></span> <span class="hljs-symbol">:category=<span class="hljs-string">"category"</span>&gt;</span> &lt;<span class="hljs-regexp">/process-go&gt;</span></code></pre>
 <p>但是这样的前提是show初始化是true.如果初始化为false,没有报错，但是图呈现不出来。
 原因我猜测是：show初始化为false,组件高度为0，因为默认画布就是组件容器，所以画布高度变成0，图画不出。</p>
 <p>最后想出个方法。<code>v-if</code>和<code>v-show</code>结合一起使用，加上<code>$once</code>方法，代码：</p>
-<pre><code class="language-html">&lt;process-go style=&quot;height:250px&quot; v-if=&quot;firstClick&quot; v-show=&quot;show&quot;  :model-data=&quot;dataObj.graph&quot; :category=&quot;category&quot;&gt; &lt;/process-go&gt;</code></pre>
-<pre><code class="language-javascript">data(){
-    return{        
-        show:false,
-        firstClick:false,
+<pre><code class="language-html">&lt;process-go style=<span class="hljs-string">"height:250px"</span> v-if=<span class="hljs-string">"firstClick"</span> v-show=<span class="hljs-string">"show"</span>  <span class="hljs-symbol">:model-data=<span class="hljs-string">"dataObj.graph"</span></span> <span class="hljs-symbol">:category=<span class="hljs-string">"category"</span>&gt;</span> &lt;<span class="hljs-regexp">/process-go&gt;</span></code></pre>
+<pre><code class="language-javascript"><span class="hljs-keyword">data</span>(){
+    <span class="hljs-keyword">return</span>{        
+        show:<span class="hljs-literal">false</span>,
+        firstClick:<span class="hljs-literal">false</span>,
     }
 }
 created(){
-    this.init();
-    this.$once(&#39;firstClick&#39;,()=&gt;{
-        this.firstClick = true
+    <span class="hljs-keyword">this</span>.<span class="hljs-keyword">init</span>();
+    <span class="hljs-keyword">this</span>.$once(<span class="hljs-string">'firstClick'</span>,()=&gt;{
+        <span class="hljs-keyword">this</span>.firstClick = <span class="hljs-literal">true</span>
     })
 },
 methods:{
-    init(){...},
-    look(){//用v-if切换会报错，只有第一次点击查看用v-if,其他用v-show
-        this.$emit(&#39;firstClick&#39;);
-        this.show = true;
+    <span class="hljs-keyword">init</span>(){...},
+    look(){<span class="hljs-comment">//用v-if切换会报错，只有第一次点击查看用v-if,其他用v-show</span>
+        <span class="hljs-keyword">this</span>.$emit(<span class="hljs-string">'firstClick'</span>);
+        <span class="hljs-keyword">this</span>.show = <span class="hljs-literal">true</span>;
     }
 }</code></pre>
 <p>重新封装了一下gojs 地址：<a href="https://github.com/LRY1994/vue-lib/blob/master/src/components/process-go/index.vue">https://github.com/LRY1994/vue-lib/blob/master/src/components/process-go/index.vue</a></p>
@@ -649,5 +653,8 @@ methods:{
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

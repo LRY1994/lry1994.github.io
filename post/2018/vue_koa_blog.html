@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -48,25 +52,25 @@
 <a href="https://help.aliyun.com/document_detail/50775.html?spm=5176.doc25426.6.655.kn1mB7"></a></p>
 <h3 id="2018-5-22">2018-5-22</h3>
 <p>windows下查找特定端口</p>
-<pre><code>cd c:\WINDOWS\system32\ 
-netstat -aon|findstr &quot;3000&quot;</code></pre><p><code>W:\MongoDB\bin\mongod --dbpath W:\MongoDB\data</code> 运行 MongoDB 服务器
+<pre><code>cd c:<span class="hljs-symbol">\W</span>INDOWS<span class="hljs-symbol">\s</span>ystem32<span class="hljs-symbol">\ </span>
+netstat -aon|findstr "3000"</code></pre><p><code>W:\MongoDB\bin\mongod --dbpath W:\MongoDB\data</code> 运行 MongoDB 服务器
 pm2</p>
 <p><code>mongo</code> 连接MongoDB</p>
 <p>一些常用命令</p>
-<pre><code>show dbs
-use ...
-db.dropDatabase()
-show collections
-db.collection.drop()
-db.users.find().pretty()</code></pre><ul>
+<pre><code><span class="hljs-selector-tag">show</span> <span class="hljs-selector-tag">dbs</span>
+<span class="hljs-selector-tag">use</span> ...
+<span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.dropDatabase</span>()
+<span class="hljs-selector-tag">show</span> <span class="hljs-selector-tag">collections</span>
+<span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.collection</span><span class="hljs-selector-class">.drop</span>()
+<span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.users</span><span class="hljs-selector-class">.find</span>()<span class="hljs-selector-class">.pretty</span>()</code></pre><ul>
 <li><p>Vue准备</p>
-<pre><code>npm install -g @vue/cli
+<pre><code><span class="hljs-built_in">npm</span> install -g @vue/cli
 vue init webpack  admin 
-npm i --registry https://registry.npm.taobao.org</code></pre><p>安装<code>sass-loader\node-sass\axios\element-ui</code></p>
+<span class="hljs-built_in">npm</span> i --registry https:<span class="hljs-regexp">//</span>registry.<span class="hljs-built_in">npm</span>.taobao.org</code></pre><p>安装<code>sass-loader\node-sass\axios\element-ui</code></p>
 </li>
 <li><p>Koa2准备</p>
 <pre><code>npm install -g koa-generator 
-koa2 server //创建koa2项目</code></pre><p>安装<code>koa-router\mongoose\koa2-cors</code></p>
+koa2 <span class="hljs-keyword">server</span> <span class="hljs-comment">//创建koa2项目</span></code></pre><p>安装<code>koa-router\mongoose\koa2-cors</code></p>
 </li>
 </ul>
 <p><code>co</code>模块可以将异步解放成同步。co 函数接受一个 generator 函数作为参数，在函数内部自动执行 yield 。(没用这个在别处看到)</p>
@@ -76,7 +80,7 @@ koa2 server //创建koa2项目</code></pre><p>安装<code>koa-router\mongoose\ko
 <h3 id="2018-5-23">2018-5-23</h3>
 <p><code>npm install --save koa2-cors</code></p>
 <p>koa2-cors 解决跨域问题</p>
-<pre><code>Response to preflight request doesn&#39;t pass access control check: No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource.
+<pre><code>Response to preflight request doesn't pass access control <span class="hljs-keyword">check</span>: <span class="hljs-keyword">No</span> <span class="hljs-string">'Access-Control-Allow-Origin'</span> header <span class="hljs-keyword">is</span> <span class="hljs-keyword">present</span> <span class="hljs-keyword">on</span> the requested resource.
 https://github.com/zadzbw/koa2-cors </code></pre><ul>
 <li>axios</li>
 </ul>
@@ -129,53 +133,53 @@ koa-multer仅仅支持multipart/form-data类型的数据</p>
 <p>上传多个图片，为什么不能遍历
 <a href="https://segmentfault.com/q/1010000015899152">https://segmentfault.com/q/1010000015899152</a>
 最后这样</p>
-<pre><code>let files = ctx.request.files;
-通过files[&#39;file&#39;];取得数组。</code></pre><p>一次上次多张图片的代码：</p>
-<pre><code class="language-js"> ADD_POST :{
-        method:&#39;post&#39;,
-        url :&#39;/post/new&#39;,
-        headers: { &#39;Content-Type&#39;: `multipart/form-data`},
+<pre><code>let <span class="hljs-keyword">files</span> = ctx.request.<span class="hljs-keyword">files</span>;
+通过<span class="hljs-keyword">files</span>[<span class="hljs-string">'file'</span>];取得数组。</code></pre><p>一次上次多张图片的代码：</p>
+<pre><code class="language-js"> <span class="hljs-attribute">ADD_POST </span>:{
+        <span class="hljs-attribute">method</span>:<span class="hljs-string">'post'</span>,
+        <span class="hljs-attribute">url </span>:<span class="hljs-string">'/post/new'</span>,
+        <span class="hljs-attribute">headers</span>: { <span class="hljs-string">'Content-Type'</span>: <span class="hljs-built_in">`multipart/form-data`</span>},
     },</code></pre>
-<pre><code class="language-js">function upload(files,title){  
-    let imgList=[],file,url,name;
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">upload</span>(<span class="hljs-params">files,title</span>)</span>{  
+    <span class="hljs-keyword">let</span> imgList=[],file,<span class="hljs-built_in">url</span>,name;
 
-    files = files[&#39;file&#39;];//关键！！！！！！
-    if(files==undefined) return [];
-    if(files.length){//如果是一个数组
-        for(let index in files){
+    files = files[<span class="hljs-string">'file'</span>];<span class="hljs-comment">//关键！！！！！！</span>
+    <span class="hljs-keyword">if</span>(files==<span class="hljs-literal">undefined</span>) <span class="hljs-keyword">return</span> [];
+    <span class="hljs-keyword">if</span>(files.length){<span class="hljs-comment">//如果是一个数组</span>
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> index <span class="hljs-keyword">in</span> files){
             file = files[index];     
 
-            url=`uploads/${title}-${file.name}`;
-            name =`${title}-${file.name}`;
-            fs.createReadStream(file.path).pipe(fs.createWriteStream(url))
+            <span class="hljs-built_in">url</span>=<span class="hljs-string">`uploads/<span class="hljs-subst">${title}</span>-<span class="hljs-subst">${file.name}</span>`</span>;
+            name =<span class="hljs-string">`<span class="hljs-subst">${title}</span>-<span class="hljs-subst">${file.name}</span>`</span>;
+            fs.createReadStream(file.path).pipe(fs.createWriteStream(<span class="hljs-built_in">url</span>))
 
             imgList.push([index,name]);
         }
-    }else{   
+    }<span class="hljs-title">else</span>{   
         file = files;        
-        url=`uploads/${title}-${file.name}`;
-        name =`${title}-${file.name}`;
-        fs.createReadStream(file.path).pipe(fs.createWriteStream(url))
-        imgList.push([0,name]);
+        <span class="hljs-built_in">url</span>=<span class="hljs-string">`uploads/<span class="hljs-subst">${title}</span>-<span class="hljs-subst">${file.name}</span>`</span>;
+        name =<span class="hljs-string">`<span class="hljs-subst">${title}</span>-<span class="hljs-subst">${file.name}</span>`</span>;
+        fs.createReadStream(file.path).pipe(fs.createWriteStream(<span class="hljs-built_in">url</span>))
+        imgList.push([<span class="hljs-number">0</span>,name]);
     }
 
-     return imgList;
+     <span class="hljs-keyword">return</span> imgList;
 
 }
-exports.new = async(ctx, next)=&gt;{
-    let {title,body,tags,category}=ctx.request.body;
-    let files = ctx.request.files;//重点
-    let imgList=[];
-    if(files) imgList = upload(files,title);
+exports.new = <span class="hljs-keyword">async</span>(ctx, next)=&gt;{
+    <span class="hljs-title">let</span> {title,body,tags,category}=ctx.request.body;
+    <span class="hljs-keyword">let</span> files = ctx.request.files;<span class="hljs-comment">//重点</span>
+    <span class="hljs-keyword">let</span> imgList=[];
+    <span class="hljs-keyword">if</span>(files) imgList = upload(files,title);
 
-    let post = new Post({
+    <span class="hljs-keyword">let</span> post = <span class="hljs-keyword">new</span> Post({
         title,
         body,
         tags,
         category,
         imgList
     })
-    let result= await dbHelper.Save(post);
+    <span class="hljs-keyword">let</span> result= <span class="hljs-keyword">await</span> dbHelper.Save(post);
     ctx.response.body = result;    
 }</code></pre>
 <p>接下来看看怎么获取后端照片 ==&gt; 
@@ -242,5 +246,8 @@ source /etc/profile不报错则成功。</p>
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -39,197 +43,197 @@
 <h2 id="第二种方法">第二种方法</h2>
 <p>实现对函数 、RegExp等特殊对象的克隆，保留对象的constructor,对象有循环引用也不会报错</p>
 <p>参考 <a href="https://juejin.im/post/5abb55ee6fb9a028e33b7e0a">https://juejin.im/post/5abb55ee6fb9a028e33b7e0a</a></p>
-<pre><code class="language-javascript">const getType = (obj)=&gt; {
-    var toString = Object.prototype.toString;
-    var map = {
-        &#39;[object Boolean]&#39;  : &#39;boolean&#39;, 
-        &#39;[object Number]&#39;   : &#39;number&#39;, 
-        &#39;[object String]&#39;   : &#39;string&#39;, 
-        &#39;[object Function]&#39; : &#39;function&#39;, 
-        &#39;[object Array]&#39;    : &#39;array&#39;, 
-        &#39;[object Date]&#39;     : &#39;date&#39;, 
-        &#39;[object RegExp]&#39;   : &#39;regExp&#39;, 
-        &#39;[object Undefined]&#39;: &#39;undefined&#39;,
-        &#39;[object Null]&#39;     : &#39;null&#39;, 
-        &#39;[object Object]&#39;   : &#39;object&#39;,
-        &#39;[object Symbol]&#39;   : &#39;symbol&#39;
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> getType = <span class="hljs-function">(<span class="hljs-params">obj</span>)=&gt;</span> {
+    <span class="hljs-keyword">var</span> toString = <span class="hljs-built_in">Object</span>.prototype.toString;
+    <span class="hljs-keyword">var</span> map = {
+        <span class="hljs-string">'[object Boolean]'</span>  : <span class="hljs-string">'boolean'</span>, 
+        <span class="hljs-string">'[object Number]'</span>   : <span class="hljs-string">'number'</span>, 
+        <span class="hljs-string">'[object String]'</span>   : <span class="hljs-string">'string'</span>, 
+        <span class="hljs-string">'[object Function]'</span> : <span class="hljs-string">'function'</span>, 
+        <span class="hljs-string">'[object Array]'</span>    : <span class="hljs-string">'array'</span>, 
+        <span class="hljs-string">'[object Date]'</span>     : <span class="hljs-string">'date'</span>, 
+        <span class="hljs-string">'[object RegExp]'</span>   : <span class="hljs-string">'regExp'</span>, 
+        <span class="hljs-string">'[object Undefined]'</span>: <span class="hljs-string">'undefined'</span>,
+        <span class="hljs-string">'[object Null]'</span>     : <span class="hljs-string">'null'</span>, 
+        <span class="hljs-string">'[object Object]'</span>   : <span class="hljs-string">'object'</span>,
+        <span class="hljs-string">'[object Symbol]'</span>   : <span class="hljs-string">'symbol'</span>
     };
-    if(obj instanceof Element) {//因为对不同标签，toString会返回对应不同标签的构造函数
-        return &#39;element&#39;;
+    <span class="hljs-keyword">if</span>(obj <span class="hljs-keyword">instanceof</span> Element) {<span class="hljs-comment">//因为对不同标签，toString会返回对应不同标签的构造函数</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'element'</span>;
     }
-    return map[toString.call(obj)];
+    <span class="hljs-keyword">return</span> map[toString.call(obj)];
 }
 
-const getRegExp = re =&gt; {
-  var flags = &#39;&#39;;
-  if (re.global) flags += &#39;g&#39;;
-  if (re.ignoreCase) flags += &#39;i&#39;;
-  if (re.multiline) flags += &#39;m&#39;;
-  return flags;
+<span class="hljs-keyword">const</span> getRegExp = <span class="hljs-function"><span class="hljs-params">re</span> =&gt;</span> {
+  <span class="hljs-keyword">var</span> flags = <span class="hljs-string">''</span>;
+  <span class="hljs-keyword">if</span> (re.global) flags += <span class="hljs-string">'g'</span>;
+  <span class="hljs-keyword">if</span> (re.ignoreCase) flags += <span class="hljs-string">'i'</span>;
+  <span class="hljs-keyword">if</span> (re.multiline) flags += <span class="hljs-string">'m'</span>;
+  <span class="hljs-keyword">return</span> flags;
 };
 
-/**
+<span class="hljs-comment">/**
 * deep clone
 * @param  {[type]} parent object 需要进行克隆的对象
 * @return {[type]}        深克隆后的对象
-*/
-const deepClone = oldObj =&gt; {
-  // 维护两个储存循环引用的数组
-  const oldObjArr = [];
-  const newObjArr = [];
+*/</span>
+<span class="hljs-keyword">const</span> deepClone = <span class="hljs-function"><span class="hljs-params">oldObj</span> =&gt;</span> {
+  <span class="hljs-comment">// 维护两个储存循环引用的数组</span>
+  <span class="hljs-keyword">const</span> oldObjArr = [];
+  <span class="hljs-keyword">const</span> newObjArr = [];
 
-  const clone = oldObj =&gt; { 
+  <span class="hljs-keyword">const</span> clone = <span class="hljs-function"><span class="hljs-params">oldObj</span> =&gt;</span> { 
 
-    let newObj, proto;
+    <span class="hljs-keyword">let</span> newObj, proto;
 
-    const type = getType(oldObj);
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">type</span> = getType(oldObj);
 
-    switch(type){
-        case &#39;boolean&#39;:
-        case &#39;number&#39;:
-        case &#39;string&#39;:
-        case &#39;null&#39;:
-        case &#39;undefined&#39;:
-        case &#39;function&#39;:{
-            return oldObj;
-            break;
+    <span class="hljs-keyword">switch</span>(<span class="hljs-keyword">type</span>){
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'boolean'</span>:
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'number'</span>:
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'string'</span>:
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'null'</span>:
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'undefined'</span>:
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'function'</span>:{
+            <span class="hljs-keyword">return</span> oldObj;
+            <span class="hljs-keyword">break</span>;
         }
-        case &#39;symbol&#39;:{
-            return Symbol(Symbol.keyFor(oldObj).toString());
-            break;
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'symbol'</span>:{
+            <span class="hljs-keyword">return</span> Symbol(Symbol.keyFor(oldObj).toString());
+            <span class="hljs-keyword">break</span>;
         }
-        case &#39;array&#39;:{
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'array'</span>:{
             newObj = [];
-            break;
+            <span class="hljs-keyword">break</span>;
         }
-        case &#39;regExp&#39;:{
-            newObj = new RegExp(oldObj.source, getRegExp(oldObj));
-            if (oldObj.lastIndex) newObj.lastIndex = oldObj.lastIndex;
-            break;
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'regExp'</span>:{
+            newObj = <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(oldObj.source, getRegExp(oldObj));
+            <span class="hljs-keyword">if</span> (oldObj.lastIndex) newObj.lastIndex = oldObj.lastIndex;
+            <span class="hljs-keyword">break</span>;
         }
-        case &#39;date&#39;:{
-            newObj = new Date(oldObj.getTime());            
-            break;
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'date'</span>:{
+            newObj = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(oldObj.getTime());            
+            <span class="hljs-keyword">break</span>;
         }
-        //case &#39;obj&#39;:
-        default:{
-            // 处理对象原型
-            proto = Object.getPrototypeOf(oldObj);
-            // 利用Object.create切断原型链
-            newObj = Object.create(proto);
-            break;
+        <span class="hljs-comment">//case 'obj':</span>
+        <span class="hljs-keyword">default</span>:{
+            <span class="hljs-comment">// 处理对象原型</span>
+            proto = <span class="hljs-built_in">Object</span>.getPrototypeOf(oldObj);
+            <span class="hljs-comment">// 利用Object.create切断原型链</span>
+            newObj = <span class="hljs-built_in">Object</span>.create(proto);
+            <span class="hljs-keyword">break</span>;
         }
    }
 
-   // 处理循环引用
-   const index = oldObjArr.indexOf(oldObj);
-   if (index != -1) {// 如果父数组存在本对象,说明之前已经被引用过,直接返回此对象    
-     return newObjArr[index];
+   <span class="hljs-comment">// 处理循环引用</span>
+   <span class="hljs-keyword">const</span> index = oldObjArr.indexOf(oldObj);
+   <span class="hljs-keyword">if</span> (index != <span class="hljs-number">-1</span>) {<span class="hljs-comment">// 如果父数组存在本对象,说明之前已经被引用过,直接返回此对象    </span>
+     <span class="hljs-keyword">return</span> newObjArr[index];
    }
 
    oldObjArr.push(oldObj);
    newObjArr.push(newObj);
 
-   for (let i in oldObj) {// 递归   ,这里数组和对象都可以用forin语句，但是数组使用forin会有一个问题，具体看最下面。但是这里不会影响  
+   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i <span class="hljs-keyword">in</span> oldObj) {<span class="hljs-comment">// 递归   ,这里数组和对象都可以用forin语句，但是数组使用forin会有一个问题，具体看最下面。但是这里不会影响  </span>
      newObj[i] = clone(oldObj[i]);
    }
 
-   return newObj;
+   <span class="hljs-keyword">return</span> newObj;
  };
 
 
- return clone(oldObj);
+ <span class="hljs-keyword">return</span> clone(oldObj);
 }
 
-/*
+<span class="hljs-comment">/*
 测试通过
-*/
-function person(pname) {
-    this.name = pname;
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">person</span>(<span class="hljs-params">pname</span>) </span>{
+    <span class="hljs-keyword">this</span>.name = pname;
 }
 
-const Messi = new person(&#39;Messi&#39;);
+<span class="hljs-keyword">const</span> Messi = <span class="hljs-keyword">new</span> person(<span class="hljs-string">'Messi'</span>);
 
-function say() {
-    console.log(&#39;hi&#39;);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">say</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'hi'</span>);
 };
 
-const oldObj = {
+<span class="hljs-keyword">const</span> oldObj = {
     a: say,
-    b: new Array(1),
-    c: new RegExp(&#39;ab+c&#39;, &#39;i&#39;),
+    b: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>(<span class="hljs-number">1</span>),
+    c: <span class="hljs-keyword">new</span> <span class="hljs-built_in">RegExp</span>(<span class="hljs-string">'ab+c'</span>, <span class="hljs-string">'i'</span>),
     d: Messi
   };
 
-  const newObj = deepClone(oldObj);
+  <span class="hljs-keyword">const</span> newObj = deepClone(oldObj);
 
-  console.log(newObj.a, oldObj.a); //[Function: say] [Function: say]
-  console.log(newObj.b[0], oldObj.b[0]); // undefined undefined
-  console.log(newObj.c, oldObj.c); // /ab+c/i /ab+c/i
-  console.log(newObj.d.constructor, oldObj.d.constructor); // [Function: person][Function: person]
+  <span class="hljs-built_in">console</span>.log(newObj.a, oldObj.a); <span class="hljs-comment">//[Function: say] [Function: say]</span>
+  <span class="hljs-built_in">console</span>.log(newObj.b[<span class="hljs-number">0</span>], oldObj.b[<span class="hljs-number">0</span>]); <span class="hljs-comment">// undefined undefined</span>
+  <span class="hljs-built_in">console</span>.log(newObj.c, oldObj.c); <span class="hljs-comment">// /ab+c/i /ab+c/i</span>
+  <span class="hljs-built_in">console</span>.log(newObj.d.<span class="hljs-keyword">constructor</span>, oldObj.d.<span class="hljs-keyword">constructor</span>); // [Function: person][Function: person]
 </code></pre>
 <h2 id="tostring和typeof区别">toString和typeof区别</h2>
 <p>之前一直不知道这两个有什么区别，所以这次好好研究一下，探索出来这样的关系
 <img src="./deepClone/toString_typeof.png"></p>
 <p>下面是一些测试例子</p>
-<pre><code class="language-javascript">var toString = Object.prototype.toString;
+<pre><code class="language-javascript">var <span class="hljs-built_in">toString</span> = Object.prototype.<span class="hljs-built_in">toString</span>;
 
-let a= true;
-console.log(typeof(a));//boolean
-console.log(toString.call(a));//[object Boolean]
+let a= <span class="hljs-literal">true</span>;
+console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">typeof</span>(a));<span class="hljs-comment">//boolean</span>
+console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">toString</span>.<span class="hljs-built_in">call</span>(a));<span class="hljs-comment">//[object Boolean]</span>
 
-a=new Boolean(true);
-console.log(typeof(a));//object 
-console.log(toString.call(a));//[object Boolean]
-
-
-a=new RegExp(&#39;ab+c&#39;, &#39;i&#39;);
-console.log(a.source)//ab+c
-console.log(a.global)//false
-console.log(a.ignoreCase)//true
-console.log(a.multiline)//false
-console.log(a.lastIndex)//0
-
-console.log(typeof(a));//object
-console.log(toString.call(a));//[object RegExp]
+a=new Boolean(<span class="hljs-literal">true</span>);
+console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">typeof</span>(a));<span class="hljs-comment">//object </span>
+console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">toString</span>.<span class="hljs-built_in">call</span>(a));<span class="hljs-comment">//[object Boolean]</span>
 
 
-function say() {
-  console.log(&#39;hi&#39;);
+a=new RegExp(<span class="hljs-string">'ab+c'</span>, <span class="hljs-string">'i'</span>);
+console.<span class="hljs-built_in">log</span>(a.source)<span class="hljs-comment">//ab+c</span>
+console.<span class="hljs-built_in">log</span>(a.global)<span class="hljs-comment">//false</span>
+console.<span class="hljs-built_in">log</span>(a.ignoreCase)<span class="hljs-comment">//true</span>
+console.<span class="hljs-built_in">log</span>(a.multiline)<span class="hljs-comment">//false</span>
+console.<span class="hljs-built_in">log</span>(a.lastIndex)<span class="hljs-comment">//0</span>
+
+console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">typeof</span>(a));<span class="hljs-comment">//object</span>
+console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">toString</span>.<span class="hljs-built_in">call</span>(a));<span class="hljs-comment">//[object RegExp]</span>
+
+
+function <span class="hljs-built_in">say</span>() {
+  console.<span class="hljs-built_in">log</span>(<span class="hljs-string">'hi'</span>);
 };
-a=say;
-console.log(typeof(a));//function
-console.log(toString.call(a));//[object Function]
+a=<span class="hljs-built_in">say</span>;
+console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">typeof</span>(a));<span class="hljs-comment">//function</span>
+console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">toString</span>.<span class="hljs-built_in">call</span>(a));<span class="hljs-comment">//[object Function]</span>
 
-a=[1,2,3,4,5];
-(let i in a){
-console.log(a[i])
+a=[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>];
+(let i <span class="hljs-built_in">in</span> a){
+console.<span class="hljs-built_in">log</span>(a[i])
 }
-console.log(typeof(a));//object
-console.log(toString.call(a));//[object Array]
+console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">typeof</span>(a));<span class="hljs-comment">//object</span>
+console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">toString</span>.<span class="hljs-built_in">call</span>(a));<span class="hljs-comment">//[object Array]</span>
 
-a=Symbol(&#39;foo&#39;);
-console.log(typeof(a));//symbol
-console.log(toString.call(a));//[object Symbol]
+a=Symbol(<span class="hljs-string">'foo'</span>);
+console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">typeof</span>(a));<span class="hljs-comment">//symbol</span>
+console.<span class="hljs-built_in">log</span>(<span class="hljs-built_in">toString</span>.<span class="hljs-built_in">call</span>(a));<span class="hljs-comment">//[object Symbol]</span>
 
 </code></pre>
 <h2 id="数组使用for-in">数组使用for in</h2>
 <p>for in函数中变量以字符串的形式出现，这时候在函数中操作a[x+1]的话是无效的，x+1会进行字符串拼接。</p>
-<pre><code class="language-javascript">var a=[5,4,3,2,1];
-        var x=0;
-        console.log(typeof x);//number
-        for (x in a) {
-            console.log(&quot;a[&quot;+x+&quot;]: &quot;+a[x]);
-            console.log(typeof x);//string
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> a=[<span class="hljs-number">5</span>,<span class="hljs-number">4</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">1</span>];
+        <span class="hljs-keyword">var</span> <span class="hljs-symbol">x</span>=<span class="hljs-number">0</span>;
+        console.log(<span class="hljs-built_in">typeof</span> <span class="hljs-symbol">x</span>);<span class="hljs-comment">//number</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-symbol">x</span> in a) {
+            console.log(<span class="hljs-string">"a["</span>+<span class="hljs-symbol">x</span>+<span class="hljs-string">"]: "</span>+a[<span class="hljs-symbol">x</span>]);
+            console.log(<span class="hljs-built_in">typeof</span> <span class="hljs-symbol">x</span>);<span class="hljs-comment">//string</span>
         }
-        console.log(x);//4
-        console.log(typeof x);//string
-//output:
-//        a[0]: 5
-//        a[1]: 4
-//        a[2]: 3
-//        a[3]: 2
-//        a[4]: 1</code></pre>
+        console.log(<span class="hljs-symbol">x</span>);<span class="hljs-comment">//4</span>
+        console.log(<span class="hljs-built_in">typeof</span> <span class="hljs-symbol">x</span>);<span class="hljs-comment">//string</span>
+<span class="hljs-comment">//output:</span>
+<span class="hljs-comment">//        a[0]: 5</span>
+<span class="hljs-comment">//        a[1]: 4</span>
+<span class="hljs-comment">//        a[2]: 3</span>
+<span class="hljs-comment">//        a[3]: 2</span>
+<span class="hljs-comment">//        a[4]: 1</span></code></pre>
 
         </div>
     </div>
@@ -239,5 +243,8 @@ console.log(toString.call(a));//[object Symbol]
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

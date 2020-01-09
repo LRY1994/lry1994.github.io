@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -126,28 +130,28 @@ render: h =&gt; h(App)
 <p>连接</p>
 <h3 id="2-共享数据store">2-共享数据store</h3>
 <h4 id="react-redux的store">React-redux的store</h4>
-<pre><code class="language-javascript">const store = createStore(
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> store = createStore(
     combineReducers(reducer),
 
 );
 
 ReactDOM.render(
-&lt;Provider store={store}&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
   {router}
-&lt;/Provider&gt;,
-document.getElementById(&#39;app&#39;)
+<span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>,
+<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'app'</span>)
 );
 </code></pre>
 <h4 id="vuex的store">Vuex的store</h4>
 <pre><code class="language-javascript">store = new Vuex.Store({
-  state:
+  <span class="hljs-keyword">state</span>:
 mutations
 actions
 getters
   modules:}）
 
 new Vue({
-  el: &#39;#app&#39;,
+  el: '<span class="hljs-comment">#app',</span>
   router,
   store,
   render: h =&gt; h(App)
@@ -155,33 +159,33 @@ new Vue({
 <h3 id="3-模块">3-模块</h3>
 <h4 id="react-redux的reducer">React-redux的reducer</h4>
 <p>reducer和vuex的modules类似，可以用来划分不同模块</p>
-<pre><code class="language-javascript">// reducer
-function User (state = JSON.parse(Tool.localItem(&#39;User&#39;)), action) {     
-        switch (action.type) {
-            case SIGNIN_SUCCESS: //登录成功                               
-                Tool.localItem(&#39;User&#39;, JSON.stringify(action.target));               
-                return action.target;
+<pre><code class="language-javascript"><span class="hljs-comment">// reducer</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">User</span> (<span class="hljs-params">state = <span class="hljs-built_in">JSON</span>.parse(Tool.localItem(<span class="hljs-string">'User'</span>)), action</span>) </span>{     
+        <span class="hljs-keyword">switch</span> (action.type) {
+            <span class="hljs-keyword">case</span> SIGNIN_SUCCESS: <span class="hljs-comment">//登录成功                               </span>
+                Tool.localItem(<span class="hljs-string">'User'</span>, <span class="hljs-built_in">JSON</span>.stringify(action.target));               
+                <span class="hljs-keyword">return</span> action.target;
 
-            case SIGNIN: //退出
-                Tool.removeLocalItem(&#39;User&#39;);
-                return null;
+            <span class="hljs-keyword">case</span> SIGNIN: <span class="hljs-comment">//退出</span>
+                Tool.removeLocalItem(<span class="hljs-string">'User'</span>);
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
 
-            default:            
-               return state;
+            <span class="hljs-keyword">default</span>:            
+               <span class="hljs-keyword">return</span> state;
         }
 
     }
-/**省略。。。。。。*/
-export default { IndexList, Topic, MyMessages, UserView, User }
+<span class="hljs-comment">/**省略。。。。。。*/</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> { IndexList, Topic, MyMessages, UserView, User }
 </code></pre>
 <h4 id="vuex的modules">vuex的modules</h4>
-<pre><code class="language-javascript">export default new Vuex.Store({
-  state: {
-    user: null
+<pre><code class="language-javascript">export <span class="hljs-keyword">default</span> new Vuex.Store({
+  <span class="hljs-keyword">state</span>: {
+    <span class="hljs-keyword">user</span>: null
   },
   mutations: {
-    setUser (state, payload) {
-      state.user = payload     
+    <span class="hljs-built_in">set</span>User (<span class="hljs-keyword">state</span>, payload) {
+      <span class="hljs-keyword">state</span>.<span class="hljs-keyword">user</span> = payload     
     }
   },
   actions,
@@ -194,9 +198,9 @@ export default { IndexList, Topic, MyMessages, UserView, User }
 <h3 id="4-唯一可以改变state的方式">4-唯一可以改变state的方式</h3>
 <h4 id="react-redux的action">React-redux的action</h4>
 <p>action就是一个对象,具体处理方法在reducer里面实现</p>
-<pre><code class="language-javascript">export function signinSuccess(target){
-return {
-type:&#39;signinSuccess&#39;,
+<pre><code class="language-javascript">export <span class="hljs-keyword">function</span> <span class="hljs-title">signinSuccess</span>(target){
+<span class="hljs-keyword">return</span> <span class="hljs-type">{</span>
+<span class="hljs-keyword">type</span>:<span class="hljs-symbol">'signinSuccess</span>',
 target
 }
 };</code></pre>
@@ -204,42 +208,42 @@ target
 <p>mutation是方法，由action调用</p>
 <pre><code class="language-javascript">// mutations
 const mutations = {
-  [types.RECEIVE_PRODUCTS] (state, { products }) {
-    state.all = products
+  [types.RECEIVE_PRODUCTS] (<span class="hljs-keyword">state</span>, { products }) {
+    <span class="hljs-keyword">state</span>.<span class="hljs-literal">all</span> = products
   },
 
-  [types.ADD_TO_CART] (state, { id }) {
-    console.log(&#39;form product&#39;)
-    state.all.find(p =&gt; p.id === id).inventory--
+  [types.ADD_TO_CART] (<span class="hljs-keyword">state</span>, { id }) {
+    console.<span class="hljs-keyword">log</span>('form product')
+    <span class="hljs-keyword">state</span>.<span class="hljs-literal">all</span>.find(p =&gt; p.id === id).inventory--
   }
 }</code></pre>
 <h3 id="5-组件连接姿势">5-组件连接姿势</h3>
 <h4 id="react-redux连接">React-redux连接</h4>
 <p>用connect方法</p>
-<pre><code class="language-javascript">const mapStateToProps = (state) =&gt; {
-    return {
+<pre><code class="language-javascript">const mapStateToProps = <span class="hljs-function"><span class="hljs-params">(state)</span> =&gt;</span> {
+    <span class="hljs-keyword">return</span> {
       User: state.User
     }
   }
 
-  const mapDispatchToProps = (dispatch) =&gt; {
-    return {
-        signinSuccess: (user) =&gt; {
+  const mapDispatchToProps = <span class="hljs-function"><span class="hljs-params">(dispatch)</span> =&gt;</span> {
+    <span class="hljs-keyword">return</span> {
+        signinSuccess: <span class="hljs-function"><span class="hljs-params">(user)</span> =&gt;</span> {
             dispatch(signinSuccess(user))
         }
     }
   }
 
-export default connect(mapStateToProps,mapDispatchToProps)(SignIn);</code></pre>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> connect(mapStateToProps,mapDispatchToProps)(SignIn);</code></pre>
 <h4 id="vuex连接">Vuex连接</h4>
 <p>只需要在组件里面映射
 mapState<br>mapMutations<br>mapGetters<br>mapActions</p>
-<pre><code class="language-javascript">export default {
+<pre><code class="language-javascript"><span class="hljs-builtin-name">export</span><span class="hljs-built_in"> default </span>{
   computed: mapGetters({
-    products: &#39;allProducts&#39;
+    products: <span class="hljs-string">'allProducts'</span>
   }),
   methods: mapActions([
-    &#39;addToCart&#39;
+    <span class="hljs-string">'addToCart'</span>
   ]),</code></pre>
 <h3 id="6-调用链">6-调用链</h3>
 <h4 id="react-redux调用链">React-redux调用链</h4>
@@ -272,5 +276,8 @@ mapState<br>mapMutations<br>mapGetters<br>mapActions</p>
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

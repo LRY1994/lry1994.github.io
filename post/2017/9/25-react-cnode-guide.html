@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -48,18 +52,18 @@
 <p>npm install flex.css –save</p>
 <p>flex.css使用方法</p>
 <pre><code>dir：主轴方向
-        top：从上到下
-        right：从右到左
-    bottom：从上到下
-    left：从左到右（默认）
+        <span class="hljs-attribute">top</span>：从上到下
+        <span class="hljs-attribute">right</span>：从右到左
+    <span class="hljs-attribute">bottom</span>：从上到下
+    <span class="hljs-attribute">left</span>：从左到右（默认）
 main：主轴对齐方式
-    right：从右到左
-    left：从左到右（默认）
+    <span class="hljs-attribute">right</span>：从右到左
+    <span class="hljs-attribute">left</span>：从左到右（默认）
     justify：两端对齐
         center：居中对齐
 cross：交叉轴对齐方式
-    top：从上到下
-    bottom：从上到下
+    <span class="hljs-attribute">top</span>：从上到下
+    <span class="hljs-attribute">bottom</span>：从上到下
     baseline：跟随内容高度对齐
     center：居中对齐
     stretch：高度并排铺满（默认）
@@ -68,64 +72,64 @@ box：子元素设置
     first：第一个子元素不要多余空间，其他子元素平分多余空间
     last：最后一个子元素不要多余空间，其他子元素平分多余空间
     justify：两端第一个元素不要多余空间，其他子元素平分多余空间</code></pre><p>3.整个项目的基础结构就是</p>
-<pre><code>&lt;Provider store={store}&gt;
-    &lt;Router history={history}&gt;
-        &lt;Switch&gt;
-            &lt;Route key=’’ path=’’ component=’’/&gt;
-            &lt;Route key=’’ path=’’ component=’’/&gt;
+<pre><code><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Router</span> <span class="hljs-attr">history</span>=<span class="hljs-string">{history}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Switch</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">key</span>=<span class="hljs-string">’’</span> <span class="hljs-attr">path</span>=<span class="hljs-string">’’</span> <span class="hljs-attr">component</span>=<span class="hljs-string">’’/</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">key</span>=<span class="hljs-string">’’</span> <span class="hljs-attr">path</span>=<span class="hljs-string">’’</span> <span class="hljs-attr">component</span>=<span class="hljs-string">’’/</span>&gt;</span>
             ………………………………..
-        &lt;/Switch&gt;
-    &lt;/Router&gt;
-&lt;/Provider&gt;</code></pre><p>4.下拉动态加载用到时 get-next-page 插件</p>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Switch</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">Router</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></code></pre><p>4.下拉动态加载用到时 get-next-page 插件</p>
 <p>她自己自动监听了这些事件，不用自己写触发事件，比如下拉的时候回自动拉取下一页数据</p>
 <p>this.monitorEvent = [&#39;DOMContentLoaded&#39;, &#39;load&#39;, &#39;click&#39;, &#39;touchstart&#39;, &#39;touchend&#39;, &#39;haschange&#39;, &#39;online&#39;, &#39;pageshow&#39;, &#39;popstate&#39;, &#39;resize&#39;, &#39;storage&#39;, &#39;mousewheel&#39;, &#39;scroll&#39;];</p>
 <p>只需要写好el,拉取的数据就会放在el </p>
 <p>使用方法：</p>
-<pre><code>import GetNextPage from ‘get-next-page’
-new GetNextPage(el,setting)
+<pre><code>import GetNextPage <span class="hljs-built_in">from</span> ‘<span class="hljs-built_in">get</span>-next-page’
+<span class="hljs-built_in">new</span> GetNextPage(el,setting)
 
 
 setting参数如下
 
-/*元素在可视区位置，符合其中一个条件就会触发加载机制*/
+<span class="hljs-comment">/*元素在可视区位置，符合其中一个条件就会触发加载机制*/</span>
 
-top    //元素在顶部伸出的距离才加载
-right  //元素在右边伸出的距离才加载
-bottom //元素在底部伸出的距离才加载
-left   //元素在左边伸出的距离才加载
+top   <span class="hljs-comment"> //元素在顶部伸出的距离才加载</span>
+<span class="hljs-literal">right</span> <span class="hljs-comment"> //元素在右边伸出的距离才加载</span>
+bottom<span class="hljs-comment"> //元素在底部伸出的距离才加载</span>
+left  <span class="hljs-comment"> //元素在左边伸出的距离才加载</span>
 
-    /*
+    <span class="hljs-comment">/*
     发送到服务器的相关数据
-*/
-url  //发送到服务器的地址
-data //发送到服务器的数据
-pageName  //分页的参数名称，用来加载完成后+1
-/*
+*/</span>
+url <span class="hljs-comment"> //发送到服务器的地址</span>
+data<span class="hljs-comment"> //发送到服务器的数据</span>
+pageName <span class="hljs-comment"> //分页的参数名称，用来加载完成后+1</span>
+<span class="hljs-comment">/*
     回调方法
-*/
-start  //开始加载时调用方法
-load //加载成功时调用方法
-error  //开始加载时调用方法
-end  //加载完成时调用方法   </code></pre><h3 id="遇到的问题及得到的知识点">遇到的问题及得到的知识点</h3>
+*/</span>
+<span class="hljs-built_in">start</span> <span class="hljs-comment"> //开始加载时调用方法</span>
+<span class="hljs-built_in">load</span><span class="hljs-comment"> //加载成功时调用方法</span>
+error <span class="hljs-comment"> //开始加载时调用方法</span>
+<span class="hljs-function"><span class="hljs-keyword">end</span>  //加载完成时调用方法   </span></code></pre><h3 id="遇到的问题及得到的知识点">遇到的问题及得到的知识点</h3>
 <p>1.You should not use <Route> or withRouter() outside a <Router></p>
 <p>源码里面是每个路由导航的Component都包含一个Rooter，我想要整个页面就用一个Footer，但是Footer里面包含了<Route>,<Route>必须包含 在<Rooter>里面，所以不可以这样写</p>
 <pre><code>render(
-&lt;Provider store={store}&gt;
-        &lt;div&gt;
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Provider</span> <span class="hljs-attr">store</span>=<span class="hljs-string">{store}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
         {router}
-        &lt;Footer/&gt;
-    &lt;/div&gt;
+        <span class="hljs-tag">&lt;<span class="hljs-name">Footer</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 
-&lt;/Provider&gt;,
-document.getElementById(&#39;root&#39;)
+<span class="hljs-tag">&lt;/<span class="hljs-name">Provider</span>&gt;</span></span>,
+<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'root'</span>)
 )</code></pre><p>2.React.Children.only expected to receive a single React element child.</p>
-<pre><code>&lt;Router&gt;&lt;Provider&gt;里面只能有一个一级子节点,Provider的store是必须的，Router的history是必须的</code></pre><p>History用这种方法创造</p>
-<pre><code>import createBrowserHistory from &#39;history/createBrowserHistory&#39;;
-const history = createBrowserHistory();</code></pre><p>好像还可以这样写。但是不知道有什么区别</p>
-<pre><code>var history = process.env.NODE_ENV !== &#39;production&#39; ? browserHistory : hashHistory;</code></pre><p>3.修改react启动的端口号</p>
+<pre><code><span class="hljs-symbol">&lt;Router&gt;</span><span class="hljs-symbol">&lt;Provider&gt;</span>里面只能有一个一级子节点,Provider的store是必须的，Router的<span class="hljs-keyword">history</span>是必须的</code></pre><p>History用这种方法创造</p>
+<pre><code><span class="hljs-keyword">import</span> createBrowserHistory <span class="hljs-keyword">from</span> <span class="hljs-string">'history/createBrowserHistory'</span>;
+<span class="hljs-keyword">const</span> history = createBrowserHistory();</code></pre><p>好像还可以这样写。但是不知道有什么区别</p>
+<pre><code><span class="hljs-keyword">var</span> history = process.env.NODE_ENV !== <span class="hljs-string">'production'</span> ? browserHistory : hashHistory;</code></pre><p>3.修改react启动的端口号</p>
 <p>打开react项目的 package.json文件</p>
 <p>将 scripts中的start键值对</p>
-<pre><code>&quot;start&quot;: &quot;node scripts/start.js&quot;,</code></pre><p>修改为
+<pre><code><span class="hljs-string">"start"</span>: <span class="hljs-string">"node scripts/start.js"</span>,</code></pre><p>修改为
     &quot;start&quot;: &quot;set PORT=3000&amp;&amp;node scripts/start.js&quot;,</p>
 <p>4.React并没有一个自己的Component处理网络请求，自己包装HttpService.js</p>
 <p>5.render 方法必须要返回一个 JSX 元素。而且必须要用一个外层的 JSX 元素把所有内容包裹起来。返回并列多个 JSX 元素是不合法的</p>
@@ -134,10 +138,10 @@ const history = createBrowserHistory();</code></pre><p>好像还可以这样写�
 <p>参考 <a href="https://segmentfault.com/q/1010000009616045">https://segmentfault.com/q/1010000009616045</a></p>
 <p>react-router4没有indexRoute了。 react-router4版本中路由的本质变成了React组件，也就是自定义标签。所以你可以像使用组件一样是用路由。那么嵌套路由无非就是组件嵌套的写法（自定义标签嵌套而已）</p>
 <p>7.</p>
-<pre><code>&lt;Route path=&quot;/&quot; component={App} /&gt;
-&lt;Route exact path=&quot;/&quot; component={Home} /&gt;
-&lt;Route path=&quot;topics&quot; component={Topics} /&gt;
-&lt;Route path=&quot;/topics/:id&quot; component={Topic} /&gt;</code></pre><p>这里用react-router-dom，用{this.props.children}渲染不出组件，放弃这种做法</p>
+<pre><code><span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">component</span>=<span class="hljs-string">{App}</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">exact</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">component</span>=<span class="hljs-string">{Home}</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"topics"</span> <span class="hljs-attr">component</span>=<span class="hljs-string">{Topics}</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/topics/:id"</span> <span class="hljs-attr">component</span>=<span class="hljs-string">{Topic}</span> /&gt;</span></code></pre><p>这里用react-router-dom，用{this.props.children}渲染不出组件，放弃这种做法</p>
 <p>8.没有传入action 之前，会出现这个错误</p>
 <p><img src="https://raw.githubusercontent.com/LRY1994/react-cnode-re/master/pictrue_for_readme/2.jpg" alt="Aaron Swartz"></p>
 <p>9.想要在chrome控制台下查看react,出现这个问题</p>
@@ -147,94 +151,94 @@ const history = createBrowserHistory();</code></pre><p>好像还可以这样写�
 <p><a href="https://stackoverflow.com/questions/38074154/redux-the-previous-state-received-by-the-reducer-has-unexpected-type-of-functi">https://stackoverflow.com/questions/38074154/redux-the-previous-state-received-by-the-reducer-has-unexpected-type-of-functi</a></p>
 <p>改成</p>
 <pre><code>const store = createStore(
-    combineReducers(reducer),
-    compose(applyMiddleware(thunk),composeWithDevTools())    
-);</code></pre><p>10.在reducer里面返回新的state,就是store</p>
+    <span class="hljs-name">combineReducers</span>(<span class="hljs-name">reducer</span>),
+    compose(<span class="hljs-name">applyMiddleware</span>(<span class="hljs-name">thunk</span>),composeWithDevTools())    
+)<span class="hljs-comment">;</span></code></pre><p>10.在reducer里面返回新的state,就是store</p>
 <p>reducer只有在createStore的时候用到，其他地方没有用到，不用管。</p>
 <p>Connet的时候就是组件丛store里面取出自己需要的东西，仅仅是自己需要的数据。</p>
 <p>只有触发的时候用到dispatch，其他时候没有用到。</p>
 <p>刚开始想像一般推荐的那种方法那样弄两个文件夹Component和Container，试了一天，最后发现store是放共享的东西，我为什么什么都要往里面放。还有一个组件写两个文件很繁琐，直接像源码里面在组件最后connect一下就好了</p>
 <p>总体流程就是</p>
 <pre><code>Reducer
-createStore(reducer)
+<span class="hljs-function"><span class="hljs-title">createStore</span><span class="hljs-params">(reducer)</span></span>
 action
-connect(props,action)
-this.props.（action.type）(arg)
+<span class="hljs-function"><span class="hljs-title">connect</span><span class="hljs-params">(props,action)</span></span>
+this<span class="hljs-selector-class">.props</span>.（action.type）(arg)
 
-手动调用this.props.（action.type）(arg)--&gt;react-redux自动对应到reducer--&gt;react-redux自动更新props</code></pre><p>11.前往某个制定的页面</p>
-<pre><code>this.context.router.history.push({
-                    pathname: &#39;/user/&#39; + res.loginname
+手动调用this<span class="hljs-selector-class">.props</span>.（action.type）(arg)--&gt;react-redux自动对应到reducer--&gt;react-redux自动更新props</code></pre><p>11.前往某个制定的页面</p>
+<pre><code><span class="hljs-selector-tag">this</span><span class="hljs-selector-class">.context</span><span class="hljs-selector-class">.router</span><span class="hljs-selector-class">.history</span><span class="hljs-selector-class">.push</span>({
+                    <span class="hljs-attribute">pathname</span>: <span class="hljs-string">'/user/'</span> + res.loginname
                 });</code></pre><p>12.mapDispatchToProps可以返回一个对象，action(&#39;User&#39;)返回对象,每个元素都是函数</p>
 <pre><code>{
-    &#39;signinSuccess&#39;:( target)=&gt;{
+    <span class="hljs-string">'signinSuccess'</span>:<span class="hljs-function">(<span class="hljs-params"> target</span>)=&gt;</span>{
         _ID: User, 
         target: target, 
-        type: &#39;signinSuccess&#39; 
+        <span class="hljs-keyword">type</span>: <span class="hljs-string">'signinSuccess'</span> 
 },
-&#39;signin&#39;: ( target)=&gt;{
+<span class="hljs-string">'signin'</span>: <span class="hljs-function">(<span class="hljs-params"> target</span>)=&gt;</span>{
         _ID: User, 
         target: target, 
-        type: &#39;signin&#39;
+        <span class="hljs-keyword">type</span>: <span class="hljs-string">'signin'</span>
 },
-‘setState’: ( target)=&gt;{
+‘setState’: <span class="hljs-function">(<span class="hljs-params"> target</span>)=&gt;</span>{
         _ID: User, 
         target: target, 
-        type: ‘setState’
+        <span class="hljs-keyword">type</span>: ‘setState’
 },
 }
 
 
-export default (_ID) =&gt; {
-    var action = {};
-    var arr = [
-        &#39;signinSuccess&#39;, //登录成功
-        &#39;signin&#39;, //退出登录
-        &#39;setState&#39; //设置状态
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (_ID) =&gt; {
+    <span class="hljs-keyword">var</span> action = {};
+    <span class="hljs-keyword">var</span> arr = [
+        <span class="hljs-string">'signinSuccess'</span>, <span class="hljs-comment">//登录成功</span>
+        <span class="hljs-string">'signin'</span>, <span class="hljs-comment">//退出登录</span>
+        <span class="hljs-string">'setState'</span> <span class="hljs-comment">//设置状态</span>
     ];
 
-    for (let i = 0; i &lt; arr.length; i++) {
-        action[arr[i]] = (target) =&gt; {
-            return { 
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; arr.length; i++) {
+        action[arr[i]] = <span class="hljs-function">(<span class="hljs-params">target</span>) =&gt;</span> {
+            <span class="hljs-keyword">return</span> { 
                 _ID: _ID, 
                 target: target, 
-                type: arr[i] 
+                <span class="hljs-keyword">type</span>: arr[i] 
             };
         }
     }
 
-    return action;
+    <span class="hljs-keyword">return</span> action;
 } 
 
 
-export default connect((state) =&gt; { return { User: state.User }; }, action(&#39;User&#39;))(SignIn); //连接redux
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> connect(<span class="hljs-function">(<span class="hljs-params">state</span>) =&gt;</span> { <span class="hljs-keyword">return</span> { User: state.User }; }, action(<span class="hljs-string">'User'</span>))(SignIn); <span class="hljs-comment">//连接redux</span>
 
 connect([mapStateToProps], [mapDispatchToProps], [mergeProps], [options])(组件)</code></pre><p>[mapDispatchToProps(dispatch, [ownProps]): dispatchProps] (Object or Function): 如果传递的是一个对象，那么每个定义在该对象的函数都将被当作 Redux action creator，而且这个对象会与 Redux store 绑定在一起，其中所定义的方法名将作为属性名，合并到组件的 props 中。</p>
 <p>13.在signin里面不connect的时候super(props)输出来的props是这样的，默认的props是 
 <img src="https://raw.githubusercontent.com/LRY1994/react-cnode-re/master/pictrue_for_readme/4.jpg" alt="Aaron Swartz"></p>
-<pre><code>history:
-    action:&quot;POP&quot;/&quot;PUSH&quot;
-    block:ƒ block()
-    createHref:ƒ createHref(location)
-    go:ƒ go(n)
-    goBack:ƒ goBack()
-    goForward:ƒ goForward()
-    length:2//浏览器历史列表中的 URL 数量
-    listen:ƒ listen(listener)
-    location:{
-pathname: &quot;/signin&quot;, //同window.location.pathname
-search: &quot;&quot;, //同window.location.search
-hash: &quot;&quot;, 
-state: undefined,// 一个捆绑在这个地址上的object对象
-key: &quot;wytc8y&quot;}
-    push:ƒ push(path, state)
-    replace:ƒ replace(path, state)
-location:和history.location内容一样
-match:
-    isExact:true //路由extract设置为true
-    params:{}
-    path:&quot;/signin&quot;
-    url:&quot;/signin&quot;
-staticContext:undefined</code></pre><p>connect之后多了User,和三个action setState,signin,signinSuccess</p>
+<pre><code><span class="hljs-symbol">history:</span>
+<span class="hljs-symbol">    action:</span><span class="hljs-string">"POP"</span>/<span class="hljs-string">"PUSH"</span>
+<span class="hljs-symbol">    block:</span>ƒ block()
+<span class="hljs-symbol">    createHref:</span>ƒ createHref(location)
+<span class="hljs-symbol">    go:</span>ƒ go(n)
+<span class="hljs-symbol">    goBack:</span>ƒ goBack()
+<span class="hljs-symbol">    goForward:</span>ƒ goForward()
+<span class="hljs-symbol">    length:</span><span class="hljs-number">2</span><span class="hljs-comment">//浏览器历史列表中的 URL 数量</span>
+<span class="hljs-symbol">    listen:</span>ƒ listen(listener)
+<span class="hljs-symbol">    location:</span>{
+<span class="hljs-symbol">pathname:</span> <span class="hljs-string">"/signin"</span>, <span class="hljs-comment">//同window.location.pathname</span>
+<span class="hljs-symbol">search:</span> <span class="hljs-string">""</span>, <span class="hljs-comment">//同window.location.search</span>
+<span class="hljs-symbol">hash:</span> <span class="hljs-string">""</span>, 
+<span class="hljs-symbol">state:</span> undefined,<span class="hljs-comment">// 一个捆绑在这个地址上的object对象</span>
+<span class="hljs-symbol">key:</span> <span class="hljs-string">"wytc8y"</span>}
+<span class="hljs-symbol">    push:</span>ƒ push(path, state)
+<span class="hljs-symbol">    replace:</span>ƒ replace(path, state)
+<span class="hljs-symbol">location:</span>和history.location内容一样
+<span class="hljs-symbol">match:</span>
+<span class="hljs-symbol">    isExact:</span>true <span class="hljs-comment">//路由extract设置为true</span>
+<span class="hljs-symbol">    params:</span>{}
+<span class="hljs-symbol">    path:</span><span class="hljs-string">"/signin"</span>
+<span class="hljs-symbol">    url:</span><span class="hljs-string">"/signin"</span>
+<span class="hljs-symbol">staticContext:</span>undefined</code></pre><p>connect之后多了User,和三个action setState,signin,signinSuccess</p>
 <p><img src="https://raw.githubusercontent.com/LRY1994/react-cnode-re/master/pictrue_for_readme/5.jpg" alt="Aaron Swartz"></p>
 <p>我把default改成return null,User值会变化
 <img src="https://raw.githubusercontent.com/LRY1994/react-cnode-re/master/pictrue_for_readme/6.png" alt="Image text">
@@ -258,21 +262,21 @@ staticContext:undefined</code></pre><p>connect之后多了User,和三个action s
 <p>17.组件必须大写字母开头，不然会当做html的标签</p>
 <p>18.
 this.refs.dataload</p>
-<pre><code>&lt;div ref=&quot;dataload&quot;&gt;</code></pre><p>19.生命周期知识点</p>
+<pre><code>&lt;<span class="hljs-keyword">div</span> <span class="hljs-keyword">ref</span>=<span class="hljs-string">"dataload"</span>&gt;</code></pre><p>19.生命周期知识点</p>
 <p>Mounting</p>
 <p>These methods are called when an instance of a component is being created and inserted into the DOM:</p>
-<pre><code>•    constructor()
-•    componentWillMount()
-•    render()
-•    componentDidMount()</code></pre><p>Updating</p>
+<pre><code>•    <span class="hljs-function"><span class="hljs-keyword">constructor</span><span class="hljs-params">()</span>
+•    <span class="hljs-title">componentWillMount</span><span class="hljs-params">()</span>
+•    <span class="hljs-title">render</span><span class="hljs-params">()</span>
+•    <span class="hljs-title">componentDidMount</span><span class="hljs-params">()</span></span></code></pre><p>Updating</p>
 <p>These methods are called when a component is being re-rendered:</p>
-<pre><code>•    componentWillReceiveProps()
-•    shouldComponentUpdate()
-•    componentWillUpdate()
-•    render()
-•    componentDidUpdate()</code></pre><p>Unmounting</p>
+<pre><code>•    <span class="hljs-function"><span class="hljs-title">componentWillReceiveProps</span>()</span>
+•    <span class="hljs-function"><span class="hljs-title">shouldComponentUpdate</span>()</span>
+•    <span class="hljs-function"><span class="hljs-title">componentWillUpdate</span>()</span>
+•    <span class="hljs-function"><span class="hljs-title">render</span>()</span>
+•    <span class="hljs-function"><span class="hljs-title">componentDidUpdate</span>()</span></code></pre><p>Unmounting</p>
 <p>This method is called when a component is being removed from the DOM:</p>
-<pre><code>•    componentWillUnmount()</code></pre><p><img src="https://raw.githubusercontent.com/LRY1994/react-cnode-re/master/pictrue_for_readme/15.png" alt="Aaron Swartz"></p>
+<pre><code>•    <span class="hljs-function"><span class="hljs-title">componentWillUnmount</span>()</span></code></pre><p><img src="https://raw.githubusercontent.com/LRY1994/react-cnode-re/master/pictrue_for_readme/15.png" alt="Aaron Swartz"></p>
 <p>打开localhost的时候，/home初始化，因为调用了两次setState,所以调用了两次componentWillReceiveProps, 
 Prop改变会自动触发componentWillReceiveProps, shouldComponentUpdate ,componentWillUpdate ,render,componentDidUpdate,每一次改变prop就会触发这些
 State改变需要使用setState方法设置，然后会自动调用shouldComponentUpdate,componentWillUpdate,render, componentDidUpdate()。跟Prop改变不同的是，state改变可能不会立即触发，他会和其他合并之后再触发</p>
@@ -299,57 +303,57 @@ State改变需要使用setState方法设置，然后会自动调用shouldCompone
 <p><img src="https://raw.githubusercontent.com/LRY1994/react-cnode-re/master/pictrue_for_readme/26.png" alt="Aaron Swartz"></p>
 <p>19.获取参数方式</p>
 <p><a href="http://localhost:4000/home?tab=good">http://localhost:4000/home?tab=good</a></p>
-<pre><code>queryString.parse(props.location.search).tab</code></pre><p><a href="http://localhost:4000/topic/5555">http://localhost:4000/topic/5555</a> </p>
-<pre><code>&lt;Route path=&quot;users&quot; component={Users}&gt;
-    &lt;Route path=&quot;/user/:userId&quot; component={User}/&gt;
-&lt;/Route&gt;
-&lt;Link to={/user/${user.id}}&gt;{user.name}&lt;/Link&gt;
-    props.match.params. userId</code></pre><p>20.props.dangerouslySetInnerHTML must be in the form {__html: ...}</p>
-<pre><code>dangerouslySetInnerHTML=\{\{__html:content\}\}</code></pre><p>21.前往某个页面</p>
-<pre><code>this.context.router.history.push({
-                pathname: &#39;/topic/&#39; + res.topic_id
+<pre><code><span class="hljs-selector-tag">queryString</span><span class="hljs-selector-class">.parse</span>(<span class="hljs-selector-tag">props</span><span class="hljs-selector-class">.location</span><span class="hljs-selector-class">.search</span>)<span class="hljs-selector-class">.tab</span></code></pre><p><a href="http://localhost:4000/topic/5555">http://localhost:4000/topic/5555</a> </p>
+<pre><code><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"users"</span> <span class="hljs-attr">component</span>=</span></span><span class="hljs-template-variable">{Users}</span><span class="xml"><span class="hljs-tag">&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">Route</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"/user/:userId"</span> <span class="hljs-attr">component</span>=</span></span><span class="hljs-template-variable">{User}</span><span class="xml"><span class="hljs-tag">/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">Route</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">to</span>=</span></span><span class="hljs-template-tag">{/<span class="hljs-name">user</span>/${user.id}</span><span class="xml"><span class="hljs-tag">}&gt;</span></span><span class="hljs-template-variable">{user.name}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+    props.match.params. userId</span></code></pre><p>20.props.dangerouslySetInnerHTML must be in the form {__html: ...}</p>
+<pre><code>dangerouslySetInnerHTML=<span class="hljs-symbol">\{</span><span class="hljs-symbol">\{</span>__html:content<span class="hljs-symbol">\}</span><span class="hljs-symbol">\}</span></code></pre><p>21.前往某个页面</p>
+<pre><code><span class="hljs-selector-tag">this</span><span class="hljs-selector-class">.context</span><span class="hljs-selector-class">.router</span><span class="hljs-selector-class">.history</span><span class="hljs-selector-class">.push</span>({
+                <span class="hljs-attribute">pathname</span>: <span class="hljs-string">'/topic/'</span> + res.topic_id
             });</code></pre><p>22.任何想访问context里面的属性的组件都必须显式的指定一个contextTypes 的属性。如果没有指定改属性，那么组件通过 this.context 访问属性将会出错</p>
 <p>23.process.cwd()当前工作目录（Current Work Directory）</p>
 <p>24.this.context.router.push(&#39;/&#39;) ，注：这个写法会把跳转载入浏览器历史，若不想留下历史记录则可以 this.context.router.replace(&#39;/&#39;) </p>
 <p>最后我把源码里面的redux形式改成这样connect(mapStateToProps,mapDispatchToProps)(SignIn)这种形式，在网上看好像大家也比较接受这种形式</p>
-<pre><code>const mapStateToProps = (state) =&gt; {
-    return {
+<pre><code>const mapStateToProps = <span class="hljs-function"><span class="hljs-params">(state)</span> =&gt;</span> {
+    <span class="hljs-keyword">return</span> {
     User: state.User
     }
 }
 
-const mapDispatchToProps = (dispatch) =&gt; {
-    return {
-        signinSuccess: (user) =&gt; {
+const mapDispatchToProps = <span class="hljs-function"><span class="hljs-params">(dispatch)</span> =&gt;</span> {
+    <span class="hljs-keyword">return</span> {
+        signinSuccess: <span class="hljs-function"><span class="hljs-params">(user)</span> =&gt;</span> {
             dispatch(signinSuccess(user))
         }
     }
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(SignIn); //连接redux</code></pre><h3 id="待解决（已解决）">待解决（已解决）</h3>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> connect(mapStateToProps,mapDispatchToProps)(SignIn); <span class="hljs-regexp">//</span>连接redux</code></pre><h3 id="待解决（已解决）">待解决（已解决）</h3>
 <p>npm run build的时候出错</p>
 <blockquote>
 <p>Failed to minify the code from this file: ./~/get-next-page/dist/get-next-page.js:59 Read more here:      <a href="http://bit.ly/2tRViJ9">http://bit.ly/2tRViJ9</a> </p>
 </blockquote>
 <p> 原项目是自己写的webpack配置文件。我全是create-react-app自动生成的，不想改,网上查到这段话</p>
-<pre><code>npm run build fails to minify
+<pre><code>npm <span class="hljs-built_in">run</span> build fails <span class="hljs-keyword">to</span> minify
 
-You may occasionally find a package you depend on needs compiled or ships code for a non-browser environment.
-This is considered poor practice in the ecosystem and does not have an escape hatch in Create React App.
+You may occasionally find a package you depend <span class="hljs-keyword">on</span> needs compiled <span class="hljs-keyword">or</span> ships code <span class="hljs-keyword">for</span> a non-browser environment.
+This <span class="hljs-keyword">is</span> considered poor practice <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> ecosystem <span class="hljs-keyword">and</span> <span class="hljs-keyword">does</span> <span class="hljs-keyword">not</span> have an escape hatch <span class="hljs-keyword">in</span> Create React App.
 
 To resolve this:
 
-Open an issue on the dependency&#39;s issue tracker and ask that the package be published pre-compiled (retaining ES6 Modules).
-Fork the package and publish a corrected version yourself.
-If the dependency is small enough, copy it to your src/ folder and treat it as application code.
+Open an issue <span class="hljs-keyword">on</span> <span class="hljs-keyword">the</span> dependency's issue tracker <span class="hljs-keyword">and</span> ask <span class="hljs-keyword">that</span> <span class="hljs-keyword">the</span> package be published pre-compiled (retaining ES6 Modules).
+Fork <span class="hljs-keyword">the</span> package <span class="hljs-keyword">and</span> publish a corrected <span class="hljs-built_in">version</span> yourself.
+If <span class="hljs-keyword">the</span> dependency <span class="hljs-keyword">is</span> small enough, <span class="hljs-keyword">copy</span> <span class="hljs-keyword">it</span> <span class="hljs-keyword">to</span> your src/ folder <span class="hljs-keyword">and</span> treat <span class="hljs-keyword">it</span> <span class="hljs-keyword">as</span> <span class="hljs-built_in">application</span> code.
 Something Missing?
 </code></pre><p>我这里用第三种方法，把get-netx-page.js放到/src/lib里面，相应的地方再改改，就可以了，npm run build之后就会生成build文件夹</p>
 <h3 id="部署">部署</h3>
 <p>参考 <a href="https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#deployment">部署方法</a></p>
-<pre><code>&gt;npm install -g serve
-&gt;serve -s build
-
-打开localhost:5000 ,成功</code></pre><h3 id="疑问：">疑问：</h3>
+<pre><code>&gt;npm <span class="hljs-keyword">install </span>-g serve
+&gt;serve -s <span class="hljs-keyword">build
+</span>
+打开localhost:<span class="hljs-number">5000</span> ,成功</code></pre><h3 id="疑问：">疑问：</h3>
 <p>通过createHistory()方法生成的history和react-router中的history有什么区别？？？</p>
 
         </div>
@@ -360,5 +364,8 @@ Something Missing?
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -38,20 +42,20 @@
 <p>适合高并发、IO密集型、事件驱动</p>
 <ul>
 <li><p>服务端</p>
-<pre><code class="language-javascript">http.createServer(function(ServerRequest, ServerResponse){
-  //监听
-  ServerRequest.on(&#39;data&#39;,function(chunk){})
-  ServerRequest.on(&#39;end&#39;,function(){})
-  ServerRequest.on(&#39;close&#39;,function(){})
-  //响应
-  ServerResponse.writeHead(200,{&#39;Content-Type&#39;:&#39;text/plain&#39;})
-  ServerResponse.write(&#39;hello&#39;)
-  ServerResponse.end()
-}).listen(3000)</code></pre>
+<pre><code class="language-javascript">http.create<span class="hljs-constructor">Server(<span class="hljs-params">function</span>(ServerRequest, ServerResponse)</span>{
+  <span class="hljs-comment">//监听</span>
+  <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ServerRequest</span>.</span></span>on('data',<span class="hljs-keyword">function</span>(chunk){})
+  <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ServerRequest</span>.</span></span>on('<span class="hljs-keyword">end</span>',<span class="hljs-keyword">function</span><span class="hljs-literal">()</span>{})
+  <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ServerRequest</span>.</span></span>on('close',<span class="hljs-keyword">function</span><span class="hljs-literal">()</span>{})
+  <span class="hljs-comment">//响应</span>
+  <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ServerResponse</span>.</span></span>write<span class="hljs-constructor">Head(200,{'Content-Type':'<span class="hljs-params">text</span><span class="hljs-operator">/</span><span class="hljs-params">plain</span>'})</span>
+  <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ServerResponse</span>.</span></span>write('hello')
+  <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ServerResponse</span>.</span></span><span class="hljs-keyword">end</span><span class="hljs-literal">()</span>
+}).listen(<span class="hljs-number">3000</span>)</code></pre>
 </li>
 <li><p>客户端</p>
 <pre><code class="language-javascript">options = {
-  host:&#39;&#39;,
+  <span class="hljs-attr">host</span>:<span class="hljs-string">''</span>,
   hostname
   localAdrress
   socketPath
@@ -59,21 +63,21 @@
   agent
   keepAlive
   keepAliveMsecs
-  port:&#39;&#39;,
-  method:&#39;&#39;,
-  path:&#39;&#39;,
-  headers:&#39;&#39;
+  <span class="hljs-attr">port</span>:<span class="hljs-string">''</span>,
+  <span class="hljs-attr">method</span>:<span class="hljs-string">''</span>,
+  <span class="hljs-attr">path</span>:<span class="hljs-string">''</span>,
+  <span class="hljs-attr">headers</span>:<span class="hljs-string">''</span>
 }
-var clientRequest = http.request(options,function(clientResponse){
+<span class="hljs-keyword">var</span> clientRequest = http.request(options,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">clientResponse</span>)</span>{
   clientResponse.setEncoding()
   clientResponse.pause()
   clientResponse.resume()
-  clientResponse.on(&#39;data&#39;,function(data){
-      console.log(Buffer.isBuffer(chunk));//true
-      console.log(typeof chunk)//Object
-  })//不断被触发,流
-  clientResponse.on(&#39;end&#39;,function(){})
-  clientResponse.on(&#39;close&#39;,function(){})
+  clientResponse.on(<span class="hljs-string">'data'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
+      <span class="hljs-built_in">console</span>.log(Buffer.isBuffer(chunk));<span class="hljs-comment">//true</span>
+      <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> chunk)<span class="hljs-comment">//Object</span>
+  })<span class="hljs-comment">//不断被触发,流</span>
+  clientResponse.on(<span class="hljs-string">'end'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{})
+  clientResponse.on(<span class="hljs-string">'close'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{})
 </code></pre>
 </li>
 </ul>
@@ -86,12 +90,12 @@ clientRequest.setTimeout()
 clientRequest.setNoDelay()</p>
 <pre><code>
 
-
+<span class="typescript">
 ## 文件加载方式
 &gt; 按路径加载
 
-    require以&#39;/&#39;开头的，以绝对路径方式加载
-    require以&#39;./&#39;或&#39;../&#39;开头的，以相对路径加载
+    <span class="hljs-built_in">require</span>以<span class="hljs-string">'/'</span>开头的，以绝对路径方式加载
+    <span class="hljs-built_in">require</span>以<span class="hljs-string">'./'</span>或<span class="hljs-string">'../'</span>开头的，以相对路径加载
 &gt;查找node_modules文件夹
 
     在当前目录下的node_modules中查找=&gt;
@@ -104,42 +108,42 @@ clientRequest.setNoDelay()</p>
 事实上，javascript是单线程的，**Node自身其实是多线程的**，只是I/O线程使用的CPU较少。
 除了用户代码无法并行执行外，所有的I/O（磁盘I/O和网络I/O等）都是可以并行执行的。
 
-&lt;img src=&quot;./node/async-io.png&quot;&gt;
+&lt;img src=<span class="hljs-string">"./node/async-io.png"</span>&gt;
 
 ## 非I/O异步的方法
-非I/O异步的方法：``setTimeout``,``setInterval``,``setImmediate``,``process.nextTick``
+非I/O异步的方法：<span class="hljs-string">``</span>setTimeout<span class="hljs-string">``</span>,<span class="hljs-string">``</span>setInterval<span class="hljs-string">``</span>,<span class="hljs-string">``</span>setImmediate<span class="hljs-string">``</span>,<span class="hljs-string">``</span>process.nextTick<span class="hljs-string">``</span>
 
-### ``setTimeout``,``setInterval``
-调用``setTimeout``,``setInterval``创建的定时器会被插入到定时器观察者内部的一个红黑树里面。每次Tick执行，就从改红合数中迭代去除定时器对象，检查是否超过定时时间。如果超过，就形成一个事件，回调函数立即执行
+### <span class="hljs-string">``</span>setTimeout<span class="hljs-string">``</span>,<span class="hljs-string">``</span>setInterval<span class="hljs-string">``</span>
+调用<span class="hljs-string">``</span>setTimeout<span class="hljs-string">``</span>,<span class="hljs-string">``</span>setInterval<span class="hljs-string">``</span>创建的定时器会被插入到定时器观察者内部的一个红黑树里面。每次Tick执行，就从改红合数中迭代去除定时器对象，检查是否超过定时时间。如果超过，就形成一个事件，回调函数立即执行
 
-&lt;img src=&quot;./node/setTimeout.png&quot;&gt;
+&lt;img src=<span class="hljs-string">"./node/setTimeout.png"</span>&gt;
 
 
-### ``process.nextTick`` VS ``setTimeout(function(){},0)``
-立即执行一个异步任务可以用``process.nextTick``。
+### <span class="hljs-string">``</span>process.nextTick<span class="hljs-string">``</span> VS <span class="hljs-string">``</span>setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{},<span class="hljs-number">0</span>)<span class="hljs-string">``</span>
+立即执行一个异步任务可以用<span class="hljs-string">``</span>process.nextTick<span class="hljs-string">``</span>。
 
-``setTimeout(function(){},0)``需要动用到红黑树，创建定时器对象和迭代操作等操作，较浪费性能，复杂度为O(lg(n)。
+<span class="hljs-string">``</span>setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{},<span class="hljs-number">0</span>)<span class="hljs-string">``</span>需要动用到红黑树，创建定时器对象和迭代操作等操作，较浪费性能，复杂度为O(lg(n)。
 
-nextTick只会将回调函数放入队列中，在下一轮Tick时取出执行，复杂度为O(1)。
+nextTick只会将回调函数放入队列中，在下一轮Tick时取出执行，复杂度为O(<span class="hljs-number">1</span>)。
 
-### ``setImmediate``  VS ``process.nextTick``
+### <span class="hljs-string">``</span>setImmediate<span class="hljs-string">``</span>  VS <span class="hljs-string">``</span>process.nextTick<span class="hljs-string">``</span>
 
-``process.nextTick``优先级大于 ``setImmediate`` 。因为时间循环对观察者的检查是有先后顺序的，``process.nextTick``属于idle观察者，``setImmediate``属于check观察者。在每一个时间循环检查中，**观察者检查顺序：idle---I/O---check**
+<span class="hljs-string">``</span>process.nextTick<span class="hljs-string">``</span>优先级大于 <span class="hljs-string">``</span>setImmediate<span class="hljs-string">``</span> 。因为时间循环对观察者的检查是有先后顺序的，<span class="hljs-string">``</span>process.nextTick<span class="hljs-string">``</span>属于idle观察者，<span class="hljs-string">``</span>setImmediate<span class="hljs-string">``</span>属于check观察者。在每一个时间循环检查中，**观察者检查顺序：idle---I/O---check**
 
-``process.nextTick``的回调保存在一个**数组**中。
-``setImmediate``的回调保存在一个**链表**中
+<span class="hljs-string">``</span>process.nextTick<span class="hljs-string">``</span>的回调保存在一个**数组**中。
+<span class="hljs-string">``</span>setImmediate<span class="hljs-string">``</span>的回调保存在一个**链表**中
 
-``process.nextTick``在一个事件循环中会将所有回调函数全部执行完。``setImmediate``每一个时间循环只会执行一个回调。
+<span class="hljs-string">``</span>process.nextTick<span class="hljs-string">``</span>在一个事件循环中会将所有回调函数全部执行完。<span class="hljs-string">``</span>setImmediate<span class="hljs-string">``</span>每一个时间循环只会执行一个回调。
 
 ### 异常处理
-对异步方法进行try/catch操作只可以捕获**当次**事件循环里面的异常
+对异步方法进行<span class="hljs-keyword">try</span>/<span class="hljs-keyword">catch</span>操作只可以捕获**当次**事件循环里面的异常
 
 solution:Node在处理异常上形成一种约定，将异常作为回调函数的第一个实参传回。
 
 需要睡眠阻塞代码调用setTimeout更好，不要用下面的代码.这段代码会持续占用CPU，与真正的sleep相去甚远
-```javascript
+<span class="hljs-string">``</span><span class="hljs-string">`javascript
 var s =new Date();
-while(neW Date()-s&lt;100){}</code></pre><h3 id="异步编程解决方案">异步编程解决方案</h3>
+while(neW Date()-s&lt;100){}</span></span></code></pre><h3 id="异步编程解决方案">异步编程解决方案</h3>
 <p>EventProxy 是对 events.EventEmitter 的补充，可以自由订阅组合事件</p>
 <ul>
 <li><p>EventProxy:
@@ -176,8 +180,8 @@ while(neW Date()-s&lt;100){}</code></pre><h3 id="异步编程解决方案">异�
 <ul>
 <li><p>通过赋值方式解除引用更好</p>
 <p>  想主动释放变量，可以通过delete或者重新赋值进行删除。但是在V8中delete操作有可能干扰V8的优化，所以通过赋值方式解除引用更好</p>
-<pre><code class="language-javascript">  delete global.foo ;
-  global.foo = undefined//or null</code></pre>
+<pre><code class="language-javascript">  <span class="hljs-keyword">delete</span> <span class="hljs-built_in">global</span>.foo ;
+  <span class="hljs-built_in">global</span>.foo = <span class="hljs-literal">undefined</span><span class="hljs-regexp">//</span><span class="hljs-keyword">or</span> <span class="hljs-literal">null</span></code></pre>
 </li>
 <li><p>在正常的Javascript中，无法立即回收的有<code>闭包</code>和<code>全局变量引用</code>这两种情况</p>
 </li>
@@ -234,11 +238,11 @@ while(neW Date()-s&lt;100){}</code></pre><h3 id="异步编程解决方案">异�
 <p>  <code>querystring.unescape</code></p>
 </li>
 </ul>
-<pre><code class="language-javascript">server = new HttpServer()
+<pre><code class="language-javascript"><span class="hljs-keyword">server</span> = <span class="hljs-built_in">new</span> HttpServer()
 
-server.on(&#39;request&#39;,function(req,res){})
+<span class="hljs-keyword">server</span>.<span class="hljs-keyword">on</span>(<span class="hljs-string">'request'</span>,<span class="hljs-keyword">function</span>(req,res){})
 //上面一句相当于=&gt;
-server.listen(3000)</code></pre>
+<span class="hljs-keyword">server</span>.<span class="hljs-keyword">listen</span>(<span class="hljs-number">3000</span>)</code></pre>
 <h1 id="慕课网">慕课网</h1>
 <ul>
 <li>DNS查找过程</li>
@@ -262,190 +266,190 @@ server.listen(3000)</code></pre>
 什么是基于事件驱动的回调？
 什么是事件循环？</code></pre><h3 id="上下文">上下文</h3>
 <pre><code class="language-javascript">var pet = {
-    speak :function(){
-        console.log(this ===pet)//true
+    speak :<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+        console.<span class="hljs-built_in">log</span>(this ===pet)<span class="hljs-comment">//true</span>
     }
 }
 
-function pet(){
-    console.log(this===global)//true
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pet</span><span class="hljs-params">()</span>{</span>
+    console.<span class="hljs-built_in">log</span>(this===<span class="hljs-keyword">global</span>)<span class="hljs-comment">//true</span>
 }
 
-function pet(){
-    this.word=&quot;miaomiao&#39;;
-    this.speak = function(){
-        console.log(this)//cat
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pet</span><span class="hljs-params">()</span>{</span>
+    this.word=<span class="hljs-string">"miaomiao'</span>;
+    this.speak = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{</span>
+        console.<span class="hljs-built_in">log</span>(this)<span class="hljs-comment">//cat</span>
     }
 }
 var cat =new pet();</code></pre>
 <p>this通常指向当前函数的拥有者，叫做执行上下文</p>
-<pre><code class="language-javascript">function Pet(word){
-    this.word = word;
-    this.speak = function(){
-        console.log(this.word);
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Pet</span>(<span class="hljs-params">word</span>)</span>{
+    <span class="hljs-keyword">this</span>.word = word;
+    <span class="hljs-keyword">this</span>.speak = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.word);
     }
 }
-function Dog(word){
-    Pet.call(this,word);//Pet的this指向当前的Dog,相当于继承
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Dog</span>(<span class="hljs-params">word</span>)</span>{
+    Pet.call(<span class="hljs-keyword">this</span>,word);<span class="hljs-comment">//Pet的this指向当前的Dog,相当于继承</span>
 }
-var dog = new Dog(&#39;wang&#39;);
+<span class="hljs-keyword">var</span> dog = <span class="hljs-keyword">new</span> Dog(<span class="hljs-string">'wang'</span>);
 dog.speak()</code></pre>
 <h3 id="cheerio">cheerio</h3>
 <p>cheerio可以像jquery一样，解析html代码</p>
-<pre><code class="language-javascript">var $ = cheerio.load(html);
-var chapters = $(&#39;.learnchapter&#39;);
-chapters.each(function(item){
-    var c =$(this);
-    var chapterTitle = c.find(&#39;strong&#39;).text();
-    var vedio = c.find(&#39;.vedio&#39;).children(&#39;li&#39;);
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> $ = cheerio.load(html);
+<span class="hljs-keyword">var</span> chapters = $(<span class="hljs-string">'.learnchapter'</span>);
+chapters.each(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>)</span>{
+    <span class="hljs-keyword">var</span> c =$(<span class="hljs-keyword">this</span>);
+    <span class="hljs-keyword">var</span> chapterTitle = c.find(<span class="hljs-string">'strong'</span>).text();
+    <span class="hljs-keyword">var</span> vedio = c.find(<span class="hljs-string">'.vedio'</span>).children(<span class="hljs-string">'li'</span>);
 })</code></pre>
 <h3 id="events模块">events模块</h3>
-<pre><code class="language-javascript">var EventEmitter =require(&#39;events&#39;).EventEmitter;
-var life = new EventEmitter();
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> EventEmitter =<span class="hljs-built_in">require</span>(<span class="hljs-string">'events'</span>).EventEmitter;
+<span class="hljs-keyword">var</span> life = <span class="hljs-keyword">new</span> EventEmitter();
 
-life.on(eventname,function(){console.log(1)});
-life.on(eventname,function(){console.log(2)});
-life.on(eventname,function(){console.log(3)});
-life.on(eventname,function(){console.log(4)});
+life.on(eventname,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-built_in">console</span>.log(<span class="hljs-number">1</span>)});
+life.on(eventname,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-built_in">console</span>.log(<span class="hljs-number">2</span>)});
+life.on(eventname,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-built_in">console</span>.log(<span class="hljs-number">3</span>)});
+life.on(eventname,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-built_in">console</span>.log(<span class="hljs-number">4</span>)});
 ...
 
-var haseventname = life.emit(eventname,args)//返回有没有监听过
+<span class="hljs-keyword">var</span> haseventname = life.emit(eventname,args)<span class="hljs-comment">//返回有没有监听过</span>
 
-life.removeListener(eventname,functionname)//移除
-life.removeAllListener(eventname)//批量移除
+life.removeListener(eventname,functionname)<span class="hljs-comment">//移除</span>
+life.removeAllListener(eventname)<span class="hljs-comment">//批量移除</span>
 
-life.listeners(eventname)//所有监听器
+life.listeners(eventname)<span class="hljs-comment">//所有监听器</span>
 
 EventEmitter.listenerCount(life,eventname)
 </code></pre>
 <p>默认一个事件不要超过10个监听器，不然内容泄露.可以进行设置</p>
-<pre><code class="language-javascript">life.setMaxListeners(0)//去掉限制
-life.setMaxListeners(11)//最多11个</code></pre>
+<pre><code class="language-javascript">life.setMaxListeners(<span class="hljs-number">0</span>)<span class="hljs-comment">//去掉限制</span>
+life.setMaxListeners(<span class="hljs-number">11</span>)<span class="hljs-comment">//最多11个</span></code></pre>
 <h3 id="buffer暂存">Buffer暂存</h3>
 <p>Buffer 二进制数据。因为JS的字符串是utf-8存储的，处理二进制的能力弱。</p>
-<pre><code class="language-javascript">var buf = new Buffer([1,2.11,3.22,4]);
-console.log(buf[1])//2</code></pre>
+<pre><code class="language-javascript">var buf = new Buffer([<span class="hljs-number">1</span>,<span class="hljs-number">2.11</span>,<span class="hljs-number">3.22</span>,<span class="hljs-number">4</span>]);
+console.log(buf[<span class="hljs-number">1</span>])<span class="hljs-comment">//2</span></code></pre>
 <h5 id="转换图片为base64">转换图片为base64</h5>
-<pre><code class="language-javascript">var fs = require(&#39;fs&#39;);
-fs.readFile(&#39;logo.png&#39;,function(err,origin_buff){
-    fs.writeFile(&#39;logo_buffer.png&#39;.origin_buff,function(){
-        if(err) console.log(err)
+<pre><code class="language-javascript">var fs = require('fs');
+fs.read<span class="hljs-constructor">File('<span class="hljs-params">logo</span>.<span class="hljs-params">png</span>',<span class="hljs-params">function</span>(<span class="hljs-params">err</span>,<span class="hljs-params">origin_buff</span>)</span>{
+    fs.write<span class="hljs-constructor">File('<span class="hljs-params">logo_buffer</span>.<span class="hljs-params">png</span>'.<span class="hljs-params">origin_buff</span>,<span class="hljs-params">function</span>()</span>{
+        <span class="hljs-keyword">if</span>(err) console.log(err)
     })
-    var base64Img=origin_buff.toString(&#39;base64&#39;)
-    var decodedImg = new Buffer(base64Img ,&#39;base64&#39;)//拼装成data:image/png,base64,decodedImg才可使用
-    console.log(Buffer.compare(origin_buff,decodedImg))//0
+    var base64Img=origin_buff.<span class="hljs-keyword">to</span><span class="hljs-constructor">String('<span class="hljs-params">base64</span>')</span>
+    var decodedImg = <span class="hljs-keyword">new</span> <span class="hljs-constructor">Buffer(<span class="hljs-params">base64Img</span> ,'<span class="hljs-params">base64</span>')</span><span class="hljs-comment">//拼装成data:image/png,base64,decodedImg才可使用</span>
+    console.log(<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Buffer</span>.</span></span>compare(origin_buff,decodedImg))<span class="hljs-comment">//0</span>
 
 })</code></pre>
 <h3 id="stream-边读边写">Stream 边读边写</h3>
 <h5 id="转换图片为base64-1">转换图片为base64</h5>
-<pre><code class="language-javascript">//stream_logo.js
-var fs = require(&#39;fs&#39;);
-fs.writeFileSync(&#39;stream_logo.png&#39;,fs.readFileSync(&#39;logo.png&#39;));//大文件会爆仓</code></pre>
-<pre><code class="language-javascript">var fs = require(&#39;fs&#39;);
-var n = 0;
-var readStream = fs.createReadStream(&#39;stream_logo.js&#39;)
+<pre><code class="language-javascript"><span class="hljs-comment">//stream_logo.js</span>
+var fs = require('fs');
+fs.write<span class="hljs-constructor">FileSync('<span class="hljs-params">stream_logo</span>.<span class="hljs-params">png</span>',<span class="hljs-params">fs</span>.<span class="hljs-params">readFileSync</span>('<span class="hljs-params">logo</span>.<span class="hljs-params">png</span>')</span>);<span class="hljs-comment">//大文件会爆仓</span></code></pre>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">var</span> n = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">var</span> readStream = fs.createReadStream(<span class="hljs-string">'stream_logo.js'</span>)
 readStream
-.on(&#39;data&#39;,function(chunk){
+.on(<span class="hljs-string">'data'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">chunk</span>)</span>{
     n++
-    console.log(Buffer.isBuffer(chunk));//true 一次大概64TB
-    console.log(chunk.toString(&#39;utf8&#39;));//stream_logo.js内容
+    <span class="hljs-built_in">console</span>.log(Buffer.isBuffer(chunk));<span class="hljs-comment">//true 一次大概64TB</span>
+    <span class="hljs-built_in">console</span>.log(chunk.toString(<span class="hljs-string">'utf8'</span>));<span class="hljs-comment">//stream_logo.js内容</span>
     readStream.pause();
-    setTimeout(function(){
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
         readStream.resume()
-    },3000)
+    },<span class="hljs-number">3000</span>)
 })
-.on(&#39;readable&#39;,function(){})
-.on(&#39;end&#39;,function(){ console.log(n)})
-.on(&#39;close&#39;,function(){})
-.on(&#39;error&#39;,function(){})
+.on(<span class="hljs-string">'readable'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{})
+.on(<span class="hljs-string">'end'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ <span class="hljs-built_in">console</span>.log(n)})
+.on(<span class="hljs-string">'close'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{})
+.on(<span class="hljs-string">'error'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{})
 
 </code></pre>
 <h5 id="复制文件">复制文件</h5>
-<pre><code class="language-javascript">var fs = require(&#39;fs&#39;);
-var readStream = fs.createReadStream(&#39;1.mp4&#39;);
-var writeStream = fs.createWriteStream(&#39;copy.mp4&#39;);
-readStream.on(&#39;data&#39;,function(chunk){
-    if(writeStream.write(chunk)===false){//数据还在缓存区，读得快写得慢
-        readStream.pause();//先暂停
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">var</span> readStream = fs.createReadStream(<span class="hljs-string">'1.mp4'</span>);
+<span class="hljs-keyword">var</span> writeStream = fs.createWriteStream(<span class="hljs-string">'copy.mp4'</span>);
+readStream.on(<span class="hljs-string">'data'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">chunk</span>)</span>{
+    <span class="hljs-keyword">if</span>(writeStream.write(chunk)===<span class="hljs-literal">false</span>){<span class="hljs-comment">//数据还在缓存区，读得快写得慢</span>
+        readStream.pause();<span class="hljs-comment">//先暂停</span>
     }
 })
-writeStream.on(&#39;drain&#39;,function(chunk){//已经写完了
+writeStream.on(<span class="hljs-string">'drain'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">chunk</span>)</span>{<span class="hljs-comment">//已经写完了</span>
     readStream.resume();  
 })
-readStream.on(&#39;end&#39;,function(chunk){
+readStream.on(<span class="hljs-string">'end'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">chunk</span>)</span>{
     writeStream.end()
 })
 </code></pre>
 <h5 id="强大的pipe">强大的Pipe</h5>
 <p>Duplex双工
 Transform双工，但是不存储数据</p>
-<pre><code class="language-javascript">http.createServer(function(req,res){
-    // fs.readFile(&#39;logo.png&#39;,function(err,data){
-    //     if(err){
-    //         res.end(&#39;file is not exist!&#39;)
-    //     }else{
-    //         res.writeHead(200，{‘Content-Type&#39;:&#39;text/html&#39;});
+<pre><code class="language-javascript">http.createServer(<span class="hljs-keyword">function</span>(req,res){
+    // fs.readFile(<span class="hljs-string">'logo.png'</span>,<span class="hljs-keyword">function</span>(err,data){
+    //     <span class="hljs-keyword">if</span>(err){
+    //         res.<span class="hljs-keyword">end</span>(<span class="hljs-string">'file is not exist!'</span>)
+    //     }<span class="hljs-keyword">else</span>{
+    //         res.writeHead(<span class="hljs-number">200</span>，{‘Content-Typ<span class="hljs-string">e':'</span><span class="hljs-type">text</span>/html<span class="hljs-string">'});
     //         res.end(data)
     //     }
     // })
-    fs.createReadStream(&#39;logo.png&#39;).pipe(res);//返回给浏览器
-    request(&#39;https://imoooc/logo.png&#39;).pipe(res)//同上 边下载边pipe
-})</code></pre>
+    fs.createReadStream('</span>logo.png<span class="hljs-string">').pipe(res);//返回给浏览器
+    request('</span>https://imoooc/logo.png<span class="hljs-string">').pipe(res)//同上 边下载边pipe
+})</span></code></pre>
 <p>上面的复制文件代码就可以改成</p>
-<pre><code class="language-javascript">var fs = require(&#39;fs&#39;);
-fs.createReadStream(&#39;1.mp4&#39;).pipe(fs.createWriteStream(&#39;copy.mp4&#39;))</code></pre>
-<pre><code class="language-javascript">var Readable = require(&#39;stream&#39;).Readable
-var Writable = require(&#39;stream&#39;).Writable
-var readStream = new Readable()
-var writeStream = new Writable()
-readStream.push(&#39;I&#39;)
-readStream.push(&#39;Love&#39;)
-readStream.push(&#39;You\n&#39;)
-readStream.push(&#39;null&#39;)
-writeStream._write = function(chunk,encode,cb){
-    console.log(chunk.toString())
+<pre><code class="language-javascript">var <span class="hljs-built_in">fs</span> = require('<span class="hljs-built_in">fs</span>');
+<span class="hljs-built_in">fs</span>.createReadStream('<span class="hljs-number">1</span>.mp4').pipe(<span class="hljs-built_in">fs</span>.createWriteStream('<span class="hljs-built_in">copy</span>.mp4'))</code></pre>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> Readable = <span class="hljs-built_in">require</span>(<span class="hljs-string">'stream'</span>).Readable
+<span class="hljs-keyword">var</span> Writable = <span class="hljs-built_in">require</span>(<span class="hljs-string">'stream'</span>).Writable
+<span class="hljs-keyword">var</span> readStream = <span class="hljs-keyword">new</span> Readable()
+<span class="hljs-keyword">var</span> writeStream = <span class="hljs-keyword">new</span> Writable()
+readStream.push(<span class="hljs-string">'I'</span>)
+readStream.push(<span class="hljs-string">'Love'</span>)
+readStream.push(<span class="hljs-string">'You\n'</span>)
+readStream.push(<span class="hljs-string">'null'</span>)
+writeStream._write = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">chunk,encode,cb</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(chunk.toString())
     cb()
 }
 readStream.pipe(writeStream)
 </code></pre>
 <p>定制流</p>
 <pre><code class="language-javascript">funcion ReadStream(){
-    stream.Readable.call(this)
+    stream.Readable.call(<span class="hljs-keyword">this</span>)
 }
-util.inherits(ReadStream,stream.Readable);//继承原型
-ReadStream.prototype._read=function(){
-    this.push(&#39;I&#39;)
-    this.push(&#39;Love&#39;)
-    this.push(&#39;You\n&#39;)
-    this.push(&#39;null&#39;)
+util.inherits(ReadStream,stream.Readable);<span class="hljs-comment">//继承原型</span>
+ReadStream.prototype._read=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-keyword">this</span>.push(<span class="hljs-string">'I'</span>)
+    <span class="hljs-keyword">this</span>.push(<span class="hljs-string">'Love'</span>)
+    <span class="hljs-keyword">this</span>.push(<span class="hljs-string">'You\n'</span>)
+    <span class="hljs-keyword">this</span>.push(<span class="hljs-string">'null'</span>)
 }
 
 funcion WritStream(){
-    stream.Writable.call(this)
-    this._cached=new Buffer(&#39;&#39;)
+    stream.Writable.call(<span class="hljs-keyword">this</span>)
+    <span class="hljs-keyword">this</span>._cached=<span class="hljs-keyword">new</span> Buffer(<span class="hljs-string">''</span>)
 }
 util.inherits(WritStream,stream.Writable);
-WritStream.prototype._write = function(chunk,encode,cb){
-    console.log(chunk.toString())
+WritStream.prototype._write = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">chunk,encode,cb</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(chunk.toString())
     cb()
 }
 
-function TransfromStream(){
-    stream.Transform.call(this)
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">TransfromStream</span>(<span class="hljs-params"></span>)</span>{
+    stream.Transform.call(<span class="hljs-keyword">this</span>)
 }
 util.inherits(TransfromStream,stream.Transfrom);
-TransfromStream.prototype._transform= function(chunk,encode,cb){
-    this.push(chunk)
+TransfromStream.prototype._transform= <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">chunk,encode,cb</span>)</span>{
+    <span class="hljs-keyword">this</span>.push(chunk)
     cb()
 }
-TransfromStream.prototype.flush= function(cb){
-    this.push(&#39;On Yeah!&#39;)
+TransfromStream.prototype.flush= <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">cb</span>)</span>{
+    <span class="hljs-keyword">this</span>.push(<span class="hljs-string">'On Yeah!'</span>)
     cb()
 }
 
-var rs= new ReadStream()
-var ws = new WritStream();
-var ts = new TransfromStream()
+<span class="hljs-keyword">var</span> rs= <span class="hljs-keyword">new</span> ReadStream()
+<span class="hljs-keyword">var</span> ws = <span class="hljs-keyword">new</span> WritStream();
+<span class="hljs-keyword">var</span> ts = <span class="hljs-keyword">new</span> TransfromStream()
 
 rs.pipe(ts).pipe(ws)</code></pre>
 <p>createReadStream是给你一个ReadableStream，你可以听它的&#39;data&#39;，一点一点儿处理文件，用过的部分会被GC（垃圾回收），所以占内存少。</p>
@@ -471,5 +475,8 @@ rs.pipe(ts).pipe(ws)</code></pre>
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -46,77 +50,77 @@
 <p>怪异模式：box-sizing:border-box;</p>
 <h3 id="h5异步上传文件">H5异步上传文件</h3>
 <p>关键代码</p>
-<pre><code class="language-javascript"> &lt;input id=&quot;uploadFile&quot; type=&quot;file&quot; name=&quot;myPhoto&quot; /&gt; 
+<pre><code class="language-javascript"> &lt;input id=<span class="hljs-string">"uploadFile"</span> type=<span class="hljs-string">"file"</span> name=<span class="hljs-string">"myPhoto"</span> /&gt; 
 
- var fd = new FormData();//新建FormData
- fd.append(&quot;myPhoto&quot;, $(&quot;uploadFile&quot;).files[0]);//塞数据
+ <span class="hljs-keyword">var</span> fd = <span class="hljs-keyword">new</span> FormData();<span class="hljs-comment">//新建FormData</span>
+ fd.append(<span class="hljs-string">"myPhoto"</span>, $(<span class="hljs-string">"uploadFile"</span>).files[<span class="hljs-number">0</span>]);<span class="hljs-comment">//塞数据</span>
 
- var xhr = new XMLHttpRequest(); //创建XMLHttpRequest 对象
- xhr.open(&quot;post&quot;,&quot;/uploadPhoto.action&quot;, true);//打开链接
- xhr.onreadystatechange = function() {//监听
-    if (xhr.readyState == 4) {
-        var flag = xhr.responseText;
-        if (flag == &quot;success&quot;) {
-            alert(&quot;图片上传成功！&quot;);
-        } else {
-            alert(&quot;图片上传成功！&quot;);
+ <span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest(); <span class="hljs-comment">//创建XMLHttpRequest 对象</span>
+ xhr.open(<span class="hljs-string">"post"</span>,<span class="hljs-string">"/uploadPhoto.action"</span>, <span class="hljs-literal">true</span>);<span class="hljs-comment">//打开链接</span>
+ xhr.onreadystatechange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{<span class="hljs-comment">//监听</span>
+    <span class="hljs-keyword">if</span> (xhr.readyState == <span class="hljs-number">4</span>) {
+        <span class="hljs-keyword">var</span> flag = xhr.responseText;
+        <span class="hljs-keyword">if</span> (flag == <span class="hljs-string">"success"</span>) {
+            alert(<span class="hljs-string">"图片上传成功！"</span>);
+        } <span class="hljs-keyword">else</span> {
+            alert(<span class="hljs-string">"图片上传成功！"</span>);
         };                        
 
     };
 }; 
-xhr.send(fd);//发送</code></pre>
+xhr.send(fd);<span class="hljs-comment">//发送</span></code></pre>
 <h3 id="实现垂直水平居中有哪些方法">实现垂直水平居中有哪些方法</h3>
 <ol>
 <li><p>flexbox</p>
 </li>
 <li><p>绝对定位+margin负值(子容器宽高固定)</p>
-<pre><code class="language-css"> childElement{
-     position:absolute;                              
-     height:200px;
-     width:400px;           
-     top:50%;      
-     left:50%;                          
-     margin-top:-100px;/*高度的一半*/
-     margin-left:-200px;/*宽度的一半*/                                         
+<pre><code class="language-css"> <span class="hljs-selector-tag">childElement</span>{
+     <span class="hljs-attribute">position</span>:absolute;                              
+     <span class="hljs-attribute">height</span>:<span class="hljs-number">200px</span>;
+     <span class="hljs-attribute">width</span>:<span class="hljs-number">400px</span>;           
+     <span class="hljs-attribute">top</span>:<span class="hljs-number">50%</span>;      
+     <span class="hljs-attribute">left</span>:<span class="hljs-number">50%</span>;                          
+     <span class="hljs-attribute">margin-top</span>:-<span class="hljs-number">100px</span>;<span class="hljs-comment">/*高度的一半*/</span>
+     <span class="hljs-attribute">margin-left</span>:-<span class="hljs-number">200px</span>;<span class="hljs-comment">/*宽度的一半*/</span>                                         
  }            
 </code></pre>
 </li>
 </ol>
-<pre><code>3. 绝对定位top left right bottom 0 + margin auto (子容器宽高固定)
-```css
-chilElement{
-    height: 150px;
-    width: 150px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
+<pre><code>3. 绝对定位<span class="hljs-selector-tag">top</span> <span class="hljs-selector-tag">left</span> <span class="hljs-selector-tag">right</span> <span class="hljs-selector-tag">bottom</span> 0 + <span class="hljs-selector-tag">margin</span> <span class="hljs-selector-tag">auto</span> (子容器宽高固定)
+```<span class="hljs-selector-tag">css</span>
+<span class="hljs-selector-tag">chilElement</span>{
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">150px</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">150px</span>;
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">margin</span>: auto;
 }</code></pre><ol start="4">
 <li>绝对定位+transfrom负值（子容器宽高不知)</li>
 </ol>
 <p>（1） 不知道自己高度和父容器高度的情况下, 利用绝对定位只需要以下三行：</p>
-<pre><code class="language-css">parentElement{
-    position:relative;
+<pre><code class="language-css"><span class="hljs-selector-tag">parentElement</span>{
+    <span class="hljs-attribute">position</span>:relative;
 }
 
-childElement{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+<span class="hljs-selector-tag">childElement</span>{
+    <span class="hljs-attribute">position</span>: absolute;
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateY</span>(-<span class="hljs-number">50%</span>);
 
 }
 </code></pre>
 <p> （2）若父容器下只有一个元素，且父元素设置了高度，则只需要使用相对定位即可</p>
-<pre><code class="language-css"> parentElement{
-    height:xxx;
+<pre><code class="language-css"> <span class="hljs-selector-tag">parentElement</span>{
+    <span class="hljs-attribute">height</span>:xxx;
 }
 
-childElement {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+<span class="hljs-selector-tag">childElement</span> {
+    <span class="hljs-attribute">position</span>: relative;
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateY</span>(-<span class="hljs-number">50%</span>);
 }</code></pre>
 <h3 id="请你谈谈cookie的弊端">请你谈谈Cookie的弊端</h3>
 <p>cookie虽然在持久保存客户端数据提供了方便，分担了服务器存储的负担，但还是有很多局限性的。
@@ -213,8 +217,8 @@ IE和Opera 会清理近期最少使用的cookie，Firefox会随机清理cookie�
 <li>新创建的对象由 this 所引用，并且最后隐式的返回 this</li>
 </ol>
 <pre><code class="language-javascript">var obj  = {};
-obj.__proto__ = Base.prototype;
-Base.call(obj); </code></pre>
+obj.__proto__ = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Base</span>.</span></span>prototype;
+<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Base</span>.</span></span>call(obj); </code></pre>
 <h3 id="js延迟加载的方式有哪些？">js延迟加载的方式有哪些？</h3>
 <ol>
 <li>defer和async</li>
@@ -340,11 +344,11 @@ Base.call(obj); </code></pre>
 </li>
 <li><p>发送请求</p>
 <p>  3）Last-Modified与ETag，<strong>ETag优先于Last-Modified</strong></p>
-<pre><code>  Last-Modified已经足以让浏览器知道本地的缓存副本是否足够新，为什么还需要Etag（实体标识）呢？HTTP1.1中Etag的出现主要是为了解决几个Last-Modified比较难解决的问题：
+<pre><code>  Last-Modified已经足以让浏览器知道本地的缓存副本是否足够新，为什么还需要Etag（实体标识）呢？HTTP1<span class="hljs-number">.1</span>中Etag的出现主要是为了解决几个Last-Modified比较难解决的问题：
 
-  1. Last-Modified标注的最后修改只能精确到秒级，如果某些文件在1秒钟以内，被修改多次的话，它将不能准确标注文件的新鲜度
-  2. 如果某些文件会被定期生成，当有时内容并没有任何变化，但Last-Modified却改变了，导致文件没法使用缓存
-  3. 有可能存在服务器没有准确获取文件修改时间，或者与代理服务器时间不一致等情形</code></pre></li>
+  <span class="hljs-number">1.</span> Last-Modified标注的最后修改只能精确到秒级，如果某些文件在<span class="hljs-number">1</span>秒钟以内，被修改多次的话，它将不能准确标注文件的新鲜度
+  <span class="hljs-number">2.</span> 如果某些文件会被定期生成，当有时内容并没有任何变化，但Last-Modified却改变了，导致文件没法使用缓存
+  <span class="hljs-number">3.</span> 有可能存在服务器没有准确获取文件修改时间，或者与代理服务器时间不一致等情形</code></pre></li>
 </ul>
 <img src="./interview/cache.png">
 <img src="./interview/cache2.png">
@@ -370,11 +374,11 @@ Base.call(obj); </code></pre>
 </ol>
 <h3 id="ajax生命周期">AJAX生命周期</h3>
 <p>一个AJAX请求从开始创建到最后的响应阶段，在其整个生命周期中，使用了哪些Javascript对象与方法?</p>
-<pre><code> ajaxStart()
- ajaxSend()
- ajaxSuccess()
- ajaxStop()
- load()</code></pre><p>在一个Ajax请求的生命周期中，从创建请求到提交请求到成功响应的五种状态：</p>
+<pre><code> <span class="hljs-function"><span class="hljs-title">ajaxStart</span>()</span>
+ <span class="hljs-function"><span class="hljs-title">ajaxSend</span>()</span>
+ <span class="hljs-function"><span class="hljs-title">ajaxSuccess</span>()</span>
+ <span class="hljs-function"><span class="hljs-title">ajaxStop</span>()</span>
+ <span class="hljs-function"><span class="hljs-title">load</span>()</span></code></pre><p>在一个Ajax请求的生命周期中，从创建请求到提交请求到成功响应的五种状态：</p>
 <ol>
 <li><code>UNINITIALIZED</code>—请求尚未初始化。</li>
 <li><code>LOADING</code>—请求已经初始化完成。</li>
@@ -412,18 +416,18 @@ Base.call(obj); </code></pre>
 <p>有窗口元素包括：select元素，object元素，以及frames元素等等。</p>
 <p>无窗口元素：大部分html元素都是无窗口元素。</p>
 <h3 id="html-csrf可以发起get请求的标签">HTML CSRF可以发起GET请求的标签</h3>
-<pre><code>&lt;link href=&#39;&#39;&gt;
-&lt;img src=&#39;&#39;&gt;
-&lt;frame src=&#39;&#39;&gt;
-&lt;script src=&#39;&#39;&gt;
-&lt;video src=&#39;&#39;&gt;
-Background:url(&#39;&#39;)</code></pre><h2 id="节点之间的空白符">节点之间的空白符</h2>
+<pre><code>&lt;link <span class="hljs-attribute">href</span>=<span class="hljs-string">''</span>&gt;
+&lt;img <span class="hljs-attribute">src</span>=<span class="hljs-string">''</span>&gt;
+&lt;frame <span class="hljs-attribute">src</span>=<span class="hljs-string">''</span>&gt;
+&lt;script <span class="hljs-attribute">src</span>=<span class="hljs-string">''</span>&gt;
+&lt;video <span class="hljs-attribute">src</span>=<span class="hljs-string">''</span>&gt;
+Background:url(<span class="hljs-string">''</span>)</code></pre><h2 id="节点之间的空白符">节点之间的空白符</h2>
 <p> 在firefox、chrome、opera、safari浏览器是文本节点,IE不是.所以IE是3，其它浏览器是7</p>
-<pre><code class="language-html"> &lt;ul&gt;
-    &lt;li&gt;javascript&lt;/li&gt;
-    &lt;li&gt;jQuery&lt;/li&gt;
-    &lt;li&gt;PHP&lt;/li&gt;
- &lt;/ul&gt;</code></pre>
+<pre><code class="language-html"> <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>javascript<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>jQuery<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>PHP<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+ <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></code></pre>
 <p> 如果把代码改成这样:
 <code>&lt;ul&gt;&lt;li&gt;javascript&lt;/li&gt;&lt;li&gt;jQuery&lt;/li&gt;&lt;li&gt;PHP&lt;/li&gt;&lt;/ul&gt;</code></p>
 <p>运行结果:3（IE和其它浏览器结果是一样的）</p>
@@ -437,14 +441,14 @@ Background:url(&#39;&#39;)</code></pre><h2 id="节点之间的空白符">节点�
 <p>默认情况下, fetch 不会从服务端发送或接收任何 cookies, 如果站点依赖于用户 session，则会导致未经认证的请求（要发送 cookies，必须设置 credentials 选项）.</p>
 <p>fetch是比较底层的API，很多情况下都需要我们再次封装。
 比如：</p>
-<pre><code class="language-javascript">// jquery ajax
-$.post(url, {name: &#39;test&#39;})
-// fetch
+<pre><code class="language-javascript"><span class="hljs-comment">// jquery ajax</span>
+$.post(url, {<span class="hljs-attr">name</span>: <span class="hljs-string">'test'</span>})
+<span class="hljs-comment">// fetch</span>
 fetch(url, {
-    method: &#39;POST&#39;,
-    body: Object.keys({name: &#39;test&#39;}).map((key) =&gt; {
-        return encodeURIComponent(key) + &#39;=&#39; + encodeURIComponent(params[key]);
-    }).join(&#39;&amp;&#39;)
+    <span class="hljs-attr">method</span>: <span class="hljs-string">'POST'</span>,
+    <span class="hljs-attr">body</span>: <span class="hljs-built_in">Object</span>.keys({<span class="hljs-attr">name</span>: <span class="hljs-string">'test'</span>}).map(<span class="hljs-function">(<span class="hljs-params">key</span>) =&gt;</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">encodeURIComponent</span>(key) + <span class="hljs-string">'='</span> + <span class="hljs-built_in">encodeURIComponent</span>(params[key]);
+    }).join(<span class="hljs-string">'&amp;'</span>)
 })</code></pre>
 <p>由于fetch是比较底层的API，所以需要我们手动将参数拼接成&#39;name=test&#39;的格式，而jquery ajax已经封装好了。所以fetch并不是开箱即用的。
 另外，fetch还<code>不支持超时控制</code>。</p>
@@ -471,5 +475,8 @@ fetch(url, {
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

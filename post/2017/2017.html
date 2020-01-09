@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -45,7 +49,7 @@
 
 参考
 
-[SD9001: IE6 IE7 IE8(Q) 中的 getElementById 方法能以 name 属性为参数获取某些元素](http://www.w3help.org/zh-cn/causes/SD9001)
+[<span class="hljs-string">SD9001: IE6 IE7 IE8(Q) 中的 getElementById 方法能以 name 属性为参数获取某些元素</span>](<span class="hljs-link">http://www.w3help.org/zh-cn/causes/SD9001</span>)
 
 实验了一下，用IE8版本，成功了吼吼吼</code></pre><h3 id="polyfill">Polyfill</h3>
 <p> <code>Polyfill</code>的准确意思为：用于实现浏览器并不支持的原生API的代码。
@@ -60,5 +64,8 @@
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

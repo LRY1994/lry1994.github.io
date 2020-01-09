@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -52,63 +56,63 @@
 <p>document.documentElement / body要做兼容</p>
 <h2 id="如何获取元素相对于整个网页的精确位置">如何获取元素相对于整个网页的精确位置</h2>
 <p><strong>el.offsetLeft + el.clientLeft - el.scrollLeft</strong></p>
-<pre><code class="language-js">// Helper function to get an element&#39;s exact position
-function getPosition(el) {
-  var xPos = 0;
-  var yPos = 0;
+<pre><code class="language-js"><span class="hljs-comment">// Helper function to get an element's exact position</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPosition</span>(<span class="hljs-params">el</span>) </span>{
+  <span class="hljs-keyword">var</span> xPos = <span class="hljs-number">0</span>;
+  <span class="hljs-keyword">var</span> yPos = <span class="hljs-number">0</span>;
 
-  while (el) {
-    if (el.tagName == &quot;BODY&quot;) {
-      // deal with browser quirks with body/window/document and page scroll
-      var xScroll = el.scrollLeft || document.documentElement.scrollLeft;
-      var yScroll = el.scrollTop || document.documentElement.scrollTop;
+  <span class="hljs-keyword">while</span> (el) {
+    <span class="hljs-keyword">if</span> (el.tagName == <span class="hljs-string">"BODY"</span>) {
+      <span class="hljs-comment">// deal with browser quirks with body/window/document and page scroll</span>
+      <span class="hljs-keyword">var</span> xScroll = el.scrollLeft || <span class="hljs-built_in">document</span>.documentElement.scrollLeft;
+      <span class="hljs-keyword">var</span> yScroll = el.scrollTop || <span class="hljs-built_in">document</span>.documentElement.scrollTop;
 
       xPos += (el.offsetLeft - xScroll + el.clientLeft);
       yPos += (el.offsetTop - yScroll + el.clientTop);
-    } else {
-      // for all other non-BODY elements
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-comment">// for all other non-BODY elements</span>
       xPos += (el.offsetLeft - el.scrollLeft + el.clientLeft);
       yPos += (el.offsetTop - el.scrollTop + el.clientTop);
     }
 
     el = el.offsetParent;
   }
-  return {
-    x: xPos,
-    y: yPos
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">x</span>: xPos,
+    <span class="hljs-attr">y</span>: yPos
   };
 }</code></pre>
 <h2 id="判断元素是否在某个容器里的可视区域">判断元素是否在某个容器里的可视区域</h2>
 <p><strong>el.offsetLeft + el.clientLeft</strong></p>
-<pre><code class="language-js">/**
+<pre><code class="language-js"><span class="hljs-comment">/**
  * el 查询元素
  * scrollParent el最近的可滚动祖先节点
  * offset 预留的预加载距离
-*/
-const checkInView=(el,scrollParent,offset)=&gt;{
-    let scrollTop,clientH,clientW,scrollLeft;
-    let offsetTop=0,offsetLeft=0;
-    if(scrollParent === window) {
-        scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
-        scrollLeft=document.documentElement.scrollLeft||document.body.scrollLeft;
-        clientH=document.documentElement.clientHeight||document.body.clientHeight;
-        clientW=document.documentElement.clientWidth||document.body.clientWidth;
+*/</span>
+<span class="hljs-keyword">const</span> checkInView=<span class="hljs-function">(<span class="hljs-params">el,scrollParent,offset</span>)=&gt;</span>{
+    <span class="hljs-keyword">let</span> scrollTop,clientH,clientW,scrollLeft;
+    <span class="hljs-keyword">let</span> offsetTop=<span class="hljs-number">0</span>,offsetLeft=<span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span>(scrollParent === <span class="hljs-built_in">window</span>) {
+        scrollTop=<span class="hljs-built_in">document</span>.documentElement.scrollTop||<span class="hljs-built_in">document</span>.body.scrollTop;
+        scrollLeft=<span class="hljs-built_in">document</span>.documentElement.scrollLeft||<span class="hljs-built_in">document</span>.body.scrollLeft;
+        clientH=<span class="hljs-built_in">document</span>.documentElement.clientHeight||<span class="hljs-built_in">document</span>.body.clientHeight;
+        clientW=<span class="hljs-built_in">document</span>.documentElement.clientWidth||<span class="hljs-built_in">document</span>.body.clientWidth;
     }
-    else {
+    <span class="hljs-keyword">else</span> {
         scrollTop = scrollParent.scrollTop;
         scrollLeft=scrollParent.scrollLeft;
         clientH = scrollParent.clientHeight;
         clientW=scrollParent.clientWidth;
     }
-    while(el!=scrollParent &amp;&amp; el!=null){
+    <span class="hljs-keyword">while</span>(el!=scrollParent &amp;&amp; el!=<span class="hljs-literal">null</span>){
         offsetTop+=el.offsetTop+el.clientTop;
         offsetLeft+=el.offsetLeft+el.clientLeft;
         el=el.offsetParent;
     }
-    if(scrollTop+clientH&gt;offsetTop-offset &amp;&amp; scrollLeft+clientW&gt;offsetLeft-offset){
-        return true;
+    <span class="hljs-keyword">if</span>(scrollTop+clientH&gt;offsetTop-offset &amp;&amp; scrollLeft+clientW&gt;offsetLeft-offset){
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
     }
-    else return false;
+    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
 }</code></pre>
 <h2 id="screen对象">screen对象</h2>
 <p>用于获取用户的屏幕信息。</p>
@@ -139,12 +143,12 @@ const checkInView=(el,scrollParent,offset)=&gt;{
 <li><code>document.body.clientWidth</code></li>
 </ul>
 <h4 id="三、浏览器兼容性">三、浏览器兼容性</h4>
-<pre><code class="language-javascript">//屏幕可视窗口大小
-var w= window.innerWidth||document.documentElement.clientWidth|| document.body.clientWidth;
-var h=window.innerHeight|| document.documentElement.clientHeight || document.body.clientHeight;
+<pre><code class="language-javascript"><span class="hljs-comment">//屏幕可视窗口大小</span>
+<span class="hljs-keyword">var</span> w= <span class="hljs-built_in">window</span>.innerWidth||<span class="hljs-built_in">document</span>.documentElement.clientWidth|| <span class="hljs-built_in">document</span>.body.clientWidth;
+<span class="hljs-keyword">var</span> h=<span class="hljs-built_in">window</span>.innerHeight|| <span class="hljs-built_in">document</span>.documentElement.clientHeight || <span class="hljs-built_in">document</span>.body.clientHeight;
 
-//滚动条滚动的距离
-window.pagYoffset || document.documentElement.scrollTop||document.body.scrollTop 
+<span class="hljs-comment">//滚动条滚动的距离</span>
+<span class="hljs-built_in">window</span>.pagYoffset || <span class="hljs-built_in">document</span>.documentElement.scrollTop||<span class="hljs-built_in">document</span>.body.scrollTop 
 </code></pre>
 <h2 id="网页尺寸scrollheight">网页尺寸scrollHeight</h2>
 <p><code>scrollHeight</code>和<code>scrollWidth</code>，获取网页内容高度和宽度。</p>
@@ -153,16 +157,16 @@ window.pagYoffset || document.documentElement.scrollTop||document.body.scrollTop
 <h4 id="二、针对ns、ff">二、针对NS、FF:</h4>
 <p>scrollHeight 是网页内容高度，不过最小值是 clientHeight。也就是说网页内容实际高度小于 clientHeight 时，scrollHeight 返回 clientHeight 。</p>
 <h4 id="三、浏览器兼容性-1">三、浏览器兼容性</h4>
-<pre><code class="language-javascript">var w=document.documentElement.scrollWidth|| document.body.scrollWidth;
-var h=document.documentElement.scrollHeight|| document.body.scrollHeight;</code></pre>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> w=<span class="hljs-built_in">document</span>.documentElement.scrollWidth|| <span class="hljs-built_in">document</span>.body.scrollWidth;
+<span class="hljs-keyword">var</span> h=<span class="hljs-built_in">document</span>.documentElement.scrollHeight|| <span class="hljs-built_in">document</span>.body.scrollHeight;</code></pre>
 <p><code>scrollHeight</code>和<code>scrollWidth</code>还可获取Dom元素中内容实际占用的高度和宽度。</p>
 <h2 id="网页尺寸offsetheight">网页尺寸offsetHeight</h2>
 <p><code>offsetHeight</code>和<code>offsetWidth</code>，获取网页内容高度和宽度(包括滚动条等边线，会随窗口的显示大小改变)。</p>
 <h4 id="一、值">一、值</h4>
 <p><code>offsetHeight = clientHeight + 滚动条 + 边框。</code></p>
 <h4 id="二、浏览器兼容性">二、浏览器兼容性</h4>
-<pre><code class="language-javascript">var w= document.documentElement.offsetWidth || document.body.offsetWidth;
-var h= document.documentElement.offsetHeight|| document.body.offsetHeight;</code></pre>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> w= <span class="hljs-built_in">document</span>.documentElement.offsetWidth || <span class="hljs-built_in">document</span>.body.offsetWidth;
+<span class="hljs-keyword">var</span> h= <span class="hljs-built_in">document</span>.documentElement.offsetHeight|| <span class="hljs-built_in">document</span>.body.offsetHeight;</code></pre>
 <h2 id="网页卷去的距离与偏移量">网页卷去的距离与偏移量</h2>
 <p>我们先来看看下面的图：</p>
 <img src="./load-process/scroll.png" >
@@ -186,5 +190,8 @@ var h= document.documentElement.offsetHeight|| document.body.offsetHeight;</code
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

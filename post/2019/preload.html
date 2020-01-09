@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -35,34 +39,34 @@
             <p>I belong to : Experience</p>
             <hr/>
             <pre><code>
-    /**
+    <span class="hljs-comment">/**
      * 预加载
-     * @param {Array} dataList  预加载数据
-     * @param {Array} attrArray 预加载属性，可选
-     */
-    export function  preLoad(dataList,attrList){
-      //若有指定对象属性
-      let imgList = [];
-      if(attrList){
-        dataList.forEach(element =&gt; {
-          attrList.forEach(attr=&gt;{
-            if(element[attr]){
-              const img = new Image();
+     * <span class="hljs-doctag">@param <span class="hljs-type">{Array}</span> </span>dataList  预加载数据
+     * <span class="hljs-doctag">@param <span class="hljs-type">{Array}</span> </span>attrArray 预加载属性，可选
+     */</span>
+    <span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span>  <span class="hljs-title">preLoad</span>(<span class="hljs-params">dataList,attrList</span>)</span>{
+      <span class="hljs-comment">//若有指定对象属性</span>
+      <span class="hljs-keyword">let</span> imgList = [];
+      <span class="hljs-keyword">if</span>(attrList){
+        dataList.forEach(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> {
+          attrList.forEach(<span class="hljs-function"><span class="hljs-params">attr</span>=&gt;</span>{
+            <span class="hljs-keyword">if</span>(element[attr]){
+              <span class="hljs-keyword">const</span> img = <span class="hljs-keyword">new</span> Image();
               img.src = element[attr];
               imgList.push(img);
 
             } 
           })
         });
-      }else{
-        dataList.forEach(element =&gt; { 
-          const img = new Image();
+      }<span class="hljs-keyword">else</span>{
+        dataList.forEach(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> { 
+          <span class="hljs-keyword">const</span> img = <span class="hljs-keyword">new</span> Image();
           img.src = element;
           imgList.push(img);       
         });
       }
 
-      return imgList;
+      <span class="hljs-keyword">return</span> imgList;
     }</code></pre><h2 id="测试浏览器：chrome、firefox"><strong>测试浏览器：chrome、firefox</strong></h2>
 <blockquote>
 <p>在Firefox下并没有from memory cache以及from disk cache的状态展现 相同的资源在chrome下是from
@@ -75,9 +79,9 @@ disk/memory cache，但是Firefox统统是304状态码
 </blockquote>
 <h1 id="图片img的预加载">图片img的预加载</h1>
 <h2 id="方法一直接用src进行预加载但不保存">方法一:直接用src进行预加载,但不保存</h2>
-<pre><code> &lt;img :src=&quot;data[current].imagePath&quot;&gt;
+<pre><code> &lt;img :src=<span class="hljs-string">"data[current].imagePath"</span>&gt;
  mounted() {  
-     preLoad(this.data,[&#39;imagePath&#39;]);
+     preLoad(<span class="hljs-keyword">this</span>.<span class="hljs-keyword">data</span>,[<span class="hljs-string">'imagePath'</span>]);
 }</code></pre><p><strong>结果：</strong></p>
 <ol>
 <li><p>谷歌 切换图片速度快，确实有预加载. 初次 200  disk cache。</p>
@@ -94,51 +98,51 @@ disk/memory cache，但是Firefox统统是304状态码
 <hr>
 <h2 id="方法二：-把预加载的挂载到data上（最好）">方法二： 把预加载的挂载到data上（最好）</h2>
 <p><strong>结果：</strong>火狐、谷歌表现一致，都切换较快，没有发请求</p>
-<pre><code>&lt;div ref=&quot;solution-img&quot;&gt;&lt;/div&gt;
-mounted() {    
-    this.preLoadImg = preLoad(this.data,[&#39;bgimagePath&#39;]);
+<pre><code>&lt;div <span class="hljs-built_in">ref</span>=<span class="hljs-string">"solution-img"</span>&gt;&lt;/div&gt;
+mounted<span class="hljs-literal">()</span> {    
+    this.preLoadImg = pre<span class="hljs-constructor">Load(<span class="hljs-params">this</span>.<span class="hljs-params">data</span>,['<span class="hljs-params">bgimagePath</span>'])</span>;
 }
 methods: {
-    changeActive(index) {
+    change<span class="hljs-constructor">Active(<span class="hljs-params">index</span>)</span> {
       this.current = index;
-      let dom = this.$refs[&#39;solution-img&#39;];
-      if(dom.childNodes.length &gt; 0) dom.removeChild(dom.childNodes[0]);
-      dom.appendChild(this.preLoadImg[index]);
+      <span class="hljs-keyword">let</span> dom = this.$refs<span class="hljs-literal">['<span class="hljs-identifier">solution</span>-<span class="hljs-identifier">img</span>']</span>;
+      <span class="hljs-keyword">if</span>(dom.childNodes.length &gt; <span class="hljs-number">0</span>) dom.remove<span class="hljs-constructor">Child(<span class="hljs-params">dom</span>.<span class="hljs-params">childNodes</span>[0])</span>;
+      dom.append<span class="hljs-constructor">Child(<span class="hljs-params">this</span>.<span class="hljs-params">preLoadImg</span>[<span class="hljs-params">index</span>])</span>;
     }
 
   },</code></pre><h1 id="背景图片的预加载">背景图片的预加载</h1>
 <p><strong>不做任何处理结果</strong>：第一次请求返回200。第一次加载后都是304</p>
 <hr>
 <h2 id="方法一-：使用css预加载">方法一 ：使用css预加载</h2>
-<pre><code>#preload-01 { background:  url(&#39;~@/assets/img/market/icon-00.png&#39;) no-repeat -9999px -9999px; }    
-#preload-02 { background:  url(&#39;~@/assets/img/market/icon-01.png&#39;) no-repeat -9999px -9999px; }    </code></pre><p><strong>结果：</strong> 和不处理表现一致。初次加载也没有请求这些图片。</p>
+<pre><code><span class="hljs-selector-id">#preload-01</span> { <span class="hljs-attribute">background</span>:  <span class="hljs-built_in">url</span>(<span class="hljs-string">'~@/assets/img/market/icon-00.png'</span>) no-repeat -<span class="hljs-number">9999px</span> -<span class="hljs-number">9999px</span>; }    
+<span class="hljs-selector-id">#preload-02</span> { <span class="hljs-attribute">background</span>:  <span class="hljs-built_in">url</span>(<span class="hljs-string">'~@/assets/img/market/icon-01.png'</span>) no-repeat -<span class="hljs-number">9999px</span> -<span class="hljs-number">9999px</span>; }    </code></pre><p><strong>结果：</strong> 和不处理表现一致。初次加载也没有请求这些图片。</p>
 <h2 id="方法二：src预加载，但不保存">方法二：src预加载，但不保存</h2>
 <pre><code>{
- background-image: url(&#39;~@/assets/img/market/icon-10.png&#39;)  ;       
- &amp;:hover{  background-image:url(&#39;~@/assets/img/market/icon-11.png&#39;)}
+ <span class="hljs-attribute">background-image</span>: url(<span class="hljs-string">'~@/assets/img/market/icon-10.png'</span>)  ;       
+ &amp;<span class="hljs-selector-pseudo">:hover</span>{  <span class="hljs-attribute">background-image</span>:url(<span class="hljs-string">'~@/assets/img/market/icon-11.png'</span>)}
 }
 myPreLoad(){
       let images = [  
-        require(&#39;@/assets/img/market/icon-10.png&#39;),
-        require(&#39;@/assets/img/market/icon-11.png&#39;),
+        require(<span class="hljs-string">'@/assets/img/market/icon-10.png'</span>),
+        require(<span class="hljs-string">'@/assets/img/market/icon-11.png'</span>),
       ];
       preLoad(images);</code></pre><p>   }</p>
 <p><strong>结果：</strong> 第一次hover 状态码304。之后切换没有发请求。火狐和谷歌表现一致，都是304</p>
 <h2 id="方法三：把预加载的挂载到data上">方法三：把预加载的挂载到data上</h2>
-<pre><code>handleMouseenter(index){
-this.getDom(index).style.backgroundImage = &quot;url(&quot; +this.preLoadImage[index*2+1].src + &quot;)&quot;;
+<pre><code>handleMouseenter(<span class="hljs-keyword">index</span>){
+<span class="hljs-keyword">this</span>.getDom(<span class="hljs-keyword">index</span>).style.backgroundImage = <span class="hljs-string">"url("</span> +<span class="hljs-keyword">this</span>.preLoadImage[<span class="hljs-keyword">index</span>*<span class="hljs-number">2</span>+<span class="hljs-number">1</span>].src + <span class="hljs-string">")"</span>;
 
 },</code></pre><p><strong>结果：</strong> 谷歌切换没有发请求。但是火狐会发请求，并返回304。</p>
 <h2 id="方法四：雪碧图（最好）">方法四：雪碧图（最好）</h2>
-<pre><code>.backgroud-box{
-  width: 137px ;
-  height: 113px;
-  background-image: url(&#39;./icon-1.png&#39;) ;    
-  background-position-x:100%;
-  background-position-y:0;
+<pre><code><span class="hljs-selector-class">.backgroud-box</span>{
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">137px</span> ;
+  <span class="hljs-attribute">height</span>: <span class="hljs-number">113px</span>;
+  <span class="hljs-attribute">background-image</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'./icon-1.png'</span>) ;    
+  <span class="hljs-attribute">background-position-x</span>:<span class="hljs-number">100%</span>;
+  <span class="hljs-attribute">background-position-y</span>:<span class="hljs-number">0</span>;
 }
 
-&amp;:hover&gt;.backgroud-box { background-position-y:-113px;} </code></pre><p>以上方法都会出现切换背景图片闪烁。用这个方法位移背景就不会。而且第一次加载就把图片下载下来了，切换也不会发请求，因为用的是同一张图</p>
+&amp;<span class="hljs-selector-pseudo">:hover</span>&gt;<span class="hljs-selector-class">.backgroud-box</span> { <span class="hljs-attribute">background-position-y</span>:-<span class="hljs-number">113px</span>;} </code></pre><p>以上方法都会出现切换背景图片闪烁。用这个方法位移背景就不会。而且第一次加载就把图片下载下来了，切换也不会发请求，因为用的是同一张图</p>
 <h1 id="个人结论">个人结论</h1>
 <p>1、因为</p>
 <blockquote>
@@ -157,5 +161,8 @@ disk/memory cache，但是Firefox统统是304状态码</p>
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

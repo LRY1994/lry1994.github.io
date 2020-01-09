@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -34,11 +38,10 @@
             <h1 class="title">读《Learning Javascript Design Patterns》 -Addy Osmani</h1>            
             <p>I belong to : Reading</p>
             <hr/>
-            <h1 id="《learning-javascript-design-patterns》--addy-osmani-人民邮电出版社">《Learning Javascript Design Patterns》 -Addy Osmani 人民邮电出版社</h1>
-<h2 id="创建对象的三种方法">创建对象的三种方法</h2>
-<pre><code class="language-javascipt">obj={};
-obj=new Object();
-obj=Object.create(null)</code></pre>
+            <h2 id="创建对象的三种方法">创建对象的三种方法</h2>
+<pre><code class="language-javascipt"><span class="hljs-attr">obj</span>={}<span class="hljs-comment">;</span>
+<span class="hljs-attr">obj</span>=new Object()<span class="hljs-comment">;</span>
+<span class="hljs-attr">obj</span>=Object.create(null)</code></pre>
 <h2 id="设计模式类别">设计模式类别</h2>
 <h3 id="创建型">创建型</h3>
 <ul>
@@ -66,205 +69,205 @@ obj=Object.create(null)</code></pre>
 <img src="./design-pattern/publish-suscriber.png">
 
 <h1 id="prototypejs">Prototype.js</h1>
-<pre><code class="language-js">//Object.create
-var vehicle = {
-    getModel:function(){
-        console.log(this.model);
+<pre><code class="language-js"><span class="hljs-comment">//Object.create</span>
+<span class="hljs-keyword">var</span> vehicle = {
+    getModel:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.model);
     }
 };
-var car = Object.create(vehicle,{
-    &quot;id&quot;:{
-        value:1,
-        enumerable:true
+<span class="hljs-keyword">var</span> car = <span class="hljs-built_in">Object</span>.create(vehicle,{
+    <span class="hljs-string">"id"</span>:{
+        value:<span class="hljs-number">1</span>,
+        enumerable:<span class="hljs-literal">true</span>
     },
-    &quot;model&quot;:{
-        value:&quot;Ford&quot;,
-        enumerable:true
+    <span class="hljs-string">"model"</span>:{
+        value:<span class="hljs-string">"Ford"</span>,
+        enumerable:<span class="hljs-literal">true</span>
     }
 });
 
-//function F(){}
-var beget = (function({
-    function F(){};
-    return function(_proto_){
+<span class="hljs-comment">//function F(){}</span>
+<span class="hljs-keyword">var</span> beget = (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">{
+    <span class="hljs-keyword">function</span> F(){};
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span>(_proto_){
         F.prototype=_proto_;
-        return new F();
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> F();
     }
-}))();
+}</span>))(<span class="hljs-params"></span>)</span>;
 
-var car =beget(vehicle);</code></pre>
+<span class="hljs-keyword">var</span> car =beget(vehicle);</code></pre>
 <h1 id="singletonjs">Singleton.js</h1>
-<pre><code class="language-js">//Singleton单例模式
-var singleTon = (function(){
-    var instance;
-    function init(){
-        function privateMethod(){}
-        var privateVar = &#39;privateVar&#39;;
-        return {
-            publicMethod :function(){},
-            publicVar : &#39;publicVar&#39;
+<pre><code class="language-js"><span class="hljs-comment">//Singleton单例模式</span>
+<span class="hljs-keyword">var</span> singleTon = (<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">var</span> instance;
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">privateMethod</span><span class="hljs-params">()</span></span>{}
+        <span class="hljs-keyword">var</span> privateVar = <span class="hljs-string">'privateVar'</span>;
+        <span class="hljs-keyword">return</span> {
+            publicMethod :<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{},
+            publicVar : <span class="hljs-string">'publicVar'</span>
         }
     }
-    return{
-        getInstance:function(){
-            if(!instance){ instance = init(); }
-            return instance;
+    <span class="hljs-keyword">return</span>{
+        getInstance:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+            <span class="hljs-keyword">if</span>(!instance){ instance = init(); }
+            <span class="hljs-keyword">return</span> instance;
         }
     }
 })
 
-var singleTon2 = (function(){
-    var instance;
-    var _static ={}
-    function singleTon(opt){//构造函数
+<span class="hljs-keyword">var</span> singleTon2 = (<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">var</span> instance;
+    <span class="hljs-keyword">var</span> _static ={}
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">singleTon</span><span class="hljs-params">(opt)</span></span>{<span class="hljs-comment">//构造函数</span>
         options = opt ||{};
-        this.point = opt.point;
-        this.privateMethod = function(){}
+        <span class="hljs-keyword">this</span>.point = opt.point;
+        <span class="hljs-keyword">this</span>.privateMethod = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{}
     }
-    var _satic = {
-        name :&#39;singleTon&#39;,
-        getInstance:function(opt){
-            if(!instance){ instance = new singleTon(opt); }
-            return instance;
+    <span class="hljs-keyword">var</span> _satic = {
+        name :<span class="hljs-string">'singleTon'</span>,
+        getInstance:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(opt)</span></span>{
+            <span class="hljs-keyword">if</span>(!instance){ instance = <span class="hljs-keyword">new</span> singleTon(opt); }
+            <span class="hljs-keyword">return</span> instance;
         }
     };
-    return _static;
+    <span class="hljs-keyword">return</span> _static;
 })
 
-singleTonTest = singleTon2.getInstance({point:5})</code></pre>
+singleTonTest = singleTon2.getInstance({point:<span class="hljs-number">5</span>})</code></pre>
 <h1 id="factoryjs">Factory.js</h1>
-<pre><code class="language-js">//Factory.js
-function Car(options){
-    this.doors = options.doors ||4;
-    this,color = options.color||&#39;silver&#39;;
+<pre><code class="language-js"><span class="hljs-comment">//Factory.js</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Car</span><span class="hljs-params">(options)</span></span>{
+    <span class="hljs-keyword">this</span>.doors = options.doors ||<span class="hljs-number">4</span>;
+    <span class="hljs-keyword">this</span>,color = options.color||<span class="hljs-string">'silver'</span>;
 }
-function Trunk(options){
-    this.weelSize=options.weelSize||&#39;large&#39;;
-    this.color =options.color||&#39;blue&#39;;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Trunk</span><span class="hljs-params">(options)</span></span>{
+    <span class="hljs-keyword">this</span>.weelSize=options.weelSize||<span class="hljs-string">'large'</span>;
+    <span class="hljs-keyword">this</span>.color =options.color||<span class="hljs-string">'blue'</span>;
 }
-function VehicleFactory(){}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">VehicleFactory</span><span class="hljs-params">()</span></span>{}
 VehicleFactory.prototype.vehicleClass = Car;
-VehicleFactory.prototype.createVehicle = function(options){
-    if(options.vehicleTtype == &#39;car&#39;){
-        this.vehicleClass=Car;
-    }else{
-        this.vehicleClass = Truck;
+VehicleFactory.prototype.createVehicle = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(options)</span></span>{
+    <span class="hljs-keyword">if</span>(options.vehicleTtype == <span class="hljs-string">'car'</span>){
+        <span class="hljs-keyword">this</span>.vehicleClass=Car;
+    }<span class="hljs-keyword">else</span>{
+        <span class="hljs-keyword">this</span>.vehicleClass = Truck;
     }
-    return new this.vehicleClass(options);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-keyword">this</span>.vehicleClass(options);
 }
-//use
-var carFactory=new VehicleFactory();
-var car=carFactory.createVehicle({
-    vehicleTtype:&#39;car&#39;,
-    doors:6,
-    color:&#39;yellow&#39;
+<span class="hljs-comment">//use</span>
+<span class="hljs-keyword">var</span> carFactory=<span class="hljs-keyword">new</span> VehicleFactory();
+<span class="hljs-keyword">var</span> car=carFactory.createVehicle({
+    vehicleTtype:<span class="hljs-string">'car'</span>,
+    doors:<span class="hljs-number">6</span>,
+    color:<span class="hljs-string">'yellow'</span>
 })
-var trunk = carFactory.createVehicle({
-    vehicleTtype:&#39;trunk&#39;,
-    color:&#39;red&#39;,
-    weelSize:&#39;small&#39;
+<span class="hljs-keyword">var</span> trunk = carFactory.createVehicle({
+    vehicleTtype:<span class="hljs-string">'trunk'</span>,
+    color:<span class="hljs-string">'red'</span>,
+    weelSize:<span class="hljs-string">'small'</span>
 })</code></pre>
 <h1 id="abstract-factoryjs">Abstract-Factory.js</h1>
-<pre><code class="language-js">//Factory.js
-function Car(options){
-    this.doors = options.doors ||4;
-    this.color = options.color||&#39;silver&#39;;
+<pre><code class="language-js"><span class="hljs-comment">//Factory.js</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Car</span><span class="hljs-params">(options)</span></span>{
+    <span class="hljs-keyword">this</span>.doors = options.doors ||<span class="hljs-number">4</span>;
+    <span class="hljs-keyword">this</span>.color = options.color||<span class="hljs-string">'silver'</span>;
 }
-function Trunk(options){
-    this.weelSize=options.weelSize||&#39;large&#39;;
-    this.color =options.color||&#39;blue&#39;;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Trunk</span><span class="hljs-params">(options)</span></span>{
+    <span class="hljs-keyword">this</span>.weelSize=options.weelSize||<span class="hljs-string">'large'</span>;
+    <span class="hljs-keyword">this</span>.color =options.color||<span class="hljs-string">'blue'</span>;
 }
-var AbstractFactory=(function(){
-    var types={};
-    return{
-        getVehicle:function(type,options){
-            var Vehicle = types[type];
-            return Vehicle? new Vehicle(options):null
+<span class="hljs-keyword">var</span> AbstractFactory=(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">var</span> types={};
+    <span class="hljs-keyword">return</span>{
+        getVehicle:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(type,options)</span></span>{
+            <span class="hljs-keyword">var</span> Vehicle = types[type];
+            <span class="hljs-keyword">return</span> Vehicle? <span class="hljs-keyword">new</span> Vehicle(options):<span class="hljs-literal">null</span>
         },
-        registerVehicle:function(ty,vehicle){//这个必须有
-            var proto = vehicle.prototype;
-            if(proto.drive&amp;&amp;proto.breakDown){
+        registerVehicle:<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(ty,vehicle)</span></span>{<span class="hljs-comment">//这个必须有</span>
+            <span class="hljs-keyword">var</span> proto = vehicle.prototype;
+            <span class="hljs-keyword">if</span>(proto.drive&amp;&amp;proto.breakDown){
                 types[type]=vehicle
             }
-            return AbstractFactory;
+            <span class="hljs-keyword">return</span> AbstractFactory;
         }
 
     }
 })();
 
-//use
-AbstractFactory.registerVehicle(&quot;car&quot;,Car);
-AbstractFactory.registerVehicle(&quot;truck&quot;,Trunk);
-var car = AbstractFactory.getVehicle(&quot;car&quot;,{
-    door:6,
-    color:&#39;red&#39;
+<span class="hljs-comment">//use</span>
+AbstractFactory.registerVehicle(<span class="hljs-string">"car"</span>,Car);
+AbstractFactory.registerVehicle(<span class="hljs-string">"truck"</span>,Trunk);
+<span class="hljs-keyword">var</span> car = AbstractFactory.getVehicle(<span class="hljs-string">"car"</span>,{
+    door:<span class="hljs-number">6</span>,
+    color:<span class="hljs-string">'red'</span>
 });
-var trunk = AbstractFactory.getVehicle(&quot;trunk&quot;,{
-    weelSize:&#39;small&#39;,
-    color:&#39;red&#39;
+<span class="hljs-keyword">var</span> trunk = AbstractFactory.getVehicle(<span class="hljs-string">"trunk"</span>,{
+    weelSize:<span class="hljs-string">'small'</span>,
+    color:<span class="hljs-string">'red'</span>
 })</code></pre>
 <h1 id="observerjs">Observer.js</h1>
-<pre><code class="language-js">//Observer 
-{//观察者
-function Observer()
-    this.observerList = [];
+<pre><code class="language-js"><span class="hljs-comment">//Observer </span>
+{<span class="hljs-comment">//观察者</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Observer</span></span>()
+    <span class="hljs-built_in">this</span>.observerList = [];
 }
-Observer.prototype.get = function(index){
-    return this.observerList[index]
+Observer.prototype.<span class="hljs-keyword">get</span> = <span class="hljs-function"><span class="hljs-keyword">function</span></span>(index){
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.observerList[index]
 }
-Observer.prototype.add = function(ConcreteOberver){
-    return this.observerList.push(ConcreteOberver)
+Observer.prototype.add = <span class="hljs-function"><span class="hljs-keyword">function</span></span>(ConcreteOberver){
+    <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.observerList.push(ConcreteOberver)
 }
-//目标
-function Subject(){
-    this.observers=new Observer();
+<span class="hljs-comment">//目标</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Subject</span></span>(){
+    <span class="hljs-built_in">this</span>.observers=<span class="hljs-keyword">new</span> <span class="hljs-type">Observer</span>();
 }
-//具体观察者注册到目标
-Subject.prototype.add = function(ConcreteOberver){
-    this.observers.add(ConcreteOberver)
+<span class="hljs-comment">//具体观察者注册到目标</span>
+Subject.prototype.add = <span class="hljs-function"><span class="hljs-keyword">function</span></span>(ConcreteOberver){
+    <span class="hljs-built_in">this</span>.observers.add(ConcreteOberver)
 }
-//目标发生变化，调度观察者
-Subject.prototype.notify = function(context){
-    for(let i=0;i&lt;this.observers.count();i++){
-        this.observers.get(i).update(context)
+<span class="hljs-comment">//目标发生变化，调度观察者</span>
+Subject.prototype.notify = <span class="hljs-function"><span class="hljs-keyword">function</span></span>(context){
+    <span class="hljs-keyword">for</span>(let i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-built_in">this</span>.observers.count();i++){
+        <span class="hljs-built_in">this</span>.observers.<span class="hljs-keyword">get</span>(i).update(context)
     }
 }
-//具体观察者
-function ConcreteOberver(){
-    this.update = function(){}
+<span class="hljs-comment">//具体观察者</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ConcreteOberver</span></span>(){
+    <span class="hljs-built_in">this</span>.update = <span class="hljs-function"><span class="hljs-keyword">function</span></span>(){}
 }</code></pre>
 <h1 id="publich-subscribejs">Publich-Subscribe.js</h1>
-<pre><code class="language-js">//Publish/Subscribe
+<pre><code class="language-js"><span class="hljs-comment">//Publish/Subscribe</span>
 
-var pubsub={};//调度中心
-(function(q){
-    var topics={},subUid = -1;
-    q.publish = function(topic,args){
-        if(!topics[topic]) return false;
-        var subscribers = topics [ topic];
-        var len = subscribers? subscribers.length:0;
-        while(len -- ){
+<span class="hljs-keyword">var</span> pubsub={};<span class="hljs-comment">//调度中心</span>
+(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">q</span>)</span>{
+    <span class="hljs-keyword">var</span> topics={},subUid = <span class="hljs-number">-1</span>;
+    q.publish = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">topic,args</span>)</span>{
+        <span class="hljs-keyword">if</span>(!topics[topic]) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+        <span class="hljs-keyword">var</span> subscribers = topics [ topic];
+        <span class="hljs-keyword">var</span> len = subscribers? subscribers.length:<span class="hljs-number">0</span>;
+        <span class="hljs-keyword">while</span>(len -- ){
             subscribers[len].func(topic,args)
         }
     };
-    q.subscribe = function(topic,func){
-        if(!topics[topic]) topics[topic]=[];
-        var token = (++subUid).toString();
-        topics[topic].push({token :token,func:func});
-        return token;
+    q.subscribe = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">topic,func</span>)</span>{
+        <span class="hljs-keyword">if</span>(!topics[topic]) topics[topic]=[];
+        <span class="hljs-keyword">var</span> token = (++subUid).toString();
+        topics[topic].push({<span class="hljs-attr">token</span> :token,<span class="hljs-attr">func</span>:func});
+        <span class="hljs-keyword">return</span> token;
     };
-    q.unsunscribe = function(token){
-        for(var m in topics){
-            if(topics[m]){
-                for(let i=0,j=topics[m].length;i&lt;j;i++){
-                    if(topics[m][i].token ==token){
-                        topics[m].splice(i,1);
-                        return token;
+    q.unsunscribe = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">token</span>)</span>{
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> m <span class="hljs-keyword">in</span> topics){
+            <span class="hljs-keyword">if</span>(topics[m]){
+                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=<span class="hljs-number">0</span>,j=topics[m].length;i&lt;j;i++){
+                    <span class="hljs-keyword">if</span>(topics[m][i].token ==token){
+                        topics[m].splice(i,<span class="hljs-number">1</span>);
+                        <span class="hljs-keyword">return</span> token;
                     }
                 }
             }
         }
-        return this;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>;
     }
 })(pubsub)</code></pre>
 
@@ -276,5 +279,8 @@ var pubsub={};//调度中心
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

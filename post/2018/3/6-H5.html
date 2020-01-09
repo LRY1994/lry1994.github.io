@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -36,33 +40,33 @@
             <hr/>
             <p>突然看到有H5页面外快做，看到微信朋友圈发的那些H5页面里面都用的了TweenMax，所以来研究一下，结果吓一跳，太太太强大了！！！！</p>
 <h1 id="复习一下css3">复习一下CSS3</h1>
-<pre><code>background-size: width height
-background-clip:content-box/padding-box/border-box
-background-origin:content-box/padding-box/border-box
-background-image:url(bg_flower.gif),url(bg_flower_2.gif);多个背景
+<pre><code><span class="hljs-built_in">background</span>-<span class="hljs-built_in">size</span>: <span class="hljs-built_in">width</span> <span class="hljs-built_in">height</span>
+<span class="hljs-built_in">background</span>-clip:content-<span class="hljs-built_in">box</span>/padding-<span class="hljs-built_in">box</span>/border-<span class="hljs-built_in">box</span>
+<span class="hljs-built_in">background</span>-origin:content-<span class="hljs-built_in">box</span>/padding-<span class="hljs-built_in">box</span>/border-<span class="hljs-built_in">box</span>
+<span class="hljs-built_in">background</span>-<span class="hljs-built_in">image</span>:url(bg_flower.gif),url(bg_flower_2.gif);多个背景
 
-text-shadow:水平阴影 垂直阴影 模糊距离 阴影的颜色
-box-shadow: 水平阴影 垂直阴影 模糊距离  阴影的尺寸 阴影的颜色
+<span class="hljs-built_in">text</span>-shadow:水平阴影 垂直阴影 模糊距离 阴影的颜色
+<span class="hljs-built_in">box</span>-shadow: 水平阴影 垂直阴影 模糊距离  阴影的尺寸 阴影的颜色
 
-clip: rect (top, right, bottom, left)
+clip: <span class="hljs-built_in">rect</span> (top, right, bottom, left)
 &lt;top&gt;和&lt;bottom&gt;指定偏移量是从元素盒子顶部边缘算起；
 &lt;left&gt;和&lt;right&gt;指定的偏移量是从元素盒子左边边缘算起。
 
 
-word-wrap:break-word
+word-wrap:<span class="hljs-keyword">break</span>-word
 @font-face
 
 转换
-transform:translate()/rotate()/scale()/skew()/matrix()/rotateX()/rotateY()
+transform:<span class="hljs-built_in">translate</span>()/<span class="hljs-built_in">rotate</span>()/<span class="hljs-built_in">scale</span>()/skew()/matrix()/<span class="hljs-built_in">rotateX</span>()/<span class="hljs-built_in">rotateY</span>()
 
 动画
 transition:transition-property transition-duration transition-timing-function transition-delay
         @keyframes myfirst
         {
-        from {background: red;}
-        to {background: yellow;}
+        from {<span class="hljs-built_in">background</span>: <span class="hljs-built_in">red</span>;}
+        to {<span class="hljs-built_in">background</span>: yellow;}
         }
-        animation: myfirst 5s;
+        animation: myfirst <span class="hljs-number">5</span>s;
 
 多列，这个只能平均分
 column-count
@@ -70,10 +74,10 @@ column-gap
 column-rule
 
 resize:both 可以鼠标拖拽
-box-sizing:border-box;
+<span class="hljs-built_in">box</span>-sizing:border-<span class="hljs-built_in">box</span>;
 
-outline:2px solid red;
-outline-offset:15px;
+outline:<span class="hljs-number">2</span>px solid <span class="hljs-built_in">red</span>;
+outline-offset:<span class="hljs-number">15</span>px;
 </code></pre><h1 id="greensock">GreenSock</h1>
 <h2 id="参考资料">参考资料</h2>
 <p>了解资料</p>
@@ -106,25 +110,25 @@ outline-offset:15px;
 <p>Lightweight TweenLite: Power0, Power1, Power2, Power3, Power4, Linear, Quad, Cubic, Quart, Quint, and Strong </p>
 <p>EasePack : Elastic, SlowMo, Bounce, SteppedEase, Sine, Circ, and Expo<a href="https://greensock.com/ease-visualizer">https://greensock.com/ease-visualizer</a></p>
 <h3 id="2d转换">2D转换</h3>
-<pre><code>rotation, 
-scaleX,
-scaleY,
-scale, 
-skewX, 
-skewY,
-x, (相当于css的translateX)
-y, (相当于css的translateY)
-xPercent, 
+<pre><code><span class="hljs-built_in">rotation,</span> 
+<span class="hljs-built_in">scaleX,</span>
+<span class="hljs-built_in">scaleY,</span>
+<span class="hljs-built_in">scale,</span> 
+<span class="hljs-built_in">skewX,</span> 
+<span class="hljs-built_in">skewY,</span>
+<span class="hljs-built_in">x,</span> (相当于css的translateX)
+<span class="hljs-built_in">y,</span> (相当于css的translateY)
+<span class="hljs-built_in">xPercent,</span> 
 yPercent</code></pre><ul>
 <li>you could set <code>xPercent</code> and <code>yPercent</code> to <code>-50</code> and <code>position:&quot;absolute&quot;</code> so that everything starts with their centers in the same spot</li>
 <li>IE6, IE7, and IE8 transforms don&#39;t apply to child elements (that&#39;s a browser limitation).</li>
 </ul>
 <h3 id="3d转换">3D转换</h3>
-<pre><code>rotationX, 
-rotationY, 
-rotationZ (identical to regular &quot;rotation&quot;), 
-z,(相当于css的translateZ)
-perspective,
+<pre><code><span class="hljs-built_in">rotationX,</span> 
+<span class="hljs-built_in">rotationY,</span> 
+rotationZ (identical to regular <span class="hljs-string">"rotation"</span>), 
+<span class="hljs-built_in">z,</span>(相当于css的translateZ)
+<span class="hljs-built_in">perspective,</span>
 transformPerspective</code></pre><ul>
 <li><p>To get your elements to have a true 3D visual perspective applied, you must either set the <code>&quot;perspective&quot;</code> property of the parent element or set the special <code>&quot;transformPerspective&quot;</code> of the element itself (common values range from around 200 to 1000, the lower the number the stronger the perspective distortion)</p>
 <p>  {% blockquote %}</p>
@@ -159,9 +163,9 @@ transformPerspective</code></pre><ul>
 <h3 id="controlling-tween">Controlling tween</h3>
 <p>  tween.pause();</p>
 <pre><code>  tl.pause() // pauses the animation
-  tl.paused() // gets paused state, returns true or false
-  tl.paused(true) // sets paused state to true
-  tl.paused(!tl.paused()) // sets paused state to inverse of current paused state.</code></pre><p>  tween.resume();
+  tl.paused() // gets paused <span class="hljs-keyword">state</span>, returns true or false
+  tl.paused(true) // sets paused <span class="hljs-keyword">state</span> <span class="hljs-keyword">to</span> true
+  tl.paused(!tl.paused()) // sets paused <span class="hljs-keyword">state</span> <span class="hljs-keyword">to</span> inverse of current paused <span class="hljs-keyword">state</span>.</code></pre><p>  tween.resume();
   tween.reverse();
   tween.seek(0.5);
   tween.timeScale(0.5);
@@ -171,57 +175,57 @@ transformPerspective</code></pre><ul>
 </li>
 </ul>
 <h2 id="timelinelite-让动画有序和组织"><code>TimelineLite</code> 让动画有序和组织</h2>
-<pre><code class="language-js">//create a TimelineLite instance
-var tl = new TimelineLite();
+<pre><code class="language-js"><span class="hljs-comment">//create a TimelineLite instance</span>
+var tl = <span class="hljs-keyword">new</span> <span class="hljs-constructor">TimelineLite()</span>;
 
-//append a to() tween
-tl.to(element, 1, {width:&quot;50%&quot;});
+<span class="hljs-comment">//append a to() tween</span>
+tl.<span class="hljs-keyword">to</span>(element, <span class="hljs-number">1</span>, {width:<span class="hljs-string">"50%"</span>});
 
-//add another sequenced tween (by default, tweens are added to the end of the timeline which makes sequencing simple)
-tl.to(element, 1, {height:&quot;300px&quot;, ease:Elastic.easeOut});
+<span class="hljs-comment">//add another sequenced tween (by default, tweens are added to the end of the timeline which makes sequencing simple)</span>
+tl.<span class="hljs-keyword">to</span>(element, <span class="hljs-number">1</span>, {height:<span class="hljs-string">"300px"</span>, ease:<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Elastic</span>.</span></span>easeOut});
 
-//offset the next tween by 0.75 seconds so there&#39;s a gap between the end of the previous tween and this new one
-tl.to(element, 1, {opacity:0.5}, &quot;+=0.75&quot;);
+<span class="hljs-comment">//offset the next tween by 0.75 seconds so there's a gap between the end of the previous tween and this new one</span>
+tl.<span class="hljs-keyword">to</span>(element, <span class="hljs-number">1</span>, {opacity:<span class="hljs-number">0.5</span>}, <span class="hljs-string">"+=0.75"</span>);
 
-//overlap the next tween with the previous one by 0.5 seconds (notice the negative offset at the end)
-tl.to(element, 1, {backgroundColor:&quot;#FF0000&quot;}, &quot;-=0.5&quot;);
+<span class="hljs-comment">//overlap the next tween with the previous one by 0.5 seconds (notice the negative offset at the end)</span>
+tl.<span class="hljs-keyword">to</span>(element, <span class="hljs-number">1</span>, {backgroundColor:<span class="hljs-string">"#FF0000"</span>}, <span class="hljs-string">"-=0.5"</span>);
 
-//animate 3 elements (e1, e2, and e3) to a rotation of 60 degrees, and stagger their start times by 0.2 seconds
-tl.staggerTo([e1, e2, e3], 1, {rotation:60}, 0.2);
+<span class="hljs-comment">//animate 3 elements (e1, e2, and e3) to a rotation of 60 degrees, and stagger their start times by 0.2 seconds</span>
+tl.stagger<span class="hljs-constructor">To([<span class="hljs-params">e1</span>, <span class="hljs-params">e2</span>, <span class="hljs-params">e3</span>], 1, {<span class="hljs-params">rotation</span>:60}, 0.2)</span>;
 
-//then call myFunction()
+<span class="hljs-comment">//then call myFunction()</span>
 tl.call(myFunction);
 
-//now we can control the entire sequence with the standard methods like these:
-tl.pause();
-tl.resume();
-tl.restart();
-tl.reverse();
-tl.play();
+<span class="hljs-comment">//now we can control the entire sequence with the standard methods like these:</span>
+tl.pause<span class="hljs-literal">()</span>;
+tl.resume<span class="hljs-literal">()</span>;
+tl.restart<span class="hljs-literal">()</span>;
+tl.reverse<span class="hljs-literal">()</span>;
+tl.play<span class="hljs-literal">()</span>;
 
-//jump to exactly 2.5 seconds into the animation
-tl.seek(2.5);
+<span class="hljs-comment">//jump to exactly 2.5 seconds into the animation</span>
+tl.seek(<span class="hljs-number">2.5</span>);
 
-//slow down playback to 10% of the normal speed
-tl.timeScale(0.1);
+<span class="hljs-comment">//slow down playback to 10% of the normal speed</span>
+tl.time<span class="hljs-constructor">Scale(0.1)</span>;
 
-//add a label named &quot;myLabel&quot; at exactly 3 seconds:
-tl.add(&quot;myLabel&quot;, 3);
+<span class="hljs-comment">//add a label named "myLabel" at exactly 3 seconds:</span>
+tl.add(<span class="hljs-string">"myLabel"</span>, <span class="hljs-number">3</span>);
 
-//add a tween that starts at &quot;myLabel&quot;
-tl.add( TweenLite.to(element, 1, {scale:0.5}), &quot;myLabel&quot;);
+<span class="hljs-comment">//add a tween that starts at "myLabel"</span>
+tl.add( <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">TweenLite</span>.</span></span><span class="hljs-keyword">to</span>(element, <span class="hljs-number">1</span>, {scale:<span class="hljs-number">0.5</span>}), <span class="hljs-string">"myLabel"</span>);
 
-//jump to &quot;myLabel&quot; and play from there:
-tl.play(&quot;myLabel&quot;);
+<span class="hljs-comment">//jump to "myLabel" and play from there:</span>
+tl.play(<span class="hljs-string">"myLabel"</span>);
 </code></pre>
 <h2 id="timelinemax和tweenmax-多一些功能"><code>TimelineMax</code>和<code>TweenMax</code> 多一些功能</h2>
-<pre><code>repeat, 
-yoyo:Boolean
-repeatDelay and more.</code></pre><p><code>TimelineMax</code> 还有方法</p>
-<pre><code>tweenTo(), 
-currentLabel(),
-getLabelBefore() 
-getLabelAfter() and more.</code></pre><h2 id="overwriting-other-tweens">Overwriting other tweens</h2>
+<pre><code><span class="hljs-symbol">repeat</span>, 
+<span class="hljs-symbol">yoyo</span>:<span class="hljs-keyword">Boolean
+</span><span class="hljs-symbol">repeatDelay</span> <span class="hljs-keyword">and </span>more.</code></pre><p><code>TimelineMax</code> 还有方法</p>
+<pre><code><span class="hljs-function"><span class="hljs-title">tweenTo</span><span class="hljs-params">()</span></span>, 
+<span class="hljs-function"><span class="hljs-title">currentLabel</span><span class="hljs-params">()</span></span>,
+<span class="hljs-function"><span class="hljs-title">getLabelBefore</span><span class="hljs-params">()</span></span> 
+<span class="hljs-function"><span class="hljs-title">getLabelAfter</span><span class="hljs-params">()</span></span> and more.</code></pre><h2 id="overwriting-other-tweens">Overwriting other tweens</h2>
 <p> all,none,auto</p>
 <p>TweenLite.defaultOverwrite = &quot;all&quot;;</p>
 <h2 id="其它">其它</h2>
@@ -235,5 +239,8 @@ getLabelAfter() and more.</code></pre><h2 id="overwriting-other-tweens">Overwrit
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -120,28 +124,28 @@
 <p> <code>theme/next/layout/tag.swig</code></p>
 <p> 但是tag,category页面还需要多做一步：</p>
 <pre><code> $ cd your-hexo-site
- $ hexo new page tags</code></pre><p> 编辑刚新建的页面，将页面的类型设置为 tags ，主题将自动为这个页面显示标签云。页面内容如下：</p>
-<pre><code> title: 标签
- date: 2014-12-22 12:39:04
- type: &quot;tags&quot;</code></pre><p> 在菜单中添加链接。编辑 主题配置文件 ， 添加 tags 到 menu 中，如下:</p>
-<pre><code> menu:
+ $ hexo new<span class="hljs-built_in"> page </span>tags</code></pre><p> 编辑刚新建的页面，将页面的类型设置为 tags ，主题将自动为这个页面显示标签云。页面内容如下：</p>
+<pre><code> <span class="hljs-attr">title:</span> <span class="hljs-string">标签</span>
+ <span class="hljs-attr">date:</span> <span class="hljs-number">2014</span><span class="hljs-number">-12</span><span class="hljs-number">-22</span> <span class="hljs-number">12</span><span class="hljs-string">:39:04</span>
+ <span class="hljs-attr">type:</span> <span class="hljs-string">"tags"</span></code></pre><p> 在菜单中添加链接。编辑 主题配置文件 ， 添加 tags 到 menu 中，如下:</p>
+<pre><code> <span class="hljs-keyword">menu</span>:
  home: /
- archives: /archives
- tags: /tags</code></pre></li>
+ archive<span class="hljs-variable">s:</span> /archives
+ <span class="hljs-keyword">tag</span><span class="hljs-variable">s:</span> /<span class="hljs-keyword">tags</span></code></pre></li>
 <li><p>换了主题重新部署，需要重新打包</p>
-<pre><code> hexo clean
- hexo g
- hexo d</code></pre><p> 这个需要一段时间githubPage才会更新</p>
+<pre><code> <span class="hljs-attr">hexo</span> <span class="hljs-string">clean</span>
+ <span class="hljs-attr">hexo</span> <span class="hljs-string">g</span>
+ <span class="hljs-attr">hexo</span> <span class="hljs-string">d</span></code></pre><p> 这个需要一段时间githubPage才会更新</p>
 </li>
 <li><p>写文章的时候要插入图片 </p>
 <p> (1) 按照<a href="https://hexo.io/zh-cn/docs/asset-folders.html">官方说法</a></p>
 <pre><code>     _posts
 
-         |- post1.md
+         <span class="hljs-string">|- post1.md</span>
 
-         |_ post1
+         <span class="hljs-string">|_ post1</span>
 
-             |- pic1.png</code></pre><ol>
+             <span class="hljs-string">|- pic1.png</span></code></pre><ol>
 <li><p>首先确认_config.yml中有：
 ```post_asset_folder: true``</p>
 </li>
@@ -162,7 +166,7 @@
 <p>管理博客</p>
 <h2 id="总结">总结</h2>
 <pre><code>最后发现hexo并不能实现博客以外的东西，可能它的定位就是博客框架吧。
-而且hexo和next都不可以自定义layout,Jekyll还可以自定义layout放置在_layout目录下</code></pre>
+而且hexo和next都不可以自定义<span class="hljs-keyword">layout</span>,Jekyll还可以自定义<span class="hljs-keyword">layout</span>放置在_layout目录下</code></pre>
         </div>
     </div>
     
@@ -171,5 +175,8 @@
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

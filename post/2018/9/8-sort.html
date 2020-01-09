@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -50,22 +54,22 @@
 <h4 id="算法的实现：">算法的实现：</h4>
 <pre><code class="language-js">function InsertSort(a) 
 { 
-for(let i= 1; i&lt;a.length; i++){ 
-    if(a[i] &lt; a[i-1]){ //若第i个元素大于i-1元素，直接插入。小于的话，移动有序表后插入  
-        let x = a[i]; //复制为哨兵，即存储待排序元素 
-        a[i] = a[i-1]; //先后移一个元素 
+for(let i= <span class="hljs-number">1</span>; i&lt;a.length; i++){ 
+    if(a[i] &lt; a[i<span class="hljs-number">-1</span>]){ <span class="hljs-comment">//若第i个元素大于i-1元素，直接插入。小于的话，移动有序表后插入  </span>
+        let x = a[i]; <span class="hljs-comment">//复制为哨兵，即存储待排序元素 </span>
+        a[i] = a[i<span class="hljs-number">-1</span>]; <span class="hljs-comment">//先后移一个元素 </span>
 
-        let j= i-1; 
-        while(j&gt;=0&amp;&amp;x &lt; a[j]){ //查找在有序表的插入位置 
-            a[j+1] = a[j]; 
-            j--; //元素后移 ,这里减多了一次
+        let j= i<span class="hljs-number">-1</span>; 
+        while(j&gt;=<span class="hljs-number">0</span>&amp;&amp;x &lt; a[j]){ <span class="hljs-comment">//查找在有序表的插入位置 </span>
+            a[j+<span class="hljs-number">1</span>] = a[j]; 
+            j--; <span class="hljs-comment">//元素后移 ,这里减多了一次</span>
         } 
-        a[j+1] = x; //插入到正确位置 ,记得j+1
+        a[j+<span class="hljs-number">1</span>] = x; <span class="hljs-comment">//插入到正确位置 ,记得j+1</span>
     } 
     } 
 
 } 
-a=[3,1,5,7,2,4,9,6]
+a=[<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">9</span>,<span class="hljs-number">6</span>]
 InsertSort(a) </code></pre>
 <p>其他的插入排序有二分插入排序，2-路插入排序。</p>
 <h2 id="插入排序希尔排序（shells-sort）">插入排序—希尔排序（Shell`s Sort）</h2>
@@ -82,35 +86,35 @@ InsertSort(a) </code></pre>
 <p>我们简单处理增量序列：增量序列d = {n/2 ,n/4, n/8 .....1} n为要排序数的个数</p>
 <p>即：先将要排序的一组记录按某个增量d（n/2,n为要排序数的个数）分成若干组子序列，每组中记录的下标相差d.对每组中全部元素进行直接插入排序，然后再用一个较小的增量（d/2）对它进行分组，在每组中再进行直接插入排序。继续不断缩小增量直至为1，最后使用直接插入排序完成排序。</p>
 <pre><code class="language-js">
-function ShellInsertSort(a, dk) 
+<span class="hljs-keyword">function</span> <span class="hljs-constructor">ShellInsertSort(<span class="hljs-params">a</span>, <span class="hljs-params">dk</span>)</span> 
 { 
-for(let i= dk; i&lt;a.length; ++i){ 
-    if(a[i] &lt; a[i-dk]){ //若第i个元素大于i-1元素，直接插入。小于的话，移动有序表后插入 
-        let j = i-dk; 
-        let x = a[i]; //复制为哨兵，即存储待排序元素 
-        a[i] = a[i-dk]; //首先后移一个元素 
-        while(x &lt; a[j]){ //查找在有序表的插入位置 
-            a[j+dk] = a[j]; 
-            j -= dk; //元素后移 
+for(<span class="hljs-keyword">let</span> i= dk; i&lt;a.length; ++i){ 
+    <span class="hljs-keyword">if</span>(a<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span> &lt; a<span class="hljs-literal">[<span class="hljs-identifier">i</span>-<span class="hljs-identifier">dk</span>]</span>){ <span class="hljs-comment">//若第i个元素大于i-1元素，直接插入。小于的话，移动有序表后插入 </span>
+        <span class="hljs-keyword">let</span> j = i-dk; 
+        <span class="hljs-keyword">let</span> x = a<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span>; <span class="hljs-comment">//复制为哨兵，即存储待排序元素 </span>
+        a<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span> = a<span class="hljs-literal">[<span class="hljs-identifier">i</span>-<span class="hljs-identifier">dk</span>]</span>; <span class="hljs-comment">//首先后移一个元素 </span>
+        <span class="hljs-keyword">while</span>(x &lt; a<span class="hljs-literal">[<span class="hljs-identifier">j</span>]</span>){ <span class="hljs-comment">//查找在有序表的插入位置 </span>
+            a<span class="hljs-literal">[<span class="hljs-identifier">j</span>+<span class="hljs-identifier">dk</span>]</span> = a<span class="hljs-literal">[<span class="hljs-identifier">j</span>]</span>; 
+            j -= dk; <span class="hljs-comment">//元素后移 </span>
         } 
-        a[j+dk] = x; //插入到正确位置 
+        a<span class="hljs-literal">[<span class="hljs-identifier">j</span>+<span class="hljs-identifier">dk</span>]</span> = x; <span class="hljs-comment">//插入到正确位置 </span>
     } 
 } 
 
 } 
 
-function shellSort(a){ 
-    let len = a.length;
-    let dk = len/2; 
-    while( dk &gt;= 1 ){ 
-        ShellInsertSort(a, dk); 
-        dk = dk/2; 
+<span class="hljs-keyword">function</span> shell<span class="hljs-constructor">Sort(<span class="hljs-params">a</span>)</span>{ 
+    <span class="hljs-keyword">let</span> len = a.length;
+    <span class="hljs-keyword">let</span> dk = len/<span class="hljs-number">2</span>; 
+    <span class="hljs-keyword">while</span>( dk &gt;= <span class="hljs-number">1</span> ){ 
+        <span class="hljs-constructor">ShellInsertSort(<span class="hljs-params">a</span>, <span class="hljs-params">dk</span>)</span>; 
+        dk = dk/<span class="hljs-number">2</span>; 
     } 
 } 
 
- a= [3,1,5,7,2,4,9,6]; 
-//ShellInsertSort(a,8,1); //直接插入排序 
-shellSort(a,8); //希尔插入排序 
+ a= <span class="hljs-literal">[<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">9</span>,<span class="hljs-number">6</span>]</span>; 
+<span class="hljs-comment">//ShellInsertSort(a,8,1); //直接插入排序 </span>
+shell<span class="hljs-constructor">Sort(<span class="hljs-params">a</span>,8)</span>; <span class="hljs-comment">//希尔插入排序 </span>
 </code></pre>
 <h4 id="分析">分析</h4>
 <p>希尔排序时效分析很难，关键码的比较次数与记录移动次数依赖于增量因子序列d的选取，特定情况下可以准确估算出关键码的比较次数和记录的移动次数。目前还没有人给出选取最好的增量因子序列的方法。增量因子序列可以有各种取法，有取奇数的，也有取质数的，但需要注意：增量因子中除1 外没有公因子，且最后一个增量因子必须为1。希尔排序方法是一个不稳定的排序方法。</p>
@@ -126,46 +130,46 @@ shellSort(a,8); //希尔插入排序
 第i 趟，则从第i 个记录开始的n-i+1 个记录中选出关键码最小的记录与第i 个记录交换，
 直到整个序列按关键码有序。</p>
 <h4 id="算法实现：-1">算法实现：</h4>
-<pre><code class="language-js">function SelectMinKey(a,start) 
+<pre><code class="language-js"><span class="hljs-keyword">function</span> <span class="hljs-constructor">SelectMinKey(<span class="hljs-params">a</span>,<span class="hljs-params">start</span>)</span> 
 { 
-let k = start; 
-for(let j=start+1 ;j&lt;a.length; ++j) { 
-    if(a[k] &gt; a[j]) k = j; 
+<span class="hljs-keyword">let</span> k = start; 
+for(<span class="hljs-keyword">let</span> j=start+<span class="hljs-number">1</span> ;j&lt;a.length; ++j) { 
+    <span class="hljs-keyword">if</span>(a<span class="hljs-literal">[<span class="hljs-identifier">k</span>]</span> &gt; a<span class="hljs-literal">[<span class="hljs-identifier">j</span>]</span>) k = j; 
 } 
 return k; 
 } 
 
-function selectSort(a){ 
-    let key, tmp; 
-    for(let i = 0; i&lt; a.length; ++i) { 
-        key = SelectMinKey(a,i); //选择最小的元素 
-        if(key != i){ 
-        tmp = a[i]; a[i] = a[key]; a[key] = tmp; //最小元素与第i位置元素互换 
+<span class="hljs-keyword">function</span> select<span class="hljs-constructor">Sort(<span class="hljs-params">a</span>)</span>{ 
+    <span class="hljs-keyword">let</span> key, tmp; 
+    for(<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i&lt; a.length; ++i) { 
+        key = <span class="hljs-constructor">SelectMinKey(<span class="hljs-params">a</span>,<span class="hljs-params">i</span>)</span>; <span class="hljs-comment">//选择最小的元素 </span>
+        <span class="hljs-keyword">if</span>(key != i){ 
+        tmp = a<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span>; a<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span> = a<span class="hljs-literal">[<span class="hljs-identifier">key</span>]</span>; a<span class="hljs-literal">[<span class="hljs-identifier">key</span>]</span> = tmp; <span class="hljs-comment">//最小元素与第i位置元素互换 </span>
         } 
     } 
 } 
 
-a = [3,1,5,7,2,4,9,6]; 
-selectSort(a, 8); 
+a = <span class="hljs-literal">[<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">9</span>,<span class="hljs-number">6</span>]</span>; 
+select<span class="hljs-constructor">Sort(<span class="hljs-params">a</span>, 8)</span>; 
 </code></pre>
 <p>简单选择排序的改进——<code>二元选择排序</code></p>
 <p>简单选择排序，每趟循环只能确定一个元素排序后的定位。我们可以考虑改进为每趟循环确定两个元素（当前趟最大和最小记录）的位置,从而减少排序所需的循环次数。改进后对n个数据进行排序，最多只需进行[n/2]趟循环即可。具体实现如下：</p>
-<pre><code class="language-js">void SelectSort(int r[],int n) { 
-int i ,j , min ,max, tmp; 
-for (i=1 ;i &lt;= n/2;i++) { 
-// 做不超过n/2趟选择排序 
-    min = i; max = i ; //分别记录最大和最小关键字记录位置 
-    for (j= i+1; j&lt;= n-i; j++) { 
-        if (r[j] &gt; r[max]) { 
-            max = j ; continue ; 
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">SelectSort</span><span class="hljs-params">(<span class="hljs-keyword">int</span> r[],<span class="hljs-keyword">int</span> n)</span> </span>{ 
+<span class="hljs-keyword">int</span> i ,j , <span class="hljs-built_in">min</span> ,<span class="hljs-built_in">max</span>, tmp; 
+<span class="hljs-keyword">for</span> (i=<span class="hljs-number">1</span> ;i &lt;= n/<span class="hljs-number">2</span>;i++) { 
+<span class="hljs-comment">// 做不超过n/2趟选择排序 </span>
+    <span class="hljs-built_in">min</span> = i; <span class="hljs-built_in">max</span> = i ; <span class="hljs-comment">//分别记录最大和最小关键字记录位置 </span>
+    <span class="hljs-keyword">for</span> (j= i+<span class="hljs-number">1</span>; j&lt;= n-i; j++) { 
+        <span class="hljs-keyword">if</span> (r[j] &gt; r[<span class="hljs-built_in">max</span>]) { 
+            <span class="hljs-built_in">max</span> = j ; <span class="hljs-keyword">continue</span> ; 
         } 
-        if (r[j]&lt; r[min]) { 
-            min = j ; 
+        <span class="hljs-keyword">if</span> (r[j]&lt; r[<span class="hljs-built_in">min</span>]) { 
+            <span class="hljs-built_in">min</span> = j ; 
         } 
     } 
-    //该交换操作还可分情况讨论以提高效率 
-    tmp = r[i-1]; r[i-1] = r[min]; r[min] = tmp; 
-    tmp = r[n-i]; r[n-i] = r[max]; r[max] = tmp; 
+    <span class="hljs-comment">//该交换操作还可分情况讨论以提高效率 </span>
+    tmp = r[i<span class="hljs-number">-1</span>]; r[i<span class="hljs-number">-1</span>] = r[<span class="hljs-built_in">min</span>]; r[<span class="hljs-built_in">min</span>] = tmp; 
+    tmp = r[n-i]; r[n-i] = r[<span class="hljs-built_in">max</span>]; r[<span class="hljs-built_in">max</span>] = tmp; 
 
     } 
 } </code></pre>
@@ -197,65 +201,65 @@ for (i=1 ;i &lt;= n/2;i++) {
 <img src="./8-sort/heap_sort_2.png"></p>
 <h4 id="算法的实现：-1">算法的实现：</h4>
 <p>从算法描述来看，堆排序需要两个过程，一是建立堆，二是堆顶与堆的最后一个元素交换位置。所以堆排序有两个函数组成。一是建堆的渗透函数，二是反复调用渗透函数实现排序的函数。</p>
-<pre><code class="language-js">/* 排序思路：（升序）
+<pre><code class="language-js"><span class="hljs-comment">/* 排序思路：（升序）
  * 将堆根保存于尾部，并对剩余序列调用调整函数，调整完成后，再将最大跟保存于尾部-1（-1，-2，...，-i），
  * 再对剩余序列进行调整，反复进行该过程，直至排序完成。
- */
+ */</span>
 
-/* 将最大的元素调整到堆顶*/
-function AdjustHeap(arr, pos, len){
-    let swap = arr[pos];      //保存当前节点
-    let child = pos * 2 + 1;  //定位到当前节点的左边的子节点
-    while(child &lt; len){       //递归遍历所有的子节点
-        //判断当前节点是否有右节点，若右节点较大，就采用右节点和当前节点进行比较
-        if(child + 1 &lt; len &amp;&amp; arr[child] &lt; arr[child + 1]){
-            child += 1;
+<span class="hljs-comment">/* 将最大的元素调整到堆顶*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">AdjustHeap</span>(<span class="hljs-params">arr, pos, len</span>)</span>{
+    <span class="hljs-keyword">let</span> swap = arr[pos];      <span class="hljs-comment">//保存当前节点</span>
+    <span class="hljs-keyword">let</span> child = pos * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;  <span class="hljs-comment">//定位到当前节点的左边的子节点</span>
+    <span class="hljs-keyword">while</span>(child &lt; len){       <span class="hljs-comment">//递归遍历所有的子节点</span>
+        <span class="hljs-comment">//判断当前节点是否有右节点，若右节点较大，就采用右节点和当前节点进行比较</span>
+        <span class="hljs-keyword">if</span>(child + <span class="hljs-number">1</span> &lt; len &amp;&amp; arr[child] &lt; arr[child + <span class="hljs-number">1</span>]){
+            child += <span class="hljs-number">1</span>;
         }
-        //比较当前节点和最大的子节点，小于就交换，交换后将当前节点定位到子节点上
-        if(arr[pos] &lt; arr[child]){          
+        <span class="hljs-comment">//比较当前节点和最大的子节点，小于就交换，交换后将当前节点定位到子节点上</span>
+        <span class="hljs-keyword">if</span>(arr[pos] &lt; arr[child]){          
             arr[pos]=arr[child];        
             pos = child;
-            child = pos * 2 + 1;
+            child = pos * <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;
         }
-        else{
-            break;
+        <span class="hljs-keyword">else</span>{
+            <span class="hljs-keyword">break</span>;
         }
         arr[pos] = swap;
 
     }
 }
 
-/* 构建堆：
+<span class="hljs-comment">/* 构建堆：
  * 满足：树中任一非叶子结点的关键字均不大于（或不小于）其左右孩子结点的关键字。
  * 实现：从最后一个拥有子节点的节点开始，将该节点和其他节点进行比较，将最大的数交换给该节点，
  *      交换后再依次向前节点进行相同的交换处理，直到构建出大顶堆。
- */
-function BuildHeap(arr){
-    let len =arr.length;
-    let n= Math.floor((len-1)/2);
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">BuildHeap</span>(<span class="hljs-params">arr</span>)</span>{
+    <span class="hljs-keyword">let</span> len =arr.length;
+    <span class="hljs-keyword">let</span> n= <span class="hljs-built_in">Math</span>.floor((len<span class="hljs-number">-1</span>)/<span class="hljs-number">2</span>);
 
-    for(let i=n; i&gt;=0; i--){  //构建大顶堆
-        AdjustHeap(arr, i, arr.length);//从第一个非叶子结点从下至上，从右至左调整结构
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=n; i&gt;=<span class="hljs-number">0</span>; i--){  <span class="hljs-comment">//构建大顶堆</span>
+        AdjustHeap(arr, i, arr.length);<span class="hljs-comment">//从第一个非叶子结点从下至上，从右至左调整结构</span>
     } 
 }
 
-/*堆排序算法*/
-function HeapSort(arr){
-    BuildHeap(arr); //构建堆
-    for(let i=arr.length-1; i&gt;0; i--){   //从数组的尾部进行调整
-        let swap = arr[i];  //堆顶永远是最大的元素,将堆顶和尾部元素交换，最大元素就保存在尾部，并且不参与后面的调整
-        arr[i] = arr[0];
-        arr[0] = swap;
-        AdjustHeap(arr, 0, i); //重新对堆进行调整
+<span class="hljs-comment">/*堆排序算法*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">HeapSort</span>(<span class="hljs-params">arr</span>)</span>{
+    BuildHeap(arr); <span class="hljs-comment">//构建堆</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">let</span> i=arr.length<span class="hljs-number">-1</span>; i&gt;<span class="hljs-number">0</span>; i--){   <span class="hljs-comment">//从数组的尾部进行调整</span>
+        <span class="hljs-keyword">let</span> swap = arr[i];  <span class="hljs-comment">//堆顶永远是最大的元素,将堆顶和尾部元素交换，最大元素就保存在尾部，并且不参与后面的调整</span>
+        arr[i] = arr[<span class="hljs-number">0</span>];
+        arr[<span class="hljs-number">0</span>] = swap;
+        AdjustHeap(arr, <span class="hljs-number">0</span>, i); <span class="hljs-comment">//重新对堆进行调整</span>
     }
 }
 
-var arr = [46,12,33,72,68,19,80,33,1];
-var arr = [46,12,33,72,68,19,80,33];
+<span class="hljs-keyword">var</span> arr = [<span class="hljs-number">46</span>,<span class="hljs-number">12</span>,<span class="hljs-number">33</span>,<span class="hljs-number">72</span>,<span class="hljs-number">68</span>,<span class="hljs-number">19</span>,<span class="hljs-number">80</span>,<span class="hljs-number">33</span>,<span class="hljs-number">1</span>];
+<span class="hljs-keyword">var</span> arr = [<span class="hljs-number">46</span>,<span class="hljs-number">12</span>,<span class="hljs-number">33</span>,<span class="hljs-number">72</span>,<span class="hljs-number">68</span>,<span class="hljs-number">19</span>,<span class="hljs-number">80</span>,<span class="hljs-number">33</span>];
 
-console.log(&#39;before: &#39; + arr);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'before: '</span> + arr);
 HeapSort(arr);
-console.log(&#39; after: &#39; + arr);
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">' after: '</span> + arr);
 
 
 </code></pre>
@@ -271,13 +275,13 @@ console.log(&#39; after: &#39; + arr);
 <p>冒泡排序的示例：
 <img src="./8-sort/bubble_sort.png"></p>
 <h4 id="算法的实现：-2">算法的实现：</h4>
-<pre><code class="language-js">void bubbleSort(int a[], int n){ 
-for(int i =0 ; i&lt; n-1; ++i) { //i只是次数
-    for(int j = 0; j &lt; n-i-1; ++j) { 
-        if(a[j] &gt; a[j+1]) { 
-        int tmp = a[j] ;
-         a[j] = a[j+1] ; 
-         a[j+1] = tmp; 
+<pre><code class="language-js"><span class="hljs-built_in">void</span> bubbleSort(<span class="hljs-built_in">int</span> a[], <span class="hljs-built_in">int</span> n){ 
+<span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i =<span class="hljs-number">0</span> ; i&lt; n<span class="hljs-number">-1</span>; ++i) { <span class="hljs-comment">//i只是次数</span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> j = <span class="hljs-number">0</span>; j &lt; n-i<span class="hljs-number">-1</span>; ++j) { 
+        <span class="hljs-keyword">if</span>(a[j] &gt; a[j+<span class="hljs-number">1</span>]) { 
+        <span class="hljs-built_in">int</span> tmp = a[j] ;
+         a[j] = a[j+<span class="hljs-number">1</span>] ; 
+         a[j+<span class="hljs-number">1</span>] = tmp; 
         } 
     } 
 } 
@@ -288,49 +292,49 @@ for(int i =0 ; i&lt; n-1; ++i) { //i只是次数
 <li>设置一标志性变量pos,用于记录每趟排序中最后一次进行交换的位置。由于<strong>pos位置之后的记录均已交换到位</strong>,故在进行下一趟排序时只要扫描到pos位置即可。</li>
 </ol>
 <p>改进后算法如下:</p>
-<pre><code class="language-js">void Bubble_1 ( int r[], int n) { 
-int i= n -1; //初始时,最后位置保持不变 
-while ( i&gt; 0) { 
-    int pos= 0; //每趟开始时,无记录交换 
-    for (int j= 0; j&lt; i; j++) 
-    if (r[j]&gt; r[j+1]) { 
-        pos= j; //记录交换的位置 
-        int tmp = r[j]; r[j]=r[j+1];r[j+1]=tmp; 
+<pre><code class="language-js"><span class="hljs-built_in">void</span> Bubble_1 ( <span class="hljs-built_in">int</span> r[], <span class="hljs-built_in">int</span> n) { 
+<span class="hljs-built_in">int</span> i= n <span class="hljs-number">-1</span>; <span class="hljs-comment">//初始时,最后位置保持不变 </span>
+<span class="hljs-keyword">while</span> ( i&gt; <span class="hljs-number">0</span>) { 
+    <span class="hljs-built_in">int</span> pos= <span class="hljs-number">0</span>; <span class="hljs-comment">//每趟开始时,无记录交换 </span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j= <span class="hljs-number">0</span>; j&lt; i; j++) 
+    <span class="hljs-keyword">if</span> (r[j]&gt; r[j+<span class="hljs-number">1</span>]) { 
+        pos= j; <span class="hljs-comment">//记录交换的位置 </span>
+        <span class="hljs-built_in">int</span> tmp = r[j]; r[j]=r[j+<span class="hljs-number">1</span>];r[j+<span class="hljs-number">1</span>]=tmp; 
     } 
-    i= pos; //为下一趟排序作准备 
+    i= pos; <span class="hljs-comment">//为下一趟排序作准备 </span>
 } 
 } </code></pre>
 <ol start="2">
 <li>传统冒泡排序中每一趟排序操作只能找到一个最大值或最小值,我们考虑利用在每趟排序中进行正向和反向两遍冒泡的方法一次可以得到两个最终值(最大者和最小者) , 从而使排序趟数几乎减少了一半。</li>
 </ol>
 <p>改进后的算法实现为:</p>
-<pre><code class="language-js">void Bubble_2 ( int r[], int n){ 
-    int low = 0; 
-    int high= n -1; //设置变量的初始值 
-    int tmp,j; 
-    while (low &lt; high) { 
-        for (j= low; j&lt; high; ++j){ //正向冒泡,找到最大者 
-            if (r[j]&gt; r[j+1]) { 
-            tmp = r[j]; r[j]=r[j+1];r[j+1]=tmp; 
+<pre><code class="language-js"><span class="hljs-built_in">void</span> Bubble_2 ( <span class="hljs-built_in">int</span> r[], <span class="hljs-built_in">int</span> n){ 
+    <span class="hljs-built_in">int</span> low = <span class="hljs-number">0</span>; 
+    <span class="hljs-built_in">int</span> high= n <span class="hljs-number">-1</span>; <span class="hljs-comment">//设置变量的初始值 </span>
+    <span class="hljs-built_in">int</span> tmp,j; 
+    <span class="hljs-keyword">while</span> (low &lt; high) { 
+        <span class="hljs-keyword">for</span> (j= low; j&lt; high; ++j){ <span class="hljs-comment">//正向冒泡,找到最大者 </span>
+            <span class="hljs-keyword">if</span> (r[j]&gt; r[j+<span class="hljs-number">1</span>]) { 
+            tmp = r[j]; r[j]=r[j+<span class="hljs-number">1</span>];r[j+<span class="hljs-number">1</span>]=tmp; 
             } 
         }
-        --high; //修改high值, 前移一位 
+        --high; <span class="hljs-comment">//修改high值, 前移一位 </span>
 
-        for ( j=high; j&gt;low; --j){ //反向冒泡,找到最小者 
-            if (r[j]&lt;r[j-1]) { 
-                tmp = r[j]; r[j]=r[j-1];r[j-1]=tmp; 
+        <span class="hljs-keyword">for</span> ( j=high; j&gt;low; --j){ <span class="hljs-comment">//反向冒泡,找到最小者 </span>
+            <span class="hljs-keyword">if</span> (r[j]&lt;r[j<span class="hljs-number">-1</span>]) { 
+                tmp = r[j]; r[j]=r[j<span class="hljs-number">-1</span>];r[j<span class="hljs-number">-1</span>]=tmp; 
             } 
         }
-        ++low; //修改low值,后移一位 
+        ++low; <span class="hljs-comment">//修改low值,后移一位 </span>
 
     } 
 } </code></pre>
 <h2 id="交换排序快速排序（quick-sort）">交换排序—快速排序（Quick Sort）</h2>
 <h4 id="基本思想：-4">基本思想：</h4>
-<pre><code>1）选择一个基准元素,通常选择第一个元素或者最后一个元素。
-2）通过一趟排序将待排序的记录分割成独立的两部分，其中一部分记录的元素值均比基准元素值小。另一部分记录的 元素值比基准值大。
-3）此时基准元素在其排好序后的正确位置。
-4）然后分别对这两部分记录用同样的方法继续进行排序，直到整个序列有序。</code></pre><p>快速排序的示例：</p>
+<pre><code><span class="hljs-number">1</span>）选择一个基准元素,通常选择第一个元素或者最后一个元素。
+<span class="hljs-number">2</span>）通过一趟排序将待排序的记录分割成独立的两部分，其中一部分记录的元素值均比基准元素值小。另一部分记录的 元素值比基准值大。
+<span class="hljs-number">3</span>）此时基准元素在其排好序后的正确位置。
+<span class="hljs-number">4</span>）然后分别对这两部分记录用同样的方法继续进行排序，直到整个序列有序。</code></pre><p>快速排序的示例：</p>
 <p>（a）一趟排序的过程：
 <img src="./8-sort/bubble_sort_1.png"></p>
 <p>（b）排序的全过程
@@ -339,97 +343,97 @@ while ( i&gt; 0) {
 
 <h4 id="算法的实现：-3">算法的实现：</h4>
 <pre><code class="language-js">
-function swap(s,t) { 
-    let tmp = a[s];
-    a[s]=a[t];
-    a[t]=tmp; 
+<span class="hljs-keyword">function</span> swap(s,t) { 
+    <span class="hljs-keyword">let</span> tmp = a<span class="hljs-literal">[<span class="hljs-identifier">s</span>]</span>;
+    a<span class="hljs-literal">[<span class="hljs-identifier">s</span>]</span>=a<span class="hljs-literal">[<span class="hljs-identifier">t</span>]</span>;
+    a<span class="hljs-literal">[<span class="hljs-identifier">t</span>]</span>=tmp; 
 } 
 
-function partition(a,low, high) { 
-    let privotIndex=low;
-    let privotKey = a[low]; //基准元素 
-    while(low &lt; high){ //从表的两端交替地向中间扫描 
-        while(low &lt; high &amp;&amp; a[high] &gt;= privotKey) --high; 
-        while(low &lt; high &amp;&amp; a[low] &lt;= privotKey ) ++low; 
-        if(low &lt; high) swap(low, high); 
+<span class="hljs-keyword">function</span> partition(a,low, high) { 
+    <span class="hljs-keyword">let</span> privotIndex=low;
+    <span class="hljs-keyword">let</span> privotKey = a<span class="hljs-literal">[<span class="hljs-identifier">low</span>]</span>; <span class="hljs-comment">//基准元素 </span>
+    <span class="hljs-keyword">while</span>(low &lt; high){ <span class="hljs-comment">//从表的两端交替地向中间扫描 </span>
+        <span class="hljs-keyword">while</span>(low &lt; high<span class="hljs-operator"> &amp;&amp; </span>a<span class="hljs-literal">[<span class="hljs-identifier">high</span>]</span> &gt;= privotKey) --high; 
+        <span class="hljs-keyword">while</span>(low &lt; high<span class="hljs-operator"> &amp;&amp; </span>a<span class="hljs-literal">[<span class="hljs-identifier">low</span>]</span> &lt;= privotKey ) ++low; 
+        <span class="hljs-keyword">if</span>(low &lt; high) swap(low, high); 
     } 
     swap(low,privotIndex)
-    return low; //这里low和high相等
+    return low; <span class="hljs-comment">//这里low和high相等</span>
 } 
 
 
-function quickSort(a, low, high){ 
-    if(low &lt; high){ 
-        let privotLoc = partition(a, low, high); //将表一分为二 
-        quickSort(a, low, privotLoc -1); //递归对低子表递归排序 
-        quickSort(a, privotLoc + 1, high); //递归对高子表递归排序 
-    } else{
+<span class="hljs-keyword">function</span> quick<span class="hljs-constructor">Sort(<span class="hljs-params">a</span>, <span class="hljs-params">low</span>, <span class="hljs-params">high</span>)</span>{ 
+    <span class="hljs-keyword">if</span>(low &lt; high){ 
+        <span class="hljs-keyword">let</span> privotLoc = partition(a, low, high); <span class="hljs-comment">//将表一分为二 </span>
+        quick<span class="hljs-constructor">Sort(<span class="hljs-params">a</span>, <span class="hljs-params">low</span>, <span class="hljs-params">privotLoc</span> -1)</span>; <span class="hljs-comment">//递归对低子表递归排序 </span>
+        quick<span class="hljs-constructor">Sort(<span class="hljs-params">a</span>, <span class="hljs-params">privotLoc</span> + 1, <span class="hljs-params">high</span>)</span>; <span class="hljs-comment">//递归对高子表递归排序 </span>
+    } <span class="hljs-keyword">else</span>{
         return
     }
 } 
 
 
- a= [3,1,5,7,2,4,9,6,10,8]; 
-quickSort(a,0,a.length-1); 
+ a= <span class="hljs-literal">[<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">9</span>,<span class="hljs-number">6</span>,<span class="hljs-number">10</span>,<span class="hljs-number">8</span>]</span>; 
+quick<span class="hljs-constructor">Sort(<span class="hljs-params">a</span>,0,<span class="hljs-params">a</span>.<span class="hljs-params">length</span>-1)</span>; 
 </code></pre>
 <h4 id="分析-1">分析</h4>
 <p>快速排序是通常被认为在同数量级（O(nlog2n)）的排序方法中平均性能最好的。但若初始序列按关键码有序或基本有序时，快排序反而蜕化为冒泡排序。为改进之，通常以“三者取中法”来选取基准记录，即将排序区间的两个端点与中点三个记录关键码居中的调整为支点记录。快速排序是一个<code>不稳定</code>的排序方法。</p>
 <h4 id="快速排序的改进">快速排序的改进</h4>
 <p>在本改进算法中,只对长度大于k的子序列递归调用快速排序,让原序列基本有序，然后再对整个基本有序序列用插入排序算法排序。实践证明，改进后的算法时间复杂度有所降低，且当k取值为 8 左右时,改进算法的性能最佳。算法思想如下：</p>
-<pre><code class="language-js">void print(int a[], int n){ 
-for(int j= 0; j&lt;n; j++){ 
-cout&lt;&lt;a[j] &lt;&lt;&quot; &quot;; 
+<pre><code class="language-js"><span class="hljs-built_in">void</span> print(<span class="hljs-built_in">int</span> a[], <span class="hljs-built_in">int</span> n){ 
+<span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> j= <span class="hljs-number">0</span>; j&lt;n; j++){ 
+cout&lt;&lt;a[j] &lt;&lt;<span class="hljs-string">" "</span>; 
 } 
 cout&lt;&lt;endl; 
 } 
 
-void swap(int *a, int *b) 
+<span class="hljs-built_in">void</span> swap(<span class="hljs-built_in">int</span> *a, <span class="hljs-built_in">int</span> *b) 
 { 
-int tmp = *a; 
+<span class="hljs-built_in">int</span> tmp = *a; 
 *a = *b; 
 *b = tmp; 
 } 
 
-int partition(int a[], int low, int high) { 
-    int privotKey = a[low]; //基准元素 
-    while(low &lt; high){ //从表的两端交替地向中间扫描 
-        while(low &lt; high &amp;&amp; a[high] &gt;= privotKey) --high; //从high 所指位置向前搜索，至多到low+1 位置。将比基准元素小的交换到低端 
+<span class="hljs-built_in">int</span> partition(<span class="hljs-built_in">int</span> a[], <span class="hljs-built_in">int</span> low, <span class="hljs-built_in">int</span> high) { 
+    <span class="hljs-built_in">int</span> privotKey = a[low]; <span class="hljs-comment">//基准元素 </span>
+    <span class="hljs-keyword">while</span>(low &lt; high){ <span class="hljs-comment">//从表的两端交替地向中间扫描 </span>
+        <span class="hljs-keyword">while</span>(low &lt; high &amp;&amp; a[high] &gt;= privotKey) --high; <span class="hljs-comment">//从high 所指位置向前搜索，至多到low+1 位置。将比基准元素小的交换到低端 </span>
         swap(&amp;a[low], &amp;a[high]); 
-        while(low &lt; high &amp;&amp; a[low] &lt;= privotKey ) ++low; 
+        <span class="hljs-keyword">while</span>(low &lt; high &amp;&amp; a[low] &lt;= privotKey ) ++low; 
         swap(&amp;a[low], &amp;a[high]); 
     } 
-    print(a,10); 
-    return low; 
+    print(a,<span class="hljs-number">10</span>); 
+    <span class="hljs-keyword">return</span> low; 
 } 
 
 
-void qsort_improve(int r[ ],int low,int high, int k){ 
-    if( high -low &gt; k ) { //长度大于k时递归, k为指定的数 
-        int pivot = partition(r, low, high); // 调用的Partition算法保持不变 
-        qsort_improve(r, low, pivot - 1,k); 
-        qsort_improve(r, pivot + 1, high,k); 
+<span class="hljs-built_in">void</span> qsort_improve(<span class="hljs-built_in">int</span> r[ ],<span class="hljs-built_in">int</span> low,<span class="hljs-built_in">int</span> high, <span class="hljs-built_in">int</span> k){ 
+    <span class="hljs-keyword">if</span>( high -low &gt; k ) { <span class="hljs-comment">//长度大于k时递归, k为指定的数 </span>
+        <span class="hljs-built_in">int</span> pivot = partition(r, low, high); <span class="hljs-comment">// 调用的Partition算法保持不变 </span>
+        qsort_improve(r, low, pivot - <span class="hljs-number">1</span>,k); 
+        qsort_improve(r, pivot + <span class="hljs-number">1</span>, high,k); 
     } 
 } 
-void quickSort(int r[], int n, int k){ 
-    qsort_improve(r,0,n,k);//先调用改进算法Qsort使之基本有序 
+<span class="hljs-built_in">void</span> quickSort(<span class="hljs-built_in">int</span> r[], <span class="hljs-built_in">int</span> n, <span class="hljs-built_in">int</span> k){ 
+    qsort_improve(r,<span class="hljs-number">0</span>,n,k);<span class="hljs-comment">//先调用改进算法Qsort使之基本有序 </span>
 
-    //再用插入排序对基本有序序列排序 
-    for(int i=1; i&lt;=n;i ++){ 
-        int tmp = r[i]; 
-        int j=i-1; 
-        while(tmp &lt; r[j]){ 
-            r[j+1]=r[j]; j=j-1; 
+    <span class="hljs-comment">//再用插入排序对基本有序序列排序 </span>
+    <span class="hljs-keyword">for</span>(<span class="hljs-built_in">int</span> i=<span class="hljs-number">1</span>; i&lt;=n;i ++){ 
+        <span class="hljs-built_in">int</span> tmp = r[i]; 
+        <span class="hljs-built_in">int</span> j=i<span class="hljs-number">-1</span>; 
+        <span class="hljs-keyword">while</span>(tmp &lt; r[j]){ 
+            r[j+<span class="hljs-number">1</span>]=r[j]; j=j<span class="hljs-number">-1</span>; 
         } 
-        r[j+1] = tmp; 
+        r[j+<span class="hljs-number">1</span>] = tmp; 
     } 
 } 
-int main(){ 
-int a[10] = {3,1,5,7,2,4,9,6,10,8}; 
-cout&lt;&lt;&quot;初始值：&quot;; 
-print(a,10); 
-quickSort(a,9,4); 
-cout&lt;&lt;&quot;结果：&quot;; 
-print(a,10); 
+<span class="hljs-built_in">int</span> main(){ 
+<span class="hljs-built_in">int</span> a[<span class="hljs-number">10</span>] = {<span class="hljs-number">3</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>,<span class="hljs-number">7</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">9</span>,<span class="hljs-number">6</span>,<span class="hljs-number">10</span>,<span class="hljs-number">8</span>}; 
+cout&lt;&lt;<span class="hljs-string">"初始值："</span>; 
+print(a,<span class="hljs-number">10</span>); 
+quickSort(a,<span class="hljs-number">9</span>,<span class="hljs-number">4</span>); 
+cout&lt;&lt;<span class="hljs-string">"结果："</span>; 
+print(a,<span class="hljs-number">10</span>); 
 
 } </code></pre>
 <h2 id="归并排序（merge-sort）">归并排序（Merge Sort）</h2>
@@ -440,97 +444,97 @@ print(a,10);
 <img src="./8-sort/merge_sort2.png">
 
 <pre><code class="language-js">
-function merge(left, right) {
-  var tmp = [];
+function merge(<span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>) {
+  <span class="hljs-keyword">var</span> tmp = [];
 
-  while (left.length &amp;&amp; right.length) {
-    if (left[0] &lt; right[0])
-      tmp.push(left.shift());
-    else
-      tmp.push(right.shift());
+  <span class="hljs-keyword">while</span> (<span class="hljs-keyword">left</span>.length &amp;&amp; <span class="hljs-keyword">right</span>.length) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">left</span>[<span class="hljs-number">0</span>] &lt; <span class="hljs-keyword">right</span>[<span class="hljs-number">0</span>])
+      tmp.push(<span class="hljs-keyword">left</span>.shift());
+    <span class="hljs-keyword">else</span>
+      tmp.push(<span class="hljs-keyword">right</span>.shift());
   }
 
-  return tmp.concat(left, right);
+  <span class="hljs-keyword">return</span> tmp.concat(<span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>);
 }
 
 function mergeSort(a) {
-  if (a.length === 1) 
-    return a;
+  <span class="hljs-keyword">if</span> (a.length === <span class="hljs-number">1</span>) 
+    <span class="hljs-keyword">return</span> a;
 
-  var mid = ~~(a.length / 2)
-    , left = a.slice(0, mid)
-    , right = a.slice(mid);
+  <span class="hljs-keyword">var</span> mid = ~~(a.length / <span class="hljs-number">2</span>)
+    , <span class="hljs-keyword">left</span> = a.slice(<span class="hljs-number">0</span>, mid)
+    , <span class="hljs-keyword">right</span> = a.slice(mid);
 
-  return merge(mergeSort(left), mergeSort(right));
+  <span class="hljs-keyword">return</span> merge(mergeSort(<span class="hljs-keyword">left</span>), mergeSort(<span class="hljs-keyword">right</span>));
 } </code></pre>
 <p>这段合并排序的代码相当简单直观，但是mergeSort()函数会导致很频繁的自调用。一个长度为n的数组最终会调用mergeSort() 2*n-1次，这意味着如果需要排序的数组长度很大会在某些栈小的浏览器上发生栈溢出错误。</p>
 <p>这里插个话题，关于递归调用时浏览器的栈大小限制，可以用代码去测试：</p>
-<pre><code class="language-js">var cnt = 0;
-try {
-  (function() {
+<pre><code class="language-js"><span class="hljs-keyword">var</span> cnt = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">try</span> {
+  (<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
     cnt++;
-    arguments.callee();
+    <span class="hljs-built_in">arguments</span>.callee();
   })();
-} catch(e) {
-  console.log(e.message, cnt);
+} <span class="hljs-keyword">catch</span>(e) {
+  <span class="hljs-built_in">console</span>.log(e.message, cnt);
 }
 
 
-// chrome: Maximum call stack size exceeded 35992
-// firefox: too much recursion 11953</code></pre>
+<span class="hljs-comment">// chrome: Maximum call stack size exceeded 35992</span>
+<span class="hljs-comment">// firefox: too much recursion 11953</span></code></pre>
 <p>遇到栈溢出错误并不一定要修改整个算法，只是表明递归不是最好的实现方式。这个合并排序算法同样可以迭代实现，比如（摘抄自《高性能JavaScript》）：</p>
 <h4 id="归并的迭代算法">归并的迭代算法</h4>
 <p>1个元素的表总是有序的。所以对n 个元素的待排序列，每个元素可看成1 个有序子表。对子表两两合并生成n/2个子表，所得子表除最后一个子表长度可能为1 外，其余子表长度均为2。再进行两两合并，直到生成n 个元素按关键码有序的表。</p>
-<pre><code class="language-js">function merge(left, right) {
-  var result = [];
+<pre><code class="language-js">function merge(<span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>) {
+  <span class="hljs-keyword">var</span> result = [];
 
-  while (left.length &amp;&amp; right.length) {
-    if (left[0] &lt; right[0])
-      result.push(left.shift());
-    else
-      result.push(right.shift());
+  <span class="hljs-keyword">while</span> (<span class="hljs-keyword">left</span>.length &amp;&amp; <span class="hljs-keyword">right</span>.length) {
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">left</span>[<span class="hljs-number">0</span>] &lt; <span class="hljs-keyword">right</span>[<span class="hljs-number">0</span>])
+      result.push(<span class="hljs-keyword">left</span>.shift());
+    <span class="hljs-keyword">else</span>
+      result.push(<span class="hljs-keyword">right</span>.shift());
   }
 
-  return result.concat(left, right);
+  <span class="hljs-keyword">return</span> result.concat(<span class="hljs-keyword">left</span>, <span class="hljs-keyword">right</span>);
 }
 
 function mergeSort(a) {
-  if (a.length === 1)
-    return a;
+  <span class="hljs-keyword">if</span> (a.length === <span class="hljs-number">1</span>)
+    <span class="hljs-keyword">return</span> a;
 
-  var work = [];
-  for (var i = 0, len = a.length; i &lt; len; i++)
+  <span class="hljs-keyword">var</span> work = [];
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, len = a.length; i &lt; len; i++)
     work.push([a[i]]);
 
-  work.push([]); // 如果数组长度为奇数!!
+  work.push([]); <span class="hljs-comment">// 如果数组长度为奇数!!</span>
 
-  for (var lim = len; lim &gt; 1; lim = ~~((lim + 1) / 2)) {
-    for (var j = 0, k = 0; k &lt; lim; j++, k += 2) //k &lt; lim
-      work[j] = merge(work[k], work[k + 1]);
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> lim = len; lim &gt; <span class="hljs-number">1</span>; lim = ~~((lim + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>)) {
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> j = <span class="hljs-number">0</span>, k = <span class="hljs-number">0</span>; k &lt; lim; j++, k += <span class="hljs-number">2</span>) <span class="hljs-comment">//k &lt; lim</span>
+      work[j] = merge(work[k], work[k + <span class="hljs-number">1</span>]);
 
-    work[j] = []; // 如果数组长度为奇数!!
+    work[j] = []; <span class="hljs-comment">// 如果数组长度为奇数!!</span>
   }
 
-  return work[0];
+  <span class="hljs-keyword">return</span> work[<span class="hljs-number">0</span>];
 }
 
-console.log(mergeSort([1, 3, 4, 2, 5, 0, 8, 10, 4])); </code></pre>
+console.log(mergeSort([<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">2</span>, <span class="hljs-number">5</span>, <span class="hljs-number">0</span>, <span class="hljs-number">8</span>, <span class="hljs-number">10</span>, <span class="hljs-number">4</span>])); </code></pre>
 <h4 id="两路归并的递归算法">两路归并的递归算法</h4>
-<pre><code class="language-js">void MSort(ElemType *r, ElemType *rf,int s, int t) 
+<pre><code class="language-js">void <span class="hljs-constructor">MSort(ElemType <span class="hljs-operator">*</span><span class="hljs-params">r</span>, ElemType <span class="hljs-operator">*</span><span class="hljs-params">rf</span>,<span class="hljs-params">int</span> <span class="hljs-params">s</span>, <span class="hljs-params">int</span> <span class="hljs-params">t</span>)</span> 
 { 
 ElemType *rf2; 
-if(s==t) r[s] = rf[s]; 
-else 
+<span class="hljs-keyword">if</span>(s==t) r<span class="hljs-literal">[<span class="hljs-identifier">s</span>]</span> = rf<span class="hljs-literal">[<span class="hljs-identifier">s</span>]</span>; 
+<span class="hljs-keyword">else</span> 
 { 
-    int m=(s+t)/2; /*平分*p 表*/ 
-    MSort(r, rf2, s, m); /*递归地将p[s…m]归并为有序的p2[s…m]*/ 
-    MSort(r, rf2, m+1, t); /*递归地将p[m+1…t]归并为有序的p2[m+1…t]*/ 
-    Merge(rf2, rf, s, m+1,t); /*将p2[s…m]和p2[m+1…t]归并到p1[s…t]*/ 
+    <span class="hljs-built_in">int</span> m=(s+t)/<span class="hljs-number">2</span>; <span class="hljs-comment">/*平分*p 表*/</span> 
+    <span class="hljs-constructor">MSort(<span class="hljs-params">r</span>, <span class="hljs-params">rf2</span>, <span class="hljs-params">s</span>, <span class="hljs-params">m</span>)</span>; <span class="hljs-comment">/*递归地将p[s…m]归并为有序的p2[s…m]*/</span> 
+    <span class="hljs-constructor">MSort(<span class="hljs-params">r</span>, <span class="hljs-params">rf2</span>, <span class="hljs-params">m</span>+1, <span class="hljs-params">t</span>)</span>; <span class="hljs-comment">/*递归地将p[m+1…t]归并为有序的p2[m+1…t]*/</span> 
+    <span class="hljs-constructor">Merge(<span class="hljs-params">rf2</span>, <span class="hljs-params">rf</span>, <span class="hljs-params">s</span>, <span class="hljs-params">m</span>+1,<span class="hljs-params">t</span>)</span>; <span class="hljs-comment">/*将p2[s…m]和p2[m+1…t]归并到p1[s…t]*/</span> 
 } 
 } 
-void MergeSort_recursive(ElemType *r, ElemType *rf, int n) 
-{ /*对顺序表*p 作归并排序*/ 
-    MSort(r, rf,0, n-1); 
+void <span class="hljs-constructor">MergeSort_recursive(ElemType <span class="hljs-operator">*</span><span class="hljs-params">r</span>, ElemType <span class="hljs-operator">*</span><span class="hljs-params">rf</span>, <span class="hljs-params">int</span> <span class="hljs-params">n</span>)</span> 
+{ <span class="hljs-comment">/*对顺序表*p 作归并排序*/</span> 
+    <span class="hljs-constructor">MSort(<span class="hljs-params">r</span>, <span class="hljs-params">rf</span>,0, <span class="hljs-params">n</span>-1)</span>; 
 } </code></pre>
 <h2 id="桶排序基数排序radix-sort">桶排序/基数排序(Radix Sort)</h2>
 <h3 id="桶排序">桶排序</h3>
@@ -577,78 +581,78 @@ void MergeSort_recursive(ElemType *r, ElemType *rf, int n)
 <p>O(d(n+r)，其中：d为待排列数字的最大位数，n为待排序列的长度，r为进制数 </p>
 <p>是按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。有时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序。最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。基数排序基于分别排序，分别收集，所以是稳定的。</p>
 <h4 id="算法实现">算法实现</h4>
-<pre><code class="language-js">/*
-/*
+<pre><code class="language-js"><span class="hljs-string">/*</span>
+<span class="hljs-string">/*</span>
 
-// 第一步
+<span class="hljs-string">//</span> <span class="hljs-string">第一步</span>
 
-0 90 100
-1 
-2
-3
-4
-5 15 75
-6 46
-7 37
-8 48
-9 99
+<span class="hljs-number">0</span> <span class="hljs-number">90</span> <span class="hljs-number">100</span>
+<span class="hljs-number">1</span> 
+<span class="hljs-number">2</span>
+<span class="hljs-number">3</span>
+<span class="hljs-number">4</span>
+<span class="hljs-number">5</span> <span class="hljs-number">15</span> <span class="hljs-number">75</span>
+<span class="hljs-number">6</span> <span class="hljs-number">46</span>
+<span class="hljs-number">7</span> <span class="hljs-number">37</span>
+<span class="hljs-number">8</span> <span class="hljs-number">48</span>
+<span class="hljs-number">9</span> <span class="hljs-number">99</span>
 
-=&gt; 90 100 15 75 46 37 48 99
+<span class="hljs-string">=&gt;</span> <span class="hljs-number">90</span> <span class="hljs-number">100</span> <span class="hljs-number">15</span> <span class="hljs-number">75</span> <span class="hljs-number">46</span> <span class="hljs-number">37</span> <span class="hljs-number">48</span> <span class="hljs-number">99</span>
 
-// 第二步
+<span class="hljs-string">//</span> <span class="hljs-string">第二步</span>
 
-0 100
-1 15
-2
-3 37
-4 46 48
-5
-6
-7 75
-8
-9 90 99
+<span class="hljs-number">0</span> <span class="hljs-number">100</span>
+<span class="hljs-number">1</span> <span class="hljs-number">15</span>
+<span class="hljs-number">2</span>
+<span class="hljs-number">3</span> <span class="hljs-number">37</span>
+<span class="hljs-number">4</span> <span class="hljs-number">46</span> <span class="hljs-number">48</span>
+<span class="hljs-number">5</span>
+<span class="hljs-number">6</span>
+<span class="hljs-number">7</span> <span class="hljs-number">75</span>
+<span class="hljs-number">8</span>
+<span class="hljs-number">9</span> <span class="hljs-number">90</span> <span class="hljs-number">99</span>
 
-=&gt; 100 15 37 46 48 75 90 99
+<span class="hljs-string">=&gt;</span> <span class="hljs-number">100</span> <span class="hljs-number">15</span> <span class="hljs-number">37</span> <span class="hljs-number">46</span> <span class="hljs-number">48</span> <span class="hljs-number">75</span> <span class="hljs-number">90</span> <span class="hljs-number">99</span>
 
-// 第三步
+<span class="hljs-string">//</span> <span class="hljs-string">第三步</span>
 
-0 15 37 46 48 75 90 99
-1 100 
-2
-3
-4
-5
-6
-7
-8
-9
-=&gt; 15 37 46 48 75 90 99 100
-*/
-var counter = [];
-function radixSort(arr, maxDigit) {
-    var mod = 10;
-    var dev = 1;
-    for (var i = 0; i &lt; maxDigit; i++, dev *= 10, mod *= 10) {
-        for(var j = 0; j &lt; arr.length; j++) {
-            var bucket = parseInt((arr[j] % mod) / dev);
-            if(counter[bucket]==null) {
-                counter[bucket] = [];
-            }
-            counter[bucket].push(arr[j]);
-        }
-        //按照bucket的 顺序写入数组
-        var pos = 0;
-        for(var j = 0; j &lt; counter.length; j++) {
-            var value = null;
-            if(counter[j]!=null) {
-                while ((value = counter[j].shift()) != null) {
-                      arr[pos++] = value;
-                }
-          }
-        }
-    }
-    return arr;
-} </code></pre>
+<span class="hljs-number">0</span> <span class="hljs-number">15</span> <span class="hljs-number">37</span> <span class="hljs-number">46</span> <span class="hljs-number">48</span> <span class="hljs-number">75</span> <span class="hljs-number">90</span> <span class="hljs-number">99</span>
+<span class="hljs-number">1</span> <span class="hljs-number">100</span> 
+<span class="hljs-number">2</span>
+<span class="hljs-number">3</span>
+<span class="hljs-number">4</span>
+<span class="hljs-number">5</span>
+<span class="hljs-number">6</span>
+<span class="hljs-number">7</span>
+<span class="hljs-number">8</span>
+<span class="hljs-number">9</span>
+<span class="hljs-string">=&gt;</span> <span class="hljs-number">15</span> <span class="hljs-number">37</span> <span class="hljs-number">46</span> <span class="hljs-number">48</span> <span class="hljs-number">75</span> <span class="hljs-number">90</span> <span class="hljs-number">99</span> <span class="hljs-number">100</span>
+<span class="hljs-string">*/</span>
+<span class="hljs-string">var</span> <span class="hljs-string">counter</span> <span class="hljs-string">=</span> <span class="hljs-string">[];</span>
+<span class="hljs-string">function</span> <span class="hljs-string">radixSort(arr,</span> <span class="hljs-string">maxDigit)</span> <span class="hljs-string">{</span>
+    <span class="hljs-string">var</span> <span class="hljs-string">mod</span> <span class="hljs-string">=</span> <span class="hljs-number">10</span><span class="hljs-string">;</span>
+    <span class="hljs-string">var</span> <span class="hljs-string">dev</span> <span class="hljs-string">=</span> <span class="hljs-number">1</span><span class="hljs-string">;</span>
+    <span class="hljs-string">for</span> <span class="hljs-string">(var</span> <span class="hljs-string">i</span> <span class="hljs-string">=</span> <span class="hljs-number">0</span><span class="hljs-string">;</span> <span class="hljs-string">i</span> <span class="hljs-string">&lt;</span> <span class="hljs-string">maxDigit;</span> <span class="hljs-string">i++,</span> <span class="hljs-string">dev</span> <span class="hljs-string">*=</span> <span class="hljs-number">10</span><span class="hljs-string">,</span> <span class="hljs-string">mod</span> <span class="hljs-string">*=</span> <span class="hljs-number">10</span><span class="hljs-string">)</span> <span class="hljs-string">{</span>
+        <span class="hljs-string">for(var</span> <span class="hljs-string">j</span> <span class="hljs-string">=</span> <span class="hljs-number">0</span><span class="hljs-string">;</span> <span class="hljs-string">j</span> <span class="hljs-string">&lt;</span> <span class="hljs-string">arr.length;</span> <span class="hljs-string">j++)</span> <span class="hljs-string">{</span>
+            <span class="hljs-string">var</span> <span class="hljs-string">bucket</span> <span class="hljs-string">=</span> <span class="hljs-string">parseInt((arr[j]</span> <span class="hljs-string">%</span> <span class="hljs-string">mod)</span> <span class="hljs-string">/</span> <span class="hljs-string">dev);</span>
+            <span class="hljs-string">if(counter[bucket]==null)</span> <span class="hljs-string">{</span>
+                <span class="hljs-string">counter[bucket]</span> <span class="hljs-string">=</span> <span class="hljs-string">[];</span>
+            <span class="hljs-string">}</span>
+            <span class="hljs-string">counter[bucket].push(arr[j]);</span>
+        <span class="hljs-string">}</span>
+        <span class="hljs-string">//按照bucket的</span> <span class="hljs-string">顺序写入数组</span>
+        <span class="hljs-string">var</span> <span class="hljs-string">pos</span> <span class="hljs-string">=</span> <span class="hljs-number">0</span><span class="hljs-string">;</span>
+        <span class="hljs-string">for(var</span> <span class="hljs-string">j</span> <span class="hljs-string">=</span> <span class="hljs-number">0</span><span class="hljs-string">;</span> <span class="hljs-string">j</span> <span class="hljs-string">&lt;</span> <span class="hljs-string">counter.length;</span> <span class="hljs-string">j++)</span> <span class="hljs-string">{</span>
+            <span class="hljs-string">var</span> <span class="hljs-string">value</span> <span class="hljs-string">=</span> <span class="hljs-literal">null</span><span class="hljs-string">;</span>
+            <span class="hljs-string">if(counter[j]!=null)</span> <span class="hljs-string">{</span>
+                <span class="hljs-string">while</span> <span class="hljs-string">((value</span> <span class="hljs-string">=</span> <span class="hljs-string">counter[j].shift())</span> <span class="hljs-string">!=</span> <span class="hljs-literal">null</span><span class="hljs-string">)</span> <span class="hljs-string">{</span>
+                      <span class="hljs-string">arr[pos++]</span> <span class="hljs-string">=</span> <span class="hljs-string">value;</span>
+                <span class="hljs-string">}</span>
+          <span class="hljs-string">}</span>
+        <span class="hljs-string">}</span>
+    <span class="hljs-string">}</span>
+    <span class="hljs-string">return</span> <span class="hljs-string">arr;</span>
+<span class="hljs-string">}</span> </code></pre>
 <h2 id="总结">总结</h2>
 <img src="./8-sort/all_sort.png">
 
@@ -710,41 +714,41 @@ NP这个类事实上也很有趣,它并不要求给出一个算法来求解问�
 2、如果两个位置的字符不相同，我们可以将长度为next[i]的字符串继续分割，获得其最大公共长度next[next[i]]，然后再和位置i的字符比较。如果位置next[next[i]]和位置i的字符相同，则next[i+1]就等于next[next[i]]加1。如果不相等，就可以继续分割长度为next[next[i]]的字符串，直到字符串长度为0为止</p>
 <pre><code class="language-js">void getNext(char*t)
 {
-    int i=0;
-    int j=-1;
-    next[i]=-1;
-    int lent=strlen(t);
-    while(i&lt;lent){
-        if(j==-1||t[i]==t[j]){
-            i++;
-            j++;
-            next[i]=j;
+    <span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span><span class="hljs-comment">;</span>
+    <span class="hljs-keyword">int</span> j=<span class="hljs-number">-1</span><span class="hljs-comment">;</span>
+    <span class="hljs-keyword">next</span>[i]=<span class="hljs-number">-1</span><span class="hljs-comment">;</span>
+    <span class="hljs-keyword">int</span> lent=<span class="hljs-keyword">strlen</span>(t)<span class="hljs-comment">;</span>
+    <span class="hljs-keyword">while</span>(i&lt;lent){
+        <span class="hljs-keyword">if</span>(j==<span class="hljs-number">-1</span>||t[i]==t[j]){
+            i++<span class="hljs-comment">;</span>
+            j++<span class="hljs-comment">;</span>
+            <span class="hljs-keyword">next</span>[i]=j<span class="hljs-comment">;</span>
         }
-        else j=next[j];
+        <span class="hljs-keyword">else</span> j=<span class="hljs-keyword">next</span>[j]<span class="hljs-comment">;</span>
     }
 }
 
-int kmp(char*s,char*t){
-    int lens=strlen(s);
-    int lent=strlen(t);
-    getNext (t);
-    int i=-1,j=-1;
-    int cnt=0;
-    while(i&lt;lens){
-        if(j==-1||t[j]==s[i]) {
-            i++;
-            j++;
+<span class="hljs-keyword">int</span> kmp(char*s,char*t){
+    <span class="hljs-keyword">int</span> lens=<span class="hljs-keyword">strlen</span>(s)<span class="hljs-comment">;</span>
+    <span class="hljs-keyword">int</span> lent=<span class="hljs-keyword">strlen</span>(t)<span class="hljs-comment">;</span>
+    getNext (t)<span class="hljs-comment">;</span>
+    <span class="hljs-keyword">int</span> i=<span class="hljs-number">-1</span>,j=<span class="hljs-number">-1</span><span class="hljs-comment">;</span>
+    <span class="hljs-keyword">int</span> <span class="hljs-keyword">cnt</span>=<span class="hljs-number">0</span><span class="hljs-comment">;</span>
+    <span class="hljs-keyword">while</span>(i&lt;lens){
+        <span class="hljs-keyword">if</span>(j==<span class="hljs-number">-1</span>||t[j]==s[i]) {
+            i++<span class="hljs-comment">;</span>
+            j++<span class="hljs-comment">;</span>
         }
-    // 如果第i+1个位置不同，则出现不匹配，我们依旧要将长度为j的字符串分割，获得其最大公共长度next[j]，然后从next[j]继续比较两个字符串
-        else j=next[j];。
-        if(j==lent){
-            j--;
-            i--;
-            j=next[j];
-            cnt++;
+    <span class="hljs-comment">// 如果第i+1个位置不同，则出现不匹配，我们依旧要将长度为j的字符串分割，获得其最大公共长度next[j]，然后从next[j]继续比较两个字符串</span>
+        <span class="hljs-keyword">else</span> j=<span class="hljs-keyword">next</span>[j]<span class="hljs-comment">;。</span>
+        <span class="hljs-keyword">if</span>(j==lent){
+            j--<span class="hljs-comment">;</span>
+            i--<span class="hljs-comment">;</span>
+            j=<span class="hljs-keyword">next</span>[j]<span class="hljs-comment">;</span>
+            <span class="hljs-keyword">cnt</span>++<span class="hljs-comment">;</span>
         }
     }
-    return cnt;//s中有cnt 个t子串
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">cnt</span><span class="hljs-comment">;//s中有cnt 个t子串</span>
 }
 </code></pre>
 
@@ -756,5 +760,8 @@ int kmp(char*s,char*t){
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

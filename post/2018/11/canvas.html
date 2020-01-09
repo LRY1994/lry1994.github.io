@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -40,11 +44,11 @@
 <p>如果基于canvas的应用程序要支持IE6,IE7,IE8,游两个选择：explorecanvas\Google Chrome Frame</p>
 <p>希望执行几行特定的代码时才开始分析，在执行完之后就停止性能分析，可用console.profile()和console.profileEnd()</p>
 <p>把窗口坐标转换成相对于canvas的位置</p>
-<pre><code class="language-js">function windowToCanvas(canvas,clientX,clientY){
+<pre><code class="language-js"><span class="hljs-function">function <span class="hljs-title">windowToCanvas</span><span class="hljs-params">(canvas,clientX,clientY)</span></span>{
     var bbox = canvas.getBoundingClientRect();
-    return{
-        x:(clientX-bbox.width)*(canvas.width/bbox.width)
-        y:(clientY-bbox.height)*(canvas.height/bbox.height)
+    <span class="hljs-keyword">return</span>{
+        x:(clientX-bbox.<span class="hljs-built_in">width</span>)*(canvas.<span class="hljs-built_in">width</span>/bbox.<span class="hljs-built_in">width</span>)
+        y:(clientY-bbox.<span class="hljs-built_in">height</span>)*(canvas.<span class="hljs-built_in">height</span>/bbox.<span class="hljs-built_in">height</span>)
     }
 } </code></pre>
 <p>canvas是一个不可获取焦点的元素，所以不能直接在元素上绑定键盘事件，应该在docunmet或window上绑定键盘事件</p>
@@ -59,5 +63,8 @@
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

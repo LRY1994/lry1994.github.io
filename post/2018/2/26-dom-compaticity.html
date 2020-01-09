@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
     <link rel="stylesheet" href="/static/css/all.css" />
+    <!---hljs的css-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.2.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/9.1.0/styles/github.min.css">
+
     <title>大脸圆玉的博客</title>
 </head>
 <body>
@@ -186,13 +190,13 @@
 <li><a href="#%E5%88%86%E4%BA%AB%E4%B8%80%E4%B8%AA%E9%A2%98%E7%9B%AE">分享一个题目</a></li>
 </ul>
 <h2 id="添加多个onload事件">添加多个onload事件</h2>
-<pre><code class="language-javascript">function addLoadEvent(func){
-    var oldonload=window.onload;
-    if(typeof window.onload!= &#39;function&#39;){
-        window.onload=func;
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addLoadEvent</span>(<span class="hljs-params">func</span>)</span>{
+    <span class="hljs-keyword">var</span> oldonload=<span class="hljs-built_in">window</span>.onload;
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span>.onload!= <span class="hljs-string">'function'</span>){
+        <span class="hljs-built_in">window</span>.onload=func;
     }
-    else{
-        window.onload=function(){
+    <span class="hljs-keyword">else</span>{
+        <span class="hljs-built_in">window</span>.onload=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
             oldonload();
             func();
         }
@@ -200,397 +204,397 @@
 
 }</code></pre>
 <h2 id="处理activexobjectxmlhttprequest问题">处理ActiveXObject/XMLHttpRequest问题</h2>
-<pre><code class="language-javascript">//第一种写法，《js高级程序设计》的写法  惰性载入技巧
-function createXHR(){
-    if(typeof XMLHttpRequest!=&quot;undefined&quot;){//XMLHttpRequest
-        createXHR=function(){
-            return new XMLHttpRequest();
+<pre><code class="language-javascript"><span class="hljs-comment">//第一种写法，《js高级程序设计》的写法  惰性载入技巧</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createXHR</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> XMLHttpRequest!=<span class="hljs-string">"undefined"</span>){<span class="hljs-comment">//XMLHttpRequest</span>
+        createXHR=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> XMLHttpRequest();
         };
-    }else if(typeof ActiveXObject!=&quot;undefined&quot;){//IE ActiveXObject
-        createXHR=function(){
-            if(typeof arguments.callee.activeXString!=&quot;string&quot;){
-                var versions=[&quot;MSXML2.XMLHttp.6.0&quot;,&quot;MSXML2.XMLHttp.3.0&quot;,&quot;MSXML2.XMLHttp&quot;],//IE
+    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> ActiveXObject!=<span class="hljs-string">"undefined"</span>){<span class="hljs-comment">//IE ActiveXObject</span>
+        createXHR=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+            <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">arguments</span>.callee.activeXString!=<span class="hljs-string">"string"</span>){
+                <span class="hljs-keyword">var</span> versions=[<span class="hljs-string">"MSXML2.XMLHttp.6.0"</span>,<span class="hljs-string">"MSXML2.XMLHttp.3.0"</span>,<span class="hljs-string">"MSXML2.XMLHttp"</span>],<span class="hljs-comment">//IE</span>
                     i,len;
-                 for(i=0,len=versions.length;i&lt;len;i++){
-                    try{
-                        new ActiveXObject(versions[i]);
-                        arguments.callee.activeXString=version[i];
-                        break;
-                    }catch(ex){}
+                 <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>,len=versions.length;i&lt;len;i++){
+                    <span class="hljs-keyword">try</span>{
+                        <span class="hljs-keyword">new</span> ActiveXObject(versions[i]);
+                        <span class="hljs-built_in">arguments</span>.callee.activeXString=version[i];
+                        <span class="hljs-keyword">break</span>;
+                    }<span class="hljs-keyword">catch</span>(ex){}
                  }
 
             }
-            return new ActiveXObject(arguments.callee.activeXString);
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ActiveXObject(<span class="hljs-built_in">arguments</span>.callee.activeXString);
         };
-    }else{
-        createXHR=function(){
-            throw new Error(&quot;fail&quot;);
+    }<span class="hljs-keyword">else</span>{
+        createXHR=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"fail"</span>);
         }
     }
-    return createXHR();
+    <span class="hljs-keyword">return</span> createXHR();
 }
 
-//第二种写法
-function createXHR(){
-    if(typeof XMLHttpRequest==&quot;undefined&quot;){
-        XMLHttpRequest= function () {
-            try{
-                return new ActiveXObject(&quot;Msxml2.XMLHTTP.6.0&quot;);
+<span class="hljs-comment">//第二种写法</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createXHR</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> XMLHttpRequest==<span class="hljs-string">"undefined"</span>){
+        XMLHttpRequest= <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">try</span>{
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ActiveXObject(<span class="hljs-string">"Msxml2.XMLHTTP.6.0"</span>);
             }
-            catch (e){}
+            <span class="hljs-keyword">catch</span> (e){}
 
-            try{
-                return new ActiveXObject(&quot;Msxml2.XMLHTTP.3.0&quot;);
+            <span class="hljs-keyword">try</span>{
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ActiveXObject(<span class="hljs-string">"Msxml2.XMLHTTP.3.0"</span>);
             }
-            catch (e){}
+            <span class="hljs-keyword">catch</span> (e){}
 
-            try{
-                return new ActiveXObject(&quot;Msxml2.XMLHTTP&quot;);
+            <span class="hljs-keyword">try</span>{
+                <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ActiveXObject(<span class="hljs-string">"Msxml2.XMLHTTP"</span>);
             }
-            catch (e){}
+            <span class="hljs-keyword">catch</span> (e){}
 
-            return false;
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
         }
     }
-    return new XMLHttpRequest();
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> XMLHttpRequest();
 }</code></pre>
 <h2 id="请求对象的属性和方法设置">请求对象的属性和方法设置</h2>
-<pre><code class="language-javascript">var xhr=createXHR();
-xhr.onreadystatechange=function(){//firfox引入onlaod，readyState==4时触发,代替onreadystatechange
-    if(xhr.readyState==4){
-        try{
-            if((xhr.status&gt;=200&amp;&amp;xhr.status&lt;300)||xhr.status==304){
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> xhr=createXHR();
+xhr.onreadystatechange=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{<span class="hljs-comment">//firfox引入onlaod，readyState==4时触发,代替onreadystatechange</span>
+    <span class="hljs-keyword">if</span>(xhr.readyState==<span class="hljs-number">4</span>){
+        <span class="hljs-keyword">try</span>{
+            <span class="hljs-keyword">if</span>((xhr.status&gt;=<span class="hljs-number">200</span>&amp;&amp;xhr.status&lt;<span class="hljs-number">300</span>)||xhr.status==<span class="hljs-number">304</span>){
                 alert(xhr.responseText);
-            }else {
-                alert(&quot;unsuccessful&quot;);
+            }<span class="hljs-keyword">else</span> {
+                alert(<span class="hljs-string">"unsuccessful"</span>);
             }
-        }catch(ex){}
+        }<span class="hljs-keyword">catch</span>(ex){}
     }
 }
-xhr.onload=function(){
-    if((xhr.status&gt;=200&amp;&amp;xhr.status&lt;300)||xhr.status==304){
+xhr.onload=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-keyword">if</span>((xhr.status&gt;=<span class="hljs-number">200</span>&amp;&amp;xhr.status&lt;<span class="hljs-number">300</span>)||xhr.status==<span class="hljs-number">304</span>){
                 alert(xhr.responseText);
-            }else {
-                alert(&quot;unsuccessful&quot;);
+            }<span class="hljs-keyword">else</span> {
+                alert(<span class="hljs-string">"unsuccessful"</span>);
             }
 }
-xhr.onprogress=function(event){
-    if(event.lengthComputable){//进度信息是否可用
-        console.log(&quot;Received&quot;+event.position+&quot;of&quot;+event.totalSize);
+xhr.onprogress=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>)</span>{
+    <span class="hljs-keyword">if</span>(event.lengthComputable){<span class="hljs-comment">//进度信息是否可用</span>
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Received"</span>+event.position+<span class="hljs-string">"of"</span>+event.totalSize);
     }
 }
-xhr.onerror=function(){
-    alert(&quot;error&quot;);
+xhr.onerror=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    alert(<span class="hljs-string">"error"</span>);
 }
-xhr.timeout=1000;
-xhr.ontimeout=function(){
-    alert(&quot;timeout&quot;);
+xhr.timeout=<span class="hljs-number">1000</span>;
+xhr.ontimeout=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    alert(<span class="hljs-string">"timeout"</span>);
 }
-xhr.open(&quot;get&quot;,&quot;example.php&quot;,true);
-xhr.overrideMimeType(&quot;text/xml&quot;);
-xhr.send(null);//GET</code></pre>
+xhr.open(<span class="hljs-string">"get"</span>,<span class="hljs-string">"example.php"</span>,<span class="hljs-literal">true</span>);
+xhr.overrideMimeType(<span class="hljs-string">"text/xml"</span>);
+xhr.send(<span class="hljs-literal">null</span>);<span class="hljs-comment">//GET</span></code></pre>
 <h2 id="发送表单数据">发送表单数据</h2>
-<pre><code class="language-javascript">var form=document.getElementById(&quot;info&quot;);
-xhr.send(serialize(form));//第一种写法
-xhr.send(new FormData(form));//第二种写法</code></pre>
+<pre><code class="language-javascript">var form=document.get<span class="hljs-constructor">ElementById(<span class="hljs-string">"info"</span>)</span>;
+xhr.send(serialize(form));<span class="hljs-comment">//第一种写法</span>
+xhr.send(<span class="hljs-keyword">new</span> <span class="hljs-constructor">FormData(<span class="hljs-params">form</span>)</span>);<span class="hljs-comment">//第二种写法</span></code></pre>
 <h2 id="跨浏览器的cors">跨浏览器的CORS</h2>
-<pre><code class="language-javascript">function createCORSRequest(method,url){
-    var xhr=new XMLHttpRequest();
-    if(&quot;withCredentials&quot; in xhr){
-        xhr.withCredentials = true;//默认情况下，这样的跨域无法带上目标域的会话（Cookies 等），需要设置xhr 实例的withCredentials 属性为true（IE 还不支持）
-        xhr.open(method,url,true);//第三个参数，true 表示异步，false 表示同步
-    }else if(typeof XDomainRequest !=&quot;undefined&quot;){
-        xhr=new XDomainRequest();
-        xhr.open(method,url);
-    }else {
-        xhr=null;
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createCORSRequest</span>(<span class="hljs-params">method,url</span>)</span>{
+    <span class="hljs-keyword">var</span> xhr=<span class="hljs-keyword">new</span> XMLHttpRequest();
+    <span class="hljs-keyword">if</span>(<span class="hljs-string">"withCredentials"</span> <span class="hljs-keyword">in</span> xhr){
+        xhr.withCredentials = <span class="hljs-literal">true</span>;<span class="hljs-comment">//默认情况下，这样的跨域无法带上目标域的会话（Cookies 等），需要设置xhr 实例的withCredentials 属性为true（IE 还不支持）</span>
+        xhr.open(method,<span class="hljs-built_in">url</span>,<span class="hljs-literal">true</span>);<span class="hljs-comment">//第三个参数，true 表示异步，false 表示同步</span>
+    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> XDomainRequest !=<span class="hljs-string">"undefined"</span>){
+        xhr=<span class="hljs-keyword">new</span> XDomainRequest();
+        xhr.open(method,<span class="hljs-built_in">url</span>);
+    }<span class="hljs-title">else</span> {
+        xhr=<span class="hljs-literal">null</span>;
     }
-    return xhr;
+    <span class="hljs-keyword">return</span> xhr;
 }
-var request=createCORSRequest(&quot;get&quot;,&quot;http://www.somewhere&quot;);
-if(request){
-    request.onload=function(){};// 请求成功后
+<span class="hljs-keyword">var</span> request=createCORSRequest(<span class="hljs-string">"get"</span>,<span class="hljs-string">"http://www.somewhere"</span>);
+<span class="hljs-keyword">if</span>(request){
+    request.onload=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{};<span class="hljs-comment">// 请求成功后</span>
     request.send();
 }</code></pre>
 <h2 id="跨浏览器事件处理程序">跨浏览器事件处理程序</h2>
-<pre><code class="language-javascript">var eventUtil={
-    // 页面加载完成后
-    readyEvent : function(fn) {
-        if (fn==null) {
-            fn=document;
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> eventUtil={
+    <span class="hljs-comment">// 页面加载完成后</span>
+    <span class="hljs-attr">readyEvent</span> : <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">fn</span>) </span>{
+        <span class="hljs-keyword">if</span> (fn==<span class="hljs-literal">null</span>) {
+            fn=<span class="hljs-built_in">document</span>;
         }
-        var oldonload = window.onload;
-        if (typeof window.onload != &#39;function&#39;) {
-            window.onload = fn;
-        } else {
-            window.onload = function() {
+        <span class="hljs-keyword">var</span> oldonload = <span class="hljs-built_in">window</span>.onload;
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span>.onload != <span class="hljs-string">'function'</span>) {
+            <span class="hljs-built_in">window</span>.onload = fn;
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-built_in">window</span>.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
                 oldonload();
                 fn();
             };
         }
     },
 
-    addEventHandler: function (obj, eventName, handler) {
-        if (document.attachEvent) {//IE
-            obj.attachEvent(&quot;on&quot; + eventName, handler);
-        } else if (document.addEventListener) {//DOM2级
-            obj.addEventListener(eventName, handler, false);//false- 默认。事件句柄在冒泡阶段执行
+    <span class="hljs-attr">addEventHandler</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">obj, eventName, handler</span>) </span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.attachEvent) {<span class="hljs-comment">//IE</span>
+            obj.attachEvent(<span class="hljs-string">"on"</span> + eventName, handler);
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.addEventListener) {<span class="hljs-comment">//DOM2级</span>
+            obj.addEventListener(eventName, handler, <span class="hljs-literal">false</span>);<span class="hljs-comment">//false- 默认。事件句柄在冒泡阶段执行</span>
         }
-        else{//DOM0级
-            obj[&#39;on&#39;+eventName]=handler;
+        <span class="hljs-keyword">else</span>{<span class="hljs-comment">//DOM0级</span>
+            obj[<span class="hljs-string">'on'</span>+eventName]=handler;
         }
     },
 
-    removeEventHandler:function(obj, eventName, handler){
-        if (document.attachEvent) {//IE
-            obj.detachEvent(&quot;on&quot; + eventName, handler);
-        } else if (document.addEventListener) {//DOM2级
-            obj.removeEventListener(eventName, handler, false);
+    <span class="hljs-attr">removeEventHandler</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">obj, eventName, handler</span>)</span>{
+        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.attachEvent) {<span class="hljs-comment">//IE</span>
+            obj.detachEvent(<span class="hljs-string">"on"</span> + eventName, handler);
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.addEventListener) {<span class="hljs-comment">//DOM2级</span>
+            obj.removeEventListener(eventName, handler, <span class="hljs-literal">false</span>);
         }
-        else{//DOM0级
-            obj[&#39;on&#39;+eventName]=null;
+        <span class="hljs-keyword">else</span>{<span class="hljs-comment">//DOM0级</span>
+            obj[<span class="hljs-string">'on'</span>+eventName]=<span class="hljs-literal">null</span>;
         }
     },
-   //获取event对象的引用，取到事件的所有信息，确保随时能使用event；
-    getEvent: function (e) {
-        var ev = e || window.event;
-        if (!ev) {
-            var c = this.getEvent.caller;
-            while (c) {
-                ev = c.arguments[0];
-                if (ev &amp;&amp; Event == ev.constructor) {
-                    break;
+   <span class="hljs-comment">//获取event对象的引用，取到事件的所有信息，确保随时能使用event；</span>
+    <span class="hljs-attr">getEvent</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{
+        <span class="hljs-keyword">var</span> ev = e || <span class="hljs-built_in">window</span>.event;
+        <span class="hljs-keyword">if</span> (!ev) {
+            <span class="hljs-keyword">var</span> c = <span class="hljs-keyword">this</span>.getEvent.caller;
+            <span class="hljs-keyword">while</span> (c) {
+                ev = c.arguments[<span class="hljs-number">0</span>];
+                <span class="hljs-keyword">if</span> (ev &amp;&amp; Event == ev.constructor) {
+                    <span class="hljs-keyword">break</span>;
                 }
                 c = c.caller;
             }
         }
-        return ev;
+        <span class="hljs-keyword">return</span> ev;
     },
-    //事件类型
-    getType: function (e) {
-        return e.type;
+    <span class="hljs-comment">//事件类型</span>
+    <span class="hljs-attr">getType</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{
+        <span class="hljs-keyword">return</span> e.type;
 
     },
-    //调用事件的元素
-    getElement: function (e) {
-        return e.target|| e.srcElement;
+    <span class="hljs-comment">//调用事件的元素</span>
+    <span class="hljs-attr">getElement</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{
+        <span class="hljs-keyword">return</span> e.target|| e.srcElement;
     },
-    //阻止默认事件
-    preventDefault: function (e) {
-        e= this.getEvent(e);
-        if(e.preventDefault){
+    <span class="hljs-comment">//阻止默认事件</span>
+    <span class="hljs-attr">preventDefault</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{
+        e= <span class="hljs-keyword">this</span>.getEvent(e);
+        <span class="hljs-keyword">if</span>(e.preventDefault){
             e.preventDefault();
         }
-        else {
-            return e.returnValue=false;//IE
+        <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> e.returnValue=<span class="hljs-literal">false</span>;<span class="hljs-comment">//IE</span>
         }
     },
-    //阻止冒泡
-    stopPropagation:function(e) {
-      if(e.stopPropagation){
+    <span class="hljs-comment">//阻止冒泡</span>
+    <span class="hljs-attr">stopPropagation</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{
+      <span class="hljs-keyword">if</span>(e.stopPropagation){
           e.stopPropagation();
       }
-        else {
-          e.cancelBubble=true;//IE
+        <span class="hljs-keyword">else</span> {
+          e.cancelBubble=<span class="hljs-literal">true</span>;<span class="hljs-comment">//IE</span>
       }
 
     },
-    //键盘事件键盘的编号
-    getCharCode:function (e){
-        if(typeof e.charCode==&quot;number&quot;)return e.charCode;
-        else return e.keyCode;
+    <span class="hljs-comment">//键盘事件键盘的编号</span>
+    <span class="hljs-attr">getCharCode</span>:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>)</span>{
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> e.charCode==<span class="hljs-string">"number"</span>)<span class="hljs-keyword">return</span> e.charCode;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> e.keyCode;
     },
-    //获取剪贴板的文本
-    getClipbordText:function(e){
-        var clipboardData=(e.clipboardData||window.clipboardData);
-        return clipboardData.getData(&quot;text&quot;);
+    <span class="hljs-comment">//获取剪贴板的文本</span>
+    <span class="hljs-attr">getClipbordText</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)</span>{
+        <span class="hljs-keyword">var</span> clipboardData=(e.clipboardData||<span class="hljs-built_in">window</span>.clipboardData);
+        <span class="hljs-keyword">return</span> clipboardData.getData(<span class="hljs-string">"text"</span>);
     },
-    //设置剪贴板文本
-    setClipboardText:function(e,value){
-        if(e.clipboardData){
-            return e.clipboardData.setData(&quot;text/plain&quot;,value);
-        }else if(window.clipboardData){
-            return window.clipboardData.setData(&quot;text&quot;,value);
+    <span class="hljs-comment">//设置剪贴板文本</span>
+    <span class="hljs-attr">setClipboardText</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e,value</span>)</span>{
+        <span class="hljs-keyword">if</span>(e.clipboardData){
+            <span class="hljs-keyword">return</span> e.clipboardData.setData(<span class="hljs-string">"text/plain"</span>,value);
+        }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-built_in">window</span>.clipboardData){
+            <span class="hljs-keyword">return</span> <span class="hljs-built_in">window</span>.clipboardData.setData(<span class="hljs-string">"text"</span>,value);
         }
     },
 
 }</code></pre>
 <h2 id="处理targetsrcelemnt问题，代替this">处理target/srcelemnt问题，代替this</h2>
-<pre><code class="language-javascript">function getActivatedObject(e) {
-    var obj;
-    if (!e) {
-        // early version of IE
-        obj = window.event.srcElement;
-    } else if (e.srcElement) {
-        // IE 7 or later
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getActivatedObject</span>(<span class="hljs-params">e</span>) </span>{
+    <span class="hljs-keyword">var</span> obj;
+    <span class="hljs-keyword">if</span> (!e) {
+        <span class="hljs-comment">// early version of IE</span>
+        obj = <span class="hljs-built_in">window</span>.event.srcElement;
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (e.srcElement) {
+        <span class="hljs-comment">// IE 7 or later</span>
         obj = e.srcElement;
-    } else {
-        // DOM Level 2 browser
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-comment">// DOM Level 2 browser</span>
         obj = e.target;
     }
-    return obj;
+    <span class="hljs-keyword">return</span> obj;
 }</code></pre>
 <h2 id="实现insertafter">实现insertAfter</h2>
-<pre><code class="language-javascript">/**
+<pre><code class="language-javascript"><span class="hljs-comment">/**
  * 把newElement插在targetElement后面 ,js的API只有insertBefore，没有insertAfter
- */
-function insertAfter(newElement,targetElement) {
+ */</span>
+<span class="hljs-keyword">function</span> insert<span class="hljs-constructor">After(<span class="hljs-params">newElement</span>,<span class="hljs-params">targetElement</span>)</span> {
     var parent = targetElement.parentNode;
-    if (parent.lastChild == targetElement) {
-        parent.appendChild(newElement);
-    } else {
-        parent.insertBefore(newElement,targetElement.nextSibling);
+    <span class="hljs-keyword">if</span> (parent.lastChild<span class="hljs-operator"> == </span>targetElement) {
+        parent.append<span class="hljs-constructor">Child(<span class="hljs-params">newElement</span>)</span>;
+    } <span class="hljs-keyword">else</span> {
+        parent.insert<span class="hljs-constructor">Before(<span class="hljs-params">newElement</span>,<span class="hljs-params">targetElement</span>.<span class="hljs-params">nextSibling</span>)</span>;
     }
 }</code></pre>
 <h2 id="给element加上类名">给element加上类名</h2>
-<pre><code class="language-javascript">function addClass(element,value) {
-    if (!element.className) {
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">addClass</span></span>(element,value) {
+    <span class="hljs-keyword">if</span> (!element.className) {
         element.className = value;
-    } else {
-        newClassName = element.className;
-        newClassName+= &quot; &quot;;
-        newClassName+= value;
-        element.className = newClassName;
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">new</span><span class="hljs-type">ClassName</span> = element.className;
+        <span class="hljs-keyword">new</span><span class="hljs-type">ClassName</span>+= <span class="hljs-string">" "</span>;
+        <span class="hljs-keyword">new</span><span class="hljs-type">ClassName</span>+= value;
+        element.className = <span class="hljs-keyword">new</span><span class="hljs-type">ClassName</span>;
     }
 }</code></pre>
 <h2 id="判断是不是数组">判断是不是数组</h2>
-<pre><code class="language-javascript">function isArray(arg) {
-    //return Object.prototype.toString.call(arr)==&#39;[Object Array]&#39;;这种方法也可以
-    if (typeof arg == &#39;object&#39;) {
-        //所有数组都有一个包含单词&#39;arry&#39;的constructor,最后的i表示不区分大小写
-        var criteria = arg.constructor.toString().match(/array/i);
-        return (criteria != null);
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isArray</span>(<span class="hljs-params">arg</span>) </span>{
+    <span class="hljs-comment">//return Object.prototype.toString.call(arr)=='[Object Array]';这种方法也可以</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> arg == <span class="hljs-string">'object'</span>) {
+        <span class="hljs-comment">//所有数组都有一个包含单词'arry'的constructor,最后的i表示不区分大小写</span>
+        <span class="hljs-keyword">var</span> criteria = arg.<span class="hljs-keyword">constructor</span>.toString(<span class="hljs-params"></span>).match(<span class="hljs-params">/array/i</span>);
+        <span class="hljs-keyword">return</span> (criteria != <span class="hljs-literal">null</span>);
     }
-    return false;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
 }</code></pre>
 <h2 id="ie10之前不支持docunmentgetelementbyclassname">IE10之前不支持docunment.getElementByClassName</h2>
-<pre><code class="language-javascript">function getByClass(clsName,parent){
-    if(docunment.getElementByClassName) return docunment.getElementByClassName(clsName);
-    //IE10之前
-    var oParent=parent?document.getElementById(parent):document,
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getByClass</span>(<span class="hljs-params">clsName,parent</span>)</span>{
+    <span class="hljs-keyword">if</span>(docunment.getElementByClassName) <span class="hljs-keyword">return</span> docunment.getElementByClassName(clsName);
+    <span class="hljs-comment">//IE10之前</span>
+    <span class="hljs-keyword">var</span> oParent=<span class="hljs-built_in">parent</span>?<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-built_in">parent</span>):<span class="hljs-built_in">document</span>,
         eles=[],
-        elements=oParent.getElementsByTagName(&#39;*&#39;);
+        elements=oParent.getElementsByTagName(<span class="hljs-string">'*'</span>);
 
-    for(var i=0,l=elements.length;i&lt;l;i++){
-        if(elements[i].className==clsName){
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>,l=elements.length;i&lt;l;i++){
+        <span class="hljs-keyword">if</span>(elements[i].className==clsName){
             eles.push(elements[i]);
         }
     }
-    return eles;
+    <span class="hljs-keyword">return</span> eles;
 }</code></pre>
 <h2 id="获取css样式">获取css样式</h2>
-<pre><code class="language-javascript">function getStyle(obj,attr){
-    if(obj.currentStyle) {//IE 浏览器
-        return obj.currentStyle[attr];
-    }else{//Firefox浏览器
-        return getComputedStyle(obj,false)[attr];
+<pre><code class="language-javascript"><span class="hljs-keyword">function</span> get<span class="hljs-constructor">Style(<span class="hljs-params">obj</span>,<span class="hljs-params">attr</span>)</span>{
+    <span class="hljs-keyword">if</span>(obj.currentStyle) {<span class="hljs-comment">//IE 浏览器</span>
+        return obj.currentStyle<span class="hljs-literal">[<span class="hljs-identifier">attr</span>]</span>;
+    }<span class="hljs-keyword">else</span>{<span class="hljs-comment">//Firefox浏览器</span>
+        return get<span class="hljs-constructor">ComputedStyle(<span class="hljs-params">obj</span>,<span class="hljs-params">false</span>)</span><span class="hljs-literal">[<span class="hljs-identifier">attr</span>]</span>;
     }
 }
 </code></pre>
 <h2 id="手写动画">手写动画</h2>
 <p>多个属性同时运动需要用到JSON,并且所有运动达到目标值才能停止</p>
-<pre><code class="language-javascript">//动画 startMove(oLi,{width:400,height:200,opacity:100})
-function startMove(obj,json,fn){
-    clearInterval(obj.timer);
-    obj.timer=setInterval(function () {
-        for(var attr in json){
-            //1.取当前的值
-            var cur=0;
-            if(attr==&#39;opacity&#39;){
-                cur=Math.round(parseFloat(getStyle(obj,attr))*100);
+<pre><code class="language-javascript"><span class="hljs-comment">//动画 startMove(oLi,{width:400,height:200,opacity:100})</span>
+<span class="hljs-keyword">function</span> start<span class="hljs-constructor">Move(<span class="hljs-params">obj</span>,<span class="hljs-params">json</span>,<span class="hljs-params">fn</span>)</span>{
+    clear<span class="hljs-constructor">Interval(<span class="hljs-params">obj</span>.<span class="hljs-params">timer</span>)</span>;
+    obj.timer=set<span class="hljs-constructor">Interval(<span class="hljs-params">function</span> ()</span> {
+        for(var attr <span class="hljs-keyword">in</span> json){
+            <span class="hljs-comment">//1.取当前的值</span>
+            var cur=<span class="hljs-number">0</span>;
+            <span class="hljs-keyword">if</span>(attr=='opacity'){
+                cur=<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Math</span>.</span></span>round(parse<span class="hljs-constructor">Float(<span class="hljs-params">getStyle</span>(<span class="hljs-params">obj</span>,<span class="hljs-params">attr</span>)</span>)*<span class="hljs-number">100</span>);
             }
-            else {
-                cur=parseInt(getStyle(obj,attr));
+            <span class="hljs-keyword">else</span> {
+                cur=parse<span class="hljs-constructor">Int(<span class="hljs-params">getStyle</span>(<span class="hljs-params">obj</span>,<span class="hljs-params">attr</span>)</span>);
             }
-            //2.算速度
-            var speed=(json[attr]-cur)/8;
-            speed=speed&gt;0?Math.ceil(speed):Math.floor(speed);
-            //3.检测停止
-            var flag=true;
-            if(cur!=json[attr]){//使得所有属性做完运动才结束
-                flag=false;
+            <span class="hljs-comment">//2.算速度</span>
+            var speed=(json<span class="hljs-literal">[<span class="hljs-identifier">attr</span>]</span>-cur)/<span class="hljs-number">8</span>;
+            speed=speed&gt;<span class="hljs-number">0</span>?<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Math</span>.</span></span>ceil(speed):<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Math</span>.</span></span>floor(speed);
+            <span class="hljs-comment">//3.检测停止</span>
+            var flag=<span class="hljs-literal">true</span>;
+            <span class="hljs-keyword">if</span>(cur!=json<span class="hljs-literal">[<span class="hljs-identifier">attr</span>]</span>){<span class="hljs-comment">//使得所有属性做完运动才结束</span>
+                flag=<span class="hljs-literal">false</span>;
             }
-            if(attr==&#39;opacity&#39;){
-                obj.style.filter=&#39;alpha(opacity:&#39;+(cur+speec)+&#39;)&#39;;
-                obj.style.opacity=(cur+speed)/100;
+            <span class="hljs-keyword">if</span>(attr=='opacity'){
+                obj.style.filter='alpha(opacity:'+(cur+speec)+<span class="hljs-character">')'</span>;
+                obj.style.opacity=(cur+speed)/<span class="hljs-number">100</span>;
             }
-            else{
-                obj.style[attr]=(cur+speed)+&#39;px&#39;;
+            <span class="hljs-keyword">else</span>{
+                obj.style<span class="hljs-literal">[<span class="hljs-identifier">attr</span>]</span>=(cur+speed)+'px';
             }
         }
-        if(flag){
-            clearInterval(obj.timer);
-            if(fn){
-                fn();
+        <span class="hljs-keyword">if</span>(flag){
+            clear<span class="hljs-constructor">Interval(<span class="hljs-params">obj</span>.<span class="hljs-params">timer</span>)</span>;
+            <span class="hljs-keyword">if</span>(fn){
+                fn<span class="hljs-literal">()</span>;
             }
         }
     })
 }</code></pre>
 <h2 id="取得窗口左边和上边的位置">取得窗口左边和上边的位置</h2>
-<pre><code class="language-javascript">var leftPos=(typeof window.screenLeft ==&quot;number&quot;)?window.screenLeft:window.screenX;</code></pre>
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> leftPos=(<span class="hljs-keyword">typeof</span> <span class="hljs-built_in">window</span>.screenLeft ==<span class="hljs-string">"number"</span>)?<span class="hljs-built_in">window</span>.screenLeft:<span class="hljs-built_in">window</span>.screenX;</code></pre>
 <h2 id="取得页面视口大小">取得页面视口大小</h2>
-<pre><code class="language-javascript">var pageWidth=window.innerWidth,
-    pageHeight=window.innerHeight;
-    if(typeof pageHeight!=&quot;number&quot;){
-        if(document.compatMode==&quot;CSS1Compat&quot;){//标准模式
-            pageHeight=window.documentElement.clientHeight;
-            pageWidth=window.documentElement.clientWidth;
+<pre><code class="language-javascript"><span class="hljs-keyword">var</span> pageWidth=<span class="hljs-built_in">window</span>.innerWidth,
+    pageHeight=<span class="hljs-built_in">window</span>.innerHeight;
+    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> pageHeight!=<span class="hljs-string">"number"</span>){
+        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">document</span>.compatMode==<span class="hljs-string">"CSS1Compat"</span>){<span class="hljs-comment">//标准模式</span>
+            pageHeight=<span class="hljs-built_in">window</span>.documentElement.clientHeight;
+            pageWidth=<span class="hljs-built_in">window</span>.documentElement.clientWidth;
         }
-        else {//BackCompat
-            pageHeight=window.body.clientHeight;
-            pageWidth=window.body.clientWidth;
+        <span class="hljs-keyword">else</span> {<span class="hljs-comment">//BackCompat</span>
+            pageHeight=<span class="hljs-built_in">window</span>.body.clientHeight;
+            pageWidth=<span class="hljs-built_in">window</span>.body.clientWidth;
         }
     }</code></pre>
 <h2 id="检测插件方法">检测插件方法</h2>
-<pre><code class="language-javascript">/**
+<pre><code class="language-javascript"><span class="hljs-comment">/**
  *
 * 检测插件方法一，IE下无效
-*/
-function hasPlugin(name){
-    name=name.toLowerCase();
-    for(var i=0;i&lt;navigator.plugins.length;i++){
-        if(navigator.plugins[i].toLowerCase().indexOf(name)!=-1)
-        return true;
+*/</span>
+<span class="hljs-keyword">function</span> has<span class="hljs-constructor">Plugin(<span class="hljs-params">name</span>)</span>{
+    name=name.<span class="hljs-keyword">to</span><span class="hljs-constructor">LowerCase()</span>;
+    for(var i=<span class="hljs-number">0</span>;i&lt;navigator.plugins.length;i++){
+        <span class="hljs-keyword">if</span>(navigator.plugins<span class="hljs-literal">[<span class="hljs-identifier">i</span>]</span>.<span class="hljs-keyword">to</span><span class="hljs-constructor">LowerCase()</span>.index<span class="hljs-constructor">Of(<span class="hljs-params">name</span>)</span>!=-<span class="hljs-number">1</span>)
+        return <span class="hljs-literal">true</span>;
     }
-    return false;
+    return <span class="hljs-literal">false</span>;
 }
 
-/**
+<span class="hljs-comment">/**
  * 检测IE插件方法二 ,name是COM对象唯一标识符
- */
-function hasIEPlugin(name){
-    try{
-        new ActiveXObject(name);
-        return true;
+ */</span>
+<span class="hljs-keyword">function</span> has<span class="hljs-constructor">IEPlugin(<span class="hljs-params">name</span>)</span>{
+    <span class="hljs-keyword">try</span>{
+        <span class="hljs-keyword">new</span> <span class="hljs-constructor">ActiveXObject(<span class="hljs-params">name</span>)</span>;
+        return <span class="hljs-literal">true</span>;
     }catch(ex){
-        return false;
+        return <span class="hljs-literal">false</span>;
     }
 }</code></pre>
 <h2 id="获取元素">获取元素</h2>
-<pre><code class="language-javascript">function getElement(id){
-    if(document.getElementById){
-        return document.getElementById(id);
-    }else if(document.all){//IE5前
-        return document.all[id];
-    }else {
-        throw new Error(&quot;no way to retrieve element!&quot;);
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getElement</span>(<span class="hljs-params">id</span>)</span>{
+    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">document</span>.getElementById){
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">document</span>.getElementById(id);
+    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-built_in">document</span>.all){<span class="hljs-comment">//IE5前</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">document</span>.all[id];
+    }<span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"no way to retrieve element!"</span>);
     }
 }</code></pre>
 <h2 id="检查对象的某个特性是否存在">检查对象的某个特性是否存在</h2>
-<pre><code class="language-javascript">function isHostMethod(object,property){
-    var t =typeof object[property];
-    return t==&quot;function&quot;||
-           (!!(t==&quot;object&quot;)&amp;&amp;object[property])||
-           t==&quot;unknown&quot;;//不懂
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isHostMethod</span>(<span class="hljs-params">object,property</span>)</span>{
+    <span class="hljs-keyword">var</span> t =<span class="hljs-keyword">typeof</span> object[<span class="hljs-keyword">property</span><span class="hljs-string">]</span>;
+    <span class="hljs-keyword">return</span> t==<span class="hljs-string">"function"</span>||
+           (!!(t==<span class="hljs-string">"object"</span>)&amp;&amp;object[<span class="hljs-keyword">property</span><span class="hljs-string">])||</span>
+           t==<span class="hljs-string">"unknown"</span>;<span class="hljs-comment">//不懂</span>
 }</code></pre>
 <h2 id="对象转换成数组">对象转换成数组</h2>
-<pre><code class="language-javascript">function convertToArray(nodes){
-    var array=null;
-    try{
-        array=Array.propotype.slice.call(nodes,0);//IE8前无效
-    }catch(ex){
-        for(var i=0,len=nodes.length;i&lt;len;i++){
-            array.push(nodes[i]);
+<pre><code class="language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">convertToArray</span><span class="hljs-params">(nodes)</span></span>{
+    <span class="hljs-keyword">var</span> <span class="hljs-keyword">array</span>=<span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">try</span>{
+        <span class="hljs-keyword">array</span>=<span class="hljs-keyword">Array</span>.propotype.slice.call(nodes,<span class="hljs-number">0</span>);<span class="hljs-comment">//IE8前无效</span>
+    }<span class="hljs-keyword">catch</span>(ex){
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>,len=nodes.length;i&lt;len;i++){
+            <span class="hljs-keyword">array</span>.push(nodes[i]);
         }
     }
 }</code></pre>
@@ -600,613 +604,613 @@ function hasIEPlugin(name){
  * 返回指定的属性 IE ele.attribute[]
  * Element.getAttribute()
  */
-function outputAttribute(ele){
-    var pairs=new Array(),
-        attrname,attrvalue,u,len;
-    for(i=0,len=ele.attribute.length;i&lt;len;i++){
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outputAttribute</span><span class="hljs-params">(ele)</span></span>{
+    var <span class="hljs-built_in">pairs</span>=new Array(),
+        attrname,attrvalue,u,<span class="hljs-built_in">len</span>;
+    <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>,<span class="hljs-built_in">len</span>=ele.attribute.length;i&lt;<span class="hljs-built_in">len</span>;i++){
         attrname=ele.attributes[i].nodeName;
         attrvalue=ele.attributes[i].nodeValue;
-        if(ele.attributes[i].specified){//IE
-            pairs.push(attrname+&#39;=\&quot;&#39;+attrvalue+&#39;\&quot;&#39;);
+        <span class="hljs-keyword">if</span>(ele.attributes[i].specified){//IE
+            <span class="hljs-built_in">pairs</span>.push(attrname+<span class="hljs-string">'=\"'</span>+attrvalue+<span class="hljs-string">'\"'</span>);
         }
     }
 }</code></pre>
 <h2 id="ele是否存在指定属性">ele是否存在指定属性</h2>
-<pre><code class="language-javascript">/**
+<pre><code class="language-javascript"><span class="hljs-comment">/**
  * 
  * ele是否存在指定属性 attr
- */
-function hasattribute(ele,attr){
-    if(ele.hasAttribute){
-        return ele.hasAttribute(attr);
-    }else {//IE
-        return ele.attributes[attr].specified;
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hasattribute</span><span class="hljs-params">(ele,attr)</span></span>{
+    <span class="hljs-keyword">if</span>(ele.hasAttribute){
+        <span class="hljs-keyword">return</span> ele.hasAttribute(attr);
+    }<span class="hljs-keyword">else</span> {<span class="hljs-comment">//IE</span>
+        <span class="hljs-keyword">return</span> ele.attributes[attr].specified;
     }
 }</code></pre>
 <h2 id="ele是否符合选择器selector">ele是否符合选择器selector</h2>
-<pre><code class="language-javascript">/**
+<pre><code class="language-javascript"><span class="hljs-comment">/**
  * ele是否符合选择器selector
- */
-function matchesSelector(ele,selector){
-    if(ele.matchesSelector){
-        return ele.matchesSelector(selector);
-    }else if(ele.msmatchesSelector){
-        return ele.msmatchesSelector(selector);
-    }else if(ele.mozmatchesSelector){
-        return ele.mozmatchesSelector(selector);
-    }else if(ele.webkitmatchesSelector){
-        return ele.webkitmatchesSelector(selector);
-    }else{
-        throw new Error(&quot;not support&quot;);
+ */</span>
+<span class="hljs-keyword">function</span> matches<span class="hljs-constructor">Selector(<span class="hljs-params">ele</span>,<span class="hljs-params">selector</span>)</span>{
+    <span class="hljs-keyword">if</span>(ele.matchesSelector){
+        return ele.matches<span class="hljs-constructor">Selector(<span class="hljs-params">selector</span>)</span>;
+    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ele.msmatchesSelector){
+        return ele.msmatches<span class="hljs-constructor">Selector(<span class="hljs-params">selector</span>)</span>;
+    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ele.mozmatchesSelector){
+        return ele.mozmatches<span class="hljs-constructor">Selector(<span class="hljs-params">selector</span>)</span>;
+    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(ele.webkitmatchesSelector){
+        return ele.webkitmatches<span class="hljs-constructor">Selector(<span class="hljs-params">selector</span>)</span>;
+    }<span class="hljs-keyword">else</span>{
+        throw <span class="hljs-keyword">new</span> <span class="hljs-constructor">Error(<span class="hljs-string">"not support"</span>)</span>;
     }
 }</code></pre>
 <h2 id="获取内文本">获取内文本</h2>
-<pre><code class="language-javascript">//innerText/textContent
-function getInnerText(ele){
-    return (typeof ele.innerText==&quot;string&quot;)?
+<pre><code class="language-javascript"><span class="hljs-comment">//innerText/textContent</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getInnerText</span><span class="hljs-params">(ele)</span></span>{
+    <span class="hljs-keyword">return</span> (<span class="hljs-keyword">typeof</span> ele.innerText==<span class="hljs-string">"string"</span>)?
     ele.innerText:ele.textContent;
 }</code></pre>
 <h2 id="获取鼠标事件的父元素">获取鼠标事件的父元素</h2>
 <pre><code class="language-javascript">    function getRelatedTarget(e){
-        if(e.relatedTarget) return e.relatedTarget;
-        else if(e.fromElement) return e.fromElement;//mouseover
-        else if(e.toElement) return e.toElement;//mouseout
-        else return null;
+        <span class="hljs-keyword">if</span>(e.relatedTarget) <span class="hljs-keyword">return</span> e.relatedTarget;
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(e.fromElement) <span class="hljs-keyword">return</span> e.fromElement;<span class="hljs-comment">//mouseover</span>
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(e.toElement) <span class="hljs-keyword">return</span> e.toElement;<span class="hljs-comment">//mouseout</span>
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
     }</code></pre>
 <h2 id="探测按的是鼠标的哪个键">探测按的是鼠标的哪个键</h2>
-<pre><code class="language-javascript"> function getButton(e){
-        if(document.implementation.hasFeature(&quot;MouseEvents&quot;,&quot;2.0&quot;)){
-            return e.button;
-        }else {
-            switch(e.button){
-                case 0 :
-                case 1:
-                case 3:
-                case 5:
-                case 7: return 0;
-                case 2:
-                case 6:return 2;
-                case 4:return 1;
+<pre><code class="language-javascript"> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getButton</span>(<span class="hljs-params">e</span>)</span>{
+        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">document</span>.implementation.hasFeature(<span class="hljs-string">"MouseEvents"</span>,<span class="hljs-string">"2.0"</span>)){
+            <span class="hljs-keyword">return</span> e.button;
+        }<span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">switch</span>(e.button){
+                <span class="hljs-keyword">case</span> <span class="hljs-number">0</span> :
+                <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+                <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:
+                <span class="hljs-keyword">case</span> <span class="hljs-number">5</span>:
+                <span class="hljs-keyword">case</span> <span class="hljs-number">7</span>: <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+                <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+                <span class="hljs-keyword">case</span> <span class="hljs-number">6</span>:<span class="hljs-keyword">return</span> <span class="hljs-number">2</span>;
+                <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
             }
         }
     }</code></pre>
 <h2 id="鼠标滚动事件">鼠标滚动事件</h2>
-<pre><code class="language-javascript"> //鼠标滚动，正数表示向上滚动
-function getWheelDelta(e){
-        if(e.wheelData){
-            return (client.engine.opera&amp;&amp;client.engine.opera&lt;9.5)?
+<pre><code class="language-javascript"> <span class="hljs-comment">//鼠标滚动，正数表示向上滚动</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getWheelDelta</span><span class="hljs-params">(e)</span></span>{
+        <span class="hljs-keyword">if</span>(e.wheelData){
+            <span class="hljs-keyword">return</span> (client.engine.opera&amp;&amp;client.engine.opera&lt;<span class="hljs-number">9.5</span>)?
         -e.wheelData:e.wheelData;
-        }else {
-            return -e.detail*40;//firefox
+        }<span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> -e.detail*<span class="hljs-number">40</span>;<span class="hljs-comment">//firefox</span>
         }
 
  }
 </code></pre>
 <h2 id="提取选中的文本">提取选中的文本</h2>
-<pre><code class="language-javascript">function getSelectedText(textbox){
-    if(typeof selectionStart==&quot;number&quot;){
-        return textbox.value.subString(textbox.selectionStart,textbox.selectionEnd);
-    }else if(document.selection){//IE8之前没有selectionStart，selectionEnd属性
-        return document.selection.createRange().text;
+<pre><code class="language-javascript"><span class="hljs-keyword">function</span> get<span class="hljs-constructor">SelectedText(<span class="hljs-params">textbox</span>)</span>{
+    <span class="hljs-keyword">if</span>(typeof selectionStart==<span class="hljs-string">"number"</span>){
+        return textbox.value.sub<span class="hljs-constructor">String(<span class="hljs-params">textbox</span>.<span class="hljs-params">selectionStart</span>,<span class="hljs-params">textbox</span>.<span class="hljs-params">selectionEnd</span>)</span>;
+    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(document.selection){<span class="hljs-comment">//IE8之前没有selectionStart，selectionEnd属性</span>
+        return document.selection.create<span class="hljs-constructor">Range()</span>.text;
     }
 }</code></pre>
 <h2 id="设置文本选中">设置文本选中</h2>
-<pre><code class="language-javascript">function selectText(textbox,startIndex,stopIndex){
-    if(textbox.setSelectionRange){
-        textbox.setSelectionRange(startIndex,stopIndex);
-    }else if(textbox.createTextRange){//IE
-        var range=textbox.createTextRange();
-        range.collapse(true);
-        range.moveStart(&quot;character&quot;,0);
-        range.moveEnd(&quot;character&quot;,stopIndex-startIndex);
-        range.select();
+<pre><code class="language-javascript"><span class="hljs-keyword">function</span> select<span class="hljs-constructor">Text(<span class="hljs-params">textbox</span>,<span class="hljs-params">startIndex</span>,<span class="hljs-params">stopIndex</span>)</span>{
+    <span class="hljs-keyword">if</span>(textbox.setSelectionRange){
+        textbox.set<span class="hljs-constructor">SelectionRange(<span class="hljs-params">startIndex</span>,<span class="hljs-params">stopIndex</span>)</span>;
+    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(textbox.createTextRange){<span class="hljs-comment">//IE</span>
+        var range=textbox.create<span class="hljs-constructor">TextRange()</span>;
+        range.collapse(<span class="hljs-literal">true</span>);
+        range.move<span class="hljs-constructor">Start(<span class="hljs-string">"character"</span>,0)</span>;
+        range.move<span class="hljs-constructor">End(<span class="hljs-string">"character"</span>,<span class="hljs-params">stopIndex</span>-<span class="hljs-params">startIndex</span>)</span>;
+        range.select<span class="hljs-literal">()</span>;
     }
 }</code></pre>
 <h2 id="bind方法对老版本的浏览器不起作用">bind方法对老版本的浏览器不起作用</h2>
 <pre><code class="language-javascript">
-Function.prototype.bind = Function.prototype.bind || function(context){
+<span class="hljs-function"><span class="hljs-keyword">Function</span>.<span class="hljs-title">prototype</span></span>.<span class="hljs-keyword">bind</span> = <span class="hljs-function"><span class="hljs-keyword">Function</span>.<span class="hljs-title">prototype</span></span>.<span class="hljs-keyword">bind</span> || <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(context)</span></span>{
       var self = this;
 
-      return function(){
-        return self.apply(context, arguments);
+      <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-keyword">return</span> self.apply(context, arguments);
       };
     }
 </code></pre>
 <h2 id="包装cookie">包装cookie</h2>
 <pre><code class="language-javascript">
 
-//cookie
-var cookieUtil={
-    // 创建cookie
-    setcookie:function (name, value, expires, path, domain, secure) {
-    var cookieText = encodeURIComponent(name) + &#39;=&#39; + encodeURIComponent(value);
-    if (expires instanceof Date) {
-        cookieText += &#39;; expires=&#39; + expires.toGMTString();
+<span class="javascript"><span class="hljs-comment">//cookie</span>
+<span class="hljs-keyword">var</span> cookieUtil={
+    <span class="hljs-comment">// 创建cookie</span>
+    <span class="hljs-attr">setcookie</span>:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">name, value, expires, path, domain, secure</span>) </span>{
+    <span class="hljs-keyword">var</span> cookieText = <span class="hljs-built_in">encodeURIComponent</span>(name) + <span class="hljs-string">'='</span> + <span class="hljs-built_in">encodeURIComponent</span>(value);
+    <span class="hljs-keyword">if</span> (expires <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Date</span>) {
+        cookieText += <span class="hljs-string">'; expires='</span> + expires.toGMTString();
     }
-    if (path) {
-        cookieText += &#39;; path=&#39; + path;
+    <span class="hljs-keyword">if</span> (path) {
+        cookieText += <span class="hljs-string">'; path='</span> + path;
     }
-    if (domain) {
-        cookieText += &#39;; domain=&#39; + domain;
+    <span class="hljs-keyword">if</span> (domain) {
+        cookieText += <span class="hljs-string">'; domain='</span> + domain;
     }
-    if (secure) {
-        cookieText += &#39;; secure&#39;;
+    <span class="hljs-keyword">if</span> (secure) {
+        cookieText += <span class="hljs-string">'; secure'</span>;
     }
-    document.cookie = cookieText;
+    <span class="hljs-built_in">document</span>.cookie = cookieText;
 },
-    // 获取cookie
-    getcookie:function (name) {
-    var cookieName = encodeURIComponent(name) + &#39;=&#39;;
-    var cookieStart = document.cookie.indexOf(cookieName);
-    var cookieValue = null;
-    if (cookieStart &gt; -1) {
-        var cookieEnd = document.cookie.indexOf(&#39;;&#39;, cookieStart);
-        if (cookieEnd == -1) {
-            cookieEnd = document.cookie.length;
+    <span class="hljs-comment">// 获取cookie</span>
+    <span class="hljs-attr">getcookie</span>:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">name</span>) </span>{
+    <span class="hljs-keyword">var</span> cookieName = <span class="hljs-built_in">encodeURIComponent</span>(name) + <span class="hljs-string">'='</span>;
+    <span class="hljs-keyword">var</span> cookieStart = <span class="hljs-built_in">document</span>.cookie.indexOf(cookieName);
+    <span class="hljs-keyword">var</span> cookieValue = <span class="hljs-literal">null</span>;
+    <span class="hljs-keyword">if</span> (cookieStart &gt; <span class="hljs-number">-1</span>) {
+        <span class="hljs-keyword">var</span> cookieEnd = <span class="hljs-built_in">document</span>.cookie.indexOf(<span class="hljs-string">';'</span>, cookieStart);
+        <span class="hljs-keyword">if</span> (cookieEnd == <span class="hljs-number">-1</span>) {
+            cookieEnd = <span class="hljs-built_in">document</span>.cookie.length;
         }
-        cookieValue = decodeURIComponent(document.cookie.substring(cookieStart + cookieName.length, cookieEnd));
+        cookieValue = <span class="hljs-built_in">decodeURIComponent</span>(<span class="hljs-built_in">document</span>.cookie.substring(cookieStart + cookieName.length, cookieEnd));
     }
-    return cookieValue;
+    <span class="hljs-keyword">return</span> cookieValue;
 },
-   // 删除cookie
-    unsetcookie:function (name,path,domain,secure) {
-    this.setcookie(name,&quot;&quot;,new Date(0),path,domain,secure);
+   <span class="hljs-comment">// 删除cookie</span>
+    <span class="hljs-attr">unsetcookie</span>:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">name,path,domain,secure</span>) </span>{
+    <span class="hljs-keyword">this</span>.setcookie(name,<span class="hljs-string">""</span>,<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-number">0</span>),path,domain,secure);
 }
-}</code></pre>
+}</span></code></pre>
 <h2 id="包装子cookie">包装子cookie</h2>
-<pre><code class="language-javascript">//子cookie
-var subcookieUtil={
-    get:function(name,subname){
-        var subcookie=getAll(name);
-        if(subcookie){
-            return subcookie[subname];
-        }else {
-            return null;
+<pre><code class="language-javascript"><span class="hljs-comment">//子cookie</span>
+<span class="hljs-keyword">var</span> subcookieUtil={
+    <span class="hljs-attr">get</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name,subname</span>)</span>{
+        <span class="hljs-keyword">var</span> subcookie=getAll(name);
+        <span class="hljs-keyword">if</span>(subcookie){
+            <span class="hljs-keyword">return</span> subcookie[subname];
+        }<span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
         }
     },
-    getAll:function(name){
-        var cookieName = encodeURIComponent(name) + &#39;=&#39;;
-        var cookieStart = document.cookie.indexOf(cookieName);
-        var cookieValue = null;
-        var subcookie,result={};
-        var len,i,parts;
-        if (cookieStart &gt; -1) {
-            var cookieEnd = document.cookie.indexOf(&#39;;&#39;, cookieStart);
-            if (cookieEnd == -1) {
-            cookieEnd = document.cookie.length;
+    <span class="hljs-attr">getAll</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>)</span>{
+        <span class="hljs-keyword">var</span> cookieName = <span class="hljs-built_in">encodeURIComponent</span>(name) + <span class="hljs-string">'='</span>;
+        <span class="hljs-keyword">var</span> cookieStart = <span class="hljs-built_in">document</span>.cookie.indexOf(cookieName);
+        <span class="hljs-keyword">var</span> cookieValue = <span class="hljs-literal">null</span>;
+        <span class="hljs-keyword">var</span> subcookie,result={};
+        <span class="hljs-keyword">var</span> len,i,parts;
+        <span class="hljs-keyword">if</span> (cookieStart &gt; <span class="hljs-number">-1</span>) {
+            <span class="hljs-keyword">var</span> cookieEnd = <span class="hljs-built_in">document</span>.cookie.indexOf(<span class="hljs-string">';'</span>, cookieStart);
+            <span class="hljs-keyword">if</span> (cookieEnd == <span class="hljs-number">-1</span>) {
+            cookieEnd = <span class="hljs-built_in">document</span>.cookie.length;
            }
-        cookieValue = document.cookie.substring(cookieStart + cookieName.length, cookieEnd);
-        if(cookieValue.length&gt;0){
-            subcookie=cookieValue.split(&#39;&amp;&#39;);
+        cookieValue = <span class="hljs-built_in">document</span>.cookie.substring(cookieStart + cookieName.length, cookieEnd);
+        <span class="hljs-keyword">if</span>(cookieValue.length&gt;<span class="hljs-number">0</span>){
+            subcookie=cookieValue.split(<span class="hljs-string">'&amp;'</span>);
             len=subcookie.length;
-            for(i=0;i&lt;llen;i++){
-                parts=subcookie[i].split(&#39;=&#39;);
-                result[parts[0]]=parts[1];
+            <span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;llen;i++){
+                parts=subcookie[i].split(<span class="hljs-string">'='</span>);
+                result[parts[<span class="hljs-number">0</span>]]=parts[<span class="hljs-number">1</span>];
             }
-            return result;
+            <span class="hljs-keyword">return</span> result;
         }
        }
-    return null;
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
     },
 
-    set:function (name, subname,value, expires, path, domain, secure) {
-        var subcookies=this.getAll(name)||{};
+    <span class="hljs-attr">set</span>:<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">name, subname,value, expires, path, domain, secure</span>) </span>{
+        <span class="hljs-keyword">var</span> subcookies=<span class="hljs-keyword">this</span>.getAll(name)||{};
         subcookies[subname]=value;
-        this.setAll(name,subcookies,expires,path,domain,secure);
+        <span class="hljs-keyword">this</span>.setAll(name,subcookies,expires,path,domain,secure);
     },
 
-    setAll:function(name,subcookies,expires,path,domain,secure){
-        var cookieText = encodeURIComponent(name) + &#39;=&#39;;
-        var subcookiesParts=new Array();
-        var subname;
-        for(subname in subcookies){
-            if(subname.length&gt;0&amp;&amp;subcookies.hasOwnProperty(subname)){
-                subcookiesParts.push(encodeURIComponent(subname)+&#39;=&#39;+encodeURIComponent(subcookies[subname]));
+    <span class="hljs-attr">setAll</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name,subcookies,expires,path,domain,secure</span>)</span>{
+        <span class="hljs-keyword">var</span> cookieText = <span class="hljs-built_in">encodeURIComponent</span>(name) + <span class="hljs-string">'='</span>;
+        <span class="hljs-keyword">var</span> subcookiesParts=<span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>();
+        <span class="hljs-keyword">var</span> subname;
+        <span class="hljs-keyword">for</span>(subname <span class="hljs-keyword">in</span> subcookies){
+            <span class="hljs-keyword">if</span>(subname.length&gt;<span class="hljs-number">0</span>&amp;&amp;subcookies.hasOwnProperty(subname)){
+                subcookiesParts.push(<span class="hljs-built_in">encodeURIComponent</span>(subname)+<span class="hljs-string">'='</span>+<span class="hljs-built_in">encodeURIComponent</span>(subcookies[subname]));
             }
         }
-        if(subcookiesParts.length&gt;0){
-            cookieText+=subcookiesParts.join(&#39;&amp;&#39;);
-            if (expires instanceof Date) {
-                cookieText += &#39;; expires=&#39; + expires.toGMTString();
+        <span class="hljs-keyword">if</span>(subcookiesParts.length&gt;<span class="hljs-number">0</span>){
+            cookieText+=subcookiesParts.join(<span class="hljs-string">'&amp;'</span>);
+            <span class="hljs-keyword">if</span> (expires <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Date</span>) {
+                cookieText += <span class="hljs-string">'; expires='</span> + expires.toGMTString();
             }
-            if (path) {
-                cookieText += &#39;; expires=&#39; + expires;
+            <span class="hljs-keyword">if</span> (path) {
+                cookieText += <span class="hljs-string">'; expires='</span> + expires;
              }
-            if (domain) {
-                cookieText += &#39;; domain=&#39; + domain;
+            <span class="hljs-keyword">if</span> (domain) {
+                cookieText += <span class="hljs-string">'; domain='</span> + domain;
             }
-            if (secure) {
-                cookieText += &#39;; secure&#39;;
+            <span class="hljs-keyword">if</span> (secure) {
+                cookieText += <span class="hljs-string">'; secure'</span>;
             }
         }
 
-        document.cookie = cookieText;
+        <span class="hljs-built_in">document</span>.cookie = cookieText;
     },
-    unset:function(name,subname,path,domain,secure){
-          var subcookies=this.getAll(name);
-        if(subcookies){
-              delete subcookies[subname];
-              this.setAll(name,subcookies,null,path,domain,secure);
+    <span class="hljs-attr">unset</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name,subname,path,domain,secure</span>)</span>{
+          <span class="hljs-keyword">var</span> subcookies=<span class="hljs-keyword">this</span>.getAll(name);
+        <span class="hljs-keyword">if</span>(subcookies){
+              <span class="hljs-keyword">delete</span> subcookies[subname];
+              <span class="hljs-keyword">this</span>.setAll(name,subcookies,<span class="hljs-literal">null</span>,path,domain,secure);
           }
         },
-    unsetAll:function(name,path,domain,secure){
-          this.setAll(name,null,new Date(0),path,domain,secure);
+    <span class="hljs-attr">unsetAll</span>:<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name,path,domain,secure</span>)</span>{
+          <span class="hljs-keyword">this</span>.setAll(name,<span class="hljs-literal">null</span>,<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-number">0</span>),path,domain,secure);
     }
 }</code></pre>
 <h2 id="indexeddb">indexedDB</h2>
 <pre><code class="language-javascript">
-var indexedDB=window.indexedDB||window.mozIndexedDB||window.msIndexedDB||window.webkitIndexedDB;
-var idbRequest=indexedDB.open(&#39;vvv&#39;);
-idbRequest.onsuccess=function(event){
+<span class="hljs-keyword">var</span> indexedDB=<span class="hljs-built_in">window</span>.indexedDB||<span class="hljs-built_in">window</span>.mozIndexedDB||<span class="hljs-built_in">window</span>.msIndexedDB||<span class="hljs-built_in">window</span>.webkitIndexedDB;
+<span class="hljs-keyword">var</span> idbRequest=indexedDB.open(<span class="hljs-string">'vvv'</span>);
+idbRequest.onsuccess=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>)</span>{
     database=event.target.result;
 }
-idbRequest.onerror=function(event){
+idbRequest.onerror=<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>)</span>{
     alert(event.target.errorCode);
 }</code></pre>
 <h3 id="objectcreate">Object.create</h3>
-<pre><code class="language-js">var objectCreate = function(arg){
-    if(!arg){ return {}};
-    function obj(){};
+<pre><code class="language-js"><span class="hljs-keyword">var</span> objectCreate = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">arg</span>)</span>{
+    <span class="hljs-keyword">if</span>(!arg){ <span class="hljs-keyword">return</span> {}};
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">obj</span>(<span class="hljs-params"></span>)</span>{};
     obj.prototype = arg;
-    return new obj();
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> obj();
 }
-Object.create = Object.create||objectCreate;</code></pre>
+<span class="hljs-built_in">Object</span>.create = <span class="hljs-built_in">Object</span>.create||objectCreate;</code></pre>
 <h2 id="手写typeof">手写typeof</h2>
-<pre><code class="language-javascript">function type(obj) {
-    var toString = Object.prototype.toString;
-    var map = {
-        &#39;[object Boolean]&#39;  : &#39;boolean&#39;, 
-        &#39;[object Number]&#39;   : &#39;number&#39;, 
-        &#39;[object String]&#39;   : &#39;string&#39;, 
-        &#39;[object Function]&#39; : &#39;function&#39;, 
-        &#39;[object Array]&#39;    : &#39;array&#39;, 
-        &#39;[object Date]&#39;     : &#39;date&#39;, 
-        &#39;[object RegExp]&#39;   : &#39;regExp&#39;, 
-        &#39;[object Undefined]&#39;: &#39;undefined&#39;,
-        &#39;[object Null]&#39;     : &#39;null&#39;, 
-        &#39;[object Object]&#39;   : &#39;object&#39;
+<pre><code class="language-javascript">function <span class="hljs-class"><span class="hljs-keyword">type</span>(<span class="hljs-params">obj</span>) </span>{
+    <span class="hljs-keyword">var</span> toString = <span class="hljs-type">Object</span>.prototype.toString;
+    <span class="hljs-keyword">var</span> map = {
+        '[<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Boolean</span>]'  </span>: <span class="hljs-symbol">'boolea</span>n', 
+        '[<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Number</span>]'   </span>: <span class="hljs-symbol">'numbe</span>r', 
+        '[<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">String</span>]'   </span>: <span class="hljs-symbol">'strin</span>g', 
+        '[<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Function</span>]' </span>: <span class="hljs-symbol">'functio</span>n', 
+        '[<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Array</span>]'    </span>: <span class="hljs-symbol">'arra</span>y', 
+        '[<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Date</span>]'     </span>: <span class="hljs-symbol">'dat</span>e', 
+        '[<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">RegExp</span>]'   </span>: <span class="hljs-symbol">'regEx</span>p', 
+        '[<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Undefined</span>]'</span>: <span class="hljs-symbol">'undefine</span>d',
+        '[<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Null</span>]'     </span>: <span class="hljs-symbol">'nul</span>l', 
+        '[<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">Object</span>]'   </span>: <span class="hljs-symbol">'objec</span>t'
     };
-    if(obj instanceof Element) {//因为对不同标签，toString会返回对应不同标签的构造函数
-        return &#39;element&#39;;
+    <span class="hljs-keyword">if</span>(obj instanceof <span class="hljs-type">Element</span>) {<span class="hljs-comment">//因为对不同标签，toString会返回对应不同标签的构造函数</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-symbol">'elemen</span>t';
     }
-    return map[toString.call(obj)];
+    <span class="hljs-keyword">return</span> map[toString.call(obj)];
 }</code></pre>
 <h2 id="使用useragent判断使用的是什么浏览器">使用userAgent判断使用的是什么浏览器</h2>
 <p>360的兼容模式用的是IE、极速模式用的是chrome的内核</p>
 <pre><code class="language-javascript"> function validB(){ 
   var u_agent = navigator.userAgent; 
-  var B_name=&quot;Failed to identify the browser&quot;; 
-  if(u_agent.indexOf(&quot;Firefox&quot;)&gt;-1){ 
-      B_name=&quot;Firefox&quot;; 
-  }else if(u_agent.indexOf(&quot;Chrome&quot;)&gt;-1){ 
-      B_name=&quot;Chrome&quot;; 
-  }else if(u_agent.indexOf(&quot;MSIE&quot;)&gt;-1&amp;&amp;u_agent.indexOf(&quot;Trident&quot;)&gt;-1){ 
-      B_name=&quot;IE(8-10)&quot;;  
+  var <span class="hljs-attribute">B_name</span>=<span class="hljs-string">"Failed to identify the browser"</span>; 
+  <span class="hljs-keyword">if</span>(u_agent.indexOf(<span class="hljs-string">"Firefox"</span>)&gt;-1){ 
+      <span class="hljs-attribute">B_name</span>=<span class="hljs-string">"Firefox"</span>; 
+  }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(u_agent.indexOf(<span class="hljs-string">"Chrome"</span>)&gt;-1){ 
+      <span class="hljs-attribute">B_name</span>=<span class="hljs-string">"Chrome"</span>; 
+  }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(u_agent.indexOf(<span class="hljs-string">"MSIE"</span>)&gt;-1&amp;&amp;u_agent.indexOf(<span class="hljs-string">"Trident"</span>)&gt;-1){ 
+      <span class="hljs-attribute">B_name</span>=<span class="hljs-string">"IE(8-10)"</span>;  
   }
-    document.write(&quot;B_name:&quot;+B_name+&quot;&lt;br&gt;&quot;);
-    document.write(&quot;u_agent:&quot;+u_agent+&quot;&lt;br&gt;&quot;); 
+    document.write(<span class="hljs-string">"B_name:"</span>+B_name+<span class="hljs-string">"&lt;br&gt;"</span>);
+    document.write(<span class="hljs-string">"u_agent:"</span>+u_agent+<span class="hljs-string">"&lt;br&gt;"</span>); 
 } 
 </code></pre>
 <h2 id="深度克隆">深度克隆</h2>
-<pre><code class="language-javascript">/**
+<pre><code class="language-javascript"><span class="hljs-comment">/**
  * 
  * 深度克隆方法一，用的是instanceof
- */
-function clone(Obj) {
-    var buf;   
-    if (Obj instanceof Array) {
-        buf = [];  // 创建一个空的数组
-        var i = Obj.length;
-        while (i--) {
-            buf[i] = clone(Obj[i]);
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clone</span><span class="hljs-params">(Obj)</span> </span>{
+    <span class="hljs-keyword">var</span> buf;   
+    <span class="hljs-keyword">if</span> (Obj <span class="hljs-keyword">instanceof</span> <span class="hljs-keyword">Array</span>) {
+        buf = [];  <span class="hljs-comment">// 创建一个空的数组</span>
+        <span class="hljs-keyword">var</span> i = Obj.length;
+        <span class="hljs-keyword">while</span> (i--) {
+            buf[i] = <span class="hljs-keyword">clone</span>(Obj[i]);
         }
-        return buf;
-    } else if (Obj instanceof Object){
-        buf = {};  // 创建一个空对象
-        for (var k in Obj) {  // 为这个对象添加新的属性
-            buf[k] = clone(Obj[k]);
+        <span class="hljs-keyword">return</span> buf;
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (Obj <span class="hljs-keyword">instanceof</span> Object){
+        buf = {};  <span class="hljs-comment">// 创建一个空对象</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> k in Obj) {  <span class="hljs-comment">// 为这个对象添加新的属性</span>
+            buf[k] = <span class="hljs-keyword">clone</span>(Obj[k]);
         }
-        return buf;
-    }else{
-        return Obj;
+        <span class="hljs-keyword">return</span> buf;
+    }<span class="hljs-keyword">else</span>{
+        <span class="hljs-keyword">return</span> Obj;
     }
 }
 
-/**
+<span class="hljs-comment">/**
  * 
  * 深度拷贝方法二，用的是 toString
- */
-function deepClone(data) {
-    var t = type(data), o, i, ni;
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">deepClone</span><span class="hljs-params">(data)</span> </span>{
+    <span class="hljs-keyword">var</span> t = type(data), o, i, ni;
 
-    if(t === &#39;array&#39;) {
+    <span class="hljs-keyword">if</span>(t === <span class="hljs-string">'array'</span>) {
         o = [];
-    }else if( t === &#39;object&#39;) {
+    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( t === <span class="hljs-string">'object'</span>) {
         o = {};
-    }else {
-        return data;
+    }<span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> data;
     }
 
-    if(t === &#39;array&#39;) {
-        for (i = 0, ni = data.length; i &lt; ni; i++) {
+    <span class="hljs-keyword">if</span>(t === <span class="hljs-string">'array'</span>) {
+        <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>, ni = data.length; i &lt; ni; i++) {
             o.push(deepClone(data[i]));
         }
-        return o;
-    }else if( t === &#39;object&#39;) {
-        for( i in data) {
+        <span class="hljs-keyword">return</span> o;
+    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>( t === <span class="hljs-string">'object'</span>) {
+        <span class="hljs-keyword">for</span>( i in data) {
             o[i] = deepClone(data[i]);
         }
-        return o;
+        <span class="hljs-keyword">return</span> o;
     }
 }
-/**
+<span class="hljs-comment">/**
  * 
  * 深度拷贝方法四，只支持基本数值类型
  * 
 1.他无法实现对函数 、RegExp等特殊对象的克隆
 2.会抛弃对象的constructor,所有的构造函数会指向Object
 3.对象有循环引用,会报错
- */
-const newObj = JSON.parse(JSON.stringify(oldObj));
+ */</span>
+<span class="hljs-keyword">const</span> newObj = JSON.parse(JSON.stringify(oldObj));
 
-/**
+<span class="hljs-comment">/**
  * 
  * 深度拷贝方法三，更多类型
- */
+ */</span>
 
-const isType = (obj, type) =&gt; {
-  if (typeof obj !== &#39;object&#39;) return false;
-  const typeString = Object.prototype.toString.call(obj);
-  let flag;
-  switch (type) {
-    case &#39;Array&#39;:
-      flag = typeString === &#39;[object Array]&#39;;
-      break;
-    case &#39;Date&#39;:
-      flag = typeString === &#39;[object Date]&#39;;
-      break;
-    case &#39;RegExp&#39;:
-      flag = typeString === &#39;[object RegExp]&#39;;
-      break;
-    default:
-      flag = false;
+<span class="hljs-keyword">const</span> isType = (obj, type) =&gt; {
+  <span class="hljs-keyword">if</span> (typeof obj !== <span class="hljs-string">'object'</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+  <span class="hljs-keyword">const</span> typeString = Object.prototype.toString.call(obj);
+  <span class="hljs-keyword">let</span> flag;
+  <span class="hljs-keyword">switch</span> (type) {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'Array'</span>:
+      flag = typeString === <span class="hljs-string">'[object Array]'</span>;
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'Date'</span>:
+      flag = typeString === <span class="hljs-string">'[object Date]'</span>;
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">case</span> <span class="hljs-string">'RegExp'</span>:
+      flag = typeString === <span class="hljs-string">'[object RegExp]'</span>;
+      <span class="hljs-keyword">break</span>;
+    <span class="hljs-keyword">default</span>:
+      flag = <span class="hljs-keyword">false</span>;
   }
-  return flag;
+  <span class="hljs-keyword">return</span> flag;
 };
 
-const getRegExp = re =&gt; {
-  var flags = &#39;&#39;;
-  if (re.global) flags += &#39;g&#39;;
-  if (re.ignoreCase) flags += &#39;i&#39;;
-  if (re.multiline) flags += &#39;m&#39;;
-  return flags;
+<span class="hljs-keyword">const</span> getRegExp = re =&gt; {
+  <span class="hljs-keyword">var</span> flags = <span class="hljs-string">''</span>;
+  <span class="hljs-keyword">if</span> (re.<span class="hljs-keyword">global</span>) flags += <span class="hljs-string">'g'</span>;
+  <span class="hljs-keyword">if</span> (re.ignoreCase) flags += <span class="hljs-string">'i'</span>;
+  <span class="hljs-keyword">if</span> (re.multiline) flags += <span class="hljs-string">'m'</span>;
+  <span class="hljs-keyword">return</span> flags;
 };
-/**
+<span class="hljs-comment">/**
 * deep clone
-* @param  {[type]} parent object 需要进行克隆的对象
-* @return {[type]}        深克隆后的对象
-*/
-const clone = parent =&gt; {
-  // 维护两个储存循环引用的数组
-  const parents = [];
-  const children = [];
+* <span class="hljs-doctag">@param</span>  {[type]} parent object 需要进行克隆的对象
+* <span class="hljs-doctag">@return</span> {[type]}        深克隆后的对象
+*/</span>
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">clone</span> = <span class="hljs-keyword">parent</span> =&gt; {
+  <span class="hljs-comment">// 维护两个储存循环引用的数组</span>
+  <span class="hljs-keyword">const</span> parents = [];
+  <span class="hljs-keyword">const</span> children = [];
 
-  const _clone = parent =&gt; {
-    if (parent === null) return null;
-    if (typeof parent !== &#39;object&#39;) return parent;
+  <span class="hljs-keyword">const</span> _clone = <span class="hljs-keyword">parent</span> =&gt; {
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">parent</span> === <span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;
+    <span class="hljs-keyword">if</span> (typeof <span class="hljs-keyword">parent</span> !== <span class="hljs-string">'object'</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">parent</span>;
 
-    let child, proto;
+    <span class="hljs-keyword">let</span> child, proto;
 
-    if (isType(parent, &#39;Array&#39;)) {
-      // 对数组做特殊处理
+    <span class="hljs-keyword">if</span> (isType(<span class="hljs-keyword">parent</span>, <span class="hljs-string">'Array'</span>)) {
+      <span class="hljs-comment">// 对数组做特殊处理</span>
       child = [];
-    } else if (isType(parent, &#39;RegExp&#39;)) {
-      // 对正则对象做特殊处理
-      child = new RegExp(parent.source, getRegExp(parent));
-      if (parent.lastIndex) child.lastIndex = parent.lastIndex;
-    } else if (isType(parent, &#39;Date&#39;)) {
-      // 对Date对象做特殊处理
-      child = new Date(parent.getTime());
-    } else {
-      // 处理对象原型
-      proto = Object.getPrototypeOf(parent);
-      // 利用Object.create切断原型链
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (isType(<span class="hljs-keyword">parent</span>, <span class="hljs-string">'RegExp'</span>)) {
+      <span class="hljs-comment">// 对正则对象做特殊处理</span>
+      child = <span class="hljs-keyword">new</span> RegExp(<span class="hljs-keyword">parent</span>.source, getRegExp(<span class="hljs-keyword">parent</span>));
+      <span class="hljs-keyword">if</span> (<span class="hljs-keyword">parent</span>.lastIndex) child.lastIndex = <span class="hljs-keyword">parent</span>.lastIndex;
+    } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (isType(<span class="hljs-keyword">parent</span>, <span class="hljs-string">'Date'</span>)) {
+      <span class="hljs-comment">// 对Date对象做特殊处理</span>
+      child = <span class="hljs-keyword">new</span> Date(<span class="hljs-keyword">parent</span>.getTime());
+    } <span class="hljs-keyword">else</span> {
+      <span class="hljs-comment">// 处理对象原型</span>
+      proto = Object.getPrototypeOf(<span class="hljs-keyword">parent</span>);
+      <span class="hljs-comment">// 利用Object.create切断原型链</span>
       child = Object.create(proto);
     }
 
-    // 处理循环引用
-    const index = parents.indexOf(parent);
+    <span class="hljs-comment">// 处理循环引用</span>
+    <span class="hljs-keyword">const</span> index = parents.indexOf(<span class="hljs-keyword">parent</span>);
 
-    if (index != -1) {
-      // 如果父数组存在本对象,说明之前已经被引用过,直接返回此对象
-      return children[index];
+    <span class="hljs-keyword">if</span> (index != <span class="hljs-number">-1</span>) {
+      <span class="hljs-comment">// 如果父数组存在本对象,说明之前已经被引用过,直接返回此对象</span>
+      <span class="hljs-keyword">return</span> children[index];
     }
-    parents.push(parent);
+    parents.push(<span class="hljs-keyword">parent</span>);
     children.push(child);
 
-    for (let i in parent) {
-      // 递归
-      child[i] = _clone(parent[i]);
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i in <span class="hljs-keyword">parent</span>) {
+      <span class="hljs-comment">// 递归</span>
+      child[i] = _clone(<span class="hljs-keyword">parent</span>[i]);
     }
 
-    return child;
+    <span class="hljs-keyword">return</span> child;
   };
-  return _clone(parent);
+  <span class="hljs-keyword">return</span> _clone(<span class="hljs-keyword">parent</span>);
 };
 
 </code></pre>
 <h2 id="组合使用构造函数模式和原型模式创建对象">组合使用构造函数模式和原型模式创建对象</h2>
-<pre><code class="language-javascript">//组合使用构造函数模式和原型模式创建对象
-function Person(name,age){
-    this.name=name;
-    this.age=age;
-    this.friends=[&quot;may&quot;,&quot;john&quot;];
+<pre><code class="language-javascript"><span class="hljs-comment">//组合使用构造函数模式和原型模式创建对象</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name,age</span>)</span>{
+    <span class="hljs-keyword">this</span>.name=name;
+    <span class="hljs-keyword">this</span>.age=age;
+    <span class="hljs-keyword">this</span>.friends=[<span class="hljs-string">"may"</span>,<span class="hljs-string">"john"</span>];
 }
 Person.prototype={
-    constructor:Person,//字面量形式的原型默认构造函数是object,所以在这里要指定constructor
-    sayName=function(){
-        alert(this.name);
+    <span class="hljs-keyword">constructor</span>:Person,//字面量形式的原型默认构造函数是object,所以在这里要指定<span class="hljs-keyword">constructor</span>
+    sayName=function(<span class="hljs-params"></span>){
+        alert(<span class="hljs-params"><span class="hljs-keyword">this</span>.name</span>);
     }
 }</code></pre>
 <h2 id="组合继承">组合继承</h2>
-<pre><code class="language-javascript">//组合继承
-funcion super(name){
-    this.name=name;
-    this.color=[&quot;red&quot;,&quot;blue&quot;];
+<pre><code class="language-javascript"><span class="hljs-comment">//组合继承</span>
+funcion <span class="hljs-keyword">super</span>(name){
+    <span class="hljs-keyword">this</span>.name=name;
+    <span class="hljs-keyword">this</span>.color=[<span class="hljs-string">"red"</span>,<span class="hljs-string">"blue"</span>];
 
 }
-Super.prototype.sayname=function(){
-    alert(this.name);
+Super.prototype.sayname=<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+    alert(<span class="hljs-keyword">this</span>.name);
 }
-function Sub(age){
-    Super.call(this);
-    this.age=age;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Sub</span><span class="hljs-params">(age)</span></span>{
+    Super.call(<span class="hljs-keyword">this</span>);
+    <span class="hljs-keyword">this</span>.age=age;
 }
-Sub.prototype=new Super();//
-Sub.prototype.constructor=Sub;//这个很重要！！
-Sub.prototype.sayage=function(){
-    alert(this.age);
+Sub.prototype=<span class="hljs-keyword">new</span> Super();<span class="hljs-comment">//</span>
+Sub.prototype.constructor=Sub;<span class="hljs-comment">//这个很重要！！</span>
+Sub.prototype.sayage=<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+    alert(<span class="hljs-keyword">this</span>.age);
 }
 </code></pre>
 <h2 id="观察者模式">观察者模式</h2>
-<pre><code class="language-javascript">//观察者模式
-function EventTarget(){     
-    this.handlers = {}; 
+<pre><code class="language-javascript"><span class="hljs-comment">//观察者模式</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">EventTarget</span>(<span class="hljs-params"></span>)</span>{     
+    <span class="hljs-keyword">this</span>.handlers = {}; 
 } 
 EventTarget.prototype = {     
-    constructor: EventTarget,
-    addHandler: function(type, handler){
-         if (typeof this.handlers[type] == &quot;undefined&quot;){
-              this.handlers[type] = [];
+    <span class="hljs-keyword">constructor</span>: EventTarget,
+    addHandler: function(<span class="hljs-params"><span class="hljs-keyword">type</span>, handler</span>){
+         <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> <span class="hljs-keyword">this</span>.handlers[<span class="hljs-keyword">type</span>] == <span class="hljs-string">"undefined"</span>){
+              <span class="hljs-keyword">this</span>.handlers[<span class="hljs-keyword">type</span>] = [];
          }
-         this.handlers[type].push(handler);
+         <span class="hljs-keyword">this</span>.handlers[<span class="hljs-keyword">type</span>].push(handler);
      }, 
-    fire: function(event){//执行
-         if (!event.target){
-             event.target = this;
+    fire: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>)</span>{<span class="hljs-comment">//执行</span>
+         <span class="hljs-keyword">if</span> (!event.target){
+             event.target = <span class="hljs-keyword">this</span>;
          }
-         if (this.handlers[event.type] instanceof Array){
-             var handlers = this.handlers[event.type];
-             for (var i=0, len=handlers.length; i &lt; len; i++){
+         <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.handlers[event.type] <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>){
+             <span class="hljs-keyword">var</span> handlers = <span class="hljs-keyword">this</span>.handlers[event.type];
+             <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>, len=handlers.length; i &lt; len; i++){
                  handlers[i](event); 
             }
          }
      },
-     removeHandler: function(type, handler){ 
-        if (this.handlers[type] instanceof Array){ 
-            var handlers = this.handlers[type]; 
-            for (var i=0, len=handlers.length; i &lt; len; i++){ 
-                if (handlers[i] === handler){ 
-                    break;
+     removeHandler: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"><span class="hljs-keyword">type</span>, handler</span>)</span>{ 
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.handlers[<span class="hljs-keyword">type</span>] <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Array</span>){ 
+            <span class="hljs-keyword">var</span> handlers = <span class="hljs-keyword">this</span>.handlers[<span class="hljs-keyword">type</span>]; 
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>, len=handlers.length; i &lt; len; i++){ 
+                <span class="hljs-keyword">if</span> (handlers[i] === handler){ 
+                    <span class="hljs-keyword">break</span>;
                  }
              }
-             handlers.splice(i, 1); 
+             handlers.splice(i, <span class="hljs-number">1</span>); 
           }
       }
 };</code></pre>
 <h2 id="分享一个题目">分享一个题目</h2>
 <pre><code class="language-javascript">
-//[附加题] 请实现下面的自定义事件 Event 对象的接口，功能见注释(测试1)
-//该 Event 对象的接口需要能被其他对象拓展复用(测试2)
-//测试1
-Event.on(&#39;test&#39;, function (result) {
-    console.log(result);
+<span class="hljs-comment">//[附加题] 请实现下面的自定义事件 Event 对象的接口，功能见注释(测试1)</span>
+<span class="hljs-comment">//该 Event 对象的接口需要能被其他对象拓展复用(测试2)</span>
+<span class="hljs-comment">//测试1</span>
+Event.on(<span class="hljs-string">'test'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">result</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(result);
 });
-Event.on(&#39;test&#39;, function () {
-    console.log(&#39;test&#39;);
+Event.on(<span class="hljs-string">'test'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'test'</span>);
 });
-Event.emit(&#39;test&#39;, &#39;hello world&#39;); // 输出 &#39;hello world&#39; 和 &#39;test&#39;
-// 测试2
-var person1 = {};
-var person2 = {};
-Object.assign(person1, Event);
-Object.assign(person2, Event);
-person1.on(&#39;call1&#39;, function () {
-    console.log(&#39;person1&#39;);
+Event.emit(<span class="hljs-string">'test'</span>, <span class="hljs-string">'hello world'</span>); <span class="hljs-comment">// 输出 'hello world' 和 'test'</span>
+<span class="hljs-comment">// 测试2</span>
+<span class="hljs-keyword">var</span> person1 = {};
+<span class="hljs-keyword">var</span> person2 = {};
+<span class="hljs-built_in">Object</span>.assign(person1, Event);
+<span class="hljs-built_in">Object</span>.assign(person2, Event);
+person1.on(<span class="hljs-string">'call1'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'person1'</span>);
 });
-person2.on(&#39;call2&#39;, function () {
-    console.log(&#39;person2&#39;);
+person2.on(<span class="hljs-string">'call2'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'person2'</span>);
 });
-person1.emit(&#39;call1&#39;); //输出 &#39;person1&#39;
-person1.emit(&#39;call2&#39;); // 没有输出
-person2.emit(&#39;call1&#39;); // 没有输出
-person2.emit(&#39;call2&#39;); // 输出 &#39;person2&#39;
-var Event = {
-    // 通过on接口监听事件eventName
-    // 如果事件eventName被触发，则执行callback回调函数
-    on: function (eventName, callback) {
-        //你的代码
-        if(!this.handles){
-            //Object.assign(target, source);
-//这个是ES6的新对象方法，用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target）。
-            Object.defineProperty(this, &quot;handles&quot;, {
-                value: {},
-                enumerable: false,//关键！
-                configurable: true,
-                writable: true
+person1.emit(<span class="hljs-string">'call1'</span>); <span class="hljs-comment">//输出 'person1'</span>
+person1.emit(<span class="hljs-string">'call2'</span>); <span class="hljs-comment">// 没有输出</span>
+person2.emit(<span class="hljs-string">'call1'</span>); <span class="hljs-comment">// 没有输出</span>
+person2.emit(<span class="hljs-string">'call2'</span>); <span class="hljs-comment">// 输出 'person2'</span>
+<span class="hljs-keyword">var</span> Event = {
+    <span class="hljs-comment">// 通过on接口监听事件eventName</span>
+    <span class="hljs-comment">// 如果事件eventName被触发，则执行callback回调函数</span>
+    <span class="hljs-attr">on</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">eventName, callback</span>) </span>{
+        <span class="hljs-comment">//你的代码</span>
+        <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">this</span>.handles){
+            <span class="hljs-comment">//Object.assign(target, source);</span>
+<span class="hljs-comment">//这个是ES6的新对象方法，用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target）。</span>
+            <span class="hljs-built_in">Object</span>.defineProperty(<span class="hljs-keyword">this</span>, <span class="hljs-string">"handles"</span>, {
+                <span class="hljs-attr">value</span>: {},
+                <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">false</span>,<span class="hljs-comment">//关键！</span>
+                <span class="hljs-attr">configurable</span>: <span class="hljs-literal">true</span>,
+                <span class="hljs-attr">writable</span>: <span class="hljs-literal">true</span>
             })
         }
 
-       if(!this.handles[eventName]){
-            this.handles[eventName]=[];
+       <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">this</span>.handles[eventName]){
+            <span class="hljs-keyword">this</span>.handles[eventName]=[];
        }
-       this.handles[eventName].push(callback);
+       <span class="hljs-keyword">this</span>.handles[eventName].push(callback);
     },
-    // 触发事件 eventName
-    emit: function (eventName) {
-        //你的代码
-       if(this.handles[arguments[0]]){
-           for(var i=0;i&lt;this.handles[arguments[0]].length;i++){
-               this.handles[arguments[0]][i](arguments[1]);
+    <span class="hljs-comment">// 触发事件 eventName</span>
+    <span class="hljs-attr">emit</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">eventName</span>) </span>{
+        <span class="hljs-comment">//你的代码</span>
+       <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.handles[<span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>]]){
+           <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-keyword">this</span>.handles[<span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>]].length;i++){
+               <span class="hljs-keyword">this</span>.handles[<span class="hljs-built_in">arguments</span>[<span class="hljs-number">0</span>]][i](<span class="hljs-built_in">arguments</span>[<span class="hljs-number">1</span>]);
            }
        }
     }
 };
-//输出所有页面宽度和高度大于50像素的节点。
-function traverse(oNode) {
-    var aResult = [];
-    oNode = oNode || document.body;
-    if (oNode.style) {
-        var nWidth = window.parseInt(oNode.style.width, 10) || 0;
-        var nHeight = window.parseInt(oNode.style.height, 10) || 0;
-        if (nWidth &gt; 50 &amp;&amp; nHeight &gt; 50) {
+<span class="hljs-comment">//输出所有页面宽度和高度大于50像素的节点。</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">traverse</span>(<span class="hljs-params">oNode</span>) </span>{
+    <span class="hljs-keyword">var</span> aResult = [];
+    oNode = oNode || <span class="hljs-built_in">document</span>.body;
+    <span class="hljs-keyword">if</span> (oNode.style) {
+        <span class="hljs-keyword">var</span> nWidth = <span class="hljs-built_in">window</span>.parseInt(oNode.style.width, <span class="hljs-number">10</span>) || <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">var</span> nHeight = <span class="hljs-built_in">window</span>.parseInt(oNode.style.height, <span class="hljs-number">10</span>) || <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">if</span> (nWidth &gt; <span class="hljs-number">50</span> &amp;&amp; nHeight &gt; <span class="hljs-number">50</span>) {
             aResult.push(oNode);
         }
     }
-    var aChildNodes = oNode.childNodes;
-    if (aChildNodes.length &gt; 0) {
-        for (var i = 0, l = aChildNodes.length; i &lt; l; i++) {
-            var oTmp = aChildNodes[i];
+    <span class="hljs-keyword">var</span> aChildNodes = oNode.childNodes;
+    <span class="hljs-keyword">if</span> (aChildNodes.length &gt; <span class="hljs-number">0</span>) {
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>, l = aChildNodes.length; i &lt; l; i++) {
+            <span class="hljs-keyword">var</span> oTmp = aChildNodes[i];
             aResult = aResult.concat(traverse(oTmp));
         }
     }
-    return aResult;
+    <span class="hljs-keyword">return</span> aResult;
 }
 </code></pre>
 <h3 id="ie的userdata">IE的userData</h3>
-<pre><code class="language-javascript"> function set_ud(key,value) {
-    var a = document.getElementById(&#39;x&#39;); // x 为任意div 的id 值
-    a.addBehavior(&quot;#default#userdata&quot;);
-    a.setAttribute(key,value);
-    a.save(&quot;db&quot;);
+<pre><code class="language-javascript"> <span class="hljs-keyword">function</span> set<span class="hljs-constructor">_ud(<span class="hljs-params">key</span>,<span class="hljs-params">value</span>)</span> {
+    var a = document.get<span class="hljs-constructor">ElementById('<span class="hljs-params">x</span>')</span>; <span class="hljs-comment">// x 为任意div 的id 值</span>
+    a.add<span class="hljs-constructor">Behavior(<span class="hljs-string">"#default#userdata"</span>)</span>;
+    a.set<span class="hljs-constructor">Attribute(<span class="hljs-params">key</span>,<span class="hljs-params">value</span>)</span>;
+    a.save(<span class="hljs-string">"db"</span>);
 }
-function get_ud(key) {
-    var a = document.getElementById(&#39;x&#39;);
-    a.addBehavior(&quot;#default#userdata&quot;);
-    a.load(&quot;db&quot;);
-    alert(a.getAttribute(key));
+<span class="hljs-keyword">function</span> get<span class="hljs-constructor">_ud(<span class="hljs-params">key</span>)</span> {
+    var a = document.get<span class="hljs-constructor">ElementById('<span class="hljs-params">x</span>')</span>;
+    a.add<span class="hljs-constructor">Behavior(<span class="hljs-string">"#default#userdata"</span>)</span>;
+    a.load(<span class="hljs-string">"db"</span>);
+    alert(a.get<span class="hljs-constructor">Attribute(<span class="hljs-params">key</span>)</span>);
 }
-function del_ud(key) {
-    var a = document.getElementById(&#39;x&#39;);
-    a.addBehavior(&quot;#default#userdata&quot;);
-    a.setAttribute(key, &quot;&quot;); // 设置为空值即可
-    a.save(&quot;db&quot;);
+<span class="hljs-keyword">function</span> del<span class="hljs-constructor">_ud(<span class="hljs-params">key</span>)</span> {
+    var a = document.get<span class="hljs-constructor">ElementById('<span class="hljs-params">x</span>')</span>;
+    a.add<span class="hljs-constructor">Behavior(<span class="hljs-string">"#default#userdata"</span>)</span>;
+    a.set<span class="hljs-constructor">Attribute(<span class="hljs-params">key</span>, <span class="hljs-string">""</span>)</span>; <span class="hljs-comment">// 设置为空值即可</span>
+    a.save(<span class="hljs-string">"db"</span>);
 }
-window.onload = function(){
-    set_ud(&#39;a&#39;,&#39;xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#39;); // 设置
-    get_ud(&#39;a&#39;); // 获取a 的值
-    del_ud(&#39;a&#39;); // 删除a 的值
-    get_ud(&#39;a&#39;); // 获取a 的值
+window.onload = <span class="hljs-keyword">function</span><span class="hljs-literal">()</span>{
+    set<span class="hljs-constructor">_ud('<span class="hljs-params">a</span>','<span class="hljs-params">xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span>')</span>; <span class="hljs-comment">// 设置</span>
+    get<span class="hljs-constructor">_ud('<span class="hljs-params">a</span>')</span>; <span class="hljs-comment">// 获取a 的值</span>
+    del<span class="hljs-constructor">_ud('<span class="hljs-params">a</span>')</span>; <span class="hljs-comment">// 删除a 的值</span>
+    get<span class="hljs-constructor">_ud('<span class="hljs-params">a</span>')</span>; <span class="hljs-comment">// 获取a 的值</span>
 };</code></pre>
 
         </div>
@@ -1217,5 +1221,8 @@ window.onload = function(){
     //文章里面的外链都打开新窗口    
     var alist = document.querySelectorAll(".article a");
     for(let i=0;i<alist.length;i++) if(alist[i].href.indexOf('#') < 0) alist[i].target="_blank"    
+    //加上table样式
+    var tableList = document.querySelectorAll("table");
+    for(let i = 0;i<tableList.length;i++) tableList[i].className+=" table table-striped"
 </script>
 </html>

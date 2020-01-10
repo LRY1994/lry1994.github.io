@@ -139,24 +139,22 @@ import  '@/assets/css/common.scss'
 },</code></pre>
 <p><a href="https://blog.csdn.net/napoleonxxx/article/details/80292006">IE9引发的血案-如何处理webpack打包后体积依然过大的css文件</a></p>
 <h2 id="总结：">总结：</h2>
-<ol>
-<li>把css变量单独拎出来做一个文件variable.scss，在vue的<code>&lt;style scoped&gt;</code>里@import使用</li>
-<li>公共css文件在main.js里面直接import一次就好，不要再在其他vue里面import</li>
-<li>多人协作防止冲突，各组件的公共css文件我觉得可以在外面用一个自己的class包裹起来。例如</li>
-</ol>
-<pre><code class="language-js"><span class="hljs-comment">//main.js</span>
-<span class="hljs-meta"><span class="hljs-meta-keyword">import</span> '@/views/order/style.scss';</span></code></pre>
-<pre><code class="language-scss"><span class="hljs-string">//</span>@<span class="hljs-string">/views/order/style.scss</span>
+<p>1、把css变量单独拎出来做一个文件variable.scss，在vue的<code>&lt;style scoped&gt;</code>里@import使用</p>
+<p>2、公共css文件在main.js里面直接import一次就好，不要再在其他vue里面import</p>
+<p>3、 多人协作防止冲突，各组件的公共css文件我觉得可以在外面用一个自己的class包裹起来。例如</p>
+<pre><code class="language-js"><span class="hljs-string">//main.js</span>
+import '@<span class="hljs-string">/views/order/style.scss</span>';
+
+<span class="hljs-string">//</span>@<span class="hljs-string">/views/order/style.scss</span>
 <span class="hljs-string">.order</span>{
     xxxxx
 }</code></pre>
-<p>最后把控制台的代码按照上面的方法整理了一下，结果打包出来的css足足小了127kb
-<img src="./css-improve-effect.png"></p>
-<p>------------------2019/2/19更新------------------</p>
+<p>最后把控制台的代码按照上面的方法整理了一下，结果打包出来的css足足小了127kb</p>
+<h2 id="2019219更新">2019/2/19更新</h2>
 <p>注意：之前在想，既然<code>&lt;style&gt;&lt;/style&gt;</code>(不用scoped)放在哪里都可以全局生效，那我随便放在一个大组件里也行啊。
 最近发现在一个组件里面不用scoped地引入css,从这个组件进去另一个组件，另一个组件确实是会受到前者css的影响。
 但是如果直接打开后者组件的页面，不经过前者，css无效。所以全局css还是放在main里面好。</p>
-<p>------------------2019/2/27更新------------------</p>
+<h2 id="2019227更新">2019/2/27更新</h2>
 <p>关于上面 <strong>webpack打包后体积依然过大的css文件</strong>的问题我发现还有一种解决方法：<strong>使用懒加载</strong>，使用方法如下：
 <a href="https://alexjover.com/blog/lazy-load-in-vue-using-webpack-s-code-splitting/">Lazy Loading in Vue using Webpack&#39;s Code Splitting</a></p>
 <p>懒加载会把每个vue组件变成一个chunk,自然对应css也会变成一个chunk。<span color="red">感觉这个方法比较不错</span>

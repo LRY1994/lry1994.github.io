@@ -637,18 +637,13 @@ export <span class="hljs-keyword">default</span> {
 <p><a href="https://gojs.net/latest/samples/pageFlow.html">https://gojs.net/latest/samples/pageFlow.html</a>
 <a href="http://www.daviddurman.com/assets/autolayout.js">http://www.daviddurman.com/assets/autolayout.js</a>
 <a href="http://resources.jointjs.com/demos/layout">http://resources.jointjs.com/demos/layout</a></p>
-<p>---------------------------------------------更新 2018/8/30----------------------------------------------------------
-经过一番实践，我觉得jointjs不好用了。
-不满意点：</p>
-<ol>
-<li><p>不能相对容器自动布局，都用的是死的像素，分辨率低的屏幕，部分图有些就看不见</p>
-<img src="./procedure/joint-error.png">
-</li>
-<li><p>不能滚动鼠标自己缩小放大</p>
-</li>
-<li><p>比较丑，也可能是我不会配色</p>
-</li>
-</ol>
+<h2 id="2018830更新">2018/8/30更新 </h2>
+<p>经过一番实践，我觉得jointjs不好用了。
+不满意点：
+1、不能相对容器自动布局，都用的是死的像素，分辨率低的屏幕，部分图有些就看不见
+<img src="./procedure/joint-error.png"></p>
+<p>2、 不能滚动鼠标自己缩小放大</p>
+<p>3、比较丑，也可能是我不会配色</p>
 <p>最终采用gojs,上面提到的问题解决方案是：把去掉水印的gojs放在自己的npm服务器上，这样就可以npm安装了！！！
 实践过程中遇到个问题</p>
 <pre><code class="language-html">&lt;process-go style=<span class="hljs-string">"height:250px"</span>  v-if=<span class="hljs-string">"show"</span>  <span class="hljs-symbol">:model-data=<span class="hljs-string">"dataObj.graph"</span></span> <span class="hljs-symbol">:category=<span class="hljs-string">"category"</span>&gt;</span> &lt;<span class="hljs-regexp">/process-go&gt;</span></code></pre>

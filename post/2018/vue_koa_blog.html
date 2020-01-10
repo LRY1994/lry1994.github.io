@@ -251,27 +251,24 @@ init,validate,save,remove;</p>
 <h3 id="2018-11-3">2018-11-3</h3>
 <p>不要在服务器里面上传图片了，怕以后占的空间太大，直接用github里面的图片的链接好了</p>
 <h3 id="2018-12-27">2018-12-27</h3>
-<p>centos 安装nodejs
-yum install -y gcc-c++ make
-curl -sL <a href="https://rpm.nodesource.com/setup_9.x">https://rpm.nodesource.com/setup_9.x</a> | sudo -E bash -
-yum install nodejs</p>
+<p>centos 安装nodejs</p>
+<pre><code class="language-shell"><span class="hljs-attr">yum</span> <span class="hljs-string">install -y gcc-c++ make</span>
+<span class="hljs-attr">curl</span> <span class="hljs-string">-sL https://rpm.nodesource.com/setup_9.x | sudo -E bash -</span>
+<span class="hljs-attr">yum</span> <span class="hljs-string">install nodejs</span></code></pre>
 <p>ngix安装
 <a href="https://www.cnblogs.com/taiyonghai/p/6728707.html">https://www.cnblogs.com/taiyonghai/p/6728707.html</a></p>
 <p>搭建网站过程
 <a href="https://www.jianshu.com/p/4895cda92808">https://www.jianshu.com/p/4895cda92808</a></p>
-<p>添加到开机自启动项
-vi /etc/rc.d/rc.local
-mongod --dbpath /home/mongodb/data --logpath /home/mongodb/logs/log.log -fork
-chmod +x /etc/rc.d/rc.local</p>
+<p>添加到开机自启动项</p>
+<pre><code class="language-shell">vi <span class="hljs-string">/etc/rc.d/rc.local</span>
+mongod <span class="hljs-params">--dbpath</span> <span class="hljs-string">/home/mongodb/data</span> <span class="hljs-params">--logpath</span> <span class="hljs-string">/home/mongodb/logs/log.log</span> -fork
+chmod +x <span class="hljs-string">/etc/rc.d/rc.local</span></code></pre>
 <p>添加环境变量
-vim /etc/profile
-在最后，添加:
-export PATH=&quot;/usr/local/mongodb/bin:$PATH&quot;
-保存，退出，然后运行：
-source /etc/profile不报错则成功。</p>
-<p>tar zxvf openssl-fips-2.0.10.tar.gz -C /home
-./config &amp;&amp; make &amp;&amp; make install</p>
-<p>sbin/nginx -s reload</p>
+<code>vim /etc/profile</code></p>
+<p>在最后，添加:
+<code>export PATH=&quot;/usr/local/mongodb/bin:$PATH&quot;</code></p>
+<p>保存，退出，然后运行：
+<code>source /etc/profile</code> 不报错则成功。</p>
 
         </div>
     </div>

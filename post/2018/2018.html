@@ -644,56 +644,49 @@ B:<span class="hljs-built_in">str</span> += <span class="hljs-string">'a'</span>
 C: arr.<span class="hljs-built_in">join</span>(<span class="hljs-string">''</span>)
 D:<span class="hljs-built_in">str</span>.<span class="hljs-built_in">concat</span>(<span class="hljs-string">'b'</span>,<span class="hljs-string">'c'</span>)</code></pre><p>☆ Chrome65上测试的是A优于B优于C优于D</p>
 <h3 id="总结一些常用的">总结一些常用的</h3>
-<ol>
-<li>内容长短不固定的时候用min-height,而不要用height</li>
-<li>显示一行，多余的用省略号表示<pre><code class="language-css"> <span class="hljs-selector-class">.one-line</span>{
-     <span class="hljs-attribute">overflow</span>: hidden;
-     <span class="hljs-attribute">text-overflow</span>: ellipsis;
-     <span class="hljs-attribute">white-space</span>: nowrap;
-     <span class="hljs-attribute">display</span>: inline-block;
- }</code></pre>
- 最多显示2行，多余的用省略号表示<pre><code class="language-css"> <span class="hljs-selector-class">.two-line</span>{     
-     <span class="hljs-attribute">overflow</span>: hidden;     
-     <span class="hljs-attribute">display</span>: -webkit-box;
-     <span class="hljs-attribute">-webkit-box-orient</span>: vertical;
-     <span class="hljs-attribute">-webkit-line-clamp</span>: <span class="hljs-number">2</span>;
-     <span class="hljs-attribute">text-overflow</span>: ellipsis;
- }</code></pre>
-</li>
-<li>一般英文或者数字是默认不换行，所以要加上<pre><code class="language-css"> word-<span class="hljs-keyword">break</span>: <span class="hljs-keyword">break</span>-all;</code></pre>
-</li>
-<li>placeholder<pre><code class="language-css"><span class="hljs-selector-pseudo">:-moz-placeholder</span> { <span class="hljs-comment">/* Mozilla Firefox 4 to 18 */</span>
- <span class="hljs-attribute">color</span>: <span class="hljs-number">#C6C6C6</span>;
+<p>1、内容长短不固定的时候用min-height,而不要用height</p>
+<p>2、 </p>
+<pre><code class="language-css"><span class="hljs-comment">//显示一行，多余的用省略号表示</span>
+<span class="hljs-selector-class">.one-line</span>{
+    <span class="hljs-attribute">overflow</span>: hidden;
+    <span class="hljs-attribute">text-overflow</span>: ellipsis;
+    <span class="hljs-attribute">white-space</span>: nowrap;
+    <span class="hljs-attribute">display</span>: inline-block;
 }
-</code></pre>
-</li>
-</ol>
-<p>::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: #C6C6C6;
-}</p>
-<p>input:-ms-input-placeholder{
-    color: #C6C6C6;
-}</p>
-<p>input::-webkit-input-placeholder{
-    color: #C6C6C6;
-}</p>
-<pre><code>
-
-<span class="markdown">
-<span class="hljs-section">### vue源码研读</span>
-[<span class="hljs-string">手拉手带你过一遍vue部分源码</span>](<span class="hljs-link">https://juejin.im/post/5adff30f518825672d33d596</span>)
-
-[<span class="hljs-string">当面试官问你Vue响应式原理，你可以这么回答他</span>](<span class="hljs-link">https://juejin.im/post/5adf0085518825673123da9a</span>)
-
-[<span class="hljs-string">如何解释vue的生命周期才能令面试官满意？</span>](<span class="hljs-link">https://juejin.im/post/5ad10800f265da23826e681e</span>)
-
-在使用.vue文件开发的过程当中，我们在里面写了template模板，在经过了vue-loader的处理之后，就变成了render function，最终放到了vue-loader解析过的文件里面。这样做有什么好处呢？原因是由于在解析template变成render function的过程，是一个非常耗时的过程，vue-loader帮我们处理了这些内容之后，当我们在页面上执行vue代码的时候，效率会变得更高。
-
-Vue为我们提供了renderError方法，这个方法只有在开发的时候它才会被调用，在正式打包上线的过程当中，它是不会被调用的。它主要是帮助我们调试render里面的一些错误。
-<span class="hljs-code">```javascript
-renderError (h, err) {
-  return h('div', {}, err.stack)
-}</span></span></code></pre><p>有且只有当render方法里面报错了，才会执行renderError方法。
+<span class="hljs-comment">//最多显示2行，多余的用省略号表示</span>
+<span class="hljs-selector-class">.two-line</span>{     
+    <span class="hljs-attribute">overflow</span>: hidden;     
+    <span class="hljs-attribute">display</span>: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: <span class="hljs-number">2</span>;
+    <span class="hljs-attribute">text-overflow</span>: ellipsis;
+}</code></pre>
+<p>3、 一般英文或者数字是默认不换行，所以要加上
+    <code>css
+    word-break: break-all;</code></p>
+<p>4、placeholder</p>
+<pre><code class="language-css"><span class="hljs-selector-pseudo">:-moz-placeholder</span> { <span class="hljs-comment">/* Mozilla Firefox 4 to 18 */</span>
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#C6C6C6</span>;
+}
+<span class="hljs-selector-pseudo">::-moz-placeholder</span> { <span class="hljs-comment">/* Mozilla Firefox 19+ */</span>
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#C6C6C6</span>;
+}
+<span class="hljs-selector-tag">input</span><span class="hljs-selector-pseudo">:-ms-input-placeholder</span>{
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#C6C6C6</span>;
+}
+<span class="hljs-selector-tag">input</span><span class="hljs-selector-pseudo">::-webkit-input-placeholder</span>{
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#C6C6C6</span>;
+}</code></pre>
+<h3 id="vue源码研读">vue源码研读</h3>
+<p><a href="https://juejin.im/post/5adff30f518825672d33d596">手拉手带你过一遍vue部分源码</a></p>
+<p><a href="https://juejin.im/post/5adf0085518825673123da9a">当面试官问你Vue响应式原理，你可以这么回答他</a></p>
+<p><a href="https://juejin.im/post/5ad10800f265da23826e681e">如何解释vue的生命周期才能令面试官满意？</a></p>
+<p>在使用.vue文件开发的过程当中，我们在里面写了template模板，在经过了vue-loader的处理之后，就变成了render function，最终放到了vue-loader解析过的文件里面。这样做有什么好处呢？原因是由于在解析template变成render function的过程，是一个非常耗时的过程，vue-loader帮我们处理了这些内容之后，当我们在页面上执行vue代码的时候，效率会变得更高。</p>
+<p>Vue为我们提供了renderError方法，这个方法只有在开发的时候它才会被调用，在正式打包上线的过程当中，它是不会被调用的。它主要是帮助我们调试render里面的一些错误。</p>
+<pre><code class="language-javascript">renderError (<span class="hljs-keyword">h</span>, <span class="hljs-keyword">err</span>) {
+  <span class="hljs-keyword">return</span> <span class="hljs-built_in">h</span>('div', {}, <span class="hljs-keyword">err</span>.<span class="hljs-keyword">stack</span>)
+}</code></pre>
+<p>有且只有当render方法里面报错了，才会执行renderError方法。
 所以我们主动让render函数报个错：</p>
 <pre><code class="language-javascript">render (h) {
   <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-type">TypeError</span>(<span class="hljs-string">'render error'</span>)
@@ -734,8 +727,6 @@ must-revalidate：告诉浏览器、缓存服务器，本地副本过期前，�
 <pre><code>```javascript
     <span class="hljs-keyword">import</span> str <span class="hljs-keyword">from</span> <span class="hljs-string">'demo1'</span> <span class="hljs-comment">//导入的时候没有花括号</span>
 ```</code></pre><p>(2) export default命令的本质是将后面的值，赋给default变量，所以可以直接将一个值写在export default之后。</p>
-<h3 id="用mpvue开发小程序了">用mpVue开发小程序了</h3>
-<p><a href="https://www.itcodemonkey.com/article/2573.html">https://www.itcodemonkey.com/article/2573.html</a></p>
 
         </div>
     </div>

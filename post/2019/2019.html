@@ -102,7 +102,7 @@ scrollTo(id) {
 <li>如果func函数没有参数，就没有区别</li>
 <li>如果func函数有参数，例如<code>func(arg){...}</code>，那么<code>@click=&quot;func&quot;</code> 在func(arg)里面输出arg并不是undefined，而是一个事件对象</li>
 </ol>
-<p>#:class可以是一个数组</p>
+<h3 id="class可以是一个数组">:class可以是一个数组</h3>
 <pre><code class="language-js">boxClazz(){
     <span class="hljs-keyword">return</span> [<span class="hljs-string">'box'</span>,  !<span class="hljs-keyword">this</span>.canAddHideAnimationLater ? <span class="hljs-string">''</span> : <span class="hljs-keyword">this</span>.visible ? <span class="hljs-string">'show'</span>: <span class="hljs-string">'hide'</span>]
 }
@@ -150,22 +150,20 @@ const init = (imgSrc) =&gt; {
 <span class="hljs-comment">&lt;!--fixed定位的元素--&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">nav-tab</span>  <span class="hljs-attr">:class</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{'fix-nav':fixNav}</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nav-tab</span>&gt;</span></span></code></pre>
 <h3 id="vucli3构建库模式大坑">vucli3构建库模式大坑</h3>
-<ol>
-<li>代码里不能有懒加载，不然打出来的文件不止1个，引入的时候路径不对</li>
-<li>图片不能<code>&lt;img src&gt;</code>渲染，会找不到路径。可以用background-image解决</li>
-<li><code>new consturctor().$mount();</code>的时候，生命周期钩子mouted在<code>$mount()</code>过程中就会执行.</li>
-<li><code>import Vue from &#39;vue&#39;</code> 得到的也不是主项目的vue<pre><code class="language-js"> //方案：把vue实例当做props传进去
-<span class="hljs-built_in"> instance </span>=<span class="hljs-built_in"> new </span>feedbackConsturctor({
-      //！！！依赖库手动挂载的节点的__proto__跟主项目的__proto__不是同一个，会导致断链
-      propsData:{
-          http$<span class="hljs-keyword"> :</span> _VUE_.prototype.http$
-      }}).$mount();</code></pre>
-</li>
-<li>vue父子组件之间是没有原型链的，手动$mount()的组件$root是自己。所以子组件如果要使用主项目的数据，可以<pre><code class="language-js"> <span class="hljs-keyword">data</span>(){
-     <span class="hljs-keyword">return</span> { http$:<span class="hljs-keyword">this</span>.$root.http$ }
- }</code></pre>
-</li>
-</ol>
+<p>1、 代码里不能有懒加载，不然打出来的文件不止1个，引入的时候路径不对</p>
+<p>2、 图片不能<code>&lt;img src&gt;</code>渲染，会找不到路径。可以用background-image解决</p>
+<p>3、 <code>new consturctor().$mount();</code>的时候，生命周期钩子mouted在<code>$mount()</code>过程中就会执行.</p>
+<p>4、 <code>import Vue from &#39;vue&#39;</code> 得到的也不是主项目的vue</p>
+<pre><code class="language-js">//方案：把vue实例当做props传进去<span class="hljs-built_in">
+instance </span>=<span class="hljs-built_in"> new </span>feedbackConsturctor({
+     //！！！依赖库手动挂载的节点的__proto__跟主项目的__proto__不是同一个，会导致断链
+     propsData:{
+         http$<span class="hljs-keyword"> :</span> _VUE_.prototype.http$
+     }}).$mount();</code></pre>
+<p>5、 vue父子组件之间是没有原型链的，手动$mount()的组件$root是自己。所以子组件如果要使用主项目的数据，可以</p>
+<pre><code class="language-js"><span class="hljs-keyword">data</span>(){
+    <span class="hljs-keyword">return</span> { http$:<span class="hljs-keyword">this</span>.$root.http$ }
+}</code></pre>
 <h3 id="可以利用src做请求">可以利用src做请求</h3>
 <pre><code>send(url, params){
 
@@ -177,6 +175,7 @@ const init = (imgSrc) =&gt; {
 <pre><code><span class="hljs-attribute">padding-top</span>: <span class="hljs-number">20px</span>;
 <span class="hljs-attribute">margin-top</span>: -<span class="hljs-number">20px</span>;</code></pre><h3 id="ie在本地运行出错">IE在本地运行出错</h3>
 <p>但是部署到测试环境是正常的，吓死个人了</p>
+<h3 id="函数节流">函数节流</h3>
 <p>函数节流不管事件触发有多频繁，都会保证在规定时间内一定会执行一次真正的事件处理函数，
 而函数防抖只是在最后一次事件后才触发一次函数。 比如在页面的无限加载场景下，我们需要用户在滚动页面时，每隔一段时间发一次 Ajax 请求，而不是在用户停下滚动页面操作时才去请求数据。这样的场景，就适合用节流技术来实现</p>
 <h2 id="201910">2019/10</h2>

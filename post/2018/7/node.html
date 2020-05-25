@@ -75,110 +75,93 @@
             <hr/>
             <h1 id="《深入浅出nodejs》">《深入浅出node.js》</h1>
 <p>适合高并发、IO密集型、事件驱动</p>
-<ul>
-<li><p>服务端</p>
+<h2 id="服务端">服务端</h2>
 <pre><code class="language-javascript">http.create<span class="hljs-constructor">Server(<span class="hljs-params">function</span>(ServerRequest, ServerResponse)</span>{
-  <span class="hljs-comment">//监听</span>
-  <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ServerRequest</span>.</span></span>on('data',<span class="hljs-keyword">function</span>(chunk){})
-  <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ServerRequest</span>.</span></span>on('<span class="hljs-keyword">end</span>',<span class="hljs-keyword">function</span><span class="hljs-literal">()</span>{})
-  <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ServerRequest</span>.</span></span>on('close',<span class="hljs-keyword">function</span><span class="hljs-literal">()</span>{})
-  <span class="hljs-comment">//响应</span>
-  <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ServerResponse</span>.</span></span>write<span class="hljs-constructor">Head(200,{'Content-Type':'<span class="hljs-params">text</span><span class="hljs-operator">/</span><span class="hljs-params">plain</span>'})</span>
-  <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ServerResponse</span>.</span></span>write('hello')
-  <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ServerResponse</span>.</span></span><span class="hljs-keyword">end</span><span class="hljs-literal">()</span>
+    <span class="hljs-comment">//监听</span>
+    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ServerRequest</span>.</span></span>on('data',<span class="hljs-keyword">function</span>(chunk){})
+    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ServerRequest</span>.</span></span>on('<span class="hljs-keyword">end</span>',<span class="hljs-keyword">function</span><span class="hljs-literal">()</span>{})
+    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ServerRequest</span>.</span></span>on('close',<span class="hljs-keyword">function</span><span class="hljs-literal">()</span>{})
+    <span class="hljs-comment">//响应</span>
+    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ServerResponse</span>.</span></span>write<span class="hljs-constructor">Head(200,{'Content-Type':'<span class="hljs-params">text</span><span class="hljs-operator">/</span><span class="hljs-params">plain</span>'})</span>
+    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ServerResponse</span>.</span></span>write('hello')
+    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">ServerResponse</span>.</span></span><span class="hljs-keyword">end</span><span class="hljs-literal">()</span>
 }).listen(<span class="hljs-number">3000</span>)</code></pre>
-</li>
-<li><p>客户端</p>
+<h2 id="客户端">客户端</h2>
 <pre><code class="language-javascript">options = {
-  <span class="hljs-attr">host</span>:<span class="hljs-string">''</span>,
-  hostname
-  localAdrress
-  socketPath
-  auth
-  agent
-  keepAlive
-  keepAliveMsecs
-  <span class="hljs-attr">port</span>:<span class="hljs-string">''</span>,
-  <span class="hljs-attr">method</span>:<span class="hljs-string">''</span>,
-  <span class="hljs-attr">path</span>:<span class="hljs-string">''</span>,
-  <span class="hljs-attr">headers</span>:<span class="hljs-string">''</span>
+    host:<span class="hljs-string">''</span>,
+    hostname
+    localAdrress
+    socketPath
+    auth
+    agent
+    keepAlive
+    keepAliveMsecs
+    port:<span class="hljs-string">''</span>,
+    method:<span class="hljs-string">''</span>,
+    path:<span class="hljs-string">''</span>,
+    headers:<span class="hljs-string">''</span>
 }
-<span class="hljs-keyword">var</span> clientRequest = http.request(options,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">clientResponse</span>)</span>{
-  clientResponse.setEncoding()
-  clientResponse.pause()
-  clientResponse.resume()
-  clientResponse.on(<span class="hljs-string">'data'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data</span>)</span>{
-      <span class="hljs-built_in">console</span>.log(Buffer.isBuffer(chunk));<span class="hljs-comment">//true</span>
-      <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">typeof</span> chunk)<span class="hljs-comment">//Object</span>
-  })<span class="hljs-comment">//不断被触发,流</span>
-  clientResponse.on(<span class="hljs-string">'end'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{})
-  clientResponse.on(<span class="hljs-string">'close'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{})
-</code></pre>
-</li>
-</ul>
-<p>})</p>
-<p>clientRequest.write(请求体)
-clientRequest.end()
-clientRequest.on(&#39;error&#39;,function(e){console.log(e.message)})
-clientRequest.abort()
+var clientRequest = http.request(options,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(clientResponse)</span>{</span>
+    clientResponse.setEncoding()
+    clientResponse.<span class="hljs-keyword">pause</span>()
+    clientResponse.<span class="hljs-keyword">resume</span>()
+    clientResponse.on(<span class="hljs-string">'data'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(data)</span>{</span>
+        console.<span class="hljs-built_in">log</span>(Buffer.isBuffer(chunk));<span class="hljs-comment">//true</span>
+        console.<span class="hljs-built_in">log</span>(typeof chunk)<span class="hljs-comment">//Object</span>
+    })<span class="hljs-comment">//不断被触发,流</span>
+    clientResponse.on(<span class="hljs-string">'end'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{})</span>
+    clientResponse.on(<span class="hljs-string">'close'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span>{})</span>
+
+})
+
+clientRequest.write(请求体)
+clientRequest.<span class="hljs-keyword">end</span>()
+clientRequest.on(<span class="hljs-string">'error'</span>,<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span>{<span class="hljs-title">console</span>.<span class="hljs-title">log</span><span class="hljs-params">(e.message)</span>})</span>
+clientRequest.<span class="hljs-keyword">abort</span>()
 clientRequest.setTimeout()
-clientRequest.setNoDelay()</p>
-<pre><code>
+clientRequest.setNoDelay()
+</code></pre>
+<h2 id="文件加载方式">文件加载方式</h2>
+<ol>
+<li><p>按路径加载</p>
+<p> require以&#39;/&#39;开头的，以绝对路径方式加载
+ require以&#39;./&#39;或&#39;../&#39;开头的，以相对路径加载</p>
+</li>
+<li><p>查找node_modules文件夹</p>
+<p> 在当前目录下的node_modules中查找=&gt;
+ 父目录node_modules找=&gt;
+ 上一层目录的node_modules找。。。。。
+ 一层一层向上</p>
+</li>
+</ol>
+<h2 id="异步io原理">异步I/O原理</h2>
+<p>事实上，javascript是单线程的，<strong>Node自身其实是多线程的</strong>，只是I/O线程使用的CPU较少。
+除了用户代码无法并行执行外，所有的I/O（磁盘I/O和网络I/O等）都是可以并行执行的。</p>
+<img src="./node/async-io.png">
 
-<span class="typescript">
-## 文件加载方式
-&gt; 按路径加载
-
-    <span class="hljs-built_in">require</span>以<span class="hljs-string">'/'</span>开头的，以绝对路径方式加载
-    <span class="hljs-built_in">require</span>以<span class="hljs-string">'./'</span>或<span class="hljs-string">'../'</span>开头的，以相对路径加载
-&gt;查找node_modules文件夹
-
-    在当前目录下的node_modules中查找=&gt;
-    父目录node_modules找=&gt;
-    上一层目录的node_modules找。。。。。
-    一层一层向上
-
-
-## 异步I/O原理
-事实上，javascript是单线程的，**Node自身其实是多线程的**，只是I/O线程使用的CPU较少。
-除了用户代码无法并行执行外，所有的I/O（磁盘I/O和网络I/O等）都是可以并行执行的。
-
-&lt;img src=<span class="hljs-string">"./node/async-io.png"</span>&gt;
-
-## 非I/O异步的方法
-非I/O异步的方法：<span class="hljs-string">``</span>setTimeout<span class="hljs-string">``</span>,<span class="hljs-string">``</span>setInterval<span class="hljs-string">``</span>,<span class="hljs-string">``</span>setImmediate<span class="hljs-string">``</span>,<span class="hljs-string">``</span>process.nextTick<span class="hljs-string">``</span>
-
-### <span class="hljs-string">``</span>setTimeout<span class="hljs-string">``</span>,<span class="hljs-string">``</span>setInterval<span class="hljs-string">``</span>
-调用<span class="hljs-string">``</span>setTimeout<span class="hljs-string">``</span>,<span class="hljs-string">``</span>setInterval<span class="hljs-string">``</span>创建的定时器会被插入到定时器观察者内部的一个红黑树里面。每次Tick执行，就从改红合数中迭代去除定时器对象，检查是否超过定时时间。如果超过，就形成一个事件，回调函数立即执行
-
-&lt;img src=<span class="hljs-string">"./node/setTimeout.png"</span>&gt;
+<h2 id="非io异步的方法">非I/O异步的方法</h2>
+<p>非I/O异步的方法：<code>setTimeout</code>,<code>setInterval</code>,<code>setImmediate</code>,<code>process.nextTick</code></p>
+<h3 id="settimeoutsetinterval"><code>setTimeout</code>,<code>setInterval</code></h3>
+<p>调用<code>setTimeout</code>,<code>setInterval</code>创建的定时器会被插入到定时器观察者内部的一个红黑树里面。每次Tick执行，就从改红合数中迭代去除定时器对象，检查是否超过定时时间。如果超过，就形成一个事件，回调函数立即执行</p>
+<img src="./node/setTimeout.png">
 
 
-### <span class="hljs-string">``</span>process.nextTick<span class="hljs-string">``</span> VS <span class="hljs-string">``</span>setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{},<span class="hljs-number">0</span>)<span class="hljs-string">``</span>
-立即执行一个异步任务可以用<span class="hljs-string">``</span>process.nextTick<span class="hljs-string">``</span>。
-
-<span class="hljs-string">``</span>setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{},<span class="hljs-number">0</span>)<span class="hljs-string">``</span>需要动用到红黑树，创建定时器对象和迭代操作等操作，较浪费性能，复杂度为O(lg(n)。
-
-nextTick只会将回调函数放入队列中，在下一轮Tick时取出执行，复杂度为O(<span class="hljs-number">1</span>)。
-
-### <span class="hljs-string">``</span>setImmediate<span class="hljs-string">``</span>  VS <span class="hljs-string">``</span>process.nextTick<span class="hljs-string">``</span>
-
-<span class="hljs-string">``</span>process.nextTick<span class="hljs-string">``</span>优先级大于 <span class="hljs-string">``</span>setImmediate<span class="hljs-string">``</span> 。因为时间循环对观察者的检查是有先后顺序的，<span class="hljs-string">``</span>process.nextTick<span class="hljs-string">``</span>属于idle观察者，<span class="hljs-string">``</span>setImmediate<span class="hljs-string">``</span>属于check观察者。在每一个时间循环检查中，**观察者检查顺序：idle---I/O---check**
-
-<span class="hljs-string">``</span>process.nextTick<span class="hljs-string">``</span>的回调保存在一个**数组**中。
-<span class="hljs-string">``</span>setImmediate<span class="hljs-string">``</span>的回调保存在一个**链表**中
-
-<span class="hljs-string">``</span>process.nextTick<span class="hljs-string">``</span>在一个事件循环中会将所有回调函数全部执行完。<span class="hljs-string">``</span>setImmediate<span class="hljs-string">``</span>每一个时间循环只会执行一个回调。
-
-### 异常处理
-对异步方法进行<span class="hljs-keyword">try</span>/<span class="hljs-keyword">catch</span>操作只可以捕获**当次**事件循环里面的异常
-
-solution:Node在处理异常上形成一种约定，将异常作为回调函数的第一个实参传回。
-
-需要睡眠阻塞代码调用setTimeout更好，不要用下面的代码.这段代码会持续占用CPU，与真正的sleep相去甚远
-<span class="hljs-string">``</span><span class="hljs-string">`javascript
-var s =new Date();
-while(neW Date()-s&lt;100){}</span></span></code></pre><h3 id="异步编程解决方案">异步编程解决方案</h3>
+<h3 id="processnexttick-vs-settimeoutfunction0"><code>process.nextTick</code> VS <code>setTimeout(function(){},0)</code></h3>
+<p>立即执行一个异步任务可以用<code>process.nextTick</code>。</p>
+<p><code>setTimeout(function(){},0)</code>需要动用到红黑树，创建定时器对象和迭代操作等操作，较浪费性能，复杂度为O(lg(n)。</p>
+<p>nextTick只会将回调函数放入队列中，在下一轮Tick时取出执行，复杂度为O(1)。</p>
+<h3 id="setimmediate--vs-processnexttick"><code>setImmediate</code>  VS <code>process.nextTick</code></h3>
+<p><code>process.nextTick</code>优先级大于 <code>setImmediate</code> 。因为时间循环对观察者的检查是有先后顺序的，<code>process.nextTick</code>属于idle观察者，<code>setImmediate</code>属于check观察者。在每一个时间循环检查中，<strong>观察者检查顺序：idle---I/O---check</strong></p>
+<p><code>process.nextTick</code>的回调保存在一个<strong>数组</strong>中。
+<code>setImmediate</code>的回调保存在一个<strong>链表</strong>中</p>
+<p><code>process.nextTick</code>在一个事件循环中会将所有回调函数全部执行完。<code>setImmediate</code>每一个时间循环只会执行一个回调。</p>
+<h3 id="异常处理">异常处理</h3>
+<p>对异步方法进行try/catch操作只可以捕获<strong>当次</strong>事件循环里面的异常</p>
+<p>solution:Node在处理异常上形成一种约定，将异常作为回调函数的第一个实参传回。</p>
+<p>需要睡眠阻塞代码调用setTimeout更好，不要用下面的代码.这段代码会持续占用CPU，与真正的sleep相去甚远</p>
+<pre><code class="language-javascript"><span class="hljs-built_in">var</span> s =<span class="hljs-literal">new</span> <span class="hljs-built_in">Date</span>();
+<span class="hljs-keyword">while</span>(<span class="hljs-literal">neW</span> <span class="hljs-built_in">Date</span>()<span class="hljs-params">-s</span>&lt;<span class="hljs-number">100</span>){}</code></pre>
+<h3 id="异步编程解决方案">异步编程解决方案</h3>
 <p>EventProxy 是对 events.EventEmitter 的补充，可以自由订阅组合事件</p>
 <ul>
 <li><p>EventProxy:

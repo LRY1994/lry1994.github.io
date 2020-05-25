@@ -97,21 +97,102 @@
 <img src="./js-problem/setTimeOut.jpg" title="js堆栈">
 
 <p><a href="http://www.cnblogs.com/sprying/archive/2013/05/26/3100639.html">谈谈JavaScript的异步实现</a></p>
+<h2 id="你知道为什么会有-generator-吗">你知道为什么会有 Generator 吗?</h2>
+<p><a href="https://juejin.im/post/5adae8246fb9a07aa541e150">你知道为什么会有 Generator 吗</a></p>
+<h2 id="柯里化--部分求值">柯里化--部分求值</h2>
+<p>柯里化又称部分求值，柯里化函数会接收一些参数，然后不会立即求值，而是继续返回一个新函数，将传入的参数通过闭包的形式保存，等到被真正求值的时候，再一次性把所有传入的参数进行求值</p>
+<pre><code class="language-javascript"><span class="hljs-comment">//通用的柯里化函数</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">curry</span>(<span class="hljs-params">fn</span>) </span>{
+    <span class="hljs-keyword">let</span> slice = <span class="hljs-built_in">Array</span>.prototype.slice,  <span class="hljs-comment">// 将slice缓存起来</span>
+        args = slice.call(<span class="hljs-built_in">arguments</span>, <span class="hljs-number">1</span>);   <span class="hljs-comment">// 这里将arguments转成数组并保存</span>
+
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-comment">// 将新旧的参数拼接起来</span>
+        <span class="hljs-keyword">let</span> newArgs = args.concat(slice.call(<span class="hljs-built_in">arguments</span>));    
+        <span class="hljs-keyword">return</span> fn.apply(<span class="hljs-literal">null</span>, newArgs); <span class="hljs-comment">// 返回执行的fn并传递最新的参数</span>
+    }
+}
+<span class="hljs-comment">// ES6版的柯里化函数</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">curry</span>(<span class="hljs-params">fn</span>) </span>{
+    <span class="hljs-keyword">const</span> g = <span class="hljs-function">(<span class="hljs-params">...allArgs</span>) =&gt;</span> allArgs.length &gt;= fn.length ?
+        fn(...allArgs) : 
+        <span class="hljs-function">(<span class="hljs-params">...args</span>) =&gt;</span> g(...allArgs, ...args)
+
+    <span class="hljs-keyword">return</span> g;
+}
+
+<span class="hljs-comment">// 测试用例</span>
+<span class="hljs-keyword">const</span> foo = curry(<span class="hljs-function">(<span class="hljs-params">a, b, c, d</span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(a, b, c, d);
+});
+foo(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>)(<span class="hljs-number">3</span>)(<span class="hljs-number">4</span>);    <span class="hljs-comment">// 1 2 3 4</span>
+<span class="hljs-keyword">const</span> f = foo(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>)(<span class="hljs-number">3</span>);
+f(<span class="hljs-number">5</span>);               <span class="hljs-comment">// 1 2 3 5</span>
+</code></pre>
+<h2 id="反柯里化-函数的借用">反柯里化-函数的借用</h2>
+<p>简而言之就是函数的借用，天下函数(方法)大家用</p>
+<pre><code class="language-javascript"><span class="hljs-comment">//写法一</span>
+<span class="hljs-built_in">Function</span>.prototype.uncurrying = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">let</span> self = <span class="hljs-keyword">this</span>;    
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">let</span> obj = <span class="hljs-built_in">Array</span>.prototype.shift.call(<span class="hljs-built_in">arguments</span>);<span class="hljs-comment">//删除并返回</span>
+        <span class="hljs-keyword">return</span> self.apply(obj, <span class="hljs-built_in">arguments</span>); 
+    }
+};
+<span class="hljs-comment">//写法二</span>
+<span class="hljs-built_in">Function</span>.prototype.uncurrying = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">let</span> self = <span class="hljs-keyword">this</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Function</span>.prototype.call.apply(self, <span class="hljs-built_in">arguments</span>);
+        <span class="hljs-comment">/*相当于Function.prototype.call.apply(Array.prototype.slice, arguments);
+        也就是相当于Array.prototype.slice.call(arguments)*/</span>
+    }
+};
+
+<span class="hljs-comment">//测试一</span>
+<span class="hljs-keyword">let</span> slice = <span class="hljs-built_in">Array</span>.prototype.slice.uncurrying();
+
+(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">let</span> result = slice(<span class="hljs-built_in">arguments</span>);  
+    <span class="hljs-built_in">console</span>.log(result);    <span class="hljs-comment">// [1, 2, 3]</span>
+})(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
+
+<span class="hljs-comment">//测试二</span>
+<span class="hljs-keyword">let</span> slice = <span class="hljs-built_in">Array</span>.prototype.push.uncurrying();
+<span class="hljs-keyword">let</span> obj = {
+    <span class="hljs-string">'length'</span>: <span class="hljs-number">1</span>,
+    <span class="hljs-string">'0'</span>: <span class="hljs-number">1</span>
+};
+push(obj, <span class="hljs-number">110</span>);
+<span class="hljs-built_in">console</span>.log(obj);   <span class="hljs-comment">// { '0': 1, '1': 110, length: 2 }</span></code></pre>
+<pre><code class="language-js"> [] === []<span class="hljs-comment">//false </span>
+ [] == []<span class="hljs-comment">//false</span>
+ <span class="hljs-comment">//因为[]是一个数组，是一个对象。就好比创建了2个对象，然后比较两个对象是否相同</span>
+
+[] == <span class="hljs-literal">false</span><span class="hljs-comment">//true</span>
+ <span class="hljs-comment">/*他是经历了这个过程最终才为true的。
+（[] == false）   ----&gt;  （[] == +0）   ----&gt;  （“”== +0）  ----&gt;  （+0 == +0）  ---&gt;   true*/</span>
+
+ <span class="hljs-built_in">window</span> <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Object</span><span class="hljs-comment">//false</span>
+ <span class="hljs-keyword">typeof</span>(<span class="hljs-built_in">window</span>) <span class="hljs-comment">// object</span>
+
+<span class="hljs-keyword">typeof</span> <span class="hljs-literal">null</span> === <span class="hljs-string">'object'</span>;
+<span class="hljs-literal">null</span> <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Object</span> === <span class="hljs-literal">false</span>
+
+<span class="hljs-literal">null</span> <span class="hljs-keyword">instanceof</span> <span class="hljs-literal">null</span><span class="hljs-comment">//会抛出异常：``Uncaught TypeError: Right-hand side of 'instanceof' is not an object``</span></code></pre>
 <ul>
-<li><p>1</p>
-<pre><code class="language-javascript"><span class="hljs-keyword">let</span> <span class="hljs-attr">a=[1,2,3];</span>
+<li>1<pre><code class="language-javascript"><span class="hljs-keyword">let</span> <span class="hljs-attr">a=[1,2,3];</span>
 <span class="hljs-keyword">let</span> <span class="hljs-attr">b</span> = a.<span class="hljs-built_in">map</span>(<span class="hljs-attr">n=&gt;{n=n+1});</span>
 <span class="hljs-keyword">let</span> <span class="hljs-attr">c</span> = a.<span class="hljs-built_in">map</span>(<span class="hljs-attr">n=&gt;n=n+1);</span>
 b// [undefined, undefined, undefined]
 c// [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]</code></pre>
-<p>改成</p>
-<pre><code class="language-javascript"><span class="hljs-keyword">let</span> <span class="hljs-attr">b</span> = a.<span class="hljs-built_in">map</span>(<span class="hljs-attr">n</span> =&gt; {<span class="hljs-attr">n</span> = n + <span class="hljs-number">1</span>;return n;});</code></pre>
-<p>原因</p>
-<pre><code class="language-javascript">(<span class="hljs-selector-tag">a</span>,<span class="hljs-selector-tag">b</span>,c) =&gt; 表达式（单一）相当于
+改成<pre><code class="language-javascript"><span class="hljs-keyword">let</span> <span class="hljs-attr">b</span> = a.<span class="hljs-built_in">map</span>(<span class="hljs-attr">n</span> =&gt; {<span class="hljs-attr">n</span> = n + <span class="hljs-number">1</span>;return n;});</code></pre>
+原因<pre><code class="language-javascript">(<span class="hljs-selector-tag">a</span>,<span class="hljs-selector-tag">b</span>,c) =&gt; 表达式（单一）相当于
 (<span class="hljs-selector-tag">a</span>,<span class="hljs-selector-tag">b</span>,c)=&gt;{ return 表达式}</code></pre>
 </li>
-<li><p>2</p>
-<pre><code class="language-javascript">var a = <span class="hljs-number">111111111111111110000</span>;
+</ul>
+<ul>
+<li>2<pre><code class="language-javascript">var a = <span class="hljs-number">111111111111111110000</span>;
 b=<span class="hljs-number">111</span>;
 console.info(a+b);<span class="hljs-comment">//111111111111111110000</span></code></pre>
 </li>
@@ -226,7 +307,7 @@ obj<span class="hljs-function">.<span class="hljs-keyword">func</span><span clas
       <span class="hljs-built_in">console</span>.error(<span class="hljs-string">'outer'</span>,ex.message);
   }
 }</code></pre>
-<p>输出 finally outer oops</p>
+<p>输出  outer oops finally</p>
 </li>
 <li><p>抛出的异常只需处理一次</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">try</span>{
@@ -276,112 +357,6 @@ document.write(myarr2.sort());<span class="hljs-comment">//1,100,16,50,6,80</spa
 <img src="./js-problem/9.png" ></p>
 <p>为什么result先输出？？？？
 <img src="./js-problem/10.png" ></p>
-<h2 id="你知道为什么会有-generator-吗">你知道为什么会有 Generator 吗?</h2>
-<p><a href="https://juejin.im/post/5adae8246fb9a07aa541e150">你知道为什么会有 Generator 吗</a></p>
-<h2 id="柯里化--部分求值">柯里化--部分求值</h2>
-<p>柯里化又称部分求值，柯里化函数会接收一些参数，然后不会立即求值，而是继续返回一个新函数，将传入的参数通过闭包的形式保存，等到被真正求值的时候，再一次性把所有传入的参数进行求值</p>
-<pre><code class="language-javascript"><span class="hljs-comment">//通用的柯里化函数</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">curry</span>(<span class="hljs-params">fn</span>) </span>{
-    <span class="hljs-keyword">let</span> slice = <span class="hljs-built_in">Array</span>.prototype.slice,  <span class="hljs-comment">// 将slice缓存起来</span>
-        args = slice.call(<span class="hljs-built_in">arguments</span>, <span class="hljs-number">1</span>);   <span class="hljs-comment">// 这里将arguments转成数组并保存</span>
-
-    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-comment">// 将新旧的参数拼接起来</span>
-        <span class="hljs-keyword">let</span> newArgs = args.concat(slice.call(<span class="hljs-built_in">arguments</span>));    
-        <span class="hljs-keyword">return</span> fn.apply(<span class="hljs-literal">null</span>, newArgs); <span class="hljs-comment">// 返回执行的fn并传递最新的参数</span>
-    }
-}
-<span class="hljs-comment">// ES6版的柯里化函数</span>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">curry</span>(<span class="hljs-params">fn</span>) </span>{
-    <span class="hljs-keyword">const</span> g = <span class="hljs-function">(<span class="hljs-params">...allArgs</span>) =&gt;</span> allArgs.length &gt;= fn.length ?
-        fn(...allArgs) : 
-        <span class="hljs-function">(<span class="hljs-params">...args</span>) =&gt;</span> g(...allArgs, ...args)
-
-    <span class="hljs-keyword">return</span> g;
-}
-
-<span class="hljs-comment">// 测试用例</span>
-<span class="hljs-keyword">const</span> foo = curry(<span class="hljs-function">(<span class="hljs-params">a, b, c, d</span>) =&gt;</span> {
-    <span class="hljs-built_in">console</span>.log(a, b, c, d);
-});
-foo(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>)(<span class="hljs-number">3</span>)(<span class="hljs-number">4</span>);    <span class="hljs-comment">// 1 2 3 4</span>
-<span class="hljs-keyword">const</span> f = foo(<span class="hljs-number">1</span>)(<span class="hljs-number">2</span>)(<span class="hljs-number">3</span>);
-f(<span class="hljs-number">5</span>);               <span class="hljs-comment">// 1 2 3 5</span>
-</code></pre>
-<h2 id="反柯里化-函数的借用">反柯里化-函数的借用</h2>
-<p>简而言之就是函数的借用，天下函数(方法)大家用</p>
-<pre><code class="language-javascript"><span class="hljs-comment">//写法一</span>
-<span class="hljs-built_in">Function</span>.prototype.uncurrying = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">let</span> self = <span class="hljs-keyword">this</span>;    
-    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">let</span> obj = <span class="hljs-built_in">Array</span>.prototype.shift.call(<span class="hljs-built_in">arguments</span>);<span class="hljs-comment">//删除并返回</span>
-        <span class="hljs-keyword">return</span> self.apply(obj, <span class="hljs-built_in">arguments</span>); 
-    }
-};
-<span class="hljs-comment">//写法二</span>
-<span class="hljs-built_in">Function</span>.prototype.uncurrying = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">let</span> self = <span class="hljs-keyword">this</span>;
-    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">return</span> <span class="hljs-built_in">Function</span>.prototype.call.apply(self, <span class="hljs-built_in">arguments</span>);
-        <span class="hljs-comment">/*相当于Function.prototype.call.apply(Array.prototype.slice, arguments);
-        也就是相当于Array.prototype.slice.call(arguments)*/</span>
-    }
-};
-
-<span class="hljs-comment">//测试一</span>
-<span class="hljs-keyword">let</span> slice = <span class="hljs-built_in">Array</span>.prototype.slice.uncurrying();
-
-(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-    <span class="hljs-keyword">let</span> result = slice(<span class="hljs-built_in">arguments</span>);  
-    <span class="hljs-built_in">console</span>.log(result);    <span class="hljs-comment">// [1, 2, 3]</span>
-})(<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
-
-<span class="hljs-comment">//测试二</span>
-<span class="hljs-keyword">let</span> slice = <span class="hljs-built_in">Array</span>.prototype.push.uncurrying();
-<span class="hljs-keyword">let</span> obj = {
-    <span class="hljs-string">'length'</span>: <span class="hljs-number">1</span>,
-    <span class="hljs-string">'0'</span>: <span class="hljs-number">1</span>
-};
-push(obj, <span class="hljs-number">110</span>);
-<span class="hljs-built_in">console</span>.log(obj);   <span class="hljs-comment">// { '0': 1, '1': 110, length: 2 }</span></code></pre>
-<h2 id="数字类型的-tolocalestring">数字类型的 toLocaleString</h2>
-<p>minimumIntegerDigits、 minimumFractionDigits 与 maximumFractionDigits，用于指定整数最少位数与小数的最少和最多位数，不够则用0去凑。简单说，自动补0！</p>
-<p>minimumSignificantDigits 与 maximumSignificantDigits，用于控制有效数字位数，只要设置了这一组属性，第一组属性全部忽略不算</p>
-<p>注意，maximumFractionDigits 与 maximumSignificantDigits 均是四舍五入，使用时需要注意。</p>
-<pre><code class="language-javascript">const num = <span class="hljs-number">2333333</span>;
-num.<span class="hljs-keyword">to</span><span class="hljs-constructor">LocaleString()</span>;   <span class="hljs-comment">// 2,333,333</span>
-num.<span class="hljs-keyword">to</span><span class="hljs-constructor">LocaleString('<span class="hljs-params">zh</span>', { <span class="hljs-params">style</span>: '<span class="hljs-params">decimal</span>' })</span>;   <span class="hljs-comment">//2,333,333</span>
-num.<span class="hljs-keyword">to</span><span class="hljs-constructor">LocaleString('<span class="hljs-params">zh</span>', { <span class="hljs-params">style</span>: '<span class="hljs-params">percent</span>' })</span>;   <span class="hljs-comment">//233,333,300%</span>
-num.<span class="hljs-keyword">to</span><span class="hljs-constructor">LocaleString('<span class="hljs-params">zh</span>', { <span class="hljs-params">style</span>: '<span class="hljs-params">currency</span>', <span class="hljs-params">currency</span>: 'CNY' })</span>;    <span class="hljs-comment">//￥2,333,333.00</span>
-num.<span class="hljs-keyword">to</span><span class="hljs-constructor">LocaleString('<span class="hljs-params">zh</span>', { <span class="hljs-params">style</span>: '<span class="hljs-params">currency</span>', <span class="hljs-params">currency</span>: '<span class="hljs-params">cny</span>', <span class="hljs-params">currencyDisplay</span>: '<span class="hljs-params">code</span>' })</span>;      <span class="hljs-comment">//CNY2,333,333.00</span>
-num.<span class="hljs-keyword">to</span><span class="hljs-constructor">LocaleString('<span class="hljs-params">zh</span>', { <span class="hljs-params">style</span>: '<span class="hljs-params">currency</span>', <span class="hljs-params">currency</span>: '<span class="hljs-params">cny</span>', <span class="hljs-params">currencyDisplay</span>: '<span class="hljs-params">name</span>' })</span>;      <span class="hljs-comment">//2,333,333.00人民币</span>
-num.<span class="hljs-keyword">to</span><span class="hljs-constructor">LocaleString('<span class="hljs-params">zh</span>', { <span class="hljs-params">minimumIntegerDigits</span>: 5 })</span>;        <span class="hljs-comment">//02,333.3</span>
-<span class="hljs-comment">//如果不想有分隔符，可以指定useGrouping为false</span>
-num.<span class="hljs-keyword">to</span><span class="hljs-constructor">LocaleString('<span class="hljs-params">zh</span>', { <span class="hljs-params">minimumIntegerDigits</span>: 5, <span class="hljs-params">useGrouping</span>: <span class="hljs-params">false</span> })</span>;        <span class="hljs-comment">//02333.3</span>
-num.<span class="hljs-keyword">to</span><span class="hljs-constructor">LocaleString('<span class="hljs-params">zh</span>', { <span class="hljs-params">minimumFractionDigits</span>: 2, <span class="hljs-params">useGrouping</span>: <span class="hljs-params">false</span> })</span>;     <span class="hljs-comment">//2333.30</span>
-
-num = <span class="hljs-number">666.666</span>
-num.<span class="hljs-keyword">to</span><span class="hljs-constructor">LocaleString('<span class="hljs-params">zh</span>', { <span class="hljs-params">maximumFractionDigits</span>: 2, <span class="hljs-params">useGrouping</span>: <span class="hljs-params">false</span> })</span>;     <span class="hljs-comment">//666.67</span>
-
-const num = <span class="hljs-number">1234.5</span>;
-num.<span class="hljs-keyword">to</span><span class="hljs-constructor">LocaleString('<span class="hljs-params">zh</span>', { <span class="hljs-params">minimumSignificantDigits</span>: 6, <span class="hljs-params">useGrouping</span>: <span class="hljs-params">false</span> })</span>;      <span class="hljs-comment">//1234.50</span>
-num.<span class="hljs-keyword">to</span><span class="hljs-constructor">LocaleString('<span class="hljs-params">zh</span>', { <span class="hljs-params">maximumSignificantDigits</span>: 4, <span class="hljs-params">useGrouping</span>: <span class="hljs-params">false</span> })</span>;      <span class="hljs-comment">//1235</span>
-</code></pre>
-<pre><code class="language-js"> [] === []<span class="hljs-comment">//false </span>
- [] == []<span class="hljs-comment">//false</span>
- <span class="hljs-comment">//因为[]是一个数组，是一个对象。就好比创建了2个对象，然后比较两个对象是否相同</span>
-
-[] == <span class="hljs-literal">false</span><span class="hljs-comment">//true</span>
- <span class="hljs-comment">/*他是经历了这个过程最终才为true的。
-（[] == false）   ----&gt;  （[] == +0）   ----&gt;  （“”== +0）  ----&gt;  （+0 == +0）  ---&gt;   true*/</span>
-
- <span class="hljs-built_in">window</span> <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Object</span><span class="hljs-comment">//false</span>
- <span class="hljs-keyword">typeof</span>(<span class="hljs-built_in">window</span>) <span class="hljs-comment">// object</span>
-
-<span class="hljs-keyword">typeof</span> <span class="hljs-literal">null</span> === <span class="hljs-string">'object'</span>;
-<span class="hljs-literal">null</span> <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Object</span> === <span class="hljs-literal">false</span>
-
-<span class="hljs-literal">null</span> <span class="hljs-keyword">instanceof</span> <span class="hljs-literal">null</span><span class="hljs-comment">//会抛出异常：``Uncaught TypeError: Right-hand side of 'instanceof' is not an object``</span></code></pre>
 
         </div>
     </div>

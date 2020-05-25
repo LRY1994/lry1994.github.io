@@ -86,6 +86,14 @@ Cookies 会话信息就会被盗取到黑客的网站上</p>
 <p>CSRF 是跨站请求伪造，CSRF 会借用目标用户的权限做一些借刀杀人的事（注意是“借用”，而不是“盗取”
 目标权限），然后去做坏事，
 “盗取”通常是XSS（跨站脚本攻击）最喜欢做的事。</p>
+<ol>
+<li><p>防御XSS攻击</p>
+<p>HttpOnly 防止劫取 Cookie、用户的输入检查、服务端的输出检查</p>
+</li>
+<li><p>防御CSRF攻击</p>
+<p>验证码、Referer Check、Token 验证</p>
+</li>
+</ol>
 <h3 id="apt">APT</h3>
 <p>APT（持久化威胁）攻击
 如果是个反射型的XSS，IE 8/IE 9/Chome 直接就给拦截了。</p>

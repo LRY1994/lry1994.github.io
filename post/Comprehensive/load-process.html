@@ -103,7 +103,8 @@ console.timeEnd(specialNum)<span class="hljs-comment">;</span></code></pre>
 <p>ES5提出的<code>performance</code>可以获取到，<code>微秒级别(10^-9)</code></p>
 <p><code>performance.timing</code>对象
 <img src="./load-process/timing.png" ></p>
-<p> <a href="https://www.cnblogs.com/libin-1/p/6501951.html">https://www.cnblogs.com/libin-1/p/6501951.html</a></p>
+<p> <a href="https://www.cnblogs.com/libin-1/p/6501951.html">https://www.cnblogs.com/libin-1/p/6501951.html</a>
+ <a href="https://www.cnblogs.com/Bonnie3449/p/8419609.html" traget="_blank">domContentLoaded事件、Js 时间线</a></p>
 <p>比如，我们获得重定向时间用:</p>
 <pre><code class="language-javascript">var time = performance.timing;
 var redirect = time.redirectEnd - time.redirectStart; <span class="hljs-comment">//单位为微秒</span>
@@ -185,7 +186,7 @@ var performance = {
         <span class="hljs-comment">// 在 DOMContentLoaded 事件抛出前发生</span>
 <span class="hljs-symbol">        domContentLoadedEventStart:</span> <span class="hljs-number">1441112693093</span>,
 
-        <span class="hljs-comment">// DOM 解析完成后，网页内资源加载完成的时间（如 JS 脚本加载执行完毕）</span>
+        <span class="hljs-comment">// DOM 解析完成后，网页内资源加载未必完成</span>
 <span class="hljs-symbol">        domContentLoadedEventEnd:</span> <span class="hljs-number">1441112693101</span>,
 
         <span class="hljs-comment">// DOM 树解析完成，且资源也准备就绪的时间，Document.readyState 变为 complete，并将抛出 readystatechange 相关事件</span>
@@ -205,7 +206,7 @@ var performance = {
 <pre><code class="language-javascript"><span class="hljs-selector-tag">performance</span><span class="hljs-selector-class">.now</span>();  <span class="hljs-comment">//输出是微秒级别</span>
 <span class="hljs-selector-tag">Date</span><span class="hljs-selector-class">.now</span>();  <span class="hljs-comment">//输出是毫秒级别</span></code></pre>
 <p>其中<code>Date.now()</code>是输出 从<code>1970年</code>开始的毫秒数.</p>
-<p><code>performance.now()</code>参考的是从<code>performance.timing.navigationStart````(页面开始加载)</code>的时间, 到现在的微秒数.</p>
+<p><code>performance.now()</code>参考的是从<code>performance.timing.navigationStart(页面开始加载)</code>的时间, 到现在的微秒数.</p>
 <p>这里，我们可以使用<code>performance.now()</code>来模拟获取<code>DomContentLoaded</code>的时间。</p>
 <pre><code class="language-javascript"><span class="hljs-keyword">var</span> timesnipe = performance.now();
         <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'DOMContentLoaded'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
